@@ -1,341 +1,264 @@
-#!/usr/bin/env python3
-"""
-论文抓取脚本
-从 ArXiv 等数据源抓取最新论文
-"""
-
+import yaml
 import arxiv
 import json
-import yaml
+import os
 from datetime import datetime, timedelta, timezone
-from pathlib import Path
-from typing import List, Dict
+from typing import Dict, List, Optional
 import logging
 
-# 配置日志
+# 配置日志（方便查看抓取过程）
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler()
+    ]
 )
 logger = logging.getLogger(__name__)
 
-
 class PaperFetcher:
-    """论文抓取器"""
+    """ArXiv论文抓取器：适配你的新版yaml，兼容更多中英文关键词"""
     
     def __init__(self, config_path: str = "config.yaml"):
-        """初始化"""
-        self.config = self.load_config(config_path)
-        self.papers = []
+        """初始化：读取你的自定义yaml配置"""
+        self.config = self._load_config(config_path)
+        self.arxiv_client = arxiv.Client()  # ArXiv客户端
         
-    def load_config(self, config_path: str) -> dict:
-        """加载配置文件"""
-        with open(config_path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
-    
-    def fetch_arxiv_papers(self) -> List[Dict]:
-        """从 ArXiv 抓取论文"""
-        logger.info("开始从 ArXiv 抓取论文...")
+    def _load_config(self, config_path: str) -> Dict:
+        """加载你的yaml配置，确保结构匹配"""
+        if not os.path.exists(config_path):
+            raise FileNotFoundError(f"配置文件不存在：{config_path}，请确认文件路径正确")
         
-        arxiv_config = self.config['sources']['arxiv']
-        if not arxiv_config['enabled']:
-            logger.info("ArXiv 数据源未启用")
-            return []
-        
-        papers = []
-        categories = arxiv_config['categories']
-        max_results = arxiv_config['max_results']
-        days_back = arxiv_config.get('days_back', 1)
-        
-        # 计算时间范围（使用 UTC 时区）
-        end_date = datetime.now(timezone.utc)
-        start_date = end_date - timedelta(days=days_back)
-        
-        for category in categories:
-            logger.info(f"抓取类别: {category}")
-            
-            try:
-                # 构建查询
-                search = arxiv.Search(
-                    query=f"cat:{category}",
-                    max_results=max_results,
-                    sort_by=arxiv.SortCriterion.SubmittedDate,
-                    sort_order=arxiv.SortOrder.Descending
-                )
-                
-                # 获取结果
-                count = 0
-                for result in search.results():
-                    # 检查发布时间（使用更新时间或发布时间）
-                    paper_date = result.updated if result.updated else result.published
-                    
-                    # 只获取时间范围内的论文
-                    if paper_date < start_date:
-                        continue
-                    
-                    paper = {
-                        'id': result.entry_id.split('/')[-1],
-                        'title': result.title,
-                        'authors': [author.name for author in result.authors],
-                        'abstract': result.summary,
-                        'published': result.published.strftime('%Y-%m-%d'),
-                        'updated': result.updated.strftime('%Y-%m-%d'),
-                        'categories': result.categories,
-                        'primary_category': result.primary_category,
-                        'pdf_url': result.pdf_url,
-                        'arxiv_url': result.entry_id,
-                        'source': 'ArXiv',
-                        'venue': category,
-                        'comment': result.comment if result.comment else None,
-                        'journal_ref': result.journal_ref if hasattr(result, 'journal_ref') and result.journal_ref else None
-                    }
-                    
-                    # 提取会议/期刊信息（优先使用journal_ref，然后是comment）
-                    paper['conference'] = self.extract_venue_from_journal_ref(paper.get('journal_ref')) or \
-                                         self.extract_venue_from_comment(paper.get('comment'))
-                    
-                    # 分类论文
-                    paper['tags'] = self.classify_paper(paper)
-                    
-                    papers.append(paper)
-                    count += 1
-                
-                logger.info(f"从 {category} 抓取了 {count} 篇论文（时间范围：{start_date.strftime('%Y-%m-%d')} 至今）")
-                
-            except Exception as e:
-                logger.error(f"抓取 {category} 时出错: {e}")
-                continue
-        
-        logger.info(f"ArXiv 总共抓取了 {len(papers)} 篇论文")
-        return papers
-    
-    def extract_venue_from_journal_ref(self, journal_ref: str) -> str:
-        """从 journal_ref 字段提取会议/期刊信息
-        例如: "The International Conference on Pattern Recognition (ICPR),2024"
+        try:
+            with open(config_path, "r", encoding="utf-8") as f:
+                config = yaml.safe_load(f)
+            logger.info(f"成功加载你的配置文件：{config_path}")
+            return config
+        except Exception as e:
+            raise ValueError(f"配置文件解析失败：{e}")
+
+    def extract_paper_keywords(self, paper: Dict) -> List[str]:
         """
-        if not journal_ref:
-            return None
+        提取核心关键词：自动读取你yaml里的所有中英文关键词，适配新增的词汇
+        """
+        # 拼接标题+摘要，转小写（统一匹配）
+        text = (paper["title"] + " " + paper["abstract"]).lower()
+        all_keywords = []
         
-        journal_ref = journal_ref.strip()
+        # 收集你yaml中所有分类的关键词（包含新增的中英文）
+        categories = self.config.get("categories", {})
+        for cat_info in categories.values():
+            all_keywords.extend([kw.lower() for kw in cat_info.get("keywords", [])])
         
-        import re
+        # 提取文本中存在的关键词（去重）
+        extracted = list({kw for kw in all_keywords if kw in text})
         
-        # 常见会议列表
-        conferences = [
-            'CVPR', 'ICCV', 'ECCV', 'NeurIPS', 'ICML', 'ICLR', 
-            'ACL', 'EMNLP', 'NAACL', 'AAAI', 'IJCAI', 'KDD',
-            'ICRA', 'IROS', 'CoRL', 'RSS', 'ICPR',
-            'SIGIR', 'WWW', 'WSDM', 'RecSys',
-            'SIGMOD', 'VLDB', 'ICDE',
-            'SIGGRAPH', 'ICASSP', 'INTERSPEECH'
+        # 补充新增的高频核心关键词（兼容你的yaml扩充）
+        core_keywords = [
+            # 流体新增
+            "计算流体力学", "数值模拟", "数值计算", "物理信息神经网络", "代理模型", "rom",
+            # ML新增
+            "深度学习", "神经网络", "强化学习", "迁移学习", "监督学习", "无监督学习",
+            # 基础核心
+            "cfd", "fluid dynamics", "turbulence", "aerodynamics", "multiphase flow",
+            "machine learning", "deep learning", "pinn", "neural network"
         ]
+        for kw in core_keywords:
+            if kw.lower() in text and kw.lower() not in extracted:
+                extracted.append(kw.lower())
         
-        # 模式1: 提取括号中的会议缩写及周围信息
-        # 例如: "The International Conference on Pattern Recognition (ICPR),2024"
-        pattern_with_acronym = r'([^()]*)\s*\(([A-Z]{2,})\s*(?:\d+)?\)\s*,?\s*(\d{4})?'
-        match = re.search(pattern_with_acronym, journal_ref)
-        if match:
-            full_name = match.group(1).strip()  # "The International Conference on Pattern Recognition"
-            acronym = match.group(2)  # "ICPR"
-            year = match.group(3)  # "2024"
-            
-            # 检查是否是已知的会议
-            if acronym.upper() in conferences:
-                # 构建返回值
-                if year:
-                    result = f"{full_name} ({acronym} {year})"
-                else:
-                    result = f"{full_name} ({acronym})"
-                
-                # 限制长度
-                if len(result) <= 200:
-                    return result
-        
-        # 模式2: 如果没找到括号，就直接返回整个journal_ref
-        # 但只有在看起来像期刊/会议名称时才返回
-        if len(journal_ref) > 3 and len(journal_ref) <= 200:
-            # 检查是否包含常见的关键词
-            if any(keyword.lower() in journal_ref.lower() for keyword in 
-                   ['conference', 'journal', 'proceedings', 'transactions', 'letters', 
-                    'review', 'symposium', 'workshop', 'conference']):
-                return journal_ref
-        
-        return None
-    
-    def extract_venue_from_comment(self, comment: str) -> str:
-        """从 comment 字段提取会议/期刊信息，优先返回原始完整描述"""
-        if not comment:
-            return None
-        
-        comment = comment.strip()
-        
-        # 预处理：移除页数、图表、链接等冗余信息
-        import re
-        # 移除 "X pages, Y figures, Z tables" 等信息
-        comment = re.sub(r'\d+\s*pages?[,;]?\s*', '', comment, flags=re.IGNORECASE)
-        comment = re.sub(r'\d+\s*figures?[,;]?\s*', '', comment, flags=re.IGNORECASE)
-        comment = re.sub(r'\d+\s*tables?[,;]?\s*', '', comment, flags=re.IGNORECASE)
-        comment = re.sub(r'\d+\s*appendices[,;]?\s*', '', comment, flags=re.IGNORECASE)
-        # 移除 URL 链接
-        comment = re.sub(r'https?://[^\s,;]+', '', comment, flags=re.IGNORECASE)
-        # 移除 GitHub 链接描述
-        comment = re.sub(r'GitHub\s+link:?\s*', '', comment, flags=re.IGNORECASE)
-        comment = ' '.join(comment.split())  # 清理多余空格
-        
-        # 如果是 preprint，返回 None
-        if 'preprint' in comment.lower() and 'accepted' not in comment.lower():
-            return None
-        
-        # 常见会议列表
-        conferences = [
-            'CVPR', 'ICCV', 'ECCV', 'NeurIPS', 'ICML', 'ICLR', 
-            'ACL', 'EMNLP', 'NAACL', 'AAAI', 'IJCAI', 'KDD',
-            'ICRA', 'IROS', 'CoRL', 'RSS',
-            'SIGIR', 'WWW', 'WSDM', 'RecSys',
-            'SIGMOD', 'VLDB', 'ICDE',
-            'SIGGRAPH', 'ICASSP', 'INTERSPEECH'
-        ]
-        
-        # 常见期刊列表
-        journals = [
-            'Nature', 'Science', 'PAMI', 'TPAMI', 'JMLR', 'IJCV',
-            'IEEE', 'ACM', 'Transactions', 'Journal'
-        ]
-        
-        import re
-        
-        # 尝试匹配常见模式并提取完整描述
-        # 模式1: "Accepted at/to CVPR 2025" 或 "Published in ICCV 2025" 或 "Published with Journal Name (Acronym)"
-        # 支持更多变体：at the, by the, for, in the, with 等
-        # 特别处理期刊名称，可能包含括号中的缩写
-        # 使用 .+? 贪婪匹配到逗号、句号、分号或字符串结尾（\Z）
-        pattern1 = r'(?:accepted?\s+(?:at\s+(?:the\s+)?|to\s+(?:the\s+)?|by\s+(?:the\s+)?|for\s+(?:the\s+)?)|published\s+(?:in\s+(?:the\s+)?|at\s+(?:the\s+)?|with\s+)|to\s+appear\s+(?:in\s+(?:the\s+)?|at\s+(?:the\s+)?))\s*(.+?)(?:[.,;]|\Z)'
-        match = re.search(pattern1, comment, re.IGNORECASE)
-        if match:
-            venue_text = match.group(1).strip()
-            # 清理多余空格、换行符
-            venue_text = ' '.join(venue_text.split())
-            # 移除尾部的位置信息（如 ", Washington, DC, USA"），但保留括号内容如 (IJETT)
-            venue_text = re.sub(r',\s*[A-Z][a-zA-Z\s,]+,\s*[A-Z]{2,}(?:\s*,\s*[A-Z]{2,4})?$', '', venue_text)
-            # 放宽长度限制，支持完整的期刊名称
-            if 5 < len(venue_text) <= 200:
-                return venue_text
-        
-        # 模式2: 直接以会议名开头，如 "CVPR 2025, Main Conference"
-        for conf in conferences:
-            pattern = rf'\b({conf}\s+\d{{4}}(?:\s*[,\-]\s*[\w\s]+)?)'
-            match = re.search(pattern, comment, re.IGNORECASE)
-            if match:
-                venue_text = match.group(1).strip()
-                # 限制长度
-                if ',' in venue_text or '-' in venue_text:
-                    # 只取会议名和年份部分
-                    venue_text = re.match(rf'{conf}\s+\d{{4}}', venue_text, re.IGNORECASE).group(0)
-                return venue_text
-        
-        # 模式3: 只有会议名和年份
-        for conf in conferences:
-            pattern = rf'\b{conf}\s*[:\']?\s*(\d{{4}})\b'
-            match = re.search(pattern, comment, re.IGNORECASE)
-            if match:
-                year = match.group(1)
-                return f"{conf} {year}"
-        
-        # 模式4: 只有会议名
-        for conf in conferences:
-            pattern = rf'\b{conf}\b'
-            if re.search(pattern, comment, re.IGNORECASE):
-                return conf
-        
-        # 检查期刊 - 尽量返回完整描述
-        for journal in journals:
-            if journal.lower() in comment.lower():
-                # 取第一句或前80个字符
-                first_sentence = comment.split('.')[0].strip()
-                if len(first_sentence) <= 80:
-                    return first_sentence
-                return comment[:80].strip() + '...'
-        
-        return None
-    
+        # 最多保留10个关键词（适配新增词汇，多保留2个）
+        return extracted[:10]
+
     def classify_paper(self, paper: Dict) -> List[str]:
-        """根据关键词分类论文"""
+        """
+        修复版分类逻辑：确保满足关键词的论文一定打上对应标签，解决点击数量变0问题
+        """
         tags = set()
-        text = (paper['title'] + ' ' + paper['abstract']).lower()
+        text = (paper["title"] + " " + paper["abstract"]).lower()
+        categories = self.config.get("categories", {})
         
-        categories = self.config.get('categories', {})
+        # ========== 核心修改：扩充关键词池，兼容你的新增词汇 ==========
+        fluid_keywords_pool = [
+            # 原有流体关键词
+            "cfd", "fluid dynamics", "turbulence", "aerodynamics", "multiphase flow",
+            "流体力学", "空气动力学", "多相流", "湍流", "流动模拟",
+            # 新增流体关键词（yaml里的）
+            "计算流体力学", "数值模拟", "数值计算", "flow modeling", "flow computation"
+        ]
+        ml_keywords_pool = [
+            # 原有ML关键词
+            "machine learning", "deep learning", "neural network", "pinn", "data-driven",
+            "智能流体力学", "机器学习", "深度学习",
+            # 新增ML关键词（yaml里的）
+            "神经网络", "强化学习", "迁移学习", "监督学习", "无监督学习",
+            "物理信息神经网络", "代理模型", "reduced-order model", "rom",
+            "cnn", "rnn", "gan", "data-driven modeling", "surrogate model"
+        ]
+        
+        # 检查是否含流体/ML关键词（兼容新增词汇）
+        has_fluid = any(kw.lower() in text for kw in fluid_keywords_pool)
+        has_ml = any(kw.lower() in text for kw in ml_keywords_pool)
+        
+        # ========== 关键修复：遍历分类时，只要含该分类关键词就强制打标 ==========
         for category_name, category_info in categories.items():
-            keywords = category_info.get('keywords', [])
-            for keyword in keywords:
-                if keyword.lower() in text:
+            keywords = [kw.lower() for kw in category_info.get("keywords", [])]
+            has_category_kw = any(kw in text for kw in keywords)
+            
+            # 1. CFD与机器学习交叉：必须同时包含流体+ML关键词
+            if category_name == "CFD与机器学习交叉":
+                if has_fluid and has_ml:
                     tags.add(category_name)
-                    break
+            
+            # 2. 智能流体力学：含关键词即可打标
+            elif category_name == "智能流体力学":
+                if has_category_kw:
+                    tags.add(category_name)
+            
+            # 3. 纯流体领域：只要含该分类关键词 → 强制打标
+            elif category_name in ["多相流", "空气动力学", "流体力学"]:
+                if has_category_kw:
+                    tags.add(category_name)
+            
+            # 4. 机器学习：含关键词即可打标
+            elif category_name == "机器学习":
+                if has_category_kw:
+                    tags.add(category_name)
+        
+        # ========== 终极兜底：避免漏标（核心修复点） ==========
+        # 1. 只要含流体关键词，至少打“流体力学”标签
+        if has_fluid and "流体力学" not in tags:
+            tags.add("流体力学")
+        # 2. 不再自动补打“CFD与机器学习交叉”，避免全部都落入该类
+        # 3. 含智能流体关键词但未打标 → 补充打标
+        if "智能流体力学" in text and "智能流体力学" not in tags:
+            tags.add("智能流体力学")
+        # 4. 含多相流/空气动力学关键词但未打标 → 补充打标
+        if "多相流" in text or "multiphase flow" in text:
+            tags.add("多相流")
+        if "空气动力学" in text or "aerodynamics" in text:
+            tags.add("空气动力学")
         
         return list(tags)
-    
-    def save_papers(self, papers: List[Dict], output_path: str = "data/papers.json"):
-        """保存论文数据"""
-        output_file = Path(output_path)
-        output_file.parent.mkdir(parents=True, exist_ok=True)
-        
-        # 加载已有数据
-        existing_papers = []
-        if output_file.exists():
-            with open(output_file, 'r', encoding='utf-8') as f:
-                existing_papers = json.load(f)
-        
-        # 去重（根据论文ID）
-        existing_ids = {p['id'] for p in existing_papers}
-        new_papers = [p for p in papers if p['id'] not in existing_ids]
-        
-        # 合并数据
-        all_papers = new_papers + existing_papers
-        
-        # 按日期排序
-        all_papers.sort(key=lambda x: x['published'], reverse=True)
-        
-        # 保存
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(all_papers, f, ensure_ascii=False, indent=2)
-        
-        logger.info(f"保存了 {len(new_papers)} 篇新论文，总共 {len(all_papers)} 篇")
-        
-        # 同时保存今日论文
-        today = datetime.now().strftime('%Y-%m-%d')
-        today_papers = [p for p in papers if p['published'] == today]
-        if today_papers:
-            today_file = output_file.parent / f"papers_{today}.json"
-            with open(today_file, 'w', encoding='utf-8') as f:
-                json.dump(today_papers, f, ensure_ascii=False, indent=2)
-            logger.info(f"今日论文保存到: {today_file}")
-    
-    def run(self):
-        """运行抓取流程"""
-        logger.info("=" * 60)
-        logger.info("开始抓取论文")
-        logger.info("=" * 60)
-        
-        # 从各个数据源抓取
-        arxiv_papers = self.fetch_arxiv_papers()
-        
-        # 合并所有论文
-        all_papers = arxiv_papers
-        
-        # 保存数据
-        if all_papers:
-            self.save_papers(all_papers)
-            logger.info(f"抓取完成！共获取 {len(all_papers)} 篇论文")
-        else:
-            logger.warning("未抓取到任何论文")
-        
-        logger.info("=" * 60)
 
+    def fetch_arxiv_papers(self) -> List[Dict]:
+        """
+        严格按你的新版yaml配置抓取：指定分类、180天、50篇
+        """
+        arxiv_config = self.config.get("sources", {}).get("arxiv", {})
+        if not arxiv_config.get("enabled", False):
+            logger.warning("ArXiv数据源已禁用！")
+            return []
+        
+        # 提取你的配置参数
+        arxiv_categories = arxiv_config.get("categories", [])
+        max_results = arxiv_config.get("max_results", 50)
+        days_back = arxiv_config.get("days_back", 180)
+        
+        # 构建ArXiv查询（指定分类+扩充的流体/ML关键词）
+        query_parts = []
+        if arxiv_categories:
+            query_parts.extend([f"cat:{cat}" for cat in arxiv_categories])
+        # 扩充查询词：只限定流体相关，避免强制包含机器学习
+        fluid_kw = "CFD OR fluid dynamics OR 计算流体力学 OR turbulence OR aerodynamics OR multiphase flow"
+        query_parts.append(f"({fluid_kw})")
+        
+        query = " AND ".join(query_parts)
+        logger.info(f"ArXiv查询条件（兼容新增关键词）：{query}")
+        
+        # 时间范围
+        start_date = datetime.now(timezone.utc) - timedelta(days=days_back)
+        start_date_str = start_date.strftime("%Y-%m-%d")
+        
+        logger.info(f"开始抓取：近{days_back}天，最多{max_results}篇，分类：{arxiv_categories}")
+        
+        # 构建搜索（arxiv API 不支持 SubmissionDate 过滤，改为本地过滤）
+        search = arxiv.Search(
+            query=query,
+            max_results=max_results,
+            sort_by=arxiv.SortCriterion.SubmittedDate,
+            sort_order=arxiv.SortOrder.Descending
+        )
+        
+        papers = []
+        for result in self.arxiv_client.results(search):
+            # 本地时间过滤（仅保留近 N 天）
+            published = result.published
+            if published.tzinfo is None:
+                published = published.replace(tzinfo=timezone.utc)
+            if published < start_date:
+                continue
+            paper = {
+                "id": result.entry_id.split("/")[-1],
+                "title": result.title,
+                "authors": ", ".join([author.name for author in result.authors]),
+                "abstract": result.summary.replace("\n", " ").strip(),
+                "published": published.strftime("%Y-%m-%d"),
+                "arxiv_url": result.entry_id,
+                "pdf_url": result.pdf_url,
+                "categories": result.categories,
+                "conference": "",
+                "code_link": "",
+                "tags": [],
+                "keywords": []
+            }
+            
+            # 提取会议信息（匹配你的venues）
+            if result.comment:
+                venues = self.config.get("venues", {})
+                all_venues = venues.get("conferences", []) + venues.get("journals", [])
+                for venue in all_venues:
+                    if venue.lower() in result.comment.lower():
+                        paper["conference"] = venue
+                        break
+            
+            # 分类打标签（修复版逻辑，确保标签不遗漏）
+            paper["tags"] = self.classify_paper(paper)
+            # 提取核心关键词（包含你新增的）
+            paper["keywords"] = self.extract_paper_keywords(paper)
+            
+            # 仅保留有分类标签的论文
+            if paper["tags"]:
+                papers.append(paper)
+                logger.debug(f"抓取到相关论文：{paper['title'][:50]}...")
+        
+        logger.info(f"抓取完成：共{len(papers)}篇相关论文（兼容新增关键词）")
+        return papers
+
+    def save_papers(self):
+        """按你的output配置保存+同步到docs"""
+        output_config = self.config.get("output", {})
+        data_dir = output_config.get("data_dir", "data")
+        os.makedirs(data_dir, exist_ok=True)
+        save_path = os.path.join(data_dir, "papers.json")
+        
+        # 抓取论文
+        papers = self.fetch_arxiv_papers()
+        if not papers:
+            logger.warning("未抓取到任何相关论文！可尝试：\n1. 扩大days_back\n2. 放宽查询关键词")
+            return
+        
+        # 保存JSON
+        with open(save_path, "w", encoding="utf-8") as f:
+            json.dump(papers, f, ensure_ascii=False, indent=2)
+        logger.info(f"论文数据已保存到：{save_path}（共{len(papers)}篇）")
+        
+        # 同步到docs目录
+        docs_dir = output_config.get("docs_dir", "docs")
+        os.makedirs(docs_dir, exist_ok=True)
+        docs_save_path = os.path.join(docs_dir, "papers.json")
+        with open(docs_save_path, "w", encoding="utf-8") as f:
+            json.dump(papers, f, ensure_ascii=False, indent=2)
+        logger.info(f"论文数据已同步到：{docs_save_path}")
 
 def main():
-    """主函数"""
-    fetcher = PaperFetcher()
-    fetcher.run()
-
+    """主函数：一键抓取+分类+保存+同步"""
+    try:
+        fetcher = PaperFetcher()
+        fetcher.save_papers()
+        logger.info("\n✅ 全部完成！直接打开 docs/index.html 即可查看结果")
+    except Exception as e:
+        logger.error(f"运行失败：{e}", exc_info=True)
 
 if __name__ == "__main__":
     main()

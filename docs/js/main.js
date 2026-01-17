@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let observer = null;
     let monthsCache = {};  // 缓存已加载的月份数据
     
+    // 配置里的分类列表（从Python传入）
+    const CATEGORIES = ["\u591a\u76f8\u6d41", "\u7a7a\u6c14\u52a8\u529b\u5b66", "\u673a\u5668\u5b66\u4e60", "\u667a\u80fd\u6d41\u4f53\u529b\u5b66", "\u6d41\u4f53\u529b\u5b66", "CFD\u4e0e\u673a\u5668\u5b66\u4e60\u4ea4\u53c9"];  // 新增：动态传入分类
+    
     // 加载月份索引
     async function loadMonthsIndex() {
         try {
@@ -103,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 生成论文HTML
     function createPaperHTML(paper) {
         const tags = paper.tags ? paper.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '';
+        const keywords = paper.keywords ? paper.keywords.map(kw => `<span class="tag keyword">${kw}</span>`).join('') : '';
+        const keywordsSection = keywords ? `<div class="paper-keywords"><span class="keyword-label">关键词：</span>${keywords}</div>` : '';
         
         // 提取代码链接
         let codeLink = '';
@@ -143,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="paper-tags">
                         ${tags}
                     </div>
+                    ${keywordsSection}
                     <div class="paper-abstract">
                         <details>
                             <summary>查看摘要</summary>
@@ -191,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return { class: badgeClass, text: conference };
     }
     
-    // 更新研究领域按钮的数量
+    // 更新研究领域按钮的数量（动态：从config分类计算）
     function updateCategoryButtonCounts() {
         // 先筛选出符合当前状态的论文
         const statusFilteredPapers = allPapersData.filter(paper => {
@@ -199,15 +205,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return currentStatus === 'all' || status === currentStatus;
         });
         
-        // 计算各个领域的数量
-        const categoryCounts = {
-            'all': statusFilteredPapers.length,
-            'Computer Vision': 0,
-            'Natural Language Processing': 0,
-            'Machine Learning': 0,
-            'Robotics': 0,
-            'Multimodal': 0
-        };
+        // 动态计算各个分类的数量（从config的分类列表）
+        const categoryCounts = { 'all': statusFilteredPapers.length };
+        CATEGORIES.forEach(category => {
+            categoryCounts[category] = 0;
+        });
         
         statusFilteredPapers.forEach(paper => {
             const tags = paper.tags || [];
@@ -221,8 +223,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // 更新按钮文本
         categoryBtns.forEach(btn => {
             const category = btn.dataset.category;
+            // 简化显示名（比如NLP）
             const displayName = category === 'all' ? '全部' : 
-                               category === 'Natural Language Processing' ? 'NLP' : category;
+                               category.replace("Natural Language Processing", "NLP");
             const count = categoryCounts[category] || 0;
             btn.textContent = `${displayName} (${count})`;
         });
@@ -488,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const arxivId = paper.id;
             const year = paper.published.split('-')[0];
             
-            bibtex += `@article{${arxivId.replace('.', '_')},\n`;
+            bibtex += `@article{${arxivId.replace('.', '_')}},\n`;
             bibtex += `  title={${paper.title}},\n`;
             bibtex += `  author={${paper.authors}},\n`;
             bibtex += `  year={${year}},\n`;

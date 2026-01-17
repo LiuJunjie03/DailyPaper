@@ -1,0 +1,79 @@
+[
+  {
+    "id": "2508.21249v1",
+    "title": "A Mixture of Experts Gating Network for Enhanced Surrogate Modeling in External Aerodynamics",
+    "authors": "Mohammad Amin Nabian, Sanjay Choudhry",
+    "abstract": "The computational cost associated with high-fidelity CFD simulations remains a significant bottleneck in the automotive design and optimization cycle. While ML-based surrogate models have emerged as a promising alternative to accelerate aerodynamic predictions, the field is characterized by a diverse and rapidly evolving landscape of specialized neural network architectures, with no single model demonstrating universal superiority. This paper introduces a novel meta-learning framework that leverages this architectural diversity as a strength. We propose a Mixture of Experts (MoE) model that employs a dedicated gating network to dynamically and optimally combine the predictions from three heterogeneous, state-of-the-art surrogate models: DoMINO, a decomposable multi-scale neural operator; X-MeshGraphNet, a scalable multi-scale graph neural network; and FigConvNet, a factorized implicit global convolution network. The gating network learns a spatially-variant weighting strategy, assigning credibility to each expert based on its localized performance in predicting surface pressure and wall shear stress fields. To prevent model collapse and encourage balanced expert contributions, we integrate an entropy regularization term into the training loss function. The entire system is trained and validated on the DrivAerML dataset, a large-scale, public benchmark of high-fidelity CFD simulations for automotive aerodynamics. Quantitative results demonstrate that the MoE model achieves a significant reduction in L-2 prediction error, outperforming not only the ensemble average but also the most accurate individual expert model across all evaluated physical quantities. This work establishes the MoE framework as a powerful and effective strategy for creating more robust and accurate composite surrogate models by synergistically combining the complementary strengths of specialized architectures.",
+    "published": "2025-08-28",
+    "arxiv_url": "http://arxiv.org/abs/2508.21249v1",
+    "pdf_url": "https://arxiv.org/pdf/2508.21249v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "math.NA",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "空气动力学",
+      "流体力学"
+    ],
+    "keywords": [
+      "cfd",
+      "surrogate model",
+      "rom",
+      "aerodynamics",
+      "neural network"
+    ]
+  },
+  {
+    "id": "2509.04463v1",
+    "title": "Multiscale Graph Neural Network for Turbulent Flow-Thermal Prediction Around a Complex-Shaped Pin-Fin",
+    "authors": "Riddhiman Raut, Evan M. Mihalko, Amrita Basak",
+    "abstract": "This study presents the development of a domain-responsive edge-aware multiscale Graph Neural Network for predicting steady, turbulent flow and thermal behavior in a two-dimensional channel containing arbitrarily shaped complex pin-fin geometries. The training dataset was constructed through an automated framework that integrated geometry generation, meshing, and flow-field solutions in ANSYS Fluent. The pin-fin geometry was parameterized using piecewise cubic splines, producing 1,000 diverse configurations through Latin Hypercube Sampling. Each simulation was converted into a graph structure, where nodes carried a feature vector containing spatial coordinates, a normalized streamwise position, one-hot boundary indicators, and a signed distance to the nearest boundary such as wall. This graph structure served as input to the newly developed Graph Neural Network, which was trained to predict temperature, velocity magnitude, and pressure at each node using data from ANSYS. The network predicted fields with outstanding accuracy, capturing boundary layers, recirculation, and the stagnation region upstream of the pin-fins while reducing wall time by 2-3 orders of magnitude. In conclusion, the novel graph neural network offered a fast and reliable surrogate for simulations in complex flow configurations.",
+    "published": "2025-08-28",
+    "arxiv_url": "http://arxiv.org/abs/2509.04463v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.04463v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.AI",
+      "cs.LG",
+      "math.NA"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习"
+    ],
+    "keywords": [
+      "neural network",
+      "rom"
+    ]
+  },
+  {
+    "id": "2508.16648v1",
+    "title": "LatentFlow: Cross-Frequency Experimental Flow Reconstruction from Sparse Pressure via Latent Mapping",
+    "authors": "Junle Liu, Chang Liu, Yanyu Ke, Qiuxiang Huang, Jiachen Zhao, Wenliang Chen, K. T. Tse, Gang Hu",
+    "abstract": "Acquiring temporally high-frequency and spatially high-resolution turbulent wake flow fields in particle image velocimetry (PIV) experiments remains a significant challenge due to hardware limitations and measurement noise. In contrast, temporal high-frequency measurements of spatially sparse wall pressure are more readily accessible in wind tunnel experiments. In this study, we propose a novel cross-modal temporal upscaling framework, LatentFlow, which reconstructs high-frequency (512 Hz) turbulent wake flow fields by fusing synchronized low-frequency (15 Hz) flow field and pressure data during training, and high-frequency wall pressure signals during inference. The first stage involves training a pressure-conditioned $β$-variation autoencoder ($p$C-$β$-VAE) to learn a compact latent representation that captures the intrinsic dynamics of the wake flow. A secondary network maps synchronized low-frequency wall pressure signals into the latent space, enabling reconstruction of the wake flow field solely from sparse wall pressure. Once trained, the model utilizes high-frequency, spatially sparse wall pressure inputs to generate corresponding high-frequency flow fields via the $p$C-$β$-VAE decoder. By decoupling the spatial encoding of flow dynamics from temporal pressure measurements, LatentFlow provides a scalable and robust solution for reconstructing high-frequency turbulent wake flows in data-constrained experimental settings.",
+    "published": "2025-08-19",
+    "arxiv_url": "http://arxiv.org/abs/2508.16648v1",
+    "pdf_url": "https://arxiv.org/pdf/2508.16648v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉"
+    ],
+    "keywords": [
+      "rom"
+    ]
+  }
+]

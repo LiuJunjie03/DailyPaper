@@ -9,9 +9,29 @@ from pathlib import Path
 from datetime import datetime
 from typing import List, Dict
 import logging
+import yaml  # 新增：导入yaml库
+import os    # 新增：导入os库
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# 新增：加载config.yaml的函数（核心！）
+def load_config():
+    """加载项目根目录的config.yaml配置文件"""
+    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.yaml")
+    if not os.path.exists(config_path):
+        logger.error(f"配置文件不存在: {config_path}")
+        raise FileNotFoundError(f"config.yaml not found at {config_path}")
+    
+    with open(config_path, "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+    logger.info(f"成功加载配置文件，包含分类: {list(config.get('categories', {}).keys())}")
+    return config
+
+# 加载配置（全局使用）
+config = load_config()
+# 获取配置里的分类列表（核心：替换硬编码分类）
+CATEGORIES = list(config.get('categories', {}).keys())
 
 
 class HTMLGenerator:
@@ -83,30 +103,44 @@ class HTMLGenerator:
             buttons.append(f'<button class="filter-btn month-btn" data-month="{year_month}">{year_month} ({count})</button>')
         return '\n                    '.join(buttons)
     
+    # 新增：动态生成分类筛选按钮（替换硬编码）
+    def generate_category_buttons(self, category_counts):
+        """生成研究领域筛选按钮（从config.yaml读取）"""
+        buttons = []
+        # 先加"全部"按钮
+        buttons.append(f'<button class="filter-btn category-btn active" data-category="all">全部 ({category_counts["all"]})</button>')
+        # 遍历配置里的所有分类
+        for category in CATEGORIES:
+            # 简化显示名（比如NLP）
+            display_name = category.replace("Natural Language Processing", "NLP")
+            count = category_counts.get(category, 0)
+            buttons.append(f'<button class="filter-btn category-btn" data-category="{category}">{display_name} ({count})</button>')
+        return '\n                    '.join(buttons)
+    
     def generate_index_html(self):
         """生成主页 HTML"""
-        # 计算各分类数量
+        # 计算各分类数量（动态：从config.yaml的分类计算，替换硬编码）
         published_count = sum(1 for p in self.papers if p.get('conference'))
         preprint_count = sum(1 for p in self.papers if not p.get('conference'))
-        cv_count = sum(1 for p in self.papers if 'Computer Vision' in p.get('tags', []))
-        nlp_count = sum(1 for p in self.papers if 'Natural Language Processing' in p.get('tags', []))
-        ml_count = sum(1 for p in self.papers if 'Machine Learning' in p.get('tags', []))
-        robotics_count = sum(1 for p in self.papers if 'Robotics' in p.get('tags', []))
-        multimodal_count = sum(1 for p in self.papers if 'Multimodal' in p.get('tags', []))
+        
+        # 动态计算每个分类的论文数
+        category_counts = {'all': len(self.papers)}
+        for category in CATEGORIES:
+            category_counts[category] = sum(1 for p in self.papers if category in p.get('tags', []))
         
         html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DailyPaper - AI/ML/CV/NLP 最新论文</title>
+    <title>DailyPaper - CFD+ML 最新论文</title>  <!-- 修改标题：适配你的需求 -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <div class="container">
             <h1>📚 DailyPaper</h1>
-            <p class="subtitle">每日自动更新 AI/ML/CV/NLP 领域最新论文</p>
+            <p class="subtitle">每日自动更新 计算流体力学+机器学习 领域最新论文</p>  <!-- 修改副标题 -->
             <p class="update-time">最后更新: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} UTC</p>
         </div>
     </header>
@@ -131,12 +165,7 @@ class HTMLGenerator:
             <div class="filter-group">
                 <label class="filter-label">🏷️ 研究领域：</label>
                 <div class="filters category-filters">
-                    <button class="filter-btn category-btn active" data-category="all">全部 ({len(self.papers)})</button>
-                    <button class="filter-btn category-btn" data-category="Computer Vision">Computer Vision ({cv_count})</button>
-                    <button class="filter-btn category-btn" data-category="Natural Language Processing">NLP ({nlp_count})</button>
-                    <button class="filter-btn category-btn" data-category="Machine Learning">Machine Learning ({ml_count})</button>
-                    <button class="filter-btn category-btn" data-category="Robotics">Robotics ({robotics_count})</button>
-                    <button class="filter-btn category-btn" data-category="Multimodal">Multimodal ({multimodal_count})</button>
+                    {self.generate_category_buttons(category_counts)}  <!-- 动态生成分类按钮 -->
                 </div>
             </div>
             <div class="filter-group">
@@ -168,7 +197,7 @@ class HTMLGenerator:
     
     <footer>
         <div class="container">
-            <p>© 2025 DailyPaper | 数据来源: ArXiv | <a href="https://github.com/yourusername/DailyPaper" target="_blank">GitHub</a></p>
+            <p>© 2025 DailyPaper | 数据来源: ArXiv | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>  <!-- 修改GitHub链接 -->
         </div>
     </footer>
     
@@ -199,6 +228,7 @@ class HTMLGenerator:
             'cs.HC': 'Human-Computer Interaction',
             'cs.MM': 'Multimedia',
             'stat.ML': 'Machine Learning (Statistics)',
+            'physics.flu-dyn': 'Fluid Dynamics (CFD)',  # 新增：适配CFD分类
         }
         return category_map.get(category, category)
     
@@ -637,6 +667,19 @@ main {
     margin-bottom: 1rem;
 }
 
+.paper-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.keyword-label {
+    font-size: 0.85rem;
+    color: #666;
+}
+
 .tag {
     display: inline-block;
     padding: 0.3rem 0.8rem;
@@ -644,6 +687,11 @@ main {
     color: #1976d2;
     border-radius: 15px;
     font-size: 0.85rem;
+}
+
+.tag.keyword {
+    background: #f3e5f5;
+    color: #6a1b9a;
 }
 
 .paper-abstract {
@@ -777,8 +825,8 @@ footer a {
     
     def generate_js(self):
         """生成 JavaScript 文件"""
-        js = """// 筛选、搜索、排序和懒加载功能
-document.addEventListener('DOMContentLoaded', function() {
+        js = f"""// 筛选、搜索、排序和懒加载功能
+document.addEventListener('DOMContentLoaded', function() {{
     console.log('JavaScript loaded');
     
     // 获取DOM元素
@@ -794,7 +842,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultsCount = document.getElementById('resultsCount');
     const papersContainer = document.getElementById('papers-container');
     
-    console.log('DOM elements:', {
+    console.log('DOM elements:', {{
         monthBtns: monthBtns.length,
         statusBtns: statusBtns.length,
         categoryBtns: categoryBtns.length,
@@ -805,7 +853,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearAllBtn: !!clearAllBtn,
         resultsCount: !!resultsCount,
         papersContainer: !!papersContainer
-    });
+    }});
     
     // 状态变量
     let allPapersData = [];  // 所有论文数据
@@ -820,121 +868,127 @@ document.addEventListener('DOMContentLoaded', function() {
     const subsequentBatchSize = 10;  // 后续每次加载10个
     let isLoading = false;
     let observer = null;
-    let monthsCache = {};  // 缓存已加载的月份数据
+    let monthsCache = {{}};  // 缓存已加载的月份数据
+    
+    // 配置里的分类列表（从Python传入）
+    const CATEGORIES = {json.dumps(CATEGORIES)};  // 新增：动态传入分类
     
     // 加载月份索引
-    async function loadMonthsIndex() {
-        try {
+    async function loadMonthsIndex() {{
+        try {{
             const response = await fetch('data/index.json');
             const monthsIndex = await response.json();
             console.log('Months index loaded:', monthsIndex);
             
             // 默认加载最新月份的数据
-            if (monthsIndex.length > 0) {
+            if (monthsIndex.length > 0) {{
                 await loadMonthData('all');
-            }
-        } catch (e) {
+            }}
+        }} catch (e) {{
             console.error('Failed to load months index:', e);
-        }
-    }
+        }}
+    }}
     
     // 加载指定月份的数据
-    async function loadMonthData(month) {
-        if (month === 'all') {
+    async function loadMonthData(month) {{
+        if (month === 'all') {{
             // 加载所有月份
-            try {
+            try {{
                 const response = await fetch('data/index.json');
                 const monthsIndex = await response.json();
                 
                 // 加载所有月份数据
                 allPapersData = [];
-                for (const monthInfo of monthsIndex) {
-                    if (!monthsCache[monthInfo.month]) {
-                        const monthResponse = await fetch(`data/${monthInfo.month}.json`);
+                for (const monthInfo of monthsIndex) {{
+                    if (!monthsCache[monthInfo.month]) {{
+                        const monthResponse = await fetch(`data/${{monthInfo.month}}.json`);
                         monthsCache[monthInfo.month] = await monthResponse.json();
-                    }
+                    }}
                     allPapersData.push(...monthsCache[monthInfo.month]);
-                }
-                console.log(`Loaded all months, total ${allPapersData.length} papers`);
-            } catch (e) {
+                }}
+                console.log(`Loaded all months, total ${{allPapersData.length}} papers`);
+            }} catch (e) {{
                 console.error('Failed to load all months data:', e);
-            }
-        } else {
+            }}
+        }} else {{
             // 加载单个月份
-            if (!monthsCache[month]) {
-                try {
-                    const response = await fetch(`data/${month}.json`);
+            if (!monthsCache[month]) {{
+                try {{
+                    const response = await fetch(`data/${{month}}.json`);
                     monthsCache[month] = await response.json();
-                    console.log(`Loaded month ${month}, ${monthsCache[month].length} papers`);
-                } catch (e) {
-                    console.error(`Failed to load month ${month}:`, e);
+                    console.log(`Loaded month ${{month}}, ${{monthsCache[month].length}} papers`);
+                }} catch (e) {{
+                    console.error(`Failed to load month ${{month}}:`, e);
                     return;
-                }
-            }
+                }}
+            }}
             allPapersData = monthsCache[month];
-            console.log(`Using cached data for ${month}, ${allPapersData.length} papers`);
-        }
+            console.log(`Using cached data for ${{month}}, ${{allPapersData.length}} papers`);
+        }}
         
         // 数据加载完成后，触发筛选
         filterAndSortPapers();
-    }
+    }}
     
     // 生成论文HTML
-    function createPaperHTML(paper) {
-        const tags = paper.tags ? paper.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '';
+    function createPaperHTML(paper) {{
+        const tags = paper.tags ? paper.tags.map(tag => `<span class="tag">${{tag}}</span>`).join('') : '';
+        const keywords = paper.keywords ? paper.keywords.map(kw => `<span class="tag keyword">${{kw}}</span>`).join('') : '';
+        const keywordsSection = keywords ? `<div class="paper-keywords"><span class="keyword-label">关键词：</span>${{keywords}}</div>` : '';
         
         // 提取代码链接
         let codeLink = '';
-        if (paper.code_link) {
-            codeLink = `<a href="${paper.code_link}" target="_blank" class="code-link">📄 Code/Project</a>`;
-        }
+        if (paper.code_link) {{
+            codeLink = `<a href="${{paper.code_link}}" target="_blank" class="code-link">📄 Code/Project</a>`;
+        }}
         
         // 获取会议徽章
         let venueBadge = '';
-        if (paper.conference) {
+        if (paper.conference) {{
             const badgeInfo = getVenueBadge(paper.conference);
-            if (badgeInfo) {
-                venueBadge = `<span class="venue-badge ${badgeInfo.class}">${badgeInfo.text}</span>`;
-            }
-        }
+            if (badgeInfo) {{
+                venueBadge = `<span class="venue-badge ${{badgeInfo.class}}">${{badgeInfo.text}}</span>`;
+            }}
+        }}
         
         const status = paper.conference ? 'published' : 'preprint';
         const firstCategory = paper.categories && paper.categories.length > 0 ? paper.categories[0] : '';
         
         return `
-            <article class="paper-card" data-date="${paper.published}" data-status="${status}" data-tags="${paper.tags ? paper.tags.join(',') : ''}" data-paper-id="${paper.id}">
+            <article class="paper-card" data-date="${{paper.published}}" data-status="${{status}}" data-tags="${{paper.tags ? paper.tags.join(',') : ''}}" data-paper-id="${{paper.id}}">
                 <div class="paper-select">
-                    <input type="checkbox" class="paper-checkbox" id="check-${paper.id}" data-paper-id="${paper.id}">
-                    <label for="check-${paper.id}"></label>
+                    <input type="checkbox" class="paper-checkbox" id="check-${{paper.id}}" data-paper-id="${{paper.id}}">
+                    <label for="check-${{paper.id}}"></label>
                 </div>
                 <div class="paper-content">
                     <h2 class="paper-title">
-                        <a href="https://arxiv.org/abs/${paper.id}" target="_blank">${paper.title}</a>
+                        <a href="https://arxiv.org/abs/${{paper.id}}" target="_blank">${{paper.title}}</a>
                     </h2>
                     <div class="paper-meta">
-                        <span class="meta-item">📅 ${paper.published}</span>
-                        ${venueBadge}
-                        ${codeLink}
+                        <span class="meta-item">📅 ${{paper.published}}</span>
+                        ${{venueBadge}}
+                        ${{codeLink}}
                     </div>
                     <div class="paper-authors">
-                        👥 ${paper.authors}
+                        👥 ${{paper.authors}}
                     </div>
                     <div class="paper-tags">
-                        ${tags}
+                        ${{tags}}
                     </div>
+                    ${{keywordsSection}}
                     <div class="paper-abstract">
                         <details>
                             <summary>查看摘要</summary>
-                            <p>${paper.abstract}</p>
+                            <p>${{paper.abstract}}</p>
                         </details>
                     </div>
                 </div>
             </article>
         `;
-    }
+    }}
     
     // 获取会议徽章信息
-    function getVenueBadge(conference) {
+    function getVenueBadge(conference) {{
         if (!conference) return null;
         
         // 根据会议名称中包含的关键词决定徽章样式
@@ -942,170 +996,167 @@ document.addEventListener('DOMContentLoaded', function() {
         let badgeClass = 'badge-published';  // 默认样式
         
         // 顶级会议匹配
-        if (conferenceUpper.includes('NEURIPS')) {
+        if (conferenceUpper.includes('NEURIPS')) {{
             badgeClass = 'badge-neurips';
-        } else if (conferenceUpper.includes('ICLR')) {
+        }} else if (conferenceUpper.includes('ICLR')) {{
             badgeClass = 'badge-iclr';
-        } else if (conferenceUpper.includes('ICML')) {
+        }} else if (conferenceUpper.includes('ICML')) {{
             badgeClass = 'badge-icml';
-        } else if (conferenceUpper.includes('CVPR')) {
+        }} else if (conferenceUpper.includes('CVPR')) {{
             badgeClass = 'badge-cvpr';
-        } else if (conferenceUpper.includes('ICCV')) {
+        }} else if (conferenceUpper.includes('ICCV')) {{
             badgeClass = 'badge-iccv';
-        } else if (conferenceUpper.includes('ECCV')) {
+        }} else if (conferenceUpper.includes('ECCV')) {{
             badgeClass = 'badge-eccv';
-        } else if (conferenceUpper.includes('ACL')) {
+        }} else if (conferenceUpper.includes('ACL')) {{
             badgeClass = 'badge-acl';
-        } else if (conferenceUpper.includes('EMNLP')) {
+        }} else if (conferenceUpper.includes('EMNLP')) {{
             badgeClass = 'badge-emnlp';
-        } else if (conferenceUpper.includes('NAACL')) {
+        }} else if (conferenceUpper.includes('NAACL')) {{
             badgeClass = 'badge-naacl';
-        } else if (conferenceUpper.includes('AAAI')) {
+        }} else if (conferenceUpper.includes('AAAI')) {{
             badgeClass = 'badge-aaai';
-        } else if (conferenceUpper.includes('IJCAI')) {
+        }} else if (conferenceUpper.includes('IJCAI')) {{
             badgeClass = 'badge-ijcai';
-        }
+        }}
         
         // 直接使用从 ArXiv comments 提取的完整会议名称
-        return { class: badgeClass, text: conference };
-    }
+        return {{ class: badgeClass, text: conference }};
+    }}
     
-    // 更新研究领域按钮的数量
-    function updateCategoryButtonCounts() {
+    // 更新研究领域按钮的数量（动态：从config分类计算）
+    function updateCategoryButtonCounts() {{
         // 先筛选出符合当前状态的论文
-        const statusFilteredPapers = allPapersData.filter(paper => {
+        const statusFilteredPapers = allPapersData.filter(paper => {{
             const status = paper.conference ? 'published' : 'preprint';
             return currentStatus === 'all' || status === currentStatus;
-        });
+        }});
         
-        // 计算各个领域的数量
-        const categoryCounts = {
-            'all': statusFilteredPapers.length,
-            'Computer Vision': 0,
-            'Natural Language Processing': 0,
-            'Machine Learning': 0,
-            'Robotics': 0,
-            'Multimodal': 0
-        };
+        // 动态计算各个分类的数量（从config的分类列表）
+        const categoryCounts = {{ 'all': statusFilteredPapers.length }};
+        CATEGORIES.forEach(category => {{
+            categoryCounts[category] = 0;
+        }});
         
-        statusFilteredPapers.forEach(paper => {
+        statusFilteredPapers.forEach(paper => {{
             const tags = paper.tags || [];
-            tags.forEach(tag => {
-                if (categoryCounts.hasOwnProperty(tag)) {
+            tags.forEach(tag => {{
+                if (categoryCounts.hasOwnProperty(tag)) {{
                     categoryCounts[tag]++;
-                }
-            });
-        });
+                }}
+            }});
+        }});
         
         // 更新按钮文本
-        categoryBtns.forEach(btn => {
+        categoryBtns.forEach(btn => {{
             const category = btn.dataset.category;
+            // 简化显示名（比如NLP）
             const displayName = category === 'all' ? '全部' : 
-                               category === 'Natural Language Processing' ? 'NLP' : category;
+                               category.replace("Natural Language Processing", "NLP");
             const count = categoryCounts[category] || 0;
-            btn.textContent = `${displayName} (${count})`;
-        });
-    }
+            btn.textContent = `${{displayName}} (${{count}})`;
+        }});
+    }}
     
     // 筛选和排序论文
-    function filterAndSortPapers() {
-        console.log('Filtering papers:', { currentStatus, currentCategory, searchTerm, currentSort });
+    function filterAndSortPapers() {{
+        console.log('Filtering papers:', {{ currentStatus, currentCategory, searchTerm, currentSort }});
         
         // 筛选
-        filteredPapers = allPapersData.filter(paper => {
+        filteredPapers = allPapersData.filter(paper => {{
             const status = paper.conference ? 'published' : 'preprint';
             const tags = paper.tags || [];
-            const text = `${paper.title} ${paper.authors} ${paper.abstract}`.toLowerCase();
+            const text = `${{paper.title}} ${{paper.authors}} ${{paper.abstract}}`.toLowerCase();
             
             const matchStatus = currentStatus === 'all' || status === currentStatus;
             const matchCategory = currentCategory === 'all' || tags.includes(currentCategory);
             const matchSearch = searchTerm === '' || text.includes(searchTerm);
             
             return matchStatus && matchCategory && matchSearch;
-        });
+        }});
         
-        console.log(`Filtered to ${filteredPapers.length} papers`);
+        console.log(`Filtered to ${{filteredPapers.length}} papers`);
         
         // 排序
-        filteredPapers.sort((a, b) => {
+        filteredPapers.sort((a, b) => {{
             const dateA = new Date(a.published);
             const dateB = new Date(b.published);
             
-            if (currentSort === 'date-desc') {
+            if (currentSort === 'date-desc') {{
                 return dateB - dateA;
-            } else {
+            }} else {{
                 return dateA - dateB;
-            }
-        });
+            }}
+        }});
         
         // 更新研究领域按钮的数量
         updateCategoryButtonCounts();
         
         // 更新显示
-        if (resultsCount) {
-            resultsCount.textContent = `显示 ${filteredPapers.length} 篇论文`;
-        }
+        if (resultsCount) {{
+            resultsCount.textContent = `显示 ${{filteredPapers.length}} 篇论文`;
+        }}
         
         // 重置懒加载
         loadedCount = 0;
-        if (papersContainer) {
+        if (papersContainer) {{
             papersContainer.innerHTML = '';
-        }
+        }}
         
         // 移除旧的 observer
-        if (observer) {
+        if (observer) {{
             observer.disconnect();
-        }
+        }}
         
         // 加载第一批
         loadMorePapers();
-    }
+    }}
     
     // 加载更多论文
-    function loadMorePapers() {
-        if (isLoading || loadedCount >= filteredPapers.length) {
-            console.log('Skip loading:', { isLoading, loadedCount, total: filteredPapers.length });
+    function loadMorePapers() {{
+        if (isLoading || loadedCount >= filteredPapers.length) {{
+            console.log('Skip loading:', {{ isLoading, loadedCount, total: filteredPapers.length }});
             return;
-        }
+        }}
         
         isLoading = true;
         
         // 第一次加载50个，后续每次10个
         const batchSize = loadedCount === 0 ? initialBatchSize : subsequentBatchSize;
-        console.log(`Loading papers ${loadedCount} to ${loadedCount + batchSize} (batch size: ${batchSize})`);
+        console.log(`Loading papers ${{loadedCount}} to ${{loadedCount + batchSize}} (batch size: ${{batchSize}})`);
         
         const endIndex = Math.min(loadedCount + batchSize, filteredPapers.length);
         const fragment = document.createDocumentFragment();
         
-        for (let i = loadedCount; i < endIndex; i++) {
+        for (let i = loadedCount; i < endIndex; i++) {{
             const paperHTML = createPaperHTML(filteredPapers[i]);
             const temp = document.createElement('div');
             temp.innerHTML = paperHTML;
             fragment.appendChild(temp.firstElementChild);
-        }
+        }}
         
         // 移除旧的加载指示器
         const oldIndicator = document.getElementById('loading-indicator');
-        if (oldIndicator) {
+        if (oldIndicator) {{
             oldIndicator.remove();
-        }
+        }}
         
         papersContainer.appendChild(fragment);
         loadedCount = endIndex;
         isLoading = false;
         
-        console.log(`Loaded ${endIndex} papers total`);
+        console.log(`Loaded ${{endIndex}} papers total`);
         
         // 如果还有更多，设置加载触发器
-        if (loadedCount < filteredPapers.length) {
+        if (loadedCount < filteredPapers.length) {{
             setupLoadTrigger();
-        }
-    }
+        }}
+    }}
     
     // 设置加载触发器
-    function setupLoadTrigger() {
+    function setupLoadTrigger() {{
         let indicator = document.getElementById('loading-indicator');
-        if (!indicator) {
+        if (!indicator) {{
             indicator = document.createElement('div');
             indicator.id = 'loading-indicator';
             indicator.className = 'loading-indicator';
@@ -1115,146 +1166,146 @@ document.addEventListener('DOMContentLoaded', function() {
             indicator.style.color = '#666';
             indicator.textContent = '加载更多...';
             papersContainer.appendChild(indicator);
-        }
+        }}
         
         // 创建新的 observer
-        if (observer) {
+        if (observer) {{
             observer.disconnect();
-        }
+        }}
         
-        observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
+        observer = new IntersectionObserver((entries) => {{
+            entries.forEach(entry => {{
+                if (entry.isIntersecting) {{
                     console.log('Loading more papers (intersection detected)');
                     loadMorePapers();
-                }
-            });
-        }, {
+                }}
+            }});
+        }}, {{
             rootMargin: '200px'
-        });
+        }});
         
         observer.observe(indicator);
-    }
+    }}
     
     // 月份筛选
-    monthBtns.forEach(btn => {
-        btn.addEventListener('click', async function() {
+    monthBtns.forEach(btn => {{
+        btn.addEventListener('click', async function() {{
             console.log('Month button clicked:', this.dataset.month);
             monthBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentMonth = this.dataset.month;
             
             // 显示加载提示
-            if (resultsCount) {
+            if (resultsCount) {{
                 resultsCount.textContent = '加载中...';
-            }
-            if (papersContainer) {
+            }}
+            if (papersContainer) {{
                 papersContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">加载中...</div>';
-            }
+            }}
             
             // 加载月份数据
             await loadMonthData(currentMonth);
-        });
-    });
+        }});
+    }});
     
     // 发表状态筛选
-    statusBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+    statusBtns.forEach(btn => {{
+        btn.addEventListener('click', function() {{
             console.log('Status button clicked:', this.dataset.status);
             statusBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentStatus = this.dataset.status;
             filterAndSortPapers();
-        });
-    });
+        }});
+    }});
     
     // 研究领域筛选
-    categoryBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+    categoryBtns.forEach(btn => {{
+        btn.addEventListener('click', function() {{
             console.log('Category button clicked:', this.dataset.category);
             categoryBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentCategory = this.dataset.category;
             filterAndSortPapers();
-        });
-    });
+        }});
+    }});
     
     // 排序按钮
-    sortBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
+    sortBtns.forEach(btn => {{
+        btn.addEventListener('click', function(e) {{
             console.log('Sort button clicked:', this.dataset.sort);
             e.preventDefault();
             sortBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentSort = this.dataset.sort;
             filterAndSortPapers();
-        });
-    });
+        }});
+    }});
     
     // 搜索输入
-    if (searchInput) {
-        searchInput.addEventListener('input', function() {
+    if (searchInput) {{
+        searchInput.addEventListener('input', function() {{
             searchTerm = this.value.toLowerCase();
             console.log('Search term:', searchTerm);
             filterAndSortPapers();
-        });
-    }
+        }});
+    }}
     
     // 更新选中数量
-    function updateSelectedCount() {
+    function updateSelectedCount() {{
         const count = document.querySelectorAll('.paper-checkbox:checked').length;
-        if (selectedCount) {
+        if (selectedCount) {{
             selectedCount.textContent = count;
-        }
-    }
+        }}
+    }}
     
     // 监听复选框变化（使用事件委托）
-    if (papersContainer) {
-        papersContainer.addEventListener('change', function(e) {
-            if (e.target.classList.contains('paper-checkbox')) {
+    if (papersContainer) {{
+        papersContainer.addEventListener('change', function(e) {{
+            if (e.target.classList.contains('paper-checkbox')) {{
                 updateSelectedCount();
-            }
-        });
-    }
+            }}
+        }});
+    }}
     
     // 全选功能
-    if (selectAllBtn) {
-        selectAllBtn.addEventListener('click', function() {
+    if (selectAllBtn) {{
+        selectAllBtn.addEventListener('click', function() {{
             const checkboxes = document.querySelectorAll('.paper-checkbox');
             checkboxes.forEach(cb => cb.checked = true);
             updateSelectedCount();
             console.log('All papers selected');
-        });
-    }
+        }});
+    }}
     
     // 清空选择
-    if (clearAllBtn) {
-        clearAllBtn.addEventListener('click', function() {
+    if (clearAllBtn) {{
+        clearAllBtn.addEventListener('click', function() {{
             const checkboxes = document.querySelectorAll('.paper-checkbox');
             checkboxes.forEach(cb => cb.checked = false);
             updateSelectedCount();
             console.log('All selections cleared');
-        });
-    }
+        }});
+    }}
     
     // 导出功能
-    if (exportBtn) {
-        exportBtn.addEventListener('click', function(e) {
+    if (exportBtn) {{
+        exportBtn.addEventListener('click', function(e) {{
             console.log('Export button clicked');
             e.preventDefault();
             exportToBibTeX();
-        });
-    }
+        }});
+    }}
     
     // 导出为 BibTeX
-    function exportToBibTeX() {
+    function exportToBibTeX() {{
         // 获取所有选中的复选框
         const checkboxes = document.querySelectorAll('.paper-checkbox:checked');
         
-        if (checkboxes.length === 0) {
+        if (checkboxes.length === 0) {{
             alert('请至少选择一篇论文导出！');
             return;
-        }
+        }}
         
         // 获取选中的论文ID
         const selectedIds = Array.from(checkboxes).map(cb => cb.dataset.paperId);
@@ -1263,28 +1314,28 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedPapers = allPapersData.filter(paper => selectedIds.includes(paper.id));
         
         let bibtex = '';
-        selectedPapers.forEach((paper, index) => {
+        selectedPapers.forEach((paper, index) => {{
             const arxivId = paper.id;
             const year = paper.published.split('-')[0];
             
-            bibtex += `@article{${arxivId.replace('.', '_')},\\n`;
-            bibtex += `  title={${paper.title}},\\n`;
-            bibtex += `  author={${paper.authors}},\\n`;
-            bibtex += `  year={${year}},\\n`;
-            bibtex += `  journal={arXiv preprint arXiv:${arxivId}}`;
-            if (paper.conference) {
-                bibtex += `,\\n  note={${paper.conference}}`;
-            }
-            bibtex += `\\n}\\n\\n`;
-        });
+            bibtex += `@article{{${{arxivId.replace('.', '_')}}}},\\n`;
+            bibtex += `  title={{${{paper.title}}}},\\n`;
+            bibtex += `  author={{${{paper.authors}}}},\\n`;
+            bibtex += `  year={{${{year}}}},\\n`;
+            bibtex += `  journal={{arXiv preprint arXiv:${{arxivId}}}}`;
+            if (paper.conference) {{
+                bibtex += `,\\n  note={{${{paper.conference}}}}`;
+            }}
+            bibtex += `\\n}}\\n\\n`;
+        }});
         
-        console.log(`Exporting ${selectedPapers.length} selected papers`);
+        console.log(`Exporting ${{selectedPapers.length}} selected papers`);
         downloadFile(bibtex, 'papers.bib', 'text/plain');
-    }
+    }}
     
     // 下载文件
-    function downloadFile(content, filename, contentType) {
-        const blob = new Blob([content], { type: contentType });
+    function downloadFile(content, filename, contentType) {{
+        const blob = new Blob([content], {{ type: contentType }});
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
@@ -1294,12 +1345,12 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
         console.log('File download triggered:', filename);
-    }
+    }}
     
     // 初始化 - 加载数据
     console.log('Initializing...');
     loadMonthsIndex();
-});
+}});
 """
         
         js_dir = self.output_dir / "js"

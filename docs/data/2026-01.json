@@ -1,0 +1,1776 @@
+[
+  {
+    "id": "2601.10661v1",
+    "title": "Boundary treatment algorithms for meshfree RANS turbulence modeling",
+    "authors": "Mohan Padmanabha, Jörg Kuhnert, Nicolas R. Gauger, Pratik Suchde",
+    "abstract": "In this paper, we propose improved wall-treatment strategies for meshfree methods applied to turbulent flows. The goal is to improve wall-function handling in simulations of high-Reynolds-number turbulent flows, and to better understand the performance of turbulence models when used with meshfree methods. While wall-function techniques are well established for mesh-based methods, their inclusion in meshfree methods faces unique challenges that have not been fully explored. The main difficulties arise from the lack of connectivity between points and from point movement in Lagrangian frameworks, which can complicate consistent wall treatment. To address these issues, we explore three wall-treatment techniques. We highlight the drawbacks of the standard closest neighbor approach. We then introduce two novel approaches: the nearest-band neighbor method and the shifted boundary method. We evaluate these methods using first-order turbulence closures: Spalart--Allmaras, $k-\\varepsilon$, and $k-ω$. These methods are tested numerically on 1D Couette flow, turbulent flow over a flat plate, and flow around a NACA 0012 airfoil in 3D. The results show that both novel methods outperform the closest neighbor approach. The shifted boundary method achieves higher accuracy, but is more computationally expensive than the nearest-band neighbor method. However, by using smaller shift distances, we can achieve lower $y^+$ values with the same resolution. All turbulence models work well with the shifted boundary method, with only minor differences between them. In contrast, the nearest-band method shows variation in the behavior of the turbulence models, where the Spalart--Allmaras model yields better results, especially further downstream along the plate. This work establishes a robust foundation for simulating wall-bounded turbulent flows at high Reynolds numbers using meshfree collocation methods.",
+    "published": "2026-01-15",
+    "arxiv_url": "http://arxiv.org/abs/2601.10661v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.10661v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "rom",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.10441v1",
+    "title": "Submesoscale and boundary layer turbulence under mesoscale forcing in the upper ocean",
+    "authors": "S. Peng, S. Silvestri, A. Bodner",
+    "abstract": "The interaction among quasi-geostrophic mesoscale eddies, submesoscale fronts, and boundary layer turbulence (BLT) is a central problem in upper ocean dynamics. We investigate these multiscale dynamics using a novel large-eddy simulation on a 100km-scale domain with meter-scale resolution. The simulation resolves BLT energized by uniform surface wind and convective forcing. A front interacts with BLT within a prescribed, spatially inhomogeneous mesoscale eddy field, representing a canonical eddy quadrupole. Using a triple flow decomposition, we analyze the dynamic coupling and kinetic energy budgets among the large-scale field, submesoscale field, and the resolved BLT. Our analysis reveals significant heterogeneity in the structure and intensity of submesoscales and BLT under varying mesoscale forcing. Turbulent kinetic energy and production rates can vary by an order of magnitude along the front, creating distinct turbulent hotspots whose locations are tied to the underlying large-scale flow. The region under stronger mesoscale convergence holds stronger horizontal and vertical geostrophic shear productions for BLT, and stronger self-production and BLT-destruction for submesoscales. In contrast, the region under dominant mesoscale divergence holds dramatic distortion of the front isotherm, along with dominant submesoscale vertical buoyancy production and self-destruction. These results provide a direct characterization of BLT and submesoscales in the ocean mixed layer modulated by a mesoscale eddy field, which can better inform future parameterization developments.",
+    "published": "2026-01-15",
+    "arxiv_url": "http://arxiv.org/abs/2601.10441v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.10441v1",
+    "categories": [
+      "physics.flu-dyn",
+      "physics.ao-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.10400v1",
+    "title": "Wilson-Fisher renormalization of discrete gravity-capillary wave turbulence in viscous fluids",
+    "authors": "José A. Santiago, Mikheil Kharbedia, Basilio J. García, Francisco Monroy",
+    "abstract": "We report an experimental realization of Wilson-Fisher renormalization in driven surface-wave turbulence across Newtonian fluids spanning nearly six decades in Raynolds number. Discrete capillary and gravity turbulence define two universality classes selected by interaction topology: triadic resonances for capillary waves and effectively tetradic scattering for gravity waves. Navier-Stokes viscosity is the relevant perturbation that renormalizes spectral transfer and terminates the cascade. The resulting framework predicts the Kolmogorov cutoff from the balance of nonlinear transfer and viscous damping, and Reynolds scaling of the integrated inertial spectral weight. Laser Doppler Vibrometry quantitatively confirms these renormalized scaling laws, establishing discrete gravity-capillary turbulence as a tunable laboratory for nonequilibrium crossoever criticality.",
+    "published": "2026-01-15",
+    "arxiv_url": "http://arxiv.org/abs/2601.10400v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.10400v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "rom",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.10396v1",
+    "title": "Scale Collapse of Vortices at Porous-Fluid Interfaces",
+    "authors": "Justin Courter, Vishal Srikanth, Thibaut Kemayo, Andrey V. Kuznetsov",
+    "abstract": "The interaction between externally generated turbulence and porous media is central to many engineering and environmental flows, yet the fate of macroscale vortical structures at a porous/fluid interface remains uncharacterized. By numerically simulating the turbulent flow, we investigate the penetration, breakdown, and turbulence kinetic energy (TKE) transport of macroscale vortices impinging on porous matrices with high porosities $φ$ = 0.80-0.95. For all porosities considered, macroscale vortices collapse abruptly at the porous interface and do not persist within the matrix, supporting the pore-scale prevalence of turbulence even under strong external forcing. Although vortex impingement injects TKE into the porous medium through turbulent transport at the interface, this supplied TKE is rapidly redistributed and dissipated as the flow reorganizes to satisfy pore-scale geometric constraints. Deeper within the porous layer, turbulence is sustained primarily by local shear production associated with pore-scale velocity gradients, and the internal flow becomes increasingly independent of upstream conditions. Variations in porosity modulate the relative balance between production and dissipation by altering geometric confinement and effective Reynolds number, but the dominant turbulent length scale within the porous matrix remains set by the pore size. These results demonstrate that porous media act as a robust geometric filter that enforces pore-scale-dominated turbulence regardless of external forcing.",
+    "published": "2026-01-15",
+    "arxiv_url": "http://arxiv.org/abs/2601.10396v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.10396v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "les",
+      "turbulence",
+      "gan"
+    ]
+  },
+  {
+    "id": "2601.10166v1",
+    "title": "Computing Statistical Properties of Velocity Fields on Current Quantum Hardware",
+    "authors": "Miriam Goldack, Yosi Atia, Ori Alberton, Karl Jansen",
+    "abstract": "Quantum algorithms are gaining attention in Computational Fluid Dynamics (CFD) for their favorable scaling, as encoding physical fields into quantum probability amplitudes enables representation of two to the power of n spatial points with only n qubits. A key challenge in Quantum CFD is the efficient readout of simulation results, a topic that has received limited attention in literature. This work presents methods to extract statistical properties of spatial velocity fields, such as central moments and structure functions, directly from parameterized ansatz circuits, avoiding full quantum state tomography. As a proof of concept, we implement our approach for 1D velocity fields, encoding 16 spatial points with 4 qubits, and analyze both a sine wave signal and four snapshots from Burgers' equation evolution. Using Qedma's error mitigation software QESEM, we demonstrate that such computations achieve high accuracy on current quantum devices, specifically IBMQ's Heron2 system ibm_fez.",
+    "published": "2026-01-15",
+    "arxiv_url": "http://arxiv.org/abs/2601.10166v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.10166v1",
+    "categories": [
+      "quant-ph",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "rom",
+      "cfd",
+      "fluid dynamics",
+      "les"
+    ]
+  },
+  {
+    "id": "2601.10115v1",
+    "title": "Bayesian Model Selection for Complex Flows of Yield Stress Fluids",
+    "authors": "Aricia Rinkens, Clemens V. Verhoosel, Alexandra Alicke, Patrick D. Anderson, Nick O. Jaensson",
+    "abstract": "Modeling yield stress fluids in complex flow scenarios presents significant challenges, particularly because conventional rheological characterization methods often yield material parameters that are not fully representative of the intricate constitutive behavior observed in complex conditions. We propose a Bayesian uncertainty quantification framework for the calibration and selection of constitutive models for yield stress fluids, explicitly accounting for uncertainties in both modeling accuracy and experimental observations. The framework addresses the challenge of complex flow modeling by making discrepancies that emanate from rheological measurements explicit and quantifiable. We apply the Bayesian framework to rheological measurements and squeeze flow experiments on Carbopol 980. Our analysis demonstrates that Bayesian model selection yields robust probabilistic predictions and provides an objective assessment of model suitability through evaluated plausibilities. The framework naturally penalizes unnecessary complexity and shows that the optimal model choice depends on the incorporated physics, the prior information, and the availability of data. In rheological settings, the Herschel-Bulkley and biviscous power law models perform well. However, when these rheological outcomes are used as prior information for a rheo-informed squeeze flow analysis, a significant mismatch with the experimental data is observed. This is due to the yield stress inferred from rheological measurements not being representative of the complex squeeze flow case. In contrast, an expert-informed squeeze flow analysis, based on broader priors, yields accurate predictions. These findings highlight the limitations of translating rheological measurements to complex flows and underscore the value of Bayesian approaches in quantifying model bias and guiding model selection under uncertainty.",
+    "published": "2026-01-15",
+    "arxiv_url": "http://arxiv.org/abs/2601.10115v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.10115v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.CE"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "flow modeling",
+      "rom"
+    ]
+  },
+  {
+    "id": "2601.09623v1",
+    "title": "Introduction to the Combination of Reduced Order Models and Domain Decomposition: State of the Art and Perspectives",
+    "authors": "Shenhui Ruan, Andreas G. Class, Gianluigi Rozza",
+    "abstract": "Reduced Order Models (ROMs) have been regarded as an efficient alternative to conventional high-fidelity Computational Fluid Dynamics (CFD) for accelerating the design and optimization processes in engineering applications. Many industrial geometries feature repeating subdomains or contain sub-regions governed by distinct physical phenomena, making them well-suited to Domain Decomposition (DD) techniques. The integration of ROM and DD is promising to further reduce computational costs by constructing local ROMs and assembling them into global solutions. Due to the complexity and necessity of coupling ROMs, many approaches have been proposed in recent years. This review provides a concise overview of existing methodologies combining ROM and DD. We categorize existing methods into intrusive (projection-based) and non-intrusive (data-driven) frameworks. Various strategies for generating local reduced bases and coupling them across subdomains are illustrated. Particular emphasis is placed on intrusive techniques, including equations, numerical algorithms, and practical implementations. The non-intrusive framework is also discussed, highlighting its general procedures, basic formulations, and underlying principles. Finally, we summarise the state of the literature, identify open challenges, and present perspectives on future implementation from an engineering viewpoint.",
+    "published": "2026-01-14",
+    "arxiv_url": "http://arxiv.org/abs/2601.09623v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.09623v1",
+    "categories": [
+      "math.NA",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "rom",
+      "cfd",
+      "data-driven",
+      "fluid dynamics",
+      "les"
+    ]
+  },
+  {
+    "id": "2601.09619v1",
+    "title": "Mathematical Theorems on Turbulence",
+    "authors": "Theodore D. Drivas",
+    "abstract": "In these notes, we emphasize Theorems rather than Theories concerning turbulent fluid motion. Such theorems can be viewed as constraints on the theoretical predictions and expectations of some of the greatest scientific minds of the 20th century: Lars Onsager, Andrey Kolmogorov, Lev Landau, Lewis Fry Richardson among others.",
+    "published": "2026-01-14",
+    "arxiv_url": "http://arxiv.org/abs/2601.09619v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.09619v1",
+    "categories": [
+      "physics.flu-dyn",
+      "math-ph",
+      "math.AP"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.09545v1",
+    "title": "Effects of correlated collisions and intermittency on the growth of lucky droplets",
+    "authors": "Tobias Bätge, Johannes Zierenberg, Michael Wilczek",
+    "abstract": "To trigger precipitation, water droplets in warm clouds need to attain a sufficient size. Theoretical estimates based on condensation and gravitational collisions alone fail to explain the observed timescales for the onset of precipitation for a range of droplet sizes. This suggests the involvement of collisional growth mediated by turbulence to resolve the so-called ``size-gap problem''. For the onset of rain, it is sufficient that statistical outliers, coined ``lucky droplets'', cross the size gap. In this study, we explore the influence of turbulence on droplet growth, focusing on correlated collisions and intermittency. Using direct numerical simulations of droplets in turbulent flow, we constrain a non-Markovian stochastic framework that allows us to assess memory effects on the droplet-size distribution arising from correlations between consecutive collisions. Using our framework, we find that correlated collisions accelerate the initial growth of lucky droplets but have sub-leading effect at later stages. Consequently, we neglect correlations from collisions and model an ensemble of cloud parcels representing fluctuations in the volume-averaged dissipation rate. Here, the distribution of droplet sizes in each parcel is described by a linear master equation with a time-dependent collision rate according to the volume-averaged dissipation rate. Our analyses of this toy model show that intermittency can significantly reduce the time required by lucky droplets to cross the size gap.",
+    "published": "2026-01-14",
+    "arxiv_url": "http://arxiv.org/abs/2601.09545v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.09545v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.09356v1",
+    "title": "Determination of active forces in actomyosin systems as inverse source problems for the Stokes equation",
+    "authors": "Emily Klass, Tram Thi Ngoc Nguyen, Nilay Cicek, Yoav G. Pollack, Sarah Köster, Andreas Janshoff, Anne Wald",
+    "abstract": "The identification of forces and stresses is a central task in biophysics research: Knowledge on forces is key to understanding dynamic processes in active biological systems that are able to self-organize and display emergent properties by converting energy into mechanical work. The aim of this paper is to identify forces generated by a filament-motor network of F-actin and myosin -- actomyosin -- and exerted on the surrounding fluid, therefore causing a fluid flow. In particular, we evaluate optical microscopy data stemming from two different physical settings, confined and non-confined active gels. As a theoretical model, we use the Stokes equation together with an incompressibility condition and suitable boundary conditions reflecting the physical settings. The problem of determining the forces from knowledge on the fluid flow is formulated as an inverse source problem. Due to experimental limitations, only incomplete data are available. We provide a rigorous analysis of the forward problems and the impact of missing data, derive the adjoints of the forward operators needed for regularization, and demonstrate our methods on both synthetic and experimentally measured data.",
+    "published": "2026-01-14",
+    "arxiv_url": "http://arxiv.org/abs/2601.09356v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.09356v1",
+    "categories": [
+      "physics.flu-dyn",
+      "math.NA"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "keywords": [
+      "rom",
+      "gan"
+    ]
+  },
+  {
+    "id": "2601.09355v1",
+    "title": "Finite-system size effects in gravity-capillary wave turbulence",
+    "authors": "Tanu Singla, Jean-Baptiste Gorce, Eric Falcon",
+    "abstract": "We experimentally investigate the effects of finite-system size on the dynamics of weakly nonlinear random gravity-capillary surface waves. Experiments are conducted in rectangular tanks with varying aspect ratios, in which the fluid surface is perturbed locally and erratically by small, partially submerged magnets. Driven by an oscillating vertical electromagnetic field, these magnets generate a statistically homogeneous and isotropic random wave field. This setup enables us to probe finite-size effects without the dominant influence of global forcing present in horizontally oscillated tanks. Spatiotemporal measurements of the wave field reveal multiple branches in the wave-energy spectrum along the unconfined direction, corresponding to sloshing modes in the confined direction. We show that the spectral properties of these modes can be tuned by varying either the wave steepness or the confinement. Signatures of discrete wave turbulence in the confined direction and mesoscopic continuous wave turbulence in the unconfined direction are observed. As the confinement is gradually relaxed, we further demonstrate a smooth transition from discrete to continuous wave turbulence, consistent with the nonlinear-to-discreteness timescale ratio. Using high-order correlation analysis, we also show that finite-size effects alter wave dynamics by depleting two-dimensional three-wave resonant interactions along the confined direction.",
+    "published": "2026-01-14",
+    "arxiv_url": "http://arxiv.org/abs/2601.09355v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.09355v1",
+    "categories": [
+      "physics.flu-dyn",
+      "nlin.CD",
+      "physics.ao-ph",
+      "physics.class-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "rom",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.09305v1",
+    "title": "Progressive Mixture-of-Experts with autoencoder routing for continual RANS turbulence modelling",
+    "authors": "Haoyu Ji, Yinhang Luo, Hanyu Zhou, Yaomin Zhao",
+    "abstract": "Developing Reynolds-averaged Navier-Stokes (RANS) turbulence models that remain accurate across diverse flow regimes remains a long-standing challenge. In this work, we propose a novel framework, termed the progressive mixture-of-experts (PMoE), designed to enable continual learning for RANS turbulence modelling. The framework employs a modular autoencoder-based router to associate each flow scenario with a specialised turbulence model, referred to as an expert. When an unseen flow regime cannot be adequately represented by the existing router and expert set, a new expert together with its routing component can be introduced at low cost, without modifying or degrading previously trained ones, thereby naturally avoiding catastrophic forgetting. The framework is applied to a range of flows with distinct physical characteristics, including baseline airfoil wakes, wall-attached flows, separated flows and corner-induced secondary flows. The resulting PMoE model effectively integrates multiple experts and achieves improved predictive accuracy across both seen and unseen test cases. Owing to sparse activation, model expansion does not incur additional computational cost during inference. The proposed framework therefore provides a scalable pathway towards lifelong-learning turbulence models for industrial computational fluid dynamics.",
+    "published": "2026-01-14",
+    "arxiv_url": "http://arxiv.org/abs/2601.09305v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.09305v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "fluid dynamics",
+      "rans",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.08992v1",
+    "title": "Emergence of Purely Elasto-Plastic Turbulence in Shear Flows",
+    "authors": "Muhammad Abdullah, Shravan Pradeep, Doug J. Jerolmack, Becca Thomases, Paulo E. Arratia",
+    "abstract": "We observe the emergence of a distinct, elasticity-driven flow state in a yield-stress fluid in the absence of inertia. Numerical simulations show that this elasto-plastic turbulent state is characterized by a broad spectrum of fluctuations in velocity and stress. Results show a non-monotonic relationship between the volume fraction of the unyielded flow and plasticity. Surprisingly, we find that above a critical value of plasticity, the system can fluidize. Our results reveal the complex interplay between elasticity and plasticity in simple shear flows, indicating that plasticity can enhance rather than hinder momentum transport.",
+    "published": "2026-01-13",
+    "arxiv_url": "http://arxiv.org/abs/2601.08992v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.08992v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.08799v1",
+    "title": "Collapse of statistical equilibrium in large-scale hydroelastic turbulent waves",
+    "authors": "Marlone Vernet, Eric Falcon",
+    "abstract": "At scales larger than the forcing scale, some out-of-equilibrium turbulent systems (such as hydrodynamic turbulence, wave turbulence, and nonlinear optics) exhibit a state of statistical equilibrium where energy is equipartitioned among large-scale modes, in line with the Rayleigh-Jeans spectrum. Key open questions now pertain to either the emergence, decay, collapse, or other nonstationary evolutions from this state. Here, we experimentally investigate the free decay of large-scale hydroelastic turbulent waves, initially in a regime of statistical equilibrium. Using space- and time-resolved measurements, we show that the total energy of these large-scale tensional waves decays as a power law in time. We derive an energy decay law from the theoretical initial equilibrium spectrum and the linear viscous damping, as no net energy flux is carried. Our prediction then shows a good agreement with experimental data over nearly two decades in time, for various initial effective temperatures of the statistical equilibrium state. We further identify the dissipation mechanism and confirm it experimentally. Our approach could be applied to other decaying turbulence systems, with the large scales initially in statistical equilibrium.",
+    "published": "2026-01-13",
+    "arxiv_url": "http://arxiv.org/abs/2601.08799v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.08799v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cond-mat.stat-mech",
+      "nlin.CD",
+      "physics.ao-ph",
+      "physics.geo-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.08569v1",
+    "title": "Chirality tomography: measuring local helicity from trajectory linking",
+    "authors": "Manuel Noseda, Bernardo Luciano Español, Pablo Daniel Mininni, Pablo Javier Cobelli",
+    "abstract": "We present the first three-dimensional helicity maps of fully developed turbulence obtained through chirality tomography, a Lagrangian voxel-based method that reconstructs helicity density from particle trajectories. Our approach builds on an empirically established relation between helicity and trajectory linking, converting local counts of signed crossings $K$ into volumetric maps of dimensionless helicity, $H(\\mathbf{x})$. We demonstrate that the entanglement of particle trajectories, quantified by the mean signed crossing number, provides a robust proxy for helicity, not only at the global scale, but also locally in space and time. Our method can reveal local spatial heterogeneities in helicity and relate them to large-scale flow organization, enabling the reconstruction of spatially resolved chiral structures. Applied to von Kármán experiments and Taylor-Green direct numerical simulations, the method reveals iso-helicity surfaces and coherent chiral features, while time series of $K$ accurately track the evolution of domain-averaged helicity. The proportionality between $K$ and $H$ remains robust across different voxel geometries and different values of particle inertia, but is not held in laminar or time-modulated flows. This study shows that chirality tomography provides a practical helicity diagnostic in turbulent flows, while establishing a direct bridge between trajectory-level topology and a fundamental dynamical invariant of turbulence.",
+    "published": "2026-01-13",
+    "arxiv_url": "http://arxiv.org/abs/2601.08569v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.08569v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "les",
+      "turbulence",
+      "gan"
+    ]
+  },
+  {
+    "id": "2601.08296v2",
+    "title": "Bridging Elastic and Active Turbulence",
+    "authors": "Vedad Dzanic, Sumesh P. Thampi, Julia M. Yeomans",
+    "abstract": "Remarkably, even under negligible inertia, the addition of microstructural agents can generate chaotic flow fields. Such behavior can arise in polymer solutions, leading to elastic turbulence, or from active, self-driven particles, which generate active turbulence. Here, we demonstrate a close and hitherto unrecognized connection between these two classes of turbulence. Specifically, we reveal that their continuum descriptions are analogous at the macroscopic level, such that polymeric fluids can be interpreted as a deformable analogue of contractile active matter. Moreover, our numerical results for Kolmogorov flow demonstrate that the transition into the well-known traveling arrowhead structures in elastic turbulence is marked by the emergence of $\\pm 1/2$ topological defects, long recognized as a defining feature of active turbulence, in the polymer director field. Importantly, these coherent structures originate from a transverse instability driven by activity-like gradients generated by anisotropically stretched, contractile polymers. At sufficiently strong activity, the system undergoes a transition into a flow-suppressed state characterized by weak polymer stretching and ordering, a behavior that can be explained by analogy with the spontaneous-flow transition observed in channel-confined active nematics.",
+    "published": "2026-01-13",
+    "arxiv_url": "http://arxiv.org/abs/2601.08296v2",
+    "pdf_url": "https://arxiv.org/pdf/2601.08296v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cond-mat.soft",
+      "cond-mat.stat-mech"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "rom",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.08206v1",
+    "title": "Lattice Boltzmann methods for simulating non-Newtonian fluids: A comprehensive review",
+    "authors": "Vedad Dzanic, Qiuxiang Huang, Christopher S. From, Emilie Sauret",
+    "abstract": "Non-Newtonian fluids encompass a large family of fluids with additional nonlinear material properties, contributing to non-trivial flow behaviour that cannot be captured through a single constant viscosity term. Common non-Newtonian characteristics include shear-thinning, shear-thickening, viscoplasticity, and viscoelasticity, commonly encountered in everyday fluids, such as ketchup, blood, toothpaste, mud, etc., as well as practical applications involving porous media, cosmetics, food processing, and pharmaceuticals. Due to the complex nature of these fluids, accurate computational fluid dynamics simulations are essential for predicting their behaviour under various flow conditions. Recent advancements have highlighted the growing trend of using the lattice Boltzmann method to solve such complex flows, owing to its ability to handle intricate boundary conditions, ease of including additional multiphysics, and providing computationally efficient parallel simulations. Since the initial review over a decade ago [Phillips & Roberts, IMA J. Appl. Math. 76, 790-816 (2011)], significant advancements have been made to the lattice Boltzmann method to simulate non-Newtonian fluids. Here, we present a comprehensive review of different lattice Boltzmann techniques used to solve non-Newtonian fluid systems, specifically dealing with shear-dependent viscosity, viscoplasticity, and viscoelasticity. In addition, we discuss various benchmark cases that validate these approaches and highlight their growing application to realistic and challenging complex flow problems. We further address outstanding issues in current lattice Boltzmann models, as well as future directions for numerical advancement and application.",
+    "published": "2026-01-13",
+    "arxiv_url": "http://arxiv.org/abs/2601.08206v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.08206v1",
+    "categories": [
+      "physics.flu-dyn",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "fluid dynamics"
+    ]
+  },
+  {
+    "id": "2601.08163v1",
+    "title": "An Investigation into the Applicability of Friction Velocity Estimation Methods for the Channel with A Deposit Body",
+    "authors": "Jing Zhang, Ruihan Qin, Zhixue Guo, Huantao Xu, Jiahui Zhou, Yun Bai",
+    "abstract": "This study investigates how the deposit body influences friction characteristics by altering local flow fields, which is closely related to bed shear stress. Using generalized flume experiments, the study assesses the applicability of classical uniform flow friction models in deposit body river sections, revealing frictional changes induced by flow field non-uniformity. Initially, based on \\( \\frac{u_*}{\\sqrt{\\overline{w'^2}}} = 0.85 \\sim 1.15 \\) under uniform flow conditions as the judgment basis, the reliability of the classical model is verified. Four models are then applied to estimate near-bed friction velocity in deposit body sections. Results show a significant alignment between the longitudinal velocity gradient and the peak friction velocity derived from the turbulent kinetic energy method (TKE). Dimensional analysis of friction indicators reveals that: (a) friction velocity is primarily influenced by turbulence intensity, with constricted and narrowed sections resembling uniform flow, while the expansion section forms a peak; (b) models incorporating flow field fluctuations (TKE, Vertical Turbulence Kinetic Energy (TKE w'), Reynolds shear stress method (RSS)) effectively capture the impact of non-uniform flow fields on friction characteristics; (c) when energy states are low or when deposit body proportions are large, the deposit body's resistance ratio increases, and peak friction velocity rises. This study provides theoretical insights into friction estimation and sediment transport in non-uniform flow fields of deposit bodies.",
+    "published": "2026-01-13",
+    "arxiv_url": "http://arxiv.org/abs/2601.08163v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.08163v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "rom",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.07486v1",
+    "title": "A radiation two-phase flow model for simulating plasma-liquid interactions",
+    "authors": "Ke-Jian Qian, Zhu-Jun Li, Tao Tao, De-Hua Zhang, Rui Yan, Hang Ding",
+    "abstract": "In laser-produced plasma (LPP) extreme ultraviolet (EUV) sources, deformation of a tin droplet into an optimal target shape is governed by its interaction with a pre-pulse laser-generated plasma. This interaction is mediated by a transient ablation pressure, whose complex spatio-temporal evolution remains experimentally inaccessible. Existing modeling approaches are limited: Empirical pressure-impulse models neglect dynamic plasma feedback, while advanced radiation-hydrodynamic codes often fail to resolve late-time droplet hydrodynamics. To bridge this gap, we propose a radiation two-phase flow model based on a diffuse interface methodology. The model integrates radiation hydrodynamics for the plasma with the Euler equations for a weakly compressible liquid, extending a five-equation diffuse interface formulation to incorporate radiation transport, thermal conduction, and ionization. This formulation enforces pressure and velocity equilibrium across the diffuse interface region, with closure models constructed to ensure correct jump conditions at interfaces and asymptotically recover the pure-phase equations in bulk regions. Then, we apply the model to simulate a benchmark pre-pulse scenario, where a 50 micron tin droplet is irradiated by a 10 ns laser pulse. The simulations capture the rapid plasma expansion and subsequent inertial flattening of the droplet into a thin, curved sheet over microsecond timescales. Notably, the model reproduces experimentally observed features (such as an axial jet) rarely replicated in prior simulations. Quantitative agreement with experimental data for sheet dimensions and velocity validates the approach. The proposed model self-consistently couples laser-plasma physics with compressible droplet dynamics, providing a powerful tool for fundamental studies of plasma-liquid interactions in LPP-EUV source optimization.",
+    "published": "2026-01-12",
+    "arxiv_url": "http://arxiv.org/abs/2601.07486v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.07486v1",
+    "categories": [
+      "physics.plasm-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "多相流"
+    ],
+    "keywords": [
+      "rans",
+      "les",
+      "two-phase flow"
+    ]
+  },
+  {
+    "id": "2601.07881v1",
+    "title": "Angled Aortic Cannulation Reduces Cerebral Embolic Transport and Adverse Wall Loading During Cardiopulmonary Bypass: A Patient-Specific Hemodynamic Study",
+    "authors": "Nafis M. Arefin, Bryan C. Good",
+    "abstract": "Embolic stroke during cardiopulmonary bypass (CPB) is strongly influenced by cannula induced flow disturbances that govern emboli transport and aortic wall loading. This study quantifies how aortic cannula orientation affects embolic distribution and atherosclerotic plaque disruption risk across patient specific, age-dependent aortic anatomies under clinical CPB conditions. A validated computational fluid dynamics and Lagrangian particle tracking (CFD-LPT) framework was applied to four patient-specific aortic models representing pediatric, adolescent, adult, and geriatric anatomies. Two clinically relevant cannula orientations: perpendicular (90 deg) and angled (30 deg), were evaluated under varying blood viscosities (1.5 to 3.5 cP) and embolus sizes (0.5 to 2.5 mm). Aortic branch exit percentage, wall pressure, and wall shear stress (WSS) were quantified. The 30 deg angled cannula reduced embolic transport into the aortic branches by 18 to 50 percent compared with perpendicular cannulation, with the largest reduction observed in the geriatric model. Perpendicular cannulation produced concentrated jet impingement, resulting in significantly elevated posterior wall pressure (24 percent) and up to an 8 fold increase in local WSS. The pediatric anatomy exhibited the highest sensitivity, where decreasing viscosity and increasing embolus size increased branch exit by 8.4 percent and 25 to 44 percent, respectively, consistent with higher particle Stokes numbers and inertial decoupling from the core flow. Angled cannulation redistributes jet momentum along the aortic curvature, weakens jet impingement, reduces localized pressure and wall stress, and limits embolic delivery towards the cerebral circulation. These findings provide mechanistic, patient-specific evidence supporting angled cannula orientation to reduce CPB complications.",
+    "published": "2026-01-11",
+    "arxiv_url": "http://arxiv.org/abs/2601.07881v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.07881v1",
+    "categories": [
+      "physics.med-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "rom",
+      "rans",
+      "cfd",
+      "fluid dynamics",
+      "les"
+    ]
+  },
+  {
+    "id": "2601.06999v2",
+    "title": "Multiscale geometric analysis of dynamic wettability on complex, fractal-like, anisotropic surfaces",
+    "authors": "Katarzyna Peta, Krzysztof J. Kubiak, Christopher A. Brown",
+    "abstract": "This study introduces novel insights into the development of procedures for identifying the most relevant scales for observing the interactions of dynamic wettability and surface complexities. The experimental procedures presented for measuring dynamic contact angle hysteresis in multiscale correlation with the geometric characteristics of anisotropic surfaces contribute to a new perspective on measurement practice. In this study, microtexturing with a pyramidal structured abrasive belt is applied for precisely forming area- and length-scale anisotropic surface complexities, and consequently, topographically dependent functional features. The significant role of anisotropic topographies in modeling dynamic wettability behavior is highlighted through multiscale measurement-based analysis. These studies verify the relationship between dynamic wettability and the finest surface microgeometry (microroughness) and also the coarsest texture components (waviness). The size of topographic features, ranging from microroughness to waviness, significantly influences droplet pinning and liquid entrapment. Furthermore, the influence of material hydrophilicity and hydrophobicity on the calculated multiscale relationships is assessed. The results indicated specific scales that best correlate with dynamic wettability, with length- and area-scale complexities of 6.9 um and 28 um2, respectively. A novel measurement-based approach to scale-dependent surface-functionality interactions offers new insights for designing dynamic wettability on anisotropic surfaces.",
+    "published": "2026-01-11",
+    "arxiv_url": "http://arxiv.org/abs/2601.06999v2",
+    "pdf_url": "https://arxiv.org/pdf/2601.06999v2",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "keywords": [
+      "les",
+      "rom",
+      "pinn"
+    ]
+  },
+  {
+    "id": "2601.06955v1",
+    "title": "Identifying skin-friction generation structures in turbulent channel flows via canonical correlation decomposition",
+    "authors": "Ziyi Nie, Jie Yao, Benshuai Lyu",
+    "abstract": "Flow structures directly responsible for local skin-friction generation in turbulent channel flows are identified using the newly developed Canonical Correlation Decomposition (CCD) method. The dominant structures take the form of streamwise streaks that are spanwise-localised around the position where the skin-friction is targeted and exhibit significantly shorter streamwise extent than those revealed using POD. The resulting CCD spectrum shows a clear low-rank behaviour; flow reconstruction using only the first 4 CCD modes recovers more than 80\\% of the examined skin friction, as opposed to 2\\% recovered by the leading 4 POD modes. When the opposition control technique is used to reduce drag, the application of CCD shows that drag reduction is achieved by lifting the original streak structures and generating smaller streaks with opposite phases underneath. These findings demonstrate that CCD isolates the causally relevant flow structures governing skin-friction generation and modification, which is expected to find use in various drag control applications in wall-bounded turbulence.",
+    "published": "2026-01-11",
+    "arxiv_url": "http://arxiv.org/abs/2601.06955v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06955v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.06942v1",
+    "title": "Toward Meshless Turbulent Flow Simulation: LES-Integrated Vortex Particle Method",
+    "authors": "Flavio A. C. Martins, Alexander van Zuijlen, Carlos J. Simao Ferreira",
+    "abstract": "Recent developments in vortex particle methods for simulating three-dimensional incompressible flows are presented. A lightweight, dynamic Large-Eddy Simulation model is tested, featuring a dynamic procedure that relies solely on Lagrangian information and requires minimal auxiliary computation to update the model constant. The method employs a high-order algebraic kernel which enables direct, analytical expressions for conservation laws, the strain-rate tensor, and quadratic velocity diagnostics. Viscous diffusion is modeled using the core-spreading technique. The particle method is assessed with respect to kinematics and the conservation of energy, helicity, and enstrophy in vortex ring and leapfrogging vortex ring scenarios, both unperturbed and perturbed. The results indicate that the kinematics and flow diagnostics are accurately captured using relatively sparse particle distributions, effectively resolving the dynamics of the unstable flow phase. However, after the onset of instabilities, the sub-grid-scale methodology becomes strongly dependent on particle regularization to stabilize the flow solution.",
+    "published": "2026-01-11",
+    "arxiv_url": "http://arxiv.org/abs/2601.06942v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06942v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "les",
+      "flow simulation"
+    ]
+  },
+  {
+    "id": "2601.06653v1",
+    "title": "The effect of discontinuous injection on particle back-flow in pneumatic conveying systems",
+    "authors": "Otome Obukohwo, Andrew Sowinski, Poupak Mehrani, Holger Grosshans",
+    "abstract": "Pneumatic conveying is used in many process industries to transport dry, granular, and powdered solids. The triboelectrification of particles during conveying causes particle agglomeration, spark discharges, and disruptions in particle flow, making particles move upstream against the fluid flow. The effect of frequency of particle injection on particle backflow is studied using CFD-DEM simulations. Conveying flow in a square-shaped duct with fluid frictional Reynold's number equal to 180, particle Stokes number equal to 8, and individual particle charge equal to 504 fC, is simulated with different particle injection frequencies. The proportion of particles moving upstream is found to increase as the delay period between injections increases, and the effect of the length of the injection period is minimal. Further, particles moving upstream are situated in low-drag zones at the corners of the duct where the electrostatic force dominates. In conclusion, the delay period between discontinuous injections plays a major role in particle backflow. The findings of the article are important for industrial processes with discontinuous injection of particles with a risk of particle accumulation within the conveying boundary.",
+    "published": "2026-01-10",
+    "arxiv_url": "http://arxiv.org/abs/2601.06653v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06653v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "les",
+      "cfd"
+    ]
+  },
+  {
+    "id": "2601.06651v1",
+    "title": "CFD study of particle back-flow in pneumatic conveying systems due to triboelectrification",
+    "authors": "Otome Obukohwo, Andrew Sowinski, Poupak Mehrani, Holger Grosshans",
+    "abstract": "In industrial plants, pneumatic conveying systems are often used to convey particles from one location to another. Surprisingly, in bench-scale experiments, clusters of particles sometimes flow backward or upstream in the conveying channel. In this paper, the effect of electrostatic charge and forces on particle back-flow was investigated. Different conveying conditions with varying particle charges were simulated using computational fluid dynamics (CFD), and the resulting flow patterns were compared with CFD simulations of uncharged particles. In a channel flow with periodic boundary conditions in the streamwise and spanwise directions, it was found that electrostatic forces drive particles into low-velocity regions but do not reverse their flow. When transporting particles through a finite-length duct, electrostatic forces cause particles to settle close to the duct's inlet. Finally, when particles were injected into the duct in a pulse, back-flow was observed once particles obtained a charge of 5.04 femto-coulombs or more. The electrostatic forces decelerated the particles at the tail of the pulse and ultimately reversed their direction, whereas the particles at the head of the pulse were accelerated. Thus, it was concluded that electrostatic forces can cause particle back-flow in pneumatic conveying systems if particles are fed discontinuously.",
+    "published": "2026-01-10",
+    "arxiv_url": "http://arxiv.org/abs/2601.06651v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06651v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "rom",
+      "rans",
+      "cfd",
+      "fluid dynamics",
+      "les"
+    ]
+  },
+  {
+    "id": "2601.06561v1",
+    "title": "Unsteady flow predictions around an obstacle using Geometry-Parameterized Dual-Encoder Physics-Informed Neural Network",
+    "authors": "Zekun Wang, Yu Yang, Linyuan Che, Jing Li",
+    "abstract": "Machine learning-based flow field prediction is emerging as a promising alternative to traditional Computational Fluid Dynamics, offering significant computational efficiency advantage. In this work, we propose the Geometry-Parameterized Dual-Encoder Physics-Informed Neural Network (GP-DE-PINN) with a dual-encoder architecture for effective prediction of unsteady flow fields around parameterized geometries. This framework integrates a geometric parameter encoder to map low-dimensional shape parameters to high-dimensional latent features, coupled with a spatiotemporal coordinate encoder, and is trained under the Navier-Stokes equation constraints. Using 2D unsteady flow past petal-shaped cylinders as an example, we evaluate the model's reconstruction performance, generalization capability, and hyperparameter sensitivity. Results demonstrate that the GP-DE-PINN significantly outperforms the PINN with direct geometric input in flow field reconstruction, accurately capturing vortex shedding structures and pressure evolution, while exhibiting superior generalization accuracy on unseen geometric configurations. Furthermore, sensitivity analyses regarding geometric sampling and network width reveal the model's robustness to these hyperparameter variations. These findings illustrate that the proposed framework can serve as a robust and promising framework for predicting unsteady flows around complex geometric obstacles.",
+    "published": "2026-01-10",
+    "arxiv_url": "http://arxiv.org/abs/2601.06561v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06561v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "rom",
+      "neural network",
+      "pinn",
+      "physics-informed neural network",
+      "machine learning",
+      "fluid dynamics",
+      "les"
+    ]
+  },
+  {
+    "id": "2601.06517v1",
+    "title": "Transition from classical to ultimate melting",
+    "authors": "Edoardo Bellincioni, Kevin Zhong, Christopher J. Howland, Yiyu Zhou, Sander G. Huisman, Roberto Verzicco, Detlef Lohse",
+    "abstract": "Melting is omnipresent in nature and technology, with applications ranging from metallurgy, biology, food science, and latent thermal energy storage to oceanography, geophysics, and climate science, and occurring on all scales from sub-millimeter to global scales. The key objective is to understand the rate at which an object melts as a function of its size and of the ambient conditions. To achieve this it is important to be able to extrapolate from small scale experiments and observations to large or even global scales. This is done by scaling laws. However, these are only meaningful if there is no transition from one scaling relation to another one. Here we show, however, that for both fixed and freely-advected melting objects immersed in a turbulent flow a melting transition does exist, namely from slow melting at the small scales to fast melting at the large scales. We do so by controlled melting experiments and corresponding direct numerical simulations, covering four orders of magnitude in scale. The transition corresponds to the transition from a laminar-type boundary layer around the melting object to a turbulent-type boundary layer, i.e., from so-called classical turbulence to ultimate turbulence, with its enhanced transport properties. Our results thus provide a quantitative understanding of the flow physics of the melting process and thereby enable a better extrapolation and prediction of melt rates on large scales such as relevant in geophysics, oceanography, and climate science.",
+    "published": "2026-01-10",
+    "arxiv_url": "http://arxiv.org/abs/2601.06517v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06517v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "rom",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.06506v1",
+    "title": "Rapid Prediction of Three-Dimensional Scour Flow around Bridge Piers via Body-Fitted Coordinate-Based U-Net",
+    "authors": "Tokio Morimoto",
+    "abstract": "Predicting three-dimensional (3D) turbulent flows around bridge piers is a prerequisite for assessing local scour, a primary cause of infrastructure failure. While Computational Fluid Dynamics (CFD) captures complex flow features - such as horseshoe vortices - its high cost hinders real-time risk assessment. This study presents a physics-aware deep learning surrogate using a Body-Fitted Coordinate (BFC) system, BFC-UNet, designed to rapidly reconstruct 3D Reynolds-Averaged Navier-Stokes (RANS) solutions on curved domains. Unlike voxel-based Convolutional Neural Networks (CNNs) prone to staircase errors, the proposed architecture leverages a BFC system to predict the bed shear stress accurately. By transforming the physical O-grid into a canonical computational space, the model preserves the geometric integrity of the no-slip boundary. Trained on 2,304 simulations parameterized by inlet velocity and scour depth, BFC-UNet predicts velocity, pressure, and bed shear stress distributions with an R2 value of > 0.98. It infers a full 3D domain (200,000 cells) in just 8 milliseconds on a single Graphics Processing Unit (GPU) - achieving a speed-up of five orders of magnitude over the CFD solver. Crucially, the model captures the topological evolution of vortex structures, including wake expansion and diving flows. These findings position BFC-UNet as a promising foundation for real-time digital twins, bridging rigorous fluid mechanics with data-driven efficiency.",
+    "published": "2026-01-10",
+    "arxiv_url": "http://arxiv.org/abs/2601.06506v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06506v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "rom",
+      "rans",
+      "neural network",
+      "fluid mechanics",
+      "cfd",
+      "data-driven",
+      "cnn",
+      "deep learning"
+    ]
+  },
+  {
+    "id": "2601.06495v1",
+    "title": "A Response to \"Application of Gauss's Principle to the Classical Airfoil Lift Problem\"",
+    "authors": "Haithem Taha",
+    "abstract": "The classical theory of lift is confined to sharp edged airfoils. The search for a more general closure condition in potential flow remained elusive for over a century. Recently, a variational theory of lift, inspired by Gauss's principle of least constraint, was proposed as a remedy. The theory was shown to recover the Kutta condition as a special case for sharp-edged airfoils. However, recent criticism of the variational theory has asserted fundamental issues and discontinuities in its predictions. The present paper demonstrates that these assertions are incorrect and arise from inconsistencies with basic principles of analytical mechanics, the calculus of variations, and ideal-flow aerodynamics, as well as from misapplications of the variational theory itself. To resolve such misunderstandings, we review foundational concepts from analytical mechanics, including least action, Gauss's principle, and Hertz's principle; the definitions of impressed and constraint forces; and the distinction between actual work and virtual work. We then place these concepts in the context of incompressible fluid mechanics, utilizing the geometric interpretation of Helmholtz decomposition. In particular, we demonstrate that, for incompressible flows subject to the no-penetration boundary condition, the pressure force is orthogonal to the entire space of kinematically admissible flows and therefore performs no virtual work. The pressure force, thus, acts as the constraint force required to ensure the continuity constraint. From an aerodynamic perspective, we show that the classical and variational theories of lift, as well as any theory based on steady, irrotational motion, are necessarily reversible and therefore inapplicable to reversed-flow configurations.",
+    "published": "2026-01-10",
+    "arxiv_url": "http://arxiv.org/abs/2601.06495v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06495v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "空气动力学",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "les",
+      "aerodynamics",
+      "fluid mechanics"
+    ]
+  },
+  {
+    "id": "2601.08862v1",
+    "title": "Lagrangian Phase-Lag and Geometric Precedence in Turbulent Vortex Stretching",
+    "authors": "Khalid Saqr",
+    "abstract": "This study investigates the causal timeline of vortex stretching in high-Reynolds-number turbulence ($Re_λ\\approx 433$) using Lagrangian tracking in $1024^3$ direct numerical simulations. While classical theories often assume an instantaneous alignment between strain and vorticity, the present analysis identifies a systematic Lagrangian phase lag governing the onset of intense dissipation. By conditionally averaging the dynamics of fluid parcels, a distinct phase-space hysteresis is revealed. Trajectories are captured by the saddle-point topology of the pressure field ($λ_{min}^p < 0$) prior to experiencing peak enstrophy amplification. This temporal ordering ($τ> 0$) demonstrates that the pressure topology acts as a deterministic geometric precursor, organizing the flow structure before the bursting event occurs. The robustness of this mechanism is verified in magnetohydrodynamic (MHD) turbulence, where the Lorentz force is found to suppress the hysteresis loop, forcing a transition from causal precedence to simultaneous locking.",
+    "published": "2026-01-09",
+    "arxiv_url": "http://arxiv.org/abs/2601.08862v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.08862v1",
+    "categories": [
+      "physics.flu-dyn",
+      "math-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "rom",
+      "turbulence",
+      "gan"
+    ]
+  },
+  {
+    "id": "2601.06244v1",
+    "title": "Hard Constraint Projection in a Physics Informed Neural Network",
+    "authors": "Miranda J. S. Horne, Peter K. Jimack, Amirul Khan, He Wang",
+    "abstract": "In this work, we embed hard constraints in a physics informed neural network (PINN) which predicts solutions to the 2D incompressible Navier Stokes equations. We extend the hard constraint method introduced by Chen et al. (arXiv:2012.06148) from a linear PDE to a strongly non-linear PDE. The PINN is used to estimate the stream function and pressure of the fluid, and by differentiating the stream function we can recover an incompressible velocity field. An unlearnable hard constraint projection (HCP) layer projects the predicted velocity and pressure to a hyperplane that admits only exact solutions to a discretised form of the governing equations.",
+    "published": "2026-01-09",
+    "arxiv_url": "http://arxiv.org/abs/2601.06244v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06244v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "keywords": [
+      "neural network",
+      "rom",
+      "pinn"
+    ]
+  },
+  {
+    "id": "2601.05936v1",
+    "title": "Coupled Level-Set Lattice Boltzmann Method on Adaptive Cartesian Grids",
+    "authors": "Julian Vorspohl, Yuxing Peng, Matthias Meinke, Dominik Krug, Wolfgang Schröder",
+    "abstract": "A novel coupled level-set lattice Boltzmann method on adaptive Cartesian grids for simulating liquid-gas multiphase flows is presented. The approach addresses the inherent challenges of accurately modeling multiphase systems characterized by sharp interfaces and large density ratios. By employing separate solution algorithms for each fluid phase which are coupled through boundary conditions at the interface the method is more accurate and more efficient. The study highlights the advantages of using lattice Boltzmann methods together with level-set techniques to track interfaces effectively while facilitating adaptive mesh refinement. Applications to various test cases, e.g., immiscible stratified flow and rising bubbles, demonstrate the method's capability to capture complex interfacial dynamics and validate its accuracy against literature data.",
+    "published": "2026-01-09",
+    "arxiv_url": "http://arxiv.org/abs/2601.05936v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.05936v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "多相流"
+    ],
+    "keywords": [
+      "les",
+      "multiphase flow"
+    ]
+  },
+  {
+    "id": "2601.05701v1",
+    "title": "Development and Experimental Validation of Novel Evaluation Criteria for Turbulent Two-Phase VOF Simulations in High-Pressure Die Casting",
+    "authors": "Mehran Shazedeh, Fabian Teichmann, Sebastian Müller",
+    "abstract": "Air entrapment during mold filling critically affects porosity and overall casting quality in High Pressure Die Casting. This study assesses the feasibility of applying the vof method within OpenFOAM to simulate compressible, turbulent mold filling in a thin-walled geometry. Three-dimensional simulations with the \"compressibleInterFoam\" solver were carried out under ambient initial cavity conditions, using both laminar flow and the k-e turbulence model. The free surface dynamics were examined across a range of inlet velocities to evaluate their influence on interface morphology, cavity pressurization, and gas entrapment. To quantify these effects, three evaluation criteria were introduced: the TIFSA as a measure of oxidation risk, the TMVF as an indicator of filling continuity and air entrapment, and the TIVF as a proxy for surface loading. Results show that turbulence modeling accelerates pressurization and limits the persistence of entrapped gas, with velocity governing the balance between smooth filling, turbulent breakup, and exposure duration. Comparison with experimental casting trials, including CT based porosity analysis and photogrammetric surface evaluation, validated that the model captures key defect mechanisms and provides quantitative guidance for process optimization.",
+    "published": "2026-01-09",
+    "arxiv_url": "http://arxiv.org/abs/2601.05701v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.05701v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.CE",
+      "physics.app-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.05667v1",
+    "title": "Inferring the Turbulent Breakup of Colloidal Aggregates Using Graph Neural Networks",
+    "authors": "Michele Buzzicotti, Massimo Cencini, Giulio Cimini, Marco Vanni, Alessandra S. Lanotte",
+    "abstract": "Solid aggregates in turbulent suspensions may break under the action of shear stresses. We explore the use of Graph Neural Networks (GNN) to infer aggregate fragmentation once the aggregate structure and flow velocity gradients are known. We consider two models: the first GNN is a classifier, trained to distinguish aggregates that break from those that do not; the second GNN is a regression model, trained to predict the maximal tensile force within each aggregate in a given flow condition. We show that both models complete their task with a high statistical accuracy, and generally perform better than the statistical prediction based on mean field quantities. This work paves the way for future use of Graph Neural Networks to quantify aggregate breakup in large population of aggregates suspended in complex flow configurations.",
+    "published": "2026-01-09",
+    "arxiv_url": "http://arxiv.org/abs/2601.05667v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.05667v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "keywords": [
+      "neural network",
+      "rom"
+    ]
+  },
+  {
+    "id": "2601.05389v1",
+    "title": "Thermodynamics of driven systems via the Kuramoto-Sivashinsky equation",
+    "authors": "E. Hansen, W. Barham, P. J. Morrison",
+    "abstract": "We examine the differences between the driven turbulence described by the Kuramoto-Sivashinsky (KS) equation and the second law of thermodynamics. A general velocity and entropy density system is analyzed with the unified thermodynamic algorithm of metriplectic dynamics, and we show that the positive spectra of the KS equation due to an external energy source prevent its metriplectic description. A variant of the KS equation is produced that monotonically generates an entropy, but the only equilibria of this variant system are spatially constant. Numerical experiments are performed comparing the evolution of the KS equation and its thermodynamic variant. The entropy of this thermodynamic system is increased further by the driving effects of the KS equation, reconciling the generation of entropy with the energy source of the KS equation. Further numerical experiments restrict the positive spectra in the KS equation to determine the effect on the system time evolution. While rescaling the growth rates of instabilities reproduces similar behavior on a slower time scale, introduction of individual positive spectra reproduces the formation of equilibria, relative equilibria, and a transition to chaos.",
+    "published": "2026-01-08",
+    "arxiv_url": "http://arxiv.org/abs/2601.05389v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.05389v1",
+    "categories": [
+      "nlin.CD",
+      "physics.flu-dyn",
+      "physics.plasm-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.05042v1",
+    "title": "PINN-Based Solution for a Diffusion Controlled Droplet Growth",
+    "authors": "Pavel Gol'din, Gennady Y. Gor",
+    "abstract": "We study diffusion-controlled growth of a spherical droplet with a moving boundary using a physics-informed neural network (PINN) formulation. The governing diffusion equation is coupled to the interfacial mass balance, with the droplet radius treated as an additional trainable function of time. The PINN accurately reproduces the self-similar growth law and concentration profiles for a wide range of initial droplet radii, demonstrating convergence toward the asymptotic diffusive regime. The proposed approach provides a flexible and computationally efficient framework for solving moving-boundary diffusion problems and can be readily extended to include additional physical effects.",
+    "published": "2026-01-08",
+    "arxiv_url": "http://arxiv.org/abs/2601.05042v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.05042v1",
+    "categories": [
+      "physics.flu-dyn",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "keywords": [
+      "neural network",
+      "les",
+      "physics-informed neural network",
+      "pinn"
+    ]
+  },
+  {
+    "id": "2601.04921v1",
+    "title": "Mixed data-source transfer learning for a turbulence model augmented physics-informed neural network",
+    "authors": "Christian Toma, Bharathram Ganapathisubramani, Sean Symon",
+    "abstract": "Physics-informed neural networks (PINNs) have recently emerged as a promising alternative for extracting unknown quantities from experimental data. Despite this potential, much of the recent literature has relied on sparse, high-fidelity data from direct numerical simulations (DNS) rather than experimental sources like particle image velocimetry (PIV), which are not suitable for validating all reconstructed quantities. In the case of PIV, for example, pressure is not directly measured and the data have imperfections such as noise contamination or a limited field of view. To overcome these limitations, we present a novel methodology where PINNs are first trained on a RANS simulation such that it learns all states at every location in the domain. We then apply transfer learning which updates the PINN using sub-sampled PIV data. The resulting predictions are in significantly better agreement with the full PIV dataset than PINNs which are trained on experimental data only. This work builds on the recent literature by integrating a Spalart-Allmaras turbulence model and applying hard constraints to the no-slip wall boundary condition. We apply this new methodology to a two-dimensional NACA 0012 airfoil inclined at an angle of attack, $α$ = 15 degrees, for two Reynolds numbers of Re = 10,000 and 75,000. The proposed methodology is initially validated using large eddy simulation (LES) data and then demonstrated on experimental PIV data. Our transfer learning approach results in improved predictions and a reduction in training time when compared to using a random network initialisation.",
+    "published": "2026-01-08",
+    "arxiv_url": "http://arxiv.org/abs/2601.04921v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.04921v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "rans",
+      "neural network",
+      "transfer learning",
+      "pinn",
+      "physics-informed neural network",
+      "dns",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.04847v1",
+    "title": "Turbulent Diffusion-Cascade Interaction",
+    "authors": "Ernesto Fuentes Noriega, John Christos Vassilicos",
+    "abstract": "In the decay region around the centreline of three qualitatively different turbulent plane wakes, the turbulence is non-homogeneous and two-point turbulent diffusion counteracts the turbulence cascade all the way down to scales smaller than the Taylor length. It is found that the sum of the inter-space transfer rate and the horizontal part of the inter-scale transfer rate of horizontal two-point turbulent kinetic energy is approximately proportional to the turbulence dissipation rate in the inertial range with a constant of proportionality between $-0.6$ and $-1$ depending on wake and location within the wake, except at the near-field edge of the decay region.",
+    "published": "2026-01-08",
+    "arxiv_url": "http://arxiv.org/abs/2601.04847v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.04847v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.04788v1",
+    "title": "Ensemble of Fixed Points in Multi-branch Shell Models of Turbulent Cascades",
+    "authors": "Flavio Tuteri, Sergio Chibbaro, Alexandros Alexakis",
+    "abstract": "Stationary solutions of a shell model of turbulence defined on a dyadic tree topology are studied. Each node's amplitude is expressed as the product of amplitude multipliers associated with its ancestors, providing a recursive representation of the cascade process. A geometrical rule governs the tree growth, and we prove the existence of a continuum of fixed points, including the Kolmogorov solution, that sustain a strictly forward energy cascade. Sampling along randomly chosen branches defines a homogeneous Markov chain, enabling a stochastic characterization of extended self-similarity and intermittency through the spectral properties of the associated Feynman-Kac operators. Numerical simulations confirm the theoretical predictions, showing that multi-branch shell models offer a minimal yet physically rich framework for exploring the complexity of nonlinear energy transfer across scales.",
+    "published": "2026-01-08",
+    "arxiv_url": "http://arxiv.org/abs/2601.04788v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.04788v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.04527v1",
+    "title": "Numerical study on fast spectral evolution due to double resonance and applicability of generalized kinetic equation",
+    "authors": "Mitsuhiro Tanaka",
+    "abstract": "It is known that for a two-layer fluid system, the kinetic equation governing the evolution of the spectrum of the wave field given by the standard wave turbulence theory (WTT) breaks down due to the existence of a \"double resonance\", and the spectrum can evolve on a time scale much faster than that predicted by the standard WTT. In this study, using a simplified model for a two-layer fluid system, the applicability of the generalized kinetic equation (GKE) for such a situation is examined numerically. It is shown that the GKE can reproduce the appearance of a sharp peak in the surface wave spectrum due to double resonance, but it overestimates the growth of the peak, consequently failing to quantitatively describe the temporal evolution of the spectrum correctly, particularly near the double resonance point.",
+    "published": "2026-01-08",
+    "arxiv_url": "http://arxiv.org/abs/2601.04527v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.04527v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.04400v1",
+    "title": "JAX-Shock: A Differentiable, GPU-Accelerated, Shock-Capturing Neural Solver for Compressible Flow Simulation",
+    "authors": "Bo Zhang",
+    "abstract": "Understanding shock-solid interactions remains a central challenge in compressiblefluiddynamics. WepresentJAX-Shock: afully-differentiable,GPU-accelerated, high-order shock-capturing solver for efficient simulation of the compressible Navier-Stokes equations. Built entirely in JAX, the framework leverages automatic differentiation to enable gradient-based optimization, parameter inference, and end-to-end training of deep learning-augmented models. The solver integrates fifth-order WENO reconstruction with an HLLC flux to resolve shocks and discontinuities with high fidelity. To handle complex geometries, an immersed boundary method is implemented for accurate representation of solid interfaces within the compressible flow field. In addition, we introduce a neural flux module trained to augment the numerical fluxes with data-driven corrections, significantly improving accuracy and generalization. JAX-Shock also supports sequence-to-sequence learning for shock interaction prediction and reverse-mode inference to identify key physical parameters from data. Compared with purely data-driven approaches, JAX-Shock enhances generalization while preserving physical consistency. The framework establishes a flexible platform for differentiable physics, learning-based modeling, and inverse design in compressible flow regimes dominated by complex shock-solid interactions.",
+    "published": "2026-01-07",
+    "arxiv_url": "http://arxiv.org/abs/2601.04400v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.04400v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "data-driven",
+      "deep learning",
+      "rom",
+      "flow simulation"
+    ]
+  },
+  {
+    "id": "2601.06183v1",
+    "title": "Data-Driven Reduced-Complexity Modeling of Fluid Flows: A Community Challenge",
+    "authors": "Oliver T. Schmidt, Aaron Towne, Adrian Lozano-Duran, Scott T. M. Dawson, Ricardo Vinuesa",
+    "abstract": "We introduce a community challenge designed to facilitate direct comparisons between data-driven methods for compression, forecasting, and sensing of complex aerospace flows. The challenge is organized into three tracks that target these complementary capabilities: compression (compact representations for large datasets), forecasting (predicting future flow states from a finite history), and sensing (inferring unmeasured flow states from limited measurements). Across these tracks, multiple challenges span diverse flow datasets and use cases, each emphasizing different model requirements. The challenge is open to anyone, and we invite broad participation to build a comprehensive and balanced picture of what works and where current methods fall short. To support fair comparisons, we provide standardized success metrics, evaluation tools, and baseline implementations, with one classical and one machine-learning baseline per challenge. Final assessments use blind tests on withheld data. We explicitly encourage negative results and careful analyses of limitations. Outcomes will be disseminated through an AIAA Journal Virtual Collection and invited presentations at AIAA conferences.",
+    "published": "2026-01-07",
+    "arxiv_url": "http://arxiv.org/abs/2601.06183v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06183v1",
+    "categories": [
+      "cs.LG",
+      "nlin.CD",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "keywords": [
+      "data-driven",
+      "rom",
+      "gan"
+    ]
+  },
+  {
+    "id": "2601.03724v1",
+    "title": "Most probable path and invariant sets in noise-induced transition to turbulence",
+    "authors": "Yoshiki Hiruta, Kento Yasuda, Kenta Ishimoto",
+    "abstract": "Turbulence transition often arises from a subcritical transition between bistable states characterized by invariant sets of deterministic dynamical systems, and such transitions can be triggered by system noise as rare events. In this study, we employ the Onsager-Machlup (OM) formulation of stochastic dynamics to examine the Hamilton equations governing the most probable transition paths (MPPs). We introduce an effective potential function, termed the OM potential, which depends on the noise strength. Focusing on the Dauchot-Manneville model as a minimal system with an edge state, we comprehensively analyze the MPP between laminar and turbulent states for different transition times. We find that the MPPs cross the separatrix at nearly the same point regardless of the transition time, and the obtained OM action values suggest that the transition to turbulence occurs more frequently than the transition to the laminar state. Moreover, we numerically demonstrate that the noise-induced transition paths follow the OM potential landscape and its bifurcation diagram, indicating that the qualitative behavior of the MPPs is determined by the OM potential. Our methodology formulated in general dynamical systems provides a theoretical basis for predicting noise-induced transitions among invariant sets of the dynamics.",
+    "published": "2026-01-07",
+    "arxiv_url": "http://arxiv.org/abs/2601.03724v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.03724v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "rom",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.03613v1",
+    "title": "PhysicsFormer: An Efficient and Fast Attention-Based Physics Informed Neural Network for Solving Incompressible Navier Stokes Equations",
+    "authors": "Biswanath Barman, Debdeep Chatterjee, Rajendra K. Ray",
+    "abstract": "Traditional experimental and numerical approaches for fluid dynamics problems often suffer from high computational cost, mesh sensitivity, and limited capability in capturing complex physical behaviors. Moreover, conventional physics-informed neural networks (PINNs) frequently struggle in chaotic and highly unsteady flow regimes. In this work, we propose \\textit{PhysicsFormer}, a fast and efficient transformer-based physics-informed framework that incorporates multi-head encoder-decoder cross-attention. Unlike multilayer perceptron-based PINNs, PhysicsFormer operates on sequential representations constructed from spatio-temporal data, enabling effective learning of long-range temporal dependencies and improved propagation of initial condition information. A data-embedding strategy is employed to convert spatio-temporal points into pseudo-sequences, while a dynamics-weighted loss function replaces the standard PINNs formulation. Owing to its parallel learning structure, PhysicsFormer demonstrates superior computational efficiency compared to existing transformer-based approaches. The framework is validated on Burgers' equation and flow reconstruction governed by the Navier-Stokes equations, achieving mean squared errors on the order of $10^{-6}$. In addition, an inverse problem involving parameter identification in the two-dimensional incompressible Navier-Stokes equations is investigated. For clean data, PhysicsFormer achieves zero identification error for both $λ_1$ and $λ_2$; under $1\\%$ Gaussian noise, the errors are $0.07\\%$ for $λ_1$ and $0\\%$ for $λ_2$. These results demonstrate that PhysicsFormer provides a reliable and computationally efficient surrogate modeling framework for time-dependent fluid flow problems.",
+    "published": "2026-01-07",
+    "arxiv_url": "http://arxiv.org/abs/2601.03613v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.03613v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "transformer",
+      "rom",
+      "rans",
+      "neural network",
+      "pinn",
+      "physics-informed neural network",
+      "surrogate model",
+      "fluid dynamics"
+    ]
+  },
+  {
+    "id": "2601.03221v1",
+    "title": "Dynamical bicontinuous networks from 3D active phase separation",
+    "authors": "Paarth Gulati, Liang Zhao, Michio Tateno, Omar A. Saleh, Zvonimir Dogic, M. Cristina Marchetti",
+    "abstract": "We study phase separation between coexisting active and passive fluids in three-dimensions, using both numerical simulation and experiments. Chaotic flows of the active phase drive giant interfacial deformations and cause the co-existing phases to interpenetrate, generating a continuously reconfiguring bicontinuous steady-state morphology that persists over the lifetime of the active fluid. We demonstrate how activity controls the structure of the bicontinuous network. Quantitative analysis reveals the dominance of dynamical steady-state sheet-like interfaces, in marked difference from the transient bicontinuous structures observed in passive liquid-liquid phase separation, where saddle-like surfaces dominate. These results demonstrate how active stresses suppress the coarsening dynamics of conventional phase separation, generating steady-state reconfigurable morphologies not accessible with conventional surface-modifying agents or through quenching of transient phase separated structures.",
+    "published": "2026-01-06",
+    "arxiv_url": "http://arxiv.org/abs/2601.03221v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.03221v1",
+    "categories": [
+      "cond-mat.soft",
+      "physics.bio-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "多相流"
+    ],
+    "keywords": [
+      "phase separation",
+      "rans",
+      "rom"
+    ]
+  },
+  {
+    "id": "2601.03157v1",
+    "title": "Fast and slow surfactants in turbulent bubble breakup",
+    "authors": "Zhan Wu, Tristan Aurégan, Luc Deike",
+    "abstract": "When a large air cavity breaks in a turbulent flow, it goes through very large deformations and cascading events of new interface formation, including elongated filaments and bubbles over a wide range of scales, with their rate of formation controlled by turbulence and capillary processes. We experimentally investigate the effects of surfactants and salt on the fragmentation, and observe an order of magnitude increase of the number of bubbles being produced in some cases. For bubbles larger than the Hinze scale $d_H$ (defined as the balance between surface tension and turbulence stresses), we observe that bubble size distributions remain unchanged for all solutions tested. For bubbles below $d_H$, however, we observe an increase of the number of bubbles produced and an associated steepening of the bubble size distribution upon the addition of surfactant or salt. This later effect is only visible for some of the surfactants tested when their adsorption timescale is fast enough compared to the rate at which new interfaces are being generated by turbulence.",
+    "published": "2026-01-06",
+    "arxiv_url": "http://arxiv.org/abs/2601.03157v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.03157v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.03074v1",
+    "title": "Unifying Viscocapillary and Inertial Regimes in Selective Withdrawal",
+    "authors": "Sabbir Hassan, Arsalan Abutalebi, Sukalyan Bhattacharya, Gordon F. Christopher",
+    "abstract": "Selective withdrawal extracts only a single phase from a stratified multi-layer system. Entrainment occurs when a critical condition draws up the static layer which is not being withdrawn. Existing studies provide robust scalings within distinct limiting regimes. These include viscocapillary-dominated entrainment at low Reynolds number. They also include inertia-dominated entrainment at high Reynolds number. However, a single unifying representation remains to be explored in the literature. This limitation is most evident in transitional conditions between classical limits. It is also pronounced when the lower layer is non-Newtonian. Here we report selective-withdrawal experiments spanning these conditions. The upper layer is Newtonian, using PDMS or soybean oil. The lower layer is either Newtonian water or shear-thinning xanthan-gum solutions. We propose a unified framework that connects these previously separated regimes. The framework adopts a ``Moody diagram'' type representation for selective withdrawal. We collapse normalized critical submergence height using a Reynolds-like control parameter. Surface-tension effects enter subdominantly through the capillary length. The resulting master curve captures the transition between dominant balances. It connects viscous and shear-controlled entrainment to inertial entrainment. The collapse also clarifies how shear thinning enters the organization. Shear thinning primarily renormalizes the viscous correction through an effective viscosity. It does not alter the inertial baseline scale that anchors the normalization. This regime-spanning representation avoids regime-by-regime correlation switching. It provides a compact diagnostic for entrainment thresholds across fluid types. The diagnostic applies to Newtonian and generalized-Newtonian two-layer systems.",
+    "published": "2026-01-06",
+    "arxiv_url": "http://arxiv.org/abs/2601.03074v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.03074v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "keywords": [
+      "rans",
+      "rom",
+      "gan"
+    ]
+  },
+  {
+    "id": "2601.03033v1",
+    "title": "Statistical State Dynamics Based Study of the Turbulent Ekman Layer",
+    "authors": "Eojin Kim, Brian F. Farrell",
+    "abstract": "Streamwise roll and streak structures (RSS) are prominent features observed in both atmospheric and oceanic planetary boundary layers (PBL) as well as in laboratory scale Wall bounded shear flows. Despite their structural similarity across these systems, the mechanisms responsible for forming and sustaining the RSS remain debated. This study demonstrates that the same turbulence sustaining mechanism previously identified in Wall bounded shear flows using the Statistical State Dynamics (SSD) formulation of the Navier Stokes equations (Farrell & Ioannou 2012; Farrell et al. 2017) also operates in the Ekman layer. By extending the SSD based stability analysis methods previously used for studying roll formation in wall bounded shear flows to the Ekman layer, we show that the well known Reynolds stress driven instability mechanism in wall-bounded turbulence acts together with inflectional instability to produce and sustain RSS in the Ekman layer. These results enhance the mechanistic understanding of RSS formation and evolution in the turbulent Ekman layer and provide a fundamental link between geophysical Ekman-layer turbulence and turbulence in engineering-scale shear flows.",
+    "published": "2026-01-06",
+    "arxiv_url": "http://arxiv.org/abs/2601.03033v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.03033v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.03314v1",
+    "title": "A Mixed-Metric Two-Field Framework for Turbulence: Emergent Stress Anisotropy and Wall Asymptotics from a Single Scalar",
+    "authors": "Marcial Sanchis-Agudo, Ricardo Vinuesa",
+    "abstract": "In our previous work~\\cite{SanchisAgudoVinuesa2025PRL}, we argued that viscous dissipation in turbulence can be understood as the macroscopic imprint of microscopic path uncertainty, and showed that a kernel variance field $s(y)$ constrained by a balance condition yields both the Kolmogorov scales and the logarithmic law of the wall from a single stochastic principle. In the present work we promote $s$ to a dynamical field $s(\\bm{x},t)$ with units of kinematic viscosity and develop a two-field framework in which the velocity $\\ve$ and an \\emph{intermittency} (or stochastic diffusivity) field $s$ evolve in a coupled way. The effective viscosity is $ν_{\\mathrm{eff}}=ν_0+s$, but the stress tensor is generalized to include a non-linear closure driven by the commutator of strain and rotation, $[\\bm{S}, \\bmΩ]$, capturing emergent anisotropy. The evolution of $s$ is defined as a mixed-metric gradient flow: a Wasserstein-2 gradient flow for morphology, $\\Div(s\\grad s)$, combined with a local $L^2$ gradient flow driven by an objective coupling term $q$. The coupling is decomposed as $q=q_{\\mathrm{prod}}-q_{\\mathrm{relax}}$, where production is driven by a vortex-stretching invariant, $\\mathcal{I} = \\|\\bm{S}\\boldsymbolω\\|^2$. This choice ensures that production vanishes identically in strictly two-dimensional flows. We show that, under standard assumptions of constant stress, high Reynolds number and overlap-layer scale invariance, the only scale-invariant overlap-layer solution of the mixed-metric equation is $s(y)\\propto y$, which recovers the logarithmic velocity profile. Thus the same mixed-metric equation organizes both wall-resolved and wall-modeled asymptotics within a single, energetically constrained framework.",
+    "published": "2026-01-06",
+    "arxiv_url": "http://arxiv.org/abs/2601.03314v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.03314v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "les",
+      "turbulence",
+      "gan"
+    ]
+  },
+  {
+    "id": "2601.02934v1",
+    "title": "What happens if you put your head in the Geneva water jet? An inquiry-based physics activity exploring fluid dynamics",
+    "authors": "Maria Alice Gasparini",
+    "abstract": "We describe a physics education activity for third-year Bachelor students, inspired by a humorous question about the Geneva water jet. The exercise engages students in key scientific practices: reformulating everyday questions in scientific terms, constructing simplified models, performing semi-quantitative estimations, and comparing alternative solution methods. Students explore approaches based on Bernoulli principle and a power analysis, revealing consistent results when assumptions are carefully considered. The activity emphasizes critical reasoning, including identifying relevant data, making approximations, and applying energy and mass conservation to incompressible fluids. It also fosters metacognitive skills and higher-order thinking (HOT), illustrating the universality of fundamental physical principles across diverse phenomena. By situating the task in a relatable, real-world context, the activity motivates students while exposing them to problem-solving challenges rarely encountered in traditional instruction, such as Fermi-type estimation and cross-context knowledge transfer.",
+    "published": "2026-01-06",
+    "arxiv_url": "http://arxiv.org/abs/2601.02934v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.02934v1",
+    "categories": [
+      "physics.ed-ph",
+      "physics.flu-dyn",
+      "physics.pop-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "fluid dynamics",
+      "les"
+    ]
+  },
+  {
+    "id": "2601.02852v1",
+    "title": "ML enhanced measurement of the electrostatic charge distribution of powder conveyed through a duct",
+    "authors": "Christoph Wilms, Wenchao Xu, Gizem Ozler, Simon Jantač, Sonja Schmelter, Holger Grosshans",
+    "abstract": "The electrostatic charge acquired by powders during transport through ducts can cause devastating dust explosions. Our recently developed laser-optical measurement technique can resolve the powder charge along a one-dimensional (1D) path. However, the charge across the duct's complete two-dimensional (2D) cross-section, which is the critical parameter for process safety, is generally unavailable due to limited optical access. To estimate the complete powder charge distribution in a conveying duct, we propose a machine learning (ML) approach using a shallow neural network (SNN). The ML algorithm is trained with cross-sectional data extracted from four different three-dimensional direct numerical simulations of a turbulent duct flow with varying particle size. Through this training with simulation data, the ML algorithm can estimate the powder charge distribution in the duct's cross-section based on only 1D measurements. The results reveal an average $L^1$-error of the reconstructed 2D cross-section of 1.63 %.",
+    "published": "2026-01-06",
+    "arxiv_url": "http://arxiv.org/abs/2601.02852v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.02852v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "neural network",
+      "rom",
+      "machine learning"
+    ]
+  },
+  {
+    "id": "2601.02693v1",
+    "title": "Data-Driven Flow Initialization Framework for CFD Acceleration of Underwater Vehicle in Vertical-Plane Oblique Motion",
+    "authors": "Tianli Hu, Chengsheng Wu, Jun Ding, Xing Wang, Yu Yang, Jianchun Wang",
+    "abstract": "Accurate prediction of flow fields around underwater vehicles undergoing vertical-plane oblique motions is critical for hydrodynamic analysis, but it often requires computationally expensive CFD simulations. This study proposes a Data-Driven Flow Initialization (DDFI) framework that accelerates CFD simulation by integrating deep neural network (DNN) to predict full-domain flow fields. Using the suboff hull under various inlet velocities and angles of attack as an example, a DNN is trained to predict velocity, pressure, and turbulent quantities based on mesh geometry, operating conditions, and hybrid vectors. The DNN can provide reasonably accurate predictions with a relative error about 3.3%. To enhance numerical accuracy while maintaining physical consistency, the DNN-predicted flow fields are utilized as initial solutions for the CFD solver, achieving up to 3.5-fold and 2.0-fold speedup at residual thresholds of 5*10^(-6)and 5*10^(-8), respectively. This method maintains physical consistency by refining neural network outputs via traditional CFD solvers, balancing computational efficiency and accuracy. Notably, reducing the size of training set does not exert an essential impact on acceleration performance. Besides, this method exhibits cross-mesh generalization capability. In general, this proposed hybrid approach offers a new pathway for high-fidelity and efficient full-domain flow field predictions around complex underwater vehicles.",
+    "published": "2026-01-06",
+    "arxiv_url": "http://arxiv.org/abs/2601.02693v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.02693v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "keywords": [
+      "neural network",
+      "les",
+      "data-driven",
+      "cfd"
+    ]
+  },
+  {
+    "id": "2601.02277v1",
+    "title": "Learning Hydro-Phoretic Interactions in Active Matter",
+    "authors": "Palash Bera, Aritra K. Mukhopadhyay, Benno Liebchen",
+    "abstract": "In the quest to understand large-scale collective behavior in active matter, the complexity of hydrodynamic and phoretic interactions remains a fundamental challenge. To date, most works either focus on minimal models that do not (fully) account for these interactions, or explore relatively small systems. The present work develops a generic method that combines high-fidelity simulations with symmetry-preserving descriptors and neural networks to predict hydro-phoretic interactions directly from particle coordinates (effective interactions). This method enables, for the first time, self-contained particle-only simulations and theories with full hydro-phoretic pair interactions.",
+    "published": "2026-01-05",
+    "arxiv_url": "http://arxiv.org/abs/2601.02277v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.02277v1",
+    "categories": [
+      "cond-mat.soft",
+      "cond-mat.dis-nn",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "keywords": [
+      "neural network",
+      "les",
+      "rom"
+    ]
+  },
+  {
+    "id": "2601.02268v2",
+    "title": "Liouville Spectral Gap and Bifurcation Driven Lagrangian Eulerian Decoupling with Nondiffusive Turbulence Closures",
+    "authors": "Nicola de Divitiis",
+    "abstract": "In fully developed homogeneous and isotropic turbulence, the Lagrangian and Eulerian descriptions of motion, although formally equivalent, become statistically decoupled. In this work, by invoking Liouville theorem, we show that the joint probability density function (PDF) of the Eulerian and Lagrangian fields, evolving from arbitrary initial conditions, relaxes exponentially toward a factorized form given by the product of the corresponding marginal PDFs. This relaxation is governed by a genuine spectral gap of the Liouville operator, whose magnitude is primarily set by the bifurcation rate of the velocity gradient dynamics, whereas the contribution of Lyapunov exponents is shown to be significantly smaller. As a consequence, Eulerian Lagrangian correlations decay rapidly, and if the joint PDF is initially factorized, its factorized structure is preserved at all subsequent times, with each marginal evolving independently under the corresponding dynamics. We further show that the formal equivalence between the two descriptions implies the invariance of the relative kinetic energy between arbitrarily chosen points. When combined with the asymmetric statistics of instantaneous finite scale Lyapunov exponents in incompressible turbulence, this property provides a quantitative interpretation of particle pair separation and of the turbulent energy cascade.   Finally, these results naturally lead to nondiffusive closure relations for the von Kármán Howarth and Corrsin equations, which coincide with those previously proposed by the author, thereby providing an independent theoretical validation of those closures.",
+    "published": "2026-01-05",
+    "arxiv_url": "http://arxiv.org/abs/2601.02268v2",
+    "pdf_url": "https://arxiv.org/pdf/2601.02268v2",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.02157v1",
+    "title": "Multi-fidelity graph-based neural networks architectures to learn Navier-Stokes solutions on non-parametrized 2D domains",
+    "authors": "Francesco Songia, Raoul Sallé de Chou, Hugues Talbot, Irene Vignon-Clementel",
+    "abstract": "We propose a graph-based, multi-fidelity learning framework for the prediction of stationary Navier--Stokes solutions in non-parametrized two-dimensional geometries. The method is designed to guide the learning process through successive approximations, starting from reduced-order and full Stokes models, and progressively approaching the Navier--Stokes solution. To effectively capture both local and long-range dependencies in the velocity and pressure fields, we combine graph neural networks with Transformer and Mamba architectures. While Transformers achieve the highest accuracy, we show that Mamba can be successfully adapted to graph-structured data through an unsupervised node-ordering strategy. The Mamba approach significantly reduces computational cost while maintaining performance. Physical knowledge is embedded directly into the architecture through an encoding -- processing -- physics informed decoding pipeline. Derivatives are computed through algebraic operators constructed via the Weighted Least Squares method. The flexibility of these operators allows us not only to make the output obey the governing equations, but also to constrain selected hidden features to satisfy mass conservation. We introduce additional physical biases through an enriched graph convolution with the same differential operators describing the PDEs. Overall, we successfully guide the learning process by physical knowledge and fluid dynamics insights, leading to more regular and accurate predictions",
+    "published": "2026-01-05",
+    "arxiv_url": "http://arxiv.org/abs/2601.02157v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.02157v1",
+    "categories": [
+      "physics.flu-dyn",
+      "stat.ML"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "transformer",
+      "rom",
+      "rans",
+      "neural network",
+      "fluid dynamics"
+    ]
+  },
+  {
+    "id": "2601.01983v1",
+    "title": "Statistical state dynamics modes and equilibria underlie the structure and mechanism of wide channel Couette turbulence",
+    "authors": "Brian F. Farrell, Petros J. Ioannou",
+    "abstract": "Wide channel Couette (WCC) turbulence is striking in being dominated by a large-scale spanwise periodic structure composed of streamwise streaks and associated roll superstructures. This apparent equilibrium is shown in this work to correspond to a fixed point solution of the Navier-Stokes equations expressed in the statistical state dynamics (SSD) framework. Moreover, this fixed point solution is found to be rank-three, consisting of one analytically identified roll-streak structure (RSS) constituting the first cumulant of the SSD, and two analytically determined eigenmodes supporting the second cumulant. This minimal representation captures both the structure and the dynamics of WCC turbulence, while the remaining spectral components contribute negligibly to the equilibrium dynamics. Turbulent Couette flows other than WCC can be understood to be limit cycle and chaotic extensions supported by the same underlying mechanism as the fixed point WCC turbulence except for the two eigenmodes supporting WCC turbulence being replaced by two Floquet modes and two Lyapunov vectors, respectively. These results provide an analytic solution for turbulence in Couette flow.",
+    "published": "2026-01-05",
+    "arxiv_url": "http://arxiv.org/abs/2601.01983v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01983v1",
+    "categories": [
+      "physics.flu-dyn",
+      "nlin.PS"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.01973v1",
+    "title": "Effect of particle-momentum on an isothermal flow-field inside a swirl combustor",
+    "authors": "Madan Lal Mahato, Nitesh Kumar Sahu",
+    "abstract": "This paper investigates the impact of particles on isothermal flow inside a lab-scale swirl combustor for a fixed inlet swirl number of 0.67 using steady-state CFD simulations. The combustor geometry and baseline conditions, with no particles, are taken from Taamallah et al. [1], but with a simplification. In the present work, we provide rotation to the flow using velocity boundary condition, whereas in [1], a swirler is built into the geometry to achieve the same effect. Shear stress transport (SST) k-omega model, an eddy-viscosity based Reynolds averaged Navier-Stokes equation approach, is used for modelling turbulence. The comprehensive model is validated against the experimental axial-velocity data in [1]. Two simulations, one with 75 and another with 100 micron particles using Discrete particle model (DPM) were conducted to isolate the effect of particle motion on swirl-combustor flow without combustion. Their analysis shows significant downstream shift of central recirculation zone (CRZ). An effect that can significantly impact the stabilization of coal flame in pulverized particle reactors.",
+    "published": "2026-01-05",
+    "arxiv_url": "http://arxiv.org/abs/2601.01973v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01973v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "rans",
+      "cfd",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.01941v1",
+    "title": "Settling of chiral particles in a turbulent flow",
+    "authors": "Mees M. Flapper, John E. Sader, Detlef Lohse, Sander G. Huisman",
+    "abstract": "Chiral particles are experimentally investigated while settling inwater with various turbulence intensity levels. The locations and orientations of the particles are tracked over time, allowing the close investigation of the particles' settling dynamics. The generated turbulent flow is measured using laser Doppler anemometry (LDA), and the turbulence strength varies between experiments in the range $0 \\leq Re_λ\\leq 250$. Starting with quiescent particle settling, the chiral particle's orientation dynamics are studied, revealing a preferred alignment and a strong translation-rotation coupling. The particle chirality determines the preferred rotation direction, though the alignment and translation-rotation coupling gradually vanish with increasing turbulence. We identify multiple settling modes for the chiral particles, which are characterised by the evolution of the rotation angles. Finally, a theoretical model assuming a simplified chiral particle in Stokes flow clarifies the emergence of each settling mode.",
+    "published": "2026-01-05",
+    "arxiv_url": "http://arxiv.org/abs/2601.01941v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01941v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.01922v1",
+    "title": "Efficient temporal prediction of compressible flows in irregular domains using Fourier neural operators",
+    "authors": "Yifan Nie, Qiaoxin Li",
+    "abstract": "This paper investigates the temporal evolution of high-speed compressible fluids in irregular flow fields using the Fourier Neural Operator (FNO). We reconstruct the irregular flow field point set into sequential format compatible with FNO input requirements, and then embed temporal bundling technique within a recurrent neural network (RNN) for multi-step prediction. We further employ a composite loss function to balance errors across different physical quantities. Experiments are conducted on three different types of irregular flow fields, including orthogonal and non-orthogonal grid configurations. Then we comprehensively analyze the physical component loss curves, flow field visualizations, and physical profiles. Results demonstrate that our approach significantly surpasses traditional numerical methods in computational efficiency while achieving high accuracy, with maximum relative $L_2$ errors of (0.78, 0.57, 0.35)% for ($p$, $T$, $\\mathbf{u}$) respectively. This verifies that the method can efficiently and accurately simulate the temporal evolution of high-speed compressible flows in irregular domains.",
+    "published": "2026-01-05",
+    "arxiv_url": "http://arxiv.org/abs/2601.01922v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01922v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "keywords": [
+      "rnn",
+      "neural network",
+      "les"
+    ]
+  },
+  {
+    "id": "2601.01810v1",
+    "title": "Bridging Filtering and Point-Splitting Approaches for Variable-Density Flows",
+    "authors": "Hridey Narula, Prasad Perlekar",
+    "abstract": "Energy transfer in turbulent flows is typically described either through correlation functions, via the Kármán-Howarth-Monin relation, or through a scale-by-scale budget of filtered energy (Frisch 1995). For constant-density turbulence, the equivalence between these two descriptions is well understood. In compressible turbulence, however, several definitions of filtered energy exist, and for most of them the associated formulation in terms of correlation functions is unclear. We develop a general framework to determine the multi-point correlation functions corresponding to any specified filtered energy. As a demonstration, we show that the Favre filtered energy--defined as the ratio of the squared filtered momentum to the filtered density--and the terms in its budget can be written as an infinite series of multi-point correlation functions. We validate the framework numerically using three-dimensional buoyancy-driven bubbly flows.",
+    "published": "2026-01-05",
+    "arxiv_url": "http://arxiv.org/abs/2601.01810v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01810v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.01776v1",
+    "title": "Data-driven sparse modeling and decomposition for superspreading-wetting dynamics of a droplet",
+    "authors": "Kai Fukami, Eita Shoji",
+    "abstract": "Superspreading wetting is traditionally attributed to surfactant-driven mechanisms. However, recent observations of superspreading in surfactant-free nanofluids defy standard theoretical explanations. This study considers a data-driven approach to model droplet dynamics with the thickness of liquid films on the nanometer-micrometer scale in a compact form of a partial differential equation. We examine spatiotemporal film-thickness profiles resolved at the nanometer scale via phase-shifting imaging ellipsometry. For a pure solvent, the present governing equation recovers the classical lubrication physics driven by disjoining pressure and evaporation. In contrast, the nanofluid dynamics necessitates a unique transport term scaling with the gradient of the inverse film thickness. Theoretical analysis suggests this term represents a nanoparticle-induced bias flux, consistent with a hypothesized capillary wicking mechanism within the precursor film. The identification of the current nanofluid-specific term underscores the efficacy of integrating high-precision experimental measurements with data-driven modeling to unravel complex wetting dynamics.",
+    "published": "2026-01-05",
+    "arxiv_url": "http://arxiv.org/abs/2601.01776v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01776v1",
+    "categories": [
+      "physics.flu-dyn",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "rans",
+      "data-driven modeling",
+      "data-driven",
+      "fluid dynamics",
+      "les"
+    ]
+  },
+  {
+    "id": "2601.01590v1",
+    "title": "Identifying recurrent flows in high-dimensional dissipative chaos from low-dimensional embeddings",
+    "authors": "Pierre Beck, Tobias M. Schneider",
+    "abstract": "Unstable periodic orbits (UPOs) are the non-chaotic, dynamical building blocks of spatio-temporal chaos, motivating a first-principles based theory for turbulence ever since the discovery of deterministic chaos. Despite their key role in the ergodic theory approach to fluid turbulence, identifying UPOs is challenging for two reasons: chaotic dynamics and the high-dimensionality of the spatial discretization. We address both issues at once by proposing a loop convergence algorithm for UPOs directly within a low-dimensional embedding of the chaotic attractor. The convergence algorithm circumvents time-integration, hence avoiding instabilities from exponential error amplification, and operates on a latent dynamics obtained by pulling back the physical equations using automatic differentiation through the learned embedding function. The interpretable latent dynamics is accurate in a statistical sense, and, crucially, the embedding preserves the internal structure of the attractor, which we demonstrate through an equivalence between the latent and physical UPOs of both a model PDE and the 2D Navier-Stokes equations. This allows us to exploit the collapse of high-dimensional dissipative systems onto a lower dimensional manifold, and identify UPOs in the low-dimensional embedding.",
+    "published": "2026-01-04",
+    "arxiv_url": "http://arxiv.org/abs/2601.01590v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01590v1",
+    "categories": [
+      "nlin.CD",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.01573v1",
+    "title": "Applying contact angles based on a continuously moving contact line in 2D VOF simulations",
+    "authors": "Tianyang Han, Jieyun Pan, Chongsen Huang, Jie Zhang, Mingjiu Ni, Stéphane Popinet, Stéphane Zaleski",
+    "abstract": "A height-function-based numerical approach is developed for enforcing contact angles on flat and curved solid surfaces within two-dimensional volume-of-fluid simulations. This method incorporates the contact line position into the curvature estimation in the contact line cell, where the interface normal is constrained to the prescribed angle to ensure smooth contact line motion. On flat solid surfaces, the proposed model achieves higher accuracy than the conventional vertical height-function method for enforcing very small and very large contact angles. Moreover, it extends naturally to curved solid surfaces represented by the embedded boundary method, enabling the imposition of arbitrary contact angles without inducing significant spurious currents near the contact line. Numerical validations confirm the accuracy and robustness of the proposed method, demonstrating its applicability to multiphase flows involving complex wall geometries and contact-line dynamics.",
+    "published": "2026-01-04",
+    "arxiv_url": "http://arxiv.org/abs/2601.01573v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01573v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "多相流"
+    ],
+    "keywords": [
+      "les",
+      "multiphase flow"
+    ]
+  },
+  {
+    "id": "2601.01556v1",
+    "title": "Complete Matched Asymptotic Expansions for Velocity Statistics in Turbulent Channels",
+    "authors": "Peter A. Monkewitz",
+    "abstract": "Complete high fidelity matched asymptotic expansions (abbreviated MAE) are developed for the first and second order turbulence statistics in channel flow from 11 direct numerical simulations (DNS). To put the crucial identification of overlaps on a solid footing, a simple a priori test is devised, which only requires a DNS or experimental profile and the presumed overlap of the MAE for the quantity in question. This test fully supports the form c0 - c1 Y^1/4 of the overlaps for the stream-wise and cross-stream normal stresses <uu> and <ww>, which has been advocated by Chen and Sreenivasan (2022, 2023, 2025) and Monkewitz (2022, 2023). The first MAE analysis of the wall-normal stress <vv> then reveals an overlap of the form c0 - c1 Y^5/4 , which is extensively documented. Finally, the logarithmic indicator function Xi = y dU/dy for the mean velocity overlap is reanalyzed, with focus on its spatial oscillations. The latter are compared in the concluding section to the spatial oscillations of <uu>, together with further observations and suggestions.",
+    "published": "2026-01-04",
+    "arxiv_url": "http://arxiv.org/abs/2601.01556v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01556v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "turbulence",
+      "dns"
+    ]
+  },
+  {
+    "id": "2601.01494v1",
+    "title": "Scalar mixing in non-Markovian homogeneous isotropic synthetic turbulence",
+    "authors": "Pratyush S. Awasthi, Joaquim P. Jossy, Amitabh Bhattacharya, Prateek Gupta",
+    "abstract": "We show that non-Markovianity of the velocity field is an essential property of turbulent mixing. We demonstrate this via passive scalar mixing by synthetically generated stochastic velocity fields. Including a separate velocity decorrelation time scale for each spatial scale (random sweeping) yields an essentially non-Markovian velocity field with a finite time memory decaying as -5 (for a decaying spectrum) instead of an exponential decay (Markovian), which is obtained by including a constant time scale for all spatial scales, irrespective of the filtering function. We characterize the Lagrangian mixing statistics of both the Markovian and non-Markovian synthetic fields and compare them against a corresponding incompressible direct numerical simulation (DNS). We also study diffusive passive scalar mixing in the Schmidt number range Sc<1 using the DNS and the synthetic fields. While both the synthetic fields recover the -17/3 scalar spectrum for low Schmidt numbers, the mean gradients in a decaying simulation, as well as the production and dissipation of scalar variance in a statistically stationary simulation, are severely underpredicted by the Markovian fields compared to the non-Markovian fields. Throughout, we compare our results with companion 3D DNS to show the necessity of non-Markovianity in synthetic fields to capture mixing dynamics.",
+    "published": "2026-01-04",
+    "arxiv_url": "http://arxiv.org/abs/2601.01494v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01494v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "les",
+      "turbulence",
+      "dns"
+    ]
+  },
+  {
+    "id": "2601.01476v1",
+    "title": "Wave turbulence of inertia--gravity waves: a theory for the oceanic spectrum",
+    "authors": "Michal Shavit, Oliver Bühler, Jalal Shatah",
+    "abstract": "We present a derivation using kinetic wave theory of the two-dimensional empirical Garrett--Munk spectrum for ocean internal waves, valid at all frequencies including near-inertial frequencies. This is based directly on the governing equations for a two-dimensional Boussinesq system with constant stratification and rotation. Our results improve on previous work by side-stepping the use of canonical variables, by taking full account of the Coriolis parameter in a non-hydrostatic dispersion relation, by filtering the balanced flow component from the dynamics, by using the conservation laws for energy and two components of pseudomomentum to bring the collision integral into a very simple form, by giving precise convergence conditions for the collision integral, and by finding the unique scale-invariant turbulent wave spectrum that corresponds to turbulent fluxes from small to large wavenumbers. The last step was achieved in the limit of small but nonzero Coriolis parameter.   Key results are that any nonzero Coriolis parameter regularizes the singular nature of the non-rotating problem and that the homogeneity properties of the dispersion relation and of the interaction coefficients alone already imply that the spectrum is separable in vertical wavenumber and frequency. Within the restrictions of two-dimensional dynamics, this provides a theoretical framework for internal-wave turbulence consistent with oceanic observations.",
+    "published": "2026-01-04",
+    "arxiv_url": "http://arxiv.org/abs/2601.01476v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01476v1",
+    "categories": [
+      "physics.flu-dyn",
+      "physics.ao-ph",
+      "physics.geo-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rom",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.01357v1",
+    "title": "Towards LLM-enabled autonomous combustion research: A literature-aware agent for self-corrective modeling workflows",
+    "authors": "Ke Xiao, Haoze Zhang, Runze Mao, Han Li, Zhi X. Chen",
+    "abstract": "The rapid evolution of large language models (LLMs) is transforming artificial intelligence into autonomous research partners, yet a critical gap persists in complex scientific domains such as combustion modeling. Here, practical AI assistance requires the seamless integration of domain literature knowledge with robust execution capabilities for expertise-intensive tools such as computational fluid dynamics (CFD) codes. To bridge this gap, we introduce FlamePilot, an LLM agent designed to empower combustion modeling research through automated and self-corrective CFD workflows. FlamePilot differentiates itself through an architecture that leverages atomic tools to ensure the robust setup and execution of complex simulations in both OpenFOAM and extended frameworks such as DeepFlame. The system is also capable of learning from scientific articles, extracting key information to guide the simulation from initial setup to optimized results. Validation on a public benchmark shows FlamePilot achieved a perfect 1.0 executability score and a 0.438 success rate, surpassing the prior best reported agent scores of 0.625 and 0.250, respectively. Furthermore, a detailed case study on Moderate or Intense Low-oxygen Dilution (MILD) combustion simulation demonstrates its efficacy as a collaborative research copilot, where FlamePilot autonomously translated a research paper into a configured simulation, conducted the simulation, post-processed the results, proposed evidence-based refinements, and managed a multi-step parameter study to convergence under minimal human intervention. By adopting a transparent and interpretable paradigm, FlamePilot establishes a foundational framework for AI-empowered combustion modeling, fostering a collaborative partnership where the agent manages workflow orchestration, freeing the researcher for high-level analysis.",
+    "published": "2026-01-04",
+    "arxiv_url": "http://arxiv.org/abs/2601.01357v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01357v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "rom",
+      "rans",
+      "cfd",
+      "fluid dynamics",
+      "les"
+    ]
+  },
+  {
+    "id": "2601.01319v1",
+    "title": "Optimization of Magnetic Milli-Spinner for Robotic Endovascular Intervention",
+    "authors": "Lu Lu, Luca Higgins, Jack Bernardo, Ruike Renee Zhao",
+    "abstract": "Vascular diseases such as atherosclerosis, thrombosis, and aneurysms can lead to life-threatening medical events. Conventional catheter- or guidewire-based endovascular diagnostic and therapeutic devices often struggle to navigate through highly tortuous vascular pathways. The recently developed multifunctional magnetic milli-spinner offers a promising wireless solution by integrating a central through-hole and side slits into a cylindrical body with helical fins, enabling rapid and stable navigation in complex vascular environments for clot debulking, targeted drug delivery, and aneurysm treatment. Here, we combine computational fluid dynamics simulations with experimental validation to optimize the milli-spinner's structural design for high-speed untethered navigation and high-efficiency clot debulking in tubular flow environments. By systematically examining the effects of through-hole radius, fin number, fin helical angle, and slit dimension on propulsion performance, the optimized magnetic milli-spinner achieves a swimming speed of 55 cm/s (~175 body lengths per second), far exceeding existing untethered magnetic robots in tubular environments (< 80 body lengths per second). This exceptional speed enables stable upstream operation against strong physiological flows representative of major arteries and veins, establishing the magnetic milli-spinner as a robust untethered navigation platform for operation in high-flow, tortuous vasculature, with potential applications in robotic mechanical thrombectomy, embolectomy, and targeted drug delivery.",
+    "published": "2026-01-04",
+    "arxiv_url": "http://arxiv.org/abs/2601.01319v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01319v1",
+    "categories": [
+      "physics.med-ph",
+      "physics.app-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "rom",
+      "pinn",
+      "fluid dynamics",
+      "les"
+    ]
+  },
+  {
+    "id": "2601.01107v1",
+    "title": "A two-temperature gas-kinetic scheme for hypersonic nonequilibrium flow computations",
+    "authors": "Xingjian Gao, Xing Ji, Hualin Liu, Gang Chen",
+    "abstract": "Accurate aerodynamic and aerothermodynamic predictions are crucial for numerous hypersonic applications. This paper proposes a gas-kinetic scheme (GKS) coupled with a two-temperature kinetic model, which distinguishes between the translational-rotational and vibrational modes of temperature. Compared with one-temperature model and the translational-rotational multi-temperature model, the proposed model provides a more physically accurate simulation of real gas effects when vibrational energy modes of air are excited. On the other hand, it is computationally simpler than multi-temperature model with independent translational, rotational and vibrational modes. The scheme is implemented on both structured and unstructured grids. To further improve the robustness for strong shock and rarefaction waves, the discontinuity feedback factor is employed instead of traditional limiters. Numerical verifications are conducted on one-dimensional shock structure, two-dimensional (2D) hypersonic flow over a cylinder, 2D hypersonic flow over a wedge and 2D Edney Type IV shock/shock interaction. Compared with experimental data, the reference results from direct simulation Monte Carlo (DSMC) method and Navier--Stokes (NS) solvers, the present method demonstrates accurate prediction of the thermally non-equilibrium shock wave structures and hypersonic flow fields.",
+    "published": "2026-01-03",
+    "arxiv_url": "http://arxiv.org/abs/2601.01107v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01107v1",
+    "categories": [
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "flow computation",
+      "rom"
+    ]
+  },
+  {
+    "id": "2601.00637v1",
+    "title": "Turbulence is ineffective in causing raindrop growth in polluted clouds",
+    "authors": "K. Shri Vignesh, Ambedkar Sanket Sukdeo, P. V. Sruthibhai, Aishwarya Singh, Srikrishna Sahu, Swetaprovo Chaudhari, Amit K. Patra, T. Narayana Rao, Rama Govindarajan, Sachin S. Gunthe, R. I. Sujith",
+    "abstract": "Aerosol-cloud interactions represent the largest uncertainty in climate-change assessment, and while cloud turbulence is considered crucial for droplet growth, its precise role remains unclear. Our laboratory-controlled studies show that turbulence does not always enhance collision and coalescence; instead, its influence emerges only when droplets have a sufficiently broad size distribution. The dissipative-scale droplet behaviour underscores the importance of improved parameterisations to accurately model cloud microphysics.",
+    "published": "2026-01-02",
+    "arxiv_url": "http://arxiv.org/abs/2601.00637v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.00637v1",
+    "categories": [
+      "physics.ao-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.02406v1",
+    "title": "OpenFOAM computational fluid dynamics (CFD) solver for magnetohydrodynamic open cycles, applied to the Sakhalin pulsed magnetohydrodynamic generator (PMHDG)",
+    "authors": "Osama A. Marzouk",
+    "abstract": "In the current study, we present a mathematical and computational fluid dynamics (CFD) model for simulating open-cycle linear Faraday-type continuous-electrode channels of magnetohydrodynamic (MHD) power generators, operating on combustion plasma. The model extends the Favre-averaged Navier-Stokes equations to account for the electric properties of the flowing plasma gas and its reaction to the applied magnetic field. The model takes into account various effects, such as the Lorentz force, turbulence, compressibility, and energy extraction from the plasma, and it adopts an electric potential technique along with the low magnetic Reynolds number (Rem) approximation. The model is numerically implemented using the multiphysics open-source computer programming environment \"OpenFOAM,\" which combines the finite volume method (FVM) and the object-oriented programming (OOP) concept. The capabilities of the model are demonstrated by simulating the supersonic channel of the large-scale pulsed MHD generator (PMHDG) called \"Sakhalin\", with the aid of collected data and empirical expressions in the literature about its tested operation. Sakhalin was the world's largest PMHDG, with a demonstrated peak electric power output of 510 MW. Sakhalin operated on solid-propellant plasma (SPP), and it had a single supersonic divergent Faraday-type continuous-electrode channel with a length of 4.5 m. We check the validity of the model through comparisons with independent results for the Sakhalin PMHDG. Then, we process our three-dimensional simulation results to provide scalar characteristics of the Sakhalin channel, one-dimensional profiles along the longitudinal centerline, and three-dimensional distributions in the entire channel.",
+    "published": "2026-01-01",
+    "arxiv_url": "http://arxiv.org/abs/2601.02406v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.02406v1",
+    "categories": [
+      "physics.plasm-ph",
+      "cs.CE",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "rom",
+      "cfd",
+      "fluid dynamics",
+      "les",
+      "turbulence"
+    ]
+  },
+  {
+    "id": "2601.00342v1",
+    "title": "Solving nonlinear subsonic compressible flow in infinite domain via multi-stage neural networks",
+    "authors": "Xuehui Qian, Hongkai Tao, Yongji Wang",
+    "abstract": "In aerodynamics, accurately modeling subsonic compressible flow over airfoils is critical for aircraft design. However, solving the governing nonlinear perturbation velocity potential equation presents computational challenges. Traditional approaches often rely on linearized equations or finite, truncated domains, which introduce non-negligible errors and limit applicability in real-world scenarios. In this study, we propose a novel framework utilizing Physics-Informed Neural Networks (PINNs) to solve the full nonlinear compressible potential equation in an unbounded (infinite) domain. We address the unbounded-domain and convergence challenges inherent in standard PINNs by incorporating a coordinate transformation and embedding physical asymptotic constraints directly into the network architecture. Furthermore, we employ a Multi-Stage PINN (MS-PINN) approach to iteratively minimize residuals, achieving solution accuracy approaching machine precision. We validate this framework by simulating flow over circular and elliptical geometries, comparing our results against traditional finite-domain and linearized solutions. Our findings quantify the noticeable discrepancies introduced by domain truncation and linearization, particularly at higher Mach numbers, and demonstrate that this new framework is a robust, high-fidelity tool for computational fluid dynamics.",
+    "published": "2026-01-01",
+    "arxiv_url": "http://arxiv.org/abs/2601.00342v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.00342v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学",
+      "空气动力学",
+      "机器学习"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "rans",
+      "neural network",
+      "pinn",
+      "aerodynamics",
+      "physics-informed neural network",
+      "fluid dynamics"
+    ]
+  },
+  {
+    "id": "2601.00295v1",
+    "title": "Coupled Modal-Nonmodal Interactions Due to Periodic, Infinite Train of Convecting Vortices (TCV)",
+    "authors": "Jyothi Kumar Puttam, Prasannabalaji Sundaram, Vajjala K. Suman, Ankan Sarkar, Tapan K. Sengupta, Tirupathur N. Venkatesh, Rakesh K. Mathpal",
+    "abstract": "Events during transition to turbulence either follow modal or non-modal routes, or combinations of the two. Here, we report a computational investigation of strong freestream excitation caused by a train of convecting vortices. For this TCV excitation, we show a strong interaction of modal and non-modal components causing a spectacular growth of disturbances. We propose this as the mechanism for the severe encounters due to convective vortical disturbances on the underlying shear layer.",
+    "published": "2026-01-01",
+    "arxiv_url": "http://arxiv.org/abs/2601.00295v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.00295v1",
+    "categories": [
+      "physics.flu-dyn",
+      "math-ph",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "keywords": [
+      "rans",
+      "turbulence"
+    ]
+  }
+]

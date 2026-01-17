@@ -1,0 +1,94 @@
+[
+  {
+    "id": "2507.21890v1",
+    "title": "Data-driven quantum Koopman method for simulating nonlinear dynamics",
+    "authors": "Baoyang Zhang, Zhen Lu, Yaomin Zhao, Yue Yang",
+    "abstract": "Quantum computation offers potential exponential speedups for simulating certain physical systems, but its application to nonlinear dynamics is inherently constrained by the requirement of unitary evolution. We propose the quantum Koopman method (QKM), a data-driven framework that bridges this gap through transforming nonlinear dynamics into linear unitary evolution in higher-dimensional observable spaces. Leveraging the Koopman operator theory to achieve a global linearization, our approach maps system states into a hierarchy of Hilbert spaces using a deep autoencoder. Within the linearized embedding spaces, the state representation is decomposed into modulus and phase components, and the evolution is governed by a set of unitary Koopman operators that act exclusively on the phase. These operators are constructed from diagonal Hamiltonians with coefficients learned from data, a structure designed for efficient implementation on quantum hardware. This architecture enables direct multi-step prediction, and the operator's computational complexity scales logarithmically with the observable space dimension. The QKM is validated across diverse nonlinear systems. Its predictions maintain relative errors below 6% for reaction-diffusion systems and shear flows, and capture key statistics in 2D turbulence. This work establishes a practical pathway for quantum-accelerated simulation of nonlinear phenomena, exploring a framework built on the synergy between deep learning for global linearization and quantum algorithms for unitary dynamics evolution.",
+    "published": "2025-07-29",
+    "arxiv_url": "http://arxiv.org/abs/2507.21890v1",
+    "pdf_url": "https://arxiv.org/pdf/2507.21890v1",
+    "categories": [
+      "quant-ph",
+      "cs.AI",
+      "cs.LG",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "智能流体力学",
+      "流体力学"
+    ],
+    "keywords": [
+      "data-driven",
+      "les",
+      "deep learning",
+      "rom",
+      "turbulence",
+      "rans"
+    ]
+  },
+  {
+    "id": "2507.21684v1",
+    "title": "diffSPH: Differentiable Smoothed Particle Hydrodynamics for Adjoint Optimization and Machine Learning",
+    "authors": "Rene Winchenbach, Nils Thuerey",
+    "abstract": "We present diffSPH, a novel open-source differentiable Smoothed Particle Hydrodynamics (SPH) framework developed entirely in PyTorch with GPU acceleration. diffSPH is designed centrally around differentiation to facilitate optimization and machine learning (ML) applications in Computational Fluid Dynamics~(CFD), including training neural networks and the development of hybrid models. Its differentiable SPH core, and schemes for compressible (with shock capturing and multi-phase flows), weakly compressible (with boundary handling and free-surface flows), and incompressible physics, enable a broad range of application areas. We demonstrate the framework's unique capabilities through several applications, including addressing particle shifting via a novel, target-oriented approach by minimizing physical and regularization loss terms, a task often intractable in traditional solvers. Further examples include optimizing initial conditions and physical parameters to match target trajectories, shape optimization, implementing a solver-in-the-loop setup to emulate higher-order integration, and demonstrating gradient propagation through hundreds of full simulation steps. Prioritizing readability, usability, and extensibility, this work offers a foundational platform for the CFD community to develop and deploy novel neural networks and adjoint optimization applications.",
+    "published": "2025-07-29",
+    "arxiv_url": "http://arxiv.org/abs/2507.21684v1",
+    "pdf_url": "https://arxiv.org/pdf/2507.21684v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "智能流体力学",
+      "流体力学"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "fluid dynamics",
+      "cfd",
+      "les",
+      "neural network",
+      "machine learning"
+    ]
+  },
+  {
+    "id": "2507.22082v1",
+    "title": "Shape Invariant 3D-Variational Autoencoder: Super Resolution in Turbulence flow",
+    "authors": "Anuraj Maurya",
+    "abstract": "Deep learning provides a versatile suite of methods for extracting structured information from complex datasets, enabling deeper understanding of underlying fluid dynamic phenomena. The field of turbulence modeling, in particular, benefits from the growing availability of high-dimensional data obtained through experiments, field observations, and large-scale simulations spanning multiple spatio-temporal scales. This report presents a concise overview of both classical and deep learningbased approaches to turbulence modeling. It further investigates two specific challenges at the intersection of fluid dynamics and machine learning: the integration of multiscale turbulence models with deep learning architectures, and the application of deep generative models for super-resolution reconstruction",
+    "published": "2025-07-26",
+    "arxiv_url": "http://arxiv.org/abs/2507.22082v1",
+    "pdf_url": "https://arxiv.org/pdf/2507.22082v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "智能流体力学",
+      "流体力学"
+    ],
+    "keywords": [
+      "fluid dynamics",
+      "les",
+      "deep learning",
+      "rom",
+      "turbulence",
+      "machine learning"
+    ]
+  }
+]

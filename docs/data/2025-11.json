@@ -1,0 +1,53 @@
+[
+  {
+    "id": "2512.01010v1",
+    "title": "Chain of Unit-Physics: A Primitive-Centric Approach to Scientific Code Synthesis",
+    "authors": "Vansh Sharma, Venkat Raman",
+    "abstract": "Agentic large language models are proposed as autonomous code generators for scientific computing, yet their reliability in high-stakes problems remains unclear. Developing computational scientific software from natural-language queries remains challenging broadly due to (a) sparse representation of domain codes during training and (b) the limited feasibility of RLHF with a small expert community. To address these limitations, this work conceptualizes an inverse approach to code design, embodied in the Chain of Unit-Physics framework: a first-principles (or primitives)-centric, multi-agent system in which human expert knowledge is encoded as unit-physics tests that explicitly constrain code generation. The framework is evaluated on a nontrivial combustion task, used here as a representative benchmark for scientific problem with realistic physical constraints. Closed-weight systems and code-focused agentic variants fail to produce correct end-to-end solvers, despite tool and web access, exhibiting four recurrent error classes: interface (syntax/API) hallucinations, overconfident assumptions, numerical/physical incoherence, and configuration fragility. Open-weight models with chain-of-thought (CoT) decoding reduce interface errors but still yield incorrect solutions. On the benchmark task, the proposed framework converges within 5-6 iterations, matches the human-expert implementation (mean error of $3.1\\times10^{-3}$ %), with a $\\sim$33.4 % faster runtime and a $\\sim$30 % efficient memory usage at a cost comparable to mid-sized commercial APIs, yielding a practical template for physics-grounded scientific code generation. As datasets and models evolve, zero-shot code accuracy will improve; however, the Chain of Unit-Physics framework goes further by embedding first-principles analysis that is foundational to scientific codes.",
+    "published": "2025-11-30",
+    "arxiv_url": "http://arxiv.org/abs/2512.01010v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.01010v1",
+    "categories": [
+      "cs.MA",
+      "cs.AI",
+      "cs.LG",
+      "cs.SE",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉"
+    ],
+    "keywords": [
+      "rom",
+      "les"
+    ]
+  },
+  {
+    "id": "2511.08625v2",
+    "title": "Cross-Field Interface-Aware Neural Operators for Multiphase Flow Simulation",
+    "authors": "Zhenzhong Wang, Xin Zhang, Jun Liao, Min Jiang",
+    "abstract": "Multiphase flow simulation is critical in science and engineering but incurs high computational costs due to complex field discontinuities and the need for high-resolution numerical meshes. While Neural Operators (NOs) offer an efficient alternative for solving Partial Differential Equations (PDEs), they struggle with two core challenges unique to multiphase systems: spectral bias caused by spatial heterogeneity at phase interfaces, and the persistent scarcity of expensive, high-resolution field data. This work introduces the Interface Information Aware Neural Operator (IANO), a novel architecture that mitigates these issues by leveraging readily obtainable interface data (e.g., topology and position). Interface data inherently contains the high-frequency features not only necessary to complement the physical field data, but also help with spectral bias. IANO incorporates an interface-aware function encoding mechanism to capture dynamic coupling, and a geometry-aware positional encoding method to enhance spatial fidelity for pointwise super-resolution. Empirical results across multiple multiphase flow cases demonstrate that IANO achieves significant accuracy improvements (up to $\\sim$10\\%) over existing NO baselines. Furthermore, IANO exhibits superior generalization capabilities in low-data and noisy settings, confirming its utility for practical, data-efficient $\\text{AI}$-based multiphase flow simulations.",
+    "published": "2025-11-09",
+    "arxiv_url": "http://arxiv.org/abs/2511.08625v2",
+    "pdf_url": "https://arxiv.org/pdf/2511.08625v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "多相流",
+      "流体力学"
+    ],
+    "keywords": [
+      "multiphase flow",
+      "flow simulation"
+    ]
+  }
+]

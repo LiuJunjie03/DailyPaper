@@ -316,6 +316,19 @@ main {
     margin-bottom: 1rem;
 }
 
+.paper-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.keyword-label {
+    font-size: 0.85rem;
+    color: #666;
+}
+
 .tag {
     display: inline-block;
     padding: 0.3rem 0.8rem;
@@ -323,6 +336,11 @@ main {
     color: #1976d2;
     border-radius: 15px;
     font-size: 0.85rem;
+}
+
+.tag.keyword {
+    background: #f3e5f5;
+    color: #6a1b9a;
 }
 
 .paper-abstract {

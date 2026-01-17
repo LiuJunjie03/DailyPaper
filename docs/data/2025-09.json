@@ -1,0 +1,99 @@
+[
+  {
+    "id": "2509.24556v1",
+    "title": "Deep Reinforcement Learning in Action: Real-Time Control of Vortex-Induced Vibrations",
+    "authors": "Hussam Sababha, Bernat Font, Mohammed Daqaq",
+    "abstract": "This study showcases an experimental deployment of deep reinforcement learning (DRL) for active flow control (AFC) of vortex-induced vibrations (VIV) in a circular cylinder at a high Reynolds number (Re = 3000) using rotary actuation. Departing from prior work that relied on low-Reynolds-number numerical simulations, this research demonstrates real-time control in a challenging experimental setting, successfully addressing practical constraints such as actuator delay. When the learning algorithm is provided with state feedback alone (displacement and velocity of the oscillating cylinder), the DRL agent learns a low-frequency rotary control strategy that achieves up to 80% vibration suppression which leverages the traditional lock-on phenomenon. While this level of suppression is significant, it remains below the performance achieved using high-frequency rotary actuation. The reduction in performance is attributed to actuation delays and can be mitigated by augmenting the learning algorithm with past control actions. This enables the agent to learn a high-frequency rotary control strategy that effectively modifies vortex shedding and achieves over 95% vibration attenuation. These results demonstrate the adaptability of DRL for AFC in real-world experiments and its ability to overcome instrumental limitations such as actuation lag.",
+    "published": "2025-09-29",
+    "arxiv_url": "http://arxiv.org/abs/2509.24556v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.24556v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习"
+    ],
+    "keywords": [
+      "rom",
+      "reinforcement learning",
+      "les"
+    ]
+  },
+  {
+    "id": "2509.22207v1",
+    "title": "Reversible GNS for Dissipative Fluids with Consistent Bidirectional Dynamics",
+    "authors": "Mu Huang, Linning Xu, Mingyue Dai, Yidi Shao, Bo Dai",
+    "abstract": "Simulating physically plausible trajectories toward user-defined goals is a fundamental yet challenging task in fluid dynamics. While particle-based simulators can efficiently reproduce forward dynamics, inverse inference remains difficult, especially in dissipative systems where dynamics are irreversible and optimization-based solvers are slow, unstable, and often fail to converge. In this work, we introduce the Reversible Graph Network Simulator (R-GNS), a unified framework that enforces bidirectional consistency within a single graph architecture. Unlike prior neural simulators that approximate inverse dynamics by fitting backward data, R-GNS does not attempt to reverse the underlying physics. Instead, we propose a mathematically invertible design based on residual reversible message passing with shared parameters, coupling forward dynamics with inverse inference to deliver accurate predictions and efficient recovery of plausible initial states. Experiments on three dissipative benchmarks (Water-3D, WaterRamps, and WaterDrop) show that R-GNS achieves higher accuracy and consistency with only one quarter of the parameters, and performs inverse inference more than 100 times faster than optimization-based baselines. For forward simulation, R-GNS matches the speed of strong GNS baselines, while in goal-conditioned tasks it eliminates iterative optimization and achieves orders-of-magnitude speedups. On goal-conditioned tasks, R-GNS further demonstrates its ability to complex target shapes (e.g., characters \"L\" and \"N\") through vivid, physically consistent trajectories. To our knowledge, this is the first reversible framework that unifies forward and inverse simulation for dissipative fluid systems.",
+    "published": "2025-09-26",
+    "arxiv_url": "http://arxiv.org/abs/2509.22207v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.22207v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "智能流体力学",
+      "流体力学"
+    ],
+    "keywords": [
+      "fluid dynamics"
+    ]
+  },
+  {
+    "id": "2509.21485v1",
+    "title": "Neural Operators for Mathematical Modeling of Transient Fluid Flow in Subsurface Reservoir Systems",
+    "authors": "Daniil D. Sirota, Sergey A. Khan, Sergey L. Kostikov, Kirill A. Butov",
+    "abstract": "This paper presents a method for modeling transient fluid flow in subsurface reservoir systems based on the developed neural operator architecture (TFNO-opt). Reservoir systems are complex dynamic objects with distributed parameters described by systems of partial differential equations (PDEs). Traditional numerical methods for modeling such systems, despite their high accuracy, are characterized by significant time costs for performing calculations, which limits their applicability in control and decision support problems. The proposed architecture (TFNO-opt) is based on Fourier neural operators, which allow approximating PDE solutions in infinite-dimensional functional spaces, providing invariance to discretization and the possibility of generalization to various implementations of equations. The developed modifications are aimed at increasing the accuracy and stability of the trained neural operator, which is especially important for control problems. These include adjustable internal time resolution of the integral Fourier operator, tensor decomposition of parameters in the spectral domain, use of the Sobolev norm in the error function, and separation of approximation errors and reconstruction of initial conditions for more accurate reproduction of physical processes. The effectiveness of the proposed improvements is confirmed by computational experiments. The practical significance is confirmed by computational experiments using the example of the problem of hydrodynamic modeling of an underground gas storage (UGS), where the acceleration of calculations by six orders of magnitude was achieved, compared to traditional methods. This opens up new opportunities for the effective control of complex reservoir systems.",
+    "published": "2025-09-25",
+    "arxiv_url": "http://arxiv.org/abs/2509.21485v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.21485v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn",
+      "physics.geo-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉"
+    ],
+    "keywords": [
+      "rans"
+    ]
+  },
+  {
+    "id": "2509.08752v1",
+    "title": "Learning Turbulent Flows with Generative Models: Super-resolution, Forecasting, and Sparse Flow Reconstruction",
+    "authors": "Vivek Oommen, Siavash Khodakarami, Aniruddha Bora, Zhicheng Wang, George Em Karniadakis",
+    "abstract": "Neural operators are promising surrogates for dynamical systems but when trained with standard L2 losses they tend to oversmooth fine-scale turbulent structures. Here, we show that combining operator learning with generative modeling overcomes this limitation. We consider three practical turbulent-flow challenges where conventional neural operators fail: spatio-temporal super-resolution, forecasting, and sparse flow reconstruction. For Schlieren jet super-resolution, an adversarially trained neural operator (adv-NO) reduces the energy-spectrum error by 15x while preserving sharp gradients at neural operator-like inference cost. For 3D homogeneous isotropic turbulence, adv-NO trained on only 160 timesteps from a single trajectory forecasts accurately for five eddy-turnover times and offers 114x wall-clock speed-up at inference than the baseline diffusion-based forecasters, enabling near-real-time rollouts. For reconstructing cylinder wake flows from highly sparse Particle Tracking Velocimetry-like inputs, a conditional generative model infers full 3D velocity and pressure fields with correct phase alignment and statistics. These advances enable accurate reconstruction and forecasting at low compute cost, bringing near-real-time analysis and control within reach in experimental and computational fluid mechanics. See our project page: https://vivekoommen.github.io/Gen4Turb/",
+    "published": "2025-09-10",
+    "arxiv_url": "http://arxiv.org/abs/2509.08752v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.08752v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "keywords": [
+      "fluid mechanics",
+      "turbulence",
+      "rom"
+    ]
+  }
+]

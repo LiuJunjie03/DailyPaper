@@ -3,74 +3,156 @@ sources:
   arxiv:
     enabled: true
     categories:
-      - cs.AI    # Artificial Intelligence
-      - cs.CV    # Computer Vision
-      - cs.CL    # Computation and Language (NLP)
-      - cs.LG    # Machine Learning
-      - cs.IR    # Information Retrieval
-      - cs.RO    # Robotics
-    max_results: 100
-    days_back: 7  # 抓取最近几天的论文
+      - physics.flu-dyn  # 流体动力学（CFD核心分类，重点加）
+    max_results: 200
+    days_back: 180  # 抓取一定天数的论文
 
 # 领域分类关键词
 categories:
-  Computer Vision:
-    keywords: 
-      - computer vision
-      - image processing
-      - object detection
-      - image segmentation
-      - face recognition
-      - video analysis
-      - 3d reconstruction
-      - pose estimation
-      - visual recognition
-      - image generation
-      
-  Natural Language Processing:
+  多相流:
     keywords:
-      - natural language processing
-      - language model
-      - transformer
-      - bert
-      - gpt
-      - machine translation
-      - text generation
-      - question answering
-      - sentiment analysis
-      - named entity recognition
+      - 多相流
+      - multiphase flow
+      - 气液两相流
+      - 固液两相流
+      - two-phase flow
+      - phase separation
+      - 相界面
       
-  Machine Learning:
+  空气动力学:
+    keywords:
+      - 空气动力学
+      - aerodynamics
+      - 气动优化
+      - aerodynamic optimization
+      - 飞行力学
+      - 气流模拟
+      - flow around airfoil
+      
+  机器学习:
     keywords:
       - machine learning
+      - 机器学习
       - deep learning
+      - 深度学习
       - neural network
+      - 神经网络
       - reinforcement learning
+      - 强化学习
       - transfer learning
-      - few-shot learning
-      - meta-learning
-      - optimization
-      - generative model
-      - contrastive learning
+      - 迁移学习
+      - supervised learning
+      - 监督学习
+      - unsupervised learning
+      - 无监督学习
+      - CNN
+      - 卷积神经网络
+      - PINN
+      - 物理信息神经网络
+      - RNN
+      - 循环神经网络
+      - GAN
+      - 生成对抗网络
+      - transformer
+      - 变换器模型
+      - LSTM
+      - 长短期记忆网络
       
-  Robotics:
+  # 新增分类1：智能流体力学（流体+AI交叉，比CFD+ML更宽泛）
+  智能流体力学:
     keywords:
-      - robotics
-      - autonomous
-      - robot learning
-      - manipulation
-      - navigation
-      - control
+      - 智能流体力学
+      - intelligent fluid dynamics
+      - AI-aided fluid simulation
+      - AI帮助的流体模拟
+      - AI-driven fluid mechanics
+      - AI驱动的流体力学
+      - AI-enhanced fluid dynamics
+      - AI增强的流体动力学
+      - fluid simulation with AI
+      - AI for fluid mechanics
+      - AI in fluid dynamics
+      - 机器学习
+      - 深度学习
+      - 人工智能
+      - 流体力学
+      - fluid dynamics
+      - machine learning
+      - deep learning
       
-  Multimodal:
+  流体力学:
     keywords:
-      - multimodal
-      - vision-language
-      - clip
-      - image-text
-      - video-text
+      - 流体力学
+      - fluid dynamics
+      - 计算流体力学
+      - CFD
+      - computational fluid dynamics
+      - flow simulation
+      - turbulence
+      - 流动模拟
+      - 湍流
 
-# 顶级会议和期刊列表
+  CFD与机器学习交叉:
+    keywords:
+      # 流体力学核心关键词（必含其一）
+      - computational fluid dynamics
+      - 计算流体力学
+      - CFD
+      - fluid mechanics
+      - fluid dynamics
+      - 流体力学
+      - flow simulation
+      - 数值模拟
+      - flow modeling
+      - 数值计算
+      - flow computation
+      - turbulence
+      - RANS
+      - LES
+      - DNS
+      - 湍流
+      - 多相流
+      - multiphase flow
+      - two-phase flow
+      - 相界面
+      # ML/DL关键词（必含其一）
+      - machine learning
+      - 机器学习
+      - deep learning
+      - 深度学习
+      - neural network
+      - 神经网络
+      - PINN
+      - 物理信息神经网络
+      - physics-informed neural network
+      - data-driven modeling
+      - 数据驱动建模
+      - surrogate model
+      - 代理模型
+      - reduced-order model
+      - 降阶模型
+      - ROM
+      - data-driven
+      - LSTM
+      - 长短期记忆网络
+      - CNN
+      - 卷积神经网络
+      - transformer
+      - 变换器模型
+      - RNN
+      - 循环神经网络
+      - GAN
+      - 生成对抗网络
+      - reinforcement learning
+      - 强化学习
+      - transfer learning
+      - 迁移学习
+      - supervised learning
+      - 监督学习
+      - unsupervised learning
+      - 无监督学习
+
+  # 顶级会议和期刊列表
 venues:
   conferences:
     - NeurIPS
