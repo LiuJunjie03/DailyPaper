@@ -2,8 +2,8 @@ name: Update Papers Daily
 
 on:
   # 每天 UTC 0:00 自动运行
-  # schedule:
-    # - cron: '0 0 * * *'
+  schedule:
+    - cron: '0 0 * * *'
   
   # 支持手动触发
   workflow_dispatch:
@@ -49,7 +49,7 @@ jobs:
       run: |
         git config --local user.name 'github-actions[bot]'
         git config --local user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/papers*.json
+        git add data/ docs/
         if ! git diff --staged --quiet; then
           git commit -m "Auto update papers - $(date +'%Y-%m-%d')"
           git push
