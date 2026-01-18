@@ -3,8 +3,9 @@ sources:
   arxiv:
     enabled: true
     categories:
+      - cs.LG        # 机器学习
       - physics.flu-dyn  # 流体动力学（CFD核心分类，重点加）
-    max_results: 200
+    max_results: 1000
     days_back: 180  # 抓取一定天数的论文
 
 # 领域分类关键词
@@ -169,7 +170,22 @@ venues:
     - KDD
     - ICRA
     - IROS
-    
+    - AIAA SciTech Forum
+    # (AIAA科技论坛,航空航天CFD顶会)
+    - ASME Fluids Engineering Division Meeting
+    # (ASME流体工程会议,流体力学顶会)
+    - International Conference on Computational Fluid Dynamics (ICCFD)
+    # (CFD领域旗舰会议)
+    - International Conference on Numerical Methods in Fluid Dynamics
+    # (NUMEFD,数值流体顶会)
+    - International Symposium on Turbulence and Shear Flow Phenomena (TSFP)
+    # (湍流/CFD核心会议)
+    - Conference on Machine Learning for Fluid Dynamics (ML4FD)
+    # (机器学习+CFD交叉顶会)
+    - International Conference on Computational Mechanics (ICCM)
+    # (计算力学,含CFD分支)
+    - European Conference on Computational Fluid Dynamics (ECFD)
+    # (欧洲CFD旗舰会议)
   journals:
     - Nature
     - Science
@@ -177,6 +193,22 @@ venues:
     - JMLR
     - TPAMI
     - IJCV
+    - Journal of Computational Physics (JCP)
+    # （CFD数值方法顶刊，机器学习+CFD论文核心发表地）
+    - Computers & Fluids
+    # （CFD工程应用顶刊）
+    - Journal of Fluid Mechanics (JFM)
+    # （流体力学基础研究顶刊，含智能流体）
+    - AIAA Journal
+    # （航空航天CFD顶刊）
+    - International Journal for Numerical Methods in Fluids (IJNMF)
+    # （数值流体核心期刊）
+    - Physics of Fluids
+    # （流体物理顶刊，含湍流/智能流体）
+    - Computational Mechanics
+    # （计算力学，CFD交叉领域）
+    - Journal of Machine Learning for Science and Technology
+    # （机器学习+工程（含CFD）交叉期刊）
 
 # GitHub Pages 配置
 output:

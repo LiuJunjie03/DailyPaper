@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let monthsCache = {};  // 缓存已加载的月份数据
     
     // 配置里的分类列表（从Python传入）
-    const CATEGORIES = ["\u591a\u76f8\u6d41", "\u7a7a\u6c14\u52a8\u529b\u5b66", "\u673a\u5668\u5b66\u4e60", "\u667a\u80fd\u6d41\u4f53\u529b\u5b66", "\u6d41\u4f53\u529b\u5b66", "CFD\u4e0e\u673a\u5668\u5b66\u4e60\u4ea4\u53c9"];  // 新增：动态传入分类
+    const CATEGORIES = ["\u591a\u76f8\u6d41", "\u7a7a\u6c14\u52a8\u529b\u5b66", "\u673a\u5668\u5b66\u4e60", "\u667a\u80fd\u6d41\u4f53\u529b\u5b66", "\u6d41\u4f53\u529b\u5b66", "CFD\u4e0e\u673a\u5668\u5b66\u4e60\u4ea4\u53c9"];
     
     // 加载月份索引
     async function loadMonthsIndex() {
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         filterAndSortPapers();
     }
     
-    // 生成论文HTML
+    // 生成论文HTML（包含引用数/影响因子渲染）
     function createPaperHTML(paper) {
         const tags = paper.tags ? paper.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '';
         const keywords = paper.keywords ? paper.keywords.map(kw => `<span class="tag keyword">${kw}</span>`).join('') : '';
@@ -124,6 +124,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
+        // 新增：渲染引用数和影响因子
+        const citationText = paper.citation_count ? `📊 引用数: ${paper.citation_count}` : "📊 引用数: 暂无";
+        const impactText = paper.impact_factor ? `🌟 影响因子: ${paper.impact_factor}` : "🌟 影响因子: 暂无";
+        
         const status = paper.conference ? 'published' : 'preprint';
         const firstCategory = paper.categories && paper.categories.length > 0 ? paper.categories[0] : '';
         
@@ -140,6 +144,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="paper-meta">
                         <span class="meta-item">📅 ${paper.published}</span>
                         ${venueBadge}
+                        <span class="meta-item">${citationText}</span>
+                        <span class="meta-item">${impactText}</span>
                         ${codeLink}
                     </div>
                     <div class="paper-authors">
@@ -164,11 +170,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function getVenueBadge(conference) {
         if (!conference) return null;
         
-        // 根据会议名称中包含的关键词决定徽章样式
         const conferenceUpper = conference.toUpperCase();
-        let badgeClass = 'badge-published';  // 默认样式
+        let badgeClass = 'badge-published';
         
-        // 顶级会议匹配
         if (conferenceUpper.includes('NEURIPS')) {
             badgeClass = 'badge-neurips';
         } else if (conferenceUpper.includes('ICLR')) {
@@ -193,19 +197,16 @@ document.addEventListener('DOMContentLoaded', function() {
             badgeClass = 'badge-ijcai';
         }
         
-        // 直接使用从 ArXiv comments 提取的完整会议名称
         return { class: badgeClass, text: conference };
     }
     
-    // 更新研究领域按钮的数量（动态：从config分类计算）
+    // 更新研究领域按钮的数量
     function updateCategoryButtonCounts() {
-        // 先筛选出符合当前状态的论文
         const statusFilteredPapers = allPapersData.filter(paper => {
             const status = paper.conference ? 'published' : 'preprint';
             return currentStatus === 'all' || status === currentStatus;
         });
         
-        // 动态计算各个分类的数量（从config的分类列表）
         const categoryCounts = { 'all': statusFilteredPapers.length };
         CATEGORIES.forEach(category => {
             categoryCounts[category] = 0;
@@ -220,10 +221,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // 更新按钮文本
         categoryBtns.forEach(btn => {
             const category = btn.dataset.category;
-            // 简化显示名（比如NLP）
             const displayName = category === 'all' ? '全部' : 
                                category.replace("Natural Language Processing", "NLP");
             const count = categoryCounts[category] || 0;
@@ -231,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 筛选和排序论文
+    // 筛选和排序论文（包含重要程度排序）
     function filterAndSortPapers() {
         console.log('Filtering papers:', { currentStatus, currentCategory, searchTerm, currentSort });
         
@@ -250,22 +249,31 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log(`Filtered to ${filteredPapers.length} papers`);
         
-        // 排序
+        // 排序（新增重要程度排序）
         filteredPapers.sort((a, b) => {
             const dateA = new Date(a.published);
             const dateB = new Date(b.published);
             
             if (currentSort === 'date-desc') {
                 return dateB - dateA;
-            } else {
+            } else if (currentSort === 'date-asc') {
                 return dateA - dateB;
+            } else if (currentSort === 'importance-desc') {
+                // 重要程度：先按影响因子降序，再按引用数降序
+                const impactA = a.impact_factor || 0;
+                const impactB = b.impact_factor || 0;
+                if (impactA !== impactB) {
+                    return impactB - impactA;
+                }
+                const citeA = a.citation_count || 0;
+                const citeB = b.citation_count || 0;
+                return citeB - citeA;
             }
+            return 0;
         });
         
-        // 更新研究领域按钮的数量
+        // 更新按钮数量和显示
         updateCategoryButtonCounts();
-        
-        // 更新显示
         if (resultsCount) {
             resultsCount.textContent = `显示 ${filteredPapers.length} 篇论文`;
         }
@@ -275,8 +283,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (papersContainer) {
             papersContainer.innerHTML = '';
         }
-        
-        // 移除旧的 observer
         if (observer) {
             observer.disconnect();
         }
@@ -293,11 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         isLoading = true;
-        
-        // 第一次加载50个，后续每次10个
         const batchSize = loadedCount === 0 ? initialBatchSize : subsequentBatchSize;
-        console.log(`Loading papers ${loadedCount} to ${loadedCount + batchSize} (batch size: ${batchSize})`);
-        
         const endIndex = Math.min(loadedCount + batchSize, filteredPapers.length);
         const fragment = document.createDocumentFragment();
         
@@ -308,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
             fragment.appendChild(temp.firstElementChild);
         }
         
-        // 移除旧的加载指示器
+        // 移除旧加载指示器
         const oldIndicator = document.getElementById('loading-indicator');
         if (oldIndicator) {
             oldIndicator.remove();
@@ -318,9 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loadedCount = endIndex;
         isLoading = false;
         
-        console.log(`Loaded ${endIndex} papers total`);
-        
-        // 如果还有更多，设置加载触发器
+        // 设置加载触发器
         if (loadedCount < filteredPapers.length) {
             setupLoadTrigger();
         }
@@ -341,7 +341,6 @@ document.addEventListener('DOMContentLoaded', function() {
             papersContainer.appendChild(indicator);
         }
         
-        // 创建新的 observer
         if (observer) {
             observer.disconnect();
         }
@@ -349,42 +348,30 @@ document.addEventListener('DOMContentLoaded', function() {
         observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    console.log('Loading more papers (intersection detected)');
                     loadMorePapers();
                 }
             });
-        }, {
-            rootMargin: '200px'
-        });
+        }, { rootMargin: '200px' });
         
         observer.observe(indicator);
     }
     
-    // 月份筛选
+    // 绑定事件
     monthBtns.forEach(btn => {
         btn.addEventListener('click', async function() {
-            console.log('Month button clicked:', this.dataset.month);
             monthBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentMonth = this.dataset.month;
             
-            // 显示加载提示
-            if (resultsCount) {
-                resultsCount.textContent = '加载中...';
-            }
-            if (papersContainer) {
-                papersContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">加载中...</div>';
-            }
+            resultsCount.textContent = '加载中...';
+            papersContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">加载中...</div>';
             
-            // 加载月份数据
             await loadMonthData(currentMonth);
         });
     });
     
-    // 发表状态筛选
     statusBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            console.log('Status button clicked:', this.dataset.status);
             statusBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentStatus = this.dataset.status;
@@ -392,10 +379,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 研究领域筛选
     categoryBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            console.log('Category button clicked:', this.dataset.category);
             categoryBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentCategory = this.dataset.category;
@@ -403,10 +388,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 排序按钮
     sortBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
-            console.log('Sort button clicked:', this.dataset.sort);
             e.preventDefault();
             sortBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
@@ -415,11 +398,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 搜索输入
     if (searchInput) {
         searchInput.addEventListener('input', function() {
             searchTerm = this.value.toLowerCase();
-            console.log('Search term:', searchTerm);
             filterAndSortPapers();
         });
     }
@@ -432,7 +413,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // 监听复选框变化（使用事件委托）
     if (papersContainer) {
         papersContainer.addEventListener('change', function(e) {
             if (e.target.classList.contains('paper-checkbox')) {
@@ -441,49 +421,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 全选功能
     if (selectAllBtn) {
         selectAllBtn.addEventListener('click', function() {
             const checkboxes = document.querySelectorAll('.paper-checkbox');
             checkboxes.forEach(cb => cb.checked = true);
             updateSelectedCount();
-            console.log('All papers selected');
         });
     }
     
-    // 清空选择
     if (clearAllBtn) {
         clearAllBtn.addEventListener('click', function() {
             const checkboxes = document.querySelectorAll('.paper-checkbox');
             checkboxes.forEach(cb => cb.checked = false);
             updateSelectedCount();
-            console.log('All selections cleared');
         });
     }
     
     // 导出功能
     if (exportBtn) {
         exportBtn.addEventListener('click', function(e) {
-            console.log('Export button clicked');
             e.preventDefault();
             exportToBibTeX();
         });
     }
     
-    // 导出为 BibTeX
     function exportToBibTeX() {
-        // 获取所有选中的复选框
         const checkboxes = document.querySelectorAll('.paper-checkbox:checked');
-        
         if (checkboxes.length === 0) {
             alert('请至少选择一篇论文导出！');
             return;
         }
         
-        // 获取选中的论文ID
         const selectedIds = Array.from(checkboxes).map(cb => cb.dataset.paperId);
-        
-        // 从所有论文数据中找到对应的论文
         const selectedPapers = allPapersData.filter(paper => selectedIds.includes(paper.id));
         
         let bibtex = '';
@@ -502,11 +471,9 @@ document.addEventListener('DOMContentLoaded', function() {
             bibtex += `\n}\n\n`;
         });
         
-        console.log(`Exporting ${selectedPapers.length} selected papers`);
         downloadFile(bibtex, 'papers.bib', 'text/plain');
     }
     
-    // 下载文件
     function downloadFile(content, filename, contentType) {
         const blob = new Blob([content], { type: contentType });
         const url = URL.createObjectURL(blob);
@@ -517,10 +484,9 @@ document.addEventListener('DOMContentLoaded', function() {
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
-        console.log('File download triggered:', filename);
     }
     
-    // 初始化 - 加载数据
+    // 初始化
     console.log('Initializing...');
     loadMonthsIndex();
 });

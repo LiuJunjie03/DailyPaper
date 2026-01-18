@@ -324,11 +324,24 @@ main {
     align-items: center;
 }
 
+/* ========== 新增：关键词标签标题样式 ========== */
 .keyword-label {
     font-size: 0.85rem;
     color: #666;
+    font-weight: 600;
+    min-width: 80px;
 }
 
+/* ========== 新增：官方/自定义关键词区域样式 ========== */
+.official-keywords, .custom-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    align-items: center;
+}
+
+/* 基础标签样式 */
 .tag {
     display: inline-block;
     padding: 0.3rem 0.8rem;
@@ -338,9 +351,24 @@ main {
     font-size: 0.85rem;
 }
 
+/* 原有关键词标签样式 */
 .tag.keyword {
     background: #f3e5f5;
     color: #6a1b9a;
+}
+
+/* ========== 新增：官方关键词标签样式 ========== */
+.tag.tag-official {
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
+    border: 1px solid #fecdd3;
+}
+
+/* ========== 新增：自定义关键词标签样式 ========== */
+.tag.tag-custom {
+    background: #e3f2fd !important;
+    color: #1976d2 !important;
+    border: 1px solid #bbdefb;
 }
 
 .paper-abstract {
@@ -381,7 +409,7 @@ main {
 }
 
 .btn-link:hover {
-    background: #5568d3;
+    background: #555;
 }
 
 .btn-code {
@@ -460,5 +488,16 @@ footer a {
     .paper-meta {
         flex-direction: column;
         gap: 0.3rem;
+    }
+
+    /* 响应式：关键词区域适配 */
+    .keyword-label {
+        min-width: auto;
+        margin-bottom: 0.2rem;
+    }
+
+    .official-keywords, .custom-keywords {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

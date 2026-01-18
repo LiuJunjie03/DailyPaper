@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 生成静态网页脚本
-将论文数据生成为 HTML 页面
+将论文数据生成为 HTML 页面（适配按月份拆分的 JSON 数据源）
 """
 
 import json
@@ -9,13 +9,13 @@ from pathlib import Path
 from datetime import datetime
 from typing import List, Dict
 import logging
-import yaml  # 新增：导入yaml库
-import os    # 新增：导入os库
+import yaml
+import os
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# 新增：加载config.yaml的函数（核心！）
+# 加载config.yaml的函数
 def load_config():
     """加载项目根目录的config.yaml配置文件"""
     config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.yaml")
@@ -30,56 +30,66 @@ def load_config():
 
 # 加载配置（全局使用）
 config = load_config()
-# 获取配置里的分类列表（核心：替换硬编码分类）
+# 获取配置里的分类列表
 CATEGORIES = list(config.get('categories', {}).keys())
 
 
 class HTMLGenerator:
-    """HTML 生成器"""
+    """HTML 生成器（适配按月份拆分的数据源）"""
     
-    def __init__(self, data_path: str = "data/papers.json", 
+    def __init__(self, data_dir: str = "data", 
                  output_dir: str = "docs"):
-        self.data_path = Path(data_path)
+        # 关键修改1：不再依赖单一papers.json，改为读取data目录下的月度文件
+        self.data_dir = Path(data_dir)
         self.output_dir = Path(output_dir)
         self.papers = []
         self.papers_by_month = {}  # 按月份分组的论文
         
     def load_papers(self):
-        """加载论文数据"""
-        if not self.data_path.exists():
-            logger.warning(f"数据文件不存在: {self.data_path}")
+        """加载论文数据（从月度JSON文件读取，替代原papers.json）"""
+        # 清空原有数据
+        self.papers = []
+        self.papers_by_month = {}
+        
+        # 查找所有YYYY-MM.json格式的月度文件
+        month_files = list(self.data_dir.glob("????-??.json"))
+        if not month_files:
+            logger.warning(f"未找到任何月度数据文件（格式：YYYY-MM.json），目录：{self.data_dir}")
             return
         
-        with open(self.data_path, 'r', encoding='utf-8') as f:
-            self.papers = json.load(f)
+        # 遍历所有月度文件加载数据
+        for month_file in sorted(month_files, reverse=True):
+            year_month = month_file.stem  # 提取"2025-07"这样的月份标识
+            try:
+                with open(month_file, 'r', encoding='utf-8') as f:
+                    month_papers = json.load(f)
+                
+                # 添加到总论文列表
+                self.papers.extend(month_papers)
+                # 按月份分组
+                self.papers_by_month[year_month] = month_papers
+                
+                logger.info(f"加载月度文件: {month_file} ({len(month_papers)} 篇论文)")
+            except Exception as e:
+                logger.error(f"加载月度文件失败: {month_file}，错误: {e}")
+                continue
         
-        logger.info(f"加载了 {len(self.papers)} 篇论文")
-        
-        # 按月份分组
-        for paper in self.papers:
-            # 从 published 字段提取年月 (格式: 2025-10-31)
-            published = paper.get('published', '')
-            if published:
-                year_month = published[:7]  # 提取 "2025-10"
-                if year_month not in self.papers_by_month:
-                    self.papers_by_month[year_month] = []
-                self.papers_by_month[year_month].append(paper)
-        
+        logger.info(f"总计加载了 {len(self.papers)} 篇论文")
         logger.info(f"论文分布: {', '.join([f'{k}: {len(v)}篇' for k, v in sorted(self.papers_by_month.items(), reverse=True)])}")
     
     def generate_monthly_data_files(self):
-        """生成按月份分离的数据文件"""
+        """生成按月份分离的数据文件（适配已有月度文件，仅同步到docs目录）"""
         data_dir = self.output_dir / "data"
         data_dir.mkdir(parents=True, exist_ok=True)
         
-        # 为每个月份生成独立的 JSON 文件
+        # 同步已有月度文件到docs/data目录
         for year_month, papers in self.papers_by_month.items():
             file_path = data_dir / f"{year_month}.json"
             with open(file_path, 'w', encoding='utf-8') as f:
                 json.dump(papers, f, ensure_ascii=False, indent=2)
-            logger.info(f"生成月度数据文件: {file_path} ({len(papers)} 篇)")
+            logger.info(f"同步月度数据文件到输出目录: {file_path} ({len(papers)} 篇)")
         
-        # 生成索引文件，包含所有月份的元数据
+        # 生成/更新索引文件
         months_index = []
         for year_month in sorted(self.papers_by_month.keys(), reverse=True):
             papers = self.papers_by_month[year_month]
@@ -90,10 +100,11 @@ class HTMLGenerator:
                 'preprint_count': sum(1 for p in papers if not p.get('conference'))
             })
         
-        with open(data_dir / "index.json", 'w', encoding='utf-8') as f:
+        index_file = data_dir / "index.json"
+        with open(index_file, 'w', encoding='utf-8') as f:
             json.dump(months_index, f, ensure_ascii=False, indent=2)
         
-        logger.info(f"生成月份索引文件: {data_dir / 'index.json'}")
+        logger.info(f"生成/更新月份索引文件: {index_file}")
     
     def generate_month_buttons(self):
         """生成月份筛选按钮"""
@@ -103,23 +114,18 @@ class HTMLGenerator:
             buttons.append(f'<button class="filter-btn month-btn" data-month="{year_month}">{year_month} ({count})</button>')
         return '\n                    '.join(buttons)
     
-    # 新增：动态生成分类筛选按钮（替换硬编码）
     def generate_category_buttons(self, category_counts):
         """生成研究领域筛选按钮（从config.yaml读取）"""
         buttons = []
-        # 先加"全部"按钮
         buttons.append(f'<button class="filter-btn category-btn active" data-category="all">全部 ({category_counts["all"]})</button>')
-        # 遍历配置里的所有分类
         for category in CATEGORIES:
-            # 简化显示名（比如NLP）
             display_name = category.replace("Natural Language Processing", "NLP")
             count = category_counts.get(category, 0)
             buttons.append(f'<button class="filter-btn category-btn" data-category="{category}">{display_name} ({count})</button>')
         return '\n                    '.join(buttons)
     
     def generate_index_html(self):
-        """生成主页 HTML"""
-        # 计算各分类数量（动态：从config.yaml的分类计算，替换硬编码）
+        """生成主页 HTML（新增重要程度排序按钮）"""
         published_count = sum(1 for p in self.papers if p.get('conference'))
         preprint_count = sum(1 for p in self.papers if not p.get('conference'))
         
@@ -133,14 +139,14 @@ class HTMLGenerator:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DailyPaper - CFD+ML 最新论文</title>  <!-- 修改标题：适配你的需求 -->
+    <title>DailyPaper - CFD+ML 最新论文</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <div class="container">
             <h1>📚 DailyPaper</h1>
-            <p class="subtitle">每日自动更新 计算流体力学+机器学习 领域最新论文</p>  <!-- 修改副标题 -->
+            <p class="subtitle">每日自动更新 计算流体力学+机器学习 领域最新论文</p>
             <p class="update-time">最后更新: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} UTC</p>
         </div>
     </header>
@@ -165,7 +171,7 @@ class HTMLGenerator:
             <div class="filter-group">
                 <label class="filter-label">🏷️ 研究领域：</label>
                 <div class="filters category-filters">
-                    {self.generate_category_buttons(category_counts)}  <!-- 动态生成分类按钮 -->
+                    {self.generate_category_buttons(category_counts)}
                 </div>
             </div>
             <div class="filter-group">
@@ -173,6 +179,8 @@ class HTMLGenerator:
                 <div class="filters sort-filters">
                     <button class="filter-btn sort-btn active" data-sort="date-desc">最新优先</button>
                     <button class="filter-btn sort-btn" data-sort="date-asc">最早优先</button>
+                    <!-- 关键修改2：添加重要程度排序按钮 -->
+                    <button class="filter-btn sort-btn" data-sort="importance-desc">重要程度优先</button>
                 </div>
             </div>
         </div>
@@ -197,7 +205,7 @@ class HTMLGenerator:
     
     <footer>
         <div class="container">
-            <p>© 2025 DailyPaper | 数据来源: ArXiv | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>  <!-- 修改GitHub链接 -->
+            <p>© 2025 DailyPaper | 数据来源: ArXiv | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>
         </div>
     </footer>
     
@@ -228,7 +236,7 @@ class HTMLGenerator:
             'cs.HC': 'Human-Computer Interaction',
             'cs.MM': 'Multimedia',
             'stat.ML': 'Machine Learning (Statistics)',
-            'physics.flu-dyn': 'Fluid Dynamics (CFD)',  # 新增：适配CFD分类
+            'physics.flu-dyn': 'Fluid Dynamics (CFD)',
         }
         return category_map.get(category, category)
     
@@ -237,19 +245,16 @@ class HTMLGenerator:
         import re
         links = {}
         
-        # 提取 Code: 链接
         code_pattern = r'[Cc]ode[:\s]+(?:available at\s+)?(\S+)'
         code_match = re.search(code_pattern, abstract)
         if code_match:
             links['code'] = code_match.group(1).rstrip('.,;')
         
-        # 提取 Project: 链接
         project_pattern = r'[Pp]roject[:\s]+(?:page\s+)?(\S+)'
         project_match = re.search(project_pattern, abstract)
         if project_match:
             links['project'] = project_match.group(1).rstrip('.,;')
         
-        # 提取 GitHub 链接
         github_pattern = r'(https?://(?:www\.)?github\.com/[\w\-]+/[\w\-]+)'
         github_match = re.search(github_pattern, abstract)
         if github_match and 'code' not in links:
@@ -262,7 +267,6 @@ class HTMLGenerator:
         if not conference:
             return ('preprint', 'Preprint')
         
-        # 顶级会议配色
         venue_styles = {
             'NeurIPS': ('venue-neurips', 'NeurIPS'),
             'CVPR': ('venue-cvpr', 'CVPR'),
@@ -276,7 +280,6 @@ class HTMLGenerator:
             'IJCAI': ('venue-ijcai', 'IJCAI'),
         }
         
-        # 检查会议名称
         for venue_name, (style, display) in venue_styles.items():
             if venue_name in conference:
                 return (style, conference)
@@ -295,18 +298,14 @@ class HTMLGenerator:
             if len(paper['authors']) > 5:
                 authors_html += ' et al.'
             
-            # 获取友好的类别名称
             primary_category = paper.get('primary_category', paper['venue'])
             category_name = self.get_category_name(primary_category)
             
-            # 获取会议信息和徽章样式
             conference = paper.get('conference')
             venue_class, venue_display = self.get_venue_badge(conference)
             
-            # 确定发表状态
             is_published = 'published' if conference else 'preprint'
             
-            # 提取代码链接
             code_links = self.extract_code_links(paper['abstract'])
             code_links_html = ''
             if code_links.get('code'):
@@ -348,7 +347,7 @@ class HTMLGenerator:
         return '\n'.join(html_parts)
     
     def generate_css(self):
-        """生成 CSS 样式"""
+        """生成 CSS 样式（包含关键词区分样式）"""
         css = """/* 全局样式 */
 * {
     margin: 0;
@@ -675,11 +674,24 @@ main {
     align-items: center;
 }
 
+/* ========== 新增：关键词标签标题样式 ========== */
 .keyword-label {
     font-size: 0.85rem;
     color: #666;
+    font-weight: 600;
+    min-width: 80px;
 }
 
+/* ========== 新增：官方/自定义关键词区域样式 ========== */
+.official-keywords, .custom-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    align-items: center;
+}
+
+/* 基础标签样式 */
 .tag {
     display: inline-block;
     padding: 0.3rem 0.8rem;
@@ -689,9 +701,24 @@ main {
     font-size: 0.85rem;
 }
 
+/* 原有关键词标签样式 */
 .tag.keyword {
     background: #f3e5f5;
     color: #6a1b9a;
+}
+
+/* ========== 新增：官方关键词标签样式 ========== */
+.tag.tag-official {
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
+    border: 1px solid #fecdd3;
+}
+
+/* ========== 新增：自定义关键词标签样式 ========== */
+.tag.tag-custom {
+    background: #e3f2fd !important;
+    color: #1976d2 !important;
+    border: 1px solid #bbdefb;
 }
 
 .paper-abstract {
@@ -732,7 +759,7 @@ main {
 }
 
 .btn-link:hover {
-    background: #5568d3;
+    background: #555;
 }
 
 .btn-code {
@@ -812,19 +839,27 @@ footer a {
         flex-direction: column;
         gap: 0.3rem;
     }
+
+    /* 响应式：关键词区域适配 */
+    .keyword-label {
+        min-width: auto;
+        margin-bottom: 0.2rem;
+    }
+
+    .official-keywords, .custom-keywords {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 """
-        
         css_dir = self.output_dir / "css"
         css_dir.mkdir(parents=True, exist_ok=True)
-        
         with open(css_dir / "style.css", 'w', encoding='utf-8') as f:
             f.write(css)
-        
-        logger.info("生成 CSS 样式文件")
+        logger.info("生成 CSS 样式文件（包含关键词区分样式）")
     
     def generate_js(self):
-        """生成 JavaScript 文件"""
+        """生成 JavaScript 文件（包含重要程度排序逻辑）"""
         js = f"""// 筛选、搜索、排序和懒加载功能
 document.addEventListener('DOMContentLoaded', function() {{
     console.log('JavaScript loaded');
@@ -871,7 +906,7 @@ document.addEventListener('DOMContentLoaded', function() {{
     let monthsCache = {{}};  // 缓存已加载的月份数据
     
     // 配置里的分类列表（从Python传入）
-    const CATEGORIES = {json.dumps(CATEGORIES)};  // 新增：动态传入分类
+    const CATEGORIES = {json.dumps(CATEGORIES)};
     
     // 加载月份索引
     async function loadMonthsIndex() {{
@@ -930,7 +965,7 @@ document.addEventListener('DOMContentLoaded', function() {{
         filterAndSortPapers();
     }}
     
-    // 生成论文HTML
+    // 生成论文HTML（包含引用数/影响因子渲染）
     function createPaperHTML(paper) {{
         const tags = paper.tags ? paper.tags.map(tag => `<span class="tag">${{tag}}</span>`).join('') : '';
         const keywords = paper.keywords ? paper.keywords.map(kw => `<span class="tag keyword">${{kw}}</span>`).join('') : '';
@@ -951,6 +986,10 @@ document.addEventListener('DOMContentLoaded', function() {{
             }}
         }}
         
+        // 新增：渲染引用数和影响因子
+        const citationText = paper.citation_count ? `📊 引用数: ${{paper.citation_count}}` : "📊 引用数: 暂无";
+        const impactText = paper.impact_factor ? `🌟 影响因子: ${{paper.impact_factor}}` : "🌟 影响因子: 暂无";
+        
         const status = paper.conference ? 'published' : 'preprint';
         const firstCategory = paper.categories && paper.categories.length > 0 ? paper.categories[0] : '';
         
@@ -967,6 +1006,8 @@ document.addEventListener('DOMContentLoaded', function() {{
                     <div class="paper-meta">
                         <span class="meta-item">📅 ${{paper.published}}</span>
                         ${{venueBadge}}
+                        <span class="meta-item">${{citationText}}</span>
+                        <span class="meta-item">${{impactText}}</span>
                         ${{codeLink}}
                     </div>
                     <div class="paper-authors">
@@ -991,11 +1032,9 @@ document.addEventListener('DOMContentLoaded', function() {{
     function getVenueBadge(conference) {{
         if (!conference) return null;
         
-        // 根据会议名称中包含的关键词决定徽章样式
         const conferenceUpper = conference.toUpperCase();
-        let badgeClass = 'badge-published';  // 默认样式
+        let badgeClass = 'badge-published';
         
-        // 顶级会议匹配
         if (conferenceUpper.includes('NEURIPS')) {{
             badgeClass = 'badge-neurips';
         }} else if (conferenceUpper.includes('ICLR')) {{
@@ -1020,19 +1059,16 @@ document.addEventListener('DOMContentLoaded', function() {{
             badgeClass = 'badge-ijcai';
         }}
         
-        // 直接使用从 ArXiv comments 提取的完整会议名称
         return {{ class: badgeClass, text: conference }};
     }}
     
-    // 更新研究领域按钮的数量（动态：从config分类计算）
+    // 更新研究领域按钮的数量
     function updateCategoryButtonCounts() {{
-        // 先筛选出符合当前状态的论文
         const statusFilteredPapers = allPapersData.filter(paper => {{
             const status = paper.conference ? 'published' : 'preprint';
             return currentStatus === 'all' || status === currentStatus;
         }});
         
-        // 动态计算各个分类的数量（从config的分类列表）
         const categoryCounts = {{ 'all': statusFilteredPapers.length }};
         CATEGORIES.forEach(category => {{
             categoryCounts[category] = 0;
@@ -1047,10 +1083,8 @@ document.addEventListener('DOMContentLoaded', function() {{
             }});
         }});
         
-        // 更新按钮文本
         categoryBtns.forEach(btn => {{
             const category = btn.dataset.category;
-            // 简化显示名（比如NLP）
             const displayName = category === 'all' ? '全部' : 
                                category.replace("Natural Language Processing", "NLP");
             const count = categoryCounts[category] || 0;
@@ -1058,7 +1092,7 @@ document.addEventListener('DOMContentLoaded', function() {{
         }});
     }}
     
-    // 筛选和排序论文
+    // 筛选和排序论文（包含重要程度排序）
     function filterAndSortPapers() {{
         console.log('Filtering papers:', {{ currentStatus, currentCategory, searchTerm, currentSort }});
         
@@ -1077,22 +1111,31 @@ document.addEventListener('DOMContentLoaded', function() {{
         
         console.log(`Filtered to ${{filteredPapers.length}} papers`);
         
-        // 排序
+        // 排序（新增重要程度排序）
         filteredPapers.sort((a, b) => {{
             const dateA = new Date(a.published);
             const dateB = new Date(b.published);
             
             if (currentSort === 'date-desc') {{
                 return dateB - dateA;
-            }} else {{
+            }} else if (currentSort === 'date-asc') {{
                 return dateA - dateB;
+            }} else if (currentSort === 'importance-desc') {{
+                // 重要程度：先按影响因子降序，再按引用数降序
+                const impactA = a.impact_factor || 0;
+                const impactB = b.impact_factor || 0;
+                if (impactA !== impactB) {{
+                    return impactB - impactA;
+                }}
+                const citeA = a.citation_count || 0;
+                const citeB = b.citation_count || 0;
+                return citeB - citeA;
             }}
+            return 0;
         }});
         
-        // 更新研究领域按钮的数量
+        // 更新按钮数量和显示
         updateCategoryButtonCounts();
-        
-        // 更新显示
         if (resultsCount) {{
             resultsCount.textContent = `显示 ${{filteredPapers.length}} 篇论文`;
         }}
@@ -1102,8 +1145,6 @@ document.addEventListener('DOMContentLoaded', function() {{
         if (papersContainer) {{
             papersContainer.innerHTML = '';
         }}
-        
-        // 移除旧的 observer
         if (observer) {{
             observer.disconnect();
         }}
@@ -1120,11 +1161,7 @@ document.addEventListener('DOMContentLoaded', function() {{
         }}
         
         isLoading = true;
-        
-        // 第一次加载50个，后续每次10个
         const batchSize = loadedCount === 0 ? initialBatchSize : subsequentBatchSize;
-        console.log(`Loading papers ${{loadedCount}} to ${{loadedCount + batchSize}} (batch size: ${{batchSize}})`);
-        
         const endIndex = Math.min(loadedCount + batchSize, filteredPapers.length);
         const fragment = document.createDocumentFragment();
         
@@ -1135,7 +1172,7 @@ document.addEventListener('DOMContentLoaded', function() {{
             fragment.appendChild(temp.firstElementChild);
         }}
         
-        // 移除旧的加载指示器
+        // 移除旧加载指示器
         const oldIndicator = document.getElementById('loading-indicator');
         if (oldIndicator) {{
             oldIndicator.remove();
@@ -1145,9 +1182,7 @@ document.addEventListener('DOMContentLoaded', function() {{
         loadedCount = endIndex;
         isLoading = false;
         
-        console.log(`Loaded ${{endIndex}} papers total`);
-        
-        // 如果还有更多，设置加载触发器
+        // 设置加载触发器
         if (loadedCount < filteredPapers.length) {{
             setupLoadTrigger();
         }}
@@ -1168,7 +1203,6 @@ document.addEventListener('DOMContentLoaded', function() {{
             papersContainer.appendChild(indicator);
         }}
         
-        // 创建新的 observer
         if (observer) {{
             observer.disconnect();
         }}
@@ -1176,42 +1210,30 @@ document.addEventListener('DOMContentLoaded', function() {{
         observer = new IntersectionObserver((entries) => {{
             entries.forEach(entry => {{
                 if (entry.isIntersecting) {{
-                    console.log('Loading more papers (intersection detected)');
                     loadMorePapers();
                 }}
             }});
-        }}, {{
-            rootMargin: '200px'
-        }});
+        }}, {{ rootMargin: '200px' }});
         
         observer.observe(indicator);
     }}
     
-    // 月份筛选
+    // 绑定事件
     monthBtns.forEach(btn => {{
         btn.addEventListener('click', async function() {{
-            console.log('Month button clicked:', this.dataset.month);
             monthBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentMonth = this.dataset.month;
             
-            // 显示加载提示
-            if (resultsCount) {{
-                resultsCount.textContent = '加载中...';
-            }}
-            if (papersContainer) {{
-                papersContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">加载中...</div>';
-            }}
+            resultsCount.textContent = '加载中...';
+            papersContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">加载中...</div>';
             
-            // 加载月份数据
             await loadMonthData(currentMonth);
         }});
     }});
     
-    // 发表状态筛选
     statusBtns.forEach(btn => {{
         btn.addEventListener('click', function() {{
-            console.log('Status button clicked:', this.dataset.status);
             statusBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentStatus = this.dataset.status;
@@ -1219,10 +1241,8 @@ document.addEventListener('DOMContentLoaded', function() {{
         }});
     }});
     
-    // 研究领域筛选
     categoryBtns.forEach(btn => {{
         btn.addEventListener('click', function() {{
-            console.log('Category button clicked:', this.dataset.category);
             categoryBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentCategory = this.dataset.category;
@@ -1230,10 +1250,8 @@ document.addEventListener('DOMContentLoaded', function() {{
         }});
     }});
     
-    // 排序按钮
     sortBtns.forEach(btn => {{
         btn.addEventListener('click', function(e) {{
-            console.log('Sort button clicked:', this.dataset.sort);
             e.preventDefault();
             sortBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
@@ -1242,11 +1260,9 @@ document.addEventListener('DOMContentLoaded', function() {{
         }});
     }});
     
-    // 搜索输入
     if (searchInput) {{
         searchInput.addEventListener('input', function() {{
             searchTerm = this.value.toLowerCase();
-            console.log('Search term:', searchTerm);
             filterAndSortPapers();
         }});
     }}
@@ -1259,7 +1275,6 @@ document.addEventListener('DOMContentLoaded', function() {{
         }}
     }}
     
-    // 监听复选框变化（使用事件委托）
     if (papersContainer) {{
         papersContainer.addEventListener('change', function(e) {{
             if (e.target.classList.contains('paper-checkbox')) {{
@@ -1268,49 +1283,38 @@ document.addEventListener('DOMContentLoaded', function() {{
         }});
     }}
     
-    // 全选功能
     if (selectAllBtn) {{
         selectAllBtn.addEventListener('click', function() {{
             const checkboxes = document.querySelectorAll('.paper-checkbox');
             checkboxes.forEach(cb => cb.checked = true);
             updateSelectedCount();
-            console.log('All papers selected');
         }});
     }}
     
-    // 清空选择
     if (clearAllBtn) {{
         clearAllBtn.addEventListener('click', function() {{
             const checkboxes = document.querySelectorAll('.paper-checkbox');
             checkboxes.forEach(cb => cb.checked = false);
             updateSelectedCount();
-            console.log('All selections cleared');
         }});
     }}
     
     // 导出功能
     if (exportBtn) {{
         exportBtn.addEventListener('click', function(e) {{
-            console.log('Export button clicked');
             e.preventDefault();
             exportToBibTeX();
         }});
     }}
     
-    // 导出为 BibTeX
     function exportToBibTeX() {{
-        // 获取所有选中的复选框
         const checkboxes = document.querySelectorAll('.paper-checkbox:checked');
-        
         if (checkboxes.length === 0) {{
             alert('请至少选择一篇论文导出！');
             return;
         }}
         
-        // 获取选中的论文ID
         const selectedIds = Array.from(checkboxes).map(cb => cb.dataset.paperId);
-        
-        // 从所有论文数据中找到对应的论文
         const selectedPapers = allPapersData.filter(paper => selectedIds.includes(paper.id));
         
         let bibtex = '';
@@ -1329,11 +1333,9 @@ document.addEventListener('DOMContentLoaded', function() {{
             bibtex += `\\n}}\\n\\n`;
         }});
         
-        console.log(`Exporting ${{selectedPapers.length}} selected papers`);
         downloadFile(bibtex, 'papers.bib', 'text/plain');
     }}
     
-    // 下载文件
     function downloadFile(content, filename, contentType) {{
         const blob = new Blob([content], {{ type: contentType }});
         const url = URL.createObjectURL(blob);
@@ -1344,10 +1346,9 @@ document.addEventListener('DOMContentLoaded', function() {{
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
-        console.log('File download triggered:', filename);
     }}
     
-    // 初始化 - 加载数据
+    // 初始化
     console.log('Initializing...');
     loadMonthsIndex();
 }});
@@ -1366,7 +1367,7 @@ document.addEventListener('DOMContentLoaded', function() {{
         logger.info("开始生成静态网页...")
         
         self.load_papers()
-        self.generate_monthly_data_files()  # 生成月度数据文件
+        self.generate_monthly_data_files()
         self.generate_css()
         self.generate_js()
         self.generate_index_html()

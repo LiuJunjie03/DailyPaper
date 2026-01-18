@@ -1,7 +1,9 @@
+import requests
 import yaml
 import arxiv
 import json
 import os
+import re  # 新增：正则匹配官方关键词
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 import logging
@@ -16,19 +18,62 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 class PaperFetcher:
-    """ArXiv论文抓取器：适配你的新版yaml，兼容更多中英文关键词"""
-    
+    # 常见期刊/会议影响因子静态表（可自行扩充）
+    IMPACT_FACTOR_TABLE = {
+        # 期刊
+        'Nature': 64.8,
+        'Science': 63.8,
+        'PAMI': 24.3,
+        'JMLR': 6.8,
+        'TPAMI': 24.3,
+        'IJCV': 19.5,
+        'Journal of Computational Physics': 5.6,
+        'Computers & Fluids': 3.7,
+        'Journal of Fluid Mechanics': 4.0,
+        'AIAA Journal': 2.2,
+        'International Journal for Numerical Methods in Fluids': 2.1,
+        'Physics of Fluids': 3.5,
+        'Computational Mechanics': 3.2,
+        'Journal of Machine Learning for Science and Technology': 2.5,
+
+        # 会议（无官方IF，给排序参考分值）
+        'NeurIPS': 14.0,
+        'ICML': 12.0,
+        'ICLR': 10.0,
+        'CVPR': 11.2,
+        'ICCV': 10.5,
+        'ECCV': 8.5,
+        'ACL': 7.1,
+        'EMNLP': 6.2,
+        'NAACL': 5.5,
+        'AAAI': 7.7,
+        'IJCAI': 5.6,
+        'KDD': 6.9,
+        'IROS': 4.7,
+        'ICRA': 4.3,
+        'AIAA SciTech Forum': 3.0,
+        'ASME Fluids Engineering Division Meeting': 2.5,
+        'International Conference on Computational Fluid Dynamics': 3.5,
+        'International Conference on Numerical Methods in Fluid Dynamics': 3.0,
+        'International Symposium on Turbulence and Shear Flow Phenomena': 3.0,
+        'Conference on Machine Learning for Fluid Dynamics': 4.0,
+        'International Conference on Computational Mechanics': 3.0,
+        'European Conference on Computational Fluid Dynamics': 3.0,
+    }
+
+    # ========== 修正缩进：__init__ 必须是类的成员方法 ==========
     def __init__(self, config_path: str = "config.yaml"):
         """初始化：读取你的自定义yaml配置"""
-        self.config = self._load_config(config_path)
+        self.config = self._load_config(config_path)  # 关键：赋值self.config
         self.arxiv_client = arxiv.Client()  # ArXiv客户端
-        
+
     def _load_config(self, config_path: str) -> Dict:
         """加载你的yaml配置，确保结构匹配"""
         if not os.path.exists(config_path):
             raise FileNotFoundError(f"配置文件不存在：{config_path}，请确认文件路径正确")
-        
+
         try:
             with open(config_path, "r", encoding="utf-8") as f:
                 config = yaml.safe_load(f)
@@ -37,16 +82,82 @@ class PaperFetcher:
         except Exception as e:
             raise ValueError(f"配置文件解析失败：{e}")
 
+    def get_impact_factor(self, paper):
+        """根据会议/期刊名获取影响因子"""
+        # 优先用 conference 字段，否则用 categories/venue
+        name = paper.get('conference') or paper.get('venue')
+        if not name:
+            # 尝试从 categories 里找
+            cats = paper.get('categories', [])
+            for cat in cats:
+                if cat in self.IMPACT_FACTOR_TABLE:
+                    return self.IMPACT_FACTOR_TABLE[cat]
+            return None
+        # 标准化名称
+        for k in self.IMPACT_FACTOR_TABLE:
+            if k.lower() in name.lower():
+                return self.IMPACT_FACTOR_TABLE[k]
+        return None
+
+    def get_citation_count(self, title, authors=None, year=None):
+        """通过 Semantic Scholar API 获取引用次数"""
+        url = "https://api.semanticscholar.org/graph/v1/paper/search"
+        params = {
+            "query": title,
+            "fields": "title,authors,year,citationCount",
+            "limit": 1
+        }
+        try:
+            resp = requests.get(url, params=params, timeout=10)
+            if resp.status_code == 1000:
+                data = resp.json()
+                if data.get("data"):
+                    paper = data["data"][0]
+                    # 可选：进一步比对作者/年份
+                    return paper.get("citationCount", 0)
+        except Exception as e:
+            logger.warning(f"Semantic Scholar API 查询失败: {e}")
+        return None
+
+    # ========== 关键新增：提取论文的官方关键词 ==========
+    def extract_official_keywords(self, result: arxiv.Result) -> List[str]:
+        """
+        提取论文标注的「官方关键词」（从摘要/评论中匹配 Keywords: xxx 格式）
+        匹配规则：支持 Keywords/Key words/关键词 等中英文标注格式
+        """
+        official_kw = []
+        # 拼接可能包含关键词的文本：摘要 + 评论（ArXiv论文的comment字段可能包含期刊/关键词标注）
+        text_parts = [
+            result.summary.replace("\n", " ").strip(),  # 摘要
+            result.comment if result.comment else ""    # 评论字段
+        ]
+        full_text = " ".join(text_parts).lower()
+
+        # 正则匹配：匹配 "Keywords: xxx,xxx" 或 "Key words: xxx" 或 "关键词：xxx" 等格式
+        kw_pattern = r'(?:key\s*words?|关键词)\s*:\s*([^.;\n]+)'
+        matches = re.findall(kw_pattern, full_text, re.IGNORECASE)
+
+        if matches:
+            # 拆分关键词、去重、清理空格
+            for match in matches:
+                keywords = re.split(r'[,;]', match)
+                keywords = [kw.strip() for kw in keywords if kw.strip()]
+                official_kw.extend(keywords)
+
+        # 最终处理：去重 + 转小写（统一格式）
+        official_kw = list(set([kw.lower() for kw in official_kw]))
+        return official_kw
+
     def extract_paper_keywords(self, paper: Dict) -> List[str]:
         """
-        提取核心关键词：自动读取你yaml里的所有中英文关键词，适配新增的词汇
+        提取「自定义预设关键词」（原有逻辑，仅做注释优化）
         """
         # 拼接标题+摘要，转小写（统一匹配）
         text = (paper["title"] + " " + paper["abstract"]).lower()
         all_keywords = []
         
         # 收集你yaml中所有分类的关键词（包含新增的中英文）
-        categories = self.config.get("categories", {})
+        categories = self.config.get("categories", {})  # 现在self.config已正确初始化
         for cat_info in categories.values():
             all_keywords.extend([kw.lower() for kw in cat_info.get("keywords", [])])
         
@@ -76,7 +187,7 @@ class PaperFetcher:
         """
         tags = set()
         text = (paper["title"] + " " + paper["abstract"]).lower()
-        categories = self.config.get("categories", {})
+        categories = self.config.get("categories", {})  # self.config已正确初始化
         
         # ========== 核心修改：扩充关键词池，兼容你的新增词汇 ==========
         fluid_keywords_pool = [
@@ -143,16 +254,16 @@ class PaperFetcher:
 
     def fetch_arxiv_papers(self) -> List[Dict]:
         """
-        严格按你的新版yaml配置抓取：指定分类、180天、50篇
+        严格按你的新版yaml配置抓取：指定分类、30天、200篇
         """
-        arxiv_config = self.config.get("sources", {}).get("arxiv", {})
+        arxiv_config = self.config.get("sources", {}).get("arxiv", {})  # self.config已正确初始化
         if not arxiv_config.get("enabled", False):
             logger.warning("ArXiv数据源已禁用！")
             return []
         
         # 提取你的配置参数
         arxiv_categories = arxiv_config.get("categories", [])
-        max_results = arxiv_config.get("max_results", 50)
+        max_results = arxiv_config.get("max_results", 1000)
         days_back = arxiv_config.get("days_back", 180)
         
         # 构建ArXiv查询（指定分类+扩充的流体/ML关键词）
@@ -180,14 +291,16 @@ class PaperFetcher:
             sort_order=arxiv.SortOrder.Descending
         )
         
-        papers = []
+        papers_high_if = []
+        papers_other = []
         for result in self.arxiv_client.results(search):
-            # 本地时间过滤（仅保留近 N 天）
             published = result.published
             if published.tzinfo is None:
                 published = published.replace(tzinfo=timezone.utc)
             if published < start_date:
                 continue
+            
+            # ========== 核心修改：构建paper字典时，新增官方/自定义关键词字段 ==========
             paper = {
                 "id": result.entry_id.split("/")[-1],
                 "title": result.title,
@@ -200,61 +313,90 @@ class PaperFetcher:
                 "conference": "",
                 "code_link": "",
                 "tags": [],
+                # 新增字段1：官方关键词（从摘要/评论中提取）
+                "official_keywords": self.extract_official_keywords(result),
+                # 新增字段2：自定义预设关键词（原有逻辑）
+                "custom_keywords": [],
+                # 兼容原有keywords字段（合并官方+自定义，去重）
                 "keywords": []
             }
             
-            # 提取会议信息（匹配你的venues）
             if result.comment:
-                venues = self.config.get("venues", {})
+                venues = self.config.get("venues", {})  # self.config已正确初始化
                 all_venues = venues.get("conferences", []) + venues.get("journals", [])
                 for venue in all_venues:
                     if venue.lower() in result.comment.lower():
                         paper["conference"] = venue
                         break
             
-            # 分类打标签（修复版逻辑，确保标签不遗漏）
+            # 填充分类标签
             paper["tags"] = self.classify_paper(paper)
-            # 提取核心关键词（包含你新增的）
-            paper["keywords"] = self.extract_paper_keywords(paper)
+            # 填充自定义关键词
+            paper["custom_keywords"] = self.extract_paper_keywords(paper)
+            # 合并官方+自定义关键词，去重（保持原有keywords字段兼容）
+            paper["keywords"] = list(set(paper["official_keywords"] + paper["custom_keywords"]))
             
-            # 仅保留有分类标签的论文
+            # 补充引用数和影响因子
+            paper["citation_count"] = self.get_citation_count(paper["title"], paper["authors"], published.year)
+            paper["impact_factor"] = self.get_impact_factor(paper)
+            
+            # 按影响因子分类
             if paper["tags"]:
-                papers.append(paper)
-                logger.debug(f"抓取到相关论文：{paper['title'][:50]}...")
+                if paper["impact_factor"] and paper["impact_factor"] >= 3.0:
+                    papers_high_if.append(paper)
+                else:
+                    papers_other.append(paper)
         
-        logger.info(f"抓取完成：共{len(papers)}篇相关论文（兼容新增关键词）")
-        return papers
+        # 优先返回高影响因子文献，数量不足时补充其他
+        max_results = arxiv_config.get("max_results", 1000)
+        selected = papers_high_if[:max_results]
+        if len(selected) < max_results:
+            selected += papers_other[:max_results-len(selected)]
+        logger.info(f"抓取完成：高影响因子{len(papers_high_if)}篇，其他{len(papers_other)}篇，实际返回{len(selected)}篇")
+        return selected
 
     def save_papers(self):
-        """按你的output配置保存+同步到docs"""
-        output_config = self.config.get("output", {})
+        output_config = self.config.get("output", {})  # self.config已正确初始化
         data_dir = output_config.get("data_dir", "data")
         os.makedirs(data_dir, exist_ok=True)
-        save_path = os.path.join(data_dir, "papers.json")
-        
+        docs_dir = output_config.get("docs_dir", "docs")
+        os.makedirs(docs_dir, exist_ok=True)
+
         # 抓取论文
         papers = self.fetch_arxiv_papers()
         if not papers:
-            logger.warning("未抓取到任何相关论文！可尝试：\n1. 扩大days_back\n2. 放宽查询关键词")
+            logger.warning("未抓取到任何相关论文！")
             return
-        
-        # 保存JSON
-        with open(save_path, "w", encoding="utf-8") as f:
+
+        # ========== 新增：按月份拆分数据（和main.js加载逻辑对齐） ==========
+        month_papers = {}
+        for paper in papers:
+            month = paper["published"].split("-")[0] + "-" + paper["published"].split("-")[1]
+            if month not in month_papers:
+                month_papers[month] = []
+            month_papers[month].append(paper)
+
+        # 生成月份索引文件（data/index.json）
+        index_data = [{"month": month, "count": len(papers)} for month, papers in month_papers.items()]
+        with open(os.path.join(data_dir, "index.json"), "w", encoding="utf-8") as f:
+            json.dump(index_data, f, ensure_ascii=False, indent=2)
+        logger.info(f"月份索引已保存到：{os.path.join(data_dir, 'index.json')}")
+
+        # 保存各月份数据（如data/2026-01.json）—— 已包含official_keywords/custom_keywords
+        for month, papers in month_papers.items():
+            month_path = os.path.join(data_dir, f"{month}.json")
+            with open(month_path, "w", encoding="utf-8") as f:
+                json.dump(papers, f, ensure_ascii=False, indent=2)
+            logger.info(f"月份数据已保存到：{month_path}")
+
+        # 同步到docs目录（可选，保留papers.json）—— 同样包含新字段
+        with open(os.path.join(docs_dir, "papers.json"), "w", encoding="utf-8") as f:
             json.dump(papers, f, ensure_ascii=False, indent=2)
-        logger.info(f"论文数据已保存到：{save_path}（共{len(papers)}篇）")
-        
-        # 同步到docs目录
-        docs_dir = output_config.get("docs_dir", "docs")
-        os.makedirs(docs_dir, exist_ok=True)
-        docs_save_path = os.path.join(docs_dir, "papers.json")
-        with open(docs_save_path, "w", encoding="utf-8") as f:
-            json.dump(papers, f, ensure_ascii=False, indent=2)
-        logger.info(f"论文数据已同步到：{docs_save_path}")
 
 def main():
     """主函数：一键抓取+分类+保存+同步"""
     try:
-        fetcher = PaperFetcher()
+        fetcher = PaperFetcher()  # 实例化时调用__init__，正确初始化self.config
         fetcher.save_papers()
         logger.info("\n✅ 全部完成！直接打开 docs/index.html 即可查看结果")
     except Exception as e:
