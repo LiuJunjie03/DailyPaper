@@ -1,5 +1,39 @@
 [
   {
+    "id": "2601.13190v1",
+    "title": "LAViG-FLOW: Latent Autoregressive Video Generation for Fluid Flow Simulations",
+    "authors": "Vittoria De Pellegrini, Tariq Alkhalifah",
+    "abstract": "Modeling and forecasting subsurface multiphase fluid flow fields underpin applications ranging from geological CO2 sequestration (GCS) operations to geothermal production. This is essential for ensuring both operational performance and long-term safety. While high fidelity multiphase simulators are widely used for this purpose, they become prohibitively expensive once many forward runs are required for inversion purposes and quantify uncertainty. To tackle this challenge we propose LAViG-FLOW, a latent autoregressive video generation diffusion framework that explicitly learns the coupled evolution of saturation and pressure fields. Each state variable is compressed by a dedicated 2D autoencoder, and a Video Diffusion Transformer (VDiT) models their coupled distribution across time. We first train the model on a given time horizon to learn their coupled relationship and then fine-tune it autoregressively so it can extrapolate beyond the observed time window. Evaluated on an open-source CO2 sequestration dataset, LAViG-FLOW generates saturation and pressure fields that stay consistent across time while running orders of magnitude faster than traditional numerical solvers.",
+    "published": "2026-01-19",
+    "arxiv_url": "http://arxiv.org/abs/2601.13190v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.13190v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "transformer",
+      "rom",
+      "rans",
+      "flow simulation"
+    ],
+    "keywords": [
+      "transformer",
+      "rom",
+      "rans",
+      "flow simulation"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2601.06244v1",
     "title": "Hard Constraint Projection in a Physics Informed Neural Network",
     "authors": "Miranda J. S. Horne, Peter K. Jimack, Amirul Khan, He Wang",
@@ -19,13 +53,13 @@
     "official_keywords": [],
     "custom_keywords": [
       "pinn",
-      "neural network",
-      "rom"
+      "rom",
+      "neural network"
     ],
     "keywords": [
       "pinn",
-      "neural network",
-      "rom"
+      "rom",
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -52,13 +86,13 @@
     "official_keywords": [],
     "custom_keywords": [
       "rom",
-      "data-driven",
-      "gan"
+      "gan",
+      "data-driven"
     ],
     "keywords": [
       "rom",
-      "data-driven",
-      "gan"
+      "gan",
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -82,14 +116,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
+      "les",
       "rnn",
-      "les"
+      "neural network"
     ],
     "keywords": [
-      "neural network",
+      "les",
       "rnn",
-      "les"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -110,18 +144,18 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
       "les",
+      "rom",
       "turbulence"
     ],
     "keywords": [
-      "rom",
       "les",
+      "rom",
       "turbulence"
     ],
     "citation_count": null,
@@ -142,26 +176,26 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
       "CFD与机器学习交叉",
+      "流体力学",
       "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
       "computational fluid dynamics",
-      "rans",
       "rom",
       "fluid dynamics",
-      "les"
+      "rans",
+      "les",
+      "cfd"
     ],
     "keywords": [
-      "cfd",
       "computational fluid dynamics",
-      "rans",
       "rom",
       "fluid dynamics",
-      "les"
+      "rans",
+      "les",
+      "cfd"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -182,30 +216,30 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "CFD与机器学习交叉",
-      "智能流体力学",
       "流体力学",
-      "空气动力学"
+      "CFD与机器学习交叉",
+      "空气动力学",
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
-      "aerodynamics",
       "computational fluid dynamics",
+      "pinn",
       "neural network",
-      "rans",
       "physics-informed neural network",
-      "fluid dynamics"
+      "aerodynamics",
+      "fluid dynamics",
+      "rans"
     ],
     "keywords": [
-      "pinn",
-      "aerodynamics",
       "computational fluid dynamics",
+      "pinn",
       "neural network",
-      "rans",
       "physics-informed neural network",
-      "fluid dynamics"
+      "aerodynamics",
+      "fluid dynamics",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
