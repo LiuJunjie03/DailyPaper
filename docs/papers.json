@@ -1,58 +1,126 @@
 [
   {
-    "id": "2507.21890v1",
-    "title": "Data-driven quantum Koopman method for simulating nonlinear dynamics",
-    "authors": "Baoyang Zhang, Zhen Lu, Yaomin Zhao, Yue Yang",
-    "abstract": "Quantum computation offers potential exponential speedups for simulating certain physical systems, but its application to nonlinear dynamics is inherently constrained by the requirement of unitary evolution. We propose the quantum Koopman method (QKM), a data-driven framework that bridges this gap through transforming nonlinear dynamics into linear unitary evolution in higher-dimensional observable spaces. Leveraging the Koopman operator theory to achieve a global linearization, our approach maps system states into a hierarchy of Hilbert spaces using a deep autoencoder. Within the linearized embedding spaces, the state representation is decomposed into modulus and phase components, and the evolution is governed by a set of unitary Koopman operators that act exclusively on the phase. These operators are constructed from diagonal Hamiltonians with coefficients learned from data, a structure designed for efficient implementation on quantum hardware. This architecture enables direct multi-step prediction, and the operator's computational complexity scales logarithmically with the observable space dimension. The QKM is validated across diverse nonlinear systems. Its predictions maintain relative errors below 6% for reaction-diffusion systems and shear flows, and capture key statistics in 2D turbulence. This work establishes a practical pathway for quantum-accelerated simulation of nonlinear phenomena, exploring a framework built on the synergy between deep learning for global linearization and quantum algorithms for unitary dynamics evolution.",
-    "published": "2025-07-29",
-    "arxiv_url": "http://arxiv.org/abs/2507.21890v1",
-    "pdf_url": "https://arxiv.org/pdf/2507.21890v1",
+    "id": "2508.21249v1",
+    "title": "A Mixture of Experts Gating Network for Enhanced Surrogate Modeling in External Aerodynamics",
+    "authors": "Mohammad Amin Nabian, Sanjay Choudhry",
+    "abstract": "The computational cost associated with high-fidelity CFD simulations remains a significant bottleneck in the automotive design and optimization cycle. While ML-based surrogate models have emerged as a promising alternative to accelerate aerodynamic predictions, the field is characterized by a diverse and rapidly evolving landscape of specialized neural network architectures, with no single model demonstrating universal superiority. This paper introduces a novel meta-learning framework that leverages this architectural diversity as a strength. We propose a Mixture of Experts (MoE) model that employs a dedicated gating network to dynamically and optimally combine the predictions from three heterogeneous, state-of-the-art surrogate models: DoMINO, a decomposable multi-scale neural operator; X-MeshGraphNet, a scalable multi-scale graph neural network; and FigConvNet, a factorized implicit global convolution network. The gating network learns a spatially-variant weighting strategy, assigning credibility to each expert based on its localized performance in predicting surface pressure and wall shear stress fields. To prevent model collapse and encourage balanced expert contributions, we integrate an entropy regularization term into the training loss function. The entire system is trained and validated on the DrivAerML dataset, a large-scale, public benchmark of high-fidelity CFD simulations for automotive aerodynamics. Quantitative results demonstrate that the MoE model achieves a significant reduction in L-2 prediction error, outperforming not only the ensemble average but also the most accurate individual expert model across all evaluated physical quantities. This work establishes the MoE framework as a powerful and effective strategy for creating more robust and accurate composite surrogate models by synergistically combining the complementary strengths of specialized architectures.",
+    "published": "2025-08-28",
+    "arxiv_url": "http://arxiv.org/abs/2508.21249v1",
+    "pdf_url": "https://arxiv.org/pdf/2508.21249v1",
     "categories": [
-      "quant-ph",
-      "cs.AI",
       "cs.LG",
-      "physics.comp-ph",
+      "cs.AI",
+      "math.NA",
       "physics.flu-dyn"
     ],
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
+      "CFD与机器学习交叉",
       "机器学习",
       "流体力学",
-      "CFD与机器学习交叉"
+      "空气动力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
-      "rans",
-      "deep learning",
-      "data-driven",
       "rom",
-      "turbulence"
+      "cfd",
+      "neural network",
+      "surrogate model",
+      "aerodynamics"
     ],
     "keywords": [
-      "les",
-      "rans",
-      "deep learning",
-      "data-driven",
       "rom",
-      "turbulence"
+      "cfd",
+      "neural network",
+      "surrogate model",
+      "aerodynamics"
     ],
     "citation_count": null,
     "impact_factor": null
   },
   {
-    "id": "2507.21684v1",
-    "title": "diffSPH: Differentiable Smoothed Particle Hydrodynamics for Adjoint Optimization and Machine Learning",
-    "authors": "Rene Winchenbach, Nils Thuerey",
-    "abstract": "We present diffSPH, a novel open-source differentiable Smoothed Particle Hydrodynamics (SPH) framework developed entirely in PyTorch with GPU acceleration. diffSPH is designed centrally around differentiation to facilitate optimization and machine learning (ML) applications in Computational Fluid Dynamics~(CFD), including training neural networks and the development of hybrid models. Its differentiable SPH core, and schemes for compressible (with shock capturing and multi-phase flows), weakly compressible (with boundary handling and free-surface flows), and incompressible physics, enable a broad range of application areas. We demonstrate the framework's unique capabilities through several applications, including addressing particle shifting via a novel, target-oriented approach by minimizing physical and regularization loss terms, a task often intractable in traditional solvers. Further examples include optimizing initial conditions and physical parameters to match target trajectories, shape optimization, implementing a solver-in-the-loop setup to emulate higher-order integration, and demonstrating gradient propagation through hundreds of full simulation steps. Prioritizing readability, usability, and extensibility, this work offers a foundational platform for the CFD community to develop and deploy novel neural networks and adjoint optimization applications.",
-    "published": "2025-07-29",
-    "arxiv_url": "http://arxiv.org/abs/2507.21684v1",
-    "pdf_url": "https://arxiv.org/pdf/2507.21684v1",
+    "id": "2509.04463v1",
+    "title": "Multiscale Graph Neural Network for Turbulent Flow-Thermal Prediction Around a Complex-Shaped Pin-Fin",
+    "authors": "Riddhiman Raut, Evan M. Mihalko, Amrita Basak",
+    "abstract": "This study presents the development of a domain-responsive edge-aware multiscale Graph Neural Network for predicting steady, turbulent flow and thermal behavior in a two-dimensional channel containing arbitrarily shaped complex pin-fin geometries. The training dataset was constructed through an automated framework that integrated geometry generation, meshing, and flow-field solutions in ANSYS Fluent. The pin-fin geometry was parameterized using piecewise cubic splines, producing 1,000 diverse configurations through Latin Hypercube Sampling. Each simulation was converted into a graph structure, where nodes carried a feature vector containing spatial coordinates, a normalized streamwise position, one-hot boundary indicators, and a signed distance to the nearest boundary such as wall. This graph structure served as input to the newly developed Graph Neural Network, which was trained to predict temperature, velocity magnitude, and pressure at each node using data from ANSYS. The network predicted fields with outstanding accuracy, capturing boundary layers, recirculation, and the stagnation region upstream of the pin-fins while reducing wall time by 2-3 orders of magnitude. In conclusion, the novel graph neural network offered a fast and reliable surrogate for simulations in complex flow configurations.",
+    "published": "2025-08-28",
+    "arxiv_url": "http://arxiv.org/abs/2509.04463v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.04463v1",
     "categories": [
       "physics.flu-dyn",
       "cs.AI",
+      "cs.LG",
+      "math.NA"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "neural network"
+    ],
+    "keywords": [
+      "rom",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2508.18703v1",
+    "title": "Data-Driven Discovery and Formulation Refines the Quasi-Steady Model of Flapping-Wing Aerodynamics",
+    "authors": "Yu Kamimizu, Hao Liu, Toshiyuki Nakata",
+    "abstract": "Insects control unsteady aerodynamic forces on flapping wings to navigate complex environments. While understanding these forces is vital for biology, physics, and engineering, existing evaluation methods face trade-offs: high-fidelity simulations are computationally or experimentally expensive and lack explanatory power, whereas theoretical models based on quasi-steady assumptions offer insights but exhibit low accuracy. To overcome these limitations and thus enhance the accuracy of quasi-steady aerodynamic models, we applied a data-driven approach involving discovery and formulation of previously overlooked critical mechanisms. Through selection from 5,000 candidate kinematic functions, we identified mathematical expressions for three key additional mechanisms -- the effect of advance ratio, effect of spanwise kinematic velocity, and rotational Wagner effect -- which had been qualitatively recognized but were not formulated. Incorporating these mechanisms considerably reduced the prediction errors of the quasi-steady model using the computational fluid dynamics results as the ground truth, both in hawkmoth forward flight (at high Reynolds numbers) and fruit fly maneuvers (at low Reynolds numbers). The data-driven quasi-steady model enables rapid aerodynamic analysis, serving as a practical tool for understanding evolutionary adaptations in insect flight and developing bio-inspired flying robots.",
+    "published": "2025-08-26",
+    "arxiv_url": "http://arxiv.org/abs/2508.18703v1",
+    "pdf_url": "https://arxiv.org/pdf/2508.18703v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.bio-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "流体力学",
+      "空气动力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "rom",
+      "les",
+      "fluid dynamics",
+      "aerodynamics",
+      "computational fluid dynamics"
+    ],
+    "keywords": [
+      "data-driven",
+      "rom",
+      "les",
+      "fluid dynamics",
+      "aerodynamics",
+      "computational fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2508.16916v1",
+    "title": "The compressible Neural Particle Method for Simulating Compressible Viscous Fluid Flows",
+    "authors": "Masato Shibukawa, Naoya Ozaki, Maximilien Berthet",
+    "abstract": "Particle methods play an important role in computational fluid dynamics, but they are among the most difficult to implement and solve. The most common method is smoothed particle hydrodynamics, which is suitable for problem settings that involve large deformations, such as tsunamis and dam breaking. However, the calculation can become unstable depending on the distribution of particles. In contrast, the neural particle method has high computational stability for various particle distributions is a machine learning method that approximates velocity and pressure in a spatial domain using neural networks. The neural particle method has been extended to viscous flows, but until now it has been limited to incompressible flows. In this paper, we propose the compressible neural particle method, which is a new feed-forward neural network-based method that extends the original neural particle method to model compressible viscous fluid flows. The proposed method uses neural networks to calculate the velocity and pressure of fluid particles at the next time step, and the Tait equation to calculate the density to handle the compressibility. The loss function is composed of the governing equations of compressible flow and the boundary conditions, which are free surface and solid boundary conditions. We demonstrate that the proposed method can accurately solve the compressible viscous fluid flow, a problem that was difficult to solve with the smoothed particle hydrodynamics method, by applying it to a dam breaking problem.",
+    "published": "2025-08-23",
+    "arxiv_url": "http://arxiv.org/abs/2508.16916v1",
+    "pdf_url": "https://arxiv.org/pdf/2508.16916v1",
+    "categories": [
+      "physics.flu-dyn",
       "cs.LG"
     ],
     "conference": "",
@@ -65,19 +133,232 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics",
       "les",
       "neural network",
+      "fluid dynamics",
+      "machine learning",
+      "computational fluid dynamics"
+    ],
+    "keywords": [
+      "les",
+      "neural network",
+      "fluid dynamics",
+      "machine learning",
+      "computational fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2508.16891v1",
+    "title": "Quantifying Out-of-Training Uncertainty of Neural-Network based Turbulence Closures",
+    "authors": "Cody Grogan, Som Dhulipala, Mauricio Tano, Izabela Gutowska, Som Dutta",
+    "abstract": "Neural-Network (NN) based turbulence closures have been developed for being used as pre-trained surrogates for traditional turbulence closures, with the aim to increase computational efficiency and prediction accuracy of CFD simulations. The bottleneck to the widespread adaptation of these ML-based closures is the relative lack of uncertainty quantification (UQ) for these models. Especially, quantifying uncertainties associated with out-of-training inputs, that is when the ML-based turbulence closures are queried on inputs outside their training data regime. In the current paper, a published algebraic turbulence closure1 has been utilized to compare the quality of epistemic UQ between three NN-based methods and Gaussian Process (GP). The three NN-based methods explored are Deep Ensembles (DE), Monte-Carlo Dropout (MCD), and Stochastic Variational Inference (SVI). In the in-training results, we find the exact GP performs the best in accuracy with a Root Mean Squared Error (RMSE) of $2.14 \\cdot 10^{-5}$ followed by the DE with an RMSE of $4.59 \\cdot 10^{-4}$. Next, the paper discusses the performance of the four methods for quantifying out-of-training uncertainties. For performance, the Exact GP yet again is the best in performance, but has similar performance to the DE in the out-of-training regions. In UQ accuracy for the out-of-training case, SVI and DE hold the best miscalibration error for one of the cases. However, the DE performs the best in Negative Log-Likelihood for both out-of-training cases. We observe that for the current problem, in terms of accuracy GP > DE > SV I > MCD. The DE results are relatively robust and provide intuitive UQ estimates, despite performing naive ensembling. In terms of computational cost, the GP is significantly higher than the NN-based methods with a $O(n^3)$ computational complexity for each training step",
+    "published": "2025-08-23",
+    "arxiv_url": "http://arxiv.org/abs/2508.16891v1",
+    "pdf_url": "https://arxiv.org/pdf/2508.16891v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
       "cfd",
+      "turbulence"
+    ],
+    "keywords": [
+      "les",
+      "cfd",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2508.14085v2",
+    "title": "Parameter-Aware Ensemble SINDy for Interpretable Symbolic SGS Closure",
+    "authors": "Hanseul Kang, Ville Vuorinen, Shervin Karimkashi",
+    "abstract": "This work designs a scalable, parameter-aware sparse regression framework for discovering interpretable partial differential equations and subgrid-scale closures from multi-parameter simulation data. Building on SINDy (Sparse Identification of Nonlinear Dynamics), the approach addresses key limitations through four enhancements. First, symbolic parameterisation enables physical parameters to vary within unified regression. Second, the Dimensional Similarity Filter enforces unit consistency while reducing candidate libraries. Third, memory-efficient Gram-matrix accumulation enables batch processing of large datasets. Fourth, ensemble consensus with coefficient stability analysis ensures robust model identification.   Validation on canonical one-dimensional benchmarks demonstrates consistent discovery of governing equations across parameter ranges. Applied to filtered Burgers datasets, the framework autonomously discovers the SGS closure $τ_{\\mathrm{SGS}} = 0.1604\\cdotΔ^2\\left(\\frac{\\partial \\bar{u}}{\\partial x}\\right)^2$ with the SINDy-discovered Smagorinsky constant $C_s^{\\text{SINDy}} \\approx 0.4005$ without predefined closure assumptions, recovering Smagorinsky-type structure directly from data.   The discovered model achieves $R^2 = 0.885$ across filter scales and demonstrates improved prediction accuracy compared to classical SGS closures. The ability of the framework to identify physically meaningful SGS forms and calibrate coefficients offers a complementary approach to existing turbulence modelling methods, contributing to the broader field of data-driven turbulence closure discovery.",
+    "published": "2025-08-13",
+    "arxiv_url": "http://arxiv.org/abs/2508.14085v2",
+    "pdf_url": "https://arxiv.org/pdf/2508.14085v2",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "CFD与机器学习交叉"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "les",
+      "turbulence",
+      "data-driven"
+    ],
+    "keywords": [
+      "data-driven",
+      "rom",
+      "turbulence",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2508.05977v2",
+    "title": "LinguaFluid: Language Guided Fluid Control via Semantic Rewards in Reinforcement Learning",
+    "authors": "Aoming Liang, Chi Cheng, Dashuai Chen, Boai Sun, Dixia Fan",
+    "abstract": "In the domain of scientific machine learning, designing effective reward functions remains a challenge in reinforcement learning (RL), particularly in environments where task goals are difficult to specify numerically. Reward functions in existing work are predominantly based on heuristics, manual engineering, or task-specific tuning. In this work, we introduce a semantically aligned reinforcement learning method where rewards are computed by aligning the current state with a target semantic instruction using a Sentence-Bidirectional Encoder Representations from Transformers (SBERT). Instead of relying on manually defined reward functions, the policy receives feedback based on the reward, which is a cosine similarity between the goal textual description and the statement description in the episode. We evaluated our approach in several environments and showed that semantic reward can guide learning to achieve competitive control behavior, even in the absence of hand-crafted reward functions. Our study demonstrates a correlation between the language embedding space and the conventional Euclidean space. This framework opens new horizons for aligning agent behavior with natural language goals and lays the groundwork for a more seamless integration of larger language models (LLMs) and fluid control applications.",
+    "published": "2025-08-08",
+    "arxiv_url": "http://arxiv.org/abs/2508.05977v2",
+    "pdf_url": "https://arxiv.org/pdf/2508.05977v2",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "reinforcement learning",
+      "les",
+      "rans",
+      "machine learning",
+      "transformer"
+    ],
+    "keywords": [
+      "rom",
+      "reinforcement learning",
+      "les",
+      "rans",
+      "machine learning",
+      "transformer"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2508.04084v2",
+    "title": "Convolutional autoencoders for the reconstruction of three-dimensional interfacial multiphase flows",
+    "authors": "Murray Cutforth, Shahab Mirjalili",
+    "abstract": "We present a systematic investigation of convolutional autoencoders for the reduced-order representation of three-dimensional interfacial multiphase flows. Focusing on the reconstruction of phase indicators, we examine how the choice of interface representation, including sharp, diffuse, and level-set formulations, impacts reconstruction accuracy across a range of interface complexities. Training and validation are performed using both synthetic datasets with controlled geometric complexity and high-fidelity simulations of multiphase homogeneous isotropic turbulence. We show that the interface representation plays a critical role in autoencoder performance. Excessively sharp interfaces lead to the loss of small-scale features, while overly diffuse interfaces degrade overall accuracy. Across all datasets and metrics considered, a moderately diffuse interface provides the best balance between preserving fine-scale structures and achieving accurate reconstructions. These findings elucidate key limitations and best practices for dimensionality reduction of multiphase flows using autoencoders. By clarifying how interface representations interact with the inductive biases of convolutional neural networks, this work lays the foundation for decoupling the training of autoencoders for accurate state compression from the training of surrogate models for temporal forecasting or input-output prediction in latent space.",
+    "published": "2025-08-06",
+    "arxiv_url": "http://arxiv.org/abs/2508.04084v2",
+    "pdf_url": "https://arxiv.org/pdf/2508.04084v2",
+    "categories": [
+      "cs.CE",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学",
+      "多相流"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "multiphase flow",
+      "neural network",
+      "surrogate model",
+      "turbulence"
+    ],
+    "keywords": [
+      "rom",
+      "multiphase flow",
+      "neural network",
+      "surrogate model",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2508.01537v1",
+    "title": "FluidFormer: Transformer with Continuous Convolution for Particle-based Fluid Simulation",
+    "authors": "Nianyi Wang, Yu Chen, Shuai Zheng",
+    "abstract": "Learning-based fluid simulation networks have been proven as viable alternatives to traditional numerical solvers for the Navier-Stokes equations. Existing neural methods follow Smoothed Particle Hydrodynamics (SPH) frameworks, which inherently rely only on local inter-particle interactions. However, we emphasize that global context integration is also essential for learning-based methods to stabilize complex fluid simulations. We propose the first Fluid Attention Block (FAB) with a local-global hierarchy, where continuous convolutions extract local features while self-attention captures global dependencies. This fusion suppresses the error accumulation and models long-range physical phenomena. Furthermore, we pioneer the first Transformer architecture specifically designed for continuous fluid simulation, seamlessly integrated within a dual-pipeline architecture. Our method establishes a new paradigm for neural fluid simulation by unifying convolution-based local features with attention-based global context modeling. FluidFormer demonstrates state-of-the-art performance, with stronger stability in complex fluid scenarios.",
+    "published": "2025-08-03",
+    "arxiv_url": "http://arxiv.org/abs/2508.01537v1",
+    "pdf_url": "https://arxiv.org/pdf/2508.01537v1",
+    "categories": [
+      "cs.CE",
+      "cs.GR",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "transformer",
+      "les"
+    ],
+    "keywords": [
+      "rans",
+      "transformer",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2508.01314v1",
+    "title": "Physics-Informed Neural Network Approaches for Sparse Data Flow Reconstruction of Unsteady Flow Around Complex Geometries",
+    "authors": "Vamsi Sai Krishna Malineni, Suresh Rajendran",
+    "abstract": "The utilization of Deep Neural Networks (DNNs) in physical science and engineering applications has gained traction due to their capacity to learn intricate functions. While large datasets are crucial for training DNN models in fields like computer vision and natural language processing, obtaining such datasets for engineering applications is prohibitively expensive. Physics-Informed Neural Networks (PINNs), a branch of Physics-Informed Machine Learning (PIML), tackle this challenge by embedding physical principles within neural network architectures. PINNs have been extensively explored for solving diverse forward and inverse problems in fluid mechanics. Nonetheless, there is limited research on employing PINNs for flow reconstruction from sparse data under constrained computational resources. Earlier studies were focused on forward problems with well-defined data. The present study attempts to develop models capable of reconstructing the flow field data from sparse datasets mirroring real-world scenarios.   This study focuses on two cases: (a) two-dimensional (2D) unsteady laminar flow past a circular cylinder and (b) three-dimensional (3D) unsteady turbulent flow past an ultra-large container ship (ULCS). The first case compares the effectiveness of training methods like Standard PINN and Backward Compatible PINN (BC-PINN) and explores the performance enhancements through systematic relaxation of physics constraints and dynamic weighting of loss function components. The second case highlights the capability of PINN-based models to learn underlying physics from sparse data while accurately reconstructing the flow field for a highly turbulent flow.",
+    "published": "2025-08-02",
+    "arxiv_url": "http://arxiv.org/abs/2508.01314v1",
+    "pdf_url": "https://arxiv.org/pdf/2508.01314v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "fluid mechanics",
+      "les",
+      "neural network",
+      "pinn",
+      "physics-informed neural network",
       "machine learning"
     ],
     "keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics",
+      "rom",
+      "fluid mechanics",
       "les",
       "neural network",
-      "cfd",
+      "pinn",
+      "physics-informed neural network",
       "machine learning"
     ],
     "citation_count": null,
