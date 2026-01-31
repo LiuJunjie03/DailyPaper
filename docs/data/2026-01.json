@@ -1,5 +1,41 @@
 [
   {
+    "id": "2601.21681v1",
+    "title": "LLM4Fluid: Large Language Models as Generalizable Neural Solvers for Fluid Dynamics",
+    "authors": "Qisong Xiao, Xinhai Chen, Qinglin Wang, Xiaowei Guo, Binglin Wang, Weifeng Chen, Zhichao Wang, Yunfei Liu, Rui Xia, Hang Zou, Gencheng Liu, Shuai Li, Jie Liu",
+    "abstract": "Deep learning has emerged as a promising paradigm for spatio-temporal modeling of fluid dynamics. However, existing approaches often suffer from limited generalization to unseen flow conditions and typically require retraining when applied to new scenarios. In this paper, we present LLM4Fluid, a spatio-temporal prediction framework that leverages Large Language Models (LLMs) as generalizable neural solvers for fluid dynamics. The framework first compresses high-dimensional flow fields into a compact latent space via reduced-order modeling enhanced with a physics-informed disentanglement mechanism, effectively mitigating spatial feature entanglement while preserving essential flow structures. A pretrained LLM then serves as a temporal processor, autoregressively predicting the dynamics of physical sequences with time series prompts. To bridge the modality gap between prompts and physical sequences, which can otherwise degrade prediction accuracy, we propose a dedicated modality alignment strategy that resolves representational mismatch and stabilizes long-term prediction. Extensive experiments across diverse flow scenarios demonstrate that LLM4Fluid functions as a robust and generalizable neural solver without retraining, achieving state-of-the-art accuracy while exhibiting powerful zero-shot and in-context learning capabilities. Code and datasets are publicly available at https://github.com/qisongxiao/LLM4Fluid.",
+    "published": "2026-01-29",
+    "arxiv_url": "http://arxiv.org/abs/2601.21681v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.21681v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics",
+      "reduced-order model",
+      "rom",
+      "deep learning"
+    ],
+    "keywords": [
+      "deep learning",
+      "reduced-order model",
+      "rom",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2601.20052v1",
     "title": "Explainable deep learning reveals the physical mechanisms behind the turbulent kinetic energy equation",
     "authors": "Francisco Alcántara-Ávila, Andrés Cremades, Sergio Hoyas, Ricardo Vinuesa",
@@ -14,23 +50,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "机器学习",
+      "智能流体力学",
       "CFD与机器学习交叉",
       "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
       "rans",
       "gan",
+      "turbulence",
       "deep learning"
     ],
     "keywords": [
-      "deep learning",
-      "turbulence",
       "rans",
-      "gan"
+      "gan",
+      "turbulence",
+      "deep learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -55,16 +91,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "rans",
       "transformer",
-      "flow simulation"
+      "flow simulation",
+      "rans",
+      "rom"
     ],
     "keywords": [
-      "flow simulation",
-      "rom",
       "transformer",
-      "rans"
+      "flow simulation",
+      "rans",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -88,13 +124,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "rom",
       "pinn",
-      "neural network",
-      "rom"
+      "neural network"
     ],
     "keywords": [
-      "pinn",
       "neural network",
+      "pinn",
       "rom"
     ],
     "citation_count": null,
@@ -121,14 +157,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "gan",
       "rom",
-      "data-driven",
-      "gan"
+      "data-driven"
     ],
     "keywords": [
+      "gan",
       "rom",
-      "data-driven",
-      "gan"
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -152,14 +188,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
+      "rnn",
       "neural network",
-      "rnn"
+      "les"
     ],
     "keywords": [
-      "les",
+      "rnn",
       "neural network",
-      "rnn"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -218,20 +254,20 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "fluid dynamics",
-      "rans",
       "cfd",
       "les",
+      "rans",
       "rom",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "keywords": [
-      "fluid dynamics",
-      "rans",
       "cfd",
       "les",
+      "rans",
       "rom",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -252,9 +288,9 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
       "流体力学",
       "智能流体力学",
+      "CFD与机器学习交叉",
       "机器学习",
       "空气动力学"
     ],
@@ -262,20 +298,20 @@
     "custom_keywords": [
       "pinn",
       "neural network",
-      "fluid dynamics",
       "rans",
-      "computational fluid dynamics",
+      "physics-informed neural network",
       "aerodynamics",
-      "physics-informed neural network"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "keywords": [
       "pinn",
       "neural network",
-      "fluid dynamics",
-      "rans",
       "computational fluid dynamics",
+      "rans",
       "aerodynamics",
-      "physics-informed neural network"
+      "physics-informed neural network",
+      "fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
