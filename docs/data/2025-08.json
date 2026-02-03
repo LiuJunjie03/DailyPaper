@@ -16,25 +16,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
       "CFD与机器学习交叉",
+      "空气动力学",
       "机器学习",
-      "空气动力学"
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "surrogate model",
-      "neural network",
       "aerodynamics",
-      "cfd"
+      "neural network",
+      "rom",
+      "cfd",
+      "surrogate model"
     ],
     "keywords": [
-      "rom",
-      "surrogate model",
-      "neural network",
       "aerodynamics",
-      "cfd"
+      "neural network",
+      "rom",
+      "cfd",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -60,12 +60,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "neural network"
+      "neural network",
+      "rom"
     ],
     "keywords": [
-      "rom",
-      "neural network"
+      "neural network",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -86,27 +86,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "CFD与机器学习交叉",
+      "空气动力学",
       "流体力学",
-      "空气动力学"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
+      "fluid dynamics",
+      "aerodynamics",
+      "les",
       "rom",
       "data-driven",
-      "aerodynamics",
-      "fluid dynamics",
-      "les"
+      "computational fluid dynamics"
     ],
     "keywords": [
-      "computational fluid dynamics",
+      "fluid dynamics",
+      "aerodynamics",
+      "les",
       "rom",
       "data-driven",
-      "aerodynamics",
-      "fluid dynamics",
-      "les"
+      "computational fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -126,25 +126,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "CFD与机器学习交叉",
+      "流体力学",
       "机器学习",
-      "流体力学"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
-      "machine learning",
-      "neural network",
       "fluid dynamics",
-      "les"
+      "neural network",
+      "les",
+      "machine learning",
+      "computational fluid dynamics"
     ],
     "keywords": [
-      "computational fluid dynamics",
-      "machine learning",
-      "neural network",
       "fluid dynamics",
-      "les"
+      "neural network",
+      "les",
+      "machine learning",
+      "computational fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -168,14 +168,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
       "les",
-      "turbulence"
+      "turbulence",
+      "cfd"
     ],
     "keywords": [
-      "cfd",
       "les",
-      "turbulence"
+      "turbulence",
+      "cfd"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -200,16 +200,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "data-driven",
       "les",
-      "turbulence"
+      "data-driven",
+      "turbulence",
+      "rom"
     ],
     "keywords": [
-      "rom",
-      "data-driven",
       "les",
-      "turbulence"
+      "data-driven",
+      "turbulence",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -229,64 +229,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
-    ],
-    "official_keywords": [],
-    "custom_keywords": [
-      "transformer",
-      "reinforcement learning",
-      "rom",
-      "machine learning",
-      "rans",
-      "les"
-    ],
-    "keywords": [
-      "transformer",
-      "reinforcement learning",
-      "rom",
-      "machine learning",
-      "rans",
-      "les"
-    ],
-    "citation_count": null,
-    "impact_factor": null
-  },
-  {
-    "id": "2508.04084v2",
-    "title": "Convolutional autoencoders for the reconstruction of three-dimensional interfacial multiphase flows",
-    "authors": "Murray Cutforth, Shahab Mirjalili",
-    "abstract": "We present a systematic investigation of convolutional autoencoders for the reduced-order representation of three-dimensional interfacial multiphase flows. Focusing on the reconstruction of phase indicators, we examine how the choice of interface representation, including sharp, diffuse, and level-set formulations, impacts reconstruction accuracy across a range of interface complexities. Training and validation are performed using both synthetic datasets with controlled geometric complexity and high-fidelity simulations of multiphase homogeneous isotropic turbulence. We show that the interface representation plays a critical role in autoencoder performance. Excessively sharp interfaces lead to the loss of small-scale features, while overly diffuse interfaces degrade overall accuracy. Across all datasets and metrics considered, a moderately diffuse interface provides the best balance between preserving fine-scale structures and achieving accurate reconstructions. These findings elucidate key limitations and best practices for dimensionality reduction of multiphase flows using autoencoders. By clarifying how interface representations interact with the inductive biases of convolutional neural networks, this work lays the foundation for decoupling the training of autoencoders for accurate state compression from the training of surrogate models for temporal forecasting or input-output prediction in latent space.",
-    "published": "2025-08-06",
-    "arxiv_url": "http://arxiv.org/abs/2508.04084v2",
-    "pdf_url": "https://arxiv.org/pdf/2508.04084v2",
-    "categories": [
-      "cs.CE",
-      "cs.LG",
-      "physics.flu-dyn"
-    ],
-    "conference": "",
-    "code_link": "",
-    "tags": [
-      "多相流",
-      "CFD与机器学习交叉",
       "机器学习",
-      "流体力学"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "rans",
+      "transformer",
+      "les",
       "rom",
-      "surrogate model",
-      "neural network",
-      "turbulence",
-      "multiphase flow"
+      "machine learning",
+      "reinforcement learning"
     ],
     "keywords": [
+      "rans",
+      "transformer",
+      "les",
       "rom",
-      "surrogate model",
-      "neural network",
-      "turbulence",
-      "multiphase flow"
+      "machine learning",
+      "reinforcement learning"
     ],
     "citation_count": null,
     "impact_factor": null
