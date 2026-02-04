@@ -1,5 +1,39 @@
 [
   {
+    "id": "2602.00378v1",
+    "title": "Parametrization of subgrid scales in long-term simulations of the shallow-water equations using machine learning and convex limiting",
+    "authors": "Md Amran Hossan Mojamder, Zhihang Xu, Min Wang, Ilya Timofeyev",
+    "abstract": "We present a method for parametrizing sub-grid processes in the Shallow Water equations. We define coarse variables and local spatial averages and use a feed-forward neural network to learn sub-grid fluxes. Our method results in a local parametrization that uses a four-point computational stencil, which has several advantages over globally coupled parametrizations. We demonstrate numerically that our method improves energy balance in long-term turbulent simulations and also accurately reproduces individual solutions. The neural network parametrization can be easily combined with flux limiting to reduce oscillations near shocks. More importantly, our method provides reliable parametrizations, even in dynamical regimes that are not included in the training data.",
+    "published": "2026-01-30",
+    "arxiv_url": "http://arxiv.org/abs/2602.00378v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.00378v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.ao-ph",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "les",
+      "machine learning"
+    ],
+    "keywords": [
+      "neural network",
+      "les",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2601.21681v1",
     "title": "LLM4Fluid: Large Language Models as Generalizable Neural Solvers for Fluid Dynamics",
     "authors": "Qisong Xiao, Xinhai Chen, Qinglin Wang, Xiaowei Guo, Binglin Wang, Weifeng Chen, Zhichao Wang, Yunfei Liu, Rui Xia, Hang Zou, Gencheng Liu, Shuai Li, Jie Liu",
@@ -15,22 +49,22 @@
     "code_link": "",
     "tags": [
       "CFD与机器学习交叉",
+      "智能流体力学",
       "流体力学",
-      "机器学习",
-      "智能流体力学"
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "reduced-order model",
-      "fluid dynamics",
+      "rom",
       "deep learning",
-      "rom"
+      "reduced-order model",
+      "fluid dynamics"
     ],
     "keywords": [
-      "reduced-order model",
-      "fluid dynamics",
       "deep learning",
-      "rom"
+      "rom",
+      "reduced-order model",
+      "fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -51,22 +85,22 @@
     "code_link": "",
     "tags": [
       "CFD与机器学习交叉",
+      "智能流体力学",
       "流体力学",
-      "机器学习",
-      "智能流体力学"
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "turbulence",
+      "gan",
       "deep learning",
-      "gan"
+      "rans",
+      "turbulence"
     ],
     "keywords": [
-      "rans",
-      "turbulence",
       "deep learning",
-      "gan"
+      "gan",
+      "rans",
+      "turbulence"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -91,16 +125,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "transformer",
+      "flow simulation",
       "rans",
-      "rom",
-      "flow simulation"
+      "transformer",
+      "rom"
     ],
     "keywords": [
-      "transformer",
-      "rans",
       "rom",
-      "flow simulation"
+      "rans",
+      "flow simulation",
+      "transformer"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -124,14 +158,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
       "neural network",
-      "rom"
+      "rom",
+      "pinn"
     ],
     "keywords": [
-      "pinn",
       "neural network",
-      "rom"
+      "rom",
+      "pinn"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -188,14 +222,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
       "rnn",
-      "neural network"
+      "neural network",
+      "les"
     ],
     "keywords": [
-      "les",
       "rnn",
-      "neural network"
+      "neural network",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -221,14 +255,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
+      "rom",
       "turbulence",
-      "rom"
+      "les"
     ],
     "keywords": [
-      "les",
+      "rom",
       "turbulence",
-      "rom"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -249,25 +283,25 @@
     "code_link": "",
     "tags": [
       "CFD与机器学习交叉",
-      "流体力学",
-      "智能流体力学"
+      "智能流体力学",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "fluid dynamics",
       "rans",
-      "les",
+      "computational fluid dynamics",
       "rom",
+      "les",
       "cfd",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "keywords": [
-      "fluid dynamics",
       "rans",
-      "les",
       "rom",
+      "computational fluid dynamics",
+      "fluid dynamics",
       "cfd",
-      "computational fluid dynamics"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -288,30 +322,30 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "CFD与机器学习交叉",
-      "流体力学",
       "智能流体力学",
-      "空气动力学"
+      "流体力学",
+      "空气动力学",
+      "机器学习",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
-      "fluid dynamics",
-      "aerodynamics",
-      "neural network",
-      "rans",
       "computational fluid dynamics",
-      "physics-informed neural network"
+      "rans",
+      "aerodynamics",
+      "physics-informed neural network",
+      "neural network",
+      "fluid dynamics",
+      "pinn"
     ],
     "keywords": [
-      "pinn",
-      "fluid dynamics",
-      "aerodynamics",
-      "neural network",
       "rans",
       "computational fluid dynamics",
-      "physics-informed neural network"
+      "aerodynamics",
+      "physics-informed neural network",
+      "neural network",
+      "fluid dynamics",
+      "pinn"
     ],
     "citation_count": null,
     "impact_factor": null
