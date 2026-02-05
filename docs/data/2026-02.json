@@ -1,5 +1,40 @@
 [
   {
+    "id": "2602.02832v1",
+    "title": "Koopman Autoencoders with Continuous-Time Latent Dynamics for Fluid Dynamics Forecasting",
+    "authors": "Rares Grozavescu, Pengyu Zhang, Etienne Meunier, Mark Girolami",
+    "abstract": "Data-driven surrogate models have emerged as powerful tools for accelerating the simulation of turbulent flows. However, classical approaches which perform autoregressive rollouts often trade off between strong short-term accuracy and long-horizon stability. Koopman autoencoders, inspired by Koopman operator theory, provide a physics-based alternative by mapping nonlinear dynamics into a latent space where linear evolution is conducted. In practice, most existing formulations operate in a discrete-time setting, limiting temporal flexibility. In this work, we introduce a continuous-time Koopman framework that models latent evolution through numerical integration schemes. By allowing variable timesteps at inference, the method demonstrates robustness to temporal resolution and generalizes beyond training regimes. In addition, the learned dynamics closely adhere to the analytical matrix exponential solution, enabling efficient long-horizon forecasting. We evaluate the approach on classical CFD benchmarks and report accuracy, stability, and extrapolation properties.",
+    "published": "2026-02-02",
+    "arxiv_url": "http://arxiv.org/abs/2602.02832v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.02832v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "fluid dynamics",
+      "surrogate model",
+      "cfd"
+    ],
+    "keywords": [
+      "data-driven",
+      "fluid dynamics",
+      "surrogate model",
+      "cfd"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2602.01737v1",
     "title": "Physics-Informed Chebyshev Polynomial Neural Operator for Parametric Partial Differential Equations",
     "authors": "Biao Chen, Jing Wang, Hairun Xie, Qineng Wang, Shuai Zhang, Yifan Xia, Jifa Zhang",
@@ -14,8 +49,8 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
@@ -24,8 +59,8 @@
       "rom"
     ],
     "keywords": [
-      "deep learning",
       "rans",
+      "deep learning",
       "rom"
     ],
     "citation_count": null,
@@ -46,35 +81,35 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "机器学习",
       "CFD与机器学习交叉",
-      "智能流体力学",
       "流体力学",
-      "机器学习"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid dynamics",
+      "machine learning",
+      "pinn",
+      "cfd",
+      "les",
+      "turbulence",
+      "rom",
       "computational fluid dynamics",
       "rans",
-      "rom",
-      "turbulence",
-      "les",
-      "cfd",
-      "surrogate model",
-      "machine learning",
-      "fluid dynamics",
-      "pinn"
+      "surrogate model"
     ],
     "keywords": [
-      "rans",
-      "computational fluid dynamics",
-      "rom",
-      "turbulence",
       "fluid dynamics",
-      "cfd",
-      "surrogate model",
       "machine learning",
+      "pinn",
+      "cfd",
       "les",
-      "pinn"
+      "turbulence",
+      "rom",
+      "computational fluid dynamics",
+      "rans",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
