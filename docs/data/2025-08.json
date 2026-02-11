@@ -16,25 +16,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
+      "机器学习",
       "流体力学",
       "空气动力学",
-      "机器学习"
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "aerodynamics",
       "cfd",
+      "neural network",
       "rom",
-      "surrogate model",
-      "neural network"
+      "surrogate model"
     ],
     "keywords": [
       "aerodynamics",
       "cfd",
+      "neural network",
       "rom",
-      "surrogate model",
-      "neural network"
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -60,12 +60,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "neural network"
+      "neural network",
+      "rom"
     ],
     "keywords": [
-      "rom",
-      "neural network"
+      "neural network",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -86,26 +86,26 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
+      "智能流体力学",
       "流体力学",
       "空气动力学",
-      "智能流体力学"
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "aerodynamics",
-      "fluid dynamics",
-      "rom",
       "data-driven",
+      "les",
       "computational fluid dynamics",
-      "les"
+      "rom",
+      "fluid dynamics"
     ],
     "keywords": [
+      "data-driven",
       "aerodynamics",
       "les",
-      "rom",
-      "data-driven",
       "computational fluid dynamics",
+      "rom",
       "fluid dynamics"
     ],
     "citation_count": null,
@@ -126,25 +126,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
-      "流体力学",
+      "机器学习",
       "智能流体力学",
-      "机器学习"
+      "流体力学",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "les",
       "machine learning",
-      "fluid dynamics",
-      "computational fluid dynamics",
       "neural network",
-      "les"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "keywords": [
+      "les",
       "machine learning",
-      "fluid dynamics",
-      "computational fluid dynamics",
       "neural network",
-      "les"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -168,48 +168,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
       "les",
-      "cfd"
-    ],
-    "keywords": [
       "cfd",
-      "les",
-      "turbulence"
-    ],
-    "citation_count": null,
-    "impact_factor": null
-  },
-  {
-    "id": "2508.14085v2",
-    "title": "Parameter-Aware Ensemble SINDy for Interpretable Symbolic SGS Closure",
-    "authors": "Hanseul Kang, Ville Vuorinen, Shervin Karimkashi",
-    "abstract": "This work designs a scalable, parameter-aware sparse regression framework for discovering interpretable partial differential equations and subgrid-scale closures from multi-parameter simulation data. Building on SINDy (Sparse Identification of Nonlinear Dynamics), the approach addresses key limitations through four enhancements. First, symbolic parameterisation enables physical parameters to vary within unified regression. Second, the Dimensional Similarity Filter enforces unit consistency while reducing candidate libraries. Third, memory-efficient Gram-matrix accumulation enables batch processing of large datasets. Fourth, ensemble consensus with coefficient stability analysis ensures robust model identification.   Validation on canonical one-dimensional benchmarks demonstrates consistent discovery of governing equations across parameter ranges. Applied to filtered Burgers datasets, the framework autonomously discovers the SGS closure $τ_{\\mathrm{SGS}} = 0.1604\\cdotΔ^2\\left(\\frac{\\partial \\bar{u}}{\\partial x}\\right)^2$ with the SINDy-discovered Smagorinsky constant $C_s^{\\text{SINDy}} \\approx 0.4005$ without predefined closure assumptions, recovering Smagorinsky-type structure directly from data.   The discovered model achieves $R^2 = 0.885$ across filter scales and demonstrates improved prediction accuracy compared to classical SGS closures. The ability of the framework to identify physically meaningful SGS forms and calibrate coefficients offers a complementary approach to existing turbulence modelling methods, contributing to the broader field of data-driven turbulence closure discovery.",
-    "published": "2025-08-13",
-    "arxiv_url": "http://arxiv.org/abs/2508.14085v2",
-    "pdf_url": "https://arxiv.org/pdf/2508.14085v2",
-    "categories": [
-      "cs.LG",
-      "physics.flu-dyn"
-    ],
-    "conference": "",
-    "code_link": "",
-    "tags": [
-      "CFD与机器学习交叉",
-      "流体力学"
-    ],
-    "official_keywords": [],
-    "custom_keywords": [
-      "rom",
-      "data-driven",
-      "les",
       "turbulence"
     ],
     "keywords": [
-      "rom",
       "les",
-      "data-driven",
-      "turbulence"
+      "turbulence",
+      "cfd"
     ],
     "citation_count": null,
     "impact_factor": null
