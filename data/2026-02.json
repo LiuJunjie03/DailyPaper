@@ -1,5 +1,54 @@
 [
   {
+    "id": "2602.11626v1",
+    "title": "ArGEnT: Arbitrary Geometry-encoded Transformer for Operator Learning",
+    "authors": "Wenqian Chen, Yucheng Fu, Michael Penwarden, Pratanu Roy, Panos Stinis",
+    "abstract": "Learning solution operators for systems with complex, varying geometries and parametric physical settings is a central challenge in scientific machine learning. In many-query regimes such as design optimization, control and inverse problems, surrogate modeling must generalize across geometries while allowing flexible evaluation at arbitrary spatial locations. In this work, we propose Arbitrary Geometry-encoded Transformer (ArGEnT), a geometry-aware attention-based architecture for operator learning on arbitrary domains. ArGEnT employs Transformer attention mechanisms to encode geometric information directly from point-cloud representations with three variants-self-attention, cross-attention, and hybrid-attention-that incorporates different strategies for incorporating geometric features. By integrating ArGEnT into DeepONet as the trunk network, we develop a surrogate modeling framework capable of learning operator mappings that depend on both geometric and non-geometric inputs without the need to explicitly parametrize geometry as a branch network input. Evaluation on benchmark problems spanning fluid dynamics, solid mechanics and electrochemical systems, we demonstrate significantly improved prediction accuracy and generalization performance compared with the standard DeepONet and other existing geometry-aware saurrogates. In particular, the cross-attention transformer variant enables accurate geometry-conditioned predictions with reduced reliance on signed distance functions. By combining flexible geometry encoding with operator-learning capabilities, ArGEnT provides a scalable surrogate modeling framework for optimization, uncertainty quantification, and data-driven modeling of complex physical systems.",
+    "published": "2026-02-12",
+    "arxiv_url": "http://arxiv.org/abs/2602.11626v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.11626v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.chem-ph",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "智能流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "transformer",
+      "fluid dynamics",
+      "surrogate model",
+      "data-driven modeling",
+      "rom",
+      "rans",
+      "machine learning",
+      "les",
+      "data-driven"
+    ],
+    "keywords": [
+      "transformer",
+      "fluid dynamics",
+      "surrogate model",
+      "data-driven modeling",
+      "rom",
+      "rans",
+      "machine learning",
+      "les",
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2602.02832v1",
     "title": "Koopman Autoencoders with Continuous-Time Latent Dynamics for Fluid Dynamics Forecasting",
     "authors": "Rares Grozavescu, Pengyu Zhang, Etienne Meunier, Mark Girolami",
@@ -14,22 +63,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
       "流体力学",
-      "智能流体力学"
+      "智能流体力学",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "surrogate model",
+      "cfd",
       "fluid dynamics",
-      "data-driven",
-      "cfd"
+      "data-driven"
     ],
     "keywords": [
       "surrogate model",
+      "cfd",
       "fluid dynamics",
-      "data-driven",
-      "cfd"
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -54,13 +103,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "deep learning",
-      "rans"
-    ],
-    "keywords": [
       "rans",
       "deep learning",
+      "rom"
+    ],
+    "keywords": [
+      "deep learning",
+      "rans",
       "rom"
     ],
     "citation_count": null,
@@ -81,35 +130,35 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
       "流体力学",
+      "CFD与机器学习交叉",
       "机器学习",
       "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "pinn",
+      "fluid dynamics",
       "surrogate model",
+      "rom",
+      "computational fluid dynamics",
+      "rans",
+      "machine learning",
       "les",
       "cfd",
-      "rom",
-      "turbulence",
-      "computational fluid dynamics",
-      "pinn",
-      "rans",
-      "fluid dynamics",
-      "machine learning"
+      "turbulence"
     ],
     "keywords": [
+      "pinn",
+      "fluid dynamics",
       "surrogate model",
+      "rom",
+      "computational fluid dynamics",
+      "rans",
+      "machine learning",
       "les",
       "cfd",
-      "rom",
-      "turbulence",
-      "computational fluid dynamics",
-      "pinn",
-      "rans",
-      "fluid dynamics",
-      "machine learning"
+      "turbulence"
     ],
     "citation_count": null,
     "impact_factor": null
