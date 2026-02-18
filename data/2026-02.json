@@ -1,5 +1,72 @@
 [
   {
+    "id": "2602.14907v1",
+    "title": "Adjoint-based Shape Optimization, Machine Learning based Surrogate Models, Conditional Variational Autoencoder (CVAE), Voith Schneider propulsion (VSP), Self-propelled Ship, Propulsion Model, Hull Optimization",
+    "authors": "Moloud Arian Maram, Georgios Bletsos, Thanh Tung Nguyen, Ahmed Hassan, Michael Palm, Thomas Rung",
+    "abstract": "Adjoint-based shape optimization of ship hulls is a powerful tool for addressing high-dimensional design problems in naval architecture, particularly in minimizing the ship resistance. However, its application to vessels that employ complex propulsion systems introduces significant challenges. They arise from the need for transient simulations extending over long periods of time with small time steps and from the reverse temporal propagation of the primal and adjoint solutions. These challenges place considerable demands on the required storage and computing power, which significantly hamper the use of adjoint methods in the industry. To address this issue, we propose a machine learning-assisted optimization framework that employs a Conditional Variational Autoencoder-based surrogate model of the propulsion system. The surrogate model replicates the time-averaged flow field induced by a Voith Schneider Propeller and replaces the geometrically and time-resolved propeller with a data-driven approximation. Primal flow verification examples demonstrate that the surrogate model achieves significant computational savings while maintaining the necessary accuracy of the resolved propeller. Optimization studies show that ignoring the propulsion system can yield designs that perform worse than the initial shape. In contrast, the proposed method produces shapes that achieve more than an 8\\% reduction in resistance.",
+    "published": "2026-02-16",
+    "arxiv_url": "http://arxiv.org/abs/2602.14907v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.14907v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "les",
+      "rans",
+      "machine learning",
+      "surrogate model",
+      "rom"
+    ],
+    "keywords": [
+      "data-driven",
+      "les",
+      "rans",
+      "machine learning",
+      "surrogate model",
+      "rom"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.14108v1",
+    "title": "Geometry-Aware Physics-Informed PointNets for Modeling Flows Across Porous Structures",
+    "authors": "Luigi Ciceri, Corrado Mio, Jianyi Lin, Gabriele Gianini",
+    "abstract": "Predicting flows that occur both through and around porous bodies is challenging due to coupled physics across fluid and porous regions and the need to generalize across diverse geometries and boundary conditions. We address this problem using two Physics Informed learning approaches: Physics Informed PointNets (PIPN) and Physics Informed Geometry Aware Neural Operator (P-IGANO). We enforce the incompressible Navier Stokes equations in the free-flow region and a Darcy Forchheimer extension in the porous region within a unified loss and condition the networks on geometry and material parameters. Datasets are generated with OpenFOAM on 2D ducts containing porous obstacles and on 3D windbreak scenarios with tree canopies and buildings. We first verify the pipeline via the method of manufactured solutions, then assess generalization to unseen shapes, and for PI-GANO, to variable boundary conditions and parameter settings. The results show consistently low velocity and pressure errors in both seen and unseen cases, with accurate reproduction of the wake structures. Performance degrades primarily near sharp interfaces and in regions with large gradients. Overall, the study provides a first systematic evaluation of PIPN/PI-GANO for simultaneous through-and-around porous flows and shows their potential to accelerate design studies without retraining per geometry.",
+    "published": "2026-02-15",
+    "arxiv_url": "http://arxiv.org/abs/2602.14108v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.14108v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "gan",
+      "les"
+    ],
+    "keywords": [
+      "gan",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2602.11626v1",
     "title": "ArGEnT: Arbitrary Geometry-encoded Transformer for Operator Learning",
     "authors": "Wenqian Chen, Yucheng Fu, Michael Penwarden, Pratanu Roy, Panos Stinis",
@@ -17,33 +84,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
+      "流体力学",
       "智能流体力学",
       "机器学习",
-      "流体力学"
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven modeling",
-      "rans",
-      "machine learning",
-      "fluid dynamics",
-      "rom",
       "data-driven",
       "les",
+      "rans",
       "transformer",
-      "surrogate model"
+      "fluid dynamics",
+      "machine learning",
+      "data-driven modeling",
+      "surrogate model",
+      "rom"
     ],
     "keywords": [
-      "data-driven modeling",
-      "rans",
-      "machine learning",
-      "fluid dynamics",
-      "rom",
       "data-driven",
       "les",
+      "rans",
       "transformer",
-      "surrogate model"
+      "fluid dynamics",
+      "machine learning",
+      "data-driven modeling",
+      "surrogate model",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -63,22 +130,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
+      "流体力学",
       "智能流体力学",
-      "流体力学"
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "data-driven",
-      "cfd",
+      "surrogate model",
       "fluid dynamics",
-      "surrogate model"
+      "cfd"
     ],
     "keywords": [
       "data-driven",
-      "cfd",
+      "surrogate model",
       "fluid dynamics",
-      "surrogate model"
+      "cfd"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -103,13 +170,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "deep learning",
       "rans",
+      "deep learning",
       "rom"
     ],
     "keywords": [
-      "deep learning",
       "rans",
+      "deep learning",
       "rom"
     ],
     "citation_count": null,
@@ -130,35 +197,35 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
+      "流体力学",
       "智能流体力学",
       "机器学习",
-      "流体力学"
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
+      "les",
       "cfd",
       "turbulence",
-      "machine learning",
-      "fluid dynamics",
-      "pinn",
       "computational fluid dynamics",
+      "rans",
+      "fluid dynamics",
+      "machine learning",
+      "surrogate model",
       "rom",
-      "les",
-      "surrogate model"
+      "pinn"
     ],
     "keywords": [
-      "rans",
+      "les",
       "turbulence",
       "cfd",
-      "machine learning",
-      "fluid dynamics",
-      "pinn",
       "computational fluid dynamics",
+      "rans",
+      "fluid dynamics",
+      "machine learning",
+      "surrogate model",
       "rom",
-      "les",
-      "surrogate model"
+      "pinn"
     ],
     "citation_count": null,
     "impact_factor": null
