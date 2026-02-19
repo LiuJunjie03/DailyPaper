@@ -1,12 +1,47 @@
 [
   {
-    "id": "2602.14907v1",
-    "title": "Adjoint-based Shape Optimization, Machine Learning based Surrogate Models, Conditional Variational Autoencoder (CVAE), Voith Schneider propulsion (VSP), Self-propelled Ship, Propulsion Model, Hull Optimization",
-    "authors": "Moloud Arian Maram, Georgios Bletsos, Thanh Tung Nguyen, Ahmed Hassan, Michael Palm, Thomas Rung",
-    "abstract": "Adjoint-based shape optimization of ship hulls is a powerful tool for addressing high-dimensional design problems in naval architecture, particularly in minimizing the ship resistance. However, its application to vessels that employ complex propulsion systems introduces significant challenges. They arise from the need for transient simulations extending over long periods of time with small time steps and from the reverse temporal propagation of the primal and adjoint solutions. These challenges place considerable demands on the required storage and computing power, which significantly hamper the use of adjoint methods in the industry. To address this issue, we propose a machine learning-assisted optimization framework that employs a Conditional Variational Autoencoder-based surrogate model of the propulsion system. The surrogate model replicates the time-averaged flow field induced by a Voith Schneider Propeller and replaces the geometrically and time-resolved propeller with a data-driven approximation. Primal flow verification examples demonstrate that the surrogate model achieves significant computational savings while maintaining the necessary accuracy of the resolved propeller. Optimization studies show that ignoring the propulsion system can yield designs that perform worse than the initial shape. In contrast, the proposed method produces shapes that achieve more than an 8\\% reduction in resistance.",
-    "published": "2026-02-16",
-    "arxiv_url": "http://arxiv.org/abs/2602.14907v1",
-    "pdf_url": "https://arxiv.org/pdf/2602.14907v1",
+    "id": "2602.15592v1",
+    "title": "Uni-Flow: a unified autoregressive-diffusion model for complex multiscale flows",
+    "authors": "Xiao Xue, Tianyue Yang, Mingyang Gao, Leyu Pan, Maida Wang, Kewei Zhu, Shuo Wang, Jiuling Li, Marco F. P. ten Eikelder, Peter V. Coveney",
+    "abstract": "Spatiotemporal flows govern diverse phenomena across physics, biology, and engineering, yet modelling their multiscale dynamics remains a central challenge. Despite major advances in physics-informed machine learning, existing approaches struggle to simultaneously maintain long-term temporal evolution and resolve fine-scale structure across chaotic, turbulent, and physiological regimes. Here, we introduce Uni-Flow, a unified autoregressive-diffusion framework that explicitly separates temporal evolution from spatial refinement for modelling complex dynamical systems. The autoregressive component learns low-resolution latent dynamics that preserve large-scale structure and ensure stable long-horizon rollouts, while the diffusion component reconstructs high-resolution physical fields, recovering fine-scale features in a small number of denoising steps. We validate Uni-Flow across canonical benchmarks, including two-dimensional Kolmogorov flow, three-dimensional turbulent channel inflow generation with a quantum-informed autoregressive prior, and patient-specific simulations of aortic coarctation derived from high-fidelity lattice Boltzmann hemodynamic solvers. In the cardiovascular setting, Uni-Flow enables task-level faster than real-time inference of pulsatile hemodynamics, reconstructing high-resolution pressure fields over physiologically relevant time horizons in seconds rather than hours. By transforming high-fidelity hemodynamic simulation from an offline, HPC-bound process into a deployable surrogate, Uni-Flow establishes a pathway to faster-than-real-time modelling of complex multiscale flows, with broad implications for scientific machine learning in flow physics.",
+    "published": "2026-02-17",
+    "arxiv_url": "http://arxiv.org/abs/2602.15592v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.15592v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "智能流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "les",
+      "machine learning",
+      "rom"
+    ],
+    "keywords": [
+      "rom",
+      "les",
+      "machine learning",
+      "rans"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.15472v1",
+    "title": "Fluids You Can Trust: Property-Preserving Operator Learning for Incompressible Flows",
+    "authors": "Ramansh Sharma, Matthew Lowery, Houman Owhadi, Varun Shankar",
+    "abstract": "We present a novel property-preserving kernel-based operator learning method for incompressible flows governed by the incompressible Navier-Stokes equations. Traditional numerical solvers incur significant computational costs to respect incompressibility. Operator learning offers efficient surrogate models, but current neural operators fail to exactly enforce physical properties such as incompressibility, periodicity, and turbulence. Our method maps input functions to expansion coefficients of output functions in a property-preserving kernel basis, ensuring that predicted velocity fields analytically and simultaneously preserve the aforementioned physical properties. We evaluate the method on challenging 2D and 3D, laminar and turbulent, incompressible flow problems. Our method achieves up to six orders of magnitude lower relative $\\ell_2$ errors upon generalization and trains up to five orders of magnitude faster compared to neural operators. Moreover, while our method enforces incompressibility analytically, neural operators exhibit very large deviations. Our results show that our method provides an accurate and efficient surrogate for incompressible flows.",
+    "published": "2026-02-17",
+    "arxiv_url": "http://arxiv.org/abs/2602.15472v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.15472v1",
     "categories": [
       "physics.flu-dyn",
       "cs.LG"
@@ -14,25 +49,55 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "流体力学",
+      "CFD与机器学习交叉"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "turbulence",
+      "surrogate model"
+    ],
+    "keywords": [
+      "turbulence",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.14907v2",
+    "title": "Adjoint-based shape optimization of a ship hull using a Conditional Variational Autoencoder (CVAE) assisted propulsion surrogate model",
+    "authors": "Moloud Arian Maram, Georgios Bletsos, Thanh Tung Nguyen, Ahmed Hassan, Michael Palm, Thomas Rung",
+    "abstract": "Adjoint-based shape optimization of ship hulls is a powerful tool for addressing high-dimensional design problems in naval architecture, particularly in minimizing the ship resistance. However, its application to vessels that employ complex propulsion systems introduces significant challenges. They arise from the need for transient simulations extending over long periods of time with small time steps and from the reverse temporal propagation of the primal and adjoint solutions. These challenges place considerable demands on the required storage and computing power, which significantly hamper the use of adjoint methods in the industry. To address this issue, we propose a machine learning-assisted optimization framework that employs a Conditional Variational Autoencoder-based surrogate model of the propulsion system. The surrogate model replicates the time-averaged flow field induced by a Voith Schneider Propeller and replaces the geometrically and time-resolved propeller with a data-driven approximation. Primal flow verification examples demonstrate that the surrogate model achieves significant computational savings while maintaining the necessary accuracy of the resolved propeller. Optimization studies show that ignoring the propulsion system can yield designs that perform worse than the initial shape. In contrast, the proposed method produces shapes that achieve more than an 8\\% reduction in resistance.",
+    "published": "2026-02-16",
+    "arxiv_url": "http://arxiv.org/abs/2602.14907v2",
+    "pdf_url": "https://arxiv.org/pdf/2602.14907v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "data-driven",
-      "les",
       "rans",
       "machine learning",
-      "surrogate model",
-      "rom"
+      "rom",
+      "les",
+      "surrogate model"
     ],
     "keywords": [
       "data-driven",
-      "les",
       "rans",
       "machine learning",
-      "surrogate model",
-      "rom"
+      "rom",
+      "les",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -85,32 +150,32 @@
     "code_link": "",
     "tags": [
       "流体力学",
-      "智能流体力学",
       "机器学习",
+      "智能流体力学",
       "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "data-driven modeling",
       "data-driven",
-      "les",
       "rans",
       "transformer",
-      "fluid dynamics",
+      "rom",
       "machine learning",
-      "data-driven modeling",
-      "surrogate model",
-      "rom"
+      "fluid dynamics",
+      "les",
+      "surrogate model"
     ],
     "keywords": [
+      "data-driven modeling",
       "data-driven",
-      "les",
       "rans",
       "transformer",
-      "fluid dynamics",
       "machine learning",
-      "data-driven modeling",
-      "surrogate model",
-      "rom"
+      "rom",
+      "les",
+      "fluid dynamics",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -136,16 +201,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
-      "surrogate model",
       "fluid dynamics",
-      "cfd"
+      "cfd",
+      "surrogate model",
+      "data-driven"
     ],
     "keywords": [
-      "data-driven",
-      "surrogate model",
       "fluid dynamics",
-      "cfd"
+      "cfd",
+      "surrogate model",
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -165,19 +230,19 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "rom",
       "rans",
-      "deep learning",
-      "rom"
+      "deep learning"
     ],
     "keywords": [
+      "rom",
       "rans",
-      "deep learning",
-      "rom"
+      "deep learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -198,34 +263,34 @@
     "code_link": "",
     "tags": [
       "流体力学",
-      "智能流体力学",
       "机器学习",
+      "智能流体力学",
       "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
-      "cfd",
       "turbulence",
+      "cfd",
       "computational fluid dynamics",
+      "pinn",
       "rans",
-      "fluid dynamics",
-      "machine learning",
-      "surrogate model",
       "rom",
-      "pinn"
+      "machine learning",
+      "fluid dynamics",
+      "les",
+      "surrogate model"
     ],
     "keywords": [
-      "les",
       "turbulence",
       "cfd",
       "computational fluid dynamics",
       "rans",
-      "fluid dynamics",
+      "pinn",
       "machine learning",
-      "surrogate model",
       "rom",
-      "pinn"
+      "les",
+      "fluid dynamics",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
