@@ -16,25 +16,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "空气动力学",
       "机器学习",
       "流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "空气动力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "neural network",
-      "aerodynamics",
       "rom",
-      "surrogate model"
+      "surrogate model",
+      "neural network",
+      "cfd",
+      "aerodynamics"
     ],
     "keywords": [
-      "cfd",
-      "neural network",
-      "aerodynamics",
       "rom",
-      "surrogate model"
+      "surrogate model",
+      "neural network",
+      "cfd",
+      "aerodynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -60,12 +60,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "neural network"
+      "neural network",
+      "rom"
     ],
     "keywords": [
-      "rom",
-      "neural network"
+      "neural network",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -86,96 +86,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "空气动力学",
-      "流体力学",
       "智能流体力学",
-      "CFD与机器学习交叉"
-    ],
-    "official_keywords": [],
-    "custom_keywords": [
-      "data-driven",
-      "computational fluid dynamics",
-      "aerodynamics",
-      "fluid dynamics",
-      "les",
-      "rom"
-    ],
-    "keywords": [
-      "data-driven",
-      "computational fluid dynamics",
-      "aerodynamics",
-      "fluid dynamics",
-      "les",
-      "rom"
-    ],
-    "citation_count": null,
-    "impact_factor": null
-  },
-  {
-    "id": "2508.16916v1",
-    "title": "The compressible Neural Particle Method for Simulating Compressible Viscous Fluid Flows",
-    "authors": "Masato Shibukawa, Naoya Ozaki, Maximilien Berthet",
-    "abstract": "Particle methods play an important role in computational fluid dynamics, but they are among the most difficult to implement and solve. The most common method is smoothed particle hydrodynamics, which is suitable for problem settings that involve large deformations, such as tsunamis and dam breaking. However, the calculation can become unstable depending on the distribution of particles. In contrast, the neural particle method has high computational stability for various particle distributions is a machine learning method that approximates velocity and pressure in a spatial domain using neural networks. The neural particle method has been extended to viscous flows, but until now it has been limited to incompressible flows. In this paper, we propose the compressible neural particle method, which is a new feed-forward neural network-based method that extends the original neural particle method to model compressible viscous fluid flows. The proposed method uses neural networks to calculate the velocity and pressure of fluid particles at the next time step, and the Tait equation to calculate the density to handle the compressibility. The loss function is composed of the governing equations of compressible flow and the boundary conditions, which are free surface and solid boundary conditions. We demonstrate that the proposed method can accurately solve the compressible viscous fluid flow, a problem that was difficult to solve with the smoothed particle hydrodynamics method, by applying it to a dam breaking problem.",
-    "published": "2025-08-23",
-    "arxiv_url": "http://arxiv.org/abs/2508.16916v1",
-    "pdf_url": "https://arxiv.org/pdf/2508.16916v1",
-    "categories": [
-      "physics.flu-dyn",
-      "cs.LG"
-    ],
-    "conference": "",
-    "code_link": "",
-    "tags": [
       "流体力学",
-      "机器学习",
-      "智能流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "空气动力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
-      "neural network",
-      "machine learning",
+      "rom",
       "fluid dynamics",
-      "les"
+      "data-driven",
+      "les",
+      "computational fluid dynamics",
+      "aerodynamics"
     ],
     "keywords": [
-      "computational fluid dynamics",
-      "machine learning",
-      "neural network",
+      "rom",
       "fluid dynamics",
-      "les"
-    ],
-    "citation_count": null,
-    "impact_factor": null
-  },
-  {
-    "id": "2508.16891v1",
-    "title": "Quantifying Out-of-Training Uncertainty of Neural-Network based Turbulence Closures",
-    "authors": "Cody Grogan, Som Dhulipala, Mauricio Tano, Izabela Gutowska, Som Dutta",
-    "abstract": "Neural-Network (NN) based turbulence closures have been developed for being used as pre-trained surrogates for traditional turbulence closures, with the aim to increase computational efficiency and prediction accuracy of CFD simulations. The bottleneck to the widespread adaptation of these ML-based closures is the relative lack of uncertainty quantification (UQ) for these models. Especially, quantifying uncertainties associated with out-of-training inputs, that is when the ML-based turbulence closures are queried on inputs outside their training data regime. In the current paper, a published algebraic turbulence closure1 has been utilized to compare the quality of epistemic UQ between three NN-based methods and Gaussian Process (GP). The three NN-based methods explored are Deep Ensembles (DE), Monte-Carlo Dropout (MCD), and Stochastic Variational Inference (SVI). In the in-training results, we find the exact GP performs the best in accuracy with a Root Mean Squared Error (RMSE) of $2.14 \\cdot 10^{-5}$ followed by the DE with an RMSE of $4.59 \\cdot 10^{-4}$. Next, the paper discusses the performance of the four methods for quantifying out-of-training uncertainties. For performance, the Exact GP yet again is the best in performance, but has similar performance to the DE in the out-of-training regions. In UQ accuracy for the out-of-training case, SVI and DE hold the best miscalibration error for one of the cases. However, the DE performs the best in Negative Log-Likelihood for both out-of-training cases. We observe that for the current problem, in terms of accuracy GP > DE > SV I > MCD. The DE results are relatively robust and provide intuitive UQ estimates, despite performing naive ensembling. In terms of computational cost, the GP is significantly higher than the NN-based methods with a $O(n^3)$ computational complexity for each training step",
-    "published": "2025-08-23",
-    "arxiv_url": "http://arxiv.org/abs/2508.16891v1",
-    "pdf_url": "https://arxiv.org/pdf/2508.16891v1",
-    "categories": [
-      "cs.LG",
-      "physics.flu-dyn"
-    ],
-    "conference": "",
-    "code_link": "",
-    "tags": [
-      "流体力学"
-    ],
-    "official_keywords": [],
-    "custom_keywords": [
-      "turbulence",
-      "cfd",
-      "les"
-    ],
-    "keywords": [
-      "turbulence",
-      "cfd",
-      "les"
+      "data-driven",
+      "les",
+      "computational fluid dynamics",
+      "aerodynamics"
     ],
     "citation_count": null,
     "impact_factor": null
