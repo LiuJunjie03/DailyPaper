@@ -1,57 +1,75 @@
 [
   {
-    "id": "2508.21249v1",
-    "title": "A Mixture of Experts Gating Network for Enhanced Surrogate Modeling in External Aerodynamics",
-    "authors": "Mohammad Amin Nabian, Sanjay Choudhry",
-    "abstract": "The computational cost associated with high-fidelity CFD simulations remains a significant bottleneck in the automotive design and optimization cycle. While ML-based surrogate models have emerged as a promising alternative to accelerate aerodynamic predictions, the field is characterized by a diverse and rapidly evolving landscape of specialized neural network architectures, with no single model demonstrating universal superiority. This paper introduces a novel meta-learning framework that leverages this architectural diversity as a strength. We propose a Mixture of Experts (MoE) model that employs a dedicated gating network to dynamically and optimally combine the predictions from three heterogeneous, state-of-the-art surrogate models: DoMINO, a decomposable multi-scale neural operator; X-MeshGraphNet, a scalable multi-scale graph neural network; and FigConvNet, a factorized implicit global convolution network. The gating network learns a spatially-variant weighting strategy, assigning credibility to each expert based on its localized performance in predicting surface pressure and wall shear stress fields. To prevent model collapse and encourage balanced expert contributions, we integrate an entropy regularization term into the training loss function. The entire system is trained and validated on the DrivAerML dataset, a large-scale, public benchmark of high-fidelity CFD simulations for automotive aerodynamics. Quantitative results demonstrate that the MoE model achieves a significant reduction in L-2 prediction error, outperforming not only the ensemble average but also the most accurate individual expert model across all evaluated physical quantities. This work establishes the MoE framework as a powerful and effective strategy for creating more robust and accurate composite surrogate models by synergistically combining the complementary strengths of specialized architectures.",
-    "published": "2025-08-28",
-    "arxiv_url": "http://arxiv.org/abs/2508.21249v1",
-    "pdf_url": "https://arxiv.org/pdf/2508.21249v1",
+    "id": "2512.24813v1",
+    "title": "Learning Temporally Consistent Turbulence Between Sparse Snapshots via Diffusion Models",
+    "authors": "Mohammed Sardar, Małgorzata J. Zimoń, Samuel Draycott, Alistair Revell, Alex Skillen",
+    "abstract": "We investigate the statistical accuracy of temporally interpolated spatiotemporal flow sequences between sparse, decorrelated snapshots of turbulent flow fields using conditional Denoising Diffusion Probabilistic Models (DDPMs). The developed method is presented as a proof-of-concept generative surrogate for reconstructing coherent turbulent dynamics between sparse snapshots, demonstrated on a 2D Kolmogorov Flow, and a 3D Kelvin-Helmholtz Instability (KHI). We analyse the generated flow sequences through the lens of statistical turbulence, examining the time-averaged turbulent kinetic energy spectra over generated sequences, and temporal decay of turbulent structures. For the non-stationary Kelvin-Helmholtz Instability, we assess the ability of the proposed method to capture evolving flow statistics across the most strongly time-varying flow regime. We additionally examine instantaneous fields and physically motivated metrics at key stages of the KHI flow evolution.",
+    "published": "2025-12-31",
+    "arxiv_url": "http://arxiv.org/abs/2512.24813v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.24813v1",
     "categories": [
-      "cs.LG",
-      "cs.AI",
-      "math.NA",
-      "physics.flu-dyn"
+      "physics.flu-dyn",
+      "cs.LG"
     ],
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "CFD与机器学习交叉",
-      "空气动力学",
       "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "surrogate model",
-      "rom",
-      "neural network",
-      "aerodynamics"
+      "turbulence"
     ],
     "keywords": [
-      "cfd",
-      "surrogate model",
-      "rom",
-      "neural network",
-      "aerodynamics"
+      "turbulence"
     ],
     "citation_count": null,
     "impact_factor": null
   },
   {
-    "id": "2509.04463v1",
-    "title": "Multiscale Graph Neural Network for Turbulent Flow-Thermal Prediction Around a Complex-Shaped Pin-Fin",
-    "authors": "Riddhiman Raut, Evan M. Mihalko, Amrita Basak",
-    "abstract": "This study presents the development of a domain-responsive edge-aware multiscale Graph Neural Network for predicting steady, turbulent flow and thermal behavior in a two-dimensional channel containing arbitrarily shaped complex pin-fin geometries. The training dataset was constructed through an automated framework that integrated geometry generation, meshing, and flow-field solutions in ANSYS Fluent. The pin-fin geometry was parameterized using piecewise cubic splines, producing 1,000 diverse configurations through Latin Hypercube Sampling. Each simulation was converted into a graph structure, where nodes carried a feature vector containing spatial coordinates, a normalized streamwise position, one-hot boundary indicators, and a signed distance to the nearest boundary such as wall. This graph structure served as input to the newly developed Graph Neural Network, which was trained to predict temperature, velocity magnitude, and pressure at each node using data from ANSYS. The network predicted fields with outstanding accuracy, capturing boundary layers, recirculation, and the stagnation region upstream of the pin-fins while reducing wall time by 2-3 orders of magnitude. In conclusion, the novel graph neural network offered a fast and reliable surrogate for simulations in complex flow configurations.",
-    "published": "2025-08-28",
-    "arxiv_url": "http://arxiv.org/abs/2509.04463v1",
-    "pdf_url": "https://arxiv.org/pdf/2509.04463v1",
+    "id": "2512.22426v1",
+    "title": "Uncertainty-Aware Flow Field Reconstruction Using SVGP Kolmogorov-Arnold Networks",
+    "authors": "Y. Sungtaek Ju",
+    "abstract": "Reconstructing time-resolved flow fields from temporally sparse velocimetry measurements is critical for characterizing many complex thermal-fluid systems. We introduce a machine learning framework for uncertainty-aware flow reconstruction using sparse variational Gaussian processes in the Kolmogorov-Arnold network topology (SVGP-KAN). This approach extends the classical foundations of Linear Stochastic Estimation (LSE) and Spectral Analysis Modal Methods (SAMM) while enabling principled epistemic uncertainty quantification. We perform a systematic comparison of our framework with the classical reconstruction methods as well as Kalman filtering. Using synthetic data from pulsed impingement jet flows, we assess performance across fractional PIV sampling rates ranging from 0.5% to 10%. Evaluation metrics include reconstruction error, generalization gap, structure preservation, and uncertainty calibration. Our SVGP-KAN methods achieve reconstruction accuracy comparable to established methods, while also providing well-calibrated uncertainty estimates that reliably indicate when and where predictions degrade. The results demonstrate a robust, data-driven framework for flow field reconstruction with meaningful uncertainty quantification and offer practical guidance for experimental design in periodic flows.",
+    "published": "2025-12-27",
+    "arxiv_url": "http://arxiv.org/abs/2512.22426v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.22426v1",
     "categories": [
       "physics.flu-dyn",
-      "cs.AI",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "rom",
+      "machine learning"
+    ],
+    "keywords": [
+      "data-driven",
+      "rom",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.20941v1",
+    "title": "A Multi-fidelity Double-Delta Wing Dataset and Empirical Scaling Laws for GNN-based Aerodynamic Field Surrogate",
+    "authors": "Yiren Shen, Juan J. Alonso",
+    "abstract": "Data-driven surrogate models are increasingly adopted to accelerate vehicle design. However, open-source multi-fidelity datasets and empirical guidelines linking dataset size to model performance remain limited. This study investigates the relationship between training data size and prediction accuracy for a graph neural network (GNN) based surrogate model for aerodynamic field prediction. We release an open-source, multi-fidelity aerodynamic dataset for double-delta wings, comprising 2448 flow snapshots across 272 geometries evaluated at angles of attack from 11 (degree) to 19 (degree) at Ma=0.3 using both Vortex Lattice Method (VLM) and Reynolds-Averaged Navier-Stokes (RANS) solvers. The geometries are generated using a nested Saltelli sampling scheme to support future dataset expansion and variance-based sensitivity analysis. Using this dataset, we conduct a preliminary empirical scaling study of the MF-VortexNet surrogate by constructing six training datasets with sizes ranging from 40 to 1280 snapshots and training models with 0.1 to 2.4 million parameters under a fixed training budget. We find that the test error decreases with data size with a power-law exponent of -0.6122, indicating efficient data utilization. Based on this scaling law, we estimate that the optimal sampling density is approximately eight samples per dimension in a d-dimensional design space. The results also suggest improved data utilization efficiency for larger surrogate models, implying a potential trade-off between dataset generation cost and model training budget.",
+    "published": "2025-12-24",
+    "arxiv_url": "http://arxiv.org/abs/2512.20941v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.20941v1",
+    "categories": [
       "cs.LG",
-      "math.NA"
+      "cs.AI",
+      "physics.flu-dyn"
     ],
     "conference": "",
     "code_link": "",
@@ -60,12 +78,557 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "data-driven",
+      "neural network",
       "rom",
+      "rans",
+      "les",
+      "surrogate model"
+    ],
+    "keywords": [
+      "data-driven",
+      "neural network",
+      "rom",
+      "rans",
+      "les",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.19936v2",
+    "title": "GIMLET: Generalizable and Interpretable Model Learning through Embedded Thermodynamics",
+    "authors": "Suguru Shiratori, Elham Kiyani, Khemraj Shukla, George Em Karniadakis",
+    "abstract": "We develop a data-driven framework for discovering constitutive relations in models of fluid flow and scalar transport. Under the assumption that velocity and/or scalar fields are measured, our approach infers unknown closure terms in the governing equations as neural networks. The target to be discovered is the constitutive relations only, while the temporal derivative, convective transport terms, and pressure-gradient term in the governing equations are prescribed. The formulation is rooted in a variational principle from non-equilibrium thermodynamics, where the dynamics is defined by a free-energy functional and a dissipation functional. The unknown constitutive terms arise as functional derivatives of these functionals with respect to the state variables. To enable a flexible and structured model discovery, the free-energy and dissipation functionals are parameterized using neural networks, while their functional derivatives are obtained via automatic differentiation. This construction enforces thermodynamic consistency by design, guaranteeing monotonic decay of the total free energy and non-negative entropy production. The resulting method, termed GIMLET (Generalizable and Interpretable Model Learning through Embedded Thermodynamics), avoids reliance on a predefined library of candidate functions, unlike sparse regression or symbolic identification approaches. The learned models are generalizable in that functionals identified from one dataset can be transferred to distinct datasets governed by the same underlying equations. Moreover, the inferred free-energy and dissipation functions provide direct physical interpretability of the learned dynamics. The framework is demonstrated on several benchmark systems, including the viscous Burgers equation, the Kuramoto--Sivashinsky equation, and the incompressible Navier--Stokes equations for both Newtonian and non-Newtonian fluids.",
+    "published": "2025-12-22",
+    "arxiv_url": "http://arxiv.org/abs/2512.19936v2",
+    "pdf_url": "https://arxiv.org/pdf/2512.19936v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "neural network",
+      "rom",
+      "rans",
+      "les"
+    ],
+    "keywords": [
+      "data-driven",
+      "neural network",
+      "rom",
+      "rans",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.19376v1",
+    "title": "A Critical Assessment of Pattern Comparisons Between POD and Autoencoders in Intraventricular Flows",
+    "authors": "Eneko Lazpita, Andrés Bell-Navas, Jesús Garicano-Mena, Petros Koumoutsakos, Soledad Le Clainche",
+    "abstract": "Understanding intraventricular hemodynamics requires compact and physically interpretable representations of the underlying flow structures, as characteristic flow patterns are closely associated with cardiovascular conditions and can support early detection of cardiac deterioration. Conventional visualization of velocity or pressure fields, however, provides limited insight into the coherent mechanisms driving these dynamics. Reduced-order modeling techniques, like Proper Orthogonal Decomposition (POD) and Autoencoder (AE) architectures, offer powerful alternatives to extract dominant flow features from complex datasets. This study systematically compares POD with several AE variants (Linear, Nonlinear, Convolutional, and Variational) using left ventricular flow fields obtained from computational fluid dynamics simulations. We show that, for a suitably chosen latent dimension, AEs produce modes that become nearly orthogonal and qualitatively resemble POD modes that capture a given percentage of kinetic energy. As the number of latent modes increases, AE modes progressively lose orthogonality, leading to linear dependence, spatial redundancy, and the appearance of repeated modes with substantial high-frequency content. This degradation reduces interpretability and introduces noise-like components into AE-based reduced-order models, potentially complicating their integration with physics-based formulations or neural-network surrogates. The extent of interpretability loss varies across the AEs, with nonlinear, convolutional, and variational models exhibiting distinct behaviors in orthogonality preservation and feature localization. Overall, the results indicate that AEs can reproduce POD-like coherent structures under specific latent-space configurations, while highlighting the need for careful mode selection to ensure physically meaningful representations of cardiac flow dynamics.",
+    "published": "2025-12-22",
+    "arxiv_url": "http://arxiv.org/abs/2512.19376v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.19376v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "fluid dynamics",
+      "reduced-order model",
+      "computational fluid dynamics"
+    ],
+    "keywords": [
+      "fluid dynamics",
+      "rom",
+      "reduced-order model",
+      "computational fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.17877v1",
+    "title": "Learning vertical coordinates via automatic differentiation of a dynamical core",
+    "authors": "Tim Whittaker, Seth Taylor, Elsa Cardoso-Bihlo, Alejandro Di Luca, Alex Bihlo",
+    "abstract": "Terrain-following coordinates in atmospheric models often imprint their grid structure onto the solution, particularly over steep topography, where distorted coordinate layers can generate spurious horizontal and vertical motion. Standard formulations, such as hybrid or SLEVE coordinates, mitigate these errors by using analytic decay functions controlled by heuristic scale parameters that are typically tuned by hand and fixed a priori. In this work, we propose a framework to define a parametric vertical coordinate system as a learnable component within a differentiable dynamical core. We develop an end-to-end differentiable numerical solver for the two-dimensional non-hydrostatic Euler equations on an Arakawa C-grid, and introduce a NEUral Vertical Enhancement (NEUVE) terrain-following coordinate based on an integral transformed neural network that guarantees monotonicity. A key feature of our approach is the use of automatic differentiation to compute exact geometric metric terms, thereby eliminating truncation errors associated with finite-difference coordinate derivatives. By coupling simulation errors through the time integration to the parameterization, our formulation finds a grid structure optimized for both the underlying physics and numerics. Using several standard tests, we demonstrate that these learned coordinates reduce the mean squared error by a factor of 1.4 to 2 in non-linear statistical benchmarks, and eliminate spurious vertical velocity striations over steep topography.",
+    "published": "2025-12-19",
+    "arxiv_url": "http://arxiv.org/abs/2512.17877v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.17877v1",
+    "categories": [
+      "physics.ao-ph",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "neural network"
+    ],
+    "keywords": [
+      "rans",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.17534v1",
+    "title": "HydroGym: A Reinforcement Learning Platform for Fluid Dynamics",
+    "authors": "Christian Lagemann, Sajeda Mokbel, Miro Gondrum, Mario Rüttgers, Jared Callaham, Ludger Paehler, Samuel Ahnert, Nicholas Zolman, Kai Lagemann, Nikolaus Adams, Matthias Meinke, Wolfgang Schröder, Jean-Christophe Loiseau, Esther Lagemann, Steven L. Brunton",
+    "abstract": "Modeling and controlling fluid flows is critical for several fields of science and engineering, including transportation, energy, and medicine. Effective flow control can lead to, e.g., lift increase, drag reduction, mixing enhancement, and noise reduction. However, controlling a fluid faces several significant challenges, including high-dimensional, nonlinear, and multiscale interactions in space and time. Reinforcement learning (RL) has recently shown great success in complex domains, such as robotics and protein folding, but its application to flow control is hindered by a lack of standardized benchmark platforms and the computational demands of fluid simulations. To address these challenges, we introduce HydroGym, a solver-independent RL platform for flow control research. HydroGym integrates sophisticated flow control benchmarks, scalable runtime infrastructure, and state-of-the-art RL algorithms. Our platform includes 42 validated environments spanning from canonical laminar flows to complex three-dimensional turbulent scenarios, validated over a wide range of Reynolds numbers. We provide non-differentiable solvers for traditional RL and differentiable solvers that dramatically improve sample efficiency through gradient-enhanced optimization. Comprehensive evaluation reveals that RL agents consistently discover robust control principles across configurations, such as boundary layer manipulation, acoustic feedback disruption, and wake reorganization. Transfer learning studies demonstrate that controllers learned at one Reynolds number or geometry adapt efficiently to new conditions, requiring approximately 50% fewer training episodes. The HydroGym platform is highly extensible and scalable, providing a framework for researchers in fluid dynamics, machine learning, and control to add environments, surrogate models, and control algorithms to advance science and technology.",
+    "published": "2025-12-19",
+    "arxiv_url": "http://arxiv.org/abs/2512.17534v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.17534v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "transfer learning",
+      "fluid dynamics",
+      "rans",
+      "reinforcement learning",
+      "rom",
+      "les",
+      "machine learning",
+      "gan",
+      "surrogate model"
+    ],
+    "keywords": [
+      "transfer learning",
+      "fluid dynamics",
+      "rans",
+      "reinforcement learning",
+      "rom",
+      "les",
+      "machine learning",
+      "gan",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.16305v1",
+    "title": "Can Transformers overcome the lack of data in the simulation of history-dependent flows?",
+    "authors": "P. Urdeitx, I. Alfaro, D. Gonzalez, F. Chinesta, E. Cueto",
+    "abstract": "It is well known that the lack of information about certain variables necessary for the description of a dynamical system leads to the introduction of historical dependence (lack of Markovian character of the model) and noise. Traditionally, scientists have made up for these shortcomings by designing phenomenological variables that take into account this historical dependence (typically, conformational tensors in fluids). Often, these phenomenological variables are not easily measurable experimentally. In this work, we study to what extent Transformer architectures are able to cope with the lack of experimental data on these variables. The methodology is evaluated on three benchmark problems: a cylinder flow with no history dependence, a viscoelastic Couette flow modeled via the Oldroyd-B formalism, and a non-linear polymeric fluid described by the FENE model. Our results show that the Transformer outperforms a thermodynamically consistent, structure-preserving neural network with metriplectic bias in systems with missing experimental data, providing lower errors even in low-dimensional latent spaces. In contrast, for systems whose state variables can be fully known, the metriplectic model achieves superior performance.",
+    "published": "2025-12-18",
+    "arxiv_url": "http://arxiv.org/abs/2512.16305v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.16305v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "transformer",
+      "les",
+      "neural network"
+    ],
+    "keywords": [
+      "rans",
+      "transformer",
+      "les",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.14397v1",
+    "title": "SuperWing: a comprehensive transonic wing dataset for data-driven aerodynamic design",
+    "authors": "Yunjia Yang, Weishao Tang, Mengxin Liu, Nils Thuerey, Yufei Zhang, Haixin Chen",
+    "abstract": "Machine-learning surrogate models have shown promise in accelerating aerodynamic design, yet progress toward generalizable predictors for three-dimensional wings has been limited by the scarcity and restricted diversity of existing datasets. Here, we present SuperWing, a comprehensive open dataset of transonic swept-wing aerodynamics comprising 4,239 parameterized wing geometries and 28,856 Reynolds-averaged Navier-Stokes flow field solutions. The wing shapes in the dataset are generated using a simplified yet expressive geometry parameterization that incorporates spanwise variations in airfoil shape, twist, and dihedral, allowing for an enhanced diversity without relying on perturbations of a baseline wing. All shapes are simulated under a broad range of Mach numbers and angles of attack covering the typical flight envelope. To demonstrate the dataset's utility, we benchmark two state-of-the-art Transformers that accurately predict surface flow and achieve a 2.5 drag-count error on held-out samples. Models pretrained on SuperWing further exhibit strong zero-shot generalization to complex benchmark wings such as DLR-F6 and NASA CRM, underscoring the dataset's diversity and potential for practical usage.",
+    "published": "2025-12-16",
+    "arxiv_url": "http://arxiv.org/abs/2512.14397v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.14397v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "空气动力学",
+      "CFD与机器学习交叉",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "rans",
+      "rom",
+      "les",
+      "transformer",
+      "surrogate model",
+      "aerodynamics"
+    ],
+    "keywords": [
+      "data-driven",
+      "rans",
+      "rom",
+      "les",
+      "transformer",
+      "surrogate model",
+      "aerodynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.13069v1",
+    "title": "Multi-fidelity aerodynamic data fusion by autoencoder transfer learning",
+    "authors": "Javier Nieto-Centenero, Esther Andrés, Rodrigo Castellanos",
+    "abstract": "Accurate aerodynamic prediction often relies on high-fidelity simulations; however, their prohibitive computational costs severely limit their applicability in data-driven modeling. This limitation motivates the development of multi-fidelity strategies that leverage inexpensive low-fidelity information without compromising accuracy. Addressing this challenge, this work presents a multi-fidelity deep learning framework that combines autoencoder-based transfer learning with a newly developed Multi-Split Conformal Prediction (MSCP) strategy to achieve uncertainty-aware aerodynamic data fusion under extreme data scarcity. The methodology leverages abundant Low-Fidelity (LF) data to learn a compact latent physics representation, which acts as a frozen knowledge base for a decoder that is subsequently fine-tuned using scarce HF samples. Tested on surface-pressure distributions for NACA airfoils (2D) and a transonic wing (3D) databases, the model successfully corrects LF deviations and achieves high-accuracy pressure predictions using minimal HF training data. Furthermore, the MSCP framework produces robust, actionable uncertainty bands with pointwise coverage exceeding 95%. By combining extreme data efficiency with uncertainty quantification, this work offers a scalable and reliable solution for aerodynamic regression in data-scarce environments.",
+    "published": "2025-12-15",
+    "arxiv_url": "http://arxiv.org/abs/2512.13069v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.13069v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn",
+      "stat.ML"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "transfer learning",
+      "data-driven modeling",
+      "rans",
+      "rom",
+      "les",
+      "deep learning"
+    ],
+    "keywords": [
+      "data-driven",
+      "transfer learning",
+      "data-driven modeling",
+      "rans",
+      "rom",
+      "les",
+      "deep learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.15761v1",
+    "title": "Machine Learning Framework for Thrombosis Risk Prediction in Rotary Blood Pumps",
+    "authors": "Christopher Blum, Michael Neidlin",
+    "abstract": "Thrombosis in rotary blood pumps arises from complex flow conditions that remain difficult to translate into reliable and interpretable risk predictions using existing computational models. This limitation reflects an incomplete understanding of how specific flow features contribute to thrombus initiation and growth. This study introduces an interpretable machine learning framework for spatial thrombosis assessment based directly on computational fluid dynamics-derived flow features. A logistic regression (LR) model combined with a structured feature-selection pipeline is used to derive a compact and physically interpretable feature set, including nonlinear feature combinations. The framework is trained using spatial risk patterns from a validated, macro-scale thrombosis model for two representative scenarios. The model reproduces the labeled risk distributions and identifies distinct sets of flow features associated with increased thrombosis risk. When applied to a centrifugal pump, despite training on a single axial pump operating point, the model predicts plausible thrombosis-prone regions. These results show that interpretable machine learning can link local flow features to thrombosis risk while remaining computationally efficient and mechanistically transparent. The low computational cost enables rapid thrombogenicity screening without repeated or costly simulations. The proposed framework complements physics-based thrombosis modeling and provides a methodological basis for integrating interpretable machine learning into CFD-driven thrombosis analysis and device design workflows.",
+    "published": "2025-12-12",
+    "arxiv_url": "http://arxiv.org/abs/2512.15761v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.15761v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics",
+      "rans",
+      "rom",
+      "les",
+      "machine learning",
+      "computational fluid dynamics",
+      "cfd"
+    ],
+    "keywords": [
+      "fluid dynamics",
+      "rans",
+      "rom",
+      "les",
+      "machine learning",
+      "computational fluid dynamics",
+      "cfd"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.10287v1",
+    "title": "A Kernel-based Resource-efficient Neural Surrogate for Multi-fidelity Prediction of Aerodynamic Field",
+    "authors": "Apurba Sarker, Reza T. Batley, Darshan Sarojini, Sourav Saha",
+    "abstract": "Surrogate models provide fast alternatives to costly aerodynamic simulations and are extremely useful in design and optimization applications. This study proposes the use of a recent kernel-based neural surrogate, KHRONOS. In this work, we blend sparse high-fidelity (HF) data with low-fidelity (LF) information to predict aerodynamic fields under varying constraints in computational resources. Unlike traditional approaches, KHRONOS is built upon variational principles, interpolation theory, and tensor decomposition. These elements provide a mathematical basis for heavy pruning compared to dense neural networks. Using the AirfRANS dataset as a high-fidelity benchmark and NeuralFoil to generate low-fidelity counterparts, this work compares the performance of KHRONOS with three contemporary model architectures: a multilayer perceptron (MLP), a graph neural network (GNN), and a physics-informed neural network (PINN). We consider varying levels of high-fidelity data availability (0%, 10%, and 30%) and increasingly complex geometry parameterizations. These are used to predict the surface pressure coefficient distribution over the airfoil. Results indicate that, whilst all models eventually achieve comparable predictive accuracy, KHRONOS excels in resource-constrained conditions. In this domain, KHRONOS consistently requires orders of magnitude fewer trainable parameters and delivers much faster training and inference than contemporary dense neural networks at comparable accuracy. These findings highlight the potential of KHRONOS and similar architectures to balance accuracy and efficiency in multi-fidelity aerodynamic field prediction.",
+    "published": "2025-12-11",
+    "arxiv_url": "http://arxiv.org/abs/2512.10287v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.10287v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "rans",
+      "les",
+      "pinn",
+      "surrogate model",
+      "physics-informed neural network"
+    ],
+    "keywords": [
+      "neural network",
+      "rans",
+      "les",
+      "pinn",
+      "surrogate model",
+      "physics-informed neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.09013v1",
+    "title": "Graph Deep Learning for Intracranial Aneurysm Blood Flow Simulation and Risk Assessment",
+    "authors": "Paul Garnier, Pablo Jeken-Rico, Vincent Lannelongue, Chiara Faitini, Aurèle Goetz, Lea Chanvillard, Ramy Nemer, Jonathan Viquerat, Ugo Pelissier, Philippe Meliga, Jacques Sédat, Thomas Liebig, Yves Chau, Elie Hachem",
+    "abstract": "Intracranial aneurysms remain a major cause of neurological morbidity and mortality worldwide, where rupture risk is tightly coupled to local hemodynamics particularly wall shear stress and oscillatory shear index. Conventional computational fluid dynamics simulations provide accurate insights but are prohibitively slow and require specialized expertise. Clinical imaging alternatives such as 4D Flow MRI offer direct in-vivo measurements, yet their spatial resolution remains insufficient to capture the fine-scale shear patterns that drive endothelial remodeling and rupture risk while being extremely impractical and expensive.   We present a graph neural network surrogate model that bridges this gap by reproducing full-field hemodynamics directly from vascular geometries in less than one minute per cardiac cycle. Trained on a comprehensive dataset of high-fidelity simulations of patient-specific aneurysms, our architecture combines graph transformers with autoregressive predictions to accurately simulate blood flow, wall shear stress, and oscillatory shear index. The model generalizes across unseen patient geometries and inflow conditions without mesh-specific calibration. Beyond accelerating simulation, our framework establishes the foundation for clinically interpretable hemodynamic prediction. By enabling near real-time inference integrated with existing imaging pipelines, it allows direct comparison with hospital phase-diagram assessments and extends them with physically grounded, high-resolution flow fields.   This work transforms high-fidelity simulations from an expert-only research tool into a deployable, data-driven decision support system. Our full pipeline delivers high-resolution hemodynamic predictions within minutes of patient imaging, without requiring computational specialists, marking a step-change toward real-time, bedside aneurysm analysis.",
+    "published": "2025-12-09",
+    "arxiv_url": "http://arxiv.org/abs/2512.09013v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.09013v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "fluid dynamics",
+      "neural network",
+      "rans",
+      "rom",
+      "les",
+      "deep learning",
+      "flow simulation",
+      "transformer",
+      "computational fluid dynamics"
+    ],
+    "keywords": [
+      "data-driven",
+      "fluid dynamics",
+      "neural network",
+      "rans",
+      "rom",
+      "les",
+      "deep learning",
+      "flow simulation",
+      "transformer",
+      "computational fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.06031v1",
+    "title": "Multi-resolution Physics-Aware Recurrent Convolutional Neural Network for Complex Flows",
+    "authors": "Xinlun Cheng, Joseph Choi, H. S. Udaykumar, Stephen Baek",
+    "abstract": "We present MRPARCv2, Multi-resolution Physics-Aware Recurrent Convolutional Neural Network, designed to model complex flows by embedding the structure of advection-diffusion-reaction equations and leveraging a multi-resolution architecture. MRPARCv2 introduces hierarchical discretization and cross-resolution feature communication to improve the accuracy and efficiency of flow simulations. We evaluate the model on a challenging 2D turbulent radiative layer dataset from The Well multi-physics benchmark repository and demonstrate significant improvements when compared to the single resolution baseline model, in both Variance Scaled Root Mean Squared Error and physics-driven metrics, including turbulent kinetic energy spectra and mass-temperature distributions. Despite having 30% fewer trainable parameters, MRPARCv2 outperforms its predecessor by up to 50% in roll-out prediction error and 86% in spectral error. A preliminary study on uncertainty quantification was performed, and we also analyzed the model's performance under different levels of abstractions of the flow, specifically on sampling subsets of field variables. We find that the absence of physical constraints on the equation of state (EOS) in the network architecture leads to degraded accuracy. A variable substitution experiment confirms that this issue persists regardless of which physical quantity is predicted directly. Our findings highlight the advantages of multi-resolution inductive bias for capturing multi-scale flow dynamics and suggest the need for future PIML models to embed EOS knowledge to enhance physical fidelity.",
+    "published": "2025-12-04",
+    "arxiv_url": "http://arxiv.org/abs/2512.06031v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.06031v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "flow simulation",
+      "les",
       "neural network"
     ],
     "keywords": [
       "rom",
+      "flow simulation",
+      "les",
       "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.04452v1",
+    "title": "NORi: An ML-Augmented Ocean Boundary Layer Parameterization",
+    "authors": "Xin Kai Lee, Ali Ramadhan, Andre Souza, Gregory LeClaire Wagner, Simone Silvestri, John Marshall, Raffaele Ferrari",
+    "abstract": "NORi is a machine-learned (ML) parameterization of ocean boundary layer turbulence that is physics-based and augmented with neural networks. NORi stands for neural ordinary differential equations (NODEs) Richardson number (Ri) closure. The physical parameterization is controlled by a Richardson number-dependent diffusivity and viscosity. The NODEs are trained to capture the entrainment through the base of the boundary layer, which cannot be represented with a local diffusive closure. The parameterization is trained using large-eddy simulations in an \"a posteriori\" fashion, where parameters are calibrated with a loss function that explicitly depends on the actual time-integrated variables of interest rather than the instantaneous subgrid fluxes, which are inherently noisy. NORi is designed for the realistic nonlinear equation of state of seawater and demonstrates excellent prediction and generalization capabilities in capturing entrainment dynamics under different convective strengths, oceanic background stratifications, rotation strengths, and surface wind forcings. NORi is numerically stable for at least 100 years of integration time in large-scale simulations, despite only being trained on 2-day horizons, and can be run with time steps as long as one hour. The highly expressive neural networks, combined with a physically-rigorous base closure, prove to be a robust paradigm for designing parameterizations for climate models where data requirements are drastically reduced, inference performance can be directly targeted and optimized, and numerical stability is implicitly encouraged during training.",
+    "published": "2025-12-04",
+    "arxiv_url": "http://arxiv.org/abs/2512.04452v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.04452v1",
+    "categories": [
+      "physics.ao-ph",
+      "cs.AI",
+      "cs.LG",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "CFD与机器学习交叉",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "turbulence",
+      "les",
+      "neural network"
+    ],
+    "keywords": [
+      "neural network",
+      "les",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.04434v1",
+    "title": "Predicting Time-Dependent Flow Over Complex Geometries Using Operator Networks",
+    "authors": "Ali Rabeh, Suresh Murugaiyan, Adarsh Krishnamurthy, Baskar Ganapathysubramanian",
+    "abstract": "Fast, geometry-generalizing surrogates for unsteady flow remain challenging. We present a time-dependent, geometry-aware Deep Operator Network that predicts velocity fields for moderate-Re flows around parametric and non-parametric shapes. The model encodes geometry via a signed distance field (SDF) trunk and flow history via a CNN branch, trained on 841 high-fidelity simulations. On held-out shapes, it attains $\\sim 5\\%$ relative L2 single-step error and up to 1000X speedups over CFD. We provide physics-centric rollout diagnostics, including phase error at probes and divergence norms, to quantify long-horizon fidelity. These reveal accurate near-term transients but error accumulation in fine-scale wakes, most pronounced for sharp-cornered geometries. We analyze failure modes and outline practical mitigations. Code, splits, and scripts are openly released at: https://github.com/baskargroup/TimeDependent-DeepONet to support reproducibility and benchmarking.",
+    "published": "2025-12-04",
+    "arxiv_url": "http://arxiv.org/abs/2512.04434v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.04434v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "CFD与机器学习交叉",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "cfd",
+      "cnn",
+      "rans"
+    ],
+    "keywords": [
+      "cfd",
+      "cnn",
+      "rans"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.01517v1",
+    "title": "Neural Networks for Predicting Permeability Tensors of 2D Porous Media: Comparison of Convolution- and Transformer-based Architectures",
+    "authors": "Sigurd Vargdal, Paula Reis, Henrik Andersen Sveinsson, Gaute Linga",
+    "abstract": "Permeability is a central concept in the macroscopic description of flow through porous media, with applications spanning from oil recovery to hydrology. Traditional methods for determining the permeability tensor involving flow simulations or experiments can be time consuming and resource-intensive, while analytical methods, e.g., based on the Kozeny-Carman equation, may be too simplistic for accurate prediction based on pore-scale features. In this work, we explore deep learning as a more efficient alternative for predicting the permeability tensor based on two-dimensional binary images of porous media, segmented into solid ($1$) and void ($0$) regions. We generate a dataset of 24,000 synthetic random periodic porous media samples with specified porosity and characteristic length scale. Using Lattice-Boltzmann simulations, we compute the permeability tensor for flow through these samples with values spanning three orders of magnitude. We evaluate three families of image-based deep learning models: ResNet (ResNet-$50$ and ResNet-$101$), Vision Transformers (ViT-T$16$ and ViT-S$16$) and ConvNeXt (Tiny and Small). To improve model generalisation, we employ techniques such as weight decay, learning rate scheduling, and data augmentation. The effect of data augmentation and dataset size on model performance is studied, and we find that they generally increase the accuracy of permeability predictions. We also show that ConvNeXt and ResNet converge faster than ViT and degrade in performance if trained for too long. ConvNeXt-Small achieved the highest $R^2$ score of $0.99460$ on $4,000$ unseen test samples. These findings underscore the potential to use image-based neural networks to predict permeability tensors accurately.",
+    "published": "2025-12-01",
+    "arxiv_url": "http://arxiv.org/abs/2512.01517v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.01517v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.comp-ph",
+      "physics.geo-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "rans",
+      "rom",
+      "les",
+      "flow simulation",
+      "deep learning",
+      "transformer"
+    ],
+    "keywords": [
+      "neural network",
+      "rom",
+      "rans",
+      "les",
+      "flow simulation",
+      "deep learning",
+      "transformer"
     ],
     "citation_count": null,
     "impact_factor": null
