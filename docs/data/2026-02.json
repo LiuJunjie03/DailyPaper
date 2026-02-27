@@ -1,5 +1,39 @@
 [
   {
+    "id": "2602.22188v1",
+    "title": "Surrogate models for Rock-Fluid Interaction: A Grid-Size-Invariant Approach",
+    "authors": "Nathalie C. Pinheiro, Donghu Guo, Hannah P. Menke, Aniket C. Joshi, Claire E. Heaney, Ahmed H. ElSheikh, Christopher C. Pain",
+    "abstract": "Modelling rock-fluid interaction requires solving a set of partial differential equations (PDEs) to predict the flow behaviour and the reactions of the fluid with the rock on the interfaces. Conventional high-fidelity numerical models require a high resolution to obtain reliable results, resulting in huge computational expense. This restricts the applicability of these models for multi-query problems, such as uncertainty quantification and optimisation, which require running numerous scenarios. As a cheaper alternative to high-fidelity models, this work develops eight surrogate models for predicting the fluid flow in porous media. Four of these are reduced-order models (ROM) based on one neural network for compression and another for prediction. The other four are single neural networks with the property of grid-size invariance; a term which we use to refer to image-to-image models that are capable of inferring on computational domains that are larger than those used during training. In addition to the novel grid-size-invariant framework for surrogate models, we compare the predictive performance of UNet and UNet++ architectures, and demonstrate that UNet++ outperforms UNet for surrogate models. Furthermore, we show that the grid-size-invariant approach is a reliable way to reduce memory consumption during training, resulting in good correlation between predicted and ground-truth values and outperforming the ROMs analysed. The application analysed is particularly challenging because fluid-induced rock dissolution results in a non-static solid field and, consequently, it cannot be used to help in adjustments of the future prediction.",
+    "published": "2026-02-25",
+    "arxiv_url": "http://arxiv.org/abs/2602.22188v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.22188v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "surrogate model",
+      "rom",
+      "reduced-order model"
+    ],
+    "keywords": [
+      "neural network",
+      "surrogate model",
+      "rom",
+      "reduced-order model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2602.15592v1",
     "title": "Uni-Flow: a unified autoregressive-diffusion model for complex multiscale flows",
     "authors": "Xiao Xue, Tianyue Yang, Mingyang Gao, Leyu Pan, Maida Wang, Kewei Zhu, Shuo Wang, Jiuling Li, Marco F. P. ten Eikelder, Peter V. Coveney",
@@ -20,16 +54,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "rans",
       "machine learning",
-      "les"
+      "rans",
+      "les",
+      "rom"
     ],
     "keywords": [
-      "rom",
-      "rans",
       "machine learning",
-      "les"
+      "rans",
+      "les",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -54,12 +88,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "surrogate model",
-      "turbulence"
+      "turbulence",
+      "surrogate model"
     ],
     "keywords": [
-      "surrogate model",
-      "turbulence"
+      "turbulence",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -84,20 +118,20 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
       "machine learning",
       "les",
+      "surrogate model",
+      "rans",
       "rom",
-      "data-driven",
-      "surrogate model"
+      "data-driven"
     ],
     "keywords": [
-      "rans",
       "machine learning",
       "les",
+      "surrogate model",
+      "rans",
       "rom",
-      "data-driven",
-      "surrogate model"
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -149,33 +183,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "transformer",
-      "rans",
       "machine learning",
-      "fluid dynamics",
-      "les",
-      "rom",
-      "data-driven",
       "data-driven modeling",
-      "surrogate model"
+      "les",
+      "fluid dynamics",
+      "transformer",
+      "surrogate model",
+      "rans",
+      "rom",
+      "data-driven"
     ],
     "keywords": [
-      "transformer",
-      "rans",
       "machine learning",
-      "fluid dynamics",
-      "les",
-      "rom",
-      "data-driven",
       "data-driven modeling",
-      "surrogate model"
+      "les",
+      "fluid dynamics",
+      "transformer",
+      "surrogate model",
+      "rans",
+      "rom",
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -199,18 +233,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
+      "neural network",
       "les",
+      "pinn",
       "rom",
-      "physics-informed neural network",
-      "neural network"
+      "physics-informed neural network"
     ],
     "keywords": [
-      "pinn",
+      "neural network",
       "les",
+      "pinn",
       "rom",
-      "physics-informed neural network",
-      "neural network"
+      "physics-informed neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -230,22 +264,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
       "data-driven",
+      "fluid dynamics",
       "surrogate model"
     ],
     "keywords": [
-      "cfd",
       "fluid dynamics",
+      "surrogate model",
       "data-driven",
-      "surrogate model"
+      "cfd"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -270,14 +304,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "rans",
       "deep learning",
-      "rom",
-      "rans"
+      "rom"
     ],
     "keywords": [
+      "rans",
       "deep learning",
-      "rom",
-      "rans"
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -297,35 +331,35 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics",
-      "rans",
       "machine learning",
-      "pinn",
       "les",
+      "cfd",
+      "fluid dynamics",
+      "surrogate model",
+      "pinn",
+      "rans",
       "rom",
       "turbulence",
-      "cfd",
-      "surrogate model"
+      "computational fluid dynamics"
     ],
     "keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics",
-      "rans",
       "machine learning",
-      "pinn",
       "les",
+      "fluid dynamics",
+      "cfd",
+      "surrogate model",
+      "pinn",
+      "rans",
       "rom",
       "turbulence",
-      "cfd",
-      "surrogate model"
+      "computational fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
