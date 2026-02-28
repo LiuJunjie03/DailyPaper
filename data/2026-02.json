@@ -1,5 +1,38 @@
 [
   {
+    "id": "2602.23188v1",
+    "title": "Efficient Real-Time Adaptation of ROMs for Unsteady Flows Using Data Assimilation",
+    "authors": "Ismaël Zighed, Andrea Nóvoa, Luca Magri, Taraneh Sayadi",
+    "abstract": "We propose an efficient retraining strategy for a parameterized Reduced Order Model (ROM) that attains accuracy comparable to full retraining while requiring only a fraction of the computational time and relying solely on sparse observations of the full system. The architecture employs an encode-process-decode structure: a Variational Autoencoder (VAE) to perform dimensionality reduction, and a transformer network to evolve the latent states and model the dynamics. The ROM is parameterized by an external control variable, the Reynolds number in the Navier-Stokes setting, with the transformer exploiting attention mechanisms to capture both temporal dependencies and parameter effects. The probabilistic VAE enables stochastic sampling of trajectory ensembles, providing predictive means and uncertainty quantification through the first two moments. After initial training on a limited set of dynamical regimes, the model is adapted to out-of-sample parameter regions using only sparse data. Its probabilistic formulation naturally supports ensemble generation, which we employ within an ensemble Kalman filtering framework to assimilate data and reconstruct full-state trajectories from minimal observations. We further show that, for the dynamical system considered, the dominant source of error in out-of-sample forecasts stems from distortions of the latent manifold rather than changes in the latent dynamics. Consequently, retraining can be limited to the autoencoder, allowing for a lightweight, computationally efficient, real-time adaptation procedure with very sparse fine-tuning data.",
+    "published": "2026-02-26",
+    "arxiv_url": "http://arxiv.org/abs/2602.23188v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.23188v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "transformer",
+      "les",
+      "rom"
+    ],
+    "keywords": [
+      "rans",
+      "transformer",
+      "les",
+      "rom"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2602.22188v1",
     "title": "Surrogate models for Rock-Fluid Interaction: A Grid-Size-Invariant Approach",
     "authors": "Nathalie C. Pinheiro, Donghu Guo, Hannah P. Menke, Aniket C. Joshi, Claire E. Heaney, Ahmed H. ElSheikh, Christopher C. Pain",
@@ -19,16 +52,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
-      "surrogate model",
       "rom",
-      "reduced-order model"
+      "neural network",
+      "reduced-order model",
+      "surrogate model"
     ],
     "keywords": [
-      "neural network",
-      "surrogate model",
       "rom",
-      "reduced-order model"
+      "neural network",
+      "reduced-order model",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -49,8 +82,8 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
@@ -83,8 +116,8 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
@@ -113,25 +146,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "machine learning",
       "les",
       "surrogate model",
+      "data-driven",
+      "machine learning",
       "rans",
-      "rom",
-      "data-driven"
+      "rom"
     ],
     "keywords": [
-      "machine learning",
       "les",
       "surrogate model",
+      "data-driven",
+      "machine learning",
       "rans",
-      "rom",
-      "data-driven"
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -183,33 +216,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
-      "CFD与机器学习交叉",
+      "智能流体力学",
       "机器学习",
-      "智能流体力学"
+      "CFD与机器学习交叉",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "machine learning",
       "data-driven modeling",
       "les",
-      "fluid dynamics",
-      "transformer",
       "surrogate model",
+      "transformer",
+      "data-driven",
+      "machine learning",
       "rans",
-      "rom",
-      "data-driven"
+      "fluid dynamics",
+      "rom"
     ],
     "keywords": [
-      "machine learning",
       "data-driven modeling",
       "les",
-      "fluid dynamics",
-      "transformer",
       "surrogate model",
+      "transformer",
+      "data-driven",
+      "machine learning",
       "rans",
-      "rom",
-      "data-driven"
+      "fluid dynamics",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -233,16 +266,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "pinn",
       "neural network",
       "les",
-      "pinn",
       "rom",
       "physics-informed neural network"
     ],
     "keywords": [
+      "pinn",
       "neural network",
       "les",
-      "pinn",
       "rom",
       "physics-informed neural network"
     ],
@@ -264,22 +297,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
+      "智能流体力学",
       "CFD与机器学习交叉",
-      "智能流体力学"
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid dynamics",
       "cfd",
       "data-driven",
-      "fluid dynamics",
       "surrogate model"
     ],
     "keywords": [
       "fluid dynamics",
       "surrogate model",
-      "data-driven",
-      "cfd"
+      "cfd",
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -299,8 +332,8 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
@@ -331,35 +364,35 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
-      "CFD与机器学习交叉",
+      "智能流体力学",
       "机器学习",
-      "智能流体力学"
+      "CFD与机器学习交叉",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "machine learning",
-      "les",
-      "cfd",
-      "fluid dynamics",
-      "surrogate model",
       "pinn",
-      "rans",
-      "rom",
+      "cfd",
+      "computational fluid dynamics",
+      "les",
+      "surrogate model",
       "turbulence",
-      "computational fluid dynamics"
+      "machine learning",
+      "fluid dynamics",
+      "rans",
+      "rom"
     ],
     "keywords": [
-      "machine learning",
-      "les",
-      "fluid dynamics",
-      "cfd",
-      "surrogate model",
       "pinn",
-      "rans",
-      "rom",
+      "cfd",
+      "les",
+      "computational fluid dynamics",
+      "surrogate model",
       "turbulence",
-      "computational fluid dynamics"
+      "machine learning",
+      "fluid dynamics",
+      "rans",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
