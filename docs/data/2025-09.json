@@ -14,27 +14,27 @@
     "conference": "NeurIPS",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习",
       "CFD与机器学习交叉",
+      "机器学习",
+      "智能流体力学",
       "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "rom",
       "cnn",
-      "neural network",
-      "les",
       "turbulence",
+      "les",
       "machine learning",
-      "rom"
+      "neural network"
     ],
     "keywords": [
+      "rom",
       "cnn",
-      "neural network",
-      "les",
       "turbulence",
+      "les",
       "machine learning",
-      "rom"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": 14.0
@@ -54,17 +54,17 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "machine learning",
-      "rom"
+      "rom",
+      "machine learning"
     ],
     "keywords": [
-      "machine learning",
-      "rom"
+      "rom",
+      "machine learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -89,13 +89,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
       "reinforcement learning",
+      "rom",
       "les"
     ],
     "keywords": [
-      "rom",
       "reinforcement learning",
+      "rom",
       "les"
     ],
     "citation_count": null,
@@ -123,13 +123,13 @@
     "official_keywords": [],
     "custom_keywords": [
       "flow simulation",
-      "neural network",
-      "data-driven"
+      "data-driven",
+      "neural network"
     ],
     "keywords": [
       "flow simulation",
-      "neural network",
-      "data-driven"
+      "data-driven",
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -179,17 +179,17 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "machine learning",
-      "neural network"
+      "neural network",
+      "machine learning"
     ],
     "keywords": [
-      "machine learning",
-      "neural network"
+      "neural network",
+      "machine learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -209,27 +209,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习",
       "CFD与机器学习交叉",
+      "机器学习",
+      "智能流体力学",
       "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
-      "neural network",
-      "computational fluid dynamics",
-      "cfd",
       "fluid dynamics",
-      "physics-informed neural network"
+      "cfd",
+      "computational fluid dynamics",
+      "physics-informed neural network",
+      "pinn",
+      "neural network"
     ],
     "keywords": [
-      "pinn",
-      "neural network",
-      "computational fluid dynamics",
-      "cfd",
       "fluid dynamics",
-      "physics-informed neural network"
+      "physics-informed neural network",
+      "cfd",
+      "computational fluid dynamics",
+      "pinn",
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -315,14 +315,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
       "fluid mechanics",
+      "rom",
       "turbulence"
     ],
     "keywords": [
+      "fluid mechanics",
       "rom",
-      "turbulence",
-      "fluid mechanics"
+      "turbulence"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -342,63 +342,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习",
       "CFD与机器学习交叉",
+      "机器学习",
+      "智能流体力学",
       "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid mechanics",
+      "rom",
+      "rans",
       "cfd",
       "les",
-      "machine learning",
-      "rans",
-      "fluid mechanics",
-      "rom"
+      "machine learning"
     ],
     "keywords": [
+      "fluid mechanics",
+      "rom",
+      "rans",
       "cfd",
       "les",
-      "machine learning",
-      "rans",
-      "fluid mechanics",
-      "rom"
-    ],
-    "citation_count": null,
-    "impact_factor": null
-  },
-  {
-    "id": "2509.01293v3",
-    "title": "Equivariant U-Shaped Neural Operators for the Cahn-Hilliard Phase-Field Model",
-    "authors": "Xiao Xue, Marco F. P. ten Eikelder, Tianyue Yang, Yiqing Li, Kan He, Shuo Wang, Peter V. Coveney",
-    "abstract": "Phase separation in binary mixtures, governed by the Cahn-Hilliard equation, plays a central role in interfacial dynamics across materials science and soft matter. While numerical solvers are accurate, they are often computationally expensive and lack flexibility across varying initial conditions and geometries. Neural operators provide a data-driven alternative by learning solution operators between function spaces, but current architectures often fail to capture multiscale behavior and neglect underlying physical symmetries. Here we show that an equivariant U-shaped neural operator (E-UNO) can learn the evolution of the phase-field variable from short histories of past dynamics, achieving accurate predictions across space and time. The model combines global spectral convolution with a multi-resolution U-shaped architecture and regulates translation equivariance to align with the underlying physics. E-UNO outperforms standard Fourier neural operator and U-shaped neural operator baselines, particularly on fine-scale and high-frequency structures. By encoding symmetry and scale hierarchy, the model generalizes better, requires less training data, and yields physically consistent dynamics. This establishes E-UNO as an efficient surrogate for complex phase-field systems.",
-    "published": "2025-09-01",
-    "arxiv_url": "http://arxiv.org/abs/2509.01293v3",
-    "pdf_url": "https://arxiv.org/pdf/2509.01293v3",
-    "categories": [
-      "cs.LG",
-      "physics.comp-ph",
-      "physics.flu-dyn"
-    ],
-    "conference": "",
-    "code_link": "",
-    "tags": [
-      "多相流"
-    ],
-    "official_keywords": [],
-    "custom_keywords": [
-      "les",
-      "phase separation",
-      "data-driven",
-      "rans",
-      "rom"
-    ],
-    "keywords": [
-      "les",
-      "phase separation",
-      "data-driven",
-      "rans",
-      "rom"
+      "machine learning"
     ],
     "citation_count": null,
     "impact_factor": null
