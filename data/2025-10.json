@@ -1,0 +1,691 @@
+[
+  {
+    "id": "2510.24173v1",
+    "title": "EddyFormer: Accelerated Neural Simulations of Three-Dimensional Turbulence at Scale",
+    "authors": "Yiheng Du, Aditi S. Krishnapriyan",
+    "abstract": "Computationally resolving turbulence remains a central challenge in fluid dynamics due to its multi-scale interactions. Fully resolving large-scale turbulence through direct numerical simulation (DNS) is computationally prohibitive, motivating data-driven machine learning alternatives. In this work, we propose EddyFormer, a Transformer-based spectral-element (SEM) architecture for large-scale turbulence simulation that combines the accuracy of spectral methods with the scalability of the attention mechanism. We introduce an SEM tokenization that decomposes the flow into grid-scale and subgrid-scale components, enabling capture of both local and global features. We create a new three-dimensional isotropic turbulence dataset and train EddyFormer to achieves DNS-level accuracy at 256^3 resolution, providing a 30x speedup over DNS. When applied to unseen domains up to 4x larger than in training, EddyFormer preserves accuracy on physics-invariant metrics-energy spectra, correlation functions, and structure functions-showing domain generalization. On The Well benchmark suite of diverse turbulent flows, EddyFormer resolves cases where prior ML models fail to converge, accurately reproducing complex dynamics across a wide range of physical conditions.",
+    "published": "2025-10-28",
+    "arxiv_url": "http://arxiv.org/abs/2510.24173v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.24173v1",
+    "categories": [
+      "cs.LG",
+      "math.DS",
+      "math.NA",
+      "physics.flu-dyn"
+    ],
+    "conference": "NeurIPS",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "turbulence",
+      "transformer",
+      "dns",
+      "data-driven",
+      "fluid dynamics",
+      "machine learning"
+    ],
+    "keywords": [
+      "rans",
+      "turbulence",
+      "transformer",
+      "dns",
+      "data-driven",
+      "fluid dynamics",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": 14.0
+  },
+  {
+    "id": "2510.19971v2",
+    "title": "Guiding diffusion models to reconstruct flow fields from sparse data",
+    "authors": "Marc Amorós-Trepat, Luis Medrano-Navarro, Qiang Liu, Luca Guastoni, Nils Thuerey",
+    "abstract": "The reconstruction of unsteady flow fields from limited measurements is a challenging and crucial task for many engineering applications. Machine learning models are gaining popularity for solving this problem due to their ability to learn complex patterns from data and to generalize across diverse conditions. Among these, diffusion models have emerged as being particularly powerful for generative tasks, producing high-quality samples by iteratively refining noisy inputs. In contrast to other methods, these generative models are capable of reconstructing the smallest scales of the fluid spectrum. In this work, we introduce a novel sampling method for diffusion models that enables the reconstruction of high-fidelity samples by guiding the reverse process using the available sparse data. Moreover, we enhance the reconstructions with available physics knowledge using a conflict-free update method during training. To evaluate the effectiveness of our method, we conduct experiments on 2 and 3-dimensional turbulent flow data. Our method consistently outperforms other diffusion-based methods in predicting the fluid's structure and in pixel-wise accuracy. This study underscores the remarkable potential of diffusion models in reconstructing flow field data, paving the way for leveraging them in fluid dynamics research and applications ranging from super-resolution to reconstructions of experiments.",
+    "published": "2025-10-22",
+    "arxiv_url": "http://arxiv.org/abs/2510.19971v2",
+    "pdf_url": "https://arxiv.org/pdf/2510.19971v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "Physics of Fluids",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "les",
+      "fluid dynamics",
+      "machine learning"
+    ],
+    "keywords": [
+      "les",
+      "machine learning",
+      "rom",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": 3.5
+  },
+  {
+    "id": "2510.06286v1",
+    "title": "Mass Conservation on Rails -- Rethinking Physics-Informed Learning of Ice Flow Vector Fields",
+    "authors": "Kim Bente, Roman Marchant, Fabio Ramos",
+    "abstract": "To reliably project future sea level rise, ice sheet models require inputs that respect physics. Embedding physical principles like mass conservation into models that interpolate Antarctic ice flow vector fields from sparse & noisy measurements not only promotes physical adherence but can also improve accuracy and robustness. While physics-informed neural networks (PINNs) impose physics as soft penalties, offering flexibility but no physical guarantees, we instead propose divergence-free neural networks (dfNNs), which enforce local mass conservation exactly via a vector calculus trick. Our comparison of dfNNs, PINNs, and unconstrained NNs on ice flux interpolation over Byrd Glacier suggests that \"mass conservation on rails\" yields more reliable estimates, and that directional guidance, a learning strategy leveraging continent-wide satellite velocity data, boosts performance across models.",
+    "published": "2025-10-07",
+    "arxiv_url": "http://arxiv.org/abs/2510.06286v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.06286v1",
+    "categories": [
+      "physics.ao-ph",
+      "cs.LG",
+      "physics.comp-ph",
+      "physics.flu-dyn",
+      "physics.geo-ph",
+      "stat.ML"
+    ],
+    "conference": "NeurIPS",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "rom",
+      "pinn",
+      "les",
+      "physics-informed neural network"
+    ],
+    "keywords": [
+      "neural network",
+      "rom",
+      "pinn",
+      "les",
+      "physics-informed neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": 14.0
+  },
+  {
+    "id": "2511.00272v1",
+    "title": "Improving the Robustness of Control of Chaotic Convective Flows with Domain-Informed Reinforcement Learning",
+    "authors": "Michiel Straat, Thorben Markmann, Sebastian Peitz, Barbara Hammer",
+    "abstract": "Chaotic convective flows arise in many real-world systems, such as microfluidic devices and chemical reactors. Stabilizing these flows is highly desirable but remains challenging, particularly in chaotic regimes where conventional control methods often fail. Reinforcement Learning (RL) has shown promise for control in laminar flow settings, but its ability to generalize and remain robust under chaotic and turbulent dynamics is not well explored, despite being critical for real-world deployment. In this work, we improve the practical feasibility of RL-based control of such flows focusing on Rayleigh-Bénard Convection (RBC), a canonical model for convective heat transport. To enhance generalization and sample efficiency, we introduce domain-informed RL agents that are trained using Proximal Policy Optimization across diverse initial conditions and flow regimes. We incorporate domain knowledge in the reward function via a term that encourages Bénard cell merging, as an example of a desirable macroscopic property. In laminar flow regimes, the domain-informed RL agents reduce convective heat transport by up to 33%, and in chaotic flow regimes, they still achieve a 10% reduction, which is significantly better than the conventional controllers used in practice. We compare the domain-informed to uninformed agents: Our results show that the domain-informed reward design results in steady flows, faster convergence during training, and generalization across flow regimes without retraining. Our work demonstrates that elegant domain-informed priors can greatly enhance the robustness of RL-based control of chaotic flows, bringing real-world deployment closer.",
+    "published": "2025-10-31",
+    "arxiv_url": "http://arxiv.org/abs/2511.00272v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.00272v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "rans",
+      "gan",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "gan",
+      "rom",
+      "rans",
+      "reinforcement learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.25135v1",
+    "title": "Conditional neural field for spatial dimension reduction of turbulence data: a comparison study",
+    "authors": "Junyi Guo, Pan Du, Xiantao Fan, Yahui Li, Jian-Xun Wang",
+    "abstract": "We investigate conditional neural fields (CNFs), mesh-agnostic, coordinate-based decoders conditioned on a low-dimensional latent, for spatial dimensionality reduction of turbulent flows. CNFs are benchmarked against Proper Orthogonal Decomposition and a convolutional autoencoder within a unified encoding-decoding framework and a common evaluation protocol that explicitly separates in-range (interpolative) from out-of-range (strict extrapolative) testing beyond the training horizon, with identical preprocessing, metrics, and fixed splits across all baselines. We examine three conditioning mechanisms: (i) activation-only modulation (often termed FiLM), (ii) low-rank weight and bias modulation (termed FP), and (iii) last-layer inner-product coupling, and introduce a novel domain-decomposed CNF that localizes complexities. Across representative turbulence datasets (WMLES channel inflow, DNS channel inflow, and wall pressure fluctuations over turbulent boundary layers), CNF-FP achieves the lowest training and in-range testing errors, while CNF-FiLM generalizes best for out-of-range scenarios once moderate latent capacity is available. Domain decomposition significantly improves out-of-range accuracy, especially for the more demanding datasets. The study provides a rigorous, physics-aware basis for selecting conditioning, capacity, and domain decomposition when using CNFs for turbulence compression and reconstruction.",
+    "published": "2025-10-29",
+    "arxiv_url": "http://arxiv.org/abs/2510.25135v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.25135v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "dns",
+      "les",
+      "rom",
+      "turbulence"
+    ],
+    "keywords": [
+      "dns",
+      "les",
+      "rom",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.23936v2",
+    "title": "A data free neural operator enabling fast inference of 2D and 3D Navier Stokes equations",
+    "authors": "Junho Choi, Teng-Yuan Chang, Namjung Kim, Youngjoon Hong",
+    "abstract": "Ensemble simulations of high-dimensional flow models (e.g., Navier Stokes type PDEs) are computationally prohibitive for real time applications. Neural operators enable fast inference but are limited by costly data requirements and poor generalization to 3D flows. We present a data-free operator network for the Navier Stokes equations that eliminates the need for paired solution data and enables robust, real time inference for large ensemble forecasting. The physics-grounded architecture takes initial and boundary conditions as well as forcing functions, yielding solutions robust to high variability and perturbations. Across 2D benchmarks and 3D test cases, the method surpasses prior neural operators in accuracy and, for ensembles, achieves greater efficiency than conventional numerical solvers. Notably, it delivers accurate solutions of the three dimensional Navier Stokes equations, a regime not previously demonstrated for data free neural operators. By uniting a numerically grounded architecture with the scalability of machine learning, this approach establishes a practical pathway toward data free, high fidelity PDE surrogates for end to end scientific simulation and prediction.",
+    "published": "2025-10-27",
+    "arxiv_url": "http://arxiv.org/abs/2510.23936v2",
+    "pdf_url": "https://arxiv.org/pdf/2510.23936v2",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "machine learning"
+    ],
+    "keywords": [
+      "les",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.22976v1",
+    "title": "Analysis of accuracy and efficiency of neural networks to simulate Navier-Stokes fluid flows with obstacles",
+    "authors": "Rui Hespanha, Elliot McGuire, João Hespanha",
+    "abstract": "Conventional fluid simulations can be time consuming and energy intensive. We researched the viability of a neural network for simulating incompressible fluids in a randomized obstacle-heavy environment, as an alternative to the numerical simulation of the Navier-Stokes equation. We hypothesized that the neural network predictions would have a relatively low error for simulations over a small number of time steps, but errors would eventually accumulate to the point that the output would become very noisy. Over a rich set of obstacle configurations, we achieved a root mean square error of 0.32% on our training dataset and 0.36% on a testing dataset. These errors only grew to 1.45% and 2.34% at t = 10 and, 2.11% and 4.16% at timestep t = 20. We also found that our selected neural network was approximately 8,800 times faster at predicting the flow than a conventional simulation. Our findings indicate neural networks can be extremely useful at simulating fluids in obstacle-heavy environments. Useful applications include modeling forest fire smoke, pipe fluid flow, and underwater/flood currents.",
+    "published": "2025-10-27",
+    "arxiv_url": "http://arxiv.org/abs/2510.22976v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.22976v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "les"
+    ],
+    "keywords": [
+      "neural network",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.21852v1",
+    "title": "Towards Interpretable Deep Learning and Analysis of Dynamical Systems via the Discrete Empirical Interpolation Method",
+    "authors": "Hojin Kim, Romit Maulik",
+    "abstract": "We present a differentiable framework that leverages the Discrete Empirical Interpolation Method (DEIM) for interpretable deep learning and dynamical system analysis. Although DEIM efficiently approximates nonlinear terms in projection-based reduced-order models (POD-ROM), its fixed interpolation points limit the adaptability to complex and time-varying dynamics. To address this limitation, we first develop a differentiable adaptive DEIM formulation for the one-dimensional viscous Burgers equation, which allows neural networks to dynamically select interpolation points in a computationally efficient and physically consistent manner. We then apply DEIM as an interpretable analysis tool for examining the learned dynamics of a pre-trained Neural Ordinary Differential Equation (NODE) on a two-dimensional vortex-merging problem. The DEIM trajectories reveal physically meaningful features in the learned dynamics of NODE and expose its limitations when extrapolating to unseen flow configurations. These findings demonstrate that DEIM can serve not only as a model reduction tool but also as a diagnostic framework for understanding and improving the generalization behavior of neural differential equation models.",
+    "published": "2025-10-22",
+    "arxiv_url": "http://arxiv.org/abs/2510.21852v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.21852v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "neural network",
+      "deep learning",
+      "reduced-order model"
+    ],
+    "keywords": [
+      "neural network",
+      "rom",
+      "deep learning",
+      "reduced-order model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.21804v1",
+    "title": "Residual-guided AI-CFD hybrid method enables stable and scalable simulations: from 2D benchmarks to 3D applications",
+    "authors": "Shilaj Baral, Youngkyu Lee, Sangam Khanal, Joongoo Jeon",
+    "abstract": "Purely data-driven surrogates for fluid dynamics often fail catastrophically from error accumulation, while existing hybrid methods have lacked the automation and robustness for practical use. To solve this, we developed XRePIT, a novel hybrid simulation strategy that synergizes machine learning (ML) acceleration with solver-based correction. We specifically designed our method to be fully automated and physics-aware, ensuring the stability and practical applicability that previous approaches lacked. We demonstrate that this new design overcomes long-standing barriers, achieving the first stable, accelerated rollouts for over 10,000 timesteps. The method also generalizes robustly to unseen boundary conditions and, crucially, scales to 3D flows. Our approach delivers speedups up to 4.98$\\times$ while maintaining high physical fidelity, resolving thermal fields with relative errors of ~1E-3 and capturing low magnitude velocity dynamics with errors below 1E-2 ms-1. This work thus establishes a mature and scalable hybrid method, paving the way for its use in real-world engineering.",
+    "published": "2025-10-21",
+    "arxiv_url": "http://arxiv.org/abs/2510.21804v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.21804v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "rom",
+      "fluid dynamics",
+      "cfd",
+      "machine learning",
+      "les"
+    ],
+    "keywords": [
+      "data-driven",
+      "rom",
+      "cfd",
+      "fluid dynamics",
+      "machine learning",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.17887v1",
+    "title": "Shock-Aware Physics-Guided Fusion-DeepONet Operator for Rarefied Micro-Nozzle Flows",
+    "authors": "Ehsan Roohi, Amirmehran Mahdavi",
+    "abstract": "We present a comprehensive, physics aware deep learning framework for constructing fast and accurate surrogate models of rarefied, shock containing micro nozzle flows. The framework integrates three key components, a Fusion DeepONet operator learning architecture for capturing parameter dependencies, a physics-guided feature space that embeds a shock-aligned coordinate system, and a two-phase curriculum strategy emphasizing high-gradient regions. To demonstrate the generality and inductive bias of the proposed framework, we first validate it on the canonical viscous Burgers equation, which exhibits advective steepening and shock like gradients.",
+    "published": "2025-10-18",
+    "arxiv_url": "http://arxiv.org/abs/2510.17887v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.17887v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "surrogate model",
+      "deep learning"
+    ],
+    "keywords": [
+      "surrogate model",
+      "deep learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.16020v2",
+    "title": "Airfoil optimization using Design-by-Morphing with minimized design-space dimensionality",
+    "authors": "Sangjoon Lee, Haris Moazam Sheikh",
+    "abstract": "Effective airfoil geometry optimization requires exploring a diverse range of designs using as few design variables as possible. This study introduces AirDbM, a Design-by-Morphing (DbM) approach specialized for airfoil optimization that systematically reduces design-space dimensionality. AirDbM selects an optimal set of 12 baseline airfoils from the UIUC airfoil database, which contains over 1,600 shapes, by sequentially adding the baseline that most increases the design capacity. With these baselines, AirDbM reconstructs 99 % of the database with a mean absolute error below 0.005, which matches the performance of a previous DbM approach that used more baselines. In multi-objective aerodynamic optimization, AirDbM demonstrates rapid convergence and achieves a Pareto front with a greater hypervolume than that of the previous larger-baseline study, where new Pareto-optimal solutions are discovered with enhanced lift-to-drag ratios at moderate stall tolerances. Furthermore, AirDbM demonstrates outstanding adaptability for reinforcement learning (RL) agents in generating airfoil geometry when compared to conventional airfoil parameterization methods, implying the broader potential of DbM in machine learning-driven design.",
+    "published": "2025-10-15",
+    "arxiv_url": "http://arxiv.org/abs/2510.16020v2",
+    "pdf_url": "https://arxiv.org/pdf/2510.16020v2",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "空气动力学",
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "reinforcement learning",
+      "rom",
+      "aerodynamic optimization",
+      "machine learning",
+      "les"
+    ],
+    "keywords": [
+      "reinforcement learning",
+      "rom",
+      "aerodynamic optimization",
+      "machine learning",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.16016v1",
+    "title": "Transfer learning strategies for accelerating reinforcement-learning-based flow control",
+    "authors": "Saeed Salehi",
+    "abstract": "This work investigates transfer learning strategies to accelerate deep reinforcement learning (DRL) for multifidelity control of chaotic fluid flows. Progressive neural networks (PNNs), a modular architecture designed to preserve and reuse knowledge across tasks, are employed for the first time in the context of DRL-based flow control. In addition, a comprehensive benchmarking of conventional fine-tuning strategies is conducted, evaluating their performance, convergence behavior, and ability to retain transferred knowledge. The Kuramoto-Sivashinsky (KS) system is employed as a benchmark to examine how knowledge encoded in control policies, trained in low-fidelity environments, can be effectively transferred to high-fidelity settings. Systematic evaluations show that while fine-tuning can accelerate convergence, it is highly sensitive to pretraining duration and prone to catastrophic forgetting. In contrast, PNNs enable stable and efficient transfer by preserving prior knowledge and providing consistent performance gains, and are notably robust to overfitting during the pretraining phase. Layer-wise sensitivity analysis further reveals how PNNs dynamically reuse intermediate representations from the source policy while progressively adapting deeper layers to the target task. Moreover, PNNs remain effective even when the source and target environments differ substantially, such as in cases with mismatched physical regimes or control objectives, where fine-tuning strategies often result in suboptimal adaptation or complete failure of knowledge transfer. The results highlight the potential of novel transfer learning frameworks for robust, scalable, and computationally efficient flow control that can potentially be applied to more complex flow configurations.",
+    "published": "2025-10-15",
+    "arxiv_url": "http://arxiv.org/abs/2510.16016v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.16016v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "rans",
+      "reinforcement learning",
+      "transfer learning",
+      "rom"
+    ],
+    "keywords": [
+      "neural network",
+      "rans",
+      "reinforcement learning",
+      "transfer learning",
+      "rom"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.09250v1",
+    "title": "Smart navigation of a gravity-driven glider with adjustable centre-of-mass",
+    "authors": "X. Jiang, J. Qiu, K. Gustavsson, B. Mehlig, L. Zhao",
+    "abstract": "Artificial gliders are designed to disperse as they settle through a fluid, requiring precise navigation to reach target locations. We show that a compact glider settling in a viscous fluid can navigate by dynamically adjusting its centre-of-mass. Using fully resolved direct numerical simulations (DNS) and reinforcement learning, we find two optimal navigation strategies that allow the glider to reach its target location accurately. These strategies depend sensitively on how the glider interacts with the surrounding fluid. The nature of this interaction changes as the particle Reynolds number Re$_p$ changes. Our results explain how the optimal strategy depends on Re$_p$. At large Re$_p$, the glider learns to tumble rapidly by moving its centre-of-mass as its orientation changes. This generates a large horizontal inertial lift force, which allows the glider to travel far. At small Re$_p$, by contrast, high viscosity hinders tumbling. In this case, the glider learns to adjust its centre-of-mass so that it settles with a steady, inclined orientation that results in a horizontal viscous force. The horizontal range is much smaller than for large Re$_p$, because this viscous force is much smaller than the inertial lift force at large Re$_p$.   *These authors contributed equally.",
+    "published": "2025-10-10",
+    "arxiv_url": "http://arxiv.org/abs/2510.09250v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.09250v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "dns",
+      "les",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "dns",
+      "les",
+      "reinforcement learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.07549v1",
+    "title": "Targeted Digital Twin via Flow Map Learning and Its Application to Fluid Dynamics",
+    "authors": "Qifan Chen, Zhongshu Xu, Jinjin Zhang, Dongbin Xiu",
+    "abstract": "We present a numerical framework for constructing a targeted digital twin (tDT) that directly models the dynamics of quantities of interest (QoIs) in a full digital twin (DT). The proposed approach employs memory-based flow map learning (FML) to develop a data-driven model of the QoIs using short bursts of trajectory data generated through repeated executions of the full DT. This renders the construction of the FML-based tDT an entirely offline computational process. During online simulation, the learned tDT can efficiently predict and analyze the long-term dynamics of the QoIs without requiring simulations of the full DT system, thereby achieving substantial computational savings. After introducing the general numerical procedure, we demonstrate the construction and predictive capability of the tDT in a computational fluid dynamics (CFD) example: two-dimensional incompressible flow past a cylinder. The QoIs in this problem are the hydrodynamic forces exerted on the cylinder. The resulting tDTs are compact dynamical systems that evolve these forces without explicit knowledge of the underlying flow field. Numerical results show that the tDTs yield accurate long-term predictions of the forces while entirely bypassing full flow simulations.",
+    "published": "2025-10-08",
+    "arxiv_url": "http://arxiv.org/abs/2510.07549v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.07549v1",
+    "categories": [
+      "cs.LG",
+      "math.NA",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow simulation",
+      "data-driven",
+      "fluid dynamics",
+      "cfd",
+      "computational fluid dynamics"
+    ],
+    "keywords": [
+      "flow simulation",
+      "data-driven",
+      "fluid dynamics",
+      "cfd",
+      "computational fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.07106v1",
+    "title": "Active Control of Turbulent Airfoil Flows Using Adjoint-based Deep Learning",
+    "authors": "Xuemin Liu, Tom Hickling, Jonathan F. MacArt",
+    "abstract": "We train active neural-network flow controllers using a deep learning PDE augmentation method to optimize lift-to-drag ratios in turbulent airfoil flows at Reynolds number $5\\times10^4$ and Mach number 0.4. Direct numerical simulation and large eddy simulation are employed to model compressible, unconfined flow over two- and three-dimensional semi-infinite NACA 0012 airfoils at angles of attack $α= 5^\\circ$, $10^\\circ$, and $15^\\circ$. Control actions, implemented through a blowing/suction jet at a fixed location and geometry on the upper surface, are adaptively determined by a neural network that maps local pressure measurements to optimal jet total pressure, enabling a sensor-informed control policy that responds spatially and temporally to unsteady flow conditions. The sensitivities of the flow to the neural network parameters are computed using the adjoint Navier-Stokes equations, which we construct using automatic differentiation applied to the flow solver. The trained flow controllers significantly improve the lift-to-drag ratios and reduce flow separation for both two- and three-dimensional airfoil flows, especially at $α= 5^\\circ$ and $10^\\circ$. The 2D-trained models remain effective when applied out-of-sample to 3D flows, which demonstrates the robustness of the adjoint-trained control approach. The 3D-trained models capture the flow dynamics even more effectively, which leads to better energy efficiency and comparable performance for both adaptive (neural network) and offline (simplified, constant-pressure) controllers. These results underscore the effectiveness of this learning-based approach in improving aerodynamic performance.",
+    "published": "2025-10-08",
+    "arxiv_url": "http://arxiv.org/abs/2510.07106v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.07106v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "les",
+      "deep learning"
+    ],
+    "keywords": [
+      "neural network",
+      "les",
+      "deep learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.04325v2",
+    "title": "FoilDiff: A Hybrid Transformer Backbone for Diffusion-based Modelling of 2D Airfoil Flow Fields",
+    "authors": "Kenechukwu Ogbuagu, Sepehr Maleki, Giuseppe Bruni, Senthil Krishnababu",
+    "abstract": "The accurate prediction of flow fields around airfoils is crucial for aerodynamic design and optimisation. Computational Fluid Dynamics (CFD) models are effective but computationally expensive, thus inspiring the development of surrogate models to enable quicker predictions. These surrogate models can be based on deep learning architectures, such as Convolutional Neural Networks (CNNs), Graph Neural Networks (GNNs), and Diffusion Models (DMs). Diffusion models have shown significant promise in predicting complex flow fields. In this work, we propose FoilDiff, a diffusion-based surrogate model with a hybrid-backbone denoising network. This hybrid design combines the power of convolutional feature extraction and transformer-based global attention to generate more adaptable and accurate representations of flow structures. FoilDiff takes advantage of Denoising Diffusion Implicit Model (DDIM) sampling to optimise the efficiency of the sampling process at no additional cost to model generalisation. We used encoded representations of Reynolds number, angle of attack, and airfoil geometry to define the input space for generalisation across a wide range of aerodynamic conditions. When evaluated against state-of-the-art models, FoilDiff shows significant performance improvements, with mean prediction errors reducing by up to 85\\% on the same datasets. The results have demonstrated that FoilDiff can provide both more accurate predictions and better-calibrated predictive uncertainty than existing diffusion-based models.",
+    "published": "2025-10-05",
+    "arxiv_url": "http://arxiv.org/abs/2510.04325v2",
+    "pdf_url": "https://arxiv.org/pdf/2510.04325v2",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "rans",
+      "transformer",
+      "cnn",
+      "fluid dynamics",
+      "cfd",
+      "rom",
+      "deep learning",
+      "computational fluid dynamics",
+      "surrogate model"
+    ],
+    "keywords": [
+      "neural network",
+      "rans",
+      "transformer",
+      "cnn",
+      "fluid dynamics",
+      "cfd",
+      "rom",
+      "deep learning",
+      "computational fluid dynamics",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.02982v1",
+    "title": "oRANS: Online optimisation of RANS machine learning models with embedded DNS data generation",
+    "authors": "Daniel Dehtyriov, Jonathan F. MacArt, Justin Sirignano",
+    "abstract": "Deep learning (DL) has demonstrated promise for accelerating and enhancing the accuracy of flow physics simulations, but progress is constrained by the scarcity of high-fidelity training data, which is costly to generate and inherently limited to a small set of flow conditions. Consequently, closures trained in the conventional offline paradigm tend to overfit and fail to generalise to new regimes. We introduce an online optimisation framework for DL-based Reynolds-averaged Navier--Stokes (RANS) closures which seeks to address the challenge of limited high-fidelity datasets. Training data is dynamically generated by embedding a direct numerical simulation (DNS) within a subdomain of the RANS domain. The RANS solution supplies boundary conditions to the DNS, while the DNS provides mean velocity and turbulence statistics that are used to update a DL closure model during the simulation. This feedback loop enables the closure to adapt to the embedded DNS target flow, avoiding reliance on precomputed datasets and improving out-of-distribution performance. The approach is demonstrated for the stochastically forced Burgers equation and for turbulent channel flow at $Re_τ=180$, $270$, $395$ and $590$ with varying embedded domain lengths $1\\leq L_0/L\\leq 8$. Online-optimised RANS models significantly outperform both offline-trained and literature-calibrated closures, with accurate training achieved using modest DNS subdomains. Performance degrades primarily when boundary-condition contamination dominates or when domains are too short to capture low-wavenumber modes. This framework provides a scalable route to physics-informed machine learning closures, enabling data-adaptive reduced-order models that generalise across flow regimes without requiring large precomputed training datasets.",
+    "published": "2025-10-03",
+    "arxiv_url": "http://arxiv.org/abs/2510.02982v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.02982v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "turbulence",
+      "dns",
+      "reduced-order model",
+      "rom",
+      "deep learning",
+      "machine learning",
+      "les"
+    ],
+    "keywords": [
+      "rans",
+      "turbulence",
+      "dns",
+      "rom",
+      "reduced-order model",
+      "deep learning",
+      "machine learning",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.03360v1",
+    "title": "Physics-informed Neural-operator Predictive Control for Drag Reduction in Turbulent Flows",
+    "authors": "Zelin Zhao, Zongyi Li, Kimia Hassibi, Kamyar Azizzadenesheli, Junchi Yan, H. Jane Bae, Di Zhou, Anima Anandkumar",
+    "abstract": "Assessing turbulence control effects for wall friction numerically is a significant challenge since it requires expensive simulations of turbulent fluid dynamics. We instead propose an efficient deep reinforcement learning (RL) framework for modeling and control of turbulent flows. It is model-based RL for predictive control (PC), where both the policy and the observer models for turbulence control are learned jointly using Physics Informed Neural Operators (PINO), which are discretization invariant and can capture fine scales in turbulent flows accurately. Our PINO-PC outperforms prior model-free reinforcement learning methods in various challenging scenarios where the flows are of high Reynolds numbers and unseen, i.e., not provided during model training. We find that PINO-PC achieves a drag reduction of 39.0\\% under a bulk-velocity Reynolds number of 15,000, outperforming previous fluid control methods by more than 32\\%.",
+    "published": "2025-10-03",
+    "arxiv_url": "http://arxiv.org/abs/2510.03360v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.03360v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "math.OC",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "fluid dynamics",
+      "reinforcement learning",
+      "turbulence"
+    ],
+    "keywords": [
+      "les",
+      "fluid dynamics",
+      "reinforcement learning",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2510.01365v1",
+    "title": "RheOFormer: A generative transformer model for simulation of complex fluids and flows",
+    "authors": "Maedeh Saberi, Amir Barati Farimani, Safa Jamali",
+    "abstract": "The ability to model mechanics of soft materials under flowing conditions is key in designing and engineering processes and materials with targeted properties. This generally requires solution of internal stress tensor, related to the deformation tensor through nonlinear and history-dependent constitutive models. Traditional numerical methods for non-Newtonian fluid dynamics often suffer from prohibitive computational demands and poor scalability to new problem instances. Developments in data-driven methods have mitigated some limitations but still require retraining across varied physical conditions. In this work, we introduce Rheological Operator Transformer (RheOFormer), a generative operator learning method leveraging self-attention to efficiently learn different spatial interactions and features of complex fluid flows. We benchmark RheOFormer across a range of different viscometric and non-viscometric flows with different types of viscoelastic and elastoviscoplastic mechanics in complex domains against ground truth solutions. Our results demonstrate that RheOFormer can accurately learn both scalar and tensorial nonlinear mechanics of different complex fluids and predict the spatio-temporal evolution of their flows, even when trained on limited datasets. Its strong generalization capabilities and computational efficiency establish RheOFormer as a robust neural surrogate for accelerating predictive complex fluid simulations, advancing data-driven experimentation, and enabling real-time process optimization across a wide range of applications.",
+    "published": "2025-10-01",
+    "arxiv_url": "http://arxiv.org/abs/2510.01365v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.01365v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "transformer",
+      "data-driven",
+      "rom",
+      "fluid dynamics"
+    ],
+    "keywords": [
+      "rans",
+      "transformer",
+      "data-driven",
+      "rom",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  }
+]

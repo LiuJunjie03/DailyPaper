@@ -1,0 +1,370 @@
+[
+  {
+    "id": "2509.20683v1",
+    "title": "Implicit Augmentation from Distributional Symmetry in Turbulence Super-Resolution",
+    "authors": "Julia Balla, Jeremiah Bailey, Ali Backour, Elyssa Hofgard, Tommi Jaakkola, Tess Smidt, Ryley McConkey",
+    "abstract": "The immense computational cost of simulating turbulence has motivated the use of machine learning approaches for super-resolving turbulent flows. A central challenge is ensuring that learned models respect physical symmetries, such as rotational equivariance. We show that standard convolutional neural networks (CNNs) can partially acquire this symmetry without explicit augmentation or specialized architectures, as turbulence itself provides implicit rotational augmentation in both time and space. Using 3D channel-flow subdomains with differing anisotropy, we find that models trained on more isotropic mid-plane data achieve lower equivariance error than those trained on boundary layer data, and that greater temporal or spatial sampling further reduces this error. We show a distinct scale-dependence of equivariance error that occurs regardless of dataset anisotropy that is consistent with Kolmogorov's local isotropy hypothesis. These results clarify when rotational symmetry must be explicitly incorporated into learning algorithms and when it can be obtained directly from turbulence, enabling more efficient and symmetry-aware super-resolution.",
+    "published": "2025-09-25",
+    "arxiv_url": "http://arxiv.org/abs/2509.20683v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.20683v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "NeurIPS",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "turbulence",
+      "cnn",
+      "rom",
+      "machine learning",
+      "les"
+    ],
+    "keywords": [
+      "neural network",
+      "turbulence",
+      "cnn",
+      "rom",
+      "machine learning",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": 14.0
+  },
+  {
+    "id": "2510.00233v1",
+    "title": "Differentiable Autoencoding Neural Operator for Interpretable and Integrable Latent Space Modeling",
+    "authors": "Siva Viknesh, Amirhossein Arzani",
+    "abstract": "Scientific machine learning has enabled the extraction of physical insights from high-dimensional spatiotemporal flow data using linear and nonlinear dimensionality reduction techniques. Despite these advances, achieving interpretability within the latent space remains a challenge. To address this, we propose the DIfferentiable Autoencoding Neural Operator (DIANO), a deterministic autoencoding neural operator framework that constructs physically interpretable latent spaces for both dimensional and geometric reduction, with the provision to enforce differential governing equations directly within the latent space. Built upon neural operators, DIANO compresses high-dimensional input functions into a low-dimensional latent space via spatial coarsening through an encoding neural operator and subsequently reconstructs the original inputs using a decoding neural operator through spatial refinement. We assess DIANO's latent space interpretability and performance in dimensionality reduction against baseline models, including the Convolutional Neural Operator and standard autoencoders. Furthermore, a fully differentiable partial differential equation (PDE) solver is developed and integrated within the latent space, enabling the temporal advancement of both high- and low-fidelity PDEs, thereby embedding physical priors into the latent dynamics. We further investigate various PDE formulations, including the 2D unsteady advection-diffusion and the 3D Pressure-Poisson equation, to examine their influence on shaping the latent flow representations. Benchmark problems considered include flow past a 2D cylinder, flow through a 2D symmetric stenosed artery, and a 3D patient-specific coronary artery. These case studies demonstrate DIANO's capability to solve PDEs within a latent space that facilitates both dimensional and geometrical reduction while allowing latent interpretability.",
+    "published": "2025-09-30",
+    "arxiv_url": "http://arxiv.org/abs/2510.00233v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.00233v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "machine learning"
+    ],
+    "keywords": [
+      "rom",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2509.24556v1",
+    "title": "Deep Reinforcement Learning in Action: Real-Time Control of Vortex-Induced Vibrations",
+    "authors": "Hussam Sababha, Bernat Font, Mohammed Daqaq",
+    "abstract": "This study showcases an experimental deployment of deep reinforcement learning (DRL) for active flow control (AFC) of vortex-induced vibrations (VIV) in a circular cylinder at a high Reynolds number (Re = 3000) using rotary actuation. Departing from prior work that relied on low-Reynolds-number numerical simulations, this research demonstrates real-time control in a challenging experimental setting, successfully addressing practical constraints such as actuator delay. When the learning algorithm is provided with state feedback alone (displacement and velocity of the oscillating cylinder), the DRL agent learns a low-frequency rotary control strategy that achieves up to 80% vibration suppression which leverages the traditional lock-on phenomenon. While this level of suppression is significant, it remains below the performance achieved using high-frequency rotary actuation. The reduction in performance is attributed to actuation delays and can be mitigated by augmenting the learning algorithm with past control actions. This enables the agent to learn a high-frequency rotary control strategy that effectively modifies vortex shedding and achieves over 95% vibration attenuation. These results demonstrate the adaptability of DRL for AFC in real-world experiments and its ability to overcome instrumental limitations such as actuation lag.",
+    "published": "2025-09-29",
+    "arxiv_url": "http://arxiv.org/abs/2509.24556v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.24556v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "rom",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "les",
+      "rom",
+      "reinforcement learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2509.24264v1",
+    "title": "Graph-Based Learning of Free Surface Dynamics in Generalized Newtonian Fluids using Smoothed Particle Hydrodynamics",
+    "authors": "Hyo-Jin Kim, Jaekwang Kim, Hyung-Jun Park",
+    "abstract": "In this study, we propose a graph neural network (GNN) model for efficiently predicting the flow behavior of non-Newtonian fluids with free surface dynamics. The numerical analysis of non-Newtonian fluids presents significant challenges, as traditional algorithms designed for Newtonian fluids with constant viscosity often struggle to converge when applied to non-Newtonian cases, where rheological properties vary dynamically with flow conditions. Among these, power-law fluids exhibit viscosity that decreases exponentially as the shear rate increases, making numerical simulations particularly difficult. The complexity further escalates in free surface flow scenarios, where computational challenges intensify. In such cases, particle-based methods like smoothed particle hydrodynamics (SPH) provide advantages over traditional grid-based techniques, such as the finite element method (FEM). Building on this approach, we introduce a novel GNN-based numerical model to enhance the computational efficiency of non-Newtonian power-law fluid flow simulations. Our model is trained on SPH simulation data, learning the effects of particle accelerations in the presence of SPH interactions based on the fluid's power-law parameters. The GNN significantly accelerates computations while maintaining reliable accuracy in benchmark tests, including dam-break and droplet impact simulations. The results underscore the potential of GNN-based simulation frameworks for efficiently modeling non-Newtonian fluid behavior, paving the way for future advancements in data-driven fluid simulations.",
+    "published": "2025-09-29",
+    "arxiv_url": "http://arxiv.org/abs/2509.24264v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.24264v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow simulation",
+      "neural network",
+      "data-driven"
+    ],
+    "keywords": [
+      "flow simulation",
+      "neural network",
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2509.22207v1",
+    "title": "Reversible GNS for Dissipative Fluids with Consistent Bidirectional Dynamics",
+    "authors": "Mu Huang, Linning Xu, Mingyue Dai, Yidi Shao, Bo Dai",
+    "abstract": "Simulating physically plausible trajectories toward user-defined goals is a fundamental yet challenging task in fluid dynamics. While particle-based simulators can efficiently reproduce forward dynamics, inverse inference remains difficult, especially in dissipative systems where dynamics are irreversible and optimization-based solvers are slow, unstable, and often fail to converge. In this work, we introduce the Reversible Graph Network Simulator (R-GNS), a unified framework that enforces bidirectional consistency within a single graph architecture. Unlike prior neural simulators that approximate inverse dynamics by fitting backward data, R-GNS does not attempt to reverse the underlying physics. Instead, we propose a mathematically invertible design based on residual reversible message passing with shared parameters, coupling forward dynamics with inverse inference to deliver accurate predictions and efficient recovery of plausible initial states. Experiments on three dissipative benchmarks (Water-3D, WaterRamps, and WaterDrop) show that R-GNS achieves higher accuracy and consistency with only one quarter of the parameters, and performs inverse inference more than 100 times faster than optimization-based baselines. For forward simulation, R-GNS matches the speed of strong GNS baselines, while in goal-conditioned tasks it eliminates iterative optimization and achieves orders-of-magnitude speedups. On goal-conditioned tasks, R-GNS further demonstrates its ability to complex target shapes (e.g., characters \"L\" and \"N\") through vivid, physically consistent trajectories. To our knowledge, this is the first reversible framework that unifies forward and inverse simulation for dissipative fluid systems.",
+    "published": "2025-09-26",
+    "arxiv_url": "http://arxiv.org/abs/2509.22207v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.22207v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics"
+    ],
+    "keywords": [
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2509.21751v1",
+    "title": "Reparameterizing 4DVAR with neural fields",
+    "authors": "Jaemin Oh",
+    "abstract": "Four-dimensional variational data assimilation (4DVAR) is a cornerstone of numerical weather prediction, but its cost function is difficult to optimize and computationally intensive. We propose a neural field-based reformulation in which the full spatiotemporal state is represented as a continuous function parameterized by a neural network. This reparameterization removes the time-sequential dependency of classical 4DVAR, enabling parallel-in-time optimization in parameter space. Physical constraints are incorporated directly through a physics-informed loss, simplifying implementation and reducing computational cost. We evaluate the method on the two-dimensional incompressible Navier--Stokes equations with Kolmogorov forcing. Compared to a baseline 4DVAR implementation, the neural reparameterized variants produce more stable initial condition estimates without spurious oscillations. Notably, unlike most machine learning-based approaches, our framework does not require access to ground-truth states or reanalysis data, broadening its applicability to settings with limited reference information.",
+    "published": "2025-09-26",
+    "arxiv_url": "http://arxiv.org/abs/2509.21751v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.21751v1",
+    "categories": [
+      "cs.LG",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "machine learning"
+    ],
+    "keywords": [
+      "neural network",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2509.21393v1",
+    "title": "Impact of Loss Weight and Model Complexity on Physics-Informed Neural Networks for Computational Fluid Dynamics",
+    "authors": "Yi En Chou, Te Hsin Liu, Chao-An Lin",
+    "abstract": "Physics Informed Neural Networks offer a mesh free framework for solving PDEs but are highly sensitive to loss weight selection. We propose two dimensional analysis based weighting schemes, one based on quantifiable terms, and another also incorporating unquantifiable terms for more balanced training. Benchmarks on heat conduction, convection diffusion, and lid driven cavity flows show that the second scheme consistently improves stability and accuracy over equal weighting. Notably, in high Peclet number convection diffusion, where traditional solvers fail, PINNs with our scheme achieve stable, accurate predictions, highlighting their robustness and generalizability in CFD problems.",
+    "published": "2025-09-24",
+    "arxiv_url": "http://arxiv.org/abs/2509.21393v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.21393v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "fluid dynamics",
+      "cfd",
+      "pinn",
+      "computational fluid dynamics",
+      "physics-informed neural network"
+    ],
+    "keywords": [
+      "neural network",
+      "fluid dynamics",
+      "cfd",
+      "pinn",
+      "computational fluid dynamics",
+      "physics-informed neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2509.25222v1",
+    "title": "Sensor optimization for urban wind estimation with cluster-based probabilistic framework",
+    "authors": "Yutong Liang, Chang Hou, Guy Y. Cornejo Maceda, Andrea Ianiro, Stefano Discetti, Andrea Meilán-Vila, Didier Sornette, Sandro Claudio Lera, Jialong Chen, Xiaozhou He, Bernd R. Noack",
+    "abstract": "We propose a physics-informed machine-learned framework for sensor-based flow estimation for drone trajectories in complex urban terrain. The input is a rich set of flow simulations at many wind conditions. The outputs are velocity and uncertainty estimates for a target domain and subsequent sensor optimization for minimal uncertainty. The framework has three innovations compared to traditional flow estimators. First, the algorithm scales proportionally to the domain complexity, making it suitable for flows that are too complex for any monolithic reduced-order representation. Second, the framework extrapolates beyond the training data, e.g., smaller and larger wind velocities. Last, and perhaps most importantly, the sensor location is a free input, significantly extending the vast majority of the literature. The key enablers are (1) a Reynolds number-based scaling of the flow variables, (2) a physics-based domain decomposition, (3) a cluster-based flow representation for each subdomain, (4) an information entropy correlating the subdomains, and (5) a multi-variate probability function relating sensor input and targeted velocity estimates. This framework is demonstrated using drone flight paths through a three-building cluster as a simple example. We anticipate adaptations and applications for estimating complete cities and incorporating weather input.",
+    "published": "2025-09-24",
+    "arxiv_url": "http://arxiv.org/abs/2509.25222v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.25222v1",
+    "categories": [
+      "cs.LG",
+      "cs.RO",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow simulation",
+      "les"
+    ],
+    "keywords": [
+      "flow simulation",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2509.13189v1",
+    "title": "SURGIN: SURrogate-guided Generative INversion for subsurface multiphase flow with quantified uncertainty",
+    "authors": "Zhao Feng, Bicheng Yan, Luanxiao Zhao, Xianda Shen, Renyu Zhao, Wenhao Wang, Fengshou Zhang",
+    "abstract": "We present a direct inverse modeling method named SURGIN, a SURrogate-guided Generative INversion framework tailed for subsurface multiphase flow data assimilation. Unlike existing inversion methods that require adaptation for each new observational configuration, SURGIN features a zero-shot conditional generation capability, enabling real-time assimilation of unseen monitoring data without task-specific retraining. Specifically, SURGIN synergistically integrates a U-Net enhanced Fourier Neural Operator (U-FNO) surrogate with a score-based generative model (SGM), framing the conditional generation as a surrogate prediction-guidance process in a Bayesian perspective. Instead of directly learning the conditional generation of geological parameters, an unconditional SGM is first pretrained in a self-supervised manner to capture the geological prior, after which posterior sampling is performed by leveraging a differentiable U-FNO surrogate to enable efficient forward evaluations conditioned on unseen observations. Extensive numerical experiments demonstrate SURGIN's capability to decently infer heterogeneous geological fields and predict spatiotemporal flow dynamics with quantified uncertainty across diverse measurement settings. By unifying generative learning with surrogate-guided Bayesian inference, SURGIN establishes a new paradigm for inverse modeling and uncertainty quantification in parametric functional spaces.",
+    "published": "2025-09-16",
+    "arxiv_url": "http://arxiv.org/abs/2509.13189v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.13189v1",
+    "categories": [
+      "stat.ML",
+      "cs.LG",
+      "physics.flu-dyn",
+      "physics.geo-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "多相流",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "multiphase flow"
+    ],
+    "keywords": [
+      "multiphase flow"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2509.08752v1",
+    "title": "Learning Turbulent Flows with Generative Models: Super-resolution, Forecasting, and Sparse Flow Reconstruction",
+    "authors": "Vivek Oommen, Siavash Khodakarami, Aniruddha Bora, Zhicheng Wang, George Em Karniadakis",
+    "abstract": "Neural operators are promising surrogates for dynamical systems but when trained with standard L2 losses they tend to oversmooth fine-scale turbulent structures. Here, we show that combining operator learning with generative modeling overcomes this limitation. We consider three practical turbulent-flow challenges where conventional neural operators fail: spatio-temporal super-resolution, forecasting, and sparse flow reconstruction. For Schlieren jet super-resolution, an adversarially trained neural operator (adv-NO) reduces the energy-spectrum error by 15x while preserving sharp gradients at neural operator-like inference cost. For 3D homogeneous isotropic turbulence, adv-NO trained on only 160 timesteps from a single trajectory forecasts accurately for five eddy-turnover times and offers 114x wall-clock speed-up at inference than the baseline diffusion-based forecasters, enabling near-real-time rollouts. For reconstructing cylinder wake flows from highly sparse Particle Tracking Velocimetry-like inputs, a conditional generative model infers full 3D velocity and pressure fields with correct phase alignment and statistics. These advances enable accurate reconstruction and forecasting at low compute cost, bringing near-real-time analysis and control within reach in experimental and computational fluid mechanics. See our project page: https://vivekoommen.github.io/Gen4Turb/",
+    "published": "2025-09-10",
+    "arxiv_url": "http://arxiv.org/abs/2509.08752v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.08752v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "fluid mechanics",
+      "turbulence"
+    ],
+    "keywords": [
+      "rom",
+      "fluid mechanics",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2509.05787v1",
+    "title": "Vector-based loss functions for turbulent flow field inpainting",
+    "authors": "Samuel J. Baker, Shubham Goswami, Xiaohang Fang, Felix C. P. Leach",
+    "abstract": "When developing scientific machine learning (ML) approaches, it is often beneficial to embed knowledge of the physical system in question into the training process. One way to achieve this is by leveraging the specific characteristics of the data at hand. In the case of turbulent flows, fluid velocities can be measured and recorded as multi-component vectors at discrete points in space, using techniques such as particle image velocimetry (PIV) or computational fluid mechanics (CFD). However, the vectorised nature of the data is ignored by standard ML approaches, as widely-used loss functions such as the mean-square error treat each component of a velocity vector in isolation. Therefore, the aim of this work is to better preserve the physical characteristics of the data by introducing loss functions that utilise vector similarity metrics. To this end, vector-based loss functions are developed here and implemented alongside a U-Net model for a turbulent flow field inpainting problem, amounting to the prediction of velocity vectors inside large gaps in PIV images. The intention is for the inpainting task to pose a significant challenge for the ML models in order to shed light on their capabilities. The test case uses PIV data from the highly turbulent flow in the well-known Transparent Combustion Chamber III (TCC-III) engine. Loss functions based on the cosine similarity and vector magnitude differences are proposed; the results show that the vector-based loss functions lead to significantly improved predictions of multi-scale flow patterns, while a hybrid (vector and mean-square error) loss function enables a good compromise to be found between preserving multi-scale behaviour and pixel-wise accuracy.",
+    "published": "2025-09-06",
+    "arxiv_url": "http://arxiv.org/abs/2509.05787v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.05787v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "fluid mechanics",
+      "rom",
+      "cfd",
+      "machine learning",
+      "les"
+    ],
+    "keywords": [
+      "rans",
+      "fluid mechanics",
+      "rom",
+      "cfd",
+      "machine learning",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  }
+]

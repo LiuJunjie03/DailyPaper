@@ -1,0 +1,400 @@
+[
+  {
+    "id": "2602.23188v1",
+    "title": "Efficient Real-Time Adaptation of ROMs for Unsteady Flows Using Data Assimilation",
+    "authors": "Ismaël Zighed, Andrea Nóvoa, Luca Magri, Taraneh Sayadi",
+    "abstract": "We propose an efficient retraining strategy for a parameterized Reduced Order Model (ROM) that attains accuracy comparable to full retraining while requiring only a fraction of the computational time and relying solely on sparse observations of the full system. The architecture employs an encode-process-decode structure: a Variational Autoencoder (VAE) to perform dimensionality reduction, and a transformer network to evolve the latent states and model the dynamics. The ROM is parameterized by an external control variable, the Reynolds number in the Navier-Stokes setting, with the transformer exploiting attention mechanisms to capture both temporal dependencies and parameter effects. The probabilistic VAE enables stochastic sampling of trajectory ensembles, providing predictive means and uncertainty quantification through the first two moments. After initial training on a limited set of dynamical regimes, the model is adapted to out-of-sample parameter regions using only sparse data. Its probabilistic formulation naturally supports ensemble generation, which we employ within an ensemble Kalman filtering framework to assimilate data and reconstruct full-state trajectories from minimal observations. We further show that, for the dynamical system considered, the dominant source of error in out-of-sample forecasts stems from distortions of the latent manifold rather than changes in the latent dynamics. Consequently, retraining can be limited to the autoencoder, allowing for a lightweight, computationally efficient, real-time adaptation procedure with very sparse fine-tuning data.",
+    "published": "2026-02-26",
+    "arxiv_url": "http://arxiv.org/abs/2602.23188v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.23188v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "rom",
+      "rans",
+      "transformer"
+    ],
+    "keywords": [
+      "les",
+      "rom",
+      "rans",
+      "transformer"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.22188v1",
+    "title": "Surrogate models for Rock-Fluid Interaction: A Grid-Size-Invariant Approach",
+    "authors": "Nathalie C. Pinheiro, Donghu Guo, Hannah P. Menke, Aniket C. Joshi, Claire E. Heaney, Ahmed H. ElSheikh, Christopher C. Pain",
+    "abstract": "Modelling rock-fluid interaction requires solving a set of partial differential equations (PDEs) to predict the flow behaviour and the reactions of the fluid with the rock on the interfaces. Conventional high-fidelity numerical models require a high resolution to obtain reliable results, resulting in huge computational expense. This restricts the applicability of these models for multi-query problems, such as uncertainty quantification and optimisation, which require running numerous scenarios. As a cheaper alternative to high-fidelity models, this work develops eight surrogate models for predicting the fluid flow in porous media. Four of these are reduced-order models (ROM) based on one neural network for compression and another for prediction. The other four are single neural networks with the property of grid-size invariance; a term which we use to refer to image-to-image models that are capable of inferring on computational domains that are larger than those used during training. In addition to the novel grid-size-invariant framework for surrogate models, we compare the predictive performance of UNet and UNet++ architectures, and demonstrate that UNet++ outperforms UNet for surrogate models. Furthermore, we show that the grid-size-invariant approach is a reliable way to reduce memory consumption during training, resulting in good correlation between predicted and ground-truth values and outperforming the ROMs analysed. The application analysed is particularly challenging because fluid-induced rock dissolution results in a non-static solid field and, consequently, it cannot be used to help in adjustments of the future prediction.",
+    "published": "2026-02-25",
+    "arxiv_url": "http://arxiv.org/abs/2602.22188v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.22188v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "neural network",
+      "surrogate model",
+      "reduced-order model"
+    ],
+    "keywords": [
+      "neural network",
+      "surrogate model",
+      "rom",
+      "reduced-order model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.15592v1",
+    "title": "Uni-Flow: a unified autoregressive-diffusion model for complex multiscale flows",
+    "authors": "Xiao Xue, Tianyue Yang, Mingyang Gao, Leyu Pan, Maida Wang, Kewei Zhu, Shuo Wang, Jiuling Li, Marco F. P. ten Eikelder, Peter V. Coveney",
+    "abstract": "Spatiotemporal flows govern diverse phenomena across physics, biology, and engineering, yet modelling their multiscale dynamics remains a central challenge. Despite major advances in physics-informed machine learning, existing approaches struggle to simultaneously maintain long-term temporal evolution and resolve fine-scale structure across chaotic, turbulent, and physiological regimes. Here, we introduce Uni-Flow, a unified autoregressive-diffusion framework that explicitly separates temporal evolution from spatial refinement for modelling complex dynamical systems. The autoregressive component learns low-resolution latent dynamics that preserve large-scale structure and ensure stable long-horizon rollouts, while the diffusion component reconstructs high-resolution physical fields, recovering fine-scale features in a small number of denoising steps. We validate Uni-Flow across canonical benchmarks, including two-dimensional Kolmogorov flow, three-dimensional turbulent channel inflow generation with a quantum-informed autoregressive prior, and patient-specific simulations of aortic coarctation derived from high-fidelity lattice Boltzmann hemodynamic solvers. In the cardiovascular setting, Uni-Flow enables task-level faster than real-time inference of pulsatile hemodynamics, reconstructing high-resolution pressure fields over physiologically relevant time horizons in seconds rather than hours. By transforming high-fidelity hemodynamic simulation from an offline, HPC-bound process into a deployable surrogate, Uni-Flow establishes a pathway to faster-than-real-time modelling of complex multiscale flows, with broad implications for scientific machine learning in flow physics.",
+    "published": "2026-02-17",
+    "arxiv_url": "http://arxiv.org/abs/2602.15592v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.15592v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "rom",
+      "rans",
+      "machine learning"
+    ],
+    "keywords": [
+      "les",
+      "rom",
+      "rans",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.15472v1",
+    "title": "Fluids You Can Trust: Property-Preserving Operator Learning for Incompressible Flows",
+    "authors": "Ramansh Sharma, Matthew Lowery, Houman Owhadi, Varun Shankar",
+    "abstract": "We present a novel property-preserving kernel-based operator learning method for incompressible flows governed by the incompressible Navier-Stokes equations. Traditional numerical solvers incur significant computational costs to respect incompressibility. Operator learning offers efficient surrogate models, but current neural operators fail to exactly enforce physical properties such as incompressibility, periodicity, and turbulence. Our method maps input functions to expansion coefficients of output functions in a property-preserving kernel basis, ensuring that predicted velocity fields analytically and simultaneously preserve the aforementioned physical properties. We evaluate the method on challenging 2D and 3D, laminar and turbulent, incompressible flow problems. Our method achieves up to six orders of magnitude lower relative $\\ell_2$ errors upon generalization and trains up to five orders of magnitude faster compared to neural operators. Moreover, while our method enforces incompressibility analytically, neural operators exhibit very large deviations. Our results show that our method provides an accurate and efficient surrogate for incompressible flows.",
+    "published": "2026-02-17",
+    "arxiv_url": "http://arxiv.org/abs/2602.15472v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.15472v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "surrogate model",
+      "turbulence"
+    ],
+    "keywords": [
+      "surrogate model",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.14907v2",
+    "title": "Adjoint-based shape optimization of a ship hull using a Conditional Variational Autoencoder (CVAE) assisted propulsion surrogate model",
+    "authors": "Moloud Arian Maram, Georgios Bletsos, Thanh Tung Nguyen, Ahmed Hassan, Michael Palm, Thomas Rung",
+    "abstract": "Adjoint-based shape optimization of ship hulls is a powerful tool for addressing high-dimensional design problems in naval architecture, particularly in minimizing the ship resistance. However, its application to vessels that employ complex propulsion systems introduces significant challenges. They arise from the need for transient simulations extending over long periods of time with small time steps and from the reverse temporal propagation of the primal and adjoint solutions. These challenges place considerable demands on the required storage and computing power, which significantly hamper the use of adjoint methods in the industry. To address this issue, we propose a machine learning-assisted optimization framework that employs a Conditional Variational Autoencoder-based surrogate model of the propulsion system. The surrogate model replicates the time-averaged flow field induced by a Voith Schneider Propeller and replaces the geometrically and time-resolved propeller with a data-driven approximation. Primal flow verification examples demonstrate that the surrogate model achieves significant computational savings while maintaining the necessary accuracy of the resolved propeller. Optimization studies show that ignoring the propulsion system can yield designs that perform worse than the initial shape. In contrast, the proposed method produces shapes that achieve more than an 8\\% reduction in resistance.",
+    "published": "2026-02-16",
+    "arxiv_url": "http://arxiv.org/abs/2602.14907v2",
+    "pdf_url": "https://arxiv.org/pdf/2602.14907v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "data-driven",
+      "rom",
+      "machine learning",
+      "les",
+      "surrogate model"
+    ],
+    "keywords": [
+      "rans",
+      "data-driven",
+      "rom",
+      "machine learning",
+      "les",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.14108v1",
+    "title": "Geometry-Aware Physics-Informed PointNets for Modeling Flows Across Porous Structures",
+    "authors": "Luigi Ciceri, Corrado Mio, Jianyi Lin, Gabriele Gianini",
+    "abstract": "Predicting flows that occur both through and around porous bodies is challenging due to coupled physics across fluid and porous regions and the need to generalize across diverse geometries and boundary conditions. We address this problem using two Physics Informed learning approaches: Physics Informed PointNets (PIPN) and Physics Informed Geometry Aware Neural Operator (P-IGANO). We enforce the incompressible Navier Stokes equations in the free-flow region and a Darcy Forchheimer extension in the porous region within a unified loss and condition the networks on geometry and material parameters. Datasets are generated with OpenFOAM on 2D ducts containing porous obstacles and on 3D windbreak scenarios with tree canopies and buildings. We first verify the pipeline via the method of manufactured solutions, then assess generalization to unseen shapes, and for PI-GANO, to variable boundary conditions and parameter settings. The results show consistently low velocity and pressure errors in both seen and unseen cases, with accurate reproduction of the wake structures. Performance degrades primarily near sharp interfaces and in regions with large gradients. Overall, the study provides a first systematic evaluation of PIPN/PI-GANO for simultaneous through-and-around porous flows and shows their potential to accelerate design studies without retraining per geometry.",
+    "published": "2026-02-15",
+    "arxiv_url": "http://arxiv.org/abs/2602.14108v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.14108v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "gan"
+    ],
+    "keywords": [
+      "les",
+      "gan"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.11626v1",
+    "title": "ArGEnT: Arbitrary Geometry-encoded Transformer for Operator Learning",
+    "authors": "Wenqian Chen, Yucheng Fu, Michael Penwarden, Pratanu Roy, Panos Stinis",
+    "abstract": "Learning solution operators for systems with complex, varying geometries and parametric physical settings is a central challenge in scientific machine learning. In many-query regimes such as design optimization, control and inverse problems, surrogate modeling must generalize across geometries while allowing flexible evaluation at arbitrary spatial locations. In this work, we propose Arbitrary Geometry-encoded Transformer (ArGEnT), a geometry-aware attention-based architecture for operator learning on arbitrary domains. ArGEnT employs Transformer attention mechanisms to encode geometric information directly from point-cloud representations with three variants-self-attention, cross-attention, and hybrid-attention-that incorporates different strategies for incorporating geometric features. By integrating ArGEnT into DeepONet as the trunk network, we develop a surrogate modeling framework capable of learning operator mappings that depend on both geometric and non-geometric inputs without the need to explicitly parametrize geometry as a branch network input. Evaluation on benchmark problems spanning fluid dynamics, solid mechanics and electrochemical systems, we demonstrate significantly improved prediction accuracy and generalization performance compared with the standard DeepONet and other existing geometry-aware saurrogates. In particular, the cross-attention transformer variant enables accurate geometry-conditioned predictions with reduced reliance on signed distance functions. By combining flexible geometry encoding with operator-learning capabilities, ArGEnT provides a scalable surrogate modeling framework for optimization, uncertainty quantification, and data-driven modeling of complex physical systems.",
+    "published": "2026-02-12",
+    "arxiv_url": "http://arxiv.org/abs/2602.11626v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.11626v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.chem-ph",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "transformer",
+      "data-driven",
+      "fluid dynamics",
+      "data-driven modeling",
+      "rom",
+      "machine learning",
+      "les",
+      "surrogate model"
+    ],
+    "keywords": [
+      "rans",
+      "transformer",
+      "data-driven",
+      "fluid dynamics",
+      "data-driven modeling",
+      "rom",
+      "machine learning",
+      "les",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.15883v1",
+    "title": "Distributed physics-informed neural networks via domain decomposition for fast flow reconstruction",
+    "authors": "Yixiao Qian, Jiaxu Liu, Zewei Xia, Song Chen, Chao Xu, Shengze Cai",
+    "abstract": "Physics-Informed Neural Networks (PINNs) offer a powerful paradigm for flow reconstruction, seamlessly integrating sparse velocity measurements with the governing Navier-Stokes equations to recover complete velocity and latent pressure fields. However, scaling such models to large spatiotemporal domains is hindered by computational bottlenecks and optimization instabilities. In this work, we propose a robust distributed PINNs framework designed for efficient flow reconstruction via spatiotemporal domain decomposition. A critical challenge in such distributed solvers is pressure indeterminacy, where independent sub-networks drift into inconsistent local pressure baselines. We address this issue through a reference anchor normalization strategy coupled with decoupled asymmetric weighting. By enforcing a unidirectional information flow from designated master ranks where the anchor point lies to neighboring ranks, our approach eliminates gauge freedom and guarantees global pressure uniqueness while preserving temporal continuity. Furthermore, to mitigate the Python interpreter overhead associated with computing high-order physics residuals, we implement a high-performance training pipeline accelerated by CUDA graphs and JIT compilation. Extensive validation on complex flow benchmarks demonstrates that our method achieves near-linear strong scaling and high-fidelity reconstruction, establishing a scalable and physically rigorous pathway for flow reconstruction and understanding of complex hydrodynamics.",
+    "published": "2026-02-05",
+    "arxiv_url": "http://arxiv.org/abs/2602.15883v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.15883v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "rom",
+      "pinn",
+      "les",
+      "physics-informed neural network"
+    ],
+    "keywords": [
+      "neural network",
+      "rom",
+      "pinn",
+      "les",
+      "physics-informed neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.02832v1",
+    "title": "Koopman Autoencoders with Continuous-Time Latent Dynamics for Fluid Dynamics Forecasting",
+    "authors": "Rares Grozavescu, Pengyu Zhang, Etienne Meunier, Mark Girolami",
+    "abstract": "Data-driven surrogate models have emerged as powerful tools for accelerating the simulation of turbulent flows. However, classical approaches which perform autoregressive rollouts often trade off between strong short-term accuracy and long-horizon stability. Koopman autoencoders, inspired by Koopman operator theory, provide a physics-based alternative by mapping nonlinear dynamics into a latent space where linear evolution is conducted. In practice, most existing formulations operate in a discrete-time setting, limiting temporal flexibility. In this work, we introduce a continuous-time Koopman framework that models latent evolution through numerical integration schemes. By allowing variable timesteps at inference, the method demonstrates robustness to temporal resolution and generalizes beyond training regimes. In addition, the learned dynamics closely adhere to the analytical matrix exponential solution, enabling efficient long-horizon forecasting. We evaluate the approach on classical CFD benchmarks and report accuracy, stability, and extrapolation properties.",
+    "published": "2026-02-02",
+    "arxiv_url": "http://arxiv.org/abs/2602.02832v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.02832v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "surrogate model",
+      "fluid dynamics",
+      "cfd"
+    ],
+    "keywords": [
+      "data-driven",
+      "surrogate model",
+      "cfd",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.01737v1",
+    "title": "Physics-Informed Chebyshev Polynomial Neural Operator for Parametric Partial Differential Equations",
+    "authors": "Biao Chen, Jing Wang, Hairun Xie, Qineng Wang, Shuai Zhang, Yifan Xia, Jifa Zhang",
+    "abstract": "Neural operators have emerged as powerful deep learning frameworks for approximating solution operators of parameterized partial differential equations (PDE). However, current methods predominantly rely on multilayer perceptrons (MLPs) for mapping inputs to solutions, which impairs training robustness in physics-informed settings due to inherent spectral biases and fixed activation functions. To overcome the architectural limitations, we introduce the Physics-Informed Chebyshev Polynomial Neural Operator (CPNO), a novel mesh-free framework that leverages a basis transformation to replace unstable monomial expansions with the numerically stable Chebyshev spectral basis. By integrating parameter dependent modulation mechanism to main net, CPNO constructs PDE solutions in a near-optimal functional space, decoupling the model from MLP-specific constraints and enhancing multi-scale representation. Theoretical analysis demonstrates the Chebyshev basis's near-minimax uniform approximation properties and superior conditioning, with Lebesgue constants growing logarithmically with degree, thereby mitigating spectral bias and ensuring stable gradient flow during optimization. Numerical experiments on benchmark parameterized PDEs show that CPNO achieves superior accuracy, faster convergence, and enhanced robustness to hyperparameters. The experiment of transonic airfoil flow has demonstrated the capability of CPNO in characterizing complex geometric problems.",
+    "published": "2026-02-02",
+    "arxiv_url": "http://arxiv.org/abs/2602.01737v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.01737v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "deep learning",
+      "rans"
+    ],
+    "keywords": [
+      "rom",
+      "rans",
+      "deep learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2602.01379v2",
+    "title": "WAKESET: A Large-Scale, High-Reynolds Number Flow Dataset for Machine Learning of Turbulent Wake Dynamics",
+    "authors": "Zachary Cooper-Baldock, Paulo E. Santos, Russell S. A. Brinkworth, Karl Sammut",
+    "abstract": "Machine learning (ML) offers transformative potential for computational fluid dynamics (CFD), promising to accelerate simulations, improve turbulence modelling, and enable real-time flow prediction and control-capabilities that could fundamentally change how engineers approach fluid dynamics problems. However, the exploration of ML in fluid dynamics is critically hampered by the scarcity of large, diverse, and high-fidelity datasets suitable for training robust models. This limitation is particularly acute for highly turbulent flows, which dominate practical engineering applications yet remain computationally prohibitive to simulate at scale. High-Reynolds number turbulent datasets are essential for ML models to learn the complex, multi-scale physics characteristic of real-world flows, enabling generalisation beyond the simplified, low-Reynolds number regimes often represented in existing datasets. This paper introduces WAKESET, a novel, large-scale CFD dataset of highly turbulent flows, designed to address this critical gap. The dataset captures the complex hydrodynamic interactions during the underwater recovery of an autonomous underwater vehicle by a larger extra-large uncrewed underwater vehicle. It comprises 1,091 high-fidelity Reynolds-Averaged Navier-Stokes simulations, augmented to 4,364 instances, covering a wide operational envelope of speeds (up to Reynolds numbers of 1.09 x 10^8) and turning angles. This work details the motivation for this new dataset by reviewing existing resources, outlines the hydrodynamic modelling and validation underpinning its creation, and describes its structure. The dataset's focus on a practical engineering problem, its scale, and its high turbulence characteristics make it a valuable resource for developing and benchmarking ML models for flow field prediction, surrogate modelling, and autonomous navigation in complex underwater environments.",
+    "published": "2026-02-01",
+    "arxiv_url": "http://arxiv.org/abs/2602.01379v2",
+    "pdf_url": "https://arxiv.org/pdf/2602.01379v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "turbulence",
+      "fluid dynamics",
+      "cfd",
+      "rom",
+      "pinn",
+      "machine learning",
+      "computational fluid dynamics",
+      "les",
+      "surrogate model"
+    ],
+    "keywords": [
+      "rans",
+      "turbulence",
+      "rom",
+      "fluid dynamics",
+      "cfd",
+      "pinn",
+      "machine learning",
+      "computational fluid dynamics",
+      "les",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  }
+]

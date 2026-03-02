@@ -1,0 +1,521 @@
+[
+  {
+    "id": "2511.05633v1",
+    "title": "Physics-Guided Machine Learning for Uncertainty Quantification in Turbulence Models",
+    "authors": "Minghan Chu, Weicheng Qian",
+    "abstract": "Predicting the evolution of turbulent flows is central across science and engineering. Most studies rely on simulations with turbulence models, whose empirical simplifications introduce epistemic uncertainty. The Eigenspace Perturbation Method (EPM) is a widely used physics-based approach to quantify model-form uncertainty, but being purely physics-based it can overpredict uncertainty bounds. We propose a convolutional neural network (CNN)-based modulation of EPM perturbation magnitudes to improve calibration while preserving physical consistency. Across canonical cases, the hybrid ML-EPM framework yields substantially tighter, better-calibrated uncertainty estimates than baseline EPM alone.",
+    "published": "2025-11-07",
+    "arxiv_url": "http://arxiv.org/abs/2511.05633v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.05633v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "NeurIPS",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "turbulence",
+      "neural network",
+      "cnn",
+      "machine learning"
+    ],
+    "keywords": [
+      "neural network",
+      "machine learning",
+      "cnn",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": 14.0
+  },
+  {
+    "id": "2511.22819v1",
+    "title": "Resolving Sharp Gradients of Unstable Singularities to Machine Precision via Neural Networks",
+    "authors": "Yongji Wang, Tristan Léger, Ching-Yao Lai, Tristan Buckmaster",
+    "abstract": "Recent work introduced a robust computational framework combining embedded mathematical structures, advanced optimization, and neural network architecture, leading to the discovery of multiple unstable self-similar solutions for key fluid dynamics equations, including the Incompressible Porous Media (IPM) and 2D Boussinesq systems. While this framework confirmed the existence of these singularities, an accuracy level approaching double-float machine precision was only achieved for stable and 1st unstable solutions of the 1D Córdoba-Córdoba-Fontelos model. For highly unstable solutions characterized by extreme gradients, the accuracy remained insufficient for validation. The primary obstacle is the presence of sharp solution gradients. Those gradients tend to induce large, localized PDE residuals during training, which not only hinder convergence, but also obscure the subtle signals near the origin required to identify the correct self-similar scaling parameter lambda of the solutions. In this work, we introduce a gradient-normalized PDE residual re-weighting scheme to resolve the high-gradient challenge while amplifying the critical residual signals at the origin for lambda identification. Coupled with the multi-stage neural network architecture, the PDE residuals are reduced to the level of round-off error across a wide spectrum of unstable self-similar singularities previously discovered. Furthermore, our method enables the discovery of new highly unstable singularities, i.e. the 4th unstable solution for IPM equations and a novel family of highly unstable solitons for the Nonlinear Schrödinger equations. This results in achieving high-gradient solutions with high precision, providing an important ingredient for bridging the gap between numerical discovery and computer-assisted proofs for unstable phenomena in nonlinear PDEs.",
+    "published": "2025-11-28",
+    "arxiv_url": "http://arxiv.org/abs/2511.22819v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.22819v1",
+    "categories": [
+      "math.AP",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "les",
+      "fluid dynamics"
+    ],
+    "keywords": [
+      "neural network",
+      "les",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2512.00104v1",
+    "title": "Learning with Physical Constraints",
+    "authors": "Miguel A. Mendez, Jan van Den Berghe, Manuel Ratz, Matilde Fiore, Lorenzo Schena",
+    "abstract": "This chapter provides three tutorial exercises on physics-constrained regression. These are implemented as toy problems that seek to mimic grand challenges in (1) the super-resolution and data assimilation of the velocity field in image velocimetry, (2) data-driven turbulence modeling, and (3) system identification and digital twinning for forecasting and control. The Python codes for all exercises are provided in the course repository.",
+    "published": "2025-11-27",
+    "arxiv_url": "http://arxiv.org/abs/2512.00104v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.00104v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "stat.ML"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "turbulence"
+    ],
+    "keywords": [
+      "data-driven",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.18820v1",
+    "title": "Solution of Incompressible Flow Equations with Physics and Equality Constrained Artificial Neural Networks",
+    "authors": "Qifeng Hu, Inanc Senocak",
+    "abstract": "We present a meshless method for the solution of incompressible Navier-Stokes equations in advection-dominated regimes using physics- and equality-constrained artificial neural networks combined with a conditionally adaptive augmented Lagrangian formulation. A single neural network parameterizes both the velocity and pressure fields, and is trained by minimizing the residual of a Poisson's equation for pressure, constrained by the momentum and continuity equations, together with boundary conditions on the velocity field. No boundary conditions are imposed on the pressure field aside from anchoring the pressure at a point to prevent its unbounded development. The training is performed from scratch without labeled data, relying solely on the governing equations and constraints. To enhance accuracy in advection-dominated flows, we employ a single Fourier feature mapping of the input coordinates. The proposed method is demonstrated for the canonical lid-driven cavity flow up to a Reynolds number of 7,500 and for laminar flow over a circular cylinder with inflow-outflow boundary conditions, achieving excellent agreement with benchmark solutions. We further compare the present formulation against alternative objective-function constructions based on different arrangements of the flow equations, thereby highlighting the algorithmic advantages of the proposed formulation centered around the Poisson's equation for pressure.",
+    "published": "2025-11-24",
+    "arxiv_url": "http://arxiv.org/abs/2511.18820v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.18820v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "les",
+      "rom"
+    ],
+    "keywords": [
+      "neural network",
+      "les",
+      "rom"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.17754v1",
+    "title": "Periodicity-Enforced Neural Network for Designing Deterministic Lateral Displacement Devices",
+    "authors": "Andrew Lee, Mahir Mobarrat, Xiaolin Chen",
+    "abstract": "Deterministic Lateral Displacement (DLD) devices enable liquid biopsy for cancer detection by separating circulating tumor cells (CTCs) from blood samples based on size, but designing these microfluidic devices requires computationally expensive Navier-Stokes simulations and particle-tracing analyses. While recent surrogate modeling approaches using deep learning have accelerated this process, they often inadequately handle the critical periodic boundary conditions of DLD unit cells, leading to cumulative errors in multi-unit device predictions. This paper introduces a periodicity-enforced surrogate modeling approach that incorporates periodic layers, neural network components that guarantee exact periodicity without penalty terms or output modifications, into deep learning architectures for DLD device design. The proposed method employs three sub-networks to predict steady-state, non-dimensional velocity and pressure fields (u, v, p) rather than directly predicting critical diameters or particle trajectories, enabling complete flow field characterization and enhanced design flexibility. Periodic layers ensure exact matching of flow variables across unit cell boundaries through architectural enforcement rather than soft penalty-based approaches. Validation on 120 CFD-generated geometries demonstrates that the periodic layer implementation achieves 0.478% critical diameter error while maintaining perfect periodicity consistency, representing an 85.4% improvement over baseline methods. The approach enables efficient and accurate DLD device design with guaranteed boundary condition satisfaction for multi-unit device applications.",
+    "published": "2025-11-21",
+    "arxiv_url": "http://arxiv.org/abs/2511.17754v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.17754v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "rom",
+      "cfd",
+      "deep learning",
+      "les",
+      "surrogate model"
+    ],
+    "keywords": [
+      "neural network",
+      "rom",
+      "cfd",
+      "deep learning",
+      "les",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.17475v1",
+    "title": "Addressing A Posteriori Performance Degradation in Neural Network Subgrid Stress Models",
+    "authors": "Andy Wu, Sanjiva K. Lele",
+    "abstract": "Neural network subgrid stress models often have a priori performance that is far better than the a posteriori performance, leading to neural network models that look very promising a priori completely failing in a posteriori Large Eddy Simulations (LES). This performance gap can be decreased by combining two different methods, training data augmentation and reducing input complexity to the neural network. Augmenting the training data with two different filters before training the neural networks has no performance degradation a priori as compared to a neural network trained with one filter. A posteriori, neural networks trained with two different filters are far more robust across two different LES codes with different numerical schemes. In addition, by ablating away the higher order terms input into the neural network, the a priori versus a posteriori performance changes become less apparent. When combined, neural networks that use both training data augmentation and a less complex set of inputs have a posteriori performance far more reflective of their a priori evaluation.",
+    "published": "2025-11-21",
+    "arxiv_url": "http://arxiv.org/abs/2511.17475v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.17475v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "les",
+      "rom"
+    ],
+    "keywords": [
+      "neural network",
+      "les",
+      "rom"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.14581v1",
+    "title": "Online learning of subgrid-scale models for quasi-geostrophic turbulence in planetary interiors",
+    "authors": "Hugo Frezat, Thomas Gastine, Alexandre Fournier",
+    "abstract": "The use of machine learning to represent subgrid-scale (SGS) dynamics is now well established in weather forecasting and climate modelling. Recent advances have demonstrated that SGS models trained via ``online'' end-to-end learning -- where the dynamical solver operating on the filtered equations participates in the training -- can outperform traditional physics-based approaches. Most studies, however, have focused on idealised periodic domains, neglecting the mechanical boundaries present e.g. in planetary interiors. To address this issue, we consider two-dimensional quasi-geostrophic turbulent flow in an axisymmetric bounded domain that we model using a pseudo-spectral differentiable solver, thereby enabling online learning. We examine three configurations, varying the geometry (between an exponential container and a spherical shell) and the rotation rate. Flow is driven by a prescribed analytical forcing, allowing for precise control over the energy injection scale and an exact estimate of the power input. We evaluate the accuracy of the online-trained SGS model against the reference direct numerical simulation using integral quantities and spectral diagnostics. In all configurations, we show that an SGS model trained on data spanning only one turnover time remains stable and accurate over integrations at least a hundred times longer than the training period. Moreover, we demonstrate the model's remarkable ability to reproduce slow processes occurring on time scales far exceeding the training duration, such as the inward drift of jets in the spherical shell. These results suggest a promising path towards developing SGS models for planetary and stellar interior dynamics, including dynamo processes.",
+    "published": "2025-11-18",
+    "arxiv_url": "http://arxiv.org/abs/2511.14581v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.14581v1",
+    "categories": [
+      "physics.flu-dyn",
+      "astro-ph.EP",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "turbulence",
+      "les",
+      "rom",
+      "machine learning"
+    ],
+    "keywords": [
+      "les",
+      "machine learning",
+      "rom",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.09769v1",
+    "title": "Symmetry aware Reynolds Averaged Navier Stokes turbulence models with equivariant neural networks",
+    "authors": "Aaron Miller, Sahil Kommalapati, Robert Moser, Petros Koumoutsakos",
+    "abstract": "Accurate and generalizable Reynolds-averaged Navier-Stokes (RANS) models for turbulent flows rely on effective closures. We introduce tensor-based, symmetry aware closures using equivariant neural networks (ENNs) and present an algorithm for enforcing algebraic contraction relations among tensor components. The modeling approach builds on the structure tensor framework introduced by Kassinos and Reynolds to learn closures in the rapid distortion theory setting. Experiments show that ENNs can effectively learn relationships involving high-order tensors, meeting or exceeding the performance of existing models in tasks such as predicting the rapid pressure-strain correlation. Our results show that ENNs provide a physically consistent alternative to classical tensor basis models, enabling end-to-end learning of unclosed terms in RANS and fast exploration of model dependencies.",
+    "published": "2025-11-12",
+    "arxiv_url": "http://arxiv.org/abs/2511.09769v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.09769v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "rans",
+      "turbulence"
+    ],
+    "keywords": [
+      "neural network",
+      "rans",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.07702v1",
+    "title": "Intelligent Optimization of Multi-Parameter Micromixers Using a Scientific Machine Learning Framework",
+    "authors": "Meraj Hassanzadeh, Ehsan Ghaderi, Mohamad Ali Bijarchi, Siamak Kazemzadeh Hannani",
+    "abstract": "Multidimensional optimization has consistently been a critical challenge in engineering. However, traditional simulation-based optimization methods have long been plagued by significant limitations: they are typically capable of optimizing only a single problem at a time and require substantial computational time for meshing and numerical simulation. This paper introduces a novel framework leveraging cutting-edge Scientific Machine Learning (Sci-ML) methodologies to overcome these inherent drawbacks of conventional approaches. The proposed method provides instantaneous solutions to a spectrum of complex, multidimensional optimization problems. A micromixer case study is employed to demonstrate this methodology. An agent, operating on a Deep Reinforcement Learning (DRL) architecture, serves as the optimizer to explore the relationships between key problem parameters. This optimizer interacts with an environment constituted by a parametric Physics-Informed Neural Network (PINN), which responds to the agent's actions at a significantly higher speed than traditional numerical methods. The agent's objective, conditioned on the Schmidt number is to discover the optimal geometric and physical parameters that maximize the micromixer's efficiency. After training the agent across a wide range of Schmidt numbers, we analyzed the resulting optimal designs. Across this entire spectrum, the achieved efficiency was consistently greater than the baseline, normalized value. The maximum efficiency occurred at a Schmidt number of 13.3, demonstrating an improvement of approximately 32%. Finally, a comparative analysis with a Genetic Algorithm was conducted under equivalent conditions to underscore the advantages of the proposed method.",
+    "published": "2025-11-10",
+    "arxiv_url": "http://arxiv.org/abs/2511.07702v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.07702v1",
+    "categories": [
+      "cs.LG",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "reinforcement learning",
+      "rom",
+      "pinn",
+      "machine learning",
+      "physics-informed neural network"
+    ],
+    "keywords": [
+      "neural network",
+      "reinforcement learning",
+      "rom",
+      "pinn",
+      "machine learning",
+      "physics-informed neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.07564v1",
+    "title": "Shocks Under Control: Taming Transonic Compressible Flow over an RAE2822 Airfoil with Deep Reinforcement Learning",
+    "authors": "Trishit Mondal, Ricardo Vinuesa, Ameya D. Jagtap",
+    "abstract": "Active flow control of compressible transonic shock-boundary layer interactions over a two-dimensional RAE2822 airfoil at Re = 50,000 is investigated using deep reinforcement learning (DRL). The flow field exhibits highly unsteady dynamics, including complex shock-boundary layer interactions, shock oscillations, and the generation of Kutta waves from the trailing edge. A high-fidelity CFD solver, employing a fifth-order spectral discontinuous Galerkin scheme in space and a strong-stability-preserving Runge-Kutta (5,4) method in time, together with adaptive mesh refinement capability, is used to obtain the accurate flow field. Synthetic jet actuation is employed to manipulate these unsteady flow features, while the DRL agent autonomously discovers effective control strategies through direct interaction with high-fidelity compressible flow simulations. The trained controllers effectively mitigate shock-induced separation, suppress unsteady oscillations, and manipulate aerodynamic forces under transonic conditions. In the first set of experiments, aimed at both drag reduction and lift enhancement, the DRL-based control reduces the average drag coefficient by 13.78% and increases lift by 131.18%, thereby improving the lift-to-drag ratio by 121.52%, which underscores its potential for managing complex flow dynamics. In the second set, targeting drag reduction while maintaining lift, the DRL-based control achieves a 25.62% reduction in drag and a substantial 196.30% increase in lift, accompanied by markedly diminished oscillations. In this case, the lift-to-drag ratio improves by 220.26%.",
+    "published": "2025-11-10",
+    "arxiv_url": "http://arxiv.org/abs/2511.07564v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.07564v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "reinforcement learning",
+      "flow simulation",
+      "rom",
+      "cfd"
+    ],
+    "keywords": [
+      "rans",
+      "reinforcement learning",
+      "flow simulation",
+      "rom",
+      "cfd"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.08625v2",
+    "title": "Cross-Field Interface-Aware Neural Operators for Multiphase Flow Simulation",
+    "authors": "Zhenzhong Wang, Xin Zhang, Jun Liao, Min Jiang",
+    "abstract": "Multiphase flow simulation is critical in science and engineering but incurs high computational costs due to complex field discontinuities and the need for high-resolution numerical meshes. While Neural Operators (NOs) offer an efficient alternative for solving Partial Differential Equations (PDEs), they struggle with two core challenges unique to multiphase systems: spectral bias caused by spatial heterogeneity at phase interfaces, and the persistent scarcity of expensive, high-resolution field data. This work introduces the Interface Information Aware Neural Operator (IANO), a novel architecture that mitigates these issues by leveraging readily obtainable interface data (e.g., topology and position). Interface data inherently contains the high-frequency features not only necessary to complement the physical field data, but also help with spectral bias. IANO incorporates an interface-aware function encoding mechanism to capture dynamic coupling, and a geometry-aware positional encoding method to enhance spatial fidelity for pointwise super-resolution. Empirical results across multiple multiphase flow cases demonstrate that IANO achieves significant accuracy improvements (up to $\\sim$10\\%) over existing NO baselines. Furthermore, IANO exhibits superior generalization capabilities in low-data and noisy settings, confirming its utility for practical, data-efficient $\\text{AI}$-based multiphase flow simulations.",
+    "published": "2025-11-09",
+    "arxiv_url": "http://arxiv.org/abs/2511.08625v2",
+    "pdf_url": "https://arxiv.org/pdf/2511.08625v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "多相流",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow simulation",
+      "multiphase flow"
+    ],
+    "keywords": [
+      "flow simulation",
+      "multiphase flow"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.13734v2",
+    "title": "Extended Physics Informed Neural Network for Hyperbolic Two-Phase Flow in Porous Media",
+    "authors": "Saif Ur Rehman, Wajid Yousuf",
+    "abstract": "The accurate solution of nonlinear hyperbolic partial differential equations (PDEs) remains challenging due to steep gradients, discontinuities, and multiscale structures that make conventional solvers computationally demanding. Physics-Informed Neural Networks (PINNs) embed the governing equations into the learning process, enabling mesh-free solution of PDEs, yet they often struggle to capture steep gradients, discontinuities, and complex nonlinear wave interactions. To address these limitations, we employ the Extended Physics-Informed Neural Network (XPINN) framework to solve the nonlinear Buckley-Leverett equation with a nonconvex flux, modeling immiscible two-phase flow in porous media. The computational domain is dynamically decomposed in space and time into evolving pre-shock and post-shock subdomains, allowing localized subnetworks to efficiently learn distinct flow behaviors, with coupling enforced via the Rankine-Hugoniot jump condition to ensure physically consistent flux continuity. We compare XPINN with standard PINNs and its variants, including PINN with artificial viscosity, PINN with Welge construction, and PINN with the Oleinik entropy condition, and across all cases, XPINN consistently outperforms the other methods, accurately resolving sharp fronts and capturing the correct physical behavior. Importantly, XPINN achieves this using the simpler Adam optimizer, whereas some PINN variants require more complex or higher-order strategies such as L-BFGS to reach comparable accuracy, demonstrating that XPINN is a robust and scalable approach for challenging hyperbolic PDEs without artificial diffusion or entropy corrections. The code is available at github.com/saifkhanengr/XPINN-for-Buckley-Leverett.",
+    "published": "2025-11-05",
+    "arxiv_url": "http://arxiv.org/abs/2511.13734v2",
+    "pdf_url": "https://arxiv.org/pdf/2511.13734v2",
+    "categories": [
+      "cs.LG",
+      "math.NA",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "多相流",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "physics-informed neural network",
+      "two-phase flow",
+      "pinn"
+    ],
+    "keywords": [
+      "neural network",
+      "physics-informed neural network",
+      "two-phase flow",
+      "pinn"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.05596v1",
+    "title": "AutoHood3D: A Multi-Modal Benchmark for Automotive Hood Design and Fluid-Structure Interaction",
+    "authors": "Vansh Sharma, Harish Jai Ganesh, Maryam Akram, Wanjiao Liu, Venkat Raman",
+    "abstract": "This study presents a new high-fidelity multi-modal dataset containing 16000+ geometric variants of automotive hoods useful for machine learning (ML) applications such as engineering component design and process optimization, and multiphysics system surrogates. The dataset is centered on a practical multiphysics problem-hood deformation from fluid entrapment and inertial loading during rotary-dip painting. Each hood is numerically modeled with a coupled Large-Eddy Simulation (LES)-Finite Element Analysis (FEA), using 1.2M cells in total to ensure spatial and temporal accuracy. The dataset provides time-resolved physical fields, along with STL meshes and structured natural language prompts for text-to-geometry synthesis. Existing datasets are either confined to 2D cases, exhibit limited geometric variations, or lack the multi-modal annotations and data structures - shortcomings we address with AutoHood3D. We validate our numerical methodology, establish quantitative baselines across five neural architectures, and demonstrate systematic surrogate errors in displacement and force predictions. These findings motivate the design of novel approaches and multiphysics loss functions that enforce fluid-solid coupling during model training. By providing fully reproducible workflows, AutoHood3D enables physics-aware ML development, accelerates generative-design iteration, and facilitates the creation of new FSI benchmarks. Dataset and code URLs in Appendix.",
+    "published": "2025-11-05",
+    "arxiv_url": "http://arxiv.org/abs/2511.05596v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.05596v1",
+    "categories": [
+      "cs.LG",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "rom",
+      "machine learning"
+    ],
+    "keywords": [
+      "les",
+      "rom",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.01830v1",
+    "title": "Towards Multi-Fidelity Scaling Laws of Neural Surrogates in CFD",
+    "authors": "Paul Setinek, Gianluca Galletti, Johannes Brandstetter",
+    "abstract": "Scaling laws describe how model performance grows with data, parameters and compute. While large datasets can usually be collected at relatively low cost in domains such as language or vision, scientific machine learning is often limited by the high expense of generating training data through numerical simulations. However, by adjusting modeling assumptions and approximations, simulation fidelity can be traded for computational cost, an aspect absent in other domains. We investigate this trade-off between data fidelity and cost in neural surrogates using low- and high-fidelity Reynolds-Averaged Navier-Stokes (RANS) simulations. Reformulating classical scaling laws, we decompose the dataset axis into compute budget and dataset composition. Our experiments reveal compute-performance scaling behavior and exhibit budget-dependent optimal fidelity mixes for the given dataset configuration. These findings provide the first study of empirical scaling laws for multi-fidelity neural surrogate datasets and offer practical considerations for compute-efficient dataset generation in scientific machine learning.",
+    "published": "2025-11-03",
+    "arxiv_url": "http://arxiv.org/abs/2511.01830v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.01830v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "cfd",
+      "machine learning"
+    ],
+    "keywords": [
+      "rans",
+      "machine learning",
+      "cfd"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2511.00418v1",
+    "title": "Structure-Preserving Physics-Informed Neural Network for the Korteweg--de Vries (KdV) Equation",
+    "authors": "Victory Obieke, Emmanuel Oguadimma",
+    "abstract": "Physics-Informed Neural Networks (PINNs) offer a flexible framework for solving nonlinear partial differential equations (PDEs), yet conventional implementations often fail to preserve key physical invariants during long-term integration. This paper introduces a \\emph{structure-preserving PINN} framework for the nonlinear Korteweg--de Vries (KdV) equation, a prototypical model for nonlinear and dispersive wave propagation. The proposed method embeds the conservation of mass and Hamiltonian energy directly into the loss function, ensuring physically consistent and energy-stable evolution throughout training and prediction. Unlike standard \\texttt{tanh}-based PINNs~\\cite{raissi2019pinn,wang2022modifiedpinn}, our approach employs sinusoidal activation functions that enhance spectral expressiveness and accurately capture the oscillatory and dispersive nature of KdV solitons. Through representative case studies -- including single-soliton propagation (shape-preserving translation), two-soliton interaction (elastic collision with phase shift), and cosine-pulse initialization (nonlinear dispersive breakup) -- the model successfully reproduces hallmark behaviors of KdV dynamics while maintaining conserved invariants. Ablation studies demonstrate that combining invariant-constrained optimization with sinusoidal feature mappings accelerates convergence, improves long-term stability, and mitigates drift without multi-stage pretraining. These results highlight that computationally efficient, invariant-aware regularization coupled with sinusoidal representations yields robust, energy-consistent PINNs for Hamiltonian partial differential equations such as the KdV equation.",
+    "published": "2025-11-01",
+    "arxiv_url": "http://arxiv.org/abs/2511.00418v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.00418v1",
+    "categories": [
+      "cs.LG",
+      "math-ph",
+      "nlin.PS",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "rans",
+      "pinn",
+      "physics-informed neural network"
+    ],
+    "keywords": [
+      "neural network",
+      "physics-informed neural network",
+      "rans",
+      "pinn"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  }
+]

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyPaper - CFD+ML 最新论文</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📚 DailyPaper</h1>
+            <p class="subtitle">每日自动更新 计算流体力学+机器学习 领域最新论文</p>
+            <p class="update-time">最后更新: 2026-03-02 01:00:30 UTC</p>
+        </div>
+    </header>
+    
+    <nav class="container">
+        <div class="filter-section">
+            <div class="filter-group">
+                <label class="filter-label">📅 月份：</label>
+                <div class="filters month-filters">
+                    <button class="filter-btn month-btn active" data-month="all">全部 (88)</button>
+                    <button class="filter-btn month-btn" data-month="2026-02">2026-02 (11)</button>
+                    <button class="filter-btn month-btn" data-month="2026-01">2026-01 (11)</button>
+                    <button class="filter-btn month-btn" data-month="2025-12">2025-12 (17)</button>
+                    <button class="filter-btn month-btn" data-month="2025-11">2025-11 (15)</button>
+                    <button class="filter-btn month-btn" data-month="2025-10">2025-10 (19)</button>
+                    <button class="filter-btn month-btn" data-month="2025-09">2025-09 (11)</button>
+                    <button class="filter-btn month-btn" data-month="2025-08">2025-08 (2)</button>
+                    <button class="filter-btn month-btn" data-month="2025-07">2025-07 (2)</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">📌 发表状态：</label>
+                <div class="filters status-filters">
+                    <button class="filter-btn status-btn active" data-status="all">全部 (88)</button>
+                    <button class="filter-btn status-btn" data-status="published">已发表 (5)</button>
+                    <button class="filter-btn status-btn" data-status="preprint">预印本 (83)</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">🏷️ 研究领域：</label>
+                <div class="filters category-filters">
+                    <button class="filter-btn category-btn active" data-category="all">全部 (88)</button>
+                    <button class="filter-btn category-btn" data-category="多相流">多相流 (3)</button>
+                    <button class="filter-btn category-btn" data-category="空气动力学">空气动力学 (4)</button>
+                    <button class="filter-btn category-btn" data-category="机器学习">机器学习 (74)</button>
+                    <button class="filter-btn category-btn" data-category="智能流体力学">智能流体力学 (46)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学">流体力学 (50)</button>
+                    <button class="filter-btn category-btn" data-category="CFD与机器学习交叉">CFD与机器学习交叉 (40)</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">🔄 排序方式：</label>
+                <div class="filters sort-filters">
+                    <button class="filter-btn sort-btn active" data-sort="date-desc">最新优先</button>
+                    <button class="filter-btn sort-btn" data-sort="date-asc">最早优先</button>
+                    <!-- 关键修改2：添加重要程度排序按钮 -->
+                    <button class="filter-btn sort-btn" data-sort="importance-desc">重要程度优先</button>
+                </div>
+            </div>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 搜索论文标题、作者、摘要...">
+        </div>
+        <div class="results-info">
+            <span id="resultsCount">加载中...</span>
+            <div class="export-controls">
+                <button class="select-btn" id="selectAllBtn">✓ 全选</button>
+                <button class="select-btn" id="clearAllBtn">✗ 清空</button>
+                <button class="export-btn" id="exportBtn">📥 导出选中 (<span id="selectedCount">0</span>)</button>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <div id="papers-container">
+            <!-- Papers will be loaded by JavaScript -->
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 DailyPaper | 数据来源: ArXiv | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
