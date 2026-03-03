@@ -14,23 +14,23 @@
     "conference": "NeurIPS",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "CFD与机器学习交叉",
       "机器学习",
-      "流体力学"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "turbulence",
-      "neural network",
-      "cnn",
-      "machine learning"
-    ],
-    "keywords": [
-      "neural network",
       "machine learning",
       "cnn",
-      "turbulence"
+      "neural network"
+    ],
+    "keywords": [
+      "turbulence",
+      "machine learning",
+      "cnn",
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": 14.0
@@ -51,21 +51,21 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "CFD与机器学习交叉",
       "机器学习",
-      "流体力学"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
       "les",
-      "fluid dynamics"
+      "fluid dynamics",
+      "neural network"
     ],
     "keywords": [
-      "neural network",
+      "fluid dynamics",
       "les",
-      "fluid dynamics"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -91,12 +91,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
-      "turbulence"
+      "turbulence",
+      "data-driven"
     ],
     "keywords": [
-      "data-driven",
-      "turbulence"
+      "turbulence",
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -120,14 +120,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
       "les",
-      "rom"
+      "rom",
+      "neural network"
     ],
     "keywords": [
-      "neural network",
+      "rom",
       "les",
-      "rom"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -147,27 +147,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "CFD与机器学习交叉",
       "机器学习",
-      "流体力学"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
-      "rom",
-      "cfd",
-      "deep learning",
       "les",
-      "surrogate model"
+      "neural network",
+      "cfd",
+      "rom",
+      "surrogate model",
+      "deep learning"
     ],
     "keywords": [
-      "neural network",
-      "rom",
-      "cfd",
-      "deep learning",
       "les",
-      "surrogate model"
+      "neural network",
+      "cfd",
+      "rom",
+      "surrogate model",
+      "deep learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -191,14 +191,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
       "les",
-      "rom"
+      "rom",
+      "neural network"
     ],
     "keywords": [
-      "neural network",
+      "rom",
       "les",
-      "rom"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -219,35 +219,35 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "CFD与机器学习交叉",
       "机器学习",
-      "流体力学"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "les",
       "rom",
-      "machine learning"
+      "turbulence",
+      "machine learning",
+      "les"
     ],
     "keywords": [
-      "les",
-      "machine learning",
+      "turbulence",
       "rom",
-      "turbulence"
+      "les",
+      "machine learning"
     ],
     "citation_count": null,
     "impact_factor": null
   },
   {
-    "id": "2511.09769v1",
-    "title": "Symmetry aware Reynolds Averaged Navier Stokes turbulence models with equivariant neural networks",
+    "id": "2511.09769v2",
+    "title": "Structure tensor Reynolds-averaged Navier-Stokes turbulence models with equivariant neural networks",
     "authors": "Aaron Miller, Sahil Kommalapati, Robert Moser, Petros Koumoutsakos",
-    "abstract": "Accurate and generalizable Reynolds-averaged Navier-Stokes (RANS) models for turbulent flows rely on effective closures. We introduce tensor-based, symmetry aware closures using equivariant neural networks (ENNs) and present an algorithm for enforcing algebraic contraction relations among tensor components. The modeling approach builds on the structure tensor framework introduced by Kassinos and Reynolds to learn closures in the rapid distortion theory setting. Experiments show that ENNs can effectively learn relationships involving high-order tensors, meeting or exceeding the performance of existing models in tasks such as predicting the rapid pressure-strain correlation. Our results show that ENNs provide a physically consistent alternative to classical tensor basis models, enabling end-to-end learning of unclosed terms in RANS and fast exploration of model dependencies.",
+    "abstract": "Accurate and generalizable Reynolds-averaged Navier-Stokes (RANS) models for turbulent flows rely on effective closures, but currently available closures are notoriously unreliable. Kassinos et al. (J. Fluid Mechanics, 428, pp. 213-248, 2001) hypothesized that this unreliability of RANS models was due to an insufficient description of the statistical state of the turbulence and proposed a set of structure tensors as a candidate for a sufficiently rich description. To test this hypothesis for the rapid pressure-strain term, we introduce tensor-based, symmetry aware closures in terms of the structure tensors using equivariant neural networks (ENNs), and present an algorithm for enforcing algebraic contraction relations among tensor components. Using data from rapid distortion theory, experiments show that such ENNs can effectively learn relationships involving high-order tensors. The resulting ENN structure tensor models are orders of magnitude more accurate than existing models for the rapid pressure-strain correlation, effectively validating the Kassinos et al. hypothesis for this term. Results show that ENNs provide a physically consistent alternative to classical tensor basis models, enabling end-to-end learning of unclosed terms in RANS and other tensor modeling domains, and rapid exploration of model dependencies.",
     "published": "2025-11-12",
-    "arxiv_url": "http://arxiv.org/abs/2511.09769v1",
-    "pdf_url": "https://arxiv.org/pdf/2511.09769v1",
+    "arxiv_url": "http://arxiv.org/abs/2511.09769v2",
+    "pdf_url": "https://arxiv.org/pdf/2511.09769v2",
     "categories": [
       "physics.flu-dyn",
       "cs.LG"
@@ -255,20 +255,24 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
       "机器学习",
+      "CFD与机器学习交叉",
       "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "neural network",
-      "rans",
-      "turbulence"
+      "rom",
+      "fluid mechanics",
+      "turbulence",
+      "rans"
     ],
     "keywords": [
       "neural network",
-      "rans",
-      "turbulence"
+      "rom",
+      "fluid mechanics",
+      "turbulence",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -289,25 +293,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
       "reinforcement learning",
-      "rom",
+      "physics-informed neural network",
+      "neural network",
       "pinn",
-      "machine learning",
-      "physics-informed neural network"
+      "rom",
+      "machine learning"
     ],
     "keywords": [
-      "neural network",
       "reinforcement learning",
-      "rom",
+      "physics-informed neural network",
+      "neural network",
       "pinn",
-      "machine learning",
-      "physics-informed neural network"
+      "rom",
+      "machine learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -327,24 +331,24 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
       "机器学习",
+      "CFD与机器学习交叉",
       "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
       "reinforcement learning",
       "flow simulation",
+      "cfd",
       "rom",
-      "cfd"
+      "rans"
     ],
     "keywords": [
-      "rans",
       "reinforcement learning",
       "flow simulation",
+      "cfd",
       "rom",
-      "cfd"
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -370,12 +374,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "flow simulation",
-      "multiphase flow"
+      "multiphase flow",
+      "flow simulation"
     ],
     "keywords": [
-      "flow simulation",
-      "multiphase flow"
+      "multiphase flow",
+      "flow simulation"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -397,19 +401,19 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "多相流",
-      "机器学习"
+      "机器学习",
+      "多相流"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
       "physics-informed neural network",
+      "neural network",
       "two-phase flow",
       "pinn"
     ],
     "keywords": [
-      "neural network",
       "physics-informed neural network",
+      "neural network",
       "two-phase flow",
       "pinn"
     ],
@@ -432,18 +436,18 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
       "rom",
-      "machine learning"
+      "machine learning",
+      "les"
     ],
     "keywords": [
-      "les",
       "rom",
+      "les",
       "machine learning"
     ],
     "citation_count": null,
@@ -464,20 +468,20 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "CFD与机器学习交叉",
       "机器学习",
-      "流体力学"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "machine learning",
       "rans",
-      "cfd",
-      "machine learning"
+      "cfd"
     ],
     "keywords": [
-      "rans",
       "machine learning",
+      "rans",
       "cfd"
     ],
     "citation_count": null,
@@ -504,15 +508,15 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
-      "rans",
-      "pinn",
-      "physics-informed neural network"
-    ],
-    "keywords": [
-      "neural network",
       "physics-informed neural network",
       "rans",
+      "neural network",
+      "pinn"
+    ],
+    "keywords": [
+      "physics-informed neural network",
+      "rans",
+      "neural network",
       "pinn"
     ],
     "citation_count": null,

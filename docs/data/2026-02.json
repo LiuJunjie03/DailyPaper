@@ -1,5 +1,38 @@
 [
   {
+    "id": "2602.23461v1",
+    "title": "Neural ensemble Kalman filter: Data assimilation for compressible flows with shocks",
+    "authors": "Xu-Hui Zhou, Lorenzo Beronilla, Michael K. Sleeman, Hangchuan Hu, Matthias Morzfeld, Andrew M. Stuart, Tamer A. Zaki",
+    "abstract": "Data assimilation (DA) for compressible flows with shocks is challenging because many classical DA methods generate spurious oscillations and nonphysical features near uncertain shocks. We focus here on the ensemble Kalman filter (EnKF). We show that the poor performance of the standard EnKF may be attributed to the bimodal forecast distribution that can arise in the vicinity of an uncertain shock location; this violates the assumptions underpinning the EnKF, which assume a forecast which is close to Gaussian. To address this issue we introduce the new neural EnKF. The basic idea is to systematically embed neural function approximations within ensemble DA by mapping the forecast ensemble of shocked flows to the parameter space (weights and biases) of a deep neural network (NN) and to subsequently perform DA in that space. The nonlinear mapping encodes sharp and smooth flow features in an ensemble of NN parameters. Neural EnKF updates are therefore well-behaved only if the NN parameters vary smoothly within the neural representation of the forecast ensemble. We show that such a smooth variation of network parameters can be enforced via physics-informed transfer learning, and demonstrate that in so-doing the neural EnKF avoids the spurious oscillations and nonphysical features that plague the standard EnKF. The applicability of the neural EnKF is demonstrated through a series of systematic numerical experiments with an inviscid Burgers' equation, Sod's shock tube, and a two-dimensional blast wave.",
+    "published": "2026-02-26",
+    "arxiv_url": "http://arxiv.org/abs/2602.23461v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.23461v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "transfer learning",
+      "rans",
+      "neural network",
+      "pinn"
+    ],
+    "keywords": [
+      "rans",
+      "transfer learning",
+      "neural network",
+      "pinn"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2602.23188v1",
     "title": "Efficient Real-Time Adaptation of ROMs for Unsteady Flows Using Data Assimilation",
     "authors": "Ismaël Zighed, Andrea Nóvoa, Luca Magri, Taraneh Sayadi",
@@ -24,9 +57,9 @@
       "transformer"
     ],
     "keywords": [
-      "les",
       "rom",
       "rans",
+      "les",
       "transformer"
     ],
     "citation_count": null,
@@ -52,15 +85,15 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "surrogate model",
       "rom",
       "neural network",
-      "surrogate model",
       "reduced-order model"
     ],
     "keywords": [
-      "neural network",
       "surrogate model",
       "rom",
+      "neural network",
       "reduced-order model"
     ],
     "citation_count": null,
@@ -82,33 +115,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
       "rom",
+      "machine learning",
       "rans",
-      "machine learning"
+      "les"
     ],
     "keywords": [
-      "les",
       "rom",
       "rans",
+      "les",
       "machine learning"
     ],
     "citation_count": null,
     "impact_factor": null
   },
   {
-    "id": "2602.15472v1",
+    "id": "2602.15472v2",
     "title": "Fluids You Can Trust: Property-Preserving Operator Learning for Incompressible Flows",
     "authors": "Ramansh Sharma, Matthew Lowery, Houman Owhadi, Varun Shankar",
     "abstract": "We present a novel property-preserving kernel-based operator learning method for incompressible flows governed by the incompressible Navier-Stokes equations. Traditional numerical solvers incur significant computational costs to respect incompressibility. Operator learning offers efficient surrogate models, but current neural operators fail to exactly enforce physical properties such as incompressibility, periodicity, and turbulence. Our method maps input functions to expansion coefficients of output functions in a property-preserving kernel basis, ensuring that predicted velocity fields analytically and simultaneously preserve the aforementioned physical properties. We evaluate the method on challenging 2D and 3D, laminar and turbulent, incompressible flow problems. Our method achieves up to six orders of magnitude lower relative $\\ell_2$ errors upon generalization and trains up to five orders of magnitude faster compared to neural operators. Moreover, while our method enforces incompressibility analytically, neural operators exhibit very large deviations. Our results show that our method provides an accurate and efficient surrogate for incompressible flows.",
     "published": "2026-02-17",
-    "arxiv_url": "http://arxiv.org/abs/2602.15472v1",
-    "pdf_url": "https://arxiv.org/pdf/2602.15472v1",
+    "arxiv_url": "http://arxiv.org/abs/2602.15472v2",
+    "pdf_url": "https://arxiv.org/pdf/2602.15472v2",
     "categories": [
       "physics.flu-dyn",
       "cs.LG"
@@ -121,12 +154,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "surrogate model",
-      "turbulence"
+      "turbulence",
+      "surrogate model"
     ],
     "keywords": [
-      "surrogate model",
-      "turbulence"
+      "turbulence",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -146,25 +179,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "data-driven",
-      "rom",
-      "machine learning",
       "les",
-      "surrogate model"
+      "rom",
+      "data-driven",
+      "surrogate model",
+      "machine learning",
+      "rans"
     ],
     "keywords": [
-      "rans",
-      "data-driven",
-      "rom",
-      "machine learning",
       "les",
-      "surrogate model"
+      "rom",
+      "data-driven",
+      "surrogate model",
+      "machine learning",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -216,33 +249,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "CFD与机器学习交叉",
       "机器学习",
-      "流体力学"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "transformer",
-      "data-driven",
-      "fluid dynamics",
-      "data-driven modeling",
-      "rom",
-      "machine learning",
       "les",
-      "surrogate model"
+      "data-driven modeling",
+      "fluid dynamics",
+      "rom",
+      "data-driven",
+      "surrogate model",
+      "machine learning",
+      "rans",
+      "transformer"
     ],
     "keywords": [
-      "rans",
-      "transformer",
-      "data-driven",
-      "fluid dynamics",
-      "data-driven modeling",
-      "rom",
-      "machine learning",
       "les",
-      "surrogate model"
+      "data-driven modeling",
+      "fluid dynamics",
+      "rom",
+      "data-driven",
+      "surrogate model",
+      "machine learning",
+      "rans",
+      "transformer"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -266,18 +299,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
-      "rom",
-      "pinn",
+      "physics-informed neural network",
       "les",
-      "physics-informed neural network"
+      "neural network",
+      "pinn",
+      "rom"
     ],
     "keywords": [
-      "neural network",
-      "rom",
-      "pinn",
+      "physics-informed neural network",
       "les",
-      "physics-informed neural network"
+      "neural network",
+      "pinn",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -297,22 +330,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
-      "surrogate model",
       "fluid dynamics",
-      "cfd"
+      "data-driven",
+      "cfd",
+      "surrogate model"
     ],
     "keywords": [
+      "fluid dynamics",
       "data-driven",
-      "surrogate model",
       "cfd",
-      "fluid dynamics"
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -332,8 +365,8 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
@@ -342,8 +375,8 @@
       "rans"
     ],
     "keywords": [
-      "rom",
       "rans",
+      "rom",
       "deep learning"
     ],
     "citation_count": null,
@@ -364,35 +397,35 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
       "CFD与机器学习交叉",
       "机器学习",
-      "流体力学"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "turbulence",
-      "fluid dynamics",
-      "cfd",
-      "rom",
-      "pinn",
-      "machine learning",
-      "computational fluid dynamics",
       "les",
-      "surrogate model"
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd",
+      "pinn",
+      "surrogate model",
+      "rom",
+      "turbulence",
+      "machine learning",
+      "rans"
     ],
     "keywords": [
-      "rans",
-      "turbulence",
-      "rom",
+      "les",
       "fluid dynamics",
+      "computational fluid dynamics",
       "cfd",
       "pinn",
+      "rom",
+      "surrogate model",
       "machine learning",
-      "computational fluid dynamics",
-      "les",
-      "surrogate model"
+      "rans",
+      "turbulence"
     ],
     "citation_count": null,
     "impact_factor": null
