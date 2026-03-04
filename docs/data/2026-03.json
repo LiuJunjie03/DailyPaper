@@ -1,0 +1,66 @@
+[
+  {
+    "id": "2603.01102v1",
+    "title": "Structure-preserving Randomized Neural Networks for Incompressible Magnetohydrodynamics Equations",
+    "authors": "Yunlong Li, Fei Wang, Lingxiao Li",
+    "abstract": "The incompressible magnetohydrodynamic (MHD) equations are fundamental in many scientific and engineering applications. However, their strong nonlinearity and dual divergence-free constraints make them highly challenging for conventional numerical solvers. To overcome these difficulties, we propose a Structure-Preserving Randomized Neural Network (SP-RaNN) that automatically and exactly satisfies the divergence-free conditions. Unlike deep neural network (DNN) approaches that rely on expensive nonlinear and nonconvex optimization, SP-RaNN reformulates the training process into a linear least-squares system, thereby eliminating nonconvex optimization. The method linearizes the governing equations through Picard or Newton iterations, discretizes them at collocation points within the domain and on the boundaries using finite-difference schemes, and solves the resulting linear system via a linear least-squares procedure. By design, SP-RaNN preserves the intrinsic mathematical structure of the equations within a unified space-time framework, ensuring both stability and accuracy. Numerical experiments on the Navier-Stokes, Maxwell, and MHD equations demonstrate that SP-RaNN achieves higher accuracy, faster convergence, and exact enforcement of divergence-free constraints compared with both traditional numerical methods and DNN-based approaches. This structure-preserving framework provides an efficient and reliable tool for solving complex PDE systems while rigorously maintaining their underlying physical laws.",
+    "published": "2026-03-01",
+    "arxiv_url": "http://arxiv.org/abs/2603.01102v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.01102v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "math.NA"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network"
+    ],
+    "keywords": [
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.01080v1",
+    "title": "Super-resolution of turbulent reacting flows on complex meshes using graph neural networks",
+    "authors": "Priyabrat Dash, Konduri Aditya, Christos E. Frouzakis, Mathis Bode",
+    "abstract": "State-of-the-art deep learning models have been extensively utilized to reconstruct small-scale structures from coarse-grained data in turbulent flows. However, their application has predominantly been restricted to structured uniform meshes, limiting their applicability to data associated with complex geometries that are typically simulated on structured non-uniform or unstructured meshes. Machine learning (ML) models based on graph neural networks (GNNs), known for their ability to process unstructured data, offer a promising alternative. In this study, we leverage the inherent flexibility of GNNs featuring message passing layers to develop a methodology for reconstructing unresolved small-scale structures from low-resolution data on complex meshes. The accuracy of the proposed approach is demonstrated using two cases: a reacting channel flow on a structured non-uniform mesh, and a reacting hydrogen fueled internal combustion (IC) engine featuring an unstructured mesh. Evaluation of results based on visual agreement, statistical metrics, and cumulative error reduction indicates the effectiveness of the method in accurately reconstructing fine-scale features. Overall, this study provides a pathway for integrating data-driven small-scale reconstruction and subgrid-scale modeling to enhance the accuracy of coarse-grained simulations on complex meshes.",
+    "published": "2026-03-01",
+    "arxiv_url": "http://arxiv.org/abs/2603.01080v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.01080v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "machine learning",
+      "deep learning",
+      "neural network",
+      "data-driven"
+    ],
+    "keywords": [
+      "rom",
+      "machine learning",
+      "deep learning",
+      "neural network",
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  }
+]
