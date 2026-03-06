@@ -14,26 +14,26 @@
     "conference": "NeurIPS",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
-      "智能流体力学",
       "机器学习",
-      "流体力学"
+      "智能流体力学",
+      "流体力学",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "turbulence",
-      "machine learning",
-      "neural network",
       "cnn",
-      "les"
+      "machine learning",
+      "turbulence",
+      "les",
+      "rom",
+      "neural network"
     ],
     "keywords": [
-      "rom",
-      "turbulence",
-      "machine learning",
-      "neural network",
       "cnn",
+      "machine learning",
+      "turbulence",
+      "rom",
+      "neural network",
       "les"
     ],
     "citation_count": null,
@@ -54,17 +54,17 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "machine learning"
+      "machine learning",
+      "rom"
     ],
     "keywords": [
-      "rom",
-      "machine learning"
+      "machine learning",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -89,14 +89,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "reinforcement learning",
       "les",
-      "rom"
+      "rom",
+      "reinforcement learning"
     ],
     "keywords": [
-      "reinforcement learning",
       "les",
-      "rom"
+      "rom",
+      "reinforcement learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -122,14 +122,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
+      "neural network",
       "flow simulation",
-      "neural network"
+      "data-driven"
     ],
     "keywords": [
       "neural network",
-      "data-driven",
-      "flow simulation"
+      "flow simulation",
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -179,17 +179,17 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "machine learning",
-      "neural network"
+      "neural network",
+      "machine learning"
     ],
     "keywords": [
-      "machine learning",
-      "neural network"
+      "neural network",
+      "machine learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -209,27 +209,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
-      "智能流体力学",
       "机器学习",
-      "流体力学"
+      "智能流体力学",
+      "流体力学",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
       "cfd",
+      "physics-informed neural network",
       "computational fluid dynamics",
       "fluid dynamics",
       "pinn",
-      "physics-informed neural network"
+      "neural network"
     ],
     "keywords": [
-      "neural network",
       "cfd",
+      "physics-informed neural network",
       "computational fluid dynamics",
       "fluid dynamics",
       "pinn",
-      "physics-informed neural network"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -315,54 +315,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
+      "fluid mechanics",
       "turbulence",
-      "fluid mechanics"
+      "rom"
     ],
     "keywords": [
-      "rom",
+      "fluid mechanics",
       "turbulence",
-      "fluid mechanics"
-    ],
-    "citation_count": null,
-    "impact_factor": null
-  },
-  {
-    "id": "2509.05787v1",
-    "title": "Vector-based loss functions for turbulent flow field inpainting",
-    "authors": "Samuel J. Baker, Shubham Goswami, Xiaohang Fang, Felix C. P. Leach",
-    "abstract": "When developing scientific machine learning (ML) approaches, it is often beneficial to embed knowledge of the physical system in question into the training process. One way to achieve this is by leveraging the specific characteristics of the data at hand. In the case of turbulent flows, fluid velocities can be measured and recorded as multi-component vectors at discrete points in space, using techniques such as particle image velocimetry (PIV) or computational fluid mechanics (CFD). However, the vectorised nature of the data is ignored by standard ML approaches, as widely-used loss functions such as the mean-square error treat each component of a velocity vector in isolation. Therefore, the aim of this work is to better preserve the physical characteristics of the data by introducing loss functions that utilise vector similarity metrics. To this end, vector-based loss functions are developed here and implemented alongside a U-Net model for a turbulent flow field inpainting problem, amounting to the prediction of velocity vectors inside large gaps in PIV images. The intention is for the inpainting task to pose a significant challenge for the ML models in order to shed light on their capabilities. The test case uses PIV data from the highly turbulent flow in the well-known Transparent Combustion Chamber III (TCC-III) engine. Loss functions based on the cosine similarity and vector magnitude differences are proposed; the results show that the vector-based loss functions lead to significantly improved predictions of multi-scale flow patterns, while a hybrid (vector and mean-square error) loss function enables a good compromise to be found between preserving multi-scale behaviour and pixel-wise accuracy.",
-    "published": "2025-09-06",
-    "arxiv_url": "http://arxiv.org/abs/2509.05787v1",
-    "pdf_url": "https://arxiv.org/pdf/2509.05787v1",
-    "categories": [
-      "physics.flu-dyn",
-      "cs.LG"
-    ],
-    "conference": "",
-    "code_link": "",
-    "tags": [
-      "CFD与机器学习交叉",
-      "智能流体力学",
-      "机器学习",
-      "流体力学"
-    ],
-    "official_keywords": [],
-    "custom_keywords": [
-      "rom",
-      "rans",
-      "machine learning",
-      "cfd",
-      "les",
-      "fluid mechanics"
-    ],
-    "keywords": [
-      "rom",
-      "rans",
-      "machine learning",
-      "cfd",
-      "les",
-      "fluid mechanics"
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
