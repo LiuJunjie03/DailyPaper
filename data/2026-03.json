@@ -1,5 +1,47 @@
 [
   {
+    "id": "2603.06762v1",
+    "title": "Prediction of Steady-State Flow through Porous Media Using Machine Learning Models",
+    "authors": "Jinhong Wang, Matei C. Ignuta-Ciuncanu, Ricardo F. Martinez-Botas, Teng Cao",
+    "abstract": "Solving flow through porous media is a crucial step in the topology optimisation of cold plates, a key component in modern thermal management. Traditional computational fluid dynamics (CFD) methods, while accurate, are often prohibitively expensive for large and complex geometries. In contrast, data-driven surrogate models provide a computationally efficient alternative, enabling rapid and reliable predictions. In this study, we develop a machine-learning framework for predicting steady-state flow through porous media governed by the Navier-Stokes-Brinkman equations. We implement and compare three model architectures-convolutional autoencoder (AE), U-Net, and Fourier Neural Operator (FNO)-evaluating their predictive performance. To enhance physics consistency, we incorporate physics-informed loss functions. Our results demonstrate that FNO outperforms AE and U-Net, achieving a mean squared error (MSE) as low as 0.0017 while providing speedups of up to 1000 times compared to CFD. Additionally, the mesh-invariant property of FNO emphasizes its suitability for topology optimisation tasks, where varying mesh resolutions are required. This study highlights the potential of machine learning to accelerate fluid flow predictions in porous media, offering a scalable alternative to traditional numerical methods.",
+    "published": "2026-03-06",
+    "arxiv_url": "http://arxiv.org/abs/2603.06762v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.06762v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.CE",
+      "cs.LG",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics",
+      "machine learning",
+      "surrogate model",
+      "data-driven",
+      "computational fluid dynamics",
+      "cfd"
+    ],
+    "keywords": [
+      "fluid dynamics",
+      "machine learning",
+      "surrogate model",
+      "data-driven",
+      "computational fluid dynamics",
+      "cfd"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2603.01102v1",
     "title": "Structure-preserving Randomized Neural Networks for Incompressible Magnetohydrodynamics Equations",
     "authors": "Yunlong Li, Fei Wang, Lingxiao Li",
@@ -42,23 +84,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "deep learning",
       "machine learning",
-      "neural network",
       "data-driven",
-      "rom"
+      "neural network",
+      "rom",
+      "deep learning"
     ],
     "keywords": [
-      "deep learning",
       "machine learning",
-      "neural network",
       "data-driven",
-      "rom"
+      "neural network",
+      "rom",
+      "deep learning"
     ],
     "citation_count": null,
     "impact_factor": null
