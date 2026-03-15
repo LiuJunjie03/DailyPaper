@@ -1,0 +1,183 @@
+[
+  {
+    "id": "2603.11250v1",
+    "title": "A Machine Learning-Enhanced Hopf-Cole Formulation for Nonlinear Gas Flow in Porous Media",
+    "authors": "V. S. Maduru, K. B. Nakshatrala",
+    "abstract": "Accurate modeling of gas flow through porous media is critical for many technological applications, including reservoir performance prediction, carbon capture and sequestration, and fuel cells and batteries. However, such modeling remains challenging due to strong nonlinear behavior and uncertainty in model parameters. In particular, gas slippage effects described by the Klinkenberg model introduce pressure-dependent permeability, which complicates numerical simulation and obscures deviations from classical Darcy flow behavior. To address these challenges, we present an integrated modeling framework for gas transport in porous media that combines a Klinkenberg-enhanced constitutive relation, Hopf-Cole-transformed mixed-form linear governing equations, a shared-trunk neural network architecture, and a Deep Least-Squares (DeepLS) solver. The Hopf-Cole transformation reformulates the original nonlinear flow equations into an equivalent linear system closely related to the Darcy model, while the mixed formulation, together with a shared-trunk neural architecture, enables simultaneous and accurate prediction of both pressure and velocity fields. A rigorous convergence analysis is performed both theoretically and numerically, establishing the stability and convergence properties of the proposed solver. Importantly, the proposed framework also naturally facilitates inverse modeling of pressure-dependent permeability and slippage parameters from limited or indirect observations, enabling efficient estimation of flow properties that are difficult to measure experimentally. Numerical results demonstrate accurate recovery of flow dynamics and parameters across a wide range of pressure regimes, highlighting the framework's robustness, accuracy, and computational efficiency for gas transport modeling and inversion in tight formations.",
+    "published": "2026-03-11",
+    "arxiv_url": "http://arxiv.org/abs/2603.11250v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.11250v1",
+    "categories": [
+      "math.NA",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "machine learning",
+      "rom",
+      "les",
+      "rans",
+      "neural network"
+    ],
+    "keywords": [
+      "machine learning",
+      "rom",
+      "les",
+      "rans",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.09371v1",
+    "title": "Flow Field Reconstruction via Voronoi-Enhanced Physics-Informed Neural Networks with End-to-End Sensor Placement Optimization",
+    "authors": "Renjie Xiao, Bingteng Sun, Yiling Chen, Lin Lu, Qiang Du, Junqiang Zhu",
+    "abstract": "(short version abstract, full in article)High-fidelity flow field reconstruction is important in fluid dynamics, but it is challenged by sparse and spatiotemporally incomplete sensor measurements, as well as failures of pre-deployed measurement points that can invalidate pre-trained reconstruction models. Physics-informed neural networks (PINNs) alleviate dependence on large labeled datasets by incorporating governing physics, yet sensor placement optimization, a key factor in reconstruction accuracy and robustness, remains underexplored. In this study, we propose a PINN with Voronoi-enhanced Sensor Optimization (VSOPINN). VSOPINN enables differentiable soft Voronoi construction for sparse sensor data rasterization, end-to-end fusion of centroidal Voronoi tessellation (CVT) with PINNs for adaptive sensor placement, and unified layout optimization for multi-condition flow reconstruction through a shared encoder-multi-decoder architecture. We validate VSOPINN on three representative problems: lid-driven cavity flow, vascular flow, and annular rotating flow. Results show that VSOPINN significantly improves reconstruction accuracy across different Reynolds numbers, adaptively learns effective sensor layouts, and remains robust under partial sensor failure. The study clarifies the intrinsic relationship between sensor placement and reconstruction precision in PINN-based flow field reconstruction.",
+    "published": "2026-03-10",
+    "arxiv_url": "http://arxiv.org/abs/2603.09371v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.09371v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "pinn",
+      "physics-informed neural network",
+      "fluid dynamics",
+      "les",
+      "neural network"
+    ],
+    "keywords": [
+      "pinn",
+      "physics-informed neural network",
+      "fluid dynamics",
+      "les",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.06762v1",
+    "title": "Prediction of Steady-State Flow through Porous Media Using Machine Learning Models",
+    "authors": "Jinhong Wang, Matei C. Ignuta-Ciuncanu, Ricardo F. Martinez-Botas, Teng Cao",
+    "abstract": "Solving flow through porous media is a crucial step in the topology optimisation of cold plates, a key component in modern thermal management. Traditional computational fluid dynamics (CFD) methods, while accurate, are often prohibitively expensive for large and complex geometries. In contrast, data-driven surrogate models provide a computationally efficient alternative, enabling rapid and reliable predictions. In this study, we develop a machine-learning framework for predicting steady-state flow through porous media governed by the Navier-Stokes-Brinkman equations. We implement and compare three model architectures-convolutional autoencoder (AE), U-Net, and Fourier Neural Operator (FNO)-evaluating their predictive performance. To enhance physics consistency, we incorporate physics-informed loss functions. Our results demonstrate that FNO outperforms AE and U-Net, achieving a mean squared error (MSE) as low as 0.0017 while providing speedups of up to 1000 times compared to CFD. Additionally, the mesh-invariant property of FNO emphasizes its suitability for topology optimisation tasks, where varying mesh resolutions are required. This study highlights the potential of machine learning to accelerate fluid flow predictions in porous media, offering a scalable alternative to traditional numerical methods.",
+    "published": "2026-03-06",
+    "arxiv_url": "http://arxiv.org/abs/2603.06762v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.06762v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.CE",
+      "cs.LG",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "machine learning",
+      "cfd",
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "surrogate model",
+      "data-driven"
+    ],
+    "keywords": [
+      "machine learning",
+      "cfd",
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "surrogate model",
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.01102v1",
+    "title": "Structure-preserving Randomized Neural Networks for Incompressible Magnetohydrodynamics Equations",
+    "authors": "Yunlong Li, Fei Wang, Lingxiao Li",
+    "abstract": "The incompressible magnetohydrodynamic (MHD) equations are fundamental in many scientific and engineering applications. However, their strong nonlinearity and dual divergence-free constraints make them highly challenging for conventional numerical solvers. To overcome these difficulties, we propose a Structure-Preserving Randomized Neural Network (SP-RaNN) that automatically and exactly satisfies the divergence-free conditions. Unlike deep neural network (DNN) approaches that rely on expensive nonlinear and nonconvex optimization, SP-RaNN reformulates the training process into a linear least-squares system, thereby eliminating nonconvex optimization. The method linearizes the governing equations through Picard or Newton iterations, discretizes them at collocation points within the domain and on the boundaries using finite-difference schemes, and solves the resulting linear system via a linear least-squares procedure. By design, SP-RaNN preserves the intrinsic mathematical structure of the equations within a unified space-time framework, ensuring both stability and accuracy. Numerical experiments on the Navier-Stokes, Maxwell, and MHD equations demonstrate that SP-RaNN achieves higher accuracy, faster convergence, and exact enforcement of divergence-free constraints compared with both traditional numerical methods and DNN-based approaches. This structure-preserving framework provides an efficient and reliable tool for solving complex PDE systems while rigorously maintaining their underlying physical laws.",
+    "published": "2026-03-01",
+    "arxiv_url": "http://arxiv.org/abs/2603.01102v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.01102v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "math.NA"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network"
+    ],
+    "keywords": [
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.01080v1",
+    "title": "Super-resolution of turbulent reacting flows on complex meshes using graph neural networks",
+    "authors": "Priyabrat Dash, Konduri Aditya, Christos E. Frouzakis, Mathis Bode",
+    "abstract": "State-of-the-art deep learning models have been extensively utilized to reconstruct small-scale structures from coarse-grained data in turbulent flows. However, their application has predominantly been restricted to structured uniform meshes, limiting their applicability to data associated with complex geometries that are typically simulated on structured non-uniform or unstructured meshes. Machine learning (ML) models based on graph neural networks (GNNs), known for their ability to process unstructured data, offer a promising alternative. In this study, we leverage the inherent flexibility of GNNs featuring message passing layers to develop a methodology for reconstructing unresolved small-scale structures from low-resolution data on complex meshes. The accuracy of the proposed approach is demonstrated using two cases: a reacting channel flow on a structured non-uniform mesh, and a reacting hydrogen fueled internal combustion (IC) engine featuring an unstructured mesh. Evaluation of results based on visual agreement, statistical metrics, and cumulative error reduction indicates the effectiveness of the method in accurately reconstructing fine-scale features. Overall, this study provides a pathway for integrating data-driven small-scale reconstruction and subgrid-scale modeling to enhance the accuracy of coarse-grained simulations on complex meshes.",
+    "published": "2026-03-01",
+    "arxiv_url": "http://arxiv.org/abs/2603.01080v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.01080v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "machine learning",
+      "rom",
+      "neural network",
+      "deep learning",
+      "data-driven"
+    ],
+    "keywords": [
+      "machine learning",
+      "rom",
+      "neural network",
+      "deep learning",
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  }
+]
