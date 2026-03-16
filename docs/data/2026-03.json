@@ -1,5 +1,81 @@
 [
   {
+    "id": "2603.12635v1",
+    "title": "Adaptive Diffusion Posterior Sampling for Data and Model Fusion of Complex Nonlinear Dynamical Systems",
+    "authors": "Dibyajyoti Chakraborty, Hojin Kim, Romit Maulik",
+    "abstract": "High-fidelity numerical simulations of chaotic, high dimensional nonlinear dynamical systems are computationally expensive, necessitating the development of efficient surrogate models. Most surrogate models for such systems are deterministic, for example when neural operators are involved. However, deterministic models often fail to capture the intrinsic distributional uncertainty of chaotic systems. This work presents a surrogate modeling formulation that leverages generative machine learning, where a deep learning diffusion model is used to probabilistically forecast turbulent flows over long horizons. We introduce a multi-step autoregressive diffusion objective that significantly enhances long-rollout stability compared to standard single-step training. To handle complex, unstructured geometries, we utilize a multi-scale graph transformer architecture incorporating diffusion preconditioning and voxel-grid pooling. More importantly, our modeling framework provides a unified platform that also predicts spatiotemporally important locations for sensor placement, either via uncertainty estimates or through an error-estimation module. Finally, the observations of the ground truth state at these dynamically varying sensor locations are assimilated using diffusion posterior sampling requiring no retraining of the surrogate model. We present our methodology on two-dimensional homogeneous and isotropic turbulence and for a flow over a backwards-facing step, demonstrating its utility in forecasting, adaptive sensor placement, and data assimilation for high dimensional chaotic systems.",
+    "published": "2026-03-13",
+    "arxiv_url": "http://arxiv.org/abs/2603.12635v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.12635v1",
+    "categories": [
+      "cs.LG",
+      "nlin.CD",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "CFD与机器学习交叉",
+      "智能流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "turbulence",
+      "machine learning",
+      "deep learning",
+      "transformer",
+      "surrogate model",
+      "rans"
+    ],
+    "keywords": [
+      "turbulence",
+      "machine learning",
+      "deep learning",
+      "transformer",
+      "surrogate model",
+      "rans"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.12516v1",
+    "title": "Learning Pore-scale Multiphase Flow from 4D Velocimetry",
+    "authors": "Chunyang Wang, Linqi Zhu, Yuxuan Gu, Robert van der Merwe, Xin Ju, Catherine Spurin, Samuel Krevor, Rex Ying, Tobias Pfaff, Martin J. Blunt, Tom Bultreys, Gege Wen",
+    "abstract": "Multiphase flow in porous media underpins subsurface energy and environmental technologies, including geological CO$_2$ storage and underground hydrogen storage, yet pore-scale dynamics in realistic three-dimensional materials remain difficult to characterize and predict. Here we introduce a multimodal learning framework that infers multiphase pore-scale flow directly from time-resolved four-dimensional (4D) micro-velocimetry measurements. The model couples a graph network simulator for Lagrangian tracer-particle motion with a 3D U-Net for voxelized interface evolution. The imaged pore geometry serves as a boundary constraint to the flow velocity and the multiphase interface predictions, which are coupled and updated iteratively at each time step. Trained autoregressively on experimental sequences in capillary-dominated conditions ($Ca\\approx10^{-6}$), the learned surrogate captures transient, nonlocal flow perturbations and abrupt interface rearrangements (Haines jumps) over rollouts spanning seconds of physical time, while reducing hour-to-day--scale direct numerical simulations to seconds of inference. By providing rapid, experimentally informed predictions, the framework opens a route to ''digital experiments'' to replicate pore-scale physics observed in multiphase flow experiments, offering an efficient tool for exploring injection conditions and pore-geometry effects relevant to subsurface carbon and hydrogen storage.",
+    "published": "2026-03-12",
+    "arxiv_url": "http://arxiv.org/abs/2603.12516v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.12516v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "多相流"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "multiphase flow",
+      "rom",
+      "les",
+      "rans"
+    ],
+    "keywords": [
+      "multiphase flow",
+      "rom",
+      "les",
+      "rans"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2603.11250v1",
     "title": "A Machine Learning-Enhanced Hopf-Cole Formulation for Nonlinear Gas Flow in Porous Media",
     "authors": "V. S. Maduru, K. B. Nakshatrala",
@@ -15,23 +91,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "machine learning",
       "rom",
+      "neural network",
       "les",
-      "rans",
-      "neural network"
+      "rans"
     ],
     "keywords": [
       "machine learning",
       "rom",
+      "neural network",
       "les",
-      "rans",
-      "neural network"
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -51,25 +127,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
+      "机器学习",
       "流体力学",
-      "智能流体力学",
-      "机器学习"
+      "CFD与机器学习交叉",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "pinn",
-      "physics-informed neural network",
       "fluid dynamics",
-      "les",
-      "neural network"
+      "physics-informed neural network",
+      "neural network",
+      "les"
     ],
     "keywords": [
       "pinn",
-      "physics-informed neural network",
       "fluid dynamics",
-      "les",
-      "neural network"
+      "physics-informed neural network",
+      "neural network",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -91,27 +167,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
+      "机器学习",
       "流体力学",
-      "智能流体力学",
-      "机器学习"
+      "CFD与机器学习交叉",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid dynamics",
       "machine learning",
       "cfd",
-      "fluid dynamics",
       "computational fluid dynamics",
-      "surrogate model",
-      "data-driven"
+      "data-driven",
+      "surrogate model"
     ],
     "keywords": [
+      "fluid dynamics",
       "machine learning",
       "cfd",
-      "fluid dynamics",
       "computational fluid dynamics",
-      "surrogate model",
-      "data-driven"
+      "data-driven",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -159,23 +235,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "machine learning",
-      "rom",
-      "neural network",
       "deep learning",
-      "data-driven"
+      "data-driven",
+      "rom",
+      "neural network"
     ],
     "keywords": [
       "machine learning",
-      "rom",
-      "neural network",
       "deep learning",
-      "data-driven"
+      "data-driven",
+      "rom",
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
