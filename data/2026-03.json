@@ -1,5 +1,120 @@
 [
   {
+    "id": "2603.17057v1",
+    "title": "Optimization-Embedded Active Multi-Fidelity Surrogate Learning for Multi-Condition Airfoil Shape Optimization",
+    "authors": "Isaac Robledo, Alberto Vilariño, Arnau Miró, Oriol Lehmkuhl, Carlos Sanmiguel Vila, Rodrigo Castellanos",
+    "abstract": "Active multi-fidelity surrogate modeling is developed for multi-condition airfoil shape optimization to reduce high-fidelity CFD cost while retaining RANS-level accuracy. The framework couples a low-fidelity-informed Gaussian process regression transfer model with uncertainty-triggered sampling and a synchronized elitism rule embedded in a hybrid genetic algorithm. Low-fidelity XFOIL evaluations provide inexpensive features, while sparse RANS simulations are adaptively allocated when predictive uncertainty exceeds a threshold; elite candidates are mandatorily validated at high fidelity, and the population is re-evaluated to prevent evolutionary selection based on outdated fitness values produced by earlier surrogate states. The method is demonstrated for a two-point problem at $Re=6\\times10^6$ with cruise at $α=2^\\circ$ (maximize $E=L/D$) and take-off at $α=10^\\circ$ (maximize $C_L$) using a 12-parameter CST representation. Independent multi-fidelity surrogates per flight condition enable decoupled refinement. The optimized design improves cruise efficiency by 41.05% and take-off lift by 20.75% relative to the best first-generation individual. Over the full campaign, only 14.78% (cruise) and 9.5% (take-off) of evaluated individuals require RANS, indicating a substantial reduction in high-fidelity usage while maintaining consistent multi-point performance.",
+    "published": "2026-03-17",
+    "arxiv_url": "http://arxiv.org/abs/2603.17057v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.17057v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "cs.NE",
+      "math.OC"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "cfd",
+      "les",
+      "surrogate model"
+    ],
+    "keywords": [
+      "rans",
+      "cfd",
+      "les",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.16277v1",
+    "title": "Physics-integrated neural differentiable modeling for immersed boundary systems",
+    "authors": "Chenglin Li, Hang Xu, Jianting Chen, Yanfei Zhang",
+    "abstract": "Accurately, efficiently, and stably computing complex fluid flows and their evolution near solid boundaries over long horizons remains challenging. Conventional numerical solvers require fine grids and small time steps to resolve near-wall dynamics, resulting in high computational costs, while purely data-driven surrogate models accumulate rollout errors and lack robustness under extrapolative conditions. To address these issues, this study extends existing neural PDE solvers by developing a physics-integrated differentiable framework for long-horizon prediction of immersed-boundary flows. A key design aspect of the framework includes an important improvement, namely the structural integration of physical principles into an end-to-end differentiable architecture incorporating a PDE-based intermediate velocity module and a multi-direct forcing immersed boundary module, both adhering to the pressure-projection procedure for incompressible flow computation. The computationally expensive pressure projection step is substituted with a learned implicit correction using ConvResNet blocks to reduce cost, and a sub-iteration strategy is introduced to separate the embedded physics module's stability requirement from the surrogate model's time step, enabling stable coarse-grid autoregressive rollouts with large effective time increments. The framework uses only single-step supervision for training, eliminating long-horizon backpropagation and reducing training time to under one hour on a single GPU. Evaluations on benchmark cases of flow past a stationary cylinder and a rotationally oscillating cylinder at Re=100 show the proposed model consistently outperforms purely data-driven, physics-loss-constrained, and coarse-grid numerical baselines in flow-field fidelity and long-horizon stability, while achieving an approximately 200-fold inference speedup over the high-resolution solver.",
+    "published": "2026-03-17",
+    "arxiv_url": "http://arxiv.org/abs/2603.16277v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.16277v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "surrogate model",
+      "flow computation",
+      "les",
+      "rom"
+    ],
+    "keywords": [
+      "data-driven",
+      "surrogate model",
+      "flow computation",
+      "les",
+      "rom"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.13789v1",
+    "title": "Hierarchy of extreme-event predictability in turbulence revealed by machine learning",
+    "authors": "Yuxuan Yang, Chenyu Dong, Gianmarco Mengaldo",
+    "abstract": "Extreme-event predictability in turbulence is strongly state dependent, yet event-by-event predictability horizons are difficult to quantify without access to governing equations or costly perturbation ensembles. Here we train an autoregressive conditional diffusion model on direct numerical simulations of the two-dimensional Kolmogorov flow and use a CRPS-based skill score to define an event-wise predictability horizon. Enstrophy extremes exhibit a pronounced hierarchy: forecast skill persists from $\\approx 1$ to $> 4$ Lyapunov times across events. Spectral filtering shows that these horizons are controlled predominantly by large-scale structures. Extremes are preceded by intense strain cores organizing quadrupolar vortex packets, whose lifetime sharply separates long- from short-horizon events. These results identify coherent-structure persistence as a governing mechanism for the predictability of turbulence extremes and provide a data-driven route to diagnose predictability limits from observations.",
+    "published": "2026-03-14",
+    "arxiv_url": "http://arxiv.org/abs/2603.13789v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.13789v1",
+    "categories": [
+      "nlin.CD",
+      "cs.LG",
+      "math.DS",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "CFD与机器学习交叉",
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "gan",
+      "les",
+      "machine learning",
+      "rom",
+      "turbulence"
+    ],
+    "keywords": [
+      "data-driven",
+      "gan",
+      "machine learning",
+      "les",
+      "rom",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2603.12635v1",
     "title": "Adaptive Diffusion Posterior Sampling for Data and Model Fusion of Complex Nonlinear Dynamical Systems",
     "authors": "Dibyajyoti Chakraborty, Hojin Kim, Romit Maulik",
@@ -15,27 +130,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "流体力学",
       "CFD与机器学习交叉",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
+      "surrogate model",
       "machine learning",
       "deep learning",
-      "transformer",
-      "surrogate model",
-      "rans"
+      "rans",
+      "turbulence",
+      "transformer"
     ],
     "keywords": [
-      "turbulence",
+      "surrogate model",
       "machine learning",
       "deep learning",
-      "transformer",
-      "surrogate model",
-      "rans"
+      "rans",
+      "turbulence",
+      "transformer"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -55,22 +170,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "多相流",
       "CFD与机器学习交叉",
-      "流体力学",
-      "多相流"
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "multiphase flow",
+      "rans",
       "rom",
-      "les",
-      "rans"
+      "multiphase flow",
+      "les"
     ],
     "keywords": [
-      "multiphase flow",
+      "rans",
       "rom",
-      "les",
-      "rans"
+      "multiphase flow",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -91,22 +206,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "les",
       "machine learning",
       "rom",
       "neural network",
-      "les",
       "rans"
     ],
     "keywords": [
       "machine learning",
+      "les",
       "rom",
       "neural network",
-      "les",
       "rans"
     ],
     "citation_count": null,
@@ -127,25 +242,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "流体力学",
       "CFD与机器学习交叉",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
-      "fluid dynamics",
       "physics-informed neural network",
-      "neural network",
-      "les"
+      "fluid dynamics",
+      "les",
+      "pinn",
+      "neural network"
     ],
     "keywords": [
-      "pinn",
-      "fluid dynamics",
       "physics-informed neural network",
-      "neural network",
-      "les"
+      "fluid dynamics",
+      "les",
+      "pinn",
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -167,27 +282,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "流体力学",
       "CFD与机器学习交叉",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "fluid dynamics",
-      "machine learning",
-      "cfd",
-      "computational fluid dynamics",
       "data-driven",
-      "surrogate model"
+      "surrogate model",
+      "fluid dynamics",
+      "cfd",
+      "machine learning",
+      "computational fluid dynamics"
     ],
     "keywords": [
-      "fluid dynamics",
-      "machine learning",
-      "cfd",
-      "computational fluid dynamics",
       "data-driven",
-      "surrogate model"
+      "surrogate model",
+      "fluid dynamics",
+      "cfd",
+      "machine learning",
+      "computational fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -235,21 +350,21 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "data-driven",
       "machine learning",
       "deep learning",
-      "data-driven",
       "rom",
       "neural network"
     ],
     "keywords": [
+      "data-driven",
       "machine learning",
       "deep learning",
-      "data-driven",
       "rom",
       "neural network"
     ],

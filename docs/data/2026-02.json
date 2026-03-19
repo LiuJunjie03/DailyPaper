@@ -18,16 +18,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
       "neural network",
-      "transfer learning",
-      "rans"
+      "rans",
+      "pinn",
+      "transfer learning"
     ],
     "keywords": [
       "neural network",
+      "rans",
       "pinn",
-      "transfer learning",
-      "rans"
+      "transfer learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -51,16 +51,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "transformer",
+      "rans",
       "rom",
       "les",
-      "rans"
+      "transformer"
     ],
     "keywords": [
-      "transformer",
+      "rans",
       "rom",
       "les",
-      "rans"
+      "transformer"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -85,16 +85,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "reduced-order model",
-      "rom",
       "neural network",
-      "surrogate model"
+      "rom",
+      "surrogate model",
+      "reduced-order model"
     ],
     "keywords": [
-      "reduced-order model",
-      "rom",
       "neural network",
-      "surrogate model"
+      "rom",
+      "surrogate model",
+      "reduced-order model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -115,33 +115,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
       "rans",
+      "rom",
       "les",
       "machine learning"
     ],
     "keywords": [
-      "machine learning",
+      "rans",
       "rom",
-      "les",
-      "rans"
+      "machine learning",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
   },
   {
-    "id": "2602.15472v2",
+    "id": "2602.15472v3",
     "title": "Fluids You Can Trust: Property-Preserving Operator Learning for Incompressible Flows",
     "authors": "Ramansh Sharma, Matthew Lowery, Houman Owhadi, Varun Shankar",
-    "abstract": "We present a novel property-preserving kernel-based operator learning method for incompressible flows governed by the incompressible Navier-Stokes equations. Traditional numerical solvers incur significant computational costs to respect incompressibility. Operator learning offers efficient surrogate models, but current neural operators fail to exactly enforce physical properties such as incompressibility, periodicity, and turbulence. Our method maps input functions to expansion coefficients of output functions in a property-preserving kernel basis, ensuring that predicted velocity fields analytically and simultaneously preserve the aforementioned physical properties. We evaluate the method on challenging 2D and 3D, laminar and turbulent, incompressible flow problems. Our method achieves up to six orders of magnitude lower relative $\\ell_2$ errors upon generalization and trains up to five orders of magnitude faster compared to neural operators. Moreover, while our method enforces incompressibility analytically, neural operators exhibit very large deviations. Our results show that our method provides an accurate and efficient surrogate for incompressible flows.",
+    "abstract": "We present a novel property-preserving kernel-based operator learning method for incompressible flows governed by the incompressible Navier--Stokes equations. Traditional numerical solvers incur significant computational costs to respect incompressibility. Operator learning offers efficient surrogate models, but current neural operators fail to exactly enforce physical properties such as incompressibility, periodicity, and turbulence. Our kernel method maps input functions to expansion coefficients of output functions in a property-preserving kernel basis, ensuring that predicted velocity fields $\\textit{analytically}$ and $\\textit{simultaneously}$ preserve the aforementioned physical properties. Our method leverages efficient numerical linear algebra, simple rootfinding, and streaming to allow for training at-scale on desktop GPUs. We also present universal approximation results and both pessimistic and more realistic $\\textit{a priori}$ convergence rates for our framework. We evaluate the method on challenging 2D and 3D, laminar and turbulent, incompressible flow problems. Our method achieves up to six orders of magnitude lower relative $\\ell_2$ errors upon generalization and trains up to five orders of magnitude faster compared to neural operators, despite our method being trained on desktop GPUs and neural operators being trained on cutting-edge GPU servers. Moreover, while our method enforces incompressibility analytically, neural operators exhibit very large deviations. Our results show that our method provides an accurate and efficient surrogate for incompressible flows.",
     "published": "2026-02-17",
-    "arxiv_url": "http://arxiv.org/abs/2602.15472v2",
-    "pdf_url": "https://arxiv.org/pdf/2602.15472v2",
+    "arxiv_url": "http://arxiv.org/abs/2602.15472v3",
+    "pdf_url": "https://arxiv.org/pdf/2602.15472v3",
     "categories": [
       "physics.flu-dyn",
       "cs.LG"
@@ -179,24 +179,24 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "data-driven",
+      "surrogate model",
       "les",
       "machine learning",
-      "data-driven",
       "rom",
-      "surrogate model",
       "rans"
     ],
     "keywords": [
-      "les",
-      "machine learning",
       "data-driven",
-      "rom",
       "surrogate model",
+      "machine learning",
+      "les",
+      "rom",
       "rans"
     ],
     "citation_count": null,
@@ -221,8 +221,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
-      "gan"
+      "gan",
+      "les"
     ],
     "keywords": [
       "gan",
@@ -249,33 +249,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "流体力学",
       "CFD与机器学习交叉",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven modeling",
-      "fluid dynamics",
-      "machine learning",
-      "surrogate model",
-      "transformer",
       "data-driven",
-      "rom",
+      "surrogate model",
+      "fluid dynamics",
+      "data-driven modeling",
       "les",
-      "rans"
+      "machine learning",
+      "rom",
+      "rans",
+      "transformer"
     ],
     "keywords": [
-      "les",
-      "data-driven modeling",
-      "fluid dynamics",
-      "machine learning",
-      "transformer",
       "data-driven",
-      "rom",
       "surrogate model",
-      "rans"
+      "fluid dynamics",
+      "data-driven modeling",
+      "les",
+      "machine learning",
+      "rom",
+      "rans",
+      "transformer"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -299,18 +299,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
       "physics-informed neural network",
+      "les",
       "rom",
-      "neural network",
-      "les"
+      "pinn",
+      "neural network"
     ],
     "keywords": [
-      "pinn",
       "physics-informed neural network",
+      "les",
       "rom",
-      "neural network",
-      "les"
+      "pinn",
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -330,22 +330,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
       "流体力学",
+      "CFD与机器学习交叉",
       "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "surrogate model",
-      "fluid dynamics",
+      "cfd",
       "data-driven",
-      "cfd"
+      "surrogate model",
+      "fluid dynamics"
     ],
     "keywords": [
-      "fluid dynamics",
-      "data-driven",
       "cfd",
-      "surrogate model"
+      "data-driven",
+      "surrogate model",
+      "fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -365,19 +365,19 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
       "deep learning",
-      "rans"
+      "rans",
+      "rom"
     ],
     "keywords": [
-      "rom",
       "deep learning",
-      "rans"
+      "rans",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -397,35 +397,35 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "流体力学",
       "CFD与机器学习交叉",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
-      "fluid dynamics",
-      "turbulence",
-      "machine learning",
-      "cfd",
-      "computational fluid dynamics",
       "surrogate model",
-      "rom",
+      "fluid dynamics",
+      "cfd",
+      "machine learning",
+      "computational fluid dynamics",
       "les",
-      "rans"
+      "rom",
+      "pinn",
+      "rans",
+      "turbulence"
     ],
     "keywords": [
-      "pinn",
-      "les",
-      "fluid dynamics",
-      "turbulence",
-      "machine learning",
-      "cfd",
-      "computational fluid dynamics",
-      "rom",
       "surrogate model",
-      "rans"
+      "fluid dynamics",
+      "cfd",
+      "machine learning",
+      "computational fluid dynamics",
+      "les",
+      "rom",
+      "pinn",
+      "rans",
+      "turbulence"
     ],
     "citation_count": null,
     "impact_factor": null
