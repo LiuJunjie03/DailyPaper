@@ -1,5 +1,51 @@
 [
   {
+    "id": "2603.17532v1",
+    "title": "Anisotropic Permeability Tensor Prediction from Porous Media Microstructure via Physics-Informed Progressive Transfer Learning with Hybrid CNN-Transformer",
+    "authors": "Mohammad Nooraiepour",
+    "abstract": "Accurate prediction of permeability tensors from pore-scale microstructure images is essential for subsurface flow modeling, yet direct numerical simulation requires hours per sample, fundamentally limiting large-scale uncertainty quantification and reservoir optimization workflows. A physics-informed deep learning framework is presented that resolves this bottleneck by combining a MaxViT hybrid CNN-Transformer architecture with progressive transfer learning and differentiable physical constraints. MaxViT's multi-axis attention mechanism simultaneously resolves grain-scale pore-throat geometry via block-local operations and REV-scale connectivity statistics through grid-global operations, providing the spatial hierarchy that permeability tensor prediction physically requires. Training on 20000 synthetic porous media samples spanning three orders of magnitude in permeability, a three-phase progressive curriculum advances from an ImageNet-pretrained baseline with D4-equivariant augmentation and tensor transformation, through component-weighted loss prioritizing off-diagonal coupling, to frozen-backbone transfer learning with porosity conditioning via Feature-wise Linear Modulation (FiLM). Onsager reciprocity and positive definiteness are enforced via differentiable penalty terms. On a held-out test set of 4000 samples, the framework achieves variance-weighted R2 = 0.9960 (R2_Kxx = 0.9967, R2_Kxy = 0.9758), a 33% reduction in unexplained variance over the supervised baseline. The results offer three transferable principles for physics-informed scientific machine learning: large-scale visual pretraining transfers effectively across domain boundaries; physical constraints are most robustly integrated as differentiable architectural components; and progressive training guided by diagnostic failure-mode analysis enables unambiguous attribution of performance gains across methodological stages.",
+    "published": "2026-03-18",
+    "arxiv_url": "http://arxiv.org/abs/2603.17532v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.17532v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "机器学习",
+      "流体力学",
+      "智能流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "transformer",
+      "cnn",
+      "transfer learning",
+      "rom",
+      "rans",
+      "machine learning",
+      "deep learning",
+      "flow modeling",
+      "les"
+    ],
+    "keywords": [
+      "transformer",
+      "cnn",
+      "transfer learning",
+      "rom",
+      "rans",
+      "machine learning",
+      "deep learning",
+      "flow modeling",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2603.17057v1",
     "title": "Optimization-Embedded Active Multi-Fidelity Surrogate Learning for Multi-Condition Airfoil Shape Optimization",
     "authors": "Isaac Robledo, Alberto Vilariño, Arnau Miró, Oriol Lehmkuhl, Carlos Sanmiguel Vila, Rodrigo Castellanos",
@@ -16,21 +62,21 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "rans",
+      "surrogate model",
       "cfd",
-      "les",
-      "surrogate model"
+      "les"
     ],
     "keywords": [
       "rans",
+      "surrogate model",
       "cfd",
-      "les",
-      "surrogate model"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -55,18 +101,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
       "surrogate model",
-      "flow computation",
+      "rom",
+      "data-driven",
       "les",
-      "rom"
+      "flow computation"
     ],
     "keywords": [
-      "data-driven",
       "surrogate model",
-      "flow computation",
+      "rom",
+      "data-driven",
       "les",
-      "rom"
+      "flow computation"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -90,26 +136,26 @@
     "code_link": "",
     "tags": [
       "流体力学",
+      "机器学习",
       "CFD与机器学习交叉",
-      "智能流体力学",
-      "机器学习"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "turbulence",
+      "rom",
       "data-driven",
       "gan",
-      "les",
       "machine learning",
-      "rom",
-      "turbulence"
+      "les"
     ],
     "keywords": [
+      "turbulence",
+      "rom",
       "data-driven",
       "gan",
       "machine learning",
-      "les",
-      "rom",
-      "turbulence"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -131,26 +177,26 @@
     "code_link": "",
     "tags": [
       "流体力学",
+      "机器学习",
       "CFD与机器学习交叉",
-      "智能流体力学",
-      "机器学习"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "transformer",
       "surrogate model",
-      "machine learning",
-      "deep learning",
-      "rans",
       "turbulence",
-      "transformer"
+      "rans",
+      "machine learning",
+      "deep learning"
     ],
     "keywords": [
+      "transformer",
       "surrogate model",
-      "machine learning",
-      "deep learning",
-      "rans",
       "turbulence",
-      "transformer"
+      "rans",
+      "machine learning",
+      "deep learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -170,21 +216,21 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "多相流",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "多相流"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "multiphase flow",
       "rans",
       "rom",
-      "multiphase flow",
       "les"
     ],
     "keywords": [
+      "multiphase flow",
       "rans",
       "rom",
-      "multiphase flow",
       "les"
     ],
     "citation_count": null,
@@ -206,23 +252,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
-      "machine learning",
-      "rom",
       "neural network",
-      "rans"
+      "rom",
+      "rans",
+      "machine learning",
+      "les"
     ],
     "keywords": [
-      "machine learning",
-      "les",
-      "rom",
       "neural network",
-      "rans"
+      "rom",
+      "rans",
+      "machine learning",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -243,24 +289,24 @@
     "code_link": "",
     "tags": [
       "流体力学",
+      "机器学习",
       "CFD与机器学习交叉",
-      "智能流体力学",
-      "机器学习"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "physics-informed neural network",
       "fluid dynamics",
-      "les",
+      "physics-informed neural network",
+      "neural network",
       "pinn",
-      "neural network"
+      "les"
     ],
     "keywords": [
-      "physics-informed neural network",
       "fluid dynamics",
-      "les",
+      "physics-informed neural network",
+      "neural network",
       "pinn",
-      "neural network"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -283,26 +329,26 @@
     "code_link": "",
     "tags": [
       "流体力学",
+      "机器学习",
       "CFD与机器学习交叉",
-      "智能流体力学",
-      "机器学习"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
-      "surrogate model",
       "fluid dynamics",
-      "cfd",
+      "surrogate model",
+      "data-driven",
+      "computational fluid dynamics",
       "machine learning",
-      "computational fluid dynamics"
+      "cfd"
     ],
     "keywords": [
-      "data-driven",
-      "surrogate model",
       "fluid dynamics",
-      "cfd",
+      "surrogate model",
+      "data-driven",
+      "computational fluid dynamics",
       "machine learning",
-      "computational fluid dynamics"
+      "cfd"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -350,23 +396,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "neural network",
+      "rom",
       "data-driven",
       "machine learning",
-      "deep learning",
-      "rom",
-      "neural network"
+      "deep learning"
     ],
     "keywords": [
+      "neural network",
+      "rom",
       "data-driven",
       "machine learning",
-      "deep learning",
-      "rom",
-      "neural network"
+      "deep learning"
     ],
     "citation_count": null,
     "impact_factor": null
