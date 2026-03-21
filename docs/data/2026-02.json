@@ -20,12 +20,12 @@
     "custom_keywords": [
       "rans",
       "neural network",
-      "transfer learning",
-      "pinn"
+      "pinn",
+      "transfer learning"
     ],
     "keywords": [
-      "rans",
       "neural network",
+      "rans",
       "transfer learning",
       "pinn"
     ],
@@ -51,16 +51,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "transformer",
       "les",
-      "rans"
+      "rom",
+      "rans",
+      "transformer"
     ],
     "keywords": [
       "rom",
       "transformer",
-      "les",
-      "rans"
+      "rans",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -85,16 +85,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
+      "reduced-order model",
       "neural network",
       "surrogate model",
-      "reduced-order model"
+      "rom"
     ],
     "keywords": [
-      "rom",
+      "reduced-order model",
       "neural network",
       "surrogate model",
-      "reduced-order model"
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -115,20 +115,20 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "rom",
+      "machine learning",
       "rans",
-      "les",
-      "machine learning"
+      "les"
     ],
     "keywords": [
       "rom",
-      "rans",
       "machine learning",
+      "rans",
       "les"
     ],
     "citation_count": null,
@@ -179,25 +179,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "surrogate model",
-      "rom",
-      "rans",
-      "data-driven",
       "machine learning",
-      "les"
+      "les",
+      "data-driven",
+      "surrogate model",
+      "rans",
+      "rom"
     ],
     "keywords": [
-      "surrogate model",
-      "rom",
-      "rans",
-      "data-driven",
       "machine learning",
-      "les"
+      "les",
+      "data-driven",
+      "surrogate model",
+      "rans",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -221,12 +221,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "gan",
-      "les"
+      "les",
+      "gan"
     ],
     "keywords": [
-      "gan",
-      "les"
+      "les",
+      "gan"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -249,33 +249,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
+      "智能流体力学",
       "机器学习",
-      "CFD与机器学习交叉",
-      "智能流体力学"
+      "流体力学",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "transformer",
-      "fluid dynamics",
-      "surrogate model",
-      "rom",
-      "rans",
-      "data-driven",
       "machine learning",
       "les",
-      "data-driven modeling"
+      "data-driven",
+      "fluid dynamics",
+      "surrogate model",
+      "rans",
+      "transformer",
+      "data-driven modeling",
+      "rom"
     ],
     "keywords": [
-      "transformer",
-      "fluid dynamics",
-      "surrogate model",
-      "rom",
-      "rans",
-      "data-driven",
       "machine learning",
       "les",
-      "data-driven modeling"
+      "data-driven",
+      "surrogate model",
+      "fluid dynamics",
+      "rans",
+      "transformer",
+      "data-driven modeling",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -300,29 +300,29 @@
     "official_keywords": [],
     "custom_keywords": [
       "physics-informed neural network",
-      "neural network",
+      "les",
       "pinn",
       "rom",
-      "les"
+      "neural network"
     ],
     "keywords": [
       "physics-informed neural network",
-      "neural network",
+      "les",
       "pinn",
       "rom",
-      "les"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
   },
   {
-    "id": "2602.02832v1",
+    "id": "2602.02832v2",
     "title": "Koopman Autoencoders with Continuous-Time Latent Dynamics for Fluid Dynamics Forecasting",
     "authors": "Rares Grozavescu, Pengyu Zhang, Etienne Meunier, Mark Girolami",
-    "abstract": "Data-driven surrogate models have emerged as powerful tools for accelerating the simulation of turbulent flows. However, classical approaches which perform autoregressive rollouts often trade off between strong short-term accuracy and long-horizon stability. Koopman autoencoders, inspired by Koopman operator theory, provide a physics-based alternative by mapping nonlinear dynamics into a latent space where linear evolution is conducted. In practice, most existing formulations operate in a discrete-time setting, limiting temporal flexibility. In this work, we introduce a continuous-time Koopman framework that models latent evolution through numerical integration schemes. By allowing variable timesteps at inference, the method demonstrates robustness to temporal resolution and generalizes beyond training regimes. In addition, the learned dynamics closely adhere to the analytical matrix exponential solution, enabling efficient long-horizon forecasting. We evaluate the approach on classical CFD benchmarks and report accuracy, stability, and extrapolation properties.",
+    "abstract": "Learning surrogate models for time-dependent PDEs requires balancing expressivity, stability, and computational efficiency. While highly expressive generative models achieve strong short-term accuracy, they rely on autoregressive sampling procedures that are computationally expensive and prone to error accumulation over long horizons. We propose a continuous-time Koopman autoencoder in which latent dynamics are governed by a parameter-conditioned linear generator. This formulation enables exact latent evolution via matrix exponentiation, allowing predictions at arbitrary temporal resolutions without autoregressive rollouts. We evaluate our method on challenging fluid dynamics benchmarks and compare against autoregressive neural operators and diffusion-based models. We evaluate our method on challenging fluid dynamics benchmarks against autoregressive neural operators and diffusion-based models. Our results demonstrate that imposing a continuous-time linear structure in the latent space yields a highly favorable trade-off: it achieves massive computational efficiency and extreme long-horizon stability while remaining competitive in short-term generative accuracy.",
     "published": "2026-02-02",
-    "arxiv_url": "http://arxiv.org/abs/2602.02832v1",
-    "pdf_url": "https://arxiv.org/pdf/2602.02832v1",
+    "arxiv_url": "http://arxiv.org/abs/2602.02832v2",
+    "pdf_url": "https://arxiv.org/pdf/2602.02832v2",
     "categories": [
       "cs.LG",
       "physics.flu-dyn"
@@ -330,22 +330,20 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉",
-      "智能流体力学"
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
       "surrogate model",
-      "cfd",
-      "fluid dynamics"
+      "fluid dynamics",
+      "les"
     ],
     "keywords": [
-      "data-driven",
+      "fluid dynamics",
       "surrogate model",
-      "cfd",
-      "fluid dynamics"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -365,8 +363,8 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
@@ -397,35 +395,35 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
+      "智能流体力学",
       "机器学习",
-      "CFD与机器学习交叉",
-      "智能流体力学"
+      "流体力学",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "machine learning",
+      "les",
+      "cfd",
       "fluid dynamics",
-      "surrogate model",
-      "turbulence",
       "pinn",
-      "rom",
+      "surrogate model",
       "rans",
       "computational fluid dynamics",
-      "machine learning",
-      "cfd",
-      "les"
+      "turbulence",
+      "rom"
     ],
     "keywords": [
+      "machine learning",
+      "les",
+      "cfd",
       "fluid dynamics",
-      "surrogate model",
-      "turbulence",
       "pinn",
-      "rom",
+      "surrogate model",
       "rans",
       "computational fluid dynamics",
-      "machine learning",
-      "cfd",
-      "les"
+      "turbulence",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
