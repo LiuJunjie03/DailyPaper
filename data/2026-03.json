@@ -1,5 +1,79 @@
 [
   {
+    "id": "2603.19841v1",
+    "title": "Modeling subgrid scale production rates on complex meshes using graph neural networks",
+    "authors": "Priyabrat Dash, Mathis Bode, Konduri Aditya",
+    "abstract": "Large-eddy simulations (LES) require closures for filtered production rates because the resolved fields do not contain all correlations that govern chemical source terms. We develop a graph neural network (GNN) that predicts filtered species production rates on non-uniform meshes from inputs of filtered mass fractions and temperature. Direct numerical simulations of turbulent premixed hydrogen-methane jet flames with hydrogen fractions of 10%, 50%, and 80% provide the dataset. All fields are Favre filtered with the filter width matched to the operating mesh, and learning is performed on subdomain graphs constructed from mesh-point connectivity. A compact set of reactants, intermediates, and products is used, and their filtered production rates form the targets. The model is trained on 10% and 80% blends and evaluated on the unseen 50% blend to test cross-composition generalization. The GNN is compared against an unclosed reference that evaluates rates at the filtered state, and a convolutional neural network baseline that requires remeshing. Across in-distribution and out-of-distribution cases, the GNN yields lower errors and closer statistical agreement with the reference data. Furthermore, the model demonstrates robust generalization across varying filter widths without retraining, maintaining bounded errors at coarser spatial resolutions. A backward facing step configuration further confirms prediction efficacy on a practically relevant geometry. These results highlight the capability of GNNs as robust data-driven closure models for LES on complex meshes.",
+    "published": "2026-03-20",
+    "arxiv_url": "http://arxiv.org/abs/2603.19841v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.19841v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "neural network",
+      "rom",
+      "data-driven"
+    ],
+    "keywords": [
+      "les",
+      "neural network",
+      "rom",
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.19561v1",
+    "title": "An Adaptive Machine Learning Framework for Fluid Flow in Dual-Network Porous Media",
+    "authors": "V. S. Maduri, K. B. Nakshatrala",
+    "abstract": "Porous materials -- natural or engineered -- often exhibit dual pore-network structures that govern processes such as mineral exploration and hydrocarbon recovery from tight shales. Double porosity/permeability (DPP) mathematical models describe incompressible fluid flow through two interacting pore networks with inter-network mass exchange. Despite significant advances in numerical methods, there remains a need for computational frameworks that enable rapid forecasting, data assimilation, and reliable inverse analysis. To address this, we present a physics-informed neural network (PINN) framework for forward and inverse modeling of DPP systems. The proposed approach encodes the governing equations in mixed form, along with boundary conditions, directly into the loss function, with adaptive weighting strategies to balance their contributions. Key features of the framework include adaptive weight tuning, dynamic collocation point selection, and the use of shared trunk neural architectures to efficiently capture the coupled behavior of the dual pore networks. It is inherently mesh-free, making it well-suited for complex geometries typical of porous media. It accurately captures discontinuities in solution fields across layered domains without introducing spurious oscillations commonly observed in classical finite element formulations. Importantly, the framework is well-suited for inverse analysis, enabling robust parameter identification in scenarios where key physical quantities -- such as the mass transfer coefficient in DPP models -- are difficult to measure directly. In addition, a systematic convergence analysis is provided to rigorously assess the stability, accuracy, and reliability of the method. The effectiveness and computational advantages of the approach are demonstrated through a series of representative numerical experiments.",
+    "published": "2026-03-20",
+    "arxiv_url": "http://arxiv.org/abs/2603.19561v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.19561v1",
+    "categories": [
+      "math.NA",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "rans",
+      "pinn",
+      "physics-informed neural network",
+      "les",
+      "machine learning",
+      "neural network"
+    ],
+    "keywords": [
+      "rom",
+      "pinn",
+      "rans",
+      "physics-informed neural network",
+      "les",
+      "machine learning",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2603.17532v1",
     "title": "Anisotropic Permeability Tensor Prediction from Porous Media Microstructure via Physics-Informed Progressive Transfer Learning with Hybrid CNN-Transformer",
     "authors": "Mohammad Nooraiepour",
@@ -14,33 +88,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
+      "CFD与机器学习交叉",
       "智能流体力学",
-      "流体力学",
-      "CFD与机器学习交叉"
+      "机器学习",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "rom",
       "rans",
       "flow modeling",
-      "les",
-      "transfer learning",
       "cnn",
+      "transfer learning",
+      "deep learning",
+      "les",
       "machine learning",
-      "transformer",
-      "deep learning"
+      "transformer"
     ],
     "keywords": [
       "rom",
       "rans",
       "flow modeling",
-      "les",
-      "transfer learning",
       "cnn",
+      "transfer learning",
+      "deep learning",
+      "les",
       "machine learning",
-      "transformer",
-      "deep learning"
+      "transformer"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -62,21 +136,21 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
-      "surrogate model",
       "cfd",
-      "rans"
+      "les",
+      "rans",
+      "surrogate model"
     ],
     "keywords": [
-      "les",
-      "surrogate model",
       "cfd",
-      "rans"
+      "les",
+      "rans",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -96,23 +170,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "rom",
       "surrogate model",
+      "flow computation",
       "data-driven",
-      "les",
-      "flow computation"
+      "les"
     ],
     "keywords": [
       "rom",
       "surrogate model",
+      "flow computation",
       "data-driven",
-      "les",
-      "flow computation"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -135,27 +209,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
+      "CFD与机器学习交叉",
       "智能流体力学",
-      "流体力学",
-      "CFD与机器学习交叉"
+      "机器学习",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "rom",
+      "gan",
       "turbulence",
       "data-driven",
       "les",
-      "machine learning",
-      "gan"
+      "machine learning"
     ],
     "keywords": [
       "rom",
+      "gan",
       "turbulence",
       "data-driven",
       "les",
-      "machine learning",
-      "gan"
+      "machine learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -176,27 +250,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
+      "CFD与机器学习交叉",
       "智能流体力学",
-      "流体力学",
-      "CFD与机器学习交叉"
+      "机器学习",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "surrogate model",
       "rans",
+      "surrogate model",
+      "turbulence",
+      "deep learning",
       "machine learning",
-      "transformer",
-      "deep learning"
+      "transformer"
     ],
     "keywords": [
+      "rans",
       "surrogate model",
       "turbulence",
-      "rans",
+      "deep learning",
       "machine learning",
-      "transformer",
-      "deep learning"
+      "transformer"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -216,21 +290,21 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "CFD与机器学习交叉",
       "多相流",
-      "流体力学",
-      "CFD与机器学习交叉"
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "multiphase flow",
-      "rom",
       "les",
+      "rom",
+      "multiphase flow",
       "rans"
     ],
     "keywords": [
+      "les",
       "multiphase flow",
       "rom",
-      "les",
       "rans"
     ],
     "citation_count": null,
@@ -252,23 +326,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "rom",
       "rans",
       "les",
-      "neural network",
-      "machine learning"
+      "machine learning",
+      "neural network"
     ],
     "keywords": [
       "rom",
       "rans",
       "les",
-      "neural network",
-      "machine learning"
+      "machine learning",
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -288,25 +362,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
+      "CFD与机器学习交叉",
       "智能流体力学",
-      "流体力学",
-      "CFD与机器学习交叉"
+      "机器学习",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid dynamics",
+      "pinn",
       "physics-informed neural network",
       "les",
-      "fluid dynamics",
-      "neural network",
-      "pinn"
+      "neural network"
     ],
     "keywords": [
-      "physics-informed neural network",
+      "pinn",
       "fluid dynamics",
+      "physics-informed neural network",
       "les",
-      "neural network",
-      "pinn"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -328,25 +402,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
+      "CFD与机器学习交叉",
       "智能流体力学",
-      "流体力学",
-      "CFD与机器学习交叉"
+      "机器学习",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "surrogate model",
-      "data-driven",
       "fluid dynamics",
+      "surrogate model",
       "cfd",
+      "data-driven",
       "machine learning",
       "computational fluid dynamics"
     ],
     "keywords": [
-      "surrogate model",
-      "data-driven",
       "fluid dynamics",
+      "surrogate model",
       "cfd",
+      "data-driven",
       "machine learning",
       "computational fluid dynamics"
     ],
@@ -396,23 +470,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "rom",
+      "deep learning",
       "data-driven",
-      "neural network",
       "machine learning",
-      "deep learning"
+      "neural network"
     ],
     "keywords": [
       "rom",
+      "deep learning",
       "data-driven",
-      "neural network",
       "machine learning",
-      "deep learning"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
