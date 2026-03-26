@@ -14,17 +14,17 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "machine learning"
+      "machine learning",
+      "rom"
     ],
     "keywords": [
-      "rom",
-      "machine learning"
+      "machine learning",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -49,14 +49,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
+      "reinforcement learning",
       "les",
-      "reinforcement learning"
+      "rom"
     ],
     "keywords": [
-      "rom",
+      "reinforcement learning",
       "les",
-      "reinforcement learning"
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -77,79 +77,19 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "流体力学"
-    ],
-    "official_keywords": [],
-    "custom_keywords": [
-      "flow simulation",
-      "neural network",
-      "data-driven"
-    ],
-    "keywords": [
-      "flow simulation",
-      "neural network",
-      "data-driven"
-    ],
-    "citation_count": null,
-    "impact_factor": null
-  },
-  {
-    "id": "2509.22207v1",
-    "title": "Reversible GNS for Dissipative Fluids with Consistent Bidirectional Dynamics",
-    "authors": "Mu Huang, Linning Xu, Mingyue Dai, Yidi Shao, Bo Dai",
-    "abstract": "Simulating physically plausible trajectories toward user-defined goals is a fundamental yet challenging task in fluid dynamics. While particle-based simulators can efficiently reproduce forward dynamics, inverse inference remains difficult, especially in dissipative systems where dynamics are irreversible and optimization-based solvers are slow, unstable, and often fail to converge. In this work, we introduce the Reversible Graph Network Simulator (R-GNS), a unified framework that enforces bidirectional consistency within a single graph architecture. Unlike prior neural simulators that approximate inverse dynamics by fitting backward data, R-GNS does not attempt to reverse the underlying physics. Instead, we propose a mathematically invertible design based on residual reversible message passing with shared parameters, coupling forward dynamics with inverse inference to deliver accurate predictions and efficient recovery of plausible initial states. Experiments on three dissipative benchmarks (Water-3D, WaterRamps, and WaterDrop) show that R-GNS achieves higher accuracy and consistency with only one quarter of the parameters, and performs inverse inference more than 100 times faster than optimization-based baselines. For forward simulation, R-GNS matches the speed of strong GNS baselines, while in goal-conditioned tasks it eliminates iterative optimization and achieves orders-of-magnitude speedups. On goal-conditioned tasks, R-GNS further demonstrates its ability to complex target shapes (e.g., characters \"L\" and \"N\") through vivid, physically consistent trajectories. To our knowledge, this is the first reversible framework that unifies forward and inverse simulation for dissipative fluid systems.",
-    "published": "2025-09-26",
-    "arxiv_url": "http://arxiv.org/abs/2509.22207v1",
-    "pdf_url": "https://arxiv.org/pdf/2509.22207v1",
-    "categories": [
-      "cs.LG",
-      "cs.AI",
-      "physics.flu-dyn"
-    ],
-    "conference": "",
-    "code_link": "",
-    "tags": [
       "流体力学",
-      "智能流体力学"
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "fluid dynamics"
+      "data-driven",
+      "flow simulation",
+      "neural network"
     ],
     "keywords": [
-      "fluid dynamics"
-    ],
-    "citation_count": null,
-    "impact_factor": null
-  },
-  {
-    "id": "2509.21751v1",
-    "title": "Reparameterizing 4DVAR with neural fields",
-    "authors": "Jaemin Oh",
-    "abstract": "Four-dimensional variational data assimilation (4DVAR) is a cornerstone of numerical weather prediction, but its cost function is difficult to optimize and computationally intensive. We propose a neural field-based reformulation in which the full spatiotemporal state is represented as a continuous function parameterized by a neural network. This reparameterization removes the time-sequential dependency of classical 4DVAR, enabling parallel-in-time optimization in parameter space. Physical constraints are incorporated directly through a physics-informed loss, simplifying implementation and reducing computational cost. We evaluate the method on the two-dimensional incompressible Navier--Stokes equations with Kolmogorov forcing. Compared to a baseline 4DVAR implementation, the neural reparameterized variants produce more stable initial condition estimates without spurious oscillations. Notably, unlike most machine learning-based approaches, our framework does not require access to ground-truth states or reanalysis data, broadening its applicability to settings with limited reference information.",
-    "published": "2025-09-26",
-    "arxiv_url": "http://arxiv.org/abs/2509.21751v1",
-    "pdf_url": "https://arxiv.org/pdf/2509.21751v1",
-    "categories": [
-      "cs.LG",
-      "physics.comp-ph",
-      "physics.flu-dyn"
-    ],
-    "conference": "",
-    "code_link": "",
-    "tags": [
-      "机器学习",
-      "智能流体力学"
-    ],
-    "official_keywords": [],
-    "custom_keywords": [
-      "neural network",
-      "machine learning"
-    ],
-    "keywords": [
-      "neural network",
-      "machine learning"
+      "data-driven",
+      "flow simulation",
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null
