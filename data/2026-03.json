@@ -1,5 +1,134 @@
 [
   {
+    "id": "2603.26800v1",
+    "title": "DSO: Dual-Scale Neural Operators for Stable Long-term Fluid Dynamics Forecasting",
+    "authors": "Huanshuo Dong, Hao Wu, Hong Wang, Qin-Yi Zhang, Zhezheng Hao",
+    "abstract": "Long-term fluid dynamics forecasting is a critically important problem in science and engineering. While neural operators have emerged as a promising paradigm for modeling systems governed by partial differential equations (PDEs), they often struggle with long-term stability and precision. We identify two fundamental failure modes in existing architectures: (1) local detail blurring, where fine-scale structures such as vortex cores and sharp gradients are progressively smoothed, and (2) global trend deviation, where the overall motion trajectory drifts from the ground truth during extended rollouts. We argue that these failures arise because existing neural operators treat local and global information processing uniformly, despite their inherently different evolution characteristics in physical systems. To bridge this gap, we propose the Dual-Scale Neural Operator (DSO), which explicitly decouples information processing into two complementary modules: depthwise separable convolutions for fine-grained local feature extraction and an MLP-Mixer for long-range global aggregation. Through numerical experiments on vortex dynamics, we demonstrate that nearby perturbations primarily affect local vortex structure while distant perturbations influence global motion trends, providing empirical validation for our design choice. Extensive experiments on turbulent flow benchmarks show that DSO achieves state-of-the-art accuracy while maintaining robust long-term stability, reducing prediction error by over 88% compared to existing neural operators.",
+    "published": "2026-03-26",
+    "arxiv_url": "http://arxiv.org/abs/2603.26800v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.26800v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "CFD与机器学习交叉",
+      "智能流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "rom",
+      "fluid dynamics"
+    ],
+    "keywords": [
+      "les",
+      "rom",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.24500v1",
+    "title": "Project and Generate: Divergence-Free Neural Operators for Incompressible Flows",
+    "authors": "Xigui Li, Hongwei Zhang, Ruoxi Jiang, Deshu Chen, Chensen Lin, Limei Han, Yuan Qi, Xin Guo, Yuan Cheng",
+    "abstract": "Learning-based models for fluid dynamics often operate in unconstrained function spaces, leading to physically inadmissible, unstable simulations. While penalty-based methods offer soft regularization, they provide no structural guarantees, resulting in spurious divergence and long-term collapse. In this work, we introduce a unified framework that enforces the incompressible continuity equation as a hard, intrinsic constraint for both deterministic and generative modeling. First, to project deterministic models onto the divergence-free subspace, we integrate a differentiable spectral Leray projection grounded in the Helmholtz-Hodge decomposition, which restricts the regression hypothesis space to physically admissible velocity fields. Second, to generate physically consistent distributions, we show that simply projecting model outputs is insufficient when the prior is incompatible. To address this, we construct a divergence-free Gaussian reference measure via a curl-based pushforward, ensuring the entire probability flow remains subspace-consistent by construction. Experiments on 2D Navier-Stokes equations demonstrate exact incompressibility up to discretization error and substantially improved stability and physical consistency.",
+    "published": "2026-03-25",
+    "arxiv_url": "http://arxiv.org/abs/2603.24500v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.24500v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics"
+    ],
+    "keywords": [
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.24431v1",
+    "title": "Learning Response-Statistic Shifts and Parametric Roll Episodes from Wave--Vessel Time Series via LSTM Functional Models",
+    "authors": "Jose del Aguila Ferrandis",
+    "abstract": "Parametric roll is a rare but high-consequence instability that can trigger abrupt regime changes in ship response, including pronounced shifts in roll statistics and tail risk. This paper develops a data-driven surrogate that learns the nonlinear, causal functional mapping from incident wave--motion time series to vessel motions, and demonstrates that the surrogate reproduces both (i) parametric roll episodes and (ii) the associated statistical shifts in the response. Crucially, the learning framework is data-source agnostic: the paired wave--motion time series can be obtained from controlled experiments (e.g., towing-tank or basin tests with wave probes and motion tracking) when a hull exists, or from high-fidelity simulations during design when experiments are not yet available. To provide a controlled severe-sea demonstration, we generate training data with a URANS numerical wave tank, using long-crested irregular seas synthesized from a modified Pierson--Moskowitz spectrum. The demonstration dataset comprises 49 random-phase realizations for each of three sea states, simulated at a fixed forward speed selected to yield encounter conditions under which parametric-roll episodes can occur. A stacked LSTM surrogate is trained on wave-elevation time series and evaluated on held-out realizations using time-domain accuracy and distributional fidelity metrics. In the most severe case, the model tracks the onset and growth of large-amplitude roll consistent with parametric excitation, and captures the corresponding changes in roll probability density functions (PDFs). We further compare loss-function choices (MSE, relative-entropy-based objectives, and amplitude-weighted variants) and show how they trade average error for improved tail fidelity relevant to operability and risk assessment.",
+    "published": "2026-03-25",
+    "arxiv_url": "http://arxiv.org/abs/2603.24431v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.24431v1",
+    "categories": [
+      "cs.LG",
+      "physics.comp-ph",
+      "physics.data-an",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven",
+      "rans",
+      "rom",
+      "lstm"
+    ],
+    "keywords": [
+      "data-driven",
+      "rans",
+      "rom",
+      "lstm"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.24641v1",
+    "title": "Learning Mesh-Free Discrete Differential Operators with Self-Supervised Graph Neural Networks",
+    "authors": "Lucas Gerken Starepravo, Georgios Fourtakas, Steven Lind, Ajay B. Harish, Tianning Tang, Jack R. C. King",
+    "abstract": "Mesh-free numerical methods provide flexible discretisations for complex geometries; however, classical meshless discrete differential operators typically trade low computational cost for limited accuracy or high accuracy for substantial per-stencil computation. We introduce a parametrised framework for learning mesh-free discrete differential operators using a graph neural network trained via polynomial moment constraints derived from truncated Taylor expansions. The model maps local stencils relative positions directly to discrete operator weights. The current work demonstrates that neural networks can learn classical polynomial consistency while retaining robustness to irregular neighbourhood geometry. The learned operators depend only on local geometry, are resolution-agnostic, and can be reused across particle configurations and governing equations. We evaluate the framework using standard numerical analysis diagnostics, showing improved accuracy over Smoothed Particle Hydrodynamics, and a favourable accuracy-cost trade-off relative to a representative high-order consistent mesh-free method in the moderate-accuracy regime. Applicability is demonstrated by solving the weakly compressible Navier-Stokes equations using the learned operators.",
+    "published": "2026-03-25",
+    "arxiv_url": "http://arxiv.org/abs/2603.24641v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.24641v1",
+    "categories": [
+      "cs.LG",
+      "math.NA",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "neural network",
+      "rom"
+    ],
+    "keywords": [
+      "les",
+      "neural network",
+      "rom"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2603.19841v1",
     "title": "Modeling subgrid scale production rates on complex meshes using graph neural networks",
     "authors": "Priyabrat Dash, Mathis Bode, Konduri Aditya",
@@ -18,10 +147,10 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
       "data-driven",
       "les",
-      "neural network"
+      "neural network",
+      "rom"
     ],
     "keywords": [
       "data-driven",
@@ -48,27 +177,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
       "pinn",
-      "rans",
-      "machine learning",
       "neural network",
+      "machine learning",
       "rom",
-      "physics-informed neural network"
+      "physics-informed neural network",
+      "les",
+      "rans"
     ],
     "keywords": [
-      "les",
-      "pinn",
-      "rans",
-      "machine learning",
       "neural network",
+      "pinn",
+      "machine learning",
       "rom",
-      "physics-informed neural network"
+      "physics-informed neural network",
+      "les",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -88,33 +217,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "机器学习",
       "流体力学",
-      "智能流体力学",
       "CFD与机器学习交叉",
-      "机器学习"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "transfer learning",
-      "les",
       "cnn",
-      "rans",
       "machine learning",
       "transformer",
-      "deep learning",
+      "transfer learning",
+      "rom",
       "flow modeling",
-      "rom"
+      "les",
+      "deep learning",
+      "rans"
     ],
     "keywords": [
-      "les",
-      "transfer learning",
       "cnn",
-      "rans",
       "machine learning",
       "transformer",
-      "deep learning",
+      "transfer learning",
+      "rom",
       "flow modeling",
-      "rom"
+      "les",
+      "deep learning",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -141,15 +270,15 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
       "rans",
       "les",
+      "cfd",
       "surrogate model"
     ],
     "keywords": [
-      "cfd",
       "rans",
       "les",
+      "cfd",
       "surrogate model"
     ],
     "citation_count": null,
@@ -175,18 +304,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
       "data-driven",
-      "flow computation",
       "surrogate model",
-      "rom"
+      "rom",
+      "les",
+      "flow computation"
     ],
     "keywords": [
-      "les",
       "data-driven",
-      "flow computation",
       "surrogate model",
-      "rom"
+      "rom",
+      "flow computation",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -209,27 +338,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "机器学习",
       "流体力学",
-      "智能流体力学",
       "CFD与机器学习交叉",
-      "机器学习"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
       "data-driven",
-      "machine learning",
-      "rom",
       "gan",
-      "turbulence"
+      "machine learning",
+      "turbulence",
+      "rom",
+      "les"
     ],
     "keywords": [
-      "les",
       "data-driven",
+      "gan",
+      "turbulence",
       "machine learning",
       "rom",
-      "gan",
-      "turbulence"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -250,27 +379,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "机器学习",
       "流体力学",
-      "智能流体力学",
       "CFD与机器学习交叉",
-      "机器学习"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
+      "surrogate model",
+      "turbulence",
       "machine learning",
       "transformer",
       "deep learning",
-      "surrogate model",
-      "turbulence"
+      "rans"
     ],
     "keywords": [
-      "rans",
+      "surrogate model",
+      "turbulence",
       "machine learning",
       "transformer",
-      "surrogate model",
       "deep learning",
-      "turbulence"
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -290,21 +419,21 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
       "多相流",
+      "流体力学",
       "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "multiphase flow",
       "rans",
       "les",
+      "multiphase flow",
       "rom"
     ],
     "keywords": [
-      "multiphase flow",
       "rans",
       "les",
+      "multiphase flow",
       "rom"
     ],
     "citation_count": null,
@@ -326,23 +455,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
-      "rans",
-      "machine learning",
       "neural network",
-      "rom"
+      "machine learning",
+      "rom",
+      "les",
+      "rans"
     ],
     "keywords": [
-      "les",
-      "rans",
-      "machine learning",
       "neural network",
-      "rom"
+      "machine learning",
+      "rom",
+      "les",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -362,25 +491,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "机器学习",
       "流体力学",
-      "智能流体力学",
       "CFD与机器学习交叉",
-      "机器学习"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
       "pinn",
       "neural network",
       "fluid dynamics",
-      "physics-informed neural network"
+      "physics-informed neural network",
+      "les"
     ],
     "keywords": [
-      "les",
-      "pinn",
       "neural network",
+      "pinn",
       "fluid dynamics",
-      "physics-informed neural network"
+      "physics-informed neural network",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -402,27 +531,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "机器学习",
       "流体力学",
-      "智能流体力学",
       "CFD与机器学习交叉",
-      "机器学习"
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
-      "cfd",
       "data-driven",
-      "machine learning",
       "surrogate model",
-      "fluid dynamics"
+      "machine learning",
+      "fluid dynamics",
+      "cfd",
+      "computational fluid dynamics"
     ],
     "keywords": [
-      "computational fluid dynamics",
-      "cfd",
       "data-driven",
-      "machine learning",
       "surrogate model",
-      "fluid dynamics"
+      "machine learning",
+      "fluid dynamics",
+      "cfd",
+      "computational fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -470,23 +599,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "data-driven",
-      "machine learning",
       "neural network",
-      "deep learning",
-      "rom"
+      "machine learning",
+      "rom",
+      "deep learning"
     ],
     "keywords": [
       "data-driven",
-      "machine learning",
       "neural network",
-      "deep learning",
-      "rom"
+      "machine learning",
+      "rom",
+      "deep learning"
     ],
     "citation_count": null,
     "impact_factor": null
