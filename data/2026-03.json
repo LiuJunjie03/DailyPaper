@@ -1,5 +1,148 @@
 [
   {
+    "id": "2603.29303v1",
+    "title": "LGFNet: Local-Global Fusion Network with Fidelity Gap Delta Learning for Multi-Source Aerodynamics",
+    "authors": "Qinye Zhu, Yu Xiang, Jun Zhang, Wenyong Wang",
+    "abstract": "The precise fusion of computational fluid dynamic (CFD) data, wind tunnel tests data, and flight tests data in aerodynamic area is essential for obtaining comprehensive knowledge of both localized flow structures and global aerodynamic trends across the entire flight envelope. However, existing methodologies often struggle to balance high-resolution local fidelity with wide-range global dependency, leading to either a loss of sharp discontinuities or an inability to capture long-range topological correlations. We propose Local-Global Fusion Network (LGFNet) for multi-scale feature decomposition to extract this dual-natured aerodynamic knowledge. To this end, LGFNet combines a spatial perception layer that integrates a sliding window mechanism with a relational reasoning layer based on self-attention, simultaneously reinforcing the continuity of fine-grained local features (e.g., shock waves) and capturing long-range flow information. Furthermore, the fidelity gap delta learning (FGDL) strategy is proposed to treat CFD data as a \"low-frequency carrier\" to explicitly approximate nonlinear discrepancies. This approach prevents unphysical smoothing while inheriting the foundational physical trends from the simulation baseline. Experiments demonstrate that LGFNet achieves state-of-the-art (SOTA) performance in both accuracy and uncertainty reduction across diverse aerodynamic scenarios.",
+    "published": "2026-03-31",
+    "arxiv_url": "http://arxiv.org/abs/2603.29303v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.29303v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "空气动力学",
+      "流体力学",
+      "CFD与机器学习交叉"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "cfd",
+      "aerodynamics",
+      "rom"
+    ],
+    "keywords": [
+      "cfd",
+      "aerodynamics",
+      "rom"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.29264v1",
+    "title": "Lie Generator Networks for Nonlinear Partial Differential Equations",
+    "authors": "Shafayeth Jamil, Rehan Kapadia",
+    "abstract": "Linear dynamical systems are fully characterized by their eigenspectra, accessible directly from the generator of the dynamics. For nonlinear systems governed by partial differential equations, no equivalent theory exists. We introduce Lie Generator Network--Koopman (LGN-KM), a neural operator that lifts nonlinear dynamics into a linear latent space and learns the continuous-time Koopman generator ($L_k$) through a decomposition $L_k = S - D_k$, where $S$ is skew-symmetric representing conservative inter-modal coupling, and $D_k$ is a positive-definite diagonal encoding modal dissipation. This architectural decomposition enforces stability and enables interpretability through direct spectral access to the learned dynamics. On two-dimensional Navier--Stokes turbulence, the generator recovers the known dissipation scaling and a complete multi-branch dispersion relation from trajectory data alone with no physics supervision. Independently trained models at different flow regimes recover matched gauge-invariant spectral structure, exposing a gauge freedom in the Koopman lifting. Because the generator is provably stable, it enables guaranteed long-horizon stability, continuous-time evaluation at arbitrary time, and physics-informed cross-viscosity model transfer.",
+    "published": "2026-03-31",
+    "arxiv_url": "http://arxiv.org/abs/2603.29264v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.29264v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "CFD与机器学习交叉"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "turbulence",
+      "rom",
+      "les",
+      "rans"
+    ],
+    "keywords": [
+      "turbulence",
+      "rom",
+      "les",
+      "rans"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.29051v1",
+    "title": "Data-informed lifting line theory",
+    "authors": "Arjun Sharma, Jonas A. Actor, Peter A. Bosler",
+    "abstract": "We present a data-driven framework that extends the predictive capability of classical lifting-line theory (LLT) to a wider aerodynamic regime by incorporating higher-fidelity aerodynamic data from panel method simulations. A neural network architecture with a convolutional layer followed by fully connected layers is developed, comprising two parallel subnetworks to separately process spanwise collocation points and global geometric/aerodynamic inputs such as angle of attack, chord, twist, airfoil distribution, and sweep. Among several configurations tested, this architecture is most effective in learning corrections to LLT outputs. The trained model captures higher-order three-dimensional effects in spanwise lift and drag distributions in regimes where LLT is inaccurate, such as low aspect ratios and high sweep, and generalizes well to wing configurations outside both the LLT regime and the training data range. The method retains LLT's computational efficiency, enabling integration into aerodynamic optimization loops and early-stage aircraft design studies. This approach offers a practical path for embedding high-fidelity corrections into low-order methods and may be extended to other aerodynamic prediction tasks, such as propeller performance.",
+    "published": "2026-03-30",
+    "arxiv_url": "http://arxiv.org/abs/2603.29051v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.29051v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "空气动力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "aerodynamic optimization",
+      "rom",
+      "data-driven"
+    ],
+    "keywords": [
+      "neural network",
+      "aerodynamic optimization",
+      "rom",
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2603.28073v1",
+    "title": "SIMR-NO: A Spectrally-Informed Multi-Resolution Neural Operator for Turbulent Flow Super-Resolution",
+    "authors": "Muhammad Abid, Omer San",
+    "abstract": "Reconstructing high-resolution turbulent flow fields from severely under-resolved observations is a fundamental inverse problem in computational fluid dynamics and scientific machine learning. Classical interpolation methods fail to recover missing fine-scale structures, while existing deep learning approaches rely on convolutional architectures that lack the spectral and multiscale inductive biases necessary for physically faithful reconstruction at large upscaling factors. We introduce the Spectrally-Informed Multi-Resolution Neural Operator (SIMR-NO), a hierarchical operator learning framework that factorizes the ill-posed inverse mapping across intermediate spatial resolutions, combines deterministic interpolation priors with spectrally gated Fourier residual corrections at each stage, and incorporates local refinement modules to recover fine-scale spatial features beyond the truncated Fourier basis. The proposed method is evaluated on Kolmogorov-forced two-dimensional turbulence, where $128\\times128$ vorticity fields are reconstructed from extremely coarse $8\\times8$ observations representing a $16\\times$ downsampling factor. Across 201 independent test realizations, SIMR-NO achieves a mean relative $\\ell_2$ error of $26.04\\%$ with the lowest error variance among all methods, reducing reconstruction error by $31.7\\%$ over FNO, $26.0\\%$ over EDSR, and $9.3\\%$ over LapSRN. Beyond pointwise accuracy, SIMR-NO is the only method that faithfully reproduces the ground-truth energy and enstrophy spectra across the full resolved wavenumber range, demonstrating physically consistent super-resolution of turbulent flow fields.",
+    "published": "2026-03-30",
+    "arxiv_url": "http://arxiv.org/abs/2603.28073v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.28073v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "流体力学",
+      "机器学习",
+      "CFD与机器学习交叉"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "computational fluid dynamics",
+      "deep learning",
+      "rom",
+      "fluid dynamics",
+      "les",
+      "machine learning",
+      "turbulence"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "deep learning",
+      "rom",
+      "fluid dynamics",
+      "les",
+      "machine learning",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2603.26800v1",
     "title": "DSO: Dual-Scale Neural Operators for Stable Long-term Fluid Dynamics Forecasting",
     "authors": "Huanshuo Dong, Hao Wu, Hong Wang, Qin-Yi Zhang, Zhezheng Hao",
@@ -15,20 +158,20 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉",
-      "智能流体力学"
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
+      "fluid dynamics",
       "rom",
-      "fluid dynamics"
+      "les"
     ],
     "keywords": [
-      "les",
+      "fluid dynamics",
       "rom",
-      "fluid dynamics"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -48,8 +191,8 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
-      "智能流体力学"
+      "智能流体力学",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
@@ -82,16 +225,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
-      "rans",
+      "lstm",
       "rom",
-      "lstm"
+      "data-driven",
+      "rans"
     ],
     "keywords": [
-      "data-driven",
-      "rans",
+      "lstm",
       "rom",
-      "lstm"
+      "data-driven",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -116,14 +259,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
       "neural network",
-      "rom"
+      "rom",
+      "les"
     ],
     "keywords": [
-      "les",
       "neural network",
-      "rom"
+      "rom",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -147,15 +290,15 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
-      "les",
       "neural network",
-      "rom"
+      "data-driven",
+      "rom",
+      "les"
     ],
     "keywords": [
-      "data-driven",
       "les",
       "neural network",
+      "data-driven",
       "rom"
     ],
     "citation_count": null,
@@ -177,26 +320,26 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
-      "neural network",
-      "machine learning",
       "rom",
-      "physics-informed neural network",
+      "neural network",
+      "pinn",
       "les",
+      "physics-informed neural network",
+      "machine learning",
       "rans"
     ],
     "keywords": [
+      "rom",
       "neural network",
       "pinn",
-      "machine learning",
-      "rom",
       "physics-informed neural network",
       "les",
+      "machine learning",
       "rans"
     ],
     "citation_count": null,
@@ -217,32 +360,32 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
+      "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉",
-      "智能流体力学"
+      "机器学习",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "cnn",
-      "machine learning",
-      "transformer",
-      "transfer learning",
-      "rom",
       "flow modeling",
-      "les",
       "deep learning",
+      "rom",
+      "transformer",
+      "les",
+      "machine learning",
+      "transfer learning",
       "rans"
     ],
     "keywords": [
       "cnn",
-      "machine learning",
-      "transformer",
-      "transfer learning",
-      "rom",
       "flow modeling",
-      "les",
       "deep learning",
+      "rom",
+      "transformer",
+      "les",
+      "machine learning",
+      "transfer learning",
       "rans"
     ],
     "citation_count": null,
@@ -270,16 +413,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "les",
+      "surrogate model",
       "cfd",
-      "surrogate model"
+      "les",
+      "rans"
     ],
     "keywords": [
-      "rans",
-      "les",
+      "surrogate model",
       "cfd",
-      "surrogate model"
+      "les",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -304,18 +447,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
-      "surrogate model",
-      "rom",
-      "les",
-      "flow computation"
-    ],
-    "keywords": [
-      "data-driven",
       "surrogate model",
       "rom",
       "flow computation",
-      "les"
+      "les",
+      "data-driven"
+    ],
+    "keywords": [
+      "surrogate model",
+      "rom",
+      "flow computation",
+      "les",
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -338,27 +481,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
+      "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉",
-      "智能流体力学"
+      "机器学习",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
+      "rom",
+      "les",
       "gan",
       "machine learning",
       "turbulence",
-      "rom",
-      "les"
+      "data-driven"
     ],
     "keywords": [
-      "data-driven",
-      "gan",
-      "turbulence",
-      "machine learning",
       "rom",
-      "les"
+      "les",
+      "gan",
+      "machine learning",
+      "turbulence",
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -379,26 +522,26 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
+      "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉",
-      "智能流体力学"
+      "机器学习",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "surrogate model",
-      "turbulence",
-      "machine learning",
-      "transformer",
       "deep learning",
+      "transformer",
+      "machine learning",
+      "turbulence",
       "rans"
     ],
     "keywords": [
       "surrogate model",
-      "turbulence",
-      "machine learning",
-      "transformer",
       "deep learning",
+      "transformer",
+      "machine learning",
+      "turbulence",
       "rans"
     ],
     "citation_count": null,
@@ -419,22 +562,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "多相流",
+      "CFD与机器学习交叉",
       "流体力学",
-      "CFD与机器学习交叉"
+      "多相流"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "les",
       "multiphase flow",
-      "rom"
+      "rom",
+      "les",
+      "rans"
     ],
     "keywords": [
-      "rans",
-      "les",
       "multiphase flow",
-      "rom"
+      "rom",
+      "les",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -455,22 +598,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
-      "machine learning",
       "rom",
+      "neural network",
       "les",
+      "machine learning",
       "rans"
     ],
     "keywords": [
-      "neural network",
-      "machine learning",
       "rom",
+      "neural network",
       "les",
+      "machine learning",
       "rans"
     ],
     "citation_count": null,
@@ -491,25 +634,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
+      "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉",
-      "智能流体力学"
+      "机器学习",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
       "neural network",
       "fluid dynamics",
+      "pinn",
       "physics-informed neural network",
       "les"
     ],
     "keywords": [
       "neural network",
-      "pinn",
       "fluid dynamics",
-      "physics-informed neural network",
-      "les"
+      "pinn",
+      "les",
+      "physics-informed neural network"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -531,27 +674,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
+      "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉",
-      "智能流体力学"
+      "机器学习",
+      "CFD与机器学习交叉"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
       "surrogate model",
-      "machine learning",
+      "computational fluid dynamics",
       "fluid dynamics",
+      "machine learning",
       "cfd",
-      "computational fluid dynamics"
+      "data-driven"
     ],
     "keywords": [
-      "data-driven",
       "surrogate model",
-      "machine learning",
+      "computational fluid dynamics",
       "fluid dynamics",
+      "machine learning",
       "cfd",
-      "computational fluid dynamics"
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -599,23 +742,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
+      "deep learning",
+      "rom",
       "neural network",
       "machine learning",
-      "rom",
-      "deep learning"
+      "data-driven"
     ],
     "keywords": [
-      "data-driven",
+      "deep learning",
+      "rom",
       "neural network",
       "machine learning",
-      "rom",
-      "deep learning"
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
