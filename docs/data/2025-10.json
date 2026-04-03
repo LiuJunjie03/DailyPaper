@@ -16,28 +16,28 @@
     "conference": "NeurIPS",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "流体力学",
+      "CFD与机器学习交叉",
       "机器学习",
-      "CFD与机器学习交叉"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "fluid dynamics",
       "dns",
-      "transformer",
-      "machine learning",
-      "turbulence",
       "data-driven",
+      "fluid dynamics",
+      "transformer",
+      "turbulence",
+      "machine learning",
       "rans"
     ],
     "keywords": [
-      "fluid dynamics",
       "dns",
+      "data-driven",
+      "fluid dynamics",
       "transformer",
       "machine learning",
       "turbulence",
-      "data-driven",
       "rans"
     ],
     "citation_count": null,
@@ -58,16 +58,16 @@
     "conference": "Physics of Fluids",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "流体力学",
+      "CFD与机器学习交叉",
       "机器学习",
-      "CFD与机器学习交叉"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "rom",
       "machine learning",
       "fluid dynamics",
-      "rom",
       "les"
     ],
     "keywords": [
@@ -103,17 +103,17 @@
     "official_keywords": [],
     "custom_keywords": [
       "rom",
-      "neural network",
-      "pinn",
       "physics-informed neural network",
+      "pinn",
+      "neural network",
       "les"
     ],
     "keywords": [
       "rom",
-      "neural network",
+      "physics-informed neural network",
       "pinn",
-      "les",
-      "physics-informed neural network"
+      "neural network",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": 14.0
@@ -137,16 +137,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "reinforcement learning",
       "gan",
       "rom",
+      "reinforcement learning",
       "rans"
     ],
     "keywords": [
-      "reinforcement learning",
       "gan",
-      "rom",
-      "rans"
+      "reinforcement learning",
+      "rans",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -166,21 +166,21 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
       "dns",
-      "les",
-      "rom"
+      "rom",
+      "turbulence",
+      "les"
     ],
     "keywords": [
-      "turbulence",
       "dns",
-      "les",
-      "rom"
+      "turbulence",
+      "rom",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -200,8 +200,8 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
@@ -234,8 +234,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
-      "les"
+      "les",
+      "neural network"
     ],
     "keywords": [
       "neural network",
@@ -245,13 +245,13 @@
     "impact_factor": null
   },
   {
-    "id": "2510.21852v1",
-    "title": "Towards Interpretable Deep Learning and Analysis of Dynamical Systems via the Discrete Empirical Interpolation Method",
+    "id": "2510.21852v2",
+    "title": "Interpretable Diagnostics and Adaptive Data Assimilation for Neural ODEs via Discrete Empirical Interpolation",
     "authors": "Hojin Kim, Romit Maulik",
-    "abstract": "We present a differentiable framework that leverages the Discrete Empirical Interpolation Method (DEIM) for interpretable deep learning and dynamical system analysis. Although DEIM efficiently approximates nonlinear terms in projection-based reduced-order models (POD-ROM), its fixed interpolation points limit the adaptability to complex and time-varying dynamics. To address this limitation, we first develop a differentiable adaptive DEIM formulation for the one-dimensional viscous Burgers equation, which allows neural networks to dynamically select interpolation points in a computationally efficient and physically consistent manner. We then apply DEIM as an interpretable analysis tool for examining the learned dynamics of a pre-trained Neural Ordinary Differential Equation (NODE) on a two-dimensional vortex-merging problem. The DEIM trajectories reveal physically meaningful features in the learned dynamics of NODE and expose its limitations when extrapolating to unseen flow configurations. These findings demonstrate that DEIM can serve not only as a model reduction tool but also as a diagnostic framework for understanding and improving the generalization behavior of neural differential equation models.",
+    "abstract": "We present a framework that leverages the Discrete Empirical Interpolation Method (DEIM) for interpretable deep learning and dynamical system analysis. Although DEIM efficiently approximates nonlinear terms in projection-based reduced-order models (POD-ROM), its fixed interpolation points are repurposed for identifying dynamically representative spatial structures in learned models. We apply DEIM as an interpretability tool to examine the learned dynamics of a pre-trained Neural Ordinary Differential Equation (NODE) for two-dimensional vortex-merging and backward-facing step flows. DEIM trajectories reveal physically meaningful structures in NODE predictions and expose failure modes when extrapolating to unseen flow configurations. Building on this diagnostic capability, we further introduce a DEIM-guided data assimilation strategy that injects sparse, dynamically representative corrections into the NODE rollout. By allocating a limited nudging budget to DEIM-identified sampling locations, the framework significantly improves long-term stability and predictive accuracy in out-of-distribution scenarios for the two-dimensional vortex-merging flow. Additional experiments for a flow over a backward-facing step reveal regime-dependent gains, with alternative sampling strategies performing competitively as well. These results demonstrate that DEIM can serve as an interpretable diagnostic and control framework for understanding and enhancing neural differential equation models.",
     "published": "2025-10-22",
-    "arxiv_url": "http://arxiv.org/abs/2510.21852v1",
-    "pdf_url": "https://arxiv.org/pdf/2510.21852v1",
+    "arxiv_url": "http://arxiv.org/abs/2510.21852v2",
+    "pdf_url": "https://arxiv.org/pdf/2510.21852v2",
     "categories": [
       "cs.LG",
       "physics.flu-dyn"
@@ -259,21 +259,19 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
+      "reduced-order model",
       "deep learning",
-      "rom",
-      "reduced-order model"
+      "rom"
     ],
     "keywords": [
-      "neural network",
-      "deep learning",
+      "reduced-order model",
       "rom",
-      "reduced-order model"
+      "deep learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -293,27 +291,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "流体力学",
+      "CFD与机器学习交叉",
       "机器学习",
-      "CFD与机器学习交叉"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
+      "data-driven",
       "fluid dynamics",
-      "les",
+      "rom",
       "machine learning",
       "cfd",
-      "data-driven"
+      "les"
     ],
     "keywords": [
-      "rom",
+      "data-driven",
       "fluid dynamics",
-      "les",
+      "rom",
       "machine learning",
       "cfd",
-      "data-driven"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -333,17 +331,17 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "surrogate model",
-      "deep learning"
+      "deep learning",
+      "surrogate model"
     ],
     "keywords": [
-      "surrogate model",
-      "deep learning"
+      "deep learning",
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -363,24 +361,24 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "机器学习",
       "智能流体力学",
-      "空气动力学",
-      "机器学习"
+      "空气动力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "reinforcement learning",
       "rom",
       "aerodynamic optimization",
-      "les",
-      "machine learning"
+      "machine learning",
+      "les"
     ],
     "keywords": [
       "reinforcement learning",
       "rom",
       "aerodynamic optimization",
-      "les",
-      "machine learning"
+      "machine learning",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -404,17 +402,17 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "transfer learning",
       "reinforcement learning",
       "rom",
       "neural network",
-      "transfer learning",
       "rans"
     ],
     "keywords": [
+      "transfer learning",
       "reinforcement learning",
       "rom",
       "neural network",
-      "transfer learning",
       "rans"
     ],
     "citation_count": null,
@@ -439,13 +437,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "reinforcement learning",
       "dns",
+      "reinforcement learning",
       "les"
     ],
     "keywords": [
-      "reinforcement learning",
       "dns",
+      "reinforcement learning",
       "les"
     ],
     "citation_count": null,
@@ -467,24 +465,24 @@
     "conference": "",
     "code_link": "",
     "tags": [
+      "CFD与机器学习交叉",
       "智能流体力学",
-      "流体力学",
-      "CFD与机器学习交叉"
+      "流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
+      "data-driven",
       "fluid dynamics",
+      "computational fluid dynamics",
       "flow simulation",
-      "cfd",
-      "data-driven"
+      "cfd"
     ],
     "keywords": [
-      "computational fluid dynamics",
+      "data-driven",
       "fluid dynamics",
+      "computational fluid dynamics",
       "flow simulation",
-      "cfd",
-      "data-driven"
+      "cfd"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -504,14 +502,14 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "机器学习"
+      "机器学习",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
+      "les",
       "deep learning",
-      "les"
+      "neural network"
     ],
     "keywords": [
       "neural network",
@@ -536,78 +534,34 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "智能流体力学",
-      "流体力学",
+      "CFD与机器学习交叉",
       "机器学习",
-      "CFD与机器学习交叉"
+      "流体力学",
+      "智能流体力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "cnn",
-      "surrogate model",
-      "computational fluid dynamics",
       "deep learning",
-      "rom",
-      "neural network",
-      "fluid dynamics",
       "transformer",
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "rom",
+      "surrogate model",
+      "neural network",
       "cfd",
       "rans"
     ],
     "keywords": [
       "cnn",
-      "surrogate model",
-      "computational fluid dynamics",
       "deep learning",
-      "rom",
-      "neural network",
-      "fluid dynamics",
       "transformer",
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "rom",
       "cfd",
-      "rans"
-    ],
-    "citation_count": null,
-    "impact_factor": null
-  },
-  {
-    "id": "2510.02982v1",
-    "title": "oRANS: Online optimisation of RANS machine learning models with embedded DNS data generation",
-    "authors": "Daniel Dehtyriov, Jonathan F. MacArt, Justin Sirignano",
-    "abstract": "Deep learning (DL) has demonstrated promise for accelerating and enhancing the accuracy of flow physics simulations, but progress is constrained by the scarcity of high-fidelity training data, which is costly to generate and inherently limited to a small set of flow conditions. Consequently, closures trained in the conventional offline paradigm tend to overfit and fail to generalise to new regimes. We introduce an online optimisation framework for DL-based Reynolds-averaged Navier--Stokes (RANS) closures which seeks to address the challenge of limited high-fidelity datasets. Training data is dynamically generated by embedding a direct numerical simulation (DNS) within a subdomain of the RANS domain. The RANS solution supplies boundary conditions to the DNS, while the DNS provides mean velocity and turbulence statistics that are used to update a DL closure model during the simulation. This feedback loop enables the closure to adapt to the embedded DNS target flow, avoiding reliance on precomputed datasets and improving out-of-distribution performance. The approach is demonstrated for the stochastically forced Burgers equation and for turbulent channel flow at $Re_τ=180$, $270$, $395$ and $590$ with varying embedded domain lengths $1\\leq L_0/L\\leq 8$. Online-optimised RANS models significantly outperform both offline-trained and literature-calibrated closures, with accurate training achieved using modest DNS subdomains. Performance degrades primarily when boundary-condition contamination dominates or when domains are too short to capture low-wavenumber modes. This framework provides a scalable route to physics-informed machine learning closures, enabling data-adaptive reduced-order models that generalise across flow regimes without requiring large precomputed training datasets.",
-    "published": "2025-10-03",
-    "arxiv_url": "http://arxiv.org/abs/2510.02982v1",
-    "pdf_url": "https://arxiv.org/pdf/2510.02982v1",
-    "categories": [
-      "physics.flu-dyn",
-      "cs.LG"
-    ],
-    "conference": "",
-    "code_link": "",
-    "tags": [
-      "智能流体力学",
-      "流体力学",
-      "机器学习",
-      "CFD与机器学习交叉"
-    ],
-    "official_keywords": [],
-    "custom_keywords": [
-      "deep learning",
-      "rom",
-      "reduced-order model",
-      "dns",
-      "les",
-      "machine learning",
-      "turbulence",
-      "rans"
-    ],
-    "keywords": [
-      "deep learning",
-      "rom",
-      "reduced-order model",
-      "dns",
-      "les",
-      "machine learning",
-      "turbulence",
+      "neural network",
+      "surrogate model",
       "rans"
     ],
     "citation_count": null,
