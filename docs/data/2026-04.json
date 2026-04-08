@@ -1,0 +1,47 @@
+[
+  {
+    "id": "2604.05652v1",
+    "title": "Multiscale Physics-Informed Neural Network for Complex Fluid Flows with Long-Range Dependencies",
+    "authors": "Prashant Kumar, Rajesh Ranjan",
+    "abstract": "Fluid flows are governed by the nonlinear Navier-Stokes equations, which can manifest multiscale dynamics even from predictable initial conditions. Predicting such phenomena remains a formidable challenge in scientific machine learning, particularly regarding convergence speed, data requirements, and solution accuracy. In complex fluid flows, these challenges are exacerbated by long-range spatial dependencies arising from distant boundary conditions, which typically necessitate extensive supervision data to achieve acceptable results. We propose the Domain-Decomposed and Shifted Physics-Informed Neural Network (DDS-PINN), a framework designed to resolve such multiscale interactions with minimal supervision. By utilizing localized networks with a unified global loss, DDS-PINN captures global dependencies while maintaining local precision. The robustness of the approach is demonstrated across a suite of benchmarks, including a multiscale linear differential equation, the nonlinear Burgers' equation, and data-free Navier-Stokes simulations of flat-plate boundary layers. Finally, DDS-PINN is applied to the computationally challenging backward-facing step (BFS) problem; for laminar regimes (Re = 100), the model yields results comparable to computational fluid dynamics (CFD) without the need for any data, accurately predicting boundary layer thickness, separation, and reattachment lengths. For turbulent BFS flow at Re = 10,000, the framework achieves convergence to O(10^-4) using only 500 random supervision points (< 0.3 % of the total domain), outperforming established methods like Residual-based Attention-PINN in accuracy. This approach demonstrates strong potential for the super-resolution of complex turbulent flows from sparse experimental measurements.",
+    "published": "2026-04-07",
+    "arxiv_url": "http://arxiv.org/abs/2604.05652v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.05652v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "智能流体力学",
+      "流体力学",
+      "CFD与机器学习交叉"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rom",
+      "neural network",
+      "computational fluid dynamics",
+      "machine learning",
+      "pinn",
+      "fluid dynamics",
+      "physics-informed neural network",
+      "cfd"
+    ],
+    "keywords": [
+      "rom",
+      "neural network",
+      "computational fluid dynamics",
+      "machine learning",
+      "pinn",
+      "fluid dynamics",
+      "physics-informed neural network",
+      "cfd"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  }
+]
