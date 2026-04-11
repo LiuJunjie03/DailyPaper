@@ -1,5 +1,106 @@
 [
   {
+    "id": "2604.07129v1",
+    "title": "A solver-in-the-loop framework for end-to-end differentiable coastal hydrodynamics",
+    "authors": "Elsa Cardoso-Bihlo, Alex Bihlo",
+    "abstract": "Numerical simulation of wave propagation and run-up is a cornerstone of coastal engineering and tsunami hazard assessment. However, applying these forward models to inverse problems, such as bathymetry estimation, source inversion, and structural optimization, remains notoriously difficult due to the rigidity and high computational cost of deriving discrete adjoints. In this paper, we introduce AegirJAX, a fully differentiable hydrodynamic solver based on the depth-integrated, non-hydrostatic shallow-water equations. By implementing the solver entirely within a reverse-mode automatic differentiation framework, AegirJAX treats the time-marching physics loop as a continuous computational graph. We demonstrate the framework's versatility across a suite of scientific machine learning tasks: (1) discovering regime-specific neural corrections for model misspecifications in highly dispersive wave propagation; (2) performing continuous topology optimization for breakwater design; (3) training recurrent neural networks in-the-loop for active wave cancellation; and (4) inverting hidden bathymetry and submarine landslide kinematics directly from downstream sensor data. The proposed differentiable paradigm fundamentally blurs the line between forward simulation and inverse optimization, offering a unified, end-to-end framework for coastal hydrodynamics.",
+    "published": "2026-04-08",
+    "arxiv_url": "http://arxiv.org/abs/2604.07129v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.07129v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "math.NA",
+      "physics.ao-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "machine learning",
+      "rom",
+      "neural network"
+    ],
+    "keywords": [
+      "machine learning",
+      "rom",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.06881v1",
+    "title": "MENO: MeanFlow-Enhanced Neural Operators for Dynamical Systems",
+    "authors": "Tianyue Yang, Xiao Xue",
+    "abstract": "Neural operators have emerged as powerful surrogates for dynamical systems due to their grid-invariant properties and computational efficiency. However, the Fourier-based neural operator framework inherently truncates high-frequency components in spectral space, resulting in the loss of small-scale structures and degraded prediction quality at high resolutions when trained on low-resolution data. While diffusion-based enhancement methods can recover multi-scale features, they introduce substantial inference overhead that undermines the efficiency advantage of neural operators. In this work, we introduce \\textbf{M}eanFlow-\\textbf{E}nhanced \\textbf{N}eural \\textbf{O}perators (MENO), a novel framework that achieves accurate all-scale predictions with minimal inference cost. By leveraging the improved MeanFlow method, MENO restores both small-scale details and large-scale dynamics with superior physical fidelity and statistical accuracy. We evaluate MENO on three challenging dynamical systems, including phase-field dynamics, 2D Kolmogorov flow, and active matter dynamics, at resolutions up to 256$\\times$256. Across all benchmarks, MENO improves the power spectrum density accuracy by up to a factor of 2 compared to baseline neural operators while achieving 12$\\times$ faster inference than the state-of-the-art Diffusion Denoising Implicit Model (DDIM)-enhanced counterparts, effectively bridging the gap between accuracy and efficiency. The flexibility and efficiency of MENO position it as an efficient surrogate model for scientific machine learning applications where both statistical integrity and computational efficiency are paramount.",
+    "published": "2026-04-08",
+    "arxiv_url": "http://arxiv.org/abs/2604.06881v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.06881v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "surrogate model",
+      "machine learning"
+    ],
+    "keywords": [
+      "surrogate model",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.06287v1",
+    "title": "Asymptotic-Preserving Neural Networks for Viscoelastic Parameter Identification in Multiscale Blood Flow Modeling",
+    "authors": "Giulia Bertaglia, Raffaella Fiamma Cabini",
+    "abstract": "Mathematical models and numerical simulations offer a non-invasive way to explore cardiovascular phenomena, providing access to quantities that cannot be measured directly. In this study, we start with a one-dimensional multiscale blood flow model that describes the viscoelastic properties of arterial walls, and we focus on improving its practical applicability by addressing a major challenge: determining, in a reliable way, the viscoelastic parameters that control how arteries deform under pulsatile pressure. To achieve this, we employ Asymptotic-Preserving Neural Networks that embed the governing physical principles of the multiscale viscoelastic blood flow model within the learning procedure. This framework allows us to infer the viscoelastic parameters while simultaneously reconstructing the time-dependent evolution of the state variables of blood vessels. With this approach, pressure waveforms are estimated from readily accessible patient-specific data, i.e., cross-sectional area and velocity measurements from Doppler ultrasound, in vascular segments where direct pressure measurements are not available. Different numerical simulations, conducted in both synthetic and patient-specific scenarios, show the effectiveness of the proposed methodology.",
+    "published": "2026-04-07",
+    "arxiv_url": "http://arxiv.org/abs/2604.06287v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.06287v1",
+    "categories": [
+      "cs.LG",
+      "math.NA",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "CFD与机器学习交叉",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow modeling",
+      "les",
+      "rom",
+      "neural network"
+    ],
+    "keywords": [
+      "flow modeling",
+      "les",
+      "rom",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
     "id": "2604.05652v1",
     "title": "Multiscale Physics-Informed Neural Network for Complex Fluid Flows with Long-Range Dependencies",
     "authors": "Prashant Kumar, Rajesh Ranjan",
@@ -15,31 +116,31 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "智能流体力学",
       "流体力学",
-      "CFD与机器学习交叉"
+      "CFD与机器学习交叉",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "neural network",
-      "computational fluid dynamics",
+      "cfd",
       "machine learning",
       "pinn",
       "fluid dynamics",
       "physics-informed neural network",
-      "cfd"
+      "rom",
+      "neural network",
+      "computational fluid dynamics"
     ],
     "keywords": [
-      "rom",
-      "neural network",
-      "computational fluid dynamics",
+      "cfd",
       "machine learning",
       "pinn",
       "fluid dynamics",
       "physics-informed neural network",
-      "cfd"
+      "rom",
+      "neural network",
+      "computational fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
