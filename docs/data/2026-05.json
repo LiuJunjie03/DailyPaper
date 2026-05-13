@@ -1,0 +1,186 @@
+[
+  {
+    "id": "2605.08832v1",
+    "title": "Inpainting physics: self-supervised learning for context-driven fluid simulation",
+    "authors": "Jonas Weidner, Yeray Martin-Ruisanchez, Daniel Rückert, Benedikt Wiestler, Julian Suk",
+    "abstract": "Neural surrogate models for computational fluid dynamics (CFD) are typically trained as forward operators that map explicit problem specifications, such as geometry and boundary conditions, to solution fields. This ties the model to the conditioning variables seen during training and limits reuse under boundary-condition shifts or local geometry changes. We propose to reformulate steady CFD inference as an inpainting problem: instead of training on explicit boundary conditions, we learn a self-supervised prior over velocity fields and impose boundary constraints only during inference by fixing known regions such as inlet, outlet or unchanged regions from previous simulations. To scale this idea to large 3D meshes, we introduce a local neighbourhood tokeniser that represents high-resolution velocity fields as compact spatial latent tokens and train latent flow-matching and masked-autoencoder models on these tokens. On intracranial aneurysm hemodynamics, our method reconstructs full velocity fields from sparse boundary context, outperforms supervised neural surrogates under boundary-condition and dataset shift and enables local geometry editing by reusing unchanged simulation context. These results suggest that viewing CFD inference as context-conditioned inpainting can turn neural surrogates from task-specific predictors into reusable flow priors.",
+    "published": "2026-05-09",
+    "arxiv_url": "http://arxiv.org/abs/2605.08832v1",
+    "pdf_url": "https://arxiv.org/pdf/2605.08832v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics",
+      "surrogate model",
+      "supervised learning",
+      "rom",
+      "cfd",
+      "les",
+      "computational fluid dynamics"
+    ],
+    "keywords": [
+      "fluid dynamics",
+      "surrogate model",
+      "supervised learning",
+      "rom",
+      "cfd",
+      "les",
+      "computational fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2605.05975v1",
+    "title": "Physical Fidelity Reconstruction via Improved Consistency-Distilled Flow Matching for Dynamical Systems",
+    "authors": "Sicheng Ma, Tianyue Yang, Xiuzhe Wu, Xiao Xue",
+    "abstract": "Reconstructing high-fidelity flow fields from low-fidelity observations is a central problem in scientific machine learning, yet recent diffusion and flow-matching models typically rely on iterative sampling, making them costly for latency-sensitive workflows such as ensemble forecasting, real-time visualization, and simulation-in-the-loop inference. We study whether a high-fidelity flow-matching generative model can be compressed into a compact one-step model for fast scientific flow reconstruction. Our approach distills an optimal-transport flow-matching teacher into a one-step consistency model. Low-fidelity observations are incorporated at inference by initializing the generative trajectory from a noised observation along the transport path, allowing an unconditional high-fidelity flow model to perform conditional reconstruction without retraining the teacher. We evaluate this distillation strategy on three fluid benchmarks, Smoke Buoyancy, Turbulent Channel Flow, and Kolmogorov Flow, using coarse-to-fine reconstruction as a controlled testbed at field sizes up to $256 \\times 256$. Across these settings, the distilled student retains similar performance of the teacher's model on spectrum metrics, while using roughly half as many parameters and achieving a $12\\times$ inference speedup over the flow-matching teacher. Under the same training budget, the distilled student also outperforms a one-step consistency model trained directly from scratch by $23.1\\%$ in SSIM, showing that teacher distillation improves training efficiency rather than merely accelerating sampling. These results suggest a promising route for turning future high-capacity scientific generative models into compact reconstruction models that are faster to train, cheaper to run, and easier to deploy.",
+    "published": "2026-05-07",
+    "arxiv_url": "http://arxiv.org/abs/2605.05975v1",
+    "pdf_url": "https://arxiv.org/pdf/2605.05975v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "machine learning",
+      "rom",
+      "rans"
+    ],
+    "keywords": [
+      "machine learning",
+      "rom",
+      "rans"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2605.08232v1",
+    "title": "Hierarchical Multi-Fidelity Learning for Predicting Three-Dimensional Flame Wrinkling and Turbulent Burning Velocity",
+    "authors": "Saghar Zolfaghari, Yu Xie, Junfeng Yang, Safa Jamali",
+    "abstract": "High-fidelity experimental characterization of turbulent premixed flames remains limited by the cost and complexity of advanced diagnostics, particularly under elevated pressures and intense turbulence where measurements of coupled flame morphology and burning dynamics are sparse. Here, we develop a hierarchical multi-fidelity neural network framework (MuFiNNs) to address this challenge by integrating sparse high-fidelity experimental data with structured low-fidelity representations encoding dominant physical trends. The framework combines hierarchical low-fidelity construction with nonlinear multi-fidelity correction to learn coupled geometric and reactive flame behavior while recovering discrepancies that simplified models alone cannot capture. The methodology is applied to expanding turbulent premixed flames to predict three-dimensional flame wrinkling dynamics and turbulent mass burning velocity across varying fuels, pressures, and turbulence intensities. Using experimentally informed low-fidelity trend models with sparse high-fidelity measurements, MuFiNNs accurately reconstruct observed flame behavior, enable interpolation across unseen operating conditions, and demonstrate robust extrapolation beyond the training domain. Importantly, the framework remains effective in noisy, weakly structured, or experimentally inaccessible regimes where conventional data-driven approaches often fail. These results show that hierarchical multi-fidelity learning provides a scalable and physically grounded strategy for predictive combustion modeling in data-limited regimes. More broadly, this work establishes multi-fidelity scientific machine learning as a practical framework for extracting physically meaningful predictive models from sparse experiments, particularly for instability-dominated and turbulence-sensitive reactive flows where high-fidelity data acquisition is demanding.",
+    "published": "2026-05-06",
+    "arxiv_url": "http://arxiv.org/abs/2605.08232v1",
+    "pdf_url": "https://arxiv.org/pdf/2605.08232v1",
+    "categories": [
+      "cs.LG",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "machine learning",
+      "neural network",
+      "rom",
+      "turbulence",
+      "data-driven"
+    ],
+    "keywords": [
+      "machine learning",
+      "neural network",
+      "rom",
+      "turbulence",
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2605.04198v1",
+    "title": "Deep Wave Network for Modeling Multi-Scale Physical Dynamics",
+    "authors": "Alexander I. Khrabry, Edward A. Startsev, Andrew T. Powis, Igor D. Kaganovich",
+    "abstract": "Performance of deep learning models is strongly governed by architectural capacity, with width and depth as primary controls. However, in physical-science applications, models are often compared at a single fixed size or by separating accuracy and computational cost, which can be misleading since architectures exhibit different accuracy-cost scaling as width and depth vary. This issue is particularly relevant for U-Net-type encoder-decoder models, widely used for multi-scale gas, fluid, and plasma dynamics due to their ability to represent features across spatial scales. A U-Net constructs a multi-resolution representation via an encoder that progressively reduces spatial resolution, followed by a decoder that restores it for prediction. Skip connections link corresponding encoder and decoder features, preserving fine-scale information and improving optimization. In practice, U-Net width is routinely tuned, while depth is typically kept fixed (a set number of down/up-sampling stages with few convolutions per stage), limiting systematic exploration of depth for improving the accuracy-cost trade-off. We address this limitation by increasing effective depth through stacking multiple encoder-decoder \"waves\" in series, with skip connections both within and across waves to enable progressive cross-scale refinement. We call this architecture a Deep Wave Network (DW-Net). Training data, optimization, and schedules are kept identical across models. Instead of evaluating single configurations, we train multiple width variants of each architecture and compare accuracy vs. GPU time Pareto fronts. Across several 2D and 3D flow benchmarks, DW-Net models consistently improve the Pareto frontier over single-wave U-Nets, achieving higher accuracy at matched cost or similar accuracy at reduced cost, and reaching low-error regimes with up to 3x less training time under identical training settings.",
+    "published": "2026-05-05",
+    "arxiv_url": "http://arxiv.org/abs/2605.04198v1",
+    "pdf_url": "https://arxiv.org/pdf/2605.04198v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.comp-ph",
+      "physics.flu-dyn",
+      "physics.plasm-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "deep learning"
+    ],
+    "keywords": [
+      "les",
+      "deep learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2605.00937v1",
+    "title": "An ALE-Consistent Graph Neural Operator-Transformer Framework for Fluid-Structure Interaction",
+    "authors": "Shihang Zhao, Martín Saravia, Haokui Jiang, Zhiyang Xue, Shunxiang Cao",
+    "abstract": "We propose an arbitrary Lagrangian-Eulerian (ALE)-consistent machine learning framework for long-term fluid-structure interaction (FSI) prediction on deforming unstructured meshes. Specifically, the fluid dynamics are modeled by a surrogate that combines a graph neural operator (GNO) with a vision Transformer (ViT) for spatiotemporal prediction, while a lightweight long short-term memory (LSTM) network predicts structural kinematics at the interface. The two surrogates are coupled through a standard partitioned procedure. Most importantly, kinematic compatibility at the moving interface is enforced via an ALE-consistent boundary-correction step that updates the fluid-side interface velocity with the predicted structural velocity at each coupling update, thereby improving near-interface accuracy and long-term rollout stability. To mitigate autoregressive error accumulation, a two-stage training strategy is adopted, consisting of single-step supervised pretraining followed by long-term autoregressive fine-tuning. The proposed framework is validated on the benchmark problem of a flexible beam vibration in the wake of a cylinder. Results demonstrate accurate phase-consistent predictions over long rollouts and robust generalization under inlet-profile variations in both interpolation and extrapolation settings. Systematic ablation studies further assess the respective contributions of the ViT module, ALE-consistent boundary correction, and long-term training to predictive accuracy and rollout robustness.",
+    "published": "2026-05-01",
+    "arxiv_url": "http://arxiv.org/abs/2605.00937v1",
+    "pdf_url": "https://arxiv.org/pdf/2605.00937v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics",
+      "rans",
+      "machine learning",
+      "transformer",
+      "lstm"
+    ],
+    "keywords": [
+      "fluid dynamics",
+      "rans",
+      "machine learning",
+      "transformer",
+      "lstm"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  }
+]

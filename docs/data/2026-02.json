@@ -18,16 +18,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "transfer learning",
-      "rans",
+      "neural network",
       "pinn",
-      "neural network"
+      "rans",
+      "transfer learning"
     ],
     "keywords": [
       "neural network",
-      "transfer learning",
+      "rans",
       "pinn",
-      "rans"
+      "transfer learning"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -51,16 +51,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "transformer",
       "rom",
+      "transformer",
       "les",
       "rans"
     ],
     "keywords": [
       "transformer",
       "rom",
-      "les",
-      "rans"
+      "rans",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -85,16 +85,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "neural network",
       "reduced-order model",
       "rom",
-      "surrogate model",
-      "neural network"
+      "surrogate model"
     ],
     "keywords": [
+      "neural network",
       "reduced-order model",
       "rom",
-      "surrogate model",
-      "neural network"
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -115,33 +115,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "rom",
+      "machine learning",
       "les",
-      "machine learning"
+      "rom",
+      "rans"
     ],
     "keywords": [
-      "rans",
-      "rom",
+      "machine learning",
       "les",
-      "machine learning"
+      "rom",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
   },
   {
-    "id": "2602.15472v3",
+    "id": "2602.15472v4",
     "title": "Fluids You Can Trust: Property-Preserving Operator Learning for Incompressible Flows",
     "authors": "Ramansh Sharma, Matthew Lowery, Houman Owhadi, Varun Shankar",
     "abstract": "We present a novel property-preserving kernel-based operator learning method for incompressible flows governed by the incompressible Navier--Stokes equations. Traditional numerical solvers incur significant computational costs to respect incompressibility. Operator learning offers efficient surrogate models, but current neural operators fail to exactly enforce physical properties such as incompressibility, periodicity, and turbulence. Our kernel method maps input functions to expansion coefficients of output functions in a property-preserving kernel basis, ensuring that predicted velocity fields $\\textit{analytically}$ and $\\textit{simultaneously}$ preserve the aforementioned physical properties. Our method leverages efficient numerical linear algebra, simple rootfinding, and streaming to allow for training at-scale on desktop GPUs. We also present universal approximation results and both pessimistic and more realistic $\\textit{a priori}$ convergence rates for our framework. We evaluate the method on challenging 2D and 3D, laminar and turbulent, incompressible flow problems. Our method achieves up to six orders of magnitude lower relative $\\ell_2$ errors upon generalization and trains up to five orders of magnitude faster compared to neural operators, despite our method being trained on desktop GPUs and neural operators being trained on cutting-edge GPU servers. Moreover, while our method enforces incompressibility analytically, neural operators exhibit very large deviations. Our results show that our method provides an accurate and efficient surrogate for incompressible flows.",
     "published": "2026-02-17",
-    "arxiv_url": "http://arxiv.org/abs/2602.15472v3",
-    "pdf_url": "https://arxiv.org/pdf/2602.15472v3",
+    "arxiv_url": "http://arxiv.org/abs/2602.15472v4",
+    "pdf_url": "https://arxiv.org/pdf/2602.15472v4",
     "categories": [
       "physics.flu-dyn",
       "cs.LG"
@@ -154,12 +154,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "surrogate model"
+      "surrogate model",
+      "turbulence"
     ],
     "keywords": [
-      "turbulence",
-      "surrogate model"
+      "surrogate model",
+      "turbulence"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -179,24 +179,24 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
+      "surrogate model",
       "rans",
+      "machine learning",
       "rom",
       "data-driven",
-      "machine learning",
-      "surrogate model"
+      "les"
     ],
     "keywords": [
       "surrogate model",
       "rans",
+      "machine learning",
       "rom",
       "data-driven",
-      "machine learning",
       "les"
     ],
     "citation_count": null,
@@ -249,33 +249,33 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "智能流体力学",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven modeling",
+      "fluid dynamics",
       "surrogate model",
-      "transformer",
+      "data-driven modeling",
       "rans",
+      "machine learning",
+      "transformer",
       "rom",
       "data-driven",
-      "machine learning",
-      "les",
-      "fluid dynamics"
+      "les"
     ],
     "keywords": [
+      "fluid dynamics",
+      "surrogate model",
       "data-driven modeling",
-      "les",
+      "rans",
+      "machine learning",
       "transformer",
       "rom",
-      "rans",
       "data-driven",
-      "machine learning",
-      "surrogate model",
-      "fluid dynamics"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -306,8 +306,8 @@
       "les"
     ],
     "keywords": [
-      "neural network",
       "pinn",
+      "neural network",
       "rom",
       "physics-informed neural network",
       "les"
@@ -316,13 +316,13 @@
     "impact_factor": null
   },
   {
-    "id": "2602.02832v2",
+    "id": "2602.02832v3",
     "title": "Koopman Autoencoders with Continuous-Time Latent Dynamics for Fluid Dynamics Forecasting",
     "authors": "Rares Grozavescu, Pengyu Zhang, Etienne Meunier, Mark Girolami",
-    "abstract": "Learning surrogate models for time-dependent PDEs requires balancing expressivity, stability, and computational efficiency. While highly expressive generative models achieve strong short-term accuracy, they rely on autoregressive sampling procedures that are computationally expensive and prone to error accumulation over long horizons. We propose a continuous-time Koopman autoencoder in which latent dynamics are governed by a parameter-conditioned linear generator. This formulation enables exact latent evolution via matrix exponentiation, allowing predictions at arbitrary temporal resolutions without autoregressive rollouts. We evaluate our method on challenging fluid dynamics benchmarks and compare against autoregressive neural operators and diffusion-based models. We evaluate our method on challenging fluid dynamics benchmarks against autoregressive neural operators and diffusion-based models. Our results demonstrate that imposing a continuous-time linear structure in the latent space yields a highly favorable trade-off: it achieves massive computational efficiency and extreme long-horizon stability while remaining competitive in short-term generative accuracy.",
+    "abstract": "Forecasting physical systems over long horizons from irregularly sampled observations demands models that are stable, computationally efficient, and free of fixed-timestep assumptions. We address this with a continuous-time Koopman autoencoder whose latent dynamics obey $dz/dt = \\mathbf{K}_{\\mathrm{cont}} z$, yielding closed-form inference via $z(τ) = \\exp(\\mathbf{K}_{\\mathrm{cont}} τ) z(0)$ at any horizon $τ$ in a single step. This decouples forecast cost from forecast length at inference time and supports data assimilation as gradient-based optimization with cost independent of the assimilation window. However, scaling continuous-time Koopman dynamics to high-dimensional chaotic systems causes severe latent instability, including spectral collapse and trajectory divergence over long horizons. In contrast, discrete Koopman methods train an operator $\\mathbf{A}$ such that $z_{t+Δt} = \\mathbf{A} z_t$; recovering the continuous generator could be theoretically done through matrix logarithm but requires conditions not guaranteed by training, and approximation errors grow with the $Δt$ imposed by the training data. These methods also require fixed, regular timesteps. We identify an empirically effective set of structural constraints -- rollout training, forward-backward consistency, latent regularization, and physics-conditioned LoRA -- sufficient for stable long-horizon latent dynamics. On challenging fluid benchmarks, our method outperforms strong diffusion and operator-learning baselines on long-horizon forecasting while achieving a 110$\\times$ inference speedup.",
     "published": "2026-02-02",
-    "arxiv_url": "http://arxiv.org/abs/2602.02832v2",
-    "pdf_url": "https://arxiv.org/pdf/2602.02832v2",
+    "arxiv_url": "http://arxiv.org/abs/2602.02832v3",
+    "pdf_url": "https://arxiv.org/pdf/2602.02832v3",
     "categories": [
       "cs.LG",
       "physics.flu-dyn"
@@ -336,14 +336,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "surrogate model",
-      "les",
-      "fluid dynamics"
+      "rom",
+      "fluid dynamics",
+      "les"
     ],
     "keywords": [
-      "les",
-      "surrogate model",
-      "fluid dynamics"
+      "fluid dynamics",
+      "rom",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -363,14 +363,14 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "deep learning",
+      "rans",
       "rom",
-      "rans"
+      "deep learning"
     ],
     "keywords": [
       "deep learning",
@@ -395,35 +395,35 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "智能流体力学",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid dynamics",
       "surrogate model",
-      "pinn",
-      "cfd",
       "rans",
-      "rom",
+      "pinn",
       "machine learning",
-      "computational fluid dynamics",
+      "rom",
       "turbulence",
+      "cfd",
       "les",
-      "fluid dynamics"
+      "computational fluid dynamics"
     ],
     "keywords": [
-      "les",
-      "pinn",
-      "cfd",
-      "rom",
-      "rans",
-      "machine learning",
-      "computational fluid dynamics",
-      "turbulence",
+      "fluid dynamics",
       "surrogate model",
-      "fluid dynamics"
+      "rans",
+      "pinn",
+      "machine learning",
+      "rom",
+      "turbulence",
+      "cfd",
+      "les",
+      "computational fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null

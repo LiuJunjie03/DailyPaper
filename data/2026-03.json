@@ -14,20 +14,20 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "空气动力学",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "空气动力学"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
       "rom",
+      "cfd",
       "aerodynamics"
     ],
     "keywords": [
-      "cfd",
       "rom",
-      "aerodynamics"
+      "aerodynamics",
+      "cfd"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -52,16 +52,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
+      "les",
       "rom",
-      "turbulence",
-      "les"
+      "rans",
+      "turbulence"
     ],
     "keywords": [
-      "rans",
+      "les",
       "rom",
-      "turbulence",
-      "les"
+      "rans",
+      "turbulence"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -86,16 +86,65 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "aerodynamic optimization",
+      "neural network",
       "data-driven",
-      "neural network"
+      "rom",
+      "aerodynamic optimization"
     ],
     "keywords": [
-      "rom",
-      "aerodynamic optimization",
+      "neural network",
       "data-driven",
-      "neural network"
+      "rom",
+      "aerodynamic optimization"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.08586v1",
+    "title": "FluidFlow: a flow-matching generative model for fluid dynamics surrogates on unstructured meshes",
+    "authors": "David Ramos, Lucas Lacasa, Fermín Gutiérrez, Eusebio Valero, Gonzalo Rubio",
+    "abstract": "Computational fluid dynamics (CFD) provides high-fidelity simulations of fluid flows but remains computationally expensive for many-query applications. In recent years deep learning (DL) has been used to construct data-driven fluid-dynamic surrogate models. In this work we consider a different learning paradigm and embrace generative modelling as a framework for constructing scalable fluid-dynamics surrogate models. We introduce FluidFlow, a generative model based on conditional flow-matching, a recent alternative to diffusion models that learns deterministic transport maps between noise and data distributions. FluidFlow is specifically designed to operate directly on CFD data defined on both structured and unstructured meshes alike, without the needs to perform any mesh interpolation pre-processing and preserving geometric fidelity. We assess the capabilities of FluidFlow using two different core neural network architectures, a U-Net and diffusion transformer (DiT), and condition their learning on physically meaningful parameters. The methodology is validated on two benchmark problems of increasing complexity: prediction of pressure coefficients along an airfoil boundary across different operating conditions, and prediction of pressure and friction coefficients over a full three-dimensional aircraft geometry discretized on a large unstructured mesh. In both cases, FluidFlow outperform strong multilayer perceptron baselines, achieving significantly lower error metrics and improved generalisation across operating conditions. Notably, the transformer-based architecture enables scalable learning on large unstructured datasets while maintaining high predictive accuracy. These results demonstrate that flow-matching generative models provide an effective and flexible framework for surrogate modelling in fluid dynamics, with potential for realistic engineering and scientific applications.",
+    "published": "2026-03-30",
+    "arxiv_url": "http://arxiv.org/abs/2604.08586v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.08586v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "CFD与机器学习交叉",
+      "流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics",
+      "surrogate model",
+      "rans",
+      "neural network",
+      "transformer",
+      "deep learning",
+      "cfd",
+      "data-driven",
+      "les",
+      "computational fluid dynamics"
+    ],
+    "keywords": [
+      "fluid dynamics",
+      "surrogate model",
+      "rans",
+      "neural network",
+      "transformer",
+      "deep learning",
+      "cfd",
+      "data-driven",
+      "les",
+      "computational fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -115,29 +164,29 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "智能流体力学",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
+      "fluid dynamics",
       "machine learning",
+      "rom",
       "deep learning",
-      "computational fluid dynamics",
       "turbulence",
       "les",
-      "fluid dynamics"
+      "computational fluid dynamics"
     ],
     "keywords": [
-      "rom",
+      "fluid dynamics",
       "machine learning",
+      "rom",
       "deep learning",
-      "computational fluid dynamics",
       "turbulence",
       "les",
-      "fluid dynamics"
+      "computational fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -165,13 +214,13 @@
     "official_keywords": [],
     "custom_keywords": [
       "rom",
-      "les",
-      "fluid dynamics"
+      "fluid dynamics",
+      "les"
     ],
     "keywords": [
+      "fluid dynamics",
       "rom",
-      "les",
-      "fluid dynamics"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -225,16 +274,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "rom",
       "data-driven",
-      "lstm"
+      "rom",
+      "lstm",
+      "rans"
     ],
     "keywords": [
-      "rans",
-      "rom",
       "data-driven",
-      "lstm"
+      "rom",
+      "lstm",
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -259,14 +308,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
+      "neural network",
       "les",
-      "neural network"
+      "rom"
     ],
     "keywords": [
-      "rom",
+      "neural network",
       "les",
-      "neural network"
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -290,16 +339,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
+      "neural network",
       "data-driven",
       "les",
-      "neural network"
+      "rom"
     ],
     "keywords": [
-      "rom",
-      "les",
+      "neural network",
       "data-driven",
-      "neural network"
+      "les",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -320,25 +369,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
-      "pinn",
       "rans",
-      "rom",
+      "pinn",
       "machine learning",
+      "neural network",
+      "rom",
       "physics-informed neural network",
       "les"
     ],
     "keywords": [
-      "pinn",
-      "neural network",
       "rans",
-      "rom",
+      "pinn",
       "machine learning",
+      "neural network",
+      "rom",
       "physics-informed neural network",
       "les"
     ],
@@ -360,32 +409,32 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "智能流体力学",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "flow modeling",
-      "transformer",
-      "transfer learning",
-      "cnn",
       "rans",
-      "rom",
       "machine learning",
+      "cnn",
+      "transformer",
+      "rom",
       "deep learning",
+      "transfer learning",
+      "flow modeling",
       "les"
     ],
     "keywords": [
-      "flow modeling",
-      "transfer learning",
-      "transformer",
-      "cnn",
       "rans",
-      "rom",
       "machine learning",
+      "cnn",
+      "transformer",
+      "rom",
       "deep learning",
+      "transfer learning",
+      "flow modeling",
       "les"
     ],
     "citation_count": null,
@@ -413,16 +462,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "surrogate model",
-      "cfd",
       "les",
-      "rans"
+      "surrogate model",
+      "rans",
+      "cfd"
     ],
     "keywords": [
-      "cfd",
       "les",
       "surrogate model",
-      "rans"
+      "rans",
+      "cfd"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -448,15 +497,15 @@
     "official_keywords": [],
     "custom_keywords": [
       "surrogate model",
-      "flow computation",
       "rom",
+      "flow computation",
       "data-driven",
       "les"
     ],
     "keywords": [
       "surrogate model",
-      "flow computation",
       "rom",
+      "flow computation",
       "data-driven",
       "les"
     ],
@@ -481,27 +530,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "智能流体力学",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "data-driven",
       "machine learning",
+      "rom",
       "turbulence",
-      "les",
-      "gan"
+      "gan",
+      "data-driven",
+      "les"
     ],
     "keywords": [
-      "rom",
-      "data-driven",
       "machine learning",
+      "rom",
       "turbulence",
-      "les",
-      "gan"
+      "gan",
+      "data-driven",
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -522,27 +571,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "智能流体力学",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "transformer",
+      "surrogate model",
       "rans",
       "machine learning",
+      "transformer",
       "deep learning",
-      "turbulence",
-      "surrogate model"
+      "turbulence"
     ],
     "keywords": [
-      "transformer",
+      "surrogate model",
       "rans",
       "machine learning",
+      "transformer",
       "deep learning",
-      "turbulence",
-      "surrogate model"
+      "turbulence"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -563,21 +612,21 @@
     "code_link": "",
     "tags": [
       "CFD与机器学习交叉",
-      "多相流",
-      "流体力学"
+      "流体力学",
+      "多相流"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "rom",
+      "multiphase flow",
       "les",
-      "multiphase flow"
+      "rom",
+      "rans"
     ],
     "keywords": [
       "multiphase flow",
-      "rans",
+      "les",
       "rom",
-      "les"
+      "rans"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -598,22 +647,22 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
       "rans",
-      "rom",
       "machine learning",
+      "neural network",
+      "rom",
       "les"
     ],
     "keywords": [
-      "neural network",
       "rans",
-      "rom",
       "machine learning",
+      "neural network",
+      "rom",
       "les"
     ],
     "citation_count": null,
@@ -634,25 +683,25 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "智能流体力学",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid dynamics",
       "pinn",
       "neural network",
       "physics-informed neural network",
-      "les",
-      "fluid dynamics"
+      "les"
     ],
     "keywords": [
-      "neural network",
+      "fluid dynamics",
       "pinn",
+      "neural network",
       "physics-informed neural network",
-      "les",
-      "fluid dynamics"
+      "les"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -674,27 +723,27 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
       "智能流体力学",
       "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid dynamics",
+      "surrogate model",
+      "machine learning",
       "cfd",
       "data-driven",
-      "machine learning",
-      "computational fluid dynamics",
-      "surrogate model",
-      "fluid dynamics"
+      "computational fluid dynamics"
     ],
     "keywords": [
+      "fluid dynamics",
+      "surrogate model",
+      "machine learning",
       "cfd",
       "data-driven",
-      "machine learning",
-      "computational fluid dynamics",
-      "surrogate model",
-      "fluid dynamics"
+      "computational fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -742,23 +791,23 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习",
-      "智能流体力学"
+      "智能流体力学",
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "machine learning",
       "neural network",
       "rom",
-      "data-driven",
-      "machine learning",
-      "deep learning"
+      "deep learning",
+      "data-driven"
     ],
     "keywords": [
+      "machine learning",
       "neural network",
       "rom",
-      "data-driven",
-      "machine learning",
-      "deep learning"
+      "deep learning",
+      "data-driven"
     ],
     "citation_count": null,
     "impact_factor": null
