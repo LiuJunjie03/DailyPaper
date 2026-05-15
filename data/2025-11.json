@@ -16,9 +16,9 @@
     "code_link": "",
     "tags": [
       "流体力学",
+      "智能流体力学",
       "CFD与机器学习交叉",
-      "机器学习",
-      "智能流体力学"
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
@@ -66,13 +66,13 @@
     "impact_factor": null
   },
   {
-    "id": "2511.18820v1",
-    "title": "Solution of Incompressible Flow Equations with Physics and Equality Constrained Artificial Neural Networks",
+    "id": "2511.18820v2",
+    "title": "Unsupervised simulation of incompressible flows with physics- and equality- constrained artificial neural networks",
     "authors": "Qifeng Hu, Inanc Senocak",
-    "abstract": "We present a meshless method for the solution of incompressible Navier-Stokes equations in advection-dominated regimes using physics- and equality-constrained artificial neural networks combined with a conditionally adaptive augmented Lagrangian formulation. A single neural network parameterizes both the velocity and pressure fields, and is trained by minimizing the residual of a Poisson's equation for pressure, constrained by the momentum and continuity equations, together with boundary conditions on the velocity field. No boundary conditions are imposed on the pressure field aside from anchoring the pressure at a point to prevent its unbounded development. The training is performed from scratch without labeled data, relying solely on the governing equations and constraints. To enhance accuracy in advection-dominated flows, we employ a single Fourier feature mapping of the input coordinates. The proposed method is demonstrated for the canonical lid-driven cavity flow up to a Reynolds number of 7,500 and for laminar flow over a circular cylinder with inflow-outflow boundary conditions, achieving excellent agreement with benchmark solutions. We further compare the present formulation against alternative objective-function constructions based on different arrangements of the flow equations, thereby highlighting the algorithmic advantages of the proposed formulation centered around the Poisson's equation for pressure.",
+    "abstract": "Physics-informed neural networks (PINNs) have shown promise for solving partial differential equations, yet their success in simulating incompressible flows at high Reynolds numbers remains limited. Existing approaches rely on auxiliary labeled data, supervised pretraining, or reference solutions, and no purely unsupervised method comparable to conventional finite-difference or finite-volume solvers has been demonstrated. We attribute this gap to the absence of a mechanism for enforcing the divergence-free constraint and boundary conditions to strict tolerances. To address this, we adopt the physics- and equality-constrained artificial neural network (PECANN) framework with a conditionally adaptive augmented Lagrangian method (CA-ALM), and introduce a pressure-Poisson-based objective. The residual of the pressure Poisson equation is minimized subject to the momentum and continuity equations and boundary conditions on the primitive variables as equality constraints, with CA-ALM enforcing all constraints tightly. For advection-dominated, high-Reynolds-number flows, we further propose an adaptive vanishing entropy viscosity that stabilizes early training without influencing the converged solution. A baseline that instead uses the momentum residual as the objective proves ineffective under the same machinery, underscoring the critical role of the pressure-Poisson objective. The method is assessed on lid-driven cavity flow up to $Re=7{,}500$, three-dimensional unsteady Beltrami flow, and steady and unsteady flow past a circular cylinder with general inflow-outflow boundary conditions, including an ablation study identifying admissible outlet conditions -- all without labeled data or supervised pretraining. Notably, it captures the spontaneous onset of periodic vortex shedding in unsteady cylinder flow without external perturbations, starting from a randomly initialized network.",
     "published": "2025-11-24",
-    "arxiv_url": "http://arxiv.org/abs/2511.18820v1",
-    "pdf_url": "https://arxiv.org/pdf/2511.18820v1",
+    "arxiv_url": "http://arxiv.org/abs/2511.18820v2",
+    "pdf_url": "https://arxiv.org/pdf/2511.18820v2",
     "categories": [
       "physics.flu-dyn",
       "cs.LG"
@@ -84,13 +84,17 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
+      "physics-informed neural network",
+      "pinn",
       "rom",
+      "neural network",
       "les"
     ],
     "keywords": [
-      "neural network",
+      "physics-informed neural network",
+      "pinn",
       "rom",
+      "neural network",
       "les"
     ],
     "citation_count": null,
@@ -112,25 +116,25 @@
     "code_link": "",
     "tags": [
       "流体力学",
+      "智能流体力学",
       "CFD与机器学习交叉",
-      "机器学习",
-      "智能流体力学"
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "deep learning",
-      "neural network",
-      "rom",
       "surrogate model",
+      "deep learning",
+      "rom",
       "cfd",
+      "neural network",
       "les"
     ],
     "keywords": [
-      "deep learning",
-      "neural network",
-      "rom",
       "surrogate model",
+      "deep learning",
+      "rom",
       "cfd",
+      "neural network",
       "les"
     ],
     "citation_count": null,
@@ -156,13 +160,13 @@
     "official_keywords": [],
     "custom_keywords": [
       "neural network",
-      "rom",
-      "les"
+      "les",
+      "rom"
     ],
     "keywords": [
       "neural network",
-      "rom",
-      "les"
+      "les",
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
@@ -184,22 +188,22 @@
     "code_link": "",
     "tags": [
       "流体力学",
+      "智能流体力学",
       "CFD与机器学习交叉",
-      "机器学习",
-      "智能流体力学"
+      "机器学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "machine learning",
       "rom",
+      "machine learning",
       "les",
       "turbulence"
     ],
     "keywords": [
       "machine learning",
-      "rom",
+      "turbulence",
       "les",
-      "turbulence"
+      "rom"
     ],
     "citation_count": null,
     "impact_factor": null
