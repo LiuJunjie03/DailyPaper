@@ -364,7 +364,7 @@ class PaperFetcher:
                 logger.info(f"  → 获取 {len(results)} 篇，累计 {len(all_papers)} 篇")
 
                 # 避免触发限速
-                time.sleep(1)
+                time.sleep(3)
 
             except Exception as e:
                 logger.warning(f"Semantic Scholar 查询失败 ({query}): {e}")
@@ -387,16 +387,19 @@ class PaperFetcher:
         max_results = arxiv_config.get("max_results", 1000)
         days_back = arxiv_config.get("days_back", 180)
         
-        # 构建ArXiv查询（指定分类+扩充的流体/ML关键词）
-        query_parts = []
+        # 构建ArXiv查询：分类用 OR，关键词用 OR，两者 AND 连接
         if arxiv_categories:
-            query_parts.extend([f"cat:{cat}" for cat in arxiv_categories])
-        # 扩充查询词：只限定流体相关，避免强制包含机器学习
-        fluid_kw = "CFD OR fluid dynamics OR 计算流体力学 OR turbulence OR aerodynamics OR multiphase flow"
-        query_parts.append(f"({fluid_kw})")
-        
-        query = " AND ".join(query_parts)
-        logger.info(f"ArXiv查询条件（兼容新增关键词）：{query}")
+            cat_query = " OR ".join([f"cat:{cat}" for cat in arxiv_categories])
+        else:
+            cat_query = ""
+        fluid_kw = "CFD OR fluid dynamics OR turbulence OR aerodynamics OR multiphase flow OR computational fluid dynamics"
+        kw_query = f"({fluid_kw})"
+
+        if cat_query:
+            query = f"({cat_query}) AND {kw_query}"
+        else:
+            query = kw_query
+        logger.info(f"ArXiv查询条件: {query}")
         
         # 时间范围
         start_date = datetime.now(timezone.utc) - timedelta(days=days_back)
