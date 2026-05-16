@@ -8,6 +8,24 @@ sources:
     max_results: 1000
     days_back: 180  # 抓取一定天数的论文
 
+  # 语义搜索数据源（用自然语言描述替代关键词列表）
+  semantic_scholar:
+    enabled: true
+    api_key: ""  # 免费 API key，申请: https://www.semanticscholar.org/product/api#api-key-form
+    queries:
+      - "deep learning for computational fluid dynamics simulation"
+      - "physics-informed neural networks for fluid mechanics"
+      - "machine learning accelerated CFD"
+      - "data-driven turbulence modeling and closure"
+      - "multiphase flow simulation with neural networks"
+      - "aerodynamic optimization using deep learning"
+      - "surrogate models for fluid dynamics"
+      - "reduced order modeling for CFD"
+      - "reinforcement learning for flow control"
+      - "neural network based flow field prediction"
+    max_results_per_query: 100
+    days_back: 180
+
 # 领域分类关键词
 categories:
   多相流:

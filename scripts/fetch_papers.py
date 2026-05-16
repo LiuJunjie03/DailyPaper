@@ -3,7 +3,8 @@ import yaml
 import arxiv
 import json
 import os
-import re  # 新增：正则匹配官方关键词
+import re
+import time
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 import logging
@@ -66,8 +67,9 @@ class PaperFetcher:
     # ========== 修正缩进：__init__ 必须是类的成员方法 ==========
     def __init__(self, config_path: str = "config.yaml"):
         """初始化：读取你的自定义yaml配置"""
-        self.config = self._load_config(config_path)  # 关键：赋值self.config
-        self.arxiv_client = arxiv.Client()  # ArXiv客户端
+        self.config = self._load_config(config_path)
+        self.arxiv_client = arxiv.Client()
+        self.ss_api_key = self.config.get("sources", {}).get("semantic_scholar", {}).get("api_key", "")
 
     def _load_config(self, config_path: str) -> Dict:
         """加载你的yaml配置，确保结构匹配"""
@@ -109,7 +111,7 @@ class PaperFetcher:
         }
         try:
             resp = requests.get(url, params=params, timeout=10)
-            if resp.status_code == 1000:
+            if resp.status_code == 200:
                 data = resp.json()
                 if data.get("data"):
                     paper = data["data"][0]
@@ -252,6 +254,125 @@ class PaperFetcher:
         
         return list(tags)
 
+    def fetch_semantic_scholar_papers(self) -> List[Dict]:
+        """用 Semantic Scholar 语义搜索替代关键词匹配"""
+        ss_config = self.config.get("sources", {}).get("semantic_scholar", {})
+        if not ss_config.get("enabled", False):
+            logger.info("Semantic Scholar 数据源已禁用")
+            return []
+
+        queries = ss_config.get("queries", [])
+        max_per_query = ss_config.get("max_results_per_query", 100)
+        days_back = ss_config.get("days_back", 180)
+
+        start_date = datetime.now(timezone.utc) - timedelta(days=days_back)
+        year_from = start_date.year
+
+        all_papers = []
+        seen_ids = set()
+
+        for query in queries:
+            logger.info(f"Semantic Scholar 搜索: {query}")
+            url = "https://api.semanticscholar.org/graph/v1/paper/search"
+            params = {
+                "query": query,
+                "fields": "title,abstract,authors,year,citationCount,venue,publicationDate,externalIds,openAccessPdf,fieldsOfStudy",
+                "limit": max_per_query,
+                "year": f"{year_from}-"
+            }
+
+            try:
+                headers = {}
+                if self.ss_api_key:
+                    headers["x-api-key"] = self.ss_api_key
+                resp = requests.get(url, params=params, headers=headers, timeout=30)
+                if resp.status_code == 429:
+                    logger.warning("Semantic Scholar API 限速，等待30秒...")
+                    time.sleep(30)
+                    resp = requests.get(url, params=params, headers=headers, timeout=30)
+
+                if resp.status_code != 200:
+                    logger.warning(f"Semantic Scholar API 返回 {resp.status_code}")
+                    continue
+
+                data = resp.json()
+                results = data.get("data", [])
+
+                for item in results:
+                    ext_ids = item.get("externalIds", {})
+                    paper_id = (
+                        ext_ids.get("ArXiv")
+                        or ext_ids.get("DOI")
+                        or item.get("paperId", "")
+                    )
+
+                    if paper_id in seen_ids:
+                        continue
+                    seen_ids.add(paper_id)
+
+                    pub_date = item.get("publicationDate")
+                    if pub_date:
+                        try:
+                            dt = datetime.strptime(pub_date, "%Y-%m-%d")
+                            if dt < start_date:
+                                continue
+                            published = pub_date
+                        except ValueError:
+                            published = str(item.get("year", "2025"))
+                    else:
+                        published = str(item.get("year", "2025"))
+
+                    abstract = item.get("abstract") or ""
+                    title = item.get("title") or ""
+                    if not title:
+                        continue
+
+                    arxiv_id = ext_ids.get("ArXiv")
+                    pdf_url = ""
+                    arxiv_url = ""
+                    oa_pdf = item.get("openAccessPdf")
+                    if arxiv_id:
+                        arxiv_url = f"https://arxiv.org/abs/{arxiv_id}"
+                        pdf_url = f"https://arxiv.org/pdf/{arxiv_id}"
+                    elif oa_pdf and oa_pdf.get("url"):
+                        pdf_url = oa_pdf["url"]
+
+                    authors_list = item.get("authors", [])
+                    authors_str = ", ".join(a.get("name", "") for a in authors_list if a.get("name"))
+
+                    paper = {
+                        "id": paper_id,
+                        "title": title,
+                        "authors": authors_str,
+                        "abstract": abstract,
+                        "published": published,
+                        "arxiv_url": arxiv_url or f"https://www.semanticscholar.org/paper/{item.get('paperId', '')}",
+                        "pdf_url": pdf_url,
+                        "categories": item.get("fieldsOfStudy") or [],
+                        "conference": item.get("venue") or "",
+                        "code_link": "",
+                        "tags": [],
+                        "keywords": [],
+                        "citation_count": item.get("citationCount"),
+                        "impact_factor": self.get_impact_factor({"conference": item.get("venue") or ""}),
+                        "source": "semantic_scholar"
+                    }
+
+                    paper["tags"] = self.classify_paper(paper)
+                    all_papers.append(paper)
+
+                logger.info(f"  → 获取 {len(results)} 篇，累计 {len(all_papers)} 篇")
+
+                # 避免触发限速
+                time.sleep(1)
+
+            except Exception as e:
+                logger.warning(f"Semantic Scholar 查询失败 ({query}): {e}")
+                continue
+
+        logger.info(f"Semantic Scholar 共获取 {len(all_papers)} 篇去重论文")
+        return all_papers
+
     def fetch_arxiv_papers(self) -> List[Dict]:
         """
         严格按你的新版yaml配置抓取：指定分类、30天、200篇
@@ -356,14 +477,36 @@ class PaperFetcher:
         return selected
 
     def save_papers(self):
-        output_config = self.config.get("output", {})  # self.config已正确初始化
+        output_config = self.config.get("output", {})
         data_dir = output_config.get("data_dir", "data")
         os.makedirs(data_dir, exist_ok=True)
         docs_dir = output_config.get("docs_dir", "docs")
         os.makedirs(docs_dir, exist_ok=True)
 
-        # 抓取论文
-        papers = self.fetch_arxiv_papers()
+        # 从多个数据源抓取
+        papers = []
+
+        arxiv_papers = self.fetch_arxiv_papers()
+        logger.info(f"ArXiv: {len(arxiv_papers)} 篇")
+        papers.extend(arxiv_papers)
+
+        ss_papers = self.fetch_semantic_scholar_papers()
+        logger.info(f"Semantic Scholar: {len(ss_papers)} 篇")
+        papers.extend(ss_papers)
+
+        # 按标题去重（跨数据源）
+        seen_titles = set()
+        unique_papers = []
+        for p in papers:
+            # 标准化标题用于去重：小写 + 去除多余空格
+            normalized = re.sub(r'\s+', ' ', p["title"].lower().strip())
+            if normalized not in seen_titles:
+                seen_titles.add(normalized)
+                unique_papers.append(p)
+
+        papers = unique_papers
+        logger.info(f"合并去重后: {len(papers)} 篇")
+
         if not papers:
             logger.warning("未抓取到任何相关论文！")
             return
@@ -371,7 +514,14 @@ class PaperFetcher:
         # ========== 新增：按月份拆分数据（和main.js加载逻辑对齐） ==========
         month_papers = {}
         for paper in papers:
-            month = paper["published"].split("-")[0] + "-" + paper["published"].split("-")[1]
+            pub = paper.get("published", "")
+            parts = pub.split("-")
+            if len(parts) >= 2:
+                month = f"{parts[0]}-{parts[1]}"
+            elif len(parts) == 1 and parts[0].isdigit():
+                month = f"{parts[0]}-01"  # 只有年份时归到1月
+            else:
+                month = "unknown"
             if month not in month_papers:
                 month_papers[month] = []
             month_papers[month].append(paper)
