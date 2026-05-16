@@ -69,7 +69,10 @@ class PaperFetcher:
         """初始化：读取你的自定义yaml配置"""
         self.config = self._load_config(config_path)
         self.arxiv_client = arxiv.Client()
-        self.ss_api_key = self.config.get("sources", {}).get("semantic_scholar", {}).get("api_key", "")
+        self.ss_api_key = (
+            self.config.get("sources", {}).get("semantic_scholar", {}).get("api_key", "")
+            or os.environ.get("SEMANTIC_SCHOLAR_API_KEY", "")
+        )
 
     def _load_config(self, config_path: str) -> Dict:
         """加载你的yaml配置，确保结构匹配"""
