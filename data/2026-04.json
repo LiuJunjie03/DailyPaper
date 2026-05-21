@@ -1,0 +1,627 @@
+[
+  {
+    "id": "2605.08109v1",
+    "title": "Geometry-free prediction of inertial lift forces in microfluidic devices using deep learning",
+    "authors": "Jesse Ward-Bond, Ali Mashadian, Timothy C. Y. Chan, Edmond W. K. Young",
+    "abstract": "Inertial microfluidic devices (IMDs) offer low-cost, high-throughput alternative techniques for many traditional particle- (or cell-) manipulation tasks, but simulating them requires being able to predict particle migration, and thus particle lift forces, under a variety of possible channel geometries. Recent work has demonstrated that machine learning models can be used to drastically speed up these numerical simulations, but doing so required training individual models for every unique channel cross-section type (e.g., rectangular, triangular) -- shifting the burden from the simulation step to the training step. In this paper, we develop a novel approach for predicting particle lift forces that contains no explicit geometric parameters. We train a neural network model using a new parameter set and show that while it performs comparably to existing models on channel geometries in the training set, it is able to generalize to unseen channel geometries far more effectively. We show that the lift force model developed herein can be easily transferred to particle tracing simulation software, where it is capable of predicting particle migration patterns consistent with the literature across a variety of channel designs.",
+    "published": "2026-04-27",
+    "arxiv_url": "http://arxiv.org/abs/2605.08109v1",
+    "pdf_url": "https://arxiv.org/pdf/2605.08109v1",
+    "categories": [
+      "cs.LG",
+      "cond-mat.mtrl-sci",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "deep learning",
+      "neural network",
+      "machine learning",
+      "rom"
+    ],
+    "keywords": [
+      "rans",
+      "deep learning",
+      "neural network",
+      "rom",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.23937v1",
+    "title": "Multi-scale Dynamic Wake Modeling of Floating Offshore Wind Turbines via Fourier Neural Operators and Physics-Informed Neural Networks",
+    "authors": "Guodan Dong, Jianhua Qin, Chang Xu",
+    "abstract": "Multi-scale dynamic wake prediction is essential for the real-time control and performance optimization of floating offshore wind turbines (FOWTs). In this study, Fourier neural operators (FNOs) and physics-informed neural networks (PINNs) are utilized for the first time to reconstruct and predict the complex turbulent wakes of the FOWT under coupled surge and pitch motions across a range of Strouhal numbers (St = [0, 0.6]). Results demonstrate that while both models successfully capture dominant dynamic characteristics such as wake meandering, PINN-generated wakes appear relatively smooth, failing to resolve high-frequency coherent structures as well as the intensity of temporal variations in wake center and wake half-width. FNO effectively resolves both large- and small-scale coherent turbulent structures with significantly higher fidelity. Furthermore, FNO achieves a training speed approximately eight times faster than PINN, converging in far fewer epochs. Power spectral density (PSD) analysis reveals that FNO is more effective at capturing not only the primary wake meandering frequencies (St) but also their higher-order harmonics (e.g., 2St and 3St) and small-scale coherent structures. In fact, PINN effectively acts as a spatiotemporal low-pass filter; they resolve only large-scale dynamic features and fail to capture other spectral signatures induced by coupled surge and pitch motions, thereby significantly underestimating the energy in the high-frequency regime. These findings suggest that FNO is a promising approach for FOWT wake prediction.",
+    "published": "2026-04-27",
+    "arxiv_url": "http://arxiv.org/abs/2604.23937v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.23937v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "physics-informed neural network",
+      "neural network",
+      "rom",
+      "pinn"
+    ],
+    "keywords": [
+      "physics-informed neural network",
+      "neural network",
+      "rom",
+      "pinn"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.23874v2",
+    "title": "Deep Learning of Solver-Aware Turbulence Closures from Nudged LES Dynamics",
+    "authors": "Ashwin Suriyanarayanan, Dibyajyoti Chakraborty, Romit Maulik",
+    "abstract": "Deep learning approaches have shown remarkable promise in turbulence closure modeling for large eddy simulations (LES). The differentiable physics paradigm uses the so-called a-posteriori approach for learning by embedding a neural network closure directly inside the solver and optimizing its learnable parameters against ground truth time-series data which may be observed sparsely. This addresses a key limitation of a-priori learning where direct numerical simulation (DNS) data is used to approximate the subgrid stress with the assumption of a filter. However, closures that are trained in this manner frequently lead to unstable deployments due to the mismatch between the assumed filter and the effect of numerical discretizations. However, a-posteriori learning incurs high computational costs due to the need to backpropagate gradients through an LES solver. Furthermore, a-posteriori methods are challenging to apply broadly since they require significant modification of existing solvers. Finally, these approaches have also been observed to be limited when generalization is desired across different numerical schemes. In this work, we discuss a novel approach for the deep learning of turbulence closure models motivated by the continuous data assimilation (CDA) approach (also known as nudging). Our approach enables a-priori training of closures for coarse-grid LES, treating DNS data as sparse observations. This approach enables the deep learning model to successfully learn the required forcing to capture the ground-truth statistics while maintaining long term stability without needing adjoints or backpropagation through the solver. We train and evaluate the model's ability to adapt to different numerical and temporal schemes. Additionally, we analyse the model behavior with varying numerical discretization errors and compare its predictions to traditional closure models.",
+    "published": "2026-04-26",
+    "arxiv_url": "http://arxiv.org/abs/2604.23874v2",
+    "pdf_url": "https://arxiv.org/pdf/2604.23874v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "math.DS",
+      "physics.comp-ph",
+      "physics.geo-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学",
+      "机器学习",
+      "CFD与机器学习交叉"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "turbulence",
+      "deep learning",
+      "les",
+      "neural network",
+      "rom",
+      "dns"
+    ],
+    "keywords": [
+      "turbulence",
+      "deep learning",
+      "les",
+      "neural network",
+      "rom",
+      "dns"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.23372v1",
+    "title": "Physics-Informed Temporal U-Net for High-Fidelity Fluid Interpolation",
+    "authors": "Eshwar R. A., Nevin Mathew Thomas, Nehal G, Farida M. Begam",
+    "abstract": "Reconstructing high-fidelity fluid dynamics from sparse temporal observations is quite challenging, mainly due to the chaotic and non-linear nature of fluid transport. Standard deep learning-based interpolation methods often tend to regress to the mean, which results in spatial blurring and temporal strobing, especially noticeable around the observed anchor frames where transitions become discontinuous. In this work, we propose a novel Temporal U-Net architecture that integrates a VGG-based perceptual loss along with a Physics-Informed Bridge to overcome these issues. By introducing time-weighted feature blending and enforcing a parabolic boundary condition defined by t(1 - t), the model ensures smooth transitions while also maintaining perfect consistency at the endpoints. Experimental results on multi-channel RGB fluid data show that our method clearly outperforms standard models, both in terms of structural fidelity and texture preservation. In particular, the model achieves a Mean Absolute Error of 0.015, compared to 0.085 for a standard L1 baseline. Further Spatial Power Spectral Density (PSD) analysis reveals that the model is able to retain high-frequency turbulent details that are usually lost in deterministic reconstructions.",
+    "published": "2026-04-25",
+    "arxiv_url": "http://arxiv.org/abs/2604.23372v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.23372v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.CV",
+      "cs.LG",
+      "math.DS",
+      "nlin.CD",
+      "physics.data-an"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学",
+      "机器学习",
+      "CFD与机器学习交叉"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "deep learning",
+      "rom",
+      "fluid dynamics"
+    ],
+    "keywords": [
+      "rans",
+      "deep learning",
+      "rom",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.20372v1",
+    "title": "AI models of unstable flow exhibit hallucination",
+    "authors": "Ramdhan Wibawa, Birendra Jha",
+    "abstract": "We report the first systematic evidence of hallucination in AI models of fluid dynamics, demonstrated in the canonical problem of hydrodynamically unstable transport known as viscous fingering. AI-based modeling of flow with instabilities remains challenging because rapidly evolving, multiscale fingering patterns are difficult to resolve accurately. We identify solutions that appear visually realistic yet are physically implausible, analogous to hallucinations in large language models. These hallucinations manifest as spurious fluid interfaces and reverse diffusion that violate conservation laws. We show that their origin lies in the spectral bias of AI models, which becomes dominant at high flow rates and viscosity contrasts. Guided by this insight, we introduce DeepFingers, a new framework for AI-driven fluid dynamics that enforces balanced learning across the full spectrum of spatial modes by combining the Fourier Neural Operator with a Deep Operator Network to predict the spatiotemporal evolution of viscous fingers. By conditioning on both time and viscosity contrast, DeepFingers learns mappings between successive concentration fields across regimes. The framework accurately captures tip splitting, finger merging, and channel formation while preserving global metrics of mixing. The results open a new research direction to investigate fundamental limitations in AI models of physical systems.",
+    "published": "2026-04-22",
+    "arxiv_url": "http://arxiv.org/abs/2604.20372v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.20372v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.AI",
+      "cs.LG",
+      "nlin.PS"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "fluid dynamics"
+    ],
+    "keywords": [
+      "rans",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.18062v1",
+    "title": "Towards a Foundation-Model Paradigm for Aerodynamic Prediction in Three-dimensional Design",
+    "authors": "Yunjia Yang, Babak Gholami, Caglar Gurbuz, Mohammad Rashed, Nils Thuerey",
+    "abstract": "Accurate machine-learning models for aerodynamic prediction are essential for accelerating shape optimization, yet remain challenging to develop for complex three-dimensional configurations due to the high cost of generating training data. This work introduces a methodology for efficiently constructing accurate surrogate models for design purposes by first pre-training a large-scale model on diverse geometries and then fine-tuning it with a few more detailed task-specific samples. A Transformer-based architecture, AeroTransformer, is developed and tailored for large-scale training to learn aerodynamics. The methodology is evaluated on transonic wings, where the model is pre-trained on SuperWing, a dataset of nearly 30000 samples with broad geometric diversity, and subsequently fine-tuned to handle specific wing shapes perturbed from the Common Research Model. Results show that, with 450 task-specific samples, the proposed methodology achieves 0.36% error on surface-flow prediction, reducing 84.2% compared to training from scratch. The influence of model configurations and training strategies is also systematically studied to provide guidance on effectively training and deploying such models under limited data and computational budgets. To facilitate reuse, we release the datasets and the pre-trained models at https://github.com/tum-pbs/AeroTransformer. An interactive design tool is also built on the pre-trained model and is available online at https://webwing.pbs.cit.tum.de.",
+    "published": "2026-04-20",
+    "arxiv_url": "http://arxiv.org/abs/2604.18062v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.18062v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "机器学习",
+      "空气动力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "aerodynamics",
+      "rans",
+      "transformer",
+      "les",
+      "rom",
+      "surrogate model"
+    ],
+    "keywords": [
+      "aerodynamics",
+      "rans",
+      "transformer",
+      "les",
+      "rom",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.17566v1",
+    "title": "Target Parameterization in Diffusion Models for Nonlinear Spatiotemporal System Identification",
+    "authors": "Achraf El Messaoudi, Noureddine Khaous, Karim Cherifi",
+    "abstract": "Machine learning is becoming increasingly important for nonlinear system identification, including dynamical systems with spatially distributed outputs. However, classical identification and forecasting approaches become markedly less reliable in turbulent-flow regimes, where the dynamics are high-dimensional, strongly nonlinear, and highly sensitive to compounding rollout errors. Diffusion-based models have recently shown improved robustness in this setting and offer probabilistic inference capabilities, but many current implementations inherit target parameterizations from image generation, most commonly noise or velocity prediction. In this work, we revisit this design choice in the context of nonlinear spatiotemporal system identification. We consider a simple, self-contained patch-based transformer that operates directly on physical fields and use turbulent flow simulation as a representative testbed. Our results show that clean-state prediction consistently improves rollout stability and reduces long-horizon error relative to velocity- and noise-based objectives, with the advantage becoming more pronounced as the per-token dimensionality increases. These findings identify target parameterization as a key modeling choice in diffusion-based identification of nonlinear systems with spatial outputs in turbulent regimes.",
+    "published": "2026-04-19",
+    "arxiv_url": "http://arxiv.org/abs/2604.17566v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.17566v1",
+    "categories": [
+      "eess.SY",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow simulation",
+      "rans",
+      "transformer",
+      "les",
+      "machine learning",
+      "rom"
+    ],
+    "keywords": [
+      "flow simulation",
+      "rans",
+      "transformer",
+      "les",
+      "machine learning",
+      "rom"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.17149v2",
+    "title": "FlowRefiner: Flow Matching-Based Iterative Refinement for 3D Turbulent Flow Simulation",
+    "authors": "Yilong Dai, Yiming Sun, Yiheng Chen, Shengyu Chen, Xiaowei Jia, Runlong Yu",
+    "abstract": "Accurate autoregressive prediction of 3D turbulent flows remains challenging for neural PDE solvers, as small errors in fine-scale structures can accumulate rapidly over rollout. In this paper, we propose FlowRefiner, a flow matching-based iterative refinement framework for 3D turbulent flow simulation. The method replaces stochastic denoising refinement with deterministic ODE-based correction, uses a unified velocity-field regression objective across all refinement stages, and introduces a decoupled sigma schedule that fixes the noise range independently of refinement depth. These design choices yield stable and effective refinement in the small-noise regime. Experiments on large-scale 3D turbulence with rich multi-scale structures show that FlowRefiner achieves state-of-the-art autoregressive prediction accuracy and strong physical consistency. Although developed for turbulent flow simulation, the proposed framework is broadly applicable to iterative refinement problems in scientific modeling.",
+    "published": "2026-04-18",
+    "arxiv_url": "http://arxiv.org/abs/2604.17149v2",
+    "pdf_url": "https://arxiv.org/pdf/2604.17149v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow simulation",
+      "turbulence"
+    ],
+    "keywords": [
+      "flow simulation",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.14424v1",
+    "title": "Non-intrusive Learning of Physics-Informed Spatio-temporal Surrogate for Accelerating Design",
+    "authors": "Sudeepta Mondal, Soumalya Sarkar",
+    "abstract": "Most practical engineering design problems involve nonlinear spatio-temporal dynamical systems. Multi-physics simulations are often performed to capture the fine spatio-temporal scales which govern the evolution of these systems. However, these simulations are often high-fidelity in nature, and can be computationally very expensive. Hence, generating data from these expensive simulations becomes a bottleneck in an end-to-end engineering design process. Spatio-temporal surrogate modeling of these dynamical systems has been a popular data-driven solution to tackle this computational bottleneck. This is because accurate machine learning models emulating the dynamical systems can be orders of magnitude faster than the actual simulations. However, one key limitation of purely data-driven approaches is their lack of generalizability to inputs outside the training distribution. In this paper, we propose a physics-informed spatio-temporal surrogate modeling (PISTM) framework constrained by the physics of the underlying dynamical system. The framework leverages state-of-the-art advancements in the field of Koopman autoencoders to learn the underlying spatio-temporal dynamics in a non-intrusive manner, coupled with a spatio-temporal surrogate model which predicts the behavior of the Koopman operator in a specified time window for unknown operating conditions. We evaluate our framework on a prototypical fluid flow problem of interest: two-dimensional incompressible flow around a cylinder.",
+    "published": "2026-04-15",
+    "arxiv_url": "http://arxiv.org/abs/2604.14424v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.14424v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "machine learning",
+      "rom",
+      "surrogate model",
+      "data-driven"
+    ],
+    "keywords": [
+      "les",
+      "machine learning",
+      "rom",
+      "surrogate model",
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.14398v1",
+    "title": "Timescale Separation Enables Deep Reinforcement Learning Control of Rotating Detonation Engine Mode Transitions",
+    "authors": "Kristian Holme, Jean Rabault, Ricardo Vinuesa, Mikael Mortensen",
+    "abstract": "Rotating detonation engines (RDEs) are a promising propulsion concept that may offer higher thermodynamic efficiency and specific impulse than conventional systems, but nonlinear phenomena, including transitions to oscillatory or chaotic propagation modes, can hinder practical operation. Deep Reinforcement Learning (DRL) has emerged as a promising method for controlling complex nonlinear dynamics such as those observed in RDEs. However, the multi-timescale nature of the RDE system makes direct application of DRL challenging. We address this challenge by reformulating the DRL problem in a moving reference frame that follows the detonation-wave pattern, making the wave structure appear quasi-steady to the agent. This reformulation enables scale separation between fast detonation propagation and slower operating-mode dynamics. We train DRL controllers to modulate spatially segmented injection pressure in a one-dimensional reduced-order RDE model and induce rapid transitions between different mode-locked states. Across a range of actuation periods, initial states, and target modes, controllers trained in the moving frame learn more reliably than those trained in a stationary frame and remain effective over a broader range of actuation periods. These results suggest that symmetry-aware moving reference frame formulations may be useful for related multiscale flow-control problems and that scale separation should be exploited whenever possible to enable DRL control of multi-timescale systems.",
+    "published": "2026-04-15",
+    "arxiv_url": "http://arxiv.org/abs/2604.14398v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.14398v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "les",
+      "reinforcement learning",
+      "rom"
+    ],
+    "keywords": [
+      "reinforcement learning",
+      "rans",
+      "rom",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.13919v1",
+    "title": "Nested Fourier-enhanced neural operator for efficient modeling of radiation transfer in fires",
+    "authors": "Anran Jiao, Wengyao Jiang, Xiaoyi Lu, Yi Wang, Lu Lu",
+    "abstract": "Computational fluid dynamics (CFD) has become an essential tool for predicting fire behavior, yet maintaining both efficiency and accuracy remains challenging. A major source of computational cost in fire simulations is the modeling of radiation transfer, which is usually the dominant heat transfer mechanism in fires. Solving the high-dimensional radiative transfer equation (RTE) with traditional numerical methods can be a performance bottleneck. Here, we present a machine learning framework based on Fourier-enhanced multiple-input neural operators (Fourier-MIONet) as an efficient alternative to direct numerical integration of the RTE. We first investigate the performance of neural operator architectures for a small-scale 2D pool fire and find that Fourier-MIONet provides the most accurate radiative solution predictions. The approach is then extended to 3D CFD fire simulations, where the computational mesh is locally refined across multiple levels. In these high-resolution settings, monolithic surrogate models for direct field-to-field mapping become difficult to train and computationally inefficient. To address this issue, a nested Fourier-MIONet is proposed to predict radiation solutions across multiple mesh-refinement levels. We validate the approach on 3D McCaffrey pool fires simulated with FireFOAM, including fixed fire sizes and a unified model trained over a continuous range of heat release rates (HRRs). The proposed method achieves global relative errors of 2-4% for 3D varying-HRR scenarios while providing faster inference than the estimated cost of one finite-volume radiation solve in FireFOAM for the 16-solid-angle case. With fast and accurate inference, the surrogate makes higher-fidelity radiation treatments practical and enables the incorporation of more spectrally resolved radiation models into CFD fire simulations for engineering applications.",
+    "published": "2026-04-15",
+    "arxiv_url": "http://arxiv.org/abs/2604.13919v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.13919v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学",
+      "机器学习",
+      "CFD与机器学习交叉"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "les",
+      "computational fluid dynamics",
+      "cfd",
+      "machine learning",
+      "fluid dynamics",
+      "surrogate model"
+    ],
+    "keywords": [
+      "rans",
+      "les",
+      "computational fluid dynamics",
+      "cfd",
+      "machine learning",
+      "fluid dynamics",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.13594v1",
+    "title": "Data-driven Learning of Probabilistic Model of Binary Droplet Collision for Spray Simulation",
+    "authors": "Weiming Xu, Tao Yang, Peng Zhang",
+    "abstract": "Binary droplet collisions are ubiquitous in dense sprays. Traditional deterministic models cannot adequately represent transitional and stochastic behaviors of binary droplet collision. To bridge this gap, we developed a probabilistic model by using a machine learning approach, the Light Gradient-Boosting Machine (LightGBM). The model was trained on a comprehensive dataset of 33,540 experimental cases covering eight collision regimes across broad ranges of Weber number, Ohnesorge number, impact parameter, size ratio, and ambient pressure. The resulting machine learning classifier captures highly nonlinear regime boundaries with 99.2% accuracy and retains sensitivity in transitional regions. To facilitate its implementation in spray simulation, the model was translated into a probabilistic form, a multinomial logistic regression, which preserves 93.2% accuracy and maps continuous inter-regime transitions. A biased-dice sampling mechanism then converts these probabilities into definite yet stochastic outcomes. This work presents the first probabilistic, high-dimensional droplet collision model derived from experimental data, offering a physically consistent, comprehensive, and user-friendly solution for spray simulation.",
+    "published": "2026-04-15",
+    "arxiv_url": "http://arxiv.org/abs/2604.13594v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.13594v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "machine learning",
+      "rom",
+      "data-driven"
+    ],
+    "keywords": [
+      "rans",
+      "machine learning",
+      "rom",
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.13369v1",
+    "title": "AeTHERON: Autoregressive Topology-aware Heterogeneous Graph Operator Network for Fluid-Structure Interaction",
+    "authors": "Sushrut Kumar",
+    "abstract": "Surrogate modeling of body-driven fluid flows where immersed moving boundaries couple structural dynamics to chaotic, unsteady fluid phenomena remains a fundamental challenge for both computational physics and machine learning. We present AeTHERON, a heterogeneous graph neural operator whose architecture directly mirrors the structure of the sharp-interface immersed boundary method (IBM): a dual-graph representation separating fluid and structural domains, coupled through sparse cross-attention that reflects the compact support of IBM interpolation stencils. This physics-informed inductive bias enables AeTHERON to learn nonlinear fluid-structure coupling in a shared high-dimensional latent space, with continuous sinusoidal time embeddings providing temporal generalization across lead times. We evaluate AeTHERON on direct numerical simulations of a flapping flexible caudal fin, a canonical FSI benchmark featuring leading-edge vortex formation, large membrane deformation, and chaotic wake shedding across a 4x5 parameter grid of membrane thickness (h* = 0.01-0.04) and Strouhal number (St = 0.30-0.50). As a proof-of-concept, we train on the first 150 timesteps of a representative case using a 70/30 train/validation split and evaluate on the fully unseen extrapolation window t=150-200. AeTHERON captures large-scale vortex topology and wake structure with qualitative fidelity, achieving a mean extrapolation MAE of 0.168 without retraining, with error peaking near flapping half-cycle transitions where flow reorganization is most rapid -- a physically interpretable pattern consistent with the nonlinear fluid-membrane coupling. Inference requires milliseconds per timestep on a single GPU versus hours for equivalent DNS computation. This is a continuously developing preprint; results and figures will be updated in subsequent versions.",
+    "published": "2026-04-15",
+    "arxiv_url": "http://arxiv.org/abs/2604.13369v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.13369v1",
+    "categories": [
+      "physics.comp-ph",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "rans",
+      "les",
+      "machine learning",
+      "surrogate model",
+      "gan",
+      "dns"
+    ],
+    "keywords": [
+      "rans",
+      "les",
+      "machine learning",
+      "surrogate model",
+      "gan",
+      "dns"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.07129v1",
+    "title": "A solver-in-the-loop framework for end-to-end differentiable coastal hydrodynamics",
+    "authors": "Elsa Cardoso-Bihlo, Alex Bihlo",
+    "abstract": "Numerical simulation of wave propagation and run-up is a cornerstone of coastal engineering and tsunami hazard assessment. However, applying these forward models to inverse problems, such as bathymetry estimation, source inversion, and structural optimization, remains notoriously difficult due to the rigidity and high computational cost of deriving discrete adjoints. In this paper, we introduce AegirJAX, a fully differentiable hydrodynamic solver based on the depth-integrated, non-hydrostatic shallow-water equations. By implementing the solver entirely within a reverse-mode automatic differentiation framework, AegirJAX treats the time-marching physics loop as a continuous computational graph. We demonstrate the framework's versatility across a suite of scientific machine learning tasks: (1) discovering regime-specific neural corrections for model misspecifications in highly dispersive wave propagation; (2) performing continuous topology optimization for breakwater design; (3) training recurrent neural networks in-the-loop for active wave cancellation; and (4) inverting hidden bathymetry and submarine landslide kinematics directly from downstream sensor data. The proposed differentiable paradigm fundamentally blurs the line between forward simulation and inverse optimization, offering a unified, end-to-end framework for coastal hydrodynamics.",
+    "published": "2026-04-08",
+    "arxiv_url": "http://arxiv.org/abs/2604.07129v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.07129v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "math.NA",
+      "physics.ao-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "machine learning",
+      "rom"
+    ],
+    "keywords": [
+      "neural network",
+      "rom",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.06881v1",
+    "title": "MENO: MeanFlow-Enhanced Neural Operators for Dynamical Systems",
+    "authors": "Tianyue Yang, Xiao Xue",
+    "abstract": "Neural operators have emerged as powerful surrogates for dynamical systems due to their grid-invariant properties and computational efficiency. However, the Fourier-based neural operator framework inherently truncates high-frequency components in spectral space, resulting in the loss of small-scale structures and degraded prediction quality at high resolutions when trained on low-resolution data. While diffusion-based enhancement methods can recover multi-scale features, they introduce substantial inference overhead that undermines the efficiency advantage of neural operators. In this work, we introduce \\textbf{M}eanFlow-\\textbf{E}nhanced \\textbf{N}eural \\textbf{O}perators (MENO), a novel framework that achieves accurate all-scale predictions with minimal inference cost. By leveraging the improved MeanFlow method, MENO restores both small-scale details and large-scale dynamics with superior physical fidelity and statistical accuracy. We evaluate MENO on three challenging dynamical systems, including phase-field dynamics, 2D Kolmogorov flow, and active matter dynamics, at resolutions up to 256$\\times$256. Across all benchmarks, MENO improves the power spectrum density accuracy by up to a factor of 2 compared to baseline neural operators while achieving 12$\\times$ faster inference than the state-of-the-art Diffusion Denoising Implicit Model (DDIM)-enhanced counterparts, effectively bridging the gap between accuracy and efficiency. The flexibility and efficiency of MENO position it as an efficient surrogate model for scientific machine learning applications where both statistical integrity and computational efficiency are paramount.",
+    "published": "2026-04-08",
+    "arxiv_url": "http://arxiv.org/abs/2604.06881v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.06881v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "智能流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "machine learning",
+      "surrogate model"
+    ],
+    "keywords": [
+      "machine learning",
+      "surrogate model"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.06287v1",
+    "title": "Asymptotic-Preserving Neural Networks for Viscoelastic Parameter Identification in Multiscale Blood Flow Modeling",
+    "authors": "Giulia Bertaglia, Raffaella Fiamma Cabini",
+    "abstract": "Mathematical models and numerical simulations offer a non-invasive way to explore cardiovascular phenomena, providing access to quantities that cannot be measured directly. In this study, we start with a one-dimensional multiscale blood flow model that describes the viscoelastic properties of arterial walls, and we focus on improving its practical applicability by addressing a major challenge: determining, in a reliable way, the viscoelastic parameters that control how arteries deform under pulsatile pressure. To achieve this, we employ Asymptotic-Preserving Neural Networks that embed the governing physical principles of the multiscale viscoelastic blood flow model within the learning procedure. This framework allows us to infer the viscoelastic parameters while simultaneously reconstructing the time-dependent evolution of the state variables of blood vessels. With this approach, pressure waveforms are estimated from readily accessible patient-specific data, i.e., cross-sectional area and velocity measurements from Doppler ultrasound, in vascular segments where direct pressure measurements are not available. Different numerical simulations, conducted in both synthetic and patient-specific scenarios, show the effectiveness of the proposed methodology.",
+    "published": "2026-04-07",
+    "arxiv_url": "http://arxiv.org/abs/2604.06287v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.06287v1",
+    "categories": [
+      "cs.LG",
+      "math.NA",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "CFD与机器学习交叉",
+      "流体力学",
+      "机器学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow modeling",
+      "neural network",
+      "rom",
+      "les"
+    ],
+    "keywords": [
+      "flow modeling",
+      "neural network",
+      "rom",
+      "les"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  },
+  {
+    "id": "2604.05652v1",
+    "title": "Multiscale Physics-Informed Neural Network for Complex Fluid Flows with Long-Range Dependencies",
+    "authors": "Prashant Kumar, Rajesh Ranjan",
+    "abstract": "Fluid flows are governed by the nonlinear Navier-Stokes equations, which can manifest multiscale dynamics even from predictable initial conditions. Predicting such phenomena remains a formidable challenge in scientific machine learning, particularly regarding convergence speed, data requirements, and solution accuracy. In complex fluid flows, these challenges are exacerbated by long-range spatial dependencies arising from distant boundary conditions, which typically necessitate extensive supervision data to achieve acceptable results. We propose the Domain-Decomposed and Shifted Physics-Informed Neural Network (DDS-PINN), a framework designed to resolve such multiscale interactions with minimal supervision. By utilizing localized networks with a unified global loss, DDS-PINN captures global dependencies while maintaining local precision. The robustness of the approach is demonstrated across a suite of benchmarks, including a multiscale linear differential equation, the nonlinear Burgers' equation, and data-free Navier-Stokes simulations of flat-plate boundary layers. Finally, DDS-PINN is applied to the computationally challenging backward-facing step (BFS) problem; for laminar regimes (Re = 100), the model yields results comparable to computational fluid dynamics (CFD) without the need for any data, accurately predicting boundary layer thickness, separation, and reattachment lengths. For turbulent BFS flow at Re = 10,000, the framework achieves convergence to O(10^-4) using only 500 random supervision points (< 0.3 % of the total domain), outperforming established methods like Residual-based Attention-PINN in accuracy. This approach demonstrates strong potential for the super-resolution of complex turbulent flows from sparse experimental measurements.",
+    "published": "2026-04-07",
+    "arxiv_url": "http://arxiv.org/abs/2604.05652v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.05652v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "智能流体力学",
+      "机器学习",
+      "CFD与机器学习交叉"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "computational fluid dynamics",
+      "cfd",
+      "physics-informed neural network",
+      "neural network",
+      "machine learning",
+      "rom",
+      "pinn",
+      "fluid dynamics"
+    ],
+    "keywords": [
+      "computational fluid dynamics",
+      "cfd",
+      "physics-informed neural network",
+      "neural network",
+      "machine learning",
+      "rom",
+      "pinn",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null
+  }
+]
