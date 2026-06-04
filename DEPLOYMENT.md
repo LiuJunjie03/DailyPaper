@@ -31,7 +31,7 @@ git commit -m "Initial commit: DailyPaper project"
 
 ```powershell
 # 添加远程仓库
-git remote add origin https://github.com/4everWZ/DailyPaper.git
+git remote add origin https://github.com/LiuJunjie03/DailyPaper.git
 
 # 重命名分支为 main
 git branch -M main
@@ -78,7 +78,7 @@ git push
 
 1. 在 **Actions** 标签中查看运行状态
 2. 等待绿色的 ✓ 出现（通常需要 1-3 分钟）
-3. 访问你的网站：`https://4everWZ.github.io/DailyPaper/`
+3. 访问你的网站：`https://LiuJunjie03.github.io/DailyPaper/`
 
 ## 🎉 完成！
 
@@ -101,7 +101,7 @@ git push
 在 GitHub Actions 页面点击 "Run workflow"
 
 ### 查看网站
-访问：`https://4everWZ.github.io/DailyPaper/`
+访问：`https://LiuJunjie03.github.io/DailyPaper/`
 
 ## ⚠️ 常见问题
 

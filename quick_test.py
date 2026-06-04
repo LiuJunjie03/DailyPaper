@@ -18,45 +18,44 @@ def quick_test():
     """快速测试 - 只抓取一个类别"""
     print("🧪 快速测试开始...")
     print("=" * 60)
-    
-    # 临时修改配置，只抓取 cs.AI 类别的少量论文
+
     fetcher = PaperFetcher()
-    
-    # 只保留一个类别用于快速测试
-    original_categories = fetcher.config['sources']['arxiv']['categories']
-    fetcher.config['sources']['arxiv']['categories'] = ['cs.AI']
-    fetcher.config['sources']['arxiv']['max_results'] = 10  # 只抓取10篇
-    fetcher.config['sources']['arxiv']['days_back'] = 7  # 最近7天
-    
-    print("📥 正在抓取 cs.AI 类别的 10 篇最新论文...")
+
+    # 使用项目实际类别，限制数量和时间范围
+    fetcher.config['sources']['arxiv']['categories'] = ['physics.flu-dyn']
+    fetcher.config['sources']['arxiv']['max_results'] = 10
+    fetcher.config['sources']['arxiv']['days_back'] = 30
+
+    print("📥 正在抓取 physics.flu-dyn 类别的 10 篇最新论文...")
     print()
-    
+
     try:
         papers = fetcher.fetch_arxiv_papers()
-        
+
         if papers:
             print(f"✅ 成功抓取 {len(papers)} 篇论文！")
             print()
+            authors = papers[0]['authors'] if isinstance(papers[0]['authors'], list) else papers[0]['authors'].split(', ')
             print("📄 第一篇论文信息：")
             print(f"  标题: {papers[0]['title']}")
-            print(f"  作者: {', '.join(papers[0]['authors'][:2])} {'等' if len(papers[0]['authors']) > 2 else ''}")
+            print(f"  作者: {', '.join(authors[:2])} {'等' if len(authors) > 2 else ''}")
             print(f"  日期: {papers[0]['published']}")
             print(f"  分类: {', '.join(papers[0]['tags']) if papers[0]['tags'] else '未分类'}")
             print(f"  链接: {papers[0]['arxiv_url']}")
             print()
-            
+
             # 保存数据
-            print("💾 保存数据到 data/papers.json...")
-            fetcher.save_papers(papers)
+            print("💾 保存数据...")
+            fetcher.save_papers()
             print("✅ 数据保存成功")
             print()
-            
+
             # 生成网页
             print("🌐 生成网页...")
             generator = HTMLGenerator()
             generator.run()
             print()
-            
+
             print("=" * 60)
             print("✨ 测试完全成功！")
             print()
@@ -76,7 +75,7 @@ def quick_test():
             print("  3. days_back 设置过小，最近没有新论文")
             print()
             return 1
-            
+
     except Exception as e:
         print(f"❌ 发生错误: {e}")
         import traceback

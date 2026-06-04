@@ -3,9 +3,9 @@ sources:
   arxiv:
     enabled: true
     categories:
-      - cs.LG        # 机器学习
-      - physics.flu-dyn  # 流体动力学（CFD核心分类，重点加）
-    max_results: 1000
+      # - cs.LG            # 机器学习
+      - physics.flu-dyn  # 流体动力学
+    max_results: 1000  # 每次抓取的最大论文数
     days_back: 180  # 抓取一定天数的论文
 
   # 语义搜索数据源（用自然语言描述替代关键词列表）
@@ -30,146 +30,117 @@ sources:
 categories:
   多相流:
     keywords:
-      - 多相流
       - multiphase flow
-      - 气液两相流
-      - 固液两相流
       - two-phase flow
       - phase separation
-      - 相界面
+      - LEVEL SET
+      - VOF
+      - Lattice Boltzmann
+      - SPH
+      - DEM
       
   空气动力学:
     keywords:
-      - 空气动力学
       - aerodynamics
-      - 气动优化
       - aerodynamic optimization
-      - 飞行力学
-      - 气流模拟
       - flow around airfoil
+      - airfoil simulation
+      - wing aerodynamics
+      - UAV aerodynamics
+      - drag reduction
+      - lift enhancement
+      - FSI
+      - fluid-structure interaction
+      - aerospace CFD
+      - mesh generation
+      - adaptive mesh
       
   机器学习:
     keywords:
       - machine learning
-      - 机器学习
       - deep learning
-      - 深度学习
       - neural network
-      - 神经网络
       - reinforcement learning
-      - 强化学习
       - transfer learning
-      - 迁移学习
       - supervised learning
-      - 监督学习
       - unsupervised learning
-      - 无监督学习
       - CNN
-      - 卷积神经网络
       - PINN
-      - 物理信息神经网络
       - RNN
-      - 循环神经网络
       - GAN
-      - 生成对抗网络
       - transformer
-      - 变换器模型
       - LSTM
-      - 长短期记忆网络
       
   # 新增分类1：智能流体力学（流体+AI交叉，比CFD+ML更宽泛）
   智能流体力学:
     keywords:
-      - 智能流体力学
       - intelligent fluid dynamics
       - AI-aided fluid simulation
-      - AI帮助的流体模拟
       - AI-driven fluid mechanics
-      - AI驱动的流体力学
       - AI-enhanced fluid dynamics
-      - AI增强的流体动力学
       - fluid simulation with AI
       - AI for fluid mechanics
       - AI in fluid dynamics
-      - 机器学习
-      - 深度学习
-      - 人工智能
-      - 流体力学
       - fluid dynamics
       - machine learning
       - deep learning
       
   流体力学:
     keywords:
-      - 流体力学
       - fluid dynamics
-      - 计算流体力学
       - CFD
       - computational fluid dynamics
       - flow simulation
       - turbulence
-      - 流动模拟
-      - 湍流
+      - RANS
+      - LES
+      - DNS
+      - multiphase flow
+      - two-phase flow
+      - flow modeling
+      - flow computation
+      - mesh
+      - finite volume
+      - finite element
+      - finite difference
+      - adaptive mesh
 
   CFD与机器学习交叉:
     keywords:
       # 流体力学核心关键词（必含其一）
       - computational fluid dynamics
-      - 计算流体力学
       - CFD
       - fluid mechanics
       - fluid dynamics
-      - 流体力学
       - flow simulation
-      - 数值模拟
       - flow modeling
-      - 数值计算
       - flow computation
       - turbulence
       - RANS
       - LES
       - DNS
-      - 湍流
-      - 多相流
       - multiphase flow
       - two-phase flow
-      - 相界面
       # ML/DL关键词（必含其一）
       - machine learning
-      - 机器学习
       - deep learning
-      - 深度学习
       - neural network
-      - 神经网络
       - PINN
-      - 物理信息神经网络
       - physics-informed neural network
       - data-driven modeling
-      - 数据驱动建模
       - surrogate model
-      - 代理模型
       - reduced-order model
-      - 降阶模型
       - ROM
       - data-driven
       - LSTM
-      - 长短期记忆网络
       - CNN
-      - 卷积神经网络
       - transformer
-      - 变换器模型
       - RNN
-      - 循环神经网络
       - GAN
-      - 生成对抗网络
       - reinforcement learning
-      - 强化学习
       - transfer learning
-      - 迁移学习
       - supervised learning
-      - 监督学习
       - unsupervised learning
-      - 无监督学习
 
   # 顶级会议和期刊列表
 venues:
@@ -204,6 +175,7 @@ venues:
     # (计算力学,含CFD分支)
     - European Conference on Computational Fluid Dynamics (ECFD)
     # (欧洲CFD旗舰会议)
+
   journals:
     - Nature
     - Science
@@ -227,6 +199,22 @@ venues:
     # （计算力学，CFD交叉领域）
     - Journal of Machine Learning for Science and Technology
     # （机器学习+工程（含CFD）交叉期刊）
+    - 航空学报
+    # （中国航空航天CFD顶刊）
+    - 计算力学学报
+    # （中国计算力学顶刊，含CFD分支）
+    - 流体力学学报
+    # （中国流体力学顶刊）
+    - 计算物理学报
+    # （中国计算物理顶刊，含CFD分支）
+    - 机械工程学报
+    # （中国机械工程顶刊，含CFD应用）
+    - 自动化学报
+    # （中国自动化顶刊，含智能流体交叉）
+    - 计算机学报
+    # （中国计算机科学顶刊，含机器学习分支）
+    - 力学学报
+    # （中国力学顶刊，含流体力学分支）
 
 # GitHub Pages 配置
 output:

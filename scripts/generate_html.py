@@ -1062,6 +1062,36 @@ document.addEventListener('DOMContentLoaded', function() {{
         return {{ class: badgeClass, text: conference }};
     }}
     
+    // 更新发表状态按钮的数量
+    function updateStatusButtonCounts() {{
+        const categoryFilteredPapers = allPapersData.filter(paper => {{
+            const tags = paper.tags || [];
+            const matchCategory = currentCategory === 'all' || tags.includes(currentCategory);
+            return matchCategory;
+        }});
+
+        let publishedCount = 0;
+        let preprintCount = 0;
+        categoryFilteredPapers.forEach(paper => {{
+            if (paper.conference) {{
+                publishedCount++;
+            }} else {{
+                preprintCount++;
+            }}
+        }});
+
+        statusBtns.forEach(btn => {{
+            const status = btn.dataset.status;
+            if (status === 'all') {{
+                btn.textContent = `全部 (${{categoryFilteredPapers.length}})`;
+            }} else if (status === 'published') {{
+                btn.textContent = `已发表 (${{publishedCount}})`;
+            }} else if (status === 'preprint') {{
+                btn.textContent = `预印本 (${{preprintCount}})`;
+            }}
+        }});
+    }}
+
     // 更新研究领域按钮的数量
     function updateCategoryButtonCounts() {{
         const statusFilteredPapers = allPapersData.filter(paper => {{
@@ -1135,6 +1165,7 @@ document.addEventListener('DOMContentLoaded', function() {{
         }});
         
         // 更新按钮数量和显示
+        updateStatusButtonCounts();
         updateCategoryButtonCounts();
         if (resultsCount) {{
             resultsCount.textContent = `显示 ${{filteredPapers.length}} 篇论文`;

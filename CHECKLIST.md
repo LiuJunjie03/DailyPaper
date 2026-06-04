@@ -38,7 +38,7 @@ git commit -m "Initial commit: DailyPaper"
 
 #### 步骤 3：推送代码
 ```powershell
-git remote add origin https://github.com/4everWZ/DailyPaper.git
+git remote add origin https://github.com/LiuJunjie03/DailyPaper.git
 git branch -M main
 git push -u origin main
 ```
@@ -63,7 +63,7 @@ git push -u origin main
 
 #### 步骤 7：访问网站
 - [ ] 等待 2-3 分钟
-- [ ] 访问 `https://4everWZ.github.io/DailyPaper/`
+- [ ] 访问 `https://LiuJunjie03.github.io/DailyPaper/`
 
 ## 🎉 部署成功标志
 

@@ -38,7 +38,7 @@ class PaperFetcher:
         'Physics of Fluids': 3.5,
         'Computational Mechanics': 3.2,
         'Journal of Machine Learning for Science and Technology': 2.5,
-
+        'Neural Networks': 8.0,
         # 会议（无官方IF，给排序参考分值）
         'NeurIPS': 14.0,
         'ICML': 12.0,
@@ -188,27 +188,26 @@ class PaperFetcher:
 
     def classify_paper(self, paper: Dict) -> List[str]:
         """
-        修复版分类逻辑：确保满足关键词的论文一定打上对应标签，解决点击数量变0问题
+        满足关键词的论文会打上对应标签
         """
         tags = set()
         text = (paper["title"] + " " + paper["abstract"]).lower()
         categories = self.config.get("categories", {})  # self.config已正确初始化
         
-        # ========== 核心修改：扩充关键词池，兼容你的新增词汇 ==========
+        # ========== 关键词池 ==========
         fluid_keywords_pool = [
-            # 原有流体关键词
+            # 流体力学关键词
             "cfd", "fluid dynamics", "turbulence", "aerodynamics", "multiphase flow",
-            "流体力学", "空气动力学", "多相流", "湍流", "流动模拟",
-            # 新增流体关键词（yaml里的）
-            "计算流体力学", "数值模拟", "数值计算", "flow modeling", "flow computation"
+            "flow modeling", "flow computation","RANS", "LES", "DNS", "multiphase flow",
+            "two-phase flow", "LEVEL SET", "VOF", "Lattice Boltzmann",
+            "SPH", "DEM", "mesh", "finite volume",
+            "finite element","finite difference","adaptive mesh", "VOF", "SPH",
         ]
+
         ml_keywords_pool = [
-            # 原有ML关键词
+            # 机器学习关键词
             "machine learning", "deep learning", "neural network", "pinn", "data-driven",
-            "智能流体力学", "机器学习", "深度学习",
-            # 新增ML关键词（yaml里的）
-            "神经网络", "强化学习", "迁移学习", "监督学习", "无监督学习",
-            "物理信息神经网络", "代理模型", "reduced-order model", "rom",
+            "reduced-order model", "rom",
             "cnn", "rnn", "gan", "data-driven modeling", "surrogate model"
         ]
         
@@ -241,15 +240,14 @@ class PaperFetcher:
                 if has_category_kw:
                     tags.add(category_name)
         
-        # ========== 终极兜底：避免漏标（核心修复点） ==========
+        # 避免遗漏，补充规则：
         # 1. 只要含流体关键词，至少打“流体力学”标签
         if has_fluid and "流体力学" not in tags:
             tags.add("流体力学")
-        # 2. 不再自动补打“CFD与机器学习交叉”，避免全部都落入该类
-        # 3. 含智能流体关键词但未打标 → 补充打标
+        # 2. 含智能流体关键词但未打标 → 补充打标
         if "智能流体力学" in text and "智能流体力学" not in tags:
             tags.add("智能流体力学")
-        # 4. 含多相流/空气动力学关键词但未打标 → 补充打标
+        # 3. 含多相流/空气动力学关键词但未打标 → 补充打标
         if "多相流" in text or "multiphase flow" in text:
             tags.add("多相流")
         if "空气动力学" in text or "aerodynamics" in text:
@@ -378,7 +376,7 @@ class PaperFetcher:
 
     def fetch_arxiv_papers(self) -> List[Dict]:
         """
-        严格按你的新版yaml配置抓取：指定分类、30天、200篇
+        严格按你的新版yaml配置抓取：指定分类、60天、1000篇
         """
         arxiv_config = self.config.get("sources", {}).get("arxiv", {})  # self.config已正确初始化
         if not arxiv_config.get("enabled", False):
@@ -388,7 +386,7 @@ class PaperFetcher:
         # 提取你的配置参数
         arxiv_categories = arxiv_config.get("categories", [])
         max_results = arxiv_config.get("max_results", 1000)
-        days_back = arxiv_config.get("days_back", 180)
+        days_back = arxiv_config.get("days_back", 60)
         
         # 构建ArXiv查询：分类用 OR，关键词用 OR，两者 AND 连接
         if arxiv_categories:
@@ -440,9 +438,9 @@ class PaperFetcher:
                 "conference": "",
                 "code_link": "",
                 "tags": [],
-                # 新增字段1：官方关键词（从摘要/评论中提取）
+                # 官方关键词（从摘要/评论中提取）
                 "official_keywords": self.extract_official_keywords(result),
-                # 新增字段2：自定义预设关键词（原有逻辑）
+                # 自定义预设关键词（原有逻辑）
                 "custom_keywords": [],
                 # 兼容原有keywords字段（合并官方+自定义，去重）
                 "keywords": []
