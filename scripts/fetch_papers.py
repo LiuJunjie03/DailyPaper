@@ -5,9 +5,12 @@ import json
 import os
 import re
 import time
+import hashlib
 from datetime import datetime, timedelta, timezone
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 import logging
+from bs4 import BeautifulSoup
+from urllib.parse import quote_plus
 
 # 配置日志（方便查看抓取过程）
 logging.basicConfig(
@@ -18,6 +21,357 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+
+FLUID_RELATED_TAGS = {
+    "多相流",
+    "空气动力学",
+    "智能流体力学",
+    "流体力学",
+    "CFD与机器学习交叉",
+}
+
+FLUID_RELATED_TERMS = [
+    "cfd",
+    "computational fluid dynamics",
+    "fluid dynamics",
+    "fluid mechanics",
+    "flow simulation",
+    "flow modeling",
+    "flow computation",
+    "turbulence",
+    "rans",
+    "les",
+    "dns",
+    "multiphase flow",
+    "two-phase flow",
+    "aerodynamics",
+    "airfoil",
+    "navier-stokes",
+    "lattice boltzmann",
+    "finite volume",
+    "porous media",
+    "blood flow",
+    "heat transfer",
+    "combustion",
+    "wind turbine",
+    "precipitation",
+    "reacting flow",
+]
+
+FLUID_RELATED_CATEGORIES = {
+    "physics.flu-dyn",
+    "physics.ao-ph",
+}
+
+
+SUBDOMAIN_RULES = {
+    # ===== 智能CFD 子分类（方法优先，ML 论文归入此类） =====
+
+    "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "strong": [
+            "surrogate model", "surrogate modelling", "surrogate modeling",
+            "neural operator", "fourier neural operator", "fno", "deeponet",
+            "operator learning", "emulator", "proxy model", "flow field prediction",
+            "reduced-order", "reduced order", "rom", "pod", "autoencoder",
+            "koopman", "data-driven solver", "end-to-end solver",
+            "graph neural network", "gnn", "latent space",
+            "field prediction", "flow prediction",
+            "reduced-complexity", "variational autoencoder", "cvae",
+            "transfer learning", "foundation model",
+        ],
+        "context": [
+            "navier-stokes", "computational fluid dynamics", "cfd",
+            "parametric flow", "fluid simulation", "flow simulation",
+            "pde solver", "neural network", "deep learning",
+            "machine learning", "data-driven", "flow field",
+            "spatiotemporal", "flow data",
+        ],
+        "negative": [
+            "language model", "large language model", "recommendation",
+            "protein", "molecular", "medical image",
+        ],
+    },
+
+    "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "strong": [
+            "turbulence modeling", "turbulence modelling", "turbulent closure",
+            "rans closure", "reynolds stress", "eddy viscosity", "les subgrid",
+            "subgrid-scale", "sgs model", "wall model", "data-driven turbulence",
+            "closure model", "subgrid stress", "turbulence scheme",
+            "closure for rans", "subgrid parametrization",
+        ],
+        "context": [
+            "rans", "les", "dns", "turbulent flow", "boundary layer",
+            "machine learning", "data-driven", "neural network", "deep learning",
+            "cfd", "navier-stokes",
+        ],
+        "negative": ["language model", "social network"],
+    },
+
+    "流体力学 / 智能CFD / 数值方法增强": {
+        "strong": [
+            "learned numerical scheme", "neural numerical method", "learned discretization",
+            "learned flux", "flux limiter", "weno", "differentiable solver",
+            "neural solver", "solver-in-the-loop", "stabilization",
+            "numerical viscosity", "closure coefficient",
+        ],
+        "context": [
+            "conservation law", "pde", "navier-stokes", "cfd", "shock", "mesh",
+            "finite volume", "finite difference",
+            "machine learning", "data-driven", "neural network", "deep learning",
+        ],
+        "negative": ["image classification", "language model"],
+    },
+
+    "流体力学 / 智能CFD / 加速求解与超分辨": {
+        "strong": [
+            "accelerated simulation", "fast cfd", "speedup", "efficient solver",
+            "coarse grid", "coarse-grid", "super-resolution", "high-resolution reconstruction",
+            "downscaling", "multigrid", "real-time simulation", "flow matching",
+        ],
+        "context": [
+            "cfd", "flow simulation", "navier-stokes", "fluid simulation", "solver",
+            "machine learning", "data-driven", "neural network", "deep learning",
+        ],
+        "negative": ["video super-resolution", "image super-resolution"],
+    },
+
+    "流体力学 / 智能CFD / 物理信息神经网络": {
+        "strong": [
+            "physics-informed neural network", "pinn", "physics-informed",
+            "physics-guided neural", "physics-constrained neural",
+            "hard constraint projection", "variational pinn", "cpinn",
+            "physics-embedded", "physics-encoded",
+            "physics-informed machine learning", "residual-guided",
+        ],
+        "context": [
+            "navier-stokes", "cfd", "pde", "fluid", "flow",
+            "neural network", "deep learning",
+            "machine learning", "data-driven", "flow field",
+        ],
+        "negative": ["image classification", "materials design"],
+    },
+
+    "流体力学 / 智能CFD / 流场重建与数据驱动": {
+        "strong": [
+            "flow field reconstruction", "uncertainty quantification",
+            "data assimilation", "sparse sensor", "sparse measurement",
+            "inverse problem", "state estimation", "flow estimation",
+            "neural kalman", "ensemble kalman", "sensor placement",
+            "field reconstruction", "probabilistic prediction",
+            "sparse data", "diffusion model for flow",
+        ],
+        "context": [
+            "navier-stokes", "cfd", "fluid", "flow", "pde",
+            "neural network", "machine learning",
+            "data-driven", "deep learning", "flow field", "spatiotemporal",
+        ],
+        "negative": ["image reconstruction", "video"],
+    },
+
+    "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "strong": [
+            "flow control", "active flow control", "reinforcement learning",
+            "deep reinforcement learning", "drl",
+            "closed-loop control", "optimal control", "active control",
+            "drag reduction control",
+        ],
+        "context": [
+            "navier-stokes", "cfd", "fluid", "flow", "turbulent",
+            "wake", "boundary layer",
+            "machine learning", "data-driven", "neural network", "deep learning",
+        ],
+        "negative": ["robot", "autonomous driving", "game"],
+    },
+
+    # ===== 领域方向（纯传统/非ML论文，ML论文被 negative 排除） =====
+
+    "流体力学 / 气动优化设计": {
+        "strong": [
+            "aerodynamic optimization", "aerodynamic design optimization",
+            "airfoil optimization", "wing optimization", "shape optimization",
+            "inverse design", "drag reduction", "lift enhancement",
+            "topology optimization", "adjoint optimization", "design optimization",
+        ],
+        "context": ["airfoil", "wing", "aerodynamics", "drag", "lift", "uav", "aircraft"],
+        "negative": [
+            "building design", "chip design",
+            "machine learning", "neural network", "deep learning",
+        ],
+    },
+
+    "流体力学 / 湍流与流动机理": {
+        "strong": [
+            "turbulence", "turbulent flow", "isotropic turbulence",
+            "convective turbulence", "vortex", "vortices",
+            "boundary-layer flow", "flow instability",
+            "linear amplification", "resolvent analysis",
+            "jet flow", "shear flow", "wake flow", "mixing layer",
+        ],
+        "context": ["flow", "fluid", "navier-stokes", "physics.flu-dyn"],
+        "negative": [
+            "language model", "transformer", "photonic", "crystal", "materials design",
+            "machine learning", "neural network", "deep learning",
+        ],
+    },
+
+    "流体力学 / 多相流理论": {
+        "strong": [
+            "multiphase flow", "multiphase flows", "two-phase flow", "two-phase flows",
+            "phase separation", "phase field", "interface capturing", "interface tracking",
+            "vof", "level set", "lattice boltzmann", "sph", "dem",
+            "cavitation", "boiling", "droplet", "bubble", "spray",
+        ],
+        "context": ["fluid", "flow", "navier-stokes", "cfd"],
+        "negative": [
+            "semantic segmentation",
+            "machine learning", "neural network", "deep learning",
+        ],
+    },
+
+    "流体力学 / 空气动力学理论": {
+        "strong": [
+            "aerodynamics", "airfoil", "wing aerodynamics", "uav aerodynamics",
+            "aircraft aerodynamics", "compressible flow", "hypersonic flow",
+            "shock wave", "boundary layer", "aeroelasticity",
+            "fluid-structure interaction", "fsi",
+        ],
+        "context": ["flow", "fluid", "cfd", "navier-stokes"],
+        "negative": [
+            "wireless", "network traffic",
+            "machine learning", "neural network", "deep learning",
+        ],
+    },
+
+    "流体力学 / 环境与地球物理流体": {
+        "strong": [
+            "weather forecasting", "climate", "precipitation",
+            "atmospheric flow", "ocean flow", "ocean circulation",
+            "sea ice", "geophysical flow", "environmental fluid",
+            "coastal hydrodynamics", "storm", "convective-scale",
+            "seasonal forecast", "atmospheric dynamics",
+        ],
+        "context": ["fluid", "flow", "simulation", "navier-stokes", "cfd"],
+        "negative": [
+            "semiconductor", "electronics", "market",
+            "machine learning", "neural network", "deep learning",
+        ],
+    },
+
+    "流体力学 / 生物与医学流体": {
+        "strong": [
+            "blood flow", "cardiovascular", "aneurysm", "aortic",
+            "biomedical flow", "cilia", "cilium", "ciliary",
+            "microfluidic", "biolocomotion", "respiratory flow",
+            "hemodynamics", "ventricular flow",
+        ],
+        "context": ["fluid", "flow", "simulation", "navier-stokes", "cfd"],
+        "negative": [
+            "image segmentation", "clinical trial",
+            "machine learning", "neural network", "deep learning",
+        ],
+    },
+
+    "流体力学 / 燃烧与传热": {
+        "strong": [
+            "combustion", "reacting flow", "detonation",
+            "fire simulation", "heat transfer", "thermal convection",
+            "radiation transfer", "flame", "thermal flow",
+        ],
+        "context": ["fluid", "flow", "simulation", "navier-stokes", "cfd"],
+        "negative": [
+            "battery thermal", "electronics cooling",
+            "machine learning", "neural network", "deep learning",
+        ],
+    },
+
+    "流体力学 / 风能与海洋工程流体": {
+        "strong": [
+            "wind turbine", "offshore wind", "floating offshore",
+            "wake modeling", "wind farm", "floating wind",
+            "fatigue loading", "wave-structure", "marine hydrodynamics",
+            "ocean energy", "wind energy",
+        ],
+        "context": ["fluid", "flow", "simulation", "cfd", "turbulent"],
+        "negative": [
+            "power electronics", "grid connection",
+            "machine learning", "neural network", "deep learning",
+        ],
+    },
+
+    "流体力学 / 计算流体力学方法": {
+        "strong": [
+            "finite volume method", "finite element method",
+            "mesh generation", "adaptive mesh refinement",
+            "high-order scheme", "open-source solver",
+            "error estimation", "richardson extrapolation",
+            "grid convergence", "discretization error",
+        ],
+        "context": ["cfd", "navier-stokes", "numerical", "computational fluid dynamics"],
+        "negative": ["machine learning", "neural network", "deep learning", "surrogate"],
+    },
+}
+
+PARENT_TAGS = {
+    # 智能CFD 子分类（父路径: 流体力学 → 流体力学 / 智能CFD）
+    "流体力学 / 智能CFD / 代理模型与算子学习": ["流体力学", "流体力学 / 智能CFD"],
+    "流体力学 / 智能CFD / 湍流建模与闭合": ["流体力学", "流体力学 / 智能CFD"],
+    "流体力学 / 智能CFD / 数值方法增强": ["流体力学", "流体力学 / 智能CFD"],
+    "流体力学 / 智能CFD / 加速求解与超分辨": ["流体力学", "流体力学 / 智能CFD"],
+    "流体力学 / 智能CFD / 物理信息神经网络": ["流体力学", "流体力学 / 智能CFD"],
+    "流体力学 / 智能CFD / 流场重建与数据驱动": ["流体力学", "流体力学 / 智能CFD"],
+    "流体力学 / 智能CFD / 流动控制与强化学习": ["流体力学", "流体力学 / 智能CFD"],
+    # 领域方向（父路径: 流体力学）
+    "流体力学 / 气动优化设计": ["流体力学"],
+    "流体力学 / 湍流与流动机理": ["流体力学"],
+    "流体力学 / 多相流理论": ["流体力学"],
+    "流体力学 / 空气动力学理论": ["流体力学"],
+    "流体力学 / 环境与地球物理流体": ["流体力学"],
+    "流体力学 / 生物与医学流体": ["流体力学"],
+    "流体力学 / 燃烧与传热": ["流体力学"],
+    "流体力学 / 风能与海洋工程流体": ["流体力学"],
+    "流体力学 / 计算流体力学方法": ["流体力学"],
+}
+
+
+def normalize_title(title: str) -> str:
+    return re.sub(r"\s+", " ", (title or "").lower().strip())
+
+
+def normalize_doi(doi: str) -> str:
+    doi = (doi or "").strip().lower()
+    doi = re.sub(r"^https?://(dx\.)?doi\.org/", "", doi)
+    return doi
+
+
+def normalize_arxiv_id(arxiv_id: str) -> str:
+    arxiv_id = (arxiv_id or "").strip()
+    arxiv_id = arxiv_id.rsplit("/", 1)[-1]
+    return re.sub(r"v\d+$", "", arxiv_id, flags=re.IGNORECASE).lower()
+
+
+def term_in_text(text: str, term: str) -> bool:
+    term = (term or "").lower().strip()
+    if not term:
+        return False
+    escaped = re.escape(term).replace(r"\ ", r"\s+")
+    return re.search(rf"(?<![a-z0-9]){escaped}(?![a-z0-9])", text) is not None
+
+
+def is_relevant_paper(paper: Dict) -> bool:
+    tags = set(paper.get("tags") or [])
+    if tags & FLUID_RELATED_TAGS:
+        return True
+    if any(tag == "流体力学" or str(tag).startswith("流体力学 /") for tag in tags):
+        return True
+
+    categories = {str(cat).lower() for cat in paper.get("categories") or []}
+    if categories & FLUID_RELATED_CATEGORIES:
+        return True
+
+    text = f"{paper.get('title', '')} {paper.get('abstract', '')}".lower()
+    return any(term_in_text(text, term) for term in FLUID_RELATED_TERMS)
 
 
 class PaperFetcher:
@@ -124,6 +478,184 @@ class PaperFetcher:
             logger.warning(f"Semantic Scholar API 查询失败: {e}")
         return None
 
+    def _paper_text(self, paper: Dict) -> str:
+        parts = [
+            paper.get("title", ""),
+            paper.get("abstract", ""),
+            " ".join(str(cat) for cat in paper.get("categories", []) or []),
+            paper.get("conference", ""),
+            paper.get("venue", ""),
+        ]
+        return " ".join(parts).lower()
+
+    def _term_in_text(self, text: str, term: str) -> bool:
+        return term_in_text(text, term)
+
+    def _contains_any(self, text: str, terms: List[str]) -> bool:
+        return any(self._term_in_text(text, term) for term in terms)
+
+    def _score_subdomains(self, paper: Dict) -> Dict[str, Dict]:
+        text = self._paper_text(paper)
+        scores = {}
+        has_fluid_context = self._contains_any(text, FLUID_RELATED_TERMS) or any(
+            str(cat).lower() in FLUID_RELATED_CATEGORIES
+            for cat in paper.get("categories", []) or []
+        )
+        if not has_fluid_context:
+            return scores
+
+        for label, rule in SUBDOMAIN_RULES.items():
+            strong_hits = [term for term in rule["strong"] if self._term_in_text(text, term)]
+            context_hits = [term for term in rule["context"] if self._term_in_text(text, term)]
+            negative_hits = [term for term in rule.get("negative", []) if self._term_in_text(text, term)]
+            score = len(strong_hits) * 3 + len(context_hits) - len(negative_hits) * 4
+
+            # 智能CFD 子类要求至少有一个 context 匹配（流体/CFD 场景词），
+            # 防止仅凭 ML 术语就误分类。
+            if "智能CFD" in label and not context_hits:
+                score -= 3
+            if strong_hits and score >= 4:
+                scores[label] = {
+                    "score": score,
+                    "strong_hits": strong_hits[:8],
+                    "context_hits": context_hits[:8],
+                    "negative_hits": negative_hits[:5],
+                }
+        return scores
+
+    def _publication_type(self, paper: Dict) -> str:
+        publication_types = [str(t).lower() for t in paper.get("publication_types", []) or []]
+        venue = paper.get("venue") or paper.get("conference") or ""
+        if "journalarticle" in publication_types or paper.get("doi"):
+            return "journal"
+        if "conference" in publication_types:
+            return "conference"
+        if paper.get("arxiv_id"):
+            return "preprint" if not venue else "conference"
+        return "unknown"
+
+    def _finalize_paper(self, paper: Dict) -> Dict:
+        paper["venue"] = paper.get("venue") or paper.get("conference") or ""
+        paper["conference"] = paper.get("conference") or paper.get("venue") or ""
+        paper["doi"] = normalize_doi(paper.get("doi", ""))
+        raw_arxiv_id = paper.get("arxiv_id") or ""
+        if not raw_arxiv_id and re.match(r"^\d{4}\.\d{4,5}", str(paper.get("id", ""))):
+            raw_arxiv_id = paper.get("id", "")
+        paper["arxiv_id"] = normalize_arxiv_id(raw_arxiv_id)
+        if paper.get("arxiv_id") and not paper.get("arxiv_url"):
+            paper["arxiv_url"] = f"https://arxiv.org/abs/{paper['arxiv_id']}"
+        if paper.get("arxiv_id") and not paper.get("preprint_pdf_url"):
+            paper["preprint_pdf_url"] = f"https://arxiv.org/pdf/{paper['arxiv_id']}"
+        paper["paper_url"] = (
+            paper.get("paper_url")
+            or (f"https://doi.org/{paper['doi']}" if paper.get("doi") else "")
+            or paper.get("arxiv_url")
+            or ""
+        )
+        paper["publication_type"] = paper.get("publication_type") or self._publication_type(paper)
+        paper["is_preprint"] = paper["publication_type"] == "preprint"
+        if not paper["is_preprint"] and "arxiv.org" in str(paper.get("pdf_url", "")):
+            paper["preprint_pdf_url"] = paper.get("preprint_pdf_url") or paper["pdf_url"]
+            paper["pdf_url"] = ""
+        if not paper.get("source"):
+            if paper.get("semantic_scholar_id") or paper.get("doi"):
+                paper["source"] = "semantic_scholar"
+            elif paper.get("arxiv_url") or paper.get("arxiv_id"):
+                paper["source"] = "arxiv"
+            else:
+                paper["source"] = "unknown"
+        paper["impact_factor"] = paper.get("impact_factor") or self.get_impact_factor(paper)
+        paper["tags"] = self.classify_paper(paper)
+        paper["primary_domain"] = paper["tags"][-1] if paper.get("tags") else ""
+        official_keywords = paper.get("official_keywords") or []
+        paper["custom_keywords"] = self.extract_paper_keywords(paper)
+        paper["keywords"] = sorted(set(official_keywords + paper["custom_keywords"]))
+        return paper
+
+    def _identity_keys(self, paper: Dict) -> List[str]:
+        keys = []
+        doi = normalize_doi(paper.get("doi", ""))
+        arxiv_id = normalize_arxiv_id(paper.get("arxiv_id") or paper.get("id", ""))
+        title = normalize_title(paper.get("title", ""))
+        if doi:
+            keys.append(f"doi:{doi}")
+        if arxiv_id and re.match(r"^\d{4}\.\d{4,5}", arxiv_id):
+            keys.append(f"arxiv:{arxiv_id}")
+        if title:
+            keys.append(f"title:{title}")
+        return keys
+
+    def _source_rank(self, paper: Dict) -> int:
+        rank = 0
+        if paper.get("source") == "semantic_scholar":
+            rank += 30
+        if paper.get("doi"):
+            rank += 20
+        if paper.get("venue") or paper.get("conference"):
+            rank += 10
+        if paper.get("citation_count") is not None:
+            rank += 5
+        return rank
+
+    def _merge_two_papers(self, old: Dict, new: Dict) -> Dict:
+        primary, secondary = (new, old) if self._source_rank(new) >= self._source_rank(old) else (old, new)
+        merged = dict(secondary)
+        merged.update({k: v for k, v in primary.items() if v not in (None, "", [], {})})
+
+        for field in ["arxiv_url", "pdf_url", "preprint_pdf_url", "paper_url", "doi", "venue", "conference"]:
+            if not merged.get(field):
+                merged[field] = old.get(field) or new.get(field) or ""
+
+        merged["citation_count"] = (
+            new.get("citation_count")
+            if new.get("citation_count") is not None
+            else old.get("citation_count")
+        )
+        merged["keywords"] = sorted(set((old.get("keywords") or []) + (new.get("keywords") or [])))
+        merged["categories"] = sorted(set((old.get("categories") or []) + (new.get("categories") or [])))
+        merged["sources"] = sorted(set((old.get("sources") or [old.get("source", "unknown")]) + (new.get("sources") or [new.get("source", "unknown")])))
+        merged["source"] = primary.get("source") or merged.get("source") or "unknown"
+        return self._finalize_paper(merged)
+
+    def _merge_paper_list(self, papers: List[Dict]) -> List[Dict]:
+        merged = []
+        key_to_index = {}
+        for paper in papers:
+            paper = self._finalize_paper(paper)
+            keys = self._identity_keys(paper)
+            existing_index = next((key_to_index[k] for k in keys if k in key_to_index), None)
+            if existing_index is None:
+                key_to_index.update({k: len(merged) for k in keys})
+                merged.append(paper)
+                continue
+
+            merged[existing_index] = self._merge_two_papers(merged[existing_index], paper)
+            for key in self._identity_keys(merged[existing_index]):
+                key_to_index[key] = existing_index
+        return merged
+
+    def write_classification_report(self, papers: List[Dict], data_dir: str):
+        report = {}
+        for paper in papers:
+            primary = paper.get("primary_domain") or "未分类"
+            report.setdefault(primary, [])
+            if len(report[primary]) >= 12:
+                continue
+            report[primary].append({
+                "title": paper.get("title", ""),
+                "source": paper.get("source", ""),
+                "publication_type": paper.get("publication_type", ""),
+                "venue": paper.get("venue") or paper.get("conference") or "",
+                "citation_count": paper.get("citation_count"),
+                "classification_score": paper.get("classification_score", {}).get(primary),
+                "doi": paper.get("doi", ""),
+                "arxiv_id": paper.get("arxiv_id", ""),
+            })
+        path = os.path.join(data_dir, "classification_report.json")
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(report, f, ensure_ascii=False, indent=2)
+        logger.info(f"分类验证报告已保存到: {path}")
+
     # ========== 关键新增：提取论文的官方关键词 ==========
     def extract_official_keywords(self, result: arxiv.Result) -> List[str]:
         """
@@ -167,7 +699,7 @@ class PaperFetcher:
             all_keywords.extend([kw.lower() for kw in cat_info.get("keywords", [])])
         
         # 提取文本中存在的关键词（去重）
-        extracted = list({kw for kw in all_keywords if kw in text})
+        extracted = list({kw for kw in all_keywords if self._term_in_text(text, kw)})
         
         # 补充新增的高频核心关键词（兼容你的yaml扩充）
         core_keywords = [
@@ -180,80 +712,61 @@ class PaperFetcher:
             "machine learning", "deep learning", "pinn", "neural network"
         ]
         for kw in core_keywords:
-            if kw.lower() in text and kw.lower() not in extracted:
+            if self._term_in_text(text, kw) and kw.lower() not in extracted:
                 extracted.append(kw.lower())
         
         # 最多保留10个关键词（适配新增词汇，多保留2个）
         return extracted[:10]
 
     def classify_paper(self, paper: Dict) -> List[str]:
-        """
-        满足关键词的论文会打上对应标签
-        """
-        tags = set()
-        text = (paper["title"] + " " + paper["abstract"]).lower()
-        categories = self.config.get("categories", {})  # self.config已正确初始化
-        
-        # ========== 关键词池 ==========
-        fluid_keywords_pool = [
-            # 流体力学关键词
-            "cfd", "fluid dynamics", "turbulence", "aerodynamics", "multiphase flow",
-            "flow modeling", "flow computation","RANS", "LES", "DNS", "multiphase flow",
-            "two-phase flow", "LEVEL SET", "VOF", "Lattice Boltzmann",
-            "SPH", "DEM", "mesh", "finite volume",
-            "finite element","finite difference","adaptive mesh", "VOF", "SPH",
-        ]
+        """Classify into the smallest CFD/fluid subdomain using strict scored rules."""
+        text = self._paper_text(paper)
+        ordered_tags = []
+        categories = self.config.get("categories", {})
 
-        ml_keywords_pool = [
-            # 机器学习关键词
-            "machine learning", "deep learning", "neural network", "pinn", "data-driven",
-            "reduced-order model", "rom",
-            "cnn", "rnn", "gan", "data-driven modeling", "surrogate model"
-        ]
-        
-        # 检查是否含流体/ML关键词（兼容新增词汇）
-        has_fluid = any(kw.lower() in text for kw in fluid_keywords_pool)
-        has_ml = any(kw.lower() in text for kw in ml_keywords_pool)
-        
-        # ========== 关键修复：遍历分类时，只要含该分类关键词就强制打标 ==========
-        for category_name, category_info in categories.items():
-            keywords = [kw.lower() for kw in category_info.get("keywords", [])]
-            has_category_kw = any(kw in text for kw in keywords)
-            
-            # 1. CFD与机器学习交叉：必须同时包含流体+ML关键词
-            if category_name == "CFD与机器学习交叉":
-                if has_fluid and has_ml:
-                    tags.add(category_name)
-            
-            # 2. 智能流体力学：含关键词即可打标
-            elif category_name == "智能流体力学":
-                if has_category_kw:
-                    tags.add(category_name)
-            
-            # 3. 纯流体领域：只要含该分类关键词 → 强制打标
-            elif category_name in ["多相流", "空气动力学", "流体力学"]:
-                if has_category_kw:
-                    tags.add(category_name)
-            
-            # 4. 机器学习：含关键词即可打标
-            elif category_name == "机器学习":
-                if has_category_kw:
-                    tags.add(category_name)
-        
-        # 避免遗漏，补充规则：
-        # 1. 只要含流体关键词，至少打“流体力学”标签
-        if has_fluid and "流体力学" not in tags:
-            tags.add("流体力学")
-        # 2. 含智能流体关键词但未打标 → 补充打标
-        if "智能流体力学" in text and "智能流体力学" not in tags:
-            tags.add("智能流体力学")
-        # 3. 含多相流/空气动力学关键词但未打标 → 补充打标
-        if "多相流" in text or "multiphase flow" in text:
-            tags.add("多相流")
-        if "空气动力学" in text or "aerodynamics" in text:
-            tags.add("空气动力学")
-        
-        return list(tags)
+        def add_tag(category_name: str):
+            if category_name in categories and category_name not in ordered_tags:
+                ordered_tags.append(category_name)
+
+        has_fluid = self._contains_any(text, FLUID_RELATED_TERMS) or any(
+            str(cat).lower() in FLUID_RELATED_CATEGORIES
+            for cat in paper.get("categories", []) or []
+        )
+        has_ml = self._contains_any(text, [
+            "machine learning", "deep learning", "neural network", "neural operator",
+            "reinforcement learning", "data-driven", "pinn", "physics-informed",
+            "surrogate", "reduced-order", "rom", "gnn",
+        ])
+
+        if has_ml:
+            add_tag("机器学习")
+        if has_fluid:
+            add_tag("流体力学")
+        if not has_fluid:
+            paper["classification_score"] = {}
+            return ordered_tags
+
+        scores = self._score_subdomains(paper)
+        paper["classification_score"] = scores
+        if not scores:
+            # 兜底：流体论文未匹配任何子域时归入"其他"
+            add_tag("流体力学 / 其他")
+            return ordered_tags
+
+        sorted_labels = sorted(scores, key=lambda label: scores[label]["score"], reverse=True)
+        primary = sorted_labels[0]
+        for parent in PARENT_TAGS.get(primary, []):
+            add_tag(parent)
+        add_tag(primary)
+
+        # Keep a small number of secondary leaf tags only when they are clearly distinct.
+        primary_score = scores[primary]["score"]
+        for label in sorted_labels[1:]:
+            if scores[label]["score"] >= max(5, primary_score - 2):
+                for parent in PARENT_TAGS.get(label, []):
+                    add_tag(parent)
+                add_tag(label)
+        return ordered_tags
 
     def fetch_semantic_scholar_papers(self) -> List[Dict]:
         """用 Semantic Scholar 语义搜索替代关键词匹配"""
@@ -262,7 +775,13 @@ class PaperFetcher:
             logger.info("Semantic Scholar 数据源已禁用")
             return []
 
-        queries = ss_config.get("queries", [])
+        raw_queries = ss_config.get("queries", [])
+        if isinstance(raw_queries, dict):
+            queries = []
+            for values in raw_queries.values():
+                queries.extend(values if isinstance(values, list) else [values])
+        else:
+            queries = raw_queries
         max_per_query = ss_config.get("max_results_per_query", 100)
         days_back = ss_config.get("days_back", 180)
 
@@ -277,7 +796,7 @@ class PaperFetcher:
             url = "https://api.semanticscholar.org/graph/v1/paper/search"
             params = {
                 "query": query,
-                "fields": "title,abstract,authors,year,citationCount,venue,publicationDate,externalIds,openAccessPdf,fieldsOfStudy",
+                "fields": "paperId,url,title,abstract,authors,year,citationCount,venue,publicationVenue,publicationDate,publicationTypes,externalIds,openAccessPdf,fieldsOfStudy,journal",
                 "limit": max_per_query,
                 "year": f"{year_from}-"
             }
@@ -286,11 +805,24 @@ class PaperFetcher:
                 headers = {}
                 if self.ss_api_key:
                     headers["x-api-key"] = self.ss_api_key
-                resp = requests.get(url, params=params, headers=headers, timeout=30)
-                if resp.status_code == 429:
-                    logger.warning("Semantic Scholar API 限速，等待30秒...")
-                    time.sleep(30)
-                    resp = requests.get(url, params=params, headers=headers, timeout=30)
+                resp = None
+                for attempt in range(3):
+                    try:
+                        resp = requests.get(url, params=params, headers=headers, timeout=30)
+                        if resp.status_code == 429:
+                            wait_seconds = 30 + attempt * 10
+                            logger.warning(f"Semantic Scholar API 限速，等待{wait_seconds}秒...")
+                            time.sleep(wait_seconds)
+                            continue
+                        break
+                    except requests.RequestException as e:
+                        wait_seconds = 5 * (attempt + 1)
+                        logger.warning(f"Semantic Scholar 网络请求失败，{wait_seconds}秒后重试: {e}")
+                        time.sleep(wait_seconds)
+
+                if resp is None:
+                    logger.warning("Semantic Scholar API 请求失败，跳过本查询")
+                    continue
 
                 if resp.status_code != 200:
                     logger.warning(f"Semantic Scholar API 返回 {resp.status_code}")
@@ -300,10 +832,10 @@ class PaperFetcher:
                 results = data.get("data", [])
 
                 for item in results:
-                    ext_ids = item.get("externalIds", {})
+                    ext_ids = item.get("externalIds") or {}
                     paper_id = (
-                        ext_ids.get("ArXiv")
-                        or ext_ids.get("DOI")
+                        ext_ids.get("DOI")
+                        or ext_ids.get("ArXiv")
                         or item.get("paperId", "")
                     )
 
@@ -314,7 +846,7 @@ class PaperFetcher:
                     pub_date = item.get("publicationDate")
                     if pub_date:
                         try:
-                            dt = datetime.strptime(pub_date, "%Y-%m-%d")
+                            dt = datetime.strptime(pub_date, "%Y-%m-%d").replace(tzinfo=timezone.utc)
                             if dt < start_date:
                                 continue
                             published = pub_date
@@ -329,17 +861,33 @@ class PaperFetcher:
                         continue
 
                     arxiv_id = ext_ids.get("ArXiv")
+                    doi = ext_ids.get("DOI") or ""
                     pdf_url = ""
+                    preprint_pdf_url = ""
                     arxiv_url = ""
-                    oa_pdf = item.get("openAccessPdf")
+                    oa_pdf = item.get("openAccessPdf") or {}
                     if arxiv_id:
                         arxiv_url = f"https://arxiv.org/abs/{arxiv_id}"
-                        pdf_url = f"https://arxiv.org/pdf/{arxiv_id}"
-                    elif oa_pdf and oa_pdf.get("url"):
+                        preprint_pdf_url = f"https://arxiv.org/pdf/{arxiv_id}"
+                    if oa_pdf and oa_pdf.get("url"):
                         pdf_url = oa_pdf["url"]
 
                     authors_list = item.get("authors", [])
                     authors_str = ", ".join(a.get("name", "") for a in authors_list if a.get("name"))
+                    publication_types = item.get("publicationTypes") or []
+                    journal = item.get("journal") or {}
+                    venue = (
+                        item.get("venue")
+                        or (item.get("publicationVenue") or {}).get("name")
+                        or journal.get("name")
+                        or ""
+                    )
+                    paper_url = (
+                        item.get("url")
+                        or (f"https://doi.org/{normalize_doi(doi)}" if doi else "")
+                        or arxiv_url
+                        or f"https://www.semanticscholar.org/paper/{item.get('paperId', '')}"
+                    )
 
                     paper = {
                         "id": paper_id,
@@ -347,19 +895,28 @@ class PaperFetcher:
                         "authors": authors_str,
                         "abstract": abstract,
                         "published": published,
-                        "arxiv_url": arxiv_url or f"https://www.semanticscholar.org/paper/{item.get('paperId', '')}",
+                        "paper_url": paper_url,
+                        "arxiv_id": arxiv_id or "",
+                        "arxiv_url": arxiv_url,
                         "pdf_url": pdf_url,
+                        "preprint_pdf_url": preprint_pdf_url,
                         "categories": item.get("fieldsOfStudy") or [],
-                        "conference": item.get("venue") or "",
+                        "venue": venue,
+                        "conference": venue,
+                        "publication_types": publication_types,
+                        "publication_type": "",
+                        "doi": doi,
+                        "external_ids": ext_ids,
+                        "semantic_scholar_id": item.get("paperId", ""),
                         "code_link": "",
                         "tags": [],
                         "keywords": [],
                         "citation_count": item.get("citationCount"),
-                        "impact_factor": self.get_impact_factor({"conference": item.get("venue") or ""}),
+                        "impact_factor": self.get_impact_factor({"conference": venue}),
                         "source": "semantic_scholar"
                     }
 
-                    paper["tags"] = self.classify_paper(paper)
+                    paper = self._finalize_paper(paper)
                     all_papers.append(paper)
 
                 logger.info(f"  → 获取 {len(results)} 篇，累计 {len(all_papers)} 篇")
@@ -372,6 +929,560 @@ class PaperFetcher:
                 continue
 
         logger.info(f"Semantic Scholar 共获取 {len(all_papers)} 篇去重论文")
+        return all_papers
+
+    def _flatten_queries(self, raw_queries) -> List[str]:
+        if isinstance(raw_queries, dict):
+            queries = []
+            for values in raw_queries.values():
+                queries.extend(values if isinstance(values, list) else [values])
+            return [str(q) for q in queries if str(q).strip()]
+        return [str(q) for q in (raw_queries or []) if str(q).strip()]
+
+    def _cdp_base_url(self, source_config: Dict) -> str:
+        return (
+            source_config.get("browser_url")
+            or self.config.get("browser", {}).get("chrome_devtools_url")
+            or os.environ.get("CHROME_DEVTOOLS_URL")
+            or "http://127.0.0.1:9222"
+        ).rstrip("/")
+
+    def _evaluate_in_chrome(self, url: str, script: str, source_name: str, source_config: Dict) -> Optional[Dict]:
+        """Run a Chrome DevTools Protocol DOM extraction script."""
+        try:
+            import websocket
+        except ImportError:
+            logger.info(f"{source_name} browser backend requires websocket-client; falling back.")
+            return None
+
+        base_url = self._cdp_base_url(source_config)
+        timeout = int(source_config.get("browser_timeout", 45))
+        tab_id = None
+        ws = None
+        try:
+            new_tab = requests.put(
+                f"{base_url}/json/new?{quote_plus(url, safe=':/?&=%')}",
+                timeout=10,
+            )
+            if new_tab.status_code not in (200, 201):
+                logger.info(f"{source_name} Chrome DevTools unavailable at {base_url}: {new_tab.status_code}")
+                return None
+
+            tab = new_tab.json()
+            tab_id = tab.get("id")
+            ws_url = tab.get("webSocketDebuggerUrl")
+            if not ws_url:
+                logger.info(f"{source_name} Chrome target has no websocket URL.")
+                return None
+
+            ws = websocket.create_connection(ws_url, timeout=timeout)
+            message_id = 1
+            ws.send(json.dumps({
+                "id": message_id,
+                "method": "Runtime.evaluate",
+                "params": {
+                    "expression": f"({script})()",
+                    "awaitPromise": True,
+                    "returnByValue": True,
+                    "timeout": timeout * 1000,
+                },
+            }))
+            while True:
+                message = json.loads(ws.recv())
+                if message.get("id") != message_id:
+                    continue
+                if "exceptionDetails" in message:
+                    logger.warning(f"{source_name} browser extraction script failed: {message['exceptionDetails']}")
+                    return None
+                result = message.get("result", {}).get("result", {})
+                if "value" in result:
+                    return result["value"]
+                if result.get("type") == "undefined":
+                    return {}
+                logger.warning(f"{source_name} browser extraction returned non-JSON result: {result}")
+                return None
+        except Exception as e:
+            logger.info(f"{source_name} browser backend unavailable, falling back: {e}")
+            return None
+        finally:
+            if ws:
+                try:
+                    ws.close()
+                except Exception:
+                    pass
+            if tab_id:
+                try:
+                    requests.get(f"{base_url}/json/close/{tab_id}", timeout=5)
+                except Exception:
+                    pass
+
+    def _fetch_google_scholar_with_browser(self, queries: List[str], gs_config: Dict) -> Optional[List[Dict]]:
+        max_per_query = min(int(gs_config.get("max_results_per_query", 10)), 20)
+        year_from = gs_config.get("year_from", (datetime.now(timezone.utc) - timedelta(days=365)).year)
+        all_papers = []
+        seen_titles = set()
+
+        script = """
+async () => {
+  for (let i = 0; i < 30; i++) {
+    if (document.querySelector('#gs_res_ccl') || document.querySelector('#gs_captcha_ccl')) break;
+    await new Promise(r => setTimeout(r, 500));
+  }
+  if (document.querySelector('#gs_captcha_ccl') || document.body.innerText.includes('unusual traffic')) {
+    return { error: 'captcha', message: 'Google Scholar requires CAPTCHA verification.' };
+  }
+  const items = document.querySelectorAll('#gs_res_ccl .gs_r.gs_or.gs_scl');
+  const results = Array.from(items).map((item, i) => {
+    const titleEl = item.querySelector('.gs_rt a');
+    const meta = item.querySelector('.gs_a')?.textContent || '';
+    const parts = meta.split(' - ');
+    const citedByEl = item.querySelector('.gs_fl a[href*="cites"]');
+    const versionsEl = item.querySelector('.gs_fl a[href*="cluster"]');
+    return {
+      n: i + 1,
+      title: titleEl?.textContent?.trim() || item.querySelector('.gs_rt')?.textContent?.trim() || '',
+      href: titleEl?.href || '',
+      authors: parts[0]?.trim() || '',
+      journalYear: parts[1]?.trim() || '',
+      citedBy: citedByEl?.textContent?.match(/\\d+/)?.[0] || '0',
+      dataCid: item.getAttribute('data-cid') || '',
+      fullTextUrl: (item.querySelector('.gs_ggs a') || item.querySelector('.gs_or_ggsm a'))?.href || '',
+      snippet: item.querySelector('.gs_rs')?.textContent?.trim() || '',
+      versions: versionsEl?.textContent?.match(/\\d+/)?.[0] || ''
+    };
+  });
+  return { resultCount: results.length, results };
+}
+"""
+
+        for query in queries:
+            url = (
+                "https://scholar.google.com/scholar"
+                f"?q={quote_plus(query)}&hl=en&num={max_per_query}&as_ylo={year_from}"
+            )
+            logger.info(f"Google Scholar browser search: {query}")
+            data = self._evaluate_in_chrome(url, script, "Google Scholar", gs_config)
+            if data is None:
+                return None
+            if data.get("error") == "captcha":
+                logger.warning("Google Scholar CAPTCHA required in Chrome; skipping browser backend.")
+                return None
+
+            for item in data.get("results", [])[:max_per_query]:
+                title = item.get("title", "")
+                title_norm = normalize_title(title)
+                if not title_norm or title_norm in seen_titles:
+                    continue
+                seen_titles.add(title_norm)
+                journal_year = item.get("journalYear", "")
+                year_match = re.search(r"(19|20)\d{2}", journal_year)
+                venue = re.sub(r"\b(19|20)\d{2}\b", "", journal_year).strip(" ,;-")
+                paper = {
+                    "id": f"gs-{item.get('dataCid') or hashlib.md5(title_norm.encode()).hexdigest()[:12]}",
+                    "title": title,
+                    "authors": item.get("authors", ""),
+                    "abstract": item.get("snippet", ""),
+                    "published": year_match.group(0) if year_match else str(year_from),
+                    "paper_url": item.get("href", "") or item.get("fullTextUrl", ""),
+                    "arxiv_id": "",
+                    "arxiv_url": "",
+                    "pdf_url": item.get("fullTextUrl", ""),
+                    "preprint_pdf_url": "",
+                    "categories": [],
+                    "venue": venue,
+                    "conference": venue,
+                    "publication_types": [],
+                    "publication_type": "",
+                    "doi": "",
+                    "external_ids": {"GoogleScholarCID": item.get("dataCid", "")},
+                    "semantic_scholar_id": "",
+                    "code_link": "",
+                    "tags": [],
+                    "keywords": [],
+                    "citation_count": int(item.get("citedBy") or 0),
+                    "impact_factor": self.get_impact_factor({"conference": venue}),
+                    "source": "google_scholar",
+                }
+                all_papers.append(self._finalize_paper(paper))
+            time.sleep(2)
+
+        return all_papers
+
+    def _fetch_cnki_with_browser(self, queries: List[str], cnki_config: Dict) -> Optional[List[Dict]]:
+        max_per_query = int(cnki_config.get("max_results_per_query", 20))
+        all_papers = []
+        seen_titles = set()
+
+        for query in queries:
+            script = f"""
+async () => {{
+  const query = {json.dumps(query, ensure_ascii=False)};
+  await new Promise((resolve, reject) => {{
+    let n = 0;
+    const tick = () => {{
+      if (document.querySelector('input.search-input')) resolve();
+      else if (++n > 30) reject(new Error('search input timeout'));
+      else setTimeout(tick, 500);
+    }};
+    tick();
+  }});
+  const captcha = document.querySelector('#tcaptcha_transform_dy');
+  if (captcha && captcha.getBoundingClientRect().top >= 0) return {{ error: 'captcha' }};
+  const input = document.querySelector('input.search-input');
+  input.value = query;
+  input.dispatchEvent(new Event('input', {{ bubbles: true }}));
+  document.querySelector('input.search-btn')?.click();
+  await new Promise((resolve, reject) => {{
+    let n = 0;
+    const tick = () => {{
+      if (document.querySelector('.result-table-list tbody tr') || document.querySelector('.pagerTitleCell')) resolve();
+      else if (++n > 40) reject(new Error('results timeout'));
+      else setTimeout(tick, 500);
+    }};
+    tick();
+  }});
+  const captcha2 = document.querySelector('#tcaptcha_transform_dy');
+  if (captcha2 && captcha2.getBoundingClientRect().top >= 0) return {{ error: 'captcha' }};
+  const rows = document.querySelectorAll('.result-table-list tbody tr');
+  const checkboxes = document.querySelectorAll('.result-table-list tbody input.cbItem');
+  const results = Array.from(rows).slice(0, {max_per_query}).map((row, i) => {{
+    const titleLink = row.querySelector('td.name a.fz14') || row.querySelector('td.name a');
+    const authors = Array.from(row.querySelectorAll('td.author a.KnowledgeNetLink') || []).map(a => a.innerText?.trim()).filter(Boolean);
+    const authorText = authors.length ? authors.join('; ') : (row.querySelector('td.author')?.innerText?.trim() || '');
+    return {{
+      n: i + 1,
+      title: titleLink?.innerText?.trim() || '',
+      href: titleLink?.href || '',
+      exportId: checkboxes[i]?.value || '',
+      authors: authorText,
+      journal: row.querySelector('td.source a')?.innerText?.trim() || row.querySelector('td.source')?.innerText?.trim() || '',
+      date: row.querySelector('td.date')?.innerText?.trim() || '',
+      database: row.querySelector('td.data')?.innerText?.trim() || '',
+      citations: row.querySelector('td.quote')?.innerText?.trim() || '0',
+      downloads: row.querySelector('td.download')?.innerText?.trim() || ''
+    }};
+  }});
+  return {{
+    query,
+    total: document.querySelector('.pagerTitleCell')?.innerText?.match(/([\\d,]+)/)?.[1] || '0',
+    page: document.querySelector('.countPageMark')?.innerText || '1/1',
+    results
+  }};
+}}
+"""
+            logger.info(f"CNKI browser search: {query}")
+            data = self._evaluate_in_chrome("https://kns.cnki.net/kns8s/search", script, "CNKI", cnki_config)
+            if data is None:
+                return None
+            if data.get("error") == "captcha":
+                logger.warning("CNKI CAPTCHA required in Chrome; skipping browser backend.")
+                return None
+
+            for item in data.get("results", [])[:max_per_query]:
+                title = item.get("title", "")
+                title_norm = normalize_title(title)
+                if not title_norm or title_norm in seen_titles:
+                    continue
+                seen_titles.add(title_norm)
+                citation_match = re.search(r"\d+", str(item.get("citations", "")))
+                venue = item.get("journal", "")
+                paper = {
+                    "id": f"cnki-{hashlib.md5(title_norm.encode()).hexdigest()[:12]}",
+                    "title": title,
+                    "authors": item.get("authors", ""),
+                    "abstract": "",
+                    "published": item.get("date") or "unknown",
+                    "paper_url": item.get("href", ""),
+                    "arxiv_id": "",
+                    "arxiv_url": "",
+                    "pdf_url": "",
+                    "preprint_pdf_url": "",
+                    "categories": [item.get("database", "")] if item.get("database") else [],
+                    "venue": venue,
+                    "conference": venue,
+                    "publication_types": [],
+                    "publication_type": "",
+                    "doi": "",
+                    "external_ids": {"CNKIExportId": item.get("exportId", "")},
+                    "semantic_scholar_id": "",
+                    "code_link": "",
+                    "tags": [],
+                    "keywords": [],
+                    "citation_count": int(citation_match.group(0)) if citation_match else 0,
+                    "impact_factor": self.get_impact_factor({"conference": venue}),
+                    "source": "cnki",
+                }
+                all_papers.append(self._finalize_paper(paper))
+            time.sleep(2)
+
+        return all_papers
+
+    def fetch_google_scholar_papers(self) -> List[Dict]:
+        """从 Google Scholar 抓取论文（使用 scholarly 库）"""
+        gs_config = self.config.get("sources", {}).get("google_scholar", {})
+        if not gs_config.get("enabled", False):
+            logger.info("Google Scholar 数据源已禁用")
+            return []
+
+        # 支持 dict 格式的 queries（和 Semantic Scholar 一致）
+        queries = self._flatten_queries(gs_config.get("queries", []))
+
+        max_per_query = gs_config.get("max_results_per_query", 10)
+        year_from = gs_config.get("year_from",
+            (datetime.now(timezone.utc) - timedelta(days=365)).year)
+
+        browser_papers = self._fetch_google_scholar_with_browser(queries, gs_config)
+        if browser_papers is not None:
+            logger.info(f"Google Scholar browser backend returned {len(browser_papers)} papers")
+            return browser_papers
+
+        try:
+            from scholarly import scholarly as gs_module
+        except ImportError:
+            logger.warning("scholarly 库未安装，跳过 Google Scholar 数据源。请运行: pip install scholarly")
+            return []
+
+        all_papers = []
+        seen_titles = set()
+
+        for query in queries:
+            logger.info(f"Google Scholar 搜索: {query}")
+            try:
+                search_results = gs_module.search_pubs(query, year_low=year_from)
+                count = 0
+                for result in search_results:
+                    if count >= max_per_query:
+                        break
+
+                    bib = result.get("bib", {})
+                    title = bib.get("title", "")
+                    if not title:
+                        continue
+                    title_norm = normalize_title(title)
+                    if title_norm in seen_titles:
+                        continue
+                    seen_titles.add(title_norm)
+
+                    authors_raw = bib.get("author", [])
+                    if isinstance(authors_raw, str):
+                        authors_str = authors_raw
+                    else:
+                        authors_str = ", ".join(str(a) for a in authors_raw)
+
+                    venue = bib.get("venue", "") or bib.get("journal", "") or ""
+                    pub_year = str(bib.get("pub_year", "")) if bib.get("pub_year") else ""
+
+                    paper = {
+                        "id": f"gs-{hashlib.md5(title_norm.encode()).hexdigest()[:12]}",
+                        "title": title,
+                        "authors": authors_str,
+                        "abstract": bib.get("abstract", ""),
+                        "published": pub_year or "unknown",
+                        "paper_url": result.get("pub_url", "") or result.get("eprint_url", "") or "",
+                        "arxiv_id": "",
+                        "arxiv_url": "",
+                        "pdf_url": result.get("eprint_url", "") or "",
+                        "preprint_pdf_url": "",
+                        "categories": [],
+                        "venue": venue,
+                        "conference": venue,
+                        "publication_types": [],
+                        "publication_type": "",
+                        "doi": "",
+                        "external_ids": {},
+                        "semantic_scholar_id": "",
+                        "code_link": "",
+                        "tags": [],
+                        "keywords": [],
+                        "citation_count": result.get("num_citations"),
+                        "impact_factor": self.get_impact_factor({"conference": venue}),
+                        "source": "google_scholar",
+                    }
+
+                    paper = self._finalize_paper(paper)
+                    all_papers.append(paper)
+                    count += 1
+
+                logger.info(f"  → Google Scholar 获取 {count} 篇")
+                time.sleep(3)  # 避免触发反爬
+
+            except Exception as e:
+                logger.warning(f"Google Scholar 查询失败 ({query}): {e}")
+                continue
+
+        logger.info(f"Google Scholar 共获取 {len(all_papers)} 篇论文")
+        return all_papers
+
+    def fetch_cnki_papers(self) -> List[Dict]:
+        """从 CNKI 知网抓取中文学术论文"""
+        cnki_config = self.config.get("sources", {}).get("cnki", {})
+        if not cnki_config.get("enabled", False):
+            logger.info("CNKI 数据源已禁用")
+            return []
+
+        queries = self._flatten_queries(cnki_config.get("queries", []))
+        max_per_query = cnki_config.get("max_results_per_query", 20)
+
+        browser_papers = self._fetch_cnki_with_browser(queries, cnki_config)
+        if browser_papers is not None:
+            logger.info(f"CNKI browser backend returned {len(browser_papers)} papers")
+            return browser_papers
+
+        all_papers = []
+        seen_titles = set()
+
+        # 创建持久会话
+        session = requests.Session()
+        session.headers.update({
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+        })
+
+        # 先访问主页获取 cookies
+        try:
+            session.get("https://kns.cnki.net/", timeout=15)
+            time.sleep(1)
+        except Exception as e:
+            logger.warning(f"CNKI 主页访问失败: {e}")
+
+        for query in queries:
+            logger.info(f"CNKI 搜索: {query}")
+            try:
+                # 第一步：发起搜索请求，获取搜索结果页
+                search_url = "https://kns.cnki.net/kns8s/defaultresult/index"
+                params = {
+                    "classid": "WD0",
+                    "korder": "SU",
+                    "kw": query,
+                    "crossDbcodes": "CJFQ",
+                }
+                resp = session.get(search_url, params=params, timeout=30)
+                if resp.status_code != 200:
+                    logger.warning(f"CNKI 搜索返回 {resp.status_code}")
+                    continue
+
+                # 第二步：POST 请求获取结果数据（CNKI 的 AJAX 加载方式）
+                time.sleep(1)
+                grid_url = "https://kns.cnki.net/kns8s/brief/grid"
+                form_data = {
+                    "action": "",
+                    "NaviCode": "*",
+                    "ua": "1.21",
+                    "PageName": "ASP.brief_result_aspx",
+                    "DbPrefix": "CJFQ",
+                    "DbCatalog": "中国学术期刊网络出版总库",
+                    "ConfigFile": "CJFQINDEX.xml",
+                    "db_opt": "CJFQ",
+                    "txt_1_sel": "SU",
+                    "txt_1_value1": query,
+                    "his": "0",
+                    "parentdb": "CJFQ",
+                    " CurPage": "1",
+                    "RecordsCntPerPage": str(max_per_query),
+                }
+                grid_resp = session.post(grid_url, data=form_data, timeout=30)
+                if grid_resp.status_code != 200:
+                    logger.warning(f"CNKI 结果页返回 {grid_resp.status_code}")
+                    continue
+
+                # 解析 HTML 结果
+                soup = BeautifulSoup(grid_resp.text, "lxml")
+
+                # CNKI 结果在 table.result-table-list 或 div.docs-shell 中
+                items = soup.select("table.result-table-list tbody tr")
+                if not items:
+                    items = soup.select("table.result-table-list tr")
+                if not items:
+                    # 尝试从静态搜索页解析
+                    soup_main = BeautifulSoup(resp.text, "lxml")
+                    items = soup_main.select("table.result-table-list tbody tr")
+                    if not items:
+                        items = soup_main.select("table.result-table-list tr")
+
+                if not items:
+                    logger.info(f"  → CNKI 未找到结果（可能需要 JavaScript 渲染）: {query}")
+                    continue
+
+                for item in items[:max_per_query]:
+                    try:
+                        # 标题
+                        title_elem = item.select_one("td.name a.fz14") or item.select_one("td.name a")
+                        if not title_elem:
+                            continue
+                        title = title_elem.get_text(strip=True)
+                        title_norm = normalize_title(title)
+                        if title_norm in seen_titles:
+                            continue
+                        seen_titles.add(title_norm)
+
+                        # 链接
+                        href = title_elem.get("href", "")
+                        paper_url = href if href.startswith("http") else f"https://kns.cnki.net{href}"
+
+                        # 作者
+                        author_elem = item.select_one("td.author") or item.select_one("td.author a")
+                        authors = author_elem.get_text(strip=True) if author_elem else ""
+
+                        # 期刊/来源
+                        journal_elem = item.select_one("td.source a") or item.select_one("td.source")
+                        venue = journal_elem.get_text(strip=True) if journal_elem else ""
+
+                        # 发表日期
+                        date_elem = item.select_one("td.date")
+                        pub_date = date_elem.get_text(strip=True) if date_elem else ""
+
+                        # 引用次数
+                        cite_elem = item.select_one("td.quote")
+                        citations = 0
+                        if cite_elem:
+                            try:
+                                citations = int(cite_elem.get_text(strip=True) or "0")
+                            except ValueError:
+                                pass
+
+                        paper = {
+                            "id": f"cnki-{hashlib.md5(title_norm.encode()).hexdigest()[:12]}",
+                            "title": title,
+                            "authors": authors,
+                            "abstract": "",
+                            "published": pub_date or "unknown",
+                            "paper_url": paper_url,
+                            "arxiv_id": "",
+                            "arxiv_url": "",
+                            "pdf_url": "",
+                            "preprint_pdf_url": "",
+                            "categories": [],
+                            "venue": venue,
+                            "conference": venue,
+                            "publication_types": [],
+                            "publication_type": "",
+                            "doi": "",
+                            "external_ids": {},
+                            "semantic_scholar_id": "",
+                            "code_link": "",
+                            "tags": [],
+                            "keywords": [],
+                            "citation_count": citations,
+                            "impact_factor": self.get_impact_factor({"conference": venue}),
+                            "source": "cnki",
+                        }
+
+                        paper = self._finalize_paper(paper)
+                        all_papers.append(paper)
+
+                    except Exception as e:
+                        logger.warning(f"CNKI 解析单条结果失败: {e}")
+                        continue
+
+                logger.info(f"  → CNKI 获取 {len([p for p in all_papers if p.get('source') == 'cnki'])} 篇")
+                time.sleep(2)
+
+            except Exception as e:
+                logger.warning(f"CNKI 查询失败 ({query}): {e}")
+                continue
+
+        logger.info(f"CNKI 共获取 {len(all_papers)} 篇论文")
         return all_papers
 
     def fetch_arxiv_papers(self) -> List[Dict]:
@@ -432,12 +1543,21 @@ class PaperFetcher:
                 "authors": ", ".join([author.name for author in result.authors]),
                 "abstract": result.summary.replace("\n", " ").strip(),
                 "published": published.strftime("%Y-%m-%d"),
+                "paper_url": result.entry_id,
+                "arxiv_id": result.entry_id.split("/")[-1],
                 "arxiv_url": result.entry_id,
                 "pdf_url": result.pdf_url,
                 "categories": result.categories,
+                "venue": "",
                 "conference": "",
+                "publication_types": ["Preprint"],
+                "publication_type": "preprint",
+                "is_preprint": True,
+                "doi": "",
+                "external_ids": {"ArXiv": result.entry_id.split("/")[-1]},
                 "code_link": "",
                 "tags": [],
+                "source": "arxiv",
                 # 官方关键词（从摘要/评论中提取）
                 "official_keywords": self.extract_official_keywords(result),
                 # 自定义预设关键词（原有逻辑）
@@ -455,7 +1575,7 @@ class PaperFetcher:
                         break
             
             # 填充分类标签
-            paper["tags"] = self.classify_paper(paper)
+            paper = self._finalize_paper(paper)
             # 填充自定义关键词
             paper["custom_keywords"] = self.extract_paper_keywords(paper)
             # 合并官方+自定义关键词，去重（保持原有keywords字段兼容）
@@ -490,32 +1610,65 @@ class PaperFetcher:
         # 从多个数据源抓取
         papers = []
 
-        arxiv_papers = self.fetch_arxiv_papers()
+        try:
+            arxiv_papers = self.fetch_arxiv_papers()
+        except Exception as e:
+            logger.warning(f"ArXiv 补充源抓取失败，继续使用 Semantic Scholar: {e}")
+            arxiv_papers = []
         logger.info(f"ArXiv: {len(arxiv_papers)} 篇")
         papers.extend(arxiv_papers)
 
-        ss_papers = self.fetch_semantic_scholar_papers()
+        try:
+            ss_papers = self.fetch_semantic_scholar_papers()
+        except Exception as e:
+            logger.warning(f"Semantic Scholar 抓取失败: {e}")
+            ss_papers = []
         logger.info(f"Semantic Scholar: {len(ss_papers)} 篇")
         papers.extend(ss_papers)
 
-        # 按标题去重（跨数据源）
-        seen_titles = set()
-        unique_papers = []
-        for p in papers:
-            # 标准化标题用于去重：小写 + 去除多余空格
-            normalized = re.sub(r'\s+', ' ', p["title"].lower().strip())
-            if normalized not in seen_titles:
-                seen_titles.add(normalized)
-                unique_papers.append(p)
+        try:
+            gs_papers = self.fetch_google_scholar_papers()
+        except Exception as e:
+            logger.warning(f"Google Scholar 抓取失败: {e}")
+            gs_papers = []
+        logger.info(f"Google Scholar: {len(gs_papers)} 篇")
+        papers.extend(gs_papers)
 
-        papers = unique_papers
-        logger.info(f"合并去重后: {len(papers)} 篇")
+        try:
+            cnki_papers = self.fetch_cnki_papers()
+        except Exception as e:
+            logger.warning(f"CNKI 抓取失败: {e}")
+            cnki_papers = []
+        logger.info(f"CNKI: {len(cnki_papers)} 篇")
+        papers.extend(cnki_papers)
 
-        if not papers:
-            logger.warning("未抓取到任何相关论文！")
-            return
+        papers = self._merge_paper_list([p for p in papers if is_relevant_paper(p)])
+        logger.info(f"抓取结果合并去重后: {len(papers)} 篇")
 
         # ========== 新增：按月份拆分数据（和main.js加载逻辑对齐） ==========
+        existing_papers = []
+        for filename in os.listdir(data_dir):
+            if not re.fullmatch(r"\d{4}-\d{2}\.json", filename):
+                continue
+            path = os.path.join(data_dir, filename)
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    existing_papers.extend(json.load(f))
+            except Exception as e:
+                logger.warning(f"Failed to read existing monthly data: {path}, {e}")
+
+        papers = self._merge_paper_list([
+            p for p in existing_papers + papers
+            if is_relevant_paper(p)
+        ])
+        logger.info(f"Merged with existing monthly data: {len(papers)} papers")
+
+        if not papers:
+            logger.warning("未抓取到任何相关论文，且没有可整理的历史数据！")
+            return
+
+        self.write_classification_report(papers, data_dir)
+
         month_papers = {}
         for paper in papers:
             pub = paper.get("published", "")
@@ -531,7 +1684,15 @@ class PaperFetcher:
             month_papers[month].append(paper)
 
         # 生成月份索引文件（data/index.json）
-        index_data = [{"month": month, "count": len(papers)} for month, papers in month_papers.items()]
+        index_data = []
+        for month in sorted(month_papers.keys(), reverse=True):
+            month_items = month_papers[month]
+            index_data.append({
+                "month": month,
+                "count": len(month_items),
+                "published_count": sum(1 for p in month_items if not p.get("is_preprint")),
+                "preprint_count": sum(1 for p in month_items if p.get("is_preprint")),
+            })
         with open(os.path.join(data_dir, "index.json"), "w", encoding="utf-8") as f:
             json.dump(index_data, f, ensure_ascii=False, indent=2)
         logger.info(f"月份索引已保存到：{os.path.join(data_dir, 'index.json')}")

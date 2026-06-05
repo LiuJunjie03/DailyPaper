@@ -6,7 +6,7 @@
     "abstract": "Computationally resolving turbulence remains a central challenge in fluid dynamics due to its multi-scale interactions. Fully resolving large-scale turbulence through direct numerical simulation (DNS) is computationally prohibitive, motivating data-driven machine learning alternatives. In this work, we propose EddyFormer, a Transformer-based spectral-element (SEM) architecture for large-scale turbulence simulation that combines the accuracy of spectral methods with the scalability of the attention mechanism. We introduce an SEM tokenization that decomposes the flow into grid-scale and subgrid-scale components, enabling capture of both local and global features. We create a new three-dimensional isotropic turbulence dataset and train EddyFormer to achieves DNS-level accuracy at 256^3 resolution, providing a 30x speedup over DNS. When applied to unseen domains up to 4x larger than in training, EddyFormer preserves accuracy on physics-invariant metrics-energy spectra, correlation functions, and structure functions-showing domain generalization. On The Well benchmark suite of diverse turbulent flows, EddyFormer resolves cases where prior ML models fail to converge, accurately reproducing complex dynamics across a wide range of physical conditions.",
     "published": "2025-10-28",
     "arxiv_url": "http://arxiv.org/abs/2510.24173v1",
-    "pdf_url": "https://arxiv.org/pdf/2510.24173v1",
+    "pdf_url": "",
     "categories": [
       "cs.LG",
       "math.DS",
@@ -17,31 +17,65 @@
     "code_link": "",
     "tags": [
       "机器学习",
-      "智能流体力学",
-      "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "流体力学 / 智能CFD / 湍流建模与闭合",
+      "流体力学 / 智能CFD / 加速求解与超分辨"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "transformer",
-      "rans",
-      "data-driven",
-      "machine learning",
-      "dns",
       "turbulence",
-      "fluid dynamics"
+      "speedup",
+      "fluid dynamics",
+      "dns",
+      "isotropic turbulence",
+      "transformer",
+      "machine learning"
     ],
     "keywords": [
-      "transformer",
-      "rans",
-      "data-driven",
-      "machine learning",
       "dns",
-      "turbulence",
-      "fluid dynamics"
+      "fluid dynamics",
+      "isotropic turbulence",
+      "machine learning",
+      "speedup",
+      "transformer",
+      "turbulence"
     ],
     "citation_count": null,
-    "impact_factor": 14.0
+    "impact_factor": 14.0,
+    "venue": "NeurIPS",
+    "doi": "",
+    "arxiv_id": "2510.24173",
+    "paper_url": "http://arxiv.org/abs/2510.24173v1",
+    "publication_type": "conference",
+    "is_preprint": false,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 6,
+        "strong_hits": [
+          "subgrid-scale"
+        ],
+        "context_hits": [
+          "dns",
+          "machine learning",
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 加速求解与超分辨": {
+        "score": 5,
+        "strong_hits": [
+          "speedup"
+        ],
+        "context_hits": [
+          "machine learning",
+          "data-driven"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.24173"
   },
   {
     "id": "2510.19971v2",
@@ -50,7 +84,7 @@
     "abstract": "The reconstruction of unsteady flow fields from limited measurements is a challenging and crucial task for many engineering applications. Machine learning models are gaining popularity for solving this problem due to their ability to learn complex patterns from data and to generalize across diverse conditions. Among these, diffusion models have emerged as being particularly powerful for generative tasks, producing high-quality samples by iteratively refining noisy inputs. In contrast to other methods, these generative models are capable of reconstructing the smallest scales of the fluid spectrum. In this work, we introduce a novel sampling method for diffusion models that enables the reconstruction of high-fidelity samples by guiding the reverse process using the available sparse data. Moreover, we enhance the reconstructions with available physics knowledge using a conflict-free update method during training. To evaluate the effectiveness of our method, we conduct experiments on 2 and 3-dimensional turbulent flow data. Our method consistently outperforms other diffusion-based methods in predicting the fluid's structure and in pixel-wise accuracy. This study underscores the remarkable potential of diffusion models in reconstructing flow field data, paving the way for leveraging them in fluid dynamics research and applications ranging from super-resolution to reconstructions of experiments.",
     "published": "2025-10-22",
     "arxiv_url": "http://arxiv.org/abs/2510.19971v2",
-    "pdf_url": "https://arxiv.org/pdf/2510.19971v2",
+    "pdf_url": "",
     "categories": [
       "physics.flu-dyn",
       "cs.LG"
@@ -59,25 +93,58 @@
     "code_link": "",
     "tags": [
       "机器学习",
-      "智能流体力学",
-      "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "流体力学 / 智能CFD / 流场重建与数据驱动"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
       "fluid dynamics",
-      "les",
-      "machine learning"
+      "turbulent flow",
+      "machine learning",
+      "super-resolution"
     ],
     "keywords": [
-      "rom",
+      "fluid dynamics",
       "machine learning",
-      "les",
-      "fluid dynamics"
+      "super-resolution",
+      "turbulent flow"
     ],
     "citation_count": null,
-    "impact_factor": 3.5
+    "impact_factor": 3.5,
+    "venue": "Physics of Fluids",
+    "doi": "",
+    "arxiv_id": "2510.19971",
+    "paper_url": "http://arxiv.org/abs/2510.19971v2",
+    "publication_type": "conference",
+    "is_preprint": false,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 加速求解与超分辨": {
+        "score": 4,
+        "strong_hits": [
+          "super-resolution"
+        ],
+        "context_hits": [
+          "machine learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流场重建与数据驱动": {
+        "score": 7,
+        "strong_hits": [
+          "sparse data"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "machine learning",
+          "flow field"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.19971"
   },
   {
     "id": "2511.00272v1",
@@ -94,23 +161,53 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习"
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD / 流动控制与强化学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "rom",
-      "rans",
-      "reinforcement learning",
-      "gan"
+      "microfluidic",
+      "reinforcement learning"
     ],
     "keywords": [
-      "reinforcement learning",
-      "rans",
-      "rom",
-      "gan"
+      "microfluidic",
+      "reinforcement learning"
     ],
     "citation_count": null,
-    "impact_factor": null
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2511.00272",
+    "paper_url": "http://arxiv.org/abs/2511.00272v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 5,
+        "strong_hits": [
+          "reinforcement learning"
+        ],
+        "context_hits": [
+          "flow",
+          "turbulent"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 生物与医学流体": {
+        "score": 4,
+        "strong_hits": [
+          "microfluidic"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2511.00272"
   },
   {
     "id": "2510.25135v1",
@@ -127,24 +224,43 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "流体力学 / 湍流与流动机理"
     ],
     "official_keywords": [],
     "custom_keywords": [
       "dns",
-      "rom",
       "turbulence",
-      "les"
+      "autoencoder"
     ],
     "keywords": [
+      "autoencoder",
       "dns",
-      "rom",
-      "turbulence",
-      "les"
+      "turbulence"
     ],
     "citation_count": null,
-    "impact_factor": null
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2510.25135",
+    "paper_url": "http://arxiv.org/abs/2510.25135v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "physics.flu-dyn"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.25135"
   },
   {
     "id": "2510.23936v2",
@@ -162,19 +278,41 @@
     "code_link": "",
     "tags": [
       "机器学习",
-      "智能流体力学"
+      "流体力学",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
+      "neural operator",
       "machine learning"
     ],
     "keywords": [
-      "les",
-      "machine learning"
+      "machine learning",
+      "neural operator"
     ],
     "citation_count": null,
-    "impact_factor": null
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2510.23936",
+    "paper_url": "http://arxiv.org/abs/2510.23936v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 4,
+        "strong_hits": [
+          "neural operator"
+        ],
+        "context_hits": [
+          "machine learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.23936"
   },
   {
     "id": "2510.22976v1",
@@ -191,19 +329,31 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习"
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
+      "navier-stokes",
       "neural network"
     ],
     "keywords": [
-      "les",
+      "navier-stokes",
       "neural network"
     ],
     "citation_count": null,
-    "impact_factor": null
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2510.22976",
+    "paper_url": "http://arxiv.org/abs/2510.22976v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.22976"
   },
   {
     "id": "2510.21852v2",
@@ -221,21 +371,60 @@
     "code_link": "",
     "tags": [
       "机器学习",
-      "智能流体力学"
+      "流体力学",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "reduced-order model",
+      "data assimilation",
       "deep learning",
-      "rom"
+      "rom",
+      "vortex",
+      "pod"
     ],
     "keywords": [
-      "reduced-order model",
+      "data assimilation",
       "deep learning",
-      "rom"
+      "pod",
+      "rom",
+      "vortex"
     ],
     "citation_count": null,
-    "impact_factor": null
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2510.21852",
+    "paper_url": "http://arxiv.org/abs/2510.21852v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 10,
+        "strong_hits": [
+          "reduced-order",
+          "rom",
+          "pod"
+        ],
+        "context_hits": [
+          "deep learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流场重建与数据驱动": {
+        "score": 5,
+        "strong_hits": [
+          "data assimilation"
+        ],
+        "context_hits": [
+          "flow",
+          "deep learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.21852"
   },
   {
     "id": "2510.21804v1",
@@ -253,29 +442,48 @@
     "code_link": "",
     "tags": [
       "机器学习",
-      "智能流体力学",
-      "CFD与机器学习交叉",
-      "流体力学"
+      "流体力学",
+      "流体力学 / 智能CFD / 物理信息神经网络"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid dynamics",
       "cfd",
-      "rom",
-      "data-driven",
       "machine learning",
-      "les",
-      "fluid dynamics"
+      "acceleration"
     ],
     "keywords": [
+      "acceleration",
       "cfd",
-      "rom",
-      "data-driven",
-      "machine learning",
-      "les",
-      "fluid dynamics"
+      "fluid dynamics",
+      "machine learning"
     ],
     "citation_count": null,
-    "impact_factor": null
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2510.21804",
+    "paper_url": "http://arxiv.org/abs/2510.21804v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 7,
+        "strong_hits": [
+          "residual-guided"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "machine learning",
+          "data-driven"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.21804"
   },
   {
     "id": "2510.17887v1",
@@ -293,19 +501,46 @@
     "code_link": "",
     "tags": [
       "机器学习",
-      "智能流体力学"
+      "流体力学",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "deep learning",
-      "surrogate model"
+      "deeponet",
+      "physics-guided",
+      "operator learning",
+      "deep learning"
     ],
     "keywords": [
       "deep learning",
-      "surrogate model"
+      "deeponet",
+      "operator learning",
+      "physics-guided"
     ],
     "citation_count": null,
-    "impact_factor": null
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2510.17887",
+    "paper_url": "http://arxiv.org/abs/2510.17887v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 7,
+        "strong_hits": [
+          "deeponet",
+          "operator learning"
+        ],
+        "context_hits": [
+          "deep learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.17887"
   },
   {
     "id": "2510.16020v2",
@@ -322,27 +557,63 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "空气动力学",
       "机器学习",
-      "智能流体力学"
+      "流体力学",
+      "流体力学 / 气动优化设计"
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "airfoil",
       "aerodynamic optimization",
-      "rom",
-      "reinforcement learning",
       "machine learning",
-      "les"
+      "reinforcement learning",
+      "airfoil optimization"
     ],
     "keywords": [
       "aerodynamic optimization",
-      "reinforcement learning",
-      "rom",
+      "airfoil",
+      "airfoil optimization",
       "machine learning",
-      "les"
+      "reinforcement learning"
     ],
     "citation_count": null,
-    "impact_factor": null
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2510.16020",
+    "paper_url": "http://arxiv.org/abs/2510.16020v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 4,
+        "strong_hits": [
+          "reinforcement learning"
+        ],
+        "context_hits": [
+          "machine learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 气动优化设计": {
+        "score": 5,
+        "strong_hits": [
+          "aerodynamic optimization",
+          "airfoil optimization"
+        ],
+        "context_hits": [
+          "airfoil",
+          "drag",
+          "lift"
+        ],
+        "negative_hits": [
+          "machine learning"
+        ]
+      }
+    },
+    "primary_domain": "流体力学 / 气动优化设计",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.16020"
   },
   {
     "id": "2510.16016v1",
@@ -359,24 +630,51 @@
     "conference": "",
     "code_link": "",
     "tags": [
-      "机器学习"
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD / 流动控制与强化学习"
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
+      "drl",
       "transfer learning",
-      "rom",
       "reinforcement learning",
-      "rans"
+      "flow control",
+      "deep reinforcement learning"
     ],
     "keywords": [
-      "neural network",
-      "transfer learning",
+      "deep reinforcement learning",
+      "drl",
+      "flow control",
       "reinforcement learning",
-      "rom",
-      "rans"
+      "transfer learning"
     ],
     "citation_count": null,
-    "impact_factor": null
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2510.16016",
+    "paper_url": "http://arxiv.org/abs/2510.16016v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 14,
+        "strong_hits": [
+          "flow control",
+          "reinforcement learning",
+          "deep reinforcement learning",
+          "drl"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.16016"
   }
 ]

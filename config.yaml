@@ -2,59 +2,90 @@
 sources:
   arxiv:
     enabled: true
+    role: supplement  # Semantic Scholar 为主，arXiv 只补充近期预印本
     categories:
       # - cs.LG            # 机器学习
       - physics.flu-dyn  # 流体动力学
     max_results: 1000  # 每次抓取的最大论文数
     days_back: 180  # 抓取一定天数的论文
 
+  # Google Scholar 数据源（使用 scholarly 库）
+  google_scholar:
+    enabled: true
+    queries:
+      pinn_fluid:
+        - "physics-informed neural networks fluid dynamics"
+        - "PINN computational fluid dynamics flow simulation"
+      neural_operator_cfd:
+        - "neural operator CFD flow field prediction"
+        - "Fourier neural operator fluid simulation"
+      turbulence_ml:
+        - "machine learning turbulence modeling RANS LES"
+        - "data-driven turbulence closure model"
+      flow_control_rl:
+        - "reinforcement learning flow control CFD"
+        - "deep reinforcement learning drag reduction"
+      surrogate_cfd:
+        - "surrogate model CFD flow prediction"
+        - "deep learning aerodynamic optimization"
+      multiphase_ml:
+        - "machine learning multiphase flow prediction"
+        - "neural network interface capturing"
+    max_results_per_query: 10
+    year_from: 2025
+
+  # CNKI 知网数据源（中文论文）
+  cnki:
+    enabled: true
+    queries:
+      - "计算流体力学 机器学习"
+      - "物理信息神经网络 流体力学"
+      - "深度学习 湍流模拟"
+      - "代理模型 流场预测"
+      - "神经网络 流体力学 数值模拟"
+      - "流场重建 数据驱动"
+      - "强化学习 流动控制"
+      - "气动优化 深度学习"
+      - "格子玻尔兹曼 机器学习"
+      - "多相流 数值模拟 深度学习"
+    max_results_per_query: 20
+
   # 语义搜索数据源（用自然语言描述替代关键词列表）
   semantic_scholar:
     enabled: true
     api_key: ""  # 免费 API key，申请: https://www.semanticscholar.org/product/api#api-key-form
     queries:
-      - "deep learning for computational fluid dynamics simulation"
-      - "physics-informed neural networks for fluid mechanics"
-      - "machine learning accelerated CFD"
-      - "data-driven turbulence modeling and closure"
-      - "multiphase flow simulation with neural networks"
-      - "aerodynamic optimization using deep learning"
-      - "surrogate models for fluid dynamics"
-      - "reduced order modeling for CFD"
-      - "reinforcement learning for flow control"
-      - "neural network based flow field prediction"
+      physics_informed_learning:
+        - "physics-informed neural networks fluid dynamics Navier-Stokes"
+        - "PINN computational fluid dynamics flow simulation"
+      neural_operator_surrogate:
+        - "neural operator computational fluid dynamics flow field prediction"
+        - "Fourier neural operator Navier-Stokes fluid simulation"
+        - "surrogate model CFD parametric flow simulation"
+      reduced_order_modeling:
+        - "reduced order modeling CFD flow field prediction"
+        - "autoencoder reduced-order model fluid dynamics"
+      turbulence_modeling:
+        - "machine learning turbulence closure RANS LES"
+        - "data-driven turbulence modeling Reynolds stress eddy viscosity"
+        - "subgrid scale model LES machine learning turbulence"
+      aerodynamic_optimization:
+        - "aerodynamic optimization airfoil wing drag reduction machine learning"
+        - "reinforcement learning active flow control drag reduction"
+      multiphase_flow:
+        - "machine learning multiphase flow two-phase flow interface capturing"
+        - "neural network phase field lattice Boltzmann multiphase flow"
+      numerical_methods:
+        - "learned numerical scheme computational fluid dynamics finite volume"
+        - "differentiable CFD neural solver Navier-Stokes"
+      uncertainty_inverse:
+        - "uncertainty quantification CFD surrogate model fluid dynamics"
+        - "data assimilation inverse problem fluid dynamics machine learning"
     max_results_per_query: 20
     days_back: 180
 
 # 领域分类关键词
 categories:
-  多相流:
-    keywords:
-      - multiphase flow
-      - two-phase flow
-      - phase separation
-      - LEVEL SET
-      - VOF
-      - Lattice Boltzmann
-      - SPH
-      - DEM
-      
-  空气动力学:
-    keywords:
-      - aerodynamics
-      - aerodynamic optimization
-      - flow around airfoil
-      - airfoil simulation
-      - wing aerodynamics
-      - UAV aerodynamics
-      - drag reduction
-      - lift enhancement
-      - FSI
-      - fluid-structure interaction
-      - aerospace CFD
-      - mesh generation
-      - adaptive mesh
-      
   机器学习:
     keywords:
       - machine learning
@@ -64,83 +95,280 @@ categories:
       - transfer learning
       - supervised learning
       - unsupervised learning
+      - representation learning
+      - generative model
+      - transformer
       - CNN
-      - PINN
       - RNN
       - GAN
-      - transformer
       - LSTM
-      
-  # 新增分类1：智能流体力学（流体+AI交叉，比CFD+ML更宽泛）
-  智能流体力学:
-    keywords:
-      - intelligent fluid dynamics
-      - AI-aided fluid simulation
-      - AI-driven fluid mechanics
-      - AI-enhanced fluid dynamics
-      - fluid simulation with AI
-      - AI for fluid mechanics
-      - AI in fluid dynamics
-      - fluid dynamics
-      - machine learning
-      - deep learning
-      
+
   流体力学:
     keywords:
       - fluid dynamics
-      - CFD
+      - fluid mechanics
       - computational fluid dynamics
+      - CFD
       - flow simulation
+      - flow modeling
+      - flow computation
       - turbulence
+      - Navier-Stokes
       - RANS
       - LES
       - DNS
-      - multiphase flow
-      - two-phase flow
-      - flow modeling
-      - flow computation
-      - mesh
       - finite volume
       - finite element
       - finite difference
+      - mesh generation
       - adaptive mesh
 
-  CFD与机器学习交叉:
+  # ===== 智能CFD 子分类（方法优先） =====
+
+  流体力学 / 智能CFD / 代理模型与算子学习:
     keywords:
-      # 流体力学核心关键词（必含其一）
-      - computational fluid dynamics
-      - CFD
-      - fluid mechanics
-      - fluid dynamics
-      - flow simulation
-      - flow modeling
-      - flow computation
-      - turbulence
-      - RANS
-      - LES
-      - DNS
-      - multiphase flow
-      - two-phase flow
-      # ML/DL关键词（必含其一）
-      - machine learning
-      - deep learning
-      - neural network
-      - PINN
-      - physics-informed neural network
-      - data-driven modeling
       - surrogate model
+      - neural operator
+      - Fourier neural operator
+      - FNO
+      - DeepONet
+      - graph neural network
+      - GNN
+      - operator learning
+      - emulator
+      - proxy model
       - reduced-order model
       - ROM
-      - data-driven
-      - LSTM
-      - CNN
-      - transformer
-      - RNN
-      - GAN
+      - data-driven solver
+      - end-to-end solver
+      - autoencoder
+      - POD
+      - Koopman
+      - flow field prediction
+      - latent space
+
+  流体力学 / 智能CFD / 湍流建模与闭合:
+    keywords:
+      - turbulence modeling
+      - turbulent closure
+      - RANS closure
+      - Reynolds stress
+      - eddy viscosity
+      - LES subgrid
+      - subgrid-scale model
+      - SGS model
+      - wall model
+      - data-driven turbulence
+      - closure model
+
+  流体力学 / 智能CFD / 数值方法增强:
+    keywords:
+      - learned numerical scheme
+      - neural numerical method
+      - learned discretization
+      - learned flux
+      - differentiable solver
+      - neural solver
+      - differentiable CFD
+      - solver-in-the-loop
+      - numerical viscosity
+      - WENO
+      - stabilization
+
+  流体力学 / 智能CFD / 加速求解与超分辨:
+    keywords:
+      - acceleration
+      - accelerated simulation
+      - fast CFD
+      - coarse grid
+      - coarse-grid
+      - super-resolution
+      - high-resolution reconstruction
+      - downscaling
+      - multigrid
+      - speedup
+      - efficient solver
+      - real-time simulation
+      - flow matching
+
+  流体力学 / 智能CFD / 物理信息神经网络:
+    keywords:
+      - physics-informed neural network
+      - PINN
+      - physics-informed
+      - physics-guided
+      - physics-constrained
+      - variational PINN
+      - cPINN
+      - hard constraint
+      - physics-embedded
+
+  流体力学 / 智能CFD / 流场重建与数据驱动:
+    keywords:
+      - flow field reconstruction
+      - uncertainty quantification
+      - data assimilation
+      - sparse sensor
+      - inverse problem
+      - state estimation
+      - flow estimation
+      - neural Kalman
+      - ensemble Kalman
+      - probabilistic prediction
+
+  流体力学 / 智能CFD / 流动控制与强化学习:
+    keywords:
+      - flow control
+      - active flow control
       - reinforcement learning
-      - transfer learning
-      - supervised learning
-      - unsupervised learning
+      - deep reinforcement learning
+      - DRL
+      - closed-loop control
+      - optimal control
+      - active control
+      - drag reduction control
+
+  # ===== 领域方向（纯传统/非ML论文） =====
+
+  流体力学 / 气动优化设计:
+    keywords:
+      - aerodynamic optimization
+      - aerodynamic design optimization
+      - airfoil optimization
+      - wing optimization
+      - shape optimization
+      - topology optimization
+      - drag reduction
+      - lift enhancement
+      - inverse design
+      - adjoint optimization
+      - design optimization
+
+  流体力学 / 湍流与流动机理:
+    keywords:
+      - turbulence
+      - turbulent flow
+      - isotropic turbulence
+      - geostrophic
+      - convective turbulence
+      - vortex
+      - vortices
+      - boundary-layer flow
+      - flow instability
+      - resolvent analysis
+      - jet flow
+      - shear flow
+      - wake flow
+      - mixing layer
+
+  流体力学 / 多相流理论:
+    keywords:
+      - multiphase flow
+      - multiphase flows
+      - two-phase flow
+      - two-phase flows
+      - phase separation
+      - phase field
+      - interface capturing
+      - interface tracking
+      - VOF
+      - level set
+      - Lattice Boltzmann
+      - SPH
+      - DEM
+      - cavitation
+      - boiling
+      - droplet
+      - bubble
+      - spray
+
+  流体力学 / 空气动力学理论:
+    keywords:
+      - aerodynamics
+      - airfoil
+      - wing aerodynamics
+      - UAV aerodynamics
+      - aircraft aerodynamics
+      - compressible flow
+      - hypersonic flow
+      - shock wave
+      - boundary layer
+      - aeroelasticity
+      - fluid-structure interaction
+      - FSI
+
+  流体力学 / 环境与地球物理流体:
+    keywords:
+      - weather forecasting
+      - climate
+      - precipitation
+      - atmospheric flow
+      - ocean flow
+      - sea ice
+      - geophysical flow
+      - environmental fluid
+      - coastal hydrodynamics
+      - storm
+      - convective-scale
+      - seasonal forecast
+
+  流体力学 / 生物与医学流体:
+    keywords:
+      - blood flow
+      - cardiovascular
+      - aneurysm
+      - aortic
+      - biomedical flow
+      - cilia
+      - ciliary
+      - microfluidic
+      - biolocomotion
+      - respiratory flow
+      - hemodynamics
+
+  流体力学 / 燃烧与传热:
+    keywords:
+      - combustion
+      - reacting flow
+      - detonation
+      - fire simulation
+      - heat transfer
+      - thermal convection
+      - radiation transfer
+      - flame
+      - thermal flow
+
+  流体力学 / 风能与海洋工程流体:
+    keywords:
+      - wind turbine
+      - offshore wind
+      - floating offshore
+      - wake modeling
+      - wind farm
+      - floating wind
+      - fatigue loading
+      - wave-structure
+      - marine hydrodynamics
+      - ocean energy
+
+  流体力学 / 计算流体力学方法:
+    keywords:
+      - finite volume method
+      - finite element method
+      - mesh generation
+      - adaptive mesh refinement
+      - high-order scheme
+      - open-source solver
+      - error estimation
+      - Richardson extrapolation
+      - grid convergence
+      - discretization error
+
+  流体力学 / 其他:
+    keywords:
+      - fluid dynamics
+      - fluid mechanics
+      - flow
 
   # 顶级会议和期刊列表
 venues:
