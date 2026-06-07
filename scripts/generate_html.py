@@ -195,6 +195,12 @@ class HTMLGenerator:
 </head>
 <body>
     <header>
+        <div class="header-formula header-formula-left" aria-hidden="true">
+            ∂ρ/∂t + ∇·(ρ<strong>v</strong>) = 0
+        </div>
+        <div class="header-formula header-formula-right" aria-hidden="true">
+            Re = ρvL/μ
+        </div>
         <div class="container">
             <h1>📚 DailyPaper</h1>
             <p class="subtitle">每日自动更新 计算流体力学+机器学习 领域最新论文</p>
@@ -251,7 +257,8 @@ class HTMLGenerator:
             <div class="export-controls">
                 <button class="select-btn" id="selectAllBtn">✓ 全选</button>
                 <button class="select-btn" id="clearAllBtn">✗ 清空</button>
-                <button class="export-btn" id="exportBtn">📥 下载选中PDF (<span id="selectedCount">0</span>)</button>
+                <button class="export-btn" id="exportBtn">🔗 打开PDF (<span id="selectedCount">0</span>)</button>
+                <button class="export-btn export-btn-secondary" id="copyDoiBtn">📋 复制DOI导入Zotero</button>
             </div>
         </div>
     </nav>
@@ -264,7 +271,7 @@ class HTMLGenerator:
     
     <footer>
         <div class="container">
-            <p>© 2025 DailyPaper | 数据来源: ArXiv | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>
+            <p>© 2025 DailyPaper | 数据来源: ArXiv · Semantic Scholar · Google Scholar · CNKI | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>
         </div>
     </footer>
     
@@ -406,8 +413,29 @@ class HTMLGenerator:
         return '\n'.join(html_parts)
     
     def generate_css(self):
-        """生成 CSS 样式（包含关键词区分样式）"""
-        css = """/* 全局样式 */
+        """生成 CSS 样式 — 流体力学 / CFD 深海蓝主题"""
+        css = """/* ============================================================
+   DailyPaper — 流体力学 / CFD 主题
+   色彩：深海蓝 → 海洋蓝 → 青蓝 → 浅蓝 → 浪花白
+   ============================================================ */
+
+:root {
+    --deep-sea: #0c2340;
+    --ocean: #0077b6;
+    --cyan: #00b4d8;
+    --light-blue: #90e0ef;
+    --foam: #caf0f8;
+    --bg: #f0f4f8;
+    --card-bg: #ffffff;
+    --text: #1a2a3a;
+    --text-secondary: #4a6274;
+    --text-muted: #6b8299;
+    --border: #d0dde8;
+    --shadow: rgba(12, 35, 64, 0.08);
+    --shadow-hover: rgba(0, 119, 182, 0.18);
+}
+
+/* 全局样式 */
 * {
     margin: 0;
     padding: 0;
@@ -417,8 +445,8 @@ class HTMLGenerator:
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
+    color: var(--text);
+    background-color: var(--bg);
 }
 
 .container {
@@ -427,38 +455,86 @@ body {
     padding: 0 20px;
 }
 
-/* 头部样式 */
+/* ============================================================
+   头部 — 深海蓝渐变 + 波浪装饰
+   ============================================================ */
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--deep-sea) 0%, #1a5276 40%, var(--ocean) 100%);
     color: white;
-    padding: 2rem 0;
+    padding: 2.5rem 0 3.5rem;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 波浪装饰 — 用伪元素模拟水面波纹 */
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: var(--bg);
+    clip-path: polygon(
+        0% 60%, 5% 55%, 10% 50%, 15% 48%, 20% 50%, 25% 55%,
+        30% 58%, 35% 55%, 40% 48%, 45% 42%, 50% 40%,
+        55% 42%, 60% 48%, 65% 55%, 70% 58%, 75% 55%,
+        80% 50%, 85% 48%, 90% 50%, 95% 55%, 100% 60%,
+        100% 100%, 0% 100%
+    );
+}
+
+/* 水面微光动画 */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(ellipse at 30% 20%, rgba(0, 180, 216, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(144, 224, 239, 0.1) 0%, transparent 40%);
+    animation: shimmer 8s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+    0%   { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(3%) translateY(1%); }
 }
 
 header h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .subtitle {
     font-size: 1.1rem;
     opacity: 0.9;
+    position: relative;
+    z-index: 1;
 }
 
 .update-time {
     font-size: 0.9rem;
-    opacity: 0.8;
+    opacity: 0.7;
     margin-top: 0.5rem;
+    position: relative;
+    z-index: 1;
 }
 
-/* 导航和筛选 */
+/* ============================================================
+   导航和筛选
+   ============================================================ */
 nav {
     background: white;
     padding: 1.5rem 20px;
     margin: 2rem auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px var(--shadow);
 }
 
 .filter-section {
@@ -472,7 +548,7 @@ nav {
 .filter-label {
     display: inline-block;
     font-weight: 600;
-    color: #333;
+    color: var(--deep-sea);
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
 }
@@ -497,19 +573,19 @@ nav {
 
 .category-children {
     padding-left: 0.75rem;
-    border-left: 3px solid #e3e8ff;
+    border-left: 3px solid var(--light-blue);
 }
 
 .category-back-btn {
-    border-color: #9ca3af;
-    color: #4b5563;
+    border-color: var(--text-muted) !important;
+    color: var(--text-secondary) !important;
 }
 
 .filter-btn {
     padding: 0.5rem 1rem;
-    border: 2px solid #667eea;
+    border: 2px solid var(--ocean);
     background: white;
-    color: #667eea;
+    color: var(--ocean);
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s;
@@ -517,12 +593,14 @@ nav {
 }
 
 .filter-btn:hover {
-    background: #f0f0f0;
+    background: var(--foam);
 }
 
 .filter-btn.active {
-    background: #667eea;
+    background: linear-gradient(135deg, var(--ocean), var(--cyan));
     color: white;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.3);
 }
 
 .search-box {
@@ -532,15 +610,16 @@ nav {
 .search-box input {
     width: 100%;
     padding: 0.8rem;
-    border: 2px solid #ddd;
+    border: 2px solid var(--border);
     border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .search-box input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
 }
 
 /* 主内容区域 */
@@ -558,42 +637,58 @@ main {
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
-    padding: 0.8rem;
-    background: #f8f9fa;
+    padding: 0.8rem 1rem;
+    background: linear-gradient(135deg, #f0f7fb, #e8f0f5);
     border-radius: 8px;
+    border: 1px solid var(--border);
 }
 
 #resultsCount {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
 .export-btn {
     padding: 0.5rem 1rem;
-    background: #667eea;
+    background: linear-gradient(135deg, var(--ocean), var(--cyan));
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.9rem;
-    transition: background 0.3s;
+    transition: all 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 119, 182, 0.25);
 }
 
 .export-btn:hover {
-    background: #5568d3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.35);
 }
 
-/* 论文卡片 */
+/* 复制DOI按钮 — 青蓝色变体 */
+.export-btn-secondary {
+    background: linear-gradient(135deg, #00796b, #00897b);
+    box-shadow: 0 2px 6px rgba(0, 121, 107, 0.25);
+}
+
+.export-btn-secondary:hover {
+    box-shadow: 0 4px 12px rgba(0, 121, 107, 0.35);
+}
+
+/* ============================================================
+   论文卡片 — 左侧蓝色竖条 + 悬浮蓝光
+   ============================================================ */
 .paper-card {
     position: relative;
-    background: white;
+    background: var(--card-bg);
     padding: 1.5rem;
     padding-top: 2.5rem;
     padding-left: 4rem;
     margin-bottom: 1rem;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--ocean);
+    box-shadow: 0 2px 8px var(--shadow);
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     align-items: flex-start;
@@ -601,7 +696,8 @@ main {
 
 .paper-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 24px var(--shadow-hover);
+    border-left-color: var(--cyan);
 }
 
 /* 复选框样式 */
@@ -615,7 +711,7 @@ main {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: #667eea;
+    accent-color: var(--ocean);
 }
 
 .paper-content {
@@ -632,8 +728,8 @@ main {
 .select-btn {
     padding: 0.5rem 1rem;
     background: white;
-    border: 2px solid #667eea;
-    color: #667eea;
+    border: 2px solid var(--ocean);
+    color: var(--ocean);
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9rem;
@@ -642,11 +738,11 @@ main {
 }
 
 .select-btn:hover {
-    background: #667eea;
+    background: var(--ocean);
     color: white;
 }
 
-/* Venue 徽章 - 增强对比度和可见性 */
+/* Venue 徽章 */
 .venue-badge {
     display: inline-block;
     padding: 0.4rem 0.9rem;
@@ -655,7 +751,7 @@ main {
     font-weight: 700;
     text-transform: none;
     letter-spacing: 0.3px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
     margin-left: 0.5rem;
     max-width: 600px;
     white-space: normal;
@@ -674,7 +770,7 @@ main {
 }
 
 .badge-icml, .badge-iclr {
-    background: #3182CE;
+    background: var(--ocean);
     color: white;
 }
 
@@ -689,13 +785,13 @@ main {
 }
 
 .badge-published {
-    background: #4A5568;
+    background: var(--deep-sea);
     color: white;
 }
 
 .preprint {
-    background: #f5f5f5;
-    color: #757575;
+    background: #edf2f7;
+    color: #5a7184;
 }
 
 .paper-title {
@@ -704,13 +800,13 @@ main {
 }
 
 .paper-title a {
-    color: #333;
+    color: var(--text);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .paper-title a:hover {
-    color: #667eea;
+    color: var(--ocean);
 }
 
 .paper-meta {
@@ -719,24 +815,24 @@ main {
     gap: 1rem;
     margin-bottom: 0.8rem;
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-muted);
 }
 
 .meta-item.venue-conference {
-    color: #2e7d32;
+    color: #1a7a3a;
     font-weight: 600;
-    background: #e8f5e9;
+    background: #e6f5ec;
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
 }
 
 .meta-item.venue-preprint {
-    color: #666;
+    color: var(--text-muted);
 }
 
 .paper-authors {
     margin-bottom: 0.8rem;
-    color: #555;
+    color: var(--text-secondary);
     font-size: 0.95rem;
 }
 
@@ -755,15 +851,15 @@ main {
     align-items: center;
 }
 
-/* ========== 新增：关键词标签标题样式 ========== */
+/* 关键词标签标题 */
 .keyword-label {
     font-size: 0.85rem;
-    color: #666;
+    color: var(--text-muted);
     font-weight: 600;
     min-width: 80px;
 }
 
-/* ========== 新增：官方/自定义关键词区域样式 ========== */
+/* 官方/自定义关键词区域 */
 .official-keywords, .custom-keywords {
     display: flex;
     flex-wrap: wrap;
@@ -772,34 +868,35 @@ main {
     align-items: center;
 }
 
-/* 基础标签样式 */
+/* ============================================================
+   标签 — 蓝-青色系统一
+   ============================================================ */
 .tag {
     display: inline-block;
     padding: 0.3rem 0.8rem;
-    background: #e3f2fd;
-    color: #1976d2;
+    background: var(--foam);
+    color: var(--ocean);
     border-radius: 15px;
     font-size: 0.85rem;
+    border: 1px solid transparent;
 }
 
-/* 原有关键词标签样式 */
 .tag.keyword {
-    background: #f3e5f5;
-    color: #6a1b9a;
+    background: #e0f2f1;
+    color: #00796b;
+    border-color: #b2dfdb;
 }
 
-/* ========== 新增：官方关键词标签样式 ========== */
 .tag.tag-official {
-    background: #fef2f2 !important;
-    color: #dc2626 !important;
-    border: 1px solid #fecdd3;
+    background: #fff3e0 !important;
+    color: #e65100 !important;
+    border: 1px solid #ffcc80 !important;
 }
 
-/* ========== 新增：自定义关键词标签样式 ========== */
 .tag.tag-custom {
-    background: #e3f2fd !important;
-    color: #1976d2 !important;
-    border: 1px solid #bbdefb;
+    background: var(--foam) !important;
+    color: var(--ocean) !important;
+    border: 1px solid var(--light-blue) !important;
 }
 
 .paper-abstract {
@@ -808,7 +905,7 @@ main {
 
 .paper-abstract details summary {
     cursor: pointer;
-    color: #667eea;
+    color: var(--ocean);
     font-weight: 500;
     user-select: none;
 }
@@ -818,7 +915,7 @@ main {
 }
 
 .paper-abstract p {
-    color: #555;
+    color: var(--text-secondary);
     line-height: 1.8;
     text-align: justify;
 }
@@ -830,62 +927,68 @@ main {
 
 .btn-link {
     padding: 0.5rem 1rem;
-    background: #667eea;
+    background: var(--ocean);
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-size: 0.9rem;
-    transition: background 0.3s;
+    transition: all 0.3s;
     display: inline-block;
 }
 
 .btn-link:hover {
-    background: #555;
+    background: var(--deep-sea);
+    transform: translateY(-1px);
 }
 
 .btn-code {
-    background: #28a745;
+    background: #1a7a3a;
 }
 
 .btn-code:hover {
-    background: #218838;
+    background: #14632e;
 }
 
 .btn-project {
-    background: #17a2b8;
+    background: var(--cyan);
 }
 
 .btn-project:hover {
-    background: #138496;
+    background: #0096b7;
 }
 
-/* 底部 */
+/* ============================================================
+   底部 — 深海蓝
+   ============================================================ */
 footer {
-    background: #333;
-    color: white;
+    background: linear-gradient(135deg, var(--deep-sea), #1a3a54);
+    color: rgba(255, 255, 255, 0.85);
     text-align: center;
     padding: 2rem 0;
     margin-top: 3rem;
 }
 
 footer a {
-    color: #667eea;
+    color: var(--light-blue);
     text-decoration: none;
+    transition: color 0.3s;
 }
 
-/* 无结果提示 */
+footer a:hover {
+    color: var(--foam);
+}
+
 .no-results {
     text-align: center;
     padding: 3rem;
-    color: #999;
+    color: var(--text-muted);
     font-size: 1.1rem;
 }
 
-/* 加载指示器 */
 .loading-indicator {
     text-align: center;
     padding: 2rem;
-    color: #667eea;
+    color: var(--ocean);
     font-size: 1rem;
     font-weight: 500;
 }
@@ -896,7 +999,7 @@ footer a {
     width: 20px;
     height: 20px;
     margin-left: 10px;
-    border: 3px solid #667eea;
+    border: 3px solid var(--ocean);
     border-radius: 50%;
     border-top-color: transparent;
     animation: spin 1s linear infinite;
@@ -906,22 +1009,154 @@ footer a {
     to { transform: rotate(360deg); }
 }
 
+/* ============================================================
+   装饰元素 — 流体力学公式 + 流线图案
+   ============================================================ */
+
+/* Body 背景流线图案 */
+body {
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(0, 119, 182, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 180, 216, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(0, 119, 182, 0.03) 0%, transparent 45%);
+    background-attachment: fixed;
+}
+
+/* Header 公式装饰 */
+.header-formula {
+    position: absolute;
+    font-family: "Cambria Math", "Latin Modern Math", Georgia, serif;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.12);
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+    letter-spacing: 1px;
+}
+
+.header-formula-left {
+    top: 18%;
+    left: 4%;
+    font-size: 1.3rem;
+}
+
+.header-formula-right {
+    bottom: 30%;
+    right: 5%;
+    font-size: 1.5rem;
+}
+
+/* Nav 顶部装饰线 — 模拟流线 */
+nav::before {
+    content: '';
+    display: block;
+    height: 3px;
+    margin: -1.5rem -20px 1.2rem;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--foam) 15%,
+        var(--light-blue) 30%,
+        var(--cyan) 50%,
+        var(--light-blue) 70%,
+        var(--foam) 85%,
+        transparent 100%
+    );
+    border-radius: 3px;
+    opacity: 0.6;
+}
+
+/* Footer 公式装饰 */
+footer::before {
+    content: 'ρ(∂v/∂t + v·∇v) = −∇p + μ∇²v + f';
+    display: block;
+    font-family: "Cambria Math", "Latin Modern Math", Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(144, 224, 239, 0.2);
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* 论文卡片序号装饰 */
+.paper-card::before {
+    counter-increment: paper-counter;
+}
+
+/* 搜索框右侧放大镜装饰 */
+.search-box {
+    position: relative;
+}
+
+.search-box::after {
+    content: '∇ × F';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "Cambria Math", "Latin Modern Math", Georgia, serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--cyan);
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* 筛选区域之间的分隔线 — 流线风格 */
+.filter-group + .filter-group {
+    padding-top: 0.6rem;
+    border-top: 1px dashed var(--border);
+}
+
+/* 结果栏装饰 */
+.results-info::before {
+    content: '⟩';
+    color: var(--cyan);
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-right: 0.5rem;
+    opacity: 0.4;
+}
+
+.results-info::after {
+    content: '⟨';
+    color: var(--cyan);
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-left: 0.5rem;
+    opacity: 0.4;
+}
+
+/* 无结果页面装饰 */
+.no-results::before {
+    content: '∑ F = 0';
+    display: block;
+    font-family: "Cambria Math", "Latin Modern Math", Georgia, serif;
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--light-blue);
+    opacity: 0.3;
+    margin-bottom: 1rem;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
     }
-    
+
+    header {
+        padding-bottom: 3rem;
+    }
+
     .filters {
         justify-content: center;
     }
-    
+
     .paper-meta {
         flex-direction: column;
         gap: 0.3rem;
     }
 
-    /* 响应式：关键词区域适配 */
     .keyword-label {
         min-width: auto;
         margin-bottom: 0.2rem;
@@ -931,6 +1166,13 @@ footer a {
         flex-direction: column;
         align-items: flex-start;
     }
+
+    /* 移动端隐藏公式装饰 */
+    .header-formula { display: none; }
+    .search-box::after { display: none; }
+    .results-info::before,
+    .results-info::after { display: none; }
+    footer::before { font-size: 0.8rem; }
 }
 """
         css_dir = self.output_dir / "css"
@@ -1701,7 +1943,85 @@ document.addEventListener('DOMContentLoaded', function() {{
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     }}
-    
+
+    // 复制选中论文的 DOI 到剪贴板，方便导入 Zotero
+    function copySelectedDOIs() {{
+        if (selectedPaperIds.size === 0) {{
+            alert('请至少选择一篇论文！');
+            return;
+        }}
+        const selectedPapers = allPapersData.filter(p => selectedPaperIds.has(String(p.id || '')));
+
+        // 提取 DOI
+        const dois = selectedPapers
+            .map(p => (p.doi || '').trim())
+            .filter(d => d.length > 0);
+
+        // 提取 arXiv URL：优先 arxiv_id，其次从 id 或 arxiv_url 推断
+        const arxivUrls = selectedPapers
+            .map(p => {{
+                // 已有明确的 arxiv_id
+                const aid = (p.arxiv_id || '').trim();
+                if (aid) return `https://arxiv.org/abs/${{aid}}`;
+                // 从 arxiv_url 提取
+                const aurl = (p.arxiv_url || '').trim();
+                if (aurl && aurl.includes('arxiv.org')) return aurl;
+                // 从 id 字段推断（形如 2605.25679v1）
+                const pid = String(p.id || '');
+                const m = pid.match(/^(\d{{4}}\.\d{{4,5}})/);
+                if (m) return `https://arxiv.org/abs/${{m[1]}}`;
+                return '';
+            }})
+            .filter(u => u.length > 0);
+
+        // 去重
+        const uniqueDois = [...new Set(dois)];
+        const uniqueArxiv = [...new Set(arxivUrls)];
+        // 去掉已有 DOI 的论文对应的 arXiv 链接（避免重复）
+        const doiSet = new Set(uniqueDois);
+        const finalArxiv = uniqueArxiv;
+
+        if (uniqueDois.length === 0 && finalArxiv.length === 0) {{
+            alert('选中论文中没有可用的 DOI 或 arXiv ID。');
+            return;
+        }}
+
+        let text = '';
+        if (uniqueDois.length > 0) {{
+            text += '=== DOI (Zotero 点击魔法棒图标，逐个粘贴) ===\\n';
+            text += uniqueDois.join('\\n');
+        }}
+        if (finalArxiv.length > 0) {{
+            if (text) text += '\\n\\n';
+            text += '=== arXiv URL (Zotero 点击魔法棒图标，逐个粘贴) ===\\n';
+            text += finalArxiv.join('\\n');
+        }}
+
+        navigator.clipboard.writeText(text).then(() => {{
+            const total = uniqueDois.length + finalArxiv.length;
+            const msg = `已复制 ${{total}} 个标识符（${{uniqueDois.length}} DOI + ${{finalArxiv.length}} arXiv）\\n\\n导入 Zotero 方法：\\n1. 点击 Zotero 工具栏的"通过标识符添加"按钮（魔法棒 🪄 图标）\\n2. 粘贴一个 DOI 或 arXiv 链接，回车\\n3. Zotero 自动获取元数据 + 开放获取 PDF\\n4. 重复粘贴下一个`;
+            alert(msg);
+        }}).catch(() => {{
+            // Fallback: 用 textarea 复制
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            alert(`已复制 ${{uniqueDois.length}} 个 DOI + ${{finalArxiv.length}} 个 arXiv 链接`);
+        }});
+    }}
+
+    // 绑定"复制DOI"按钮
+    const copyDoiBtn = document.getElementById('copyDoiBtn');
+    if (copyDoiBtn) {{
+        copyDoiBtn.addEventListener('click', function(e) {{
+            e.preventDefault();
+            copySelectedDOIs();
+        }});
+    }}
+
     // 初始化
     console.log('Initializing...');
     loadMonthsIndex();

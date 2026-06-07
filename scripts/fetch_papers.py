@@ -514,7 +514,7 @@ class PaperFetcher:
             # 防止仅凭 ML 术语就误分类。
             if "智能CFD" in label and not context_hits:
                 score -= 3
-            if strong_hits and score >= 4:
+            if strong_hits and score >= 3:
                 scores[label] = {
                     "score": score,
                     "strong_hits": strong_hits[:8],
@@ -960,10 +960,7 @@ class PaperFetcher:
         tab_id = None
         ws = None
         try:
-            new_tab = requests.put(
-                f"{base_url}/json/new?{quote_plus(url, safe=':/?&=%')}",
-                timeout=10,
-            )
+            new_tab = requests.put(f"{base_url}/json/new?about:blank", timeout=10)
             if new_tab.status_code not in (200, 201):
                 logger.info(f"{source_name} Chrome DevTools unavailable at {base_url}: {new_tab.status_code}")
                 return None
@@ -975,8 +972,29 @@ class PaperFetcher:
                 logger.info(f"{source_name} Chrome target has no websocket URL.")
                 return None
 
-            ws = websocket.create_connection(ws_url, timeout=timeout)
+            ws = websocket.create_connection(ws_url, timeout=timeout, suppress_origin=True)
             message_id = 1
+            ws.send(json.dumps({"id": message_id, "method": "Page.enable"}))
+            while True:
+                message = json.loads(ws.recv())
+                if message.get("id") == message_id:
+                    break
+
+            message_id += 1
+            ws.send(json.dumps({
+                "id": message_id,
+                "method": "Page.navigate",
+                "params": {"url": url},
+            }))
+            while True:
+                message = json.loads(ws.recv())
+                if message.get("method") == "Page.loadEventFired":
+                    break
+                if message.get("id") == message_id and "error" in message:
+                    logger.warning(f"{source_name} browser navigation failed: {message['error']}")
+                    return None
+
+            message_id += 1
             ws.send(json.dumps({
                 "id": message_id,
                 "method": "Runtime.evaluate",
@@ -1120,12 +1138,16 @@ async () => {{
   await new Promise((resolve, reject) => {{
     let n = 0;
     const tick = () => {{
+      if (document.title.includes('安全验证') || document.body.innerText.includes('向右滑动完成验证')) resolve();
       if (document.querySelector('input.search-input')) resolve();
       else if (++n > 30) reject(new Error('search input timeout'));
       else setTimeout(tick, 500);
     }};
     tick();
   }});
+  if (document.title.includes('安全验证') || document.body.innerText.includes('向右滑动完成验证')) {{
+    return {{ error: 'captcha', message: 'CNKI requires slider verification.' }};
+  }}
   const captcha = document.querySelector('#tcaptcha_transform_dy');
   if (captcha && captcha.getBoundingClientRect().top >= 0) return {{ error: 'captcha' }};
   const input = document.querySelector('input.search-input');

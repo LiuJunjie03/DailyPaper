@@ -8,10 +8,16 @@
 </head>
 <body>
     <header>
+        <div class="header-formula header-formula-left" aria-hidden="true">
+            ∂ρ/∂t + ∇·(ρ<strong>v</strong>) = 0
+        </div>
+        <div class="header-formula header-formula-right" aria-hidden="true">
+            Re = ρvL/μ
+        </div>
         <div class="container">
             <h1>📚 DailyPaper</h1>
             <p class="subtitle">每日自动更新 计算流体力学+机器学习 领域最新论文</p>
-            <p class="update-time">最后更新: 2026-06-08 02:49:06 UTC</p>
+            <p class="update-time">最后更新: 2026-06-07 19:21:33 UTC</p>
         </div>
     </header>
     
@@ -20,28 +26,28 @@
             <div class="filter-group">
                 <label class="filter-label">📅 月份：</label>
                 <div class="filters month-filters">
-                    <button class="filter-btn month-btn active" data-month="all">全部 (1220)</button>
-                    <button class="filter-btn month-btn" data-month="2026-06">2026-06 (48)</button>
-                    <button class="filter-btn month-btn" data-month="2026-05">2026-05 (302)</button>
-                    <button class="filter-btn month-btn" data-month="2026-04">2026-04 (326)</button>
-                    <button class="filter-btn month-btn" data-month="2026-03">2026-03 (304)</button>
-                    <button class="filter-btn month-btn" data-month="2026-02">2026-02 (71)</button>
-                    <button class="filter-btn month-btn" data-month="2026-01">2026-01 (45)</button>
+                    <button class="filter-btn month-btn active" data-month="all">全部 (992)</button>
+                    <button class="filter-btn month-btn" data-month="2026-06">2026-06 (14)</button>
+                    <button class="filter-btn month-btn" data-month="2026-05">2026-05 (277)</button>
+                    <button class="filter-btn month-btn" data-month="2026-04">2026-04 (292)</button>
+                    <button class="filter-btn month-btn" data-month="2026-03">2026-03 (276)</button>
+                    <button class="filter-btn month-btn" data-month="2026-02">2026-02 (58)</button>
+                    <button class="filter-btn month-btn" data-month="2026-01">2026-01 (24)</button>
                     <button class="filter-btn month-btn" data-month="2025-12">2025-12 (23)</button>
                     <button class="filter-btn month-btn" data-month="2025-11">2025-11 (6)</button>
                     <button class="filter-btn month-btn" data-month="2025-10">2025-10 (11)</button>
                     <button class="filter-btn month-btn" data-month="2025-09">2025-09 (3)</button>
                     <button class="filter-btn month-btn" data-month="2025-08">2025-08 (2)</button>
                     <button class="filter-btn month-btn" data-month="2025-07">2025-07 (2)</button>
-                    <button class="filter-btn month-btn" data-month="2025-01">2025-01 (77)</button>
+                    <button class="filter-btn month-btn" data-month="2025-01">2025-01 (4)</button>
                 </div>
             </div>
             <div class="filter-group">
                 <label class="filter-label">📌 发表状态：</label>
                 <div class="filters status-filters">
-                    <button class="filter-btn status-btn active" data-status="all">全部 (1220)</button>
-                    <button class="filter-btn status-btn" data-status="published">已发表 (147)</button>
-                    <button class="filter-btn status-btn" data-status="preprint">预印本 (1073)</button>
+                    <button class="filter-btn status-btn active" data-status="all">全部 (992)</button>
+                    <button class="filter-btn status-btn" data-status="published">已发表 (29)</button>
+                    <button class="filter-btn status-btn" data-status="preprint">预印本 (963)</button>
                 </div>
             </div>
             <div class="filter-group">
@@ -55,26 +61,27 @@
             <div class="filter-group">
                 <label class="filter-label">🏷️ 研究领域：</label>
                 <div class="filters category-filters">
-                    <button class="filter-btn category-btn active" data-category="all">全部 (1220)</button>
-                    <button class="filter-btn category-btn" data-category="机器学习">机器学习 (378)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学">流体力学 (1220)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 代理模型与算子学习">流体力学 / 智能CFD / 代理模型与算子学习 (114)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 湍流建模与闭合">流体力学 / 智能CFD / 湍流建模与闭合 (42)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 数值方法增强">流体力学 / 智能CFD / 数值方法增强 (7)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 加速求解与超分辨">流体力学 / 智能CFD / 加速求解与超分辨 (13)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 物理信息神经网络">流体力学 / 智能CFD / 物理信息神经网络 (68)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 流场重建与数据驱动">流体力学 / 智能CFD / 流场重建与数据驱动 (28)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 流动控制与强化学习">流体力学 / 智能CFD / 流动控制与强化学习 (43)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 气动优化设计">流体力学 / 气动优化设计 (17)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 湍流与流动机理">流体力学 / 湍流与流动机理 (301)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 多相流理论">流体力学 / 多相流理论 (94)</button>
+                    <button class="filter-btn category-btn active" data-category="all">全部 (992)</button>
+                    <button class="filter-btn category-btn" data-category="机器学习">机器学习 (253)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学">流体力学 (992)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD">流体力学 / 智能CFD (185)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 代理模型与算子学习">流体力学 / 智能CFD / 代理模型与算子学习 (80)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 湍流建模与闭合">流体力学 / 智能CFD / 湍流建模与闭合 (25)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 数值方法增强">流体力学 / 智能CFD / 数值方法增强 (6)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 加速求解与超分辨">流体力学 / 智能CFD / 加速求解与超分辨 (11)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 物理信息神经网络">流体力学 / 智能CFD / 物理信息神经网络 (38)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 流场重建与数据驱动">流体力学 / 智能CFD / 流场重建与数据驱动 (24)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 智能CFD / 流动控制与强化学习">流体力学 / 智能CFD / 流动控制与强化学习 (28)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 气动优化设计">流体力学 / 气动优化设计 (15)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 湍流与流动机理">流体力学 / 湍流与流动机理 (276)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 多相流理论">流体力学 / 多相流理论 (112)</button>
                     <button class="filter-btn category-btn" data-category="流体力学 / 空气动力学理论">流体力学 / 空气动力学理论 (53)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 环境与地球物理流体">流体力学 / 环境与地球物理流体 (4)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 生物与医学流体">流体力学 / 生物与医学流体 (37)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 燃烧与传热">流体力学 / 燃烧与传热 (50)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 环境与地球物理流体">流体力学 / 环境与地球物理流体 (6)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 生物与医学流体">流体力学 / 生物与医学流体 (35)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 燃烧与传热">流体力学 / 燃烧与传热 (60)</button>
                     <button class="filter-btn category-btn" data-category="流体力学 / 风能与海洋工程流体">流体力学 / 风能与海洋工程流体 (10)</button>
                     <button class="filter-btn category-btn" data-category="流体力学 / 计算流体力学方法">流体力学 / 计算流体力学方法 (7)</button>
-                    <button class="filter-btn category-btn" data-category="流体力学 / 其他">流体力学 / 其他 (451)</button>
+                    <button class="filter-btn category-btn" data-category="流体力学 / 其他">流体力学 / 其他 (307)</button>
                 </div>
             </div>
             <div class="filter-group">
@@ -95,7 +102,8 @@
             <div class="export-controls">
                 <button class="select-btn" id="selectAllBtn">✓ 全选</button>
                 <button class="select-btn" id="clearAllBtn">✗ 清空</button>
-                <button class="export-btn" id="exportBtn">📥 下载选中PDF (<span id="selectedCount">0</span>)</button>
+                <button class="export-btn" id="exportBtn">🔗 打开PDF (<span id="selectedCount">0</span>)</button>
+                <button class="export-btn export-btn-secondary" id="copyDoiBtn">📋 复制DOI导入Zotero</button>
             </div>
         </div>
     </nav>
@@ -108,7 +116,7 @@
     
     <footer>
         <div class="container">
-            <p>© 2025 DailyPaper | 数据来源: ArXiv | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>
+            <p>© 2025 DailyPaper | 数据来源: ArXiv · Semantic Scholar · Google Scholar · CNKI | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>
         </div>
     </footer>
     

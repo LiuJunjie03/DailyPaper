@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedPaperIds = new Set();
     
     // 配置里的分类列表（从Python传入）
-    const CATEGORIES = ["\u673a\u5668\u5b66\u4e60", "\u6d41\u4f53\u529b\u5b66", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u4ee3\u7406\u6a21\u578b\u4e0e\u7b97\u5b50\u5b66\u4e60", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u6e4d\u6d41\u5efa\u6a21\u4e0e\u95ed\u5408", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u6570\u503c\u65b9\u6cd5\u589e\u5f3a", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u52a0\u901f\u6c42\u89e3\u4e0e\u8d85\u5206\u8fa8", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u7269\u7406\u4fe1\u606f\u795e\u7ecf\u7f51\u7edc", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u6d41\u573a\u91cd\u5efa\u4e0e\u6570\u636e\u9a71\u52a8", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u6d41\u52a8\u63a7\u5236\u4e0e\u5f3a\u5316\u5b66\u4e60", "\u6d41\u4f53\u529b\u5b66 / \u6c14\u52a8\u4f18\u5316\u8bbe\u8ba1", "\u6d41\u4f53\u529b\u5b66 / \u6e4d\u6d41\u4e0e\u6d41\u52a8\u673a\u7406", "\u6d41\u4f53\u529b\u5b66 / \u591a\u76f8\u6d41\u7406\u8bba", "\u6d41\u4f53\u529b\u5b66 / \u7a7a\u6c14\u52a8\u529b\u5b66\u7406\u8bba", "\u6d41\u4f53\u529b\u5b66 / \u73af\u5883\u4e0e\u5730\u7403\u7269\u7406\u6d41\u4f53", "\u6d41\u4f53\u529b\u5b66 / \u751f\u7269\u4e0e\u533b\u5b66\u6d41\u4f53", "\u6d41\u4f53\u529b\u5b66 / \u71c3\u70e7\u4e0e\u4f20\u70ed", "\u6d41\u4f53\u529b\u5b66 / \u98ce\u80fd\u4e0e\u6d77\u6d0b\u5de5\u7a0b\u6d41\u4f53", "\u6d41\u4f53\u529b\u5b66 / \u8ba1\u7b97\u6d41\u4f53\u529b\u5b66\u65b9\u6cd5", "\u6d41\u4f53\u529b\u5b66 / \u5176\u4ed6"];
+    const CATEGORIES = ["\u673a\u5668\u5b66\u4e60", "\u6d41\u4f53\u529b\u5b66", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u4ee3\u7406\u6a21\u578b\u4e0e\u7b97\u5b50\u5b66\u4e60", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u6e4d\u6d41\u5efa\u6a21\u4e0e\u95ed\u5408", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u6570\u503c\u65b9\u6cd5\u589e\u5f3a", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u52a0\u901f\u6c42\u89e3\u4e0e\u8d85\u5206\u8fa8", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u7269\u7406\u4fe1\u606f\u795e\u7ecf\u7f51\u7edc", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u6d41\u573a\u91cd\u5efa\u4e0e\u6570\u636e\u9a71\u52a8", "\u6d41\u4f53\u529b\u5b66 / \u667a\u80fdCFD / \u6d41\u52a8\u63a7\u5236\u4e0e\u5f3a\u5316\u5b66\u4e60", "\u6d41\u4f53\u529b\u5b66 / \u6c14\u52a8\u4f18\u5316\u8bbe\u8ba1", "\u6d41\u4f53\u529b\u5b66 / \u6e4d\u6d41\u4e0e\u6d41\u52a8\u673a\u7406", "\u6d41\u4f53\u529b\u5b66 / \u591a\u76f8\u6d41\u7406\u8bba", "\u6d41\u4f53\u529b\u5b66 / \u7a7a\u6c14\u52a8\u529b\u5b66\u7406\u8bba", "\u6d41\u4f53\u529b\u5b66 / \u73af\u5883\u4e0e\u5730\u7403\u7269\u7406\u6d41\u4f53", "\u6d41\u4f53\u529b\u5b66 / \u751f\u7269\u4e0e\u533b\u5b66\u6d41\u4f53", "\u6d41\u4f53\u529b\u5b66 / \u71c3\u70e7\u4e0e\u4f20\u70ed", "\u6d41\u4f53\u529b\u5b66 / \u98ce\u80fd\u4e0e\u6d77\u6d0b\u5de5\u7a0b\u6d41\u4f53", "\u6d41\u4f53\u529b\u5b66 / \u8ba1\u7b97\u6d41\u4f53\u529b\u5b66\u65b9\u6cd5", "\u6d41\u4f53\u529b\u5b66 / \u5176\u4ed6"];
 
     function splitCategory(category) {
         return category.split('/').map(part => part.trim()).filter(Boolean);
@@ -758,7 +758,85 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     }
-    
+
+    // 复制选中论文的 DOI 到剪贴板，方便导入 Zotero
+    function copySelectedDOIs() {
+        if (selectedPaperIds.size === 0) {
+            alert('请至少选择一篇论文！');
+            return;
+        }
+        const selectedPapers = allPapersData.filter(p => selectedPaperIds.has(String(p.id || '')));
+
+        // 提取 DOI
+        const dois = selectedPapers
+            .map(p => (p.doi || '').trim())
+            .filter(d => d.length > 0);
+
+        // 提取 arXiv URL：优先 arxiv_id，其次从 id 或 arxiv_url 推断
+        const arxivUrls = selectedPapers
+            .map(p => {
+                // 已有明确的 arxiv_id
+                const aid = (p.arxiv_id || '').trim();
+                if (aid) return `https://arxiv.org/abs/${aid}`;
+                // 从 arxiv_url 提取
+                const aurl = (p.arxiv_url || '').trim();
+                if (aurl && aurl.includes('arxiv.org')) return aurl;
+                // 从 id 字段推断（形如 2605.25679v1）
+                const pid = String(p.id || '');
+                const m = pid.match(/^(\d{4}\.\d{4,5})/);
+                if (m) return `https://arxiv.org/abs/${m[1]}`;
+                return '';
+            })
+            .filter(u => u.length > 0);
+
+        // 去重
+        const uniqueDois = [...new Set(dois)];
+        const uniqueArxiv = [...new Set(arxivUrls)];
+        // 去掉已有 DOI 的论文对应的 arXiv 链接（避免重复）
+        const doiSet = new Set(uniqueDois);
+        const finalArxiv = uniqueArxiv;
+
+        if (uniqueDois.length === 0 && finalArxiv.length === 0) {
+            alert('选中论文中没有可用的 DOI 或 arXiv ID。');
+            return;
+        }
+
+        let text = '';
+        if (uniqueDois.length > 0) {
+            text += '=== DOI (Zotero 点击魔法棒图标，逐个粘贴) ===\n';
+            text += uniqueDois.join('\n');
+        }
+        if (finalArxiv.length > 0) {
+            if (text) text += '\n\n';
+            text += '=== arXiv URL (Zotero 点击魔法棒图标，逐个粘贴) ===\n';
+            text += finalArxiv.join('\n');
+        }
+
+        navigator.clipboard.writeText(text).then(() => {
+            const total = uniqueDois.length + finalArxiv.length;
+            const msg = `已复制 ${total} 个标识符（${uniqueDois.length} DOI + ${finalArxiv.length} arXiv）\n\n导入 Zotero 方法：\n1. 点击 Zotero 工具栏的"通过标识符添加"按钮（魔法棒 🪄 图标）\n2. 粘贴一个 DOI 或 arXiv 链接，回车\n3. Zotero 自动获取元数据 + 开放获取 PDF\n4. 重复粘贴下一个`;
+            alert(msg);
+        }).catch(() => {
+            // Fallback: 用 textarea 复制
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            alert(`已复制 ${uniqueDois.length} 个 DOI + ${finalArxiv.length} 个 arXiv 链接`);
+        });
+    }
+
+    // 绑定"复制DOI"按钮
+    const copyDoiBtn = document.getElementById('copyDoiBtn');
+    if (copyDoiBtn) {
+        copyDoiBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            copySelectedDOIs();
+        });
+    }
+
     // 初始化
     console.log('Initializing...');
     loadMonthsIndex();
