@@ -111,7 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
         html += `</div>`;
 
         if (visibleCategories.length > 0) {
-            html += `<div class="category-children">`;
+            const depth = splitCategory(currentCategory).length;
+            html += `<div class="category-children" data-depth="${depth}">`;
             visibleCategories.forEach(category => {
                 html += `<button class="filter-btn category-btn" data-category="${escapeAttribute(category)}">${escapeHTML(categoryLabel(category))} (${categoryCount(category)})</button>`;
             });
