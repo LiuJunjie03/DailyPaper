@@ -12,16 +12,23 @@ import logging
 import yaml
 import os
 import copy
+import hashlib
 
-# 关键词规范化：从 fetch_papers 导入映射表
+# 关键词规范化与相关性判断：从 fetch_papers 导入，保持单一数据源
 try:
-    from fetch_papers import KEYWORD_CANONICAL
+    from fetch_papers import KEYWORD_CANONICAL, is_relevant_paper, term_in_text
+    from fetch_papers import FLUID_RELATED_TERMS, FLUID_RELATED_TAGS, FLUID_RELATED_CATEGORIES
 except ImportError:
     import importlib.util
     spec = importlib.util.spec_from_file_location("fetch_papers", Path(__file__).parent / "fetch_papers.py")
     _fp = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(_fp)
     KEYWORD_CANONICAL = _fp.KEYWORD_CANONICAL
+    is_relevant_paper = _fp.is_relevant_paper
+    term_in_text = _fp.term_in_text
+    FLUID_RELATED_TERMS = _fp.FLUID_RELATED_TERMS
+    FLUID_RELATED_TAGS = _fp.FLUID_RELATED_TAGS
+    FLUID_RELATED_CATEGORIES = _fp.FLUID_RELATED_CATEGORIES
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -44,67 +51,21 @@ config = load_config()
 # 获取配置里的分类列表
 CATEGORIES = list(config.get('categories', {}).keys())
 
-FLUID_RELATED_TAGS = {
-    "多相流",
-    "空气动力学",
-    "智能流体力学",
-    "流体力学",
-    "CFD与机器学习交叉",
-}
-
-FLUID_RELATED_TERMS = [
-    "cfd",
-    "computational fluid dynamics",
-    "fluid dynamics",
-    "fluid mechanics",
-    "flow simulation",
-    "flow modeling",
-    "flow computation",
-    "turbulence",
-    "rans",
-    "les",
-    "dns",
-    "multiphase flow",
-    "two-phase flow",
-    "aerodynamics",
-    "airfoil",
-    "navier-stokes",
-    "lattice boltzmann",
-    "finite volume",
-]
-
-FLUID_RELATED_CATEGORIES = {
-    "physics.flu-dyn",
-    "physics.comp-ph",
-    "physics.ao-ph",
-}
-
-
-def is_relevant_paper(paper: Dict) -> bool:
-    tags = set(paper.get("tags") or [])
-    if tags & FLUID_RELATED_TAGS:
-        return True
-    if any(tag == "流体力学" or str(tag).startswith("流体力学 /") for tag in tags):
-        return True
-
-    categories = {str(cat).lower() for cat in paper.get("categories") or []}
-    if categories & FLUID_RELATED_CATEGORIES:
-        return True
-
-    text = f"{paper.get('title', '')} {paper.get('abstract', '')}".lower()
-    return any(term in text for term in FLUID_RELATED_TERMS)
-
-
 class HTMLGenerator:
     """HTML 生成器（适配按月份拆分的数据源）"""
     
-    def __init__(self, data_dir: str = "data", 
+    def __init__(self, data_dir: str = "data",
                  output_dir: str = "docs"):
         # 关键修改1：不再依赖单一papers.json，改为读取data目录下的月度文件
         self.data_dir = Path(data_dir)
         self.output_dir = Path(output_dir)
         self.papers = []
         self.papers_by_month = {}  # 按月份分组的论文
+
+    @staticmethod
+    def _content_hash(content: str) -> str:
+        """计算内容的短哈希值，用于检测模板是否变更"""
+        return hashlib.md5(content.encode("utf-8")).hexdigest()[:12]
 
     @staticmethod
     def _normalize_papers_keywords(papers: List[Dict]) -> List[Dict]:
@@ -1205,12 +1166,20 @@ footer::before {
         css_dir = self.output_dir / "css"
         css_dir.mkdir(parents=True, exist_ok=True)
         css_file = css_dir / "style.css"
-        if not css_file.exists():
-            with open(css_file, 'w', encoding='utf-8') as f:
-                f.write(css)
-            logger.info("生成 CSS 样式文件（包含关键词区分样式）")
-        else:
-            logger.info("CSS 样式文件已存在，跳过生成（保留自定义样式）")
+        content_hash = self._content_hash(css)
+        hash_file = css_dir / "style.css.hash"
+
+        # 仅当模板内容变更时才重新生成，避免覆盖用户自定义修改
+        if css_file.exists() and hash_file.exists():
+            existing_hash = hash_file.read_text(encoding="utf-8").strip()
+            if existing_hash == content_hash:
+                logger.info("CSS 样式文件内容未变化，跳过生成")
+                return
+
+        with open(css_file, 'w', encoding='utf-8') as f:
+            f.write(css)
+        hash_file.write_text(content_hash, encoding="utf-8")
+        logger.info("生成 CSS 样式文件")
     
     def generate_js(self):
         """生成 JavaScript 文件（包含重要程度排序逻辑）"""
@@ -1614,33 +1583,6 @@ document.addEventListener('DOMContentLoaded', function() {{
     // 更新研究领域按钮的数量
     function updateCategoryButtonCounts() {{
         renderCategoryNav();
-        return;
-        const statusFilteredPapers = allPapersData.filter(paper => {{
-            const status = isPreprint(paper) ? 'preprint' : 'published';
-            return currentStatus === 'all' || status === currentStatus;
-        }});
-        
-        const categoryCounts = {{ 'all': statusFilteredPapers.length }};
-        CATEGORIES.forEach(category => {{
-            categoryCounts[category] = 0;
-        }});
-        
-        statusFilteredPapers.forEach(paper => {{
-            const tags = paper.tags || [];
-            tags.forEach(tag => {{
-                if (categoryCounts.hasOwnProperty(tag)) {{
-                    categoryCounts[tag]++;
-                }}
-            }});
-        }});
-        
-        categoryBtns.forEach(btn => {{
-            const category = btn.dataset.category;
-            const displayName = category === 'all' ? '全部' : 
-                               category.replace("Natural Language Processing", "NLP");
-            const count = categoryCounts[category] || 0;
-            btn.textContent = `${{displayName}} (${{count}})`;
-        }});
     }}
     
     // 筛选和排序论文（包含重要程度排序）
@@ -2064,12 +2006,20 @@ document.addEventListener('DOMContentLoaded', function() {{
         js_dir.mkdir(parents=True, exist_ok=True)
 
         js_file = js_dir / "main.js"
-        if not js_file.exists():
-            with open(js_file, 'w', encoding='utf-8') as f:
-                f.write(js)
-            logger.info("生成 JavaScript 文件")
-        else:
-            logger.info("JavaScript 文件已存在，跳过生成（保留自定义脚本）")
+        content_hash = self._content_hash(js)
+        hash_file = js_dir / "main.js.hash"
+
+        # 仅当模板内容变更时才重新生成，避免覆盖用户自定义修改
+        if js_file.exists() and hash_file.exists():
+            existing_hash = hash_file.read_text(encoding="utf-8").strip()
+            if existing_hash == content_hash:
+                logger.info("JavaScript 文件内容未变化，跳过生成")
+                return
+
+        with open(js_file, 'w', encoding='utf-8') as f:
+            f.write(js)
+        hash_file.write_text(content_hash, encoding="utf-8")
+        logger.info("生成 JavaScript 文件")
     
     def run(self):
         """运行生成流程"""

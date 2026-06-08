@@ -520,7 +520,7 @@ class PaperFetcher:
         return None
 
     def get_citation_count(self, title, authors=None, year=None):
-        """通过 Semantic Scholar API 获取引用次数"""
+        """通过 Semantic Scholar API 获取引用次数（单篇查询，保留兼容）"""
         url = "https://api.semanticscholar.org/graph/v1/paper/search"
         params = {
             "query": title,
@@ -533,11 +533,75 @@ class PaperFetcher:
                 data = resp.json()
                 if data.get("data"):
                     paper = data["data"][0]
-                    # 可选：进一步比对作者/年份
                     return paper.get("citationCount", 0)
         except Exception as e:
             logger.warning(f"Semantic Scholar API 查询失败: {e}")
         return None
+
+    def batch_get_citation_counts(self, papers: List[Dict], batch_size: int = 50) -> Dict[str, Optional[int]]:
+        """
+        批量获取引用数：使用 Semantic Scholar /paper/batch 接口，
+        通过 ArXiv ID 批量查询，避免逐篇请求导致速率限制。
+        返回 {paper['id']: citation_count} 字典。
+        """
+        result_map = {}
+
+        # 收集有 ArXiv ID 的论文
+        id_pairs = []  # [(paper_id, arxiv_id), ...]
+        for p in papers:
+            aid = p.get("arxiv_id", "") or ""
+            # 兼容：部分论文的 id 字段本身就是 arxiv_id
+            if not aid and re.match(r"^\d{4}\.\d{4,5}", str(p.get("id", ""))):
+                aid = p.get("id", "")
+            if aid:
+                # 标准化 ArXiv ID（去除版本号后缀）
+                normalized = re.sub(r"v\d+$", "", aid)
+                id_pairs.append((p["id"], normalized))
+
+        if not id_pairs:
+            return result_map
+
+        headers = {}
+        if self.ss_api_key:
+            headers["x-api-key"] = self.ss_api_key
+
+        # 分批请求
+        for i in range(0, len(id_pairs), batch_size):
+            batch = id_pairs[i:i + batch_size]
+            ss_ids = [f"ArXiv:{arxiv_id}" for _, arxiv_id in batch]
+
+            url = "https://api.semanticscholar.org/graph/v1/paper/batch"
+            params = {"fields": "title,citationCount,externalIds"}
+
+            try:
+                resp = requests.post(url, params=params, json={"ids": ss_ids}, headers=headers, timeout=30)
+                if resp.status_code == 429:
+                    logger.warning("Semantic Scholar 批量 API 限速，等待 60 秒...")
+                    time.sleep(60)
+                    resp = requests.post(url, params=params, json={"ids": ss_ids}, headers=headers, timeout=30)
+
+                if resp.status_code == 200:
+                    data = resp.json()
+                    for (paper_id, _), item in zip(batch, data):
+                        if item and item.get("citationCount") is not None:
+                            result_map[paper_id] = item["citationCount"]
+                        else:
+                            result_map[paper_id] = None
+                else:
+                    logger.warning(f"Semantic Scholar 批量 API 返回 {resp.status_code}")
+                    for paper_id, _ in batch:
+                        result_map[paper_id] = None
+            except Exception as e:
+                logger.warning(f"Semantic Scholar 批量 API 请求失败: {e}")
+                for paper_id, _ in batch:
+                    result_map[paper_id] = None
+
+            # 批次间延迟（API Key 限制 1 req/sec，留足余量）
+            if i + batch_size < len(id_pairs):
+                time.sleep(2)
+
+        logger.info(f"批量引用查询完成: {len(result_map)} 篇，其中 {sum(1 for v in result_map.values() if v is not None)} 篇有数据")
+        return result_map
 
     def _paper_text(self, paper: Dict) -> str:
         parts = [
@@ -1672,17 +1736,24 @@ async () => {{
             # 合并官方+自定义关键词，去重（保持原有keywords字段兼容）
             paper["keywords"] = list(set(paper["official_keywords"] + paper["custom_keywords"]))
             
-            # 补充引用数和影响因子
-            paper["citation_count"] = self.get_citation_count(paper["title"], paper["authors"], published.year)
+            # 补充影响因子
             paper["impact_factor"] = self.get_impact_factor(paper)
-            
+
             # 按影响因子分类
             if paper["tags"]:
                 if paper["impact_factor"] and paper["impact_factor"] >= 3.0:
                     papers_high_if.append(paper)
                 else:
                     papers_other.append(paper)
-        
+
+        # 批量获取引用数（替代逐篇查询，避免速率限制）
+        all_collected = papers_high_if + papers_other
+        if all_collected:
+            logger.info(f"批量获取 {len(all_collected)} 篇 ArXiv 论文的引用数...")
+            citation_map = self.batch_get_citation_counts(all_collected)
+            for p in all_collected:
+                p["citation_count"] = citation_map.get(p["id"], None)
+
         # 优先返回高影响因子文献，数量不足时补充其他
         max_results = arxiv_config.get("max_results", 1000)
         selected = papers_high_if[:max_results]

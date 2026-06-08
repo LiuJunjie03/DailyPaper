@@ -5,11 +5,19 @@
 """
 
 import json
+import yaml
 from pathlib import Path
 import re
 
 
-def extract_venue_from_comment(comment: str) -> str:
+def load_config():
+    """加载项目根目录的 config.yaml"""
+    config_path = Path(__file__).resolve().parent.parent / "config.yaml"
+    with open(config_path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+
+def extract_venue_from_comment(comment: str, venues: list = None) -> str:
     """从 comment 字段提取会议/期刊信息"""
     if not comment:
         return None
@@ -20,33 +28,35 @@ def extract_venue_from_comment(comment: str) -> str:
     if 'preprint' in comment.lower():
         return None
 
-    # 常见会议列表
-    conferences = [
-        'CVPR', 'ICCV', 'ECCV', 'NeurIPS', 'ICML', 'ICLR',
-        'ACL', 'EMNLP', 'NAACL', 'AAAI', 'IJCAI', 'KDD',
-        'ICRA', 'IROS', 'CoRL', 'RSS',
-        'SIGIR', 'WWW', 'WSDM', 'RecSys',
-        'SIGMOD', 'VLDB', 'ICDE',
-        'SIGGRAPH', 'ICASSP', 'INTERSPEECH'
-    ]
+    if not venues:
+        return None
 
-    # 匹配模式：会议名 + 年份
-    for conf in conferences:
-        pattern = rf'\b{conf}\s*[:\']?\s*(\d{{4}})\b'
-        match = re.search(pattern, comment, re.IGNORECASE)
-        if match:
-            year = match.group(1)
-            return f"{conf} {year}"
-
-        pattern = rf'\b{conf}\b'
-        if re.search(pattern, comment, re.IGNORECASE):
-            return conf
+    # 匹配：config 中的 venue 名 + 可选年份
+    for venue in venues:
+        # 提取短名称（config 中可能有括号注释）
+        venue_name = venue.split("(")[0].strip() if "(" in venue else venue.strip()
+        if not venue_name:
+            continue
+        if venue_name.lower() in comment.lower():
+            # 尝试提取年份
+            match = re.search(r'\b(19|20)\d{2}\b', comment)
+            if match:
+                return f"{venue_name} {match.group(0)}"
+            return venue_name
 
     return None
 
 
 def update_papers_with_venue():
     """更新论文数据，添加会议信息（遍历月度 JSON 文件）"""
+    config = load_config()
+    # 从 config.yaml 统一加载会议 + 期刊列表
+    all_venues = (
+        config.get("venues", {}).get("conferences", [])
+        + config.get("venues", {}).get("journals", [])
+    )
+    print(f"📋 已加载 {len(all_venues)} 个会议/期刊名称")
+
     data_dir = Path("data")
 
     if not data_dir.exists():
@@ -75,7 +85,7 @@ def update_papers_with_venue():
         for paper in papers:
             comment = paper.get('comment')
             if comment:
-                venue = extract_venue_from_comment(comment)
+                venue = extract_venue_from_comment(comment, all_venues)
                 if venue:
                     paper['conference'] = venue
                     updated_count += 1
