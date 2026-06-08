@@ -239,7 +239,7 @@ class HTMLGenerator:
             </div>
         </div>
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="🔍 搜索论文标题、作者、摘要...">
+            <input type="text" id="searchInput" placeholder="🔍 搜索论文标题、作者、摘要..." aria-label="搜索论文">
         </div>
         <div class="results-info">
             <span id="resultsCount">加载中...</span>
@@ -252,7 +252,7 @@ class HTMLGenerator:
         </div>
     </nav>
     
-    <main class="container">
+    <main class="container" aria-label="论文列表">
         <div id="papers-container">
             <!-- Papers will be loaded by JavaScript -->
         </div>

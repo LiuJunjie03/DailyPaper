@@ -483,11 +483,28 @@ class PaperFetcher:
     def __init__(self, config_path: str = "config.yaml"):
         """初始化：读取你的自定义yaml配置"""
         self.config = self._load_config(config_path)
+        self._validate_config()
         self.arxiv_client = arxiv.Client()
         self.ss_api_key = (
             self.config.get("sources", {}).get("semantic_scholar", {}).get("api_key", "")
             or os.environ.get("SEMANTIC_SCHOLAR_API_KEY", "")
         )
+
+    def _validate_config(self):
+        """校验 config.yaml 关键字段是否存在"""
+        sources = self.config.get("sources")
+        if not sources or not isinstance(sources, dict):
+            logger.warning("config.yaml 缺少 sources 配置，将不会抓取任何数据源")
+            return
+
+        for source_name in ["arxiv", "semantic_scholar", "google_scholar", "cnki"]:
+            src = sources.get(source_name)
+            if src and not isinstance(src, dict):
+                logger.warning(f"config.yaml sources.{source_name} 格式错误（期望字典）")
+
+        categories = self.config.get("categories")
+        if not categories or not isinstance(categories, dict):
+            logger.warning("config.yaml 缺少 categories 配置，论文分类将无法工作")
 
     def _load_config(self, config_path: str) -> Dict:
         """加载你的yaml配置，确保结构匹配"""
@@ -1060,6 +1077,10 @@ class PaperFetcher:
         # 保存各月份数据（如data/2026-01.json）—— 已包含official_keywords/custom_keywords
         for month, papers in month_papers.items():
             month_path = os.path.join(data_dir, f"{month}.json")
+            # 写入前备份已有文件（最多保留一个 .bak 副本）
+            if os.path.exists(month_path):
+                import shutil
+                shutil.copy2(month_path, month_path + ".bak")
             with open(month_path, "w", encoding="utf-8") as f:
                 json.dump(papers, f, ensure_ascii=False, indent=2)
             logger.info(f"月份数据已保存到：{month_path}")
