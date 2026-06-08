@@ -184,9 +184,12 @@ try {
     const monthsIndex = await response.json();
     console.log('Months index loaded:', monthsIndex);
 
-    // 默认加载最新月份的数据
+    // 默认加载：如果 URL 指定了月份则加载对应月份，否则加载全部
     if (monthsIndex.length > 0) {
-        await loadMonthData('all');
+        const hash = window.location.hash.slice(1);
+        const params = new URLSearchParams(hash);
+        const initialMonth = params.has('month') ? params.get('month') : 'all';
+        await loadMonthData(initialMonth);
     }
 } catch (e) {
     console.error('Failed to load months index:', e);
@@ -416,7 +419,7 @@ renderCategoryNav();
     // 从 URL hash 恢复筛选状态
     function loadStateFromURL() {
         const hash = window.location.hash.slice(1);
-        if (!hash) return;
+        if (!hash) return false;
         const params = new URLSearchParams(hash);
 
         if (params.has('month')) {
@@ -453,6 +456,7 @@ renderCategoryNav();
             const searchInput = document.getElementById('searchInput');
             if (searchInput) searchInput.value = params.get('q');
         }
+        return true;
     }
 
     // 筛选和排序论文（包含重要程度排序）
