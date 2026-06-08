@@ -538,7 +538,7 @@ class PaperFetcher:
             logger.warning(f"Semantic Scholar API 查询失败: {e}")
         return None
 
-    def batch_get_citation_counts(self, papers: List[Dict], batch_size: int = 50) -> Dict[str, Optional[int]]:
+    def batch_get_citation_counts(self, papers: List[Dict], batch_size: int = 20) -> Dict[str, Optional[int]]:
         """
         批量获取引用数：使用 Semantic Scholar /paper/batch 接口，
         通过 ArXiv ID 批量查询，避免逐篇请求导致速率限制。
@@ -565,42 +565,77 @@ class PaperFetcher:
         if self.ss_api_key:
             headers["x-api-key"] = self.ss_api_key
 
+        total_batches = (len(id_pairs) + batch_size - 1) // batch_size
+        consecutive_failures = 0
+        max_consecutive_failures = 3  # 连续失败 3 次则放弃剩余批次
+
+        # 首次请求前等待，确保 Semantic Scholar 限速窗口冷却
+        logger.info(f"等待 API 冷却...")
+        time.sleep(3)
+
         # 分批请求
         for i in range(0, len(id_pairs), batch_size):
             batch = id_pairs[i:i + batch_size]
             ss_ids = [f"ArXiv:{arxiv_id}" for _, arxiv_id in batch]
+            batch_num = i // batch_size + 1
 
             url = "https://api.semanticscholar.org/graph/v1/paper/batch"
-            params = {"fields": "title,citationCount,externalIds"}
+            params = {"fields": "title,citationCount"}
 
             try:
                 resp = requests.post(url, params=params, json={"ids": ss_ids}, headers=headers, timeout=30)
-                if resp.status_code == 429:
-                    logger.warning("Semantic Scholar 批量 API 限速，等待 60 秒...")
-                    time.sleep(60)
+
+                # 遇到限速：最多重试 2 次，每次等待递增
+                retry_count = 0
+                while resp.status_code == 429 and retry_count < 2:
+                    retry_count += 1
+                    wait = 30 * retry_count  # 30s, 60s
+                    logger.warning(f"批量 API 限速 (批次 {batch_num}/{total_batches})，等待 {wait} 秒后重试...")
+                    time.sleep(wait)
                     resp = requests.post(url, params=params, json={"ids": ss_ids}, headers=headers, timeout=30)
 
                 if resp.status_code == 200:
+                    consecutive_failures = 0
                     data = resp.json()
+                    matched = 0
                     for (paper_id, _), item in zip(batch, data):
                         if item and item.get("citationCount") is not None:
                             result_map[paper_id] = item["citationCount"]
+                            matched += 1
                         else:
                             result_map[paper_id] = None
+                    logger.info(f"批量引用: 批次 {batch_num}/{total_batches} 完成 ({matched}/{len(batch)} 篇命中)")
                 else:
-                    logger.warning(f"Semantic Scholar 批量 API 返回 {resp.status_code}")
+                    consecutive_failures += 1
+                    logger.warning(f"批量 API 返回 {resp.status_code} (批次 {batch_num}/{total_batches})")
                     for paper_id, _ in batch:
                         result_map[paper_id] = None
+
+                    # 连续失败过多，放弃剩余批次避免无谓等待
+                    if consecutive_failures >= max_consecutive_failures:
+                        logger.warning(f"连续 {max_consecutive_failures} 批次失败，跳过剩余引用查询")
+                        for paper_id, _ in id_pairs[i + batch_size:]:
+                            result_map[paper_id] = None
+                        break
+
             except Exception as e:
-                logger.warning(f"Semantic Scholar 批量 API 请求失败: {e}")
+                consecutive_failures += 1
+                logger.warning(f"批量 API 请求失败: {e}")
                 for paper_id, _ in batch:
                     result_map[paper_id] = None
 
+                if consecutive_failures >= max_consecutive_failures:
+                    logger.warning(f"连续 {max_consecutive_failures} 批次失败，跳过剩余引用查询")
+                    for paper_id, _ in id_pairs[i + batch_size:]:
+                        result_map[paper_id] = None
+                    break
+
             # 批次间延迟（API Key 限制 1 req/sec，留足余量）
             if i + batch_size < len(id_pairs):
-                time.sleep(2)
+                time.sleep(3)
 
-        logger.info(f"批量引用查询完成: {len(result_map)} 篇，其中 {sum(1 for v in result_map.values() if v is not None)} 篇有数据")
+        success_count = sum(1 for v in result_map.values() if v is not None)
+        logger.info(f"批量引用查询完成: {len(result_map)} 篇，其中 {success_count} 篇有引用数据 ({success_count*100//max(len(result_map),1)}%)")
         return result_map
 
     def _paper_text(self, paper: Dict) -> str:
