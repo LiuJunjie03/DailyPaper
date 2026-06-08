@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('JavaScript loaded');
+    const DEBUG = false;
+    const debugLog = (...args) => {
+if (DEBUG) console.log(...args);
+    };
 
     // 获取DOM元素
     const monthBtns = document.querySelectorAll('.month-btn');
@@ -16,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultsCount = document.getElementById('resultsCount');
     const papersContainer = document.getElementById('papers-container');
 
-    console.log('DOM elements:', {
+    debugLog('DOM elements:', {
 monthBtns: monthBtns.length,
 statusBtns: statusBtns.length,
 pdfBtns: pdfBtns.length,
@@ -36,7 +39,6 @@ papersContainer: !!papersContainer
     let currentStatus = 'all';
     let currentPdf = 'all';
     let currentCategory = 'all';
-    let currentCategoryParent = '';
     let currentSort = 'date-desc';
     let searchTerm = '';
     let filteredPapers = [];
@@ -47,6 +49,7 @@ papersContainer: !!papersContainer
     let observer = null;
     let monthsCache = {};  // 缓存已加载的月份数据
     let selectedPaperIds = new Set();
+    let searchTimer = null;
 
     // 配置里的分类列表（从Python传入）
     
@@ -144,14 +147,10 @@ try {
 }
     }
 
-    function escapeBibTeX(value) {
-const backslash = String.fromCharCode(92);
-const text = String(value ?? '').trim();
-let escaped = '';
-for (const char of text) {
-    escaped += ['{', '}', backslash].includes(char) ? backslash + char : char;
-}
-return escaped.split(/\s+/).join(' ');
+    function dataURL(path) {
+const version = window.DATA_VERSION || 'dev';
+const separator = path.includes('?') ? '&' : '?';
+return `${path}${separator}v=${encodeURIComponent(version)}`;
     }
 
     function isPreprint(paper) {
@@ -165,7 +164,11 @@ return Boolean(paper.pdf_url || paper.preprint_pdf_url || paper.arxiv_id);
     function sourceLabel(source, paper = {}) {
 if (source === 'semantic_scholar') return 'Semantic Scholar';
 if (source === 'arxiv') return 'arXiv';
-if (paper.semantic_scholar_id || paper.doi || String(paper.paper_url || '').includes('semanticscholar.org')) return 'Semantic Scholar';
+if (source === 'google_scholar') {
+    return String(paper.paper_url || '').includes('nature.com') ? 'Nature' : 'Google Scholar';
+}
+if (String(paper.paper_url || '').includes('nature.com')) return 'Nature';
+if (paper.semantic_scholar_id || String(paper.paper_url || '').includes('semanticscholar.org')) return 'Semantic Scholar';
 if (paper.arxiv_id || String(paper.arxiv_url || paper.paper_url || '').includes('arxiv.org')) return 'arXiv';
 return source ? String(source) : 'Literature';
     }
@@ -177,12 +180,21 @@ if (type === 'conference') return 'Conference';
 return 'Published';
     }
 
+    function recommendationScore(paper) {
+const citation = Number(paper.citation_count || 0);
+const impact = Number(paper.impact_factor || 0);
+const hasVenue = isPreprint(paper) ? 0 : 1;
+const pdfBonus = hasPDF(paper) ? 0.5 : 0;
+const keywordBonus = Array.isArray(paper.keywords) && paper.keywords.length > 0 ? 0.35 : 0;
+return impact * 3 + Math.log10(citation + 1) * 2 + hasVenue + pdfBonus + keywordBonus;
+    }
+
     // 加载月份索引
     async function loadMonthsIndex() {
 try {
-    const response = await fetch('data/index.json');
+    const response = await fetch(dataURL('data/index.json'));
     const monthsIndex = await response.json();
-    console.log('Months index loaded:', monthsIndex);
+    debugLog('Months index loaded:', monthsIndex);
 
     // 默认加载：如果 URL 指定了月份则加载对应月份，否则加载全部
     if (monthsIndex.length > 0) {
@@ -234,19 +246,19 @@ try {
 if (month === 'all') {
     // 加载所有月份
     try {
-        const response = await fetch('data/index.json');
+        const response = await fetch(dataURL('data/index.json'));
         const monthsIndex = await response.json();
 
         // 加载所有月份数据
         allPapersData = [];
         for (const monthInfo of monthsIndex) {
             if (!monthsCache[monthInfo.month]) {
-                const monthResponse = await fetch(`data/${monthInfo.month}.json`);
+                const monthResponse = await fetch(dataURL(`data/${monthInfo.month}.json`));
                 monthsCache[monthInfo.month] = await monthResponse.json();
             }
             allPapersData.push(...monthsCache[monthInfo.month]);
         }
-        console.log(`Loaded all months, total ${allPapersData.length} papers`);
+        debugLog(`Loaded all months, total ${allPapersData.length} papers`);
     } catch (e) {
         console.error('Failed to load all months data:', e);
     }
@@ -254,16 +266,16 @@ if (month === 'all') {
     // 加载单个月份
     if (!monthsCache[month]) {
         try {
-            const response = await fetch(`data/${month}.json`);
+            const response = await fetch(dataURL(`data/${month}.json`));
             monthsCache[month] = await response.json();
-            console.log(`Loaded month ${month}, ${monthsCache[month].length} papers`);
+            debugLog(`Loaded month ${month}, ${monthsCache[month].length} papers`);
         } catch (e) {
             console.error(`Failed to load month ${month}:`, e);
             return;
         }
     }
     allPapersData = monthsCache[month];
-    console.log(`Using cached data for ${month}, ${allPapersData.length} papers`);
+    debugLog(`Using cached data for ${month}, ${allPapersData.length} papers`);
 }
 
 // 数据加载完成后，触发筛选
@@ -314,13 +326,8 @@ if (venue) {
     }
 }
 
-// 新增：渲染引用数和影响因子
-const citationText = paper.citation_count ? `📊 引用数: ${paper.citation_count}` : "📊 引用数: 暂无";
-const impactText = paper.impact_factor ? `🌟 影响因子: ${paper.impact_factor}` : "🌟 影响因子: 暂无";
-
-const safeCitationText = paper.citation_count ? `引用数: ${escapeHTML(paper.citation_count)}` : "引用数: 暂无";
-const safeImpactText = paper.impact_factor ? `推荐分: ${escapeHTML(paper.impact_factor)}` : "推荐分: 暂无";
-const firstCategory = paper.categories && paper.categories.length > 0 ? paper.categories[0] : '';
+const safeCitationText = paper.citation_count ? `引用数: ${escapeHTML(paper.citation_count)}` : '';
+const safeScoreText = `推荐分: ${recommendationScore(paper).toFixed(1)}`;
 
 return `
     <article class="paper-card" data-date="${published}" data-status="${status}" data-tags="${paper.tags ? escapeAttribute(paper.tags.join(',')) : ''}" data-paper-id="${escapedId}">
@@ -337,8 +344,8 @@ return `
                 ${sourceBadge}
                 ${typeBadge}
                 ${venueBadge}
-                <span class="meta-item">${safeCitationText}</span>
-                <span class="meta-item">${safeImpactText}</span>
+                ${safeCitationText ? `<span class="meta-item">${safeCitationText}</span>` : ''}
+                <span class="meta-item">${safeScoreText}</span>
                 ${sourcePageLink}
                 ${doiLink}
                 ${arxivLink}
@@ -493,7 +500,7 @@ renderCategoryNav();
 
     // 筛选和排序论文（包含重要程度排序）
     function filterAndSortPapers() {
-console.log('Filtering papers:', { currentStatus, currentPdf, currentCategory, searchTerm, currentSort });
+debugLog('Filtering papers:', { currentStatus, currentPdf, currentCategory, searchTerm, currentSort });
 
 // 筛选
 filteredPapers = allPapersData.filter(paper => {
@@ -509,7 +516,7 @@ filteredPapers = allPapersData.filter(paper => {
     return matchStatus && matchPdf && matchCategory && matchSearch;
 });
 
-console.log(`Filtered to ${filteredPapers.length} papers`);
+debugLog(`Filtered to ${filteredPapers.length} papers`);
 
 // 排序（新增重要程度排序）
 filteredPapers.sort((a, b) => {
@@ -521,15 +528,9 @@ filteredPapers.sort((a, b) => {
     } else if (currentSort === 'date-asc') {
         return dateA - dateB;
     } else if (currentSort === 'importance-desc') {
-        // 重要程度：先按影响因子降序，再按引用数降序
-        const impactA = a.impact_factor || 0;
-        const impactB = b.impact_factor || 0;
-        if (impactA !== impactB) {
-            return impactB - impactA;
-        }
-        const citeA = a.citation_count || 0;
-        const citeB = b.citation_count || 0;
-        return citeB - citeA;
+        const scoreDiff = recommendationScore(b) - recommendationScore(a);
+        if (scoreDiff !== 0) return scoreDiff;
+        return dateB - dateA;
     }
     return 0;
 });
@@ -561,7 +562,7 @@ saveStateToURL();
     // 加载更多论文
     function loadMorePapers() {
 if (isLoading || loadedCount >= filteredPapers.length) {
-    console.log('Skip loading:', { isLoading, loadedCount, total: filteredPapers.length });
+    debugLog('Skip loading:', { isLoading, loadedCount, total: filteredPapers.length });
     return;
 }
 
@@ -719,7 +720,8 @@ btn.addEventListener('click', function(e) {
     if (searchInput) {
 searchInput.addEventListener('input', function() {
     searchTerm = this.value.toLowerCase();
-    filterAndSortPapers();
+    window.clearTimeout(searchTimer);
+    searchTimer = window.setTimeout(filterAndSortPapers, 180);
 });
     }
 
@@ -745,7 +747,7 @@ papersContainer.addEventListener('change', function(e) {
 
     if (selectAllBtn) {
 selectAllBtn.addEventListener('click', function() {
-    filteredPapers.forEach(paper => selectedPaperIds.add(String(paper.id || '')));
+    filteredPapers.slice(0, loadedCount).forEach(paper => selectedPaperIds.add(String(paper.id || '')));
     document.querySelectorAll('.paper-checkbox').forEach(cb => cb.checked = true);
     updateSelectedCount();
 });
@@ -860,8 +862,6 @@ const arxivUrls = selectedPapers
 // 去重
 const uniqueDois = [...new Set(dois)];
 const uniqueArxiv = [...new Set(arxivUrls)];
-// 去掉已有 DOI 的论文对应的 arXiv 链接（避免重复）
-const doiSet = new Set(uniqueDois);
 const finalArxiv = uniqueArxiv;
 
 if (uniqueDois.length === 0 && finalArxiv.length === 0) {
@@ -871,18 +871,18 @@ if (uniqueDois.length === 0 && finalArxiv.length === 0) {
 
 let text = '';
 if (uniqueDois.length > 0) {
-    text += '=== DOI (Zotero 点击魔法棒图标，逐个粘贴) ===\\n';
+    text += '=== DOI ===\\n';
     text += uniqueDois.join('\\n');
 }
 if (finalArxiv.length > 0) {
     if (text) text += '\\n\\n';
-    text += '=== arXiv URL (Zotero 点击魔法棒图标，逐个粘贴) ===\\n';
+    text += '=== arXiv URL ===\\n';
     text += finalArxiv.join('\\n');
 }
 
 navigator.clipboard.writeText(text).then(() => {
     const total = uniqueDois.length + finalArxiv.length;
-    const msg = `已复制 ${total} 个标识符（${uniqueDois.length} DOI + ${finalArxiv.length} arXiv）\\n\\n导入 Zotero 方法：\\n1. 点击 Zotero 工具栏的"通过标识符添加"按钮（魔法棒 🪄 图标）\\n2. 粘贴一个 DOI 或 arXiv 链接，回车\\n3. Zotero 自动获取元数据 + 开放获取 PDF\\n4. 重复粘贴下一个`;
+    const msg = `已复制 ${total} 个标识符（${uniqueDois.length} DOI + ${finalArxiv.length} arXiv）。`;
     alert(msg);
 }).catch(() => {
     // Fallback: 用 textarea 复制
@@ -906,6 +906,6 @@ copyDoiBtn.addEventListener('click', function(e) {
     }
 
     // 初始化
-    console.log('Initializing...');
+    debugLog('Initializing...');
     loadMonthsIndex();
 });

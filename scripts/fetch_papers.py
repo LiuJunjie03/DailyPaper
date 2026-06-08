@@ -1046,6 +1046,15 @@ class PaperFetcher:
 
         self.write_classification_report(papers, data_dir)
 
+        # 补全不完整的日期（只有年份的补充为 YYYY-01-01）
+        for paper in papers:
+            pub = paper.get("published", "")
+            if pub and len(pub) == 4 and pub.isdigit():
+                paper["published"] = f"{pub}-01-01"
+            elif pub and len(pub) == 7:
+                # 只有 YYYY-MM，补充为该月1号
+                paper["published"] = f"{pub}-01"
+
         month_papers = {}
         for paper in papers:
             pub = paper.get("published", "")
