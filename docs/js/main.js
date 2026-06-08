@@ -188,7 +188,40 @@ try {
     if (monthsIndex.length > 0) {
         const hash = window.location.hash.slice(1);
         const params = new URLSearchParams(hash);
+
+        // 恢复 URL 中的筛选状态（月份按钮高亮在 loadStateFromURL 中处理）
+        if (params.has('status')) {
+            currentStatus = params.get('status');
+            document.querySelectorAll('.status-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.status === currentStatus);
+            });
+        }
+        if (params.has('pdf')) {
+            currentPdf = params.get('pdf');
+            document.querySelectorAll('.pdf-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.pdf === currentPdf);
+            });
+        }
+        if (params.has('category')) {
+            currentCategory = params.get('category');
+        }
+        if (params.has('sort')) {
+            currentSort = params.get('sort');
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.sort === currentSort);
+            });
+        }
+        if (params.has('q')) {
+            searchTerm = params.get('q').toLowerCase();
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.value = params.get('q');
+        }
+
         const initialMonth = params.has('month') ? params.get('month') : 'all';
+        // 高亮正确的月份按钮
+        document.querySelectorAll('.month-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.month === initialMonth);
+        });
         await loadMonthData(initialMonth);
     }
 } catch (e) {
@@ -233,8 +266,7 @@ if (month === 'all') {
     console.log(`Using cached data for ${month}, ${allPapersData.length} papers`);
 }
 
-// 数据加载完成后，先恢复 URL 状态再触发筛选
-loadStateFromURL();
+// 数据加载完成后，触发筛选
 filterAndSortPapers();
     }
 
