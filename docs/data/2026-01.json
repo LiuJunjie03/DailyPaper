@@ -22,8 +22,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "machine learning",
-      "neural network"
+      "neural network",
+      "machine learning"
     ],
     "keywords": [
       "machine learning",
@@ -65,11 +65,11 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "deep learning",
-      "fluid dynamics",
-      "latent space",
+      "physics-informed",
       "neural solver",
-      "physics-informed"
+      "fluid dynamics",
+      "deep learning",
+      "latent space"
     ],
     "keywords": [
       "PINN",
@@ -147,23 +147,23 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "active flow control",
-      "adaptive mesh",
-      "cfd",
+      "flow control",
+      "deep reinforcement learning",
+      "hypersonic flow",
+      "adaptive mesh refinement",
+      "drl",
+      "reinforcement learning",
       "combustion",
       "data-driven",
-      "deep reinforcement learning",
-      "drl",
-      "flow control",
-      "hypersonic flow",
-      "reinforcement learning"
+      "cfd",
+      "adaptive mesh"
     ],
     "keywords": [
       "CFD",
       "DRL",
       "RL",
-      "active flow control",
       "adaptive mesh",
+      "adaptive mesh refinement",
       "combustion",
       "data-driven",
       "flow control",
@@ -335,8 +335,8 @@
     "official_keywords": [],
     "custom_keywords": [
       "hard constraint",
-      "neural network",
-      "pinn"
+      "pinn",
+      "neural network"
     ],
     "keywords": [
       "PINN",
@@ -445,11 +445,11 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "fno",
       "fourier neural operator",
+      "fno",
+      "rnn",
       "neural network",
-      "neural operator",
-      "rnn"
+      "neural operator"
     ],
     "keywords": [
       "FNO",
@@ -505,8 +505,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "navier-stokes",
-      "turbulence"
+      "turbulence",
+      "navier-stokes"
     ],
     "keywords": [
       "navier-stokes",
@@ -558,10 +558,10 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
       "combustion",
+      "fluid dynamics",
       "computational fluid dynamics",
-      "fluid dynamics"
+      "cfd"
     ],
     "keywords": [
       "CFD",
@@ -618,12 +618,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "aerodynamics",
-      "compressible flow",
-      "computational fluid dynamics",
-      "fluid dynamics",
       "physics-informed",
-      "pinn"
+      "aerodynamics",
+      "fluid dynamics",
+      "pinn",
+      "computational fluid dynamics",
+      "compressible flow"
     ],
     "keywords": [
       "CFD",
@@ -730,14 +730,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "finite volume",
-      "finite volume method",
-      "fluid dynamics",
-      "neural network",
       "physics-informed",
       "physics-informed neural network",
-      "pinn"
+      "fluid dynamics",
+      "pinn",
+      "finite volume method",
+      "finite volume",
+      "neural network",
+      "computational fluid dynamics"
     ],
     "preprint_pdf_url": "",
     "sources": [
@@ -798,8 +798,8 @@
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
       "aneurysm",
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "preprint_pdf_url": "",
     "sources": [
@@ -868,13 +868,17 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "cfd",
-      "computational fluid dynamics",
-      "finite volume",
-      "fluid dynamics",
       "graph neural network",
+      "fluid dynamics",
+      "finite volume",
       "neural network",
+      "computational fluid dynamics",
+      "cfd",
       "neural operator"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
     ]
   },
   {
@@ -919,6 +923,10 @@
     "custom_keywords": [
       "navier-stokes",
       "neural network"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
     ]
   },
   {
@@ -987,8 +995,8 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "preprint_pdf_url": "https://arxiv.org/pdf/2601.13673",
     "custom_keywords": [
-      "airfoil",
       "data-driven",
+      "airfoil",
       "rom"
     ]
   },
@@ -1037,6 +1045,15 @@
     "source": "semantic_scholar",
     "is_preprint": false,
     "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 3,
+        "strong_hits": [
+          "reduced-order",
+          "koopman"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      },
       "流体力学 / 智能CFD / 流动控制与强化学习": {
         "score": 15,
         "strong_hits": [
@@ -1077,14 +1094,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
     "custom_keywords": [
-      "active flow control",
-      "closed-loop control",
       "flow control",
+      "closed-loop control",
+      "reinforcement learning",
+      "resolvent analysis",
+      "reduced-order model",
       "fsi",
       "koopman",
-      "reduced-order model",
-      "reinforcement learning",
-      "resolvent analysis"
+      "active flow control"
     ],
     "preprint_pdf_url": "",
     "sources": [
@@ -1132,9 +1149,13 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "machine learning",
+      "vortex",
       "rans",
-      "vortex"
+      "machine learning"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
     ]
   },
   {
@@ -1207,12 +1228,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
     "custom_keywords": [
+      "turbulence",
       "cnn",
-      "coarse-grid",
-      "les",
-      "machine learning",
       "neural network",
-      "turbulence"
+      "machine learning",
+      "coarse-grid",
+      "les"
     ]
   },
   {
@@ -1257,11 +1278,11 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "airfoil",
-      "cfd",
-      "computational fluid dynamics",
       "fluid dynamics",
-      "machine learning"
+      "machine learning",
+      "computational fluid dynamics",
+      "cfd",
+      "airfoil"
     ]
   },
   {
@@ -1346,12 +1367,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
     "custom_keywords": [
-      "boundary layer",
+      "drag reduction",
       "closed-loop control",
       "deep reinforcement learning",
-      "drag reduction",
       "drl",
-      "reinforcement learning"
+      "reinforcement learning",
+      "boundary layer"
     ],
     "preprint_pdf_url": "",
     "sources": [
@@ -1421,14 +1442,17 @@
     "primary_domain": "流体力学 / 智能CFD / 数值方法增强",
     "preprint_pdf_url": "https://arxiv.org/pdf/2601.04400",
     "custom_keywords": [
-      "compressible flow",
-      "data-driven",
-      "deep learning",
       "flow simulation",
       "inverse design",
-      "navier-stokes",
       "neural solver",
-      "weno"
+      "weno",
+      "deep learning",
+      "data-driven",
+      "navier-stokes",
+      "compressible flow"
+    ],
+    "sources": [
+      "semantic_scholar"
     ]
   },
   {
@@ -1476,13 +1500,17 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "cfd",
-      "cnn",
-      "computational fluid dynamics",
-      "deep learning",
       "fluid dynamics",
+      "cnn",
       "lstm",
-      "machine learning"
+      "machine learning",
+      "deep learning",
+      "computational fluid dynamics",
+      "cfd"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
     ]
   },
   {
@@ -1558,13 +1586,1116 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
-      "cfd",
-      "fluid dynamics",
-      "fluid mechanics",
-      "machine learning",
       "physics-informed",
       "turbulence",
+      "fluid dynamics",
+      "machine learning",
+      "cfd",
+      "turbulence modeling",
+      "fluid mechanics"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.2523/iptc-25141-ms",
+    "title": "Fourier Neural Operator-Accelerated Physics-Informed Framework for Ultra-Long-Term Fracture Conductivity Prediction in Shale Reservoirs",
+    "authors": "Cong Lu, Zhile Han, Shouxin Wang, Chi Chen, Qiuyue Li, Jianchun Guo, Haosen Zhang",
+    "abstract": "\n Accurate and efficient prediction of hydraulic fracture conductivity in shale reservoirs over ultra-long-term (>5 years) production lifecycles is critical for optimizing well performance and development strategies. While comprehensive, traditional physics-based coupled models face prohibitive computational costs when simulating the complex interplay of mechanics, fluid flow, and irreversible damage (e.g., creep, plasticity) within Supported Grain-Porous Media Fracture Systems (SG-PMFS), severely limiting large-scale sensitivity analyses and design optimization.\n This study proposes a physics-informed data-driven framework centered on the Fourier Neural Operator (FNO) to achieve rapid, ultra-long-term prediction of hydraulic fracture conductivity. A high-fidelity numerical model, incorporating multi-physics mechanisms such as shale creep, proppant embedment and crushing, and fluid-solid coupling, was used to generate the training dataset. A key finding is an intrinsic trade-off revealed in recursive prediction using FNO models trained on different timesteps (1-month, 3-month, and 12-month): the short-timestep model excels in initial accuracy but suffers from significant error accumulation in long-term forecasts, whereas long-timestep models exhibit superior long-term stability and accuracy at the expense of initial precision.\n To address this challenge, a novel Hierarchical Temporal Aggregation (HTA) strategy is introduced. This strategy dynamically switches between the optimal models based on the prediction horizon, leveraging the high precision of the short-timestep model for the initial phase and the stability of long-timestep models for later stages. Results demonstrate that the HTA strategy effectively mitigates the accumulation of recursive errors, maintaining the Mean Absolute Percentage Error (MAPE) consistently below 2% throughout the medium-to ultra-long-term forecast. Compared to the high-fidelity physics-based simulations, this framework achieves a computational speed-up exceeding three orders of magnitude (>1440x). This methodology provides a decision-support tool for fracture design and production strategy optimization in unconventional reservoirs, significantly enhancing the feasibility of ‘what-if’ scenario analyses.",
+    "published": "2026-01-13",
+    "paper_url": "https://www.semanticscholar.org/paper/d2b835b41cb692c2ad840c801f3ebcb88bf66346",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "IPTC Summit on AI for the Energy Industry",
+    "conference": "IPTC Summit on AI for the Energy Industry",
+    "publication_types": [],
+    "publication_type": "journal",
+    "doi": "10.2523/iptc-25141-ms",
+    "external_ids": {
+      "DOI": "10.2523/iptc-25141-ms",
+      "CorpusId": 284781127
+    },
+    "semantic_scholar_id": "d2b835b41cb692c2ad840c801f3ebcb88bf66346",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator",
+      "PINN",
+      "data-driven",
+      "design optimization"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 10,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "fno"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 6,
+        "strong_hits": [
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 气动优化设计": {
+        "score": 3,
+        "strong_hits": [
+          "design optimization"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fourier neural operator",
+      "physics-informed",
+      "design optimization",
+      "fno",
+      "data-driven",
+      "neural operator"
+    ]
+  },
+  {
+    "id": "gs-8501bb2db6e7",
+    "title": "Physics-informed neural networks for modeling turbulent combustion",
+    "authors": "Z Cao, K Luo, K Liu, Y Cheng, J Xing, L Jiang, J Fan",
+    "abstract": "Physics-informed neural networks (PINNs), as a promising  in the field of computational fluid  dynamics (CFD). This study  to ultimately develop a physics-informed neural network model.",
+    "published": "2026",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S0016236125022008",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Fuel",
+    "conference": "Fuel",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "combustion",
+      "fluid dynamics",
+      "neural network"
+    ],
+    "citation_count": 18,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 9,
+        "strong_hits": [
+          "physics-informed neural network",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "physics-informed neural network",
+      "fluid dynamics",
+      "combustion",
+      "neural network",
+      "computational fluid dynamics",
+      "cfd"
+    ]
+  },
+  {
+    "id": "gs-3fb1496290ad",
+    "title": "Physics-informed neural networks for hidden boundary detection and flow field reconstruction",
+    "authors": "Y Zhu, W Chen, J Deng, X Bian",
+    "abstract": "in fluid mechanics. This study presents a physics-informed neural network framework  of  static or moving solid boundaries within a flow field. By integrating a body fraction parameter into",
+    "published": "2026",
+    "paper_url": "https://link.springer.com/article/10.1007/s10409-025-25273-x",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2503.24074",
+    "categories": [],
+    "venue": "Acta Mechanica Sinica",
+    "conference": "Acta Mechanica Sinica",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络",
+      "流体力学 / 智能CFD / 流场重建与数据驱动"
+    ],
+    "keywords": [
+      "PINN",
+      "flow field reconstruction",
+      "fluid mechanics",
+      "neural network"
+    ],
+    "citation_count": 12,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 10,
+        "strong_hits": [
+          "physics-informed neural network",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network",
+          "flow field"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流场重建与数据驱动": {
+        "score": 10,
+        "strong_hits": [
+          "flow field reconstruction",
+          "field reconstruction"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network",
+          "flow field"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
+    "custom_keywords": [
+      "physics-informed",
+      "flow field reconstruction",
+      "physics-informed neural network",
+      "neural network",
+      "fluid mechanics"
+    ]
+  },
+  {
+    "id": "gs-c5789f84433a",
+    "title": "Using physics informed neural network (PINN) and neural network (NN) to improve a k−ω turbulence model",
+    "authors": "L Davidson",
+    "abstract": "New values of the constants are found by PINN ( C μ keeps its  simulations are carried out  for the converging-diverging channel flow (the same flow that was used when training the PINN",
+    "published": "2026",
+    "paper_url": "https://www.tandfonline.com/doi/abs/10.1080/14685248.2026.2665148",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.tandfonline.com/doi/full/10.1080/14685248.2026.2665148",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Journal of Turbulence",
+    "conference": "Journal of Turbulence",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "neural network",
+      "turbulence"
+    ],
+    "citation_count": 4,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 5,
+        "strong_hits": [
+          "pinn"
+        ],
+        "context_hits": [
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "pinn",
+      "turbulence",
+      "neural network"
+    ]
+  },
+  {
+    "id": "gs-a0ce6147123f",
+    "title": "New approach of the solution of physical fields of fluid dynamics: Physics-informed long short-term memory network",
+    "authors": "Z Li, G Hu",
+    "abstract": "ability of complex dynamic system behavior. The computational fluid dynamics (CFD) is used  to  PINN is employed to encode the physical constraints in depth, and obtain the internal",
+    "published": "2026",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S0142727X25002826",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of Heat and Fluid Flow",
+    "conference": "International Journal of Heat and Fluid Flow",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "fluid dynamics"
+    ],
+    "citation_count": 5,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 9,
+        "strong_hits": [
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "fluid dynamics",
+      "pinn",
+      "computational fluid dynamics",
+      "cfd"
+    ]
+  },
+  {
+    "id": "gs-15012bd35d49",
+    "title": "Geometry-Informed Neural Operator for Predicting Surface Flow Field of 3D Variable-Geometry Aerospace Vehicles across a Wide-Speed Range",
+    "authors": "Y Feng, K Chen, H Lou, L Lv, L Xu, X Hu, B Ai",
+    "abstract": "The model is trained on a limited dataset consisting of 120 high-fidelity CFD samples. The   , and predicts flow fields that agree well with CFD simulations, successfully capturing key flow",
+    "published": "2026",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S1270963826001653",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Aerospace Science and …",
+    "conference": "Aerospace Science and …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "Neural Operator"
+    ],
+    "citation_count": 1,
+    "impact_factor": 63.8,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 5,
+        "strong_hits": [
+          "neural operator"
+        ],
+        "context_hits": [
+          "cfd",
+          "flow field"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "neural operator",
+      "cfd"
+    ]
+  },
+  {
+    "id": "gs-f40bd82c9c3b",
+    "title": "A fast transonic airfoil flow field prediction model based on a modified Fourier neural operator",
+    "authors": "W Tang, C Wu, Y Yang, Y Zhang",
+    "abstract": "An airfoil is randomly selected from test set 2, and the time needed for grid generation  and flow field prediction is compared between CFD simulations and the FNOmod",
+    "published": "2026",
+    "paper_url": "https://link.springer.com/article/10.1007/s11433-024-2659-1",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.sciengine.com/parse/pdf/1674-7348/A2E8B963F4AC4D0599600AAAFD937217.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Science China Physics, Mechanics & …",
+    "conference": "Science China Physics, Mechanics & …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "FNO",
+      "Neural Operator",
+      "airfoil",
+      "flow field prediction"
+    ],
+    "citation_count": 3,
+    "impact_factor": 63.8,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 14,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "flow field prediction",
+          "field prediction"
+        ],
+        "context_hits": [
+          "cfd",
+          "flow field"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 空气动力学理论": {
+        "score": 5,
+        "strong_hits": [
+          "airfoil"
+        ],
+        "context_hits": [
+          "flow",
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fourier neural operator",
+      "flow field prediction",
+      "neural operator",
+      "cfd",
+      "airfoil"
+    ]
+  },
+  {
+    "id": "gs-2b35613a7799",
+    "title": "Accelerating Porous Media Flow Simulations With Fourier Neural Operators: An Application to Geologic Storage of CO2",
+    "authors": "A Chandra, M Koch, S Pawar, A Panda",
+    "abstract": ", often requires costly and complex simulations of flow fields. In this work, a Fourier Neural  Operator (FNO) based model is developed for real-time, high-resolution simulation of C O 2 $",
+    "published": "2026",
+    "paper_url": "https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/adts.202500747",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://authors.library.caltech.edu/records/gg8jk-tkt80/files/adts70131-sup-0001-supmat.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "… and Simulations",
+    "conference": "… and Simulations",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator"
+    ],
+    "citation_count": 4,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 6,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "fno"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fourier neural operator",
+      "fno",
+      "neural operator"
+    ]
+  },
+  {
+    "id": "gs-d60000948ce2",
+    "title": "Accelerated ccs site screening using fourier neural operator based surrogates for flow simulations",
+    "authors": "S Pawar, A Panda, A Chandra, P Devarakota",
+    "abstract": "simulation equations by using large, annotated datasets of input–output pairs. Finite-volume  method based subsurface fluid flow simulation  compared to numerical simulations used in",
+    "published": "2026",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S1750583626000186",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=5066408",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of …",
+    "conference": "International Journal of …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator",
+      "flow simulation"
+    ],
+    "citation_count": 6,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 7,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator"
+        ],
+        "context_hits": [
+          "flow simulation"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "flow simulation",
+      "neural operator",
+      "fourier neural operator"
+    ]
+  },
+  {
+    "id": "gs-34f1631c885c",
+    "title": "Data-driven turbulence modeling approach for cold-wall hypersonic boundary layers",
+    "authors": "MI Zafar, X Zhou, CJ Roy, D Stelter",
+    "abstract": "This paper represents a preliminary effort in creating data-driven turbulence models for  hypersonic flows, subsequently aiming to address a broader spectrum of flow scenarios beyond",
+    "published": "2026",
+    "paper_url": "https://arc.aiaa.org/doi/abs/10.2514/1.T7127",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2406.17446",
+    "categories": [],
+    "venue": "Journal of Thermophysics …",
+    "conference": "Journal of Thermophysics …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "keywords": [
+      "data-driven",
+      "data-driven turbulence",
+      "turbulence",
       "turbulence modeling"
+    ],
+    "citation_count": 9,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 7,
+        "strong_hits": [
+          "turbulence modeling",
+          "data-driven turbulence"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "custom_keywords": [
+      "data-driven",
+      "turbulence",
+      "data-driven turbulence",
+      "turbulence modeling"
+    ]
+  },
+  {
+    "id": "gs-eb50b4d5b487",
+    "title": "Data-driven closure model for large-scale eddies in the energy-containing range of turbulence",
+    "authors": "S Matsumoto, M Inubushi, S Goto",
+    "abstract": "for large-scale eddies in the energycontaining range of turbulence. To this end, we construct  a data-driven closure model for the largest eddies in turbulence driven by the steady Taylor-",
+    "published": "2026",
+    "paper_url": "https://link.aps.org/doi/10.1103/v4lk-819q",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Physical Review Fluids",
+    "conference": "Physical Review Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "keywords": [
+      "closure model",
+      "data-driven",
+      "turbulence"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 4,
+        "strong_hits": [
+          "closure model"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 3,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "custom_keywords": [
+      "data-driven",
+      "turbulence",
+      "closure model"
+    ]
+  },
+  {
+    "id": "gs-05a7a08c3175",
+    "title": "Toward a unified data-driven turbulence model through multi-objective learning",
+    "authors": "Z Liu, H Wang, Z Zhao, H Xiao",
+    "abstract": "of turbulence, which often struggle to predict flows governed by multiple interacting mechanisms.  We present a unified, data-driven turbulence modeling  -invariant closure, automatically",
+    "published": "2026",
+    "paper_url": "https://academic.oup.com/nsr/advance-article-abstract/doi/10.1093/nsr/nwag344/8702617",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://academic.oup.com/nsr/advance-article-pdf/doi/10.1093/nsr/nwag344/68477324/nwag344.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "National Science Review",
+    "conference": "National Science Review",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "keywords": [
+      "data-driven",
+      "data-driven turbulence",
+      "turbulence",
+      "turbulence modeling"
+    ],
+    "citation_count": 0,
+    "impact_factor": 63.8,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 7,
+        "strong_hits": [
+          "turbulence modeling",
+          "data-driven turbulence"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 3,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "custom_keywords": [
+      "data-driven",
+      "turbulence",
+      "data-driven turbulence",
+      "turbulence modeling"
+    ]
+  },
+  {
+    "id": "gs-bce743cfa564",
+    "title": "The Engineering Turbulence Problem and a Data-Driven Solution",
+    "authors": "J Li, RF Kunz, G Huang, XI Yang",
+    "abstract": "Despite these advances, most prior work in data-driven turbulence modeling has  In  this paper, we introduce a multi-fidelity, physics-constrained, data-driven turbulence-modeling",
+    "published": "2026",
+    "paper_url": "https://arc.aiaa.org/doi/abs/10.2514/6.2026-4770",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "AIAA AVIATION 2026 Forum",
+    "conference": "AIAA AVIATION 2026 Forum",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "keywords": [
+      "PINN",
+      "data-driven",
+      "data-driven turbulence",
+      "turbulence",
+      "turbulence modeling"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 7,
+        "strong_hits": [
+          "turbulence modeling",
+          "data-driven turbulence"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 3,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "custom_keywords": [
+      "turbulence",
+      "physics-constrained",
+      "data-driven turbulence",
+      "data-driven",
+      "turbulence modeling"
+    ]
+  },
+  {
+    "id": "gs-2be6f967775e",
+    "title": "Towards active flow control strategies through deep reinforcement learning",
+    "authors": "R Montalà, B Font, P Suárez, J Rabault",
+    "abstract": "” problem with minimal overhead and employs a GPU-enabled code for computational  fluid dynamics (CFD) simulations. This approach ensures rapid trajectory collection for DRL",
+    "published": "2026",
+    "paper_url": "https://link.springer.com/chapter/10.1007/978-3-032-17696-7_11",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2411.05536",
+    "categories": [],
+    "venue": "… , Numerical Tools and …",
+    "conference": "… , Numerical Tools and …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 流动控制与强化学习"
+    ],
+    "keywords": [
+      "CFD",
+      "DRL",
+      "RL",
+      "active flow control",
+      "flow control",
+      "fluid dynamics"
+    ],
+    "citation_count": 4,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 18,
+        "strong_hits": [
+          "flow control",
+          "active flow control",
+          "reinforcement learning",
+          "deep reinforcement learning",
+          "drl"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "custom_keywords": [
+      "flow control",
+      "deep reinforcement learning",
+      "drl",
+      "reinforcement learning",
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd",
+      "active flow control"
+    ]
+  },
+  {
+    "id": "gs-6e0b13bbd3e4",
+    "title": "Application of a Physics‐Informed Neural Network Surrogate Model Based on CFD Data for Modeling Flow Around a Cylinder Under Thermal Effects",
+    "authors": "A Issakhov, A Daminov, A Sabyrkulova",
+    "abstract": "This paper proposes to study thermal unsteady flow past a  a surrogate model based on  the PINN model that can accurately predict various characteristics obtained from direct CFD",
+    "published": "2026",
+    "paper_url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/fld.70024",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "… Methods in Fluids",
+    "conference": "… Methods in Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "neural network",
+      "surrogate model"
+    ],
+    "citation_count": 1,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 5,
+        "strong_hits": [
+          "surrogate model"
+        ],
+        "context_hits": [
+          "cfd",
+          "neural network"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 6,
+        "strong_hits": [
+          "pinn"
+        ],
+        "context_hits": [
+          "cfd",
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "pinn",
+      "cfd",
+      "surrogate model",
+      "neural network"
+    ]
+  },
+  {
+    "id": "gs-92e5e3610454",
+    "title": "POD-Kriging surrogate modeling for rapid prediction of the impact of façade protruding rib geometries on urban canyon wind flow",
+    "authors": "Y Zhang, X Zheng",
+    "abstract": "order surrogate model using the Proper Orthogonal Decomposition (POD) and Kriging surrogate  model to predict wind  Based on CFD data from LES simulations, the model is trained to",
+    "published": "2026",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S0360132326000041",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Building and Environment",
+    "conference": "Building and Environment",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "POD",
+      "les",
+      "surrogate model"
+    ],
+    "citation_count": 1,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 10,
+        "strong_hits": [
+          "surrogate model",
+          "surrogate modeling",
+          "pod"
+        ],
+        "context_hits": [
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "pod",
+      "cfd",
+      "surrogate model",
+      "les"
+    ]
+  },
+  {
+    "id": "gs-69575cefabd3",
+    "title": "Differentiable multiphase flow model for physics-informed machine learning in reservoir pressure management",
+    "authors": "H Ur Rashid, A Pachalieva, D O'Malley",
+    "abstract": "Our workflow uses a heterogeneous permeability fields and transient two-phase flow to  improve prediction accuracy, while the use of automatic differentiation within the DPFEHM",
+    "published": "2026",
+    "paper_url": "https://www.nature.com/articles/s41598-026-37063-3",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.nature.com/articles/s41598-026-37063-3",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Scientific Reports",
+    "conference": "Scientific Reports",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "machine learning",
+      "multiphase flow",
+      "two-phase flow"
+    ],
+    "citation_count": 3,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 8,
+        "strong_hits": [
+          "physics-informed",
+          "physics-informed machine learning"
+        ],
+        "context_hits": [
+          "flow",
+          "machine learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 多相流理论": {
+        "score": 3,
+        "strong_hits": [
+          "multiphase flow",
+          "two-phase flow"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": [
+          "machine learning"
+        ]
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "multiphase flow",
+      "two-phase flow",
+      "machine learning"
     ]
   }
 ]

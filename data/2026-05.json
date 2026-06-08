@@ -6,7 +6,7 @@
     "abstract": "Accurate prediction of three-dimensional (3D) wind fields over complex mountainous terrain is essential for renewable energy deployment and regional weather modeling. Traditional computational fluid dynamics (CFD) simulations face two fundamental bottlenecks: expert-intensive mesh generation around irregular topography, and iterative solvers that require hours to days even on high-performance clusters. Recent neural operator approaches accelerate inference, but typically fail to resolve the sharp, localized velocity gradients induced by complex terrain features. Here, we present a transformer-based dual-attention neural-operator framework for 3D wind field prediction over complex mountainous terrain, and validate its effectiveness through two instantiations on representative point-based (mesh-free) and graph-based neural-operator architectures, namely Patch-solver and Patch-GTO. Trained on a large CFD-generated dataset spanning diverse terrain geometries and inflow conditions, the framework enables rapid prediction of steady-state wind field while maintaining competitive accuracy. It also demonstrates robust zero-shot transfer to real-world mountainous sites across several diverse locations, outperforming existing neural operator baselines by 10% in relative error. We further verify that incorporating sparse observational data (1% spatial coverage) reduces prediction error by 16.89% relative to the corresponding model without sparse data input and by 32.75% relative to advanced neural operator baselines on unseen terrains. This framework establishes a generalizable computational paradigm across domains, promising to be a real-time tool for wind resource assessment over complex mountainous terrain and related atmosphere-surface interaction studies.",
     "published": "2026-05-25",
     "arxiv_url": "http://arxiv.org/abs/2605.25679v1",
-    "pdf_url": "https://arxiv.org/pdf/2605.25679v1",
+    "pdf_url": "",
     "categories": [
       "physics.flu-dyn"
     ],
@@ -20,19 +20,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "computational fluid dynamics",
-      "fluid dynamics",
       "mesh generation",
-      "neural operator",
-      "transformer"
+      "transformer",
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd",
+      "neural operator"
     ],
     "keywords": [
-      "cfd",
-      "computational fluid dynamics",
+      "CFD",
+      "Neural Operator",
       "fluid dynamics",
       "mesh generation",
-      "neural operator",
       "transformer"
     ],
     "citation_count": null,
@@ -73,7 +72,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "Nature",
+    "doi": "",
+    "arxiv_id": "2605.25679",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25679",
+    "paper_url": "http://arxiv.org/abs/2605.25679v1",
+    "publication_type": "conference",
+    "is_preprint": false,
+    "source": "arxiv"
   },
   {
     "id": "2605.08872v1",
@@ -82,7 +89,7 @@
     "abstract": "Turbulence modeling within the Lattice Boltzmann Method (LBM) framework has long relied on traditional algebraic sub-grid scale (SGS) models, which often suffer from over-dissipation and lack of spatial selectivity near solid boundaries. In this work, we utilize Physical Symbolic Optimization (Phi-SO) to discover explicit analytical closures from high-fidelity DNS datasets of Taylor-Green Vortex (TGV) and Lid-Driven Cavity (LDC) flows. Central to our methodology is the integration of virtual dimensional analysis and non-linear tensor invariants, a strategy that enforces physical scaling laws directly within the symbolic search process. The resulting model exhibits a highly non-linear dependency on both strain-rate and rotation-rate invariants. Numerical validations confirm that this symbolic closure outperforms the standard Smagorinsky approach in capturing kinetic energy dissipation rate peaks and resolving delicate secondary corner vortices. Furthermore, the model exhibits robust zero-shot generalization to wall-bounded turbulent channel flow (Re_tau = 180) without the aid of any supplemental wall-damping corrections. This work highlights the potential of symbolic regression to uncover robust, interpretable physical laws for the next generation of intelligent computational fluid dynamics solvers.",
     "published": "2026-05-09",
     "arxiv_url": "http://arxiv.org/abs/2605.08872v1",
-    "pdf_url": "https://arxiv.org/pdf/2605.08872v1",
+    "pdf_url": "",
     "categories": [
       "physics.flu-dyn"
     ],
@@ -95,22 +102,22 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
-      "data-driven",
-      "dns",
-      "fluid dynamics",
-      "lattice boltzmann",
       "turbulence",
+      "fluid dynamics",
+      "data-driven",
+      "computational fluid dynamics",
+      "vortices",
       "turbulence modeling",
       "vortex",
-      "vortices"
+      "dns",
+      "lattice boltzmann"
     ],
     "keywords": [
-      "computational fluid dynamics",
+      "CFD",
+      "LBM",
       "data-driven",
       "dns",
       "fluid dynamics",
-      "lattice boltzmann",
       "turbulence",
       "turbulence modeling",
       "vortex",
@@ -156,7 +163,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "Physics of Fluids",
+    "doi": "",
+    "arxiv_id": "2605.08872",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.08872",
+    "paper_url": "http://arxiv.org/abs/2605.08872v1",
+    "publication_type": "conference",
+    "is_preprint": false,
+    "source": "arxiv"
   },
   {
     "id": "2606.01480v1",
@@ -196,7 +211,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 燃烧与传热"
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.01480",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.01480",
+    "paper_url": "http://arxiv.org/abs/2606.01480v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.01470v1",
@@ -222,9 +245,9 @@
     "official_keywords": [],
     "custom_keywords": [
       "data-driven",
+      "turbulence",
       "dns",
-      "machine learning",
-      "turbulence"
+      "machine learning"
     ],
     "keywords": [
       "data-driven",
@@ -247,7 +270,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.01470",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.01470",
+    "paper_url": "http://arxiv.org/abs/2606.01470v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.01251v1",
@@ -289,7 +320,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.01251",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.01251",
+    "paper_url": "http://arxiv.org/abs/2606.01251v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.01150v1",
@@ -310,17 +349,17 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
-      "dns",
-      "fluid dynamics",
-      "isotropic turbulence",
-      "les",
-      "sgs model",
       "turbulence",
-      "vortex"
+      "sgs model",
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "isotropic turbulence",
+      "vortex",
+      "dns",
+      "les"
     ],
     "keywords": [
-      "computational fluid dynamics",
+      "CFD",
       "dns",
       "fluid dynamics",
       "isotropic turbulence",
@@ -359,7 +398,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.01150",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.01150",
+    "paper_url": "http://arxiv.org/abs/2606.01150v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.01010v1",
@@ -384,7 +431,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.01010",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.01010",
+    "paper_url": "http://arxiv.org/abs/2606.01010v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.00949v1",
@@ -410,15 +465,15 @@
     "official_keywords": [],
     "custom_keywords": [
       "deep learning",
+      "reinforcement learning",
       "deep reinforcement learning",
-      "drag reduction",
-      "reinforcement learning"
+      "drag reduction"
     ],
     "keywords": [
+      "DRL",
+      "RL",
       "deep learning",
-      "deep reinforcement learning",
-      "drag reduction",
-      "reinforcement learning"
+      "drag reduction"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -436,7 +491,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习"
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.00949",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.00949",
+    "paper_url": "http://arxiv.org/abs/2606.00949v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.00921v1",
@@ -466,7 +529,15 @@
     "citation_count": 0,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.00921",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.00921",
+    "paper_url": "http://arxiv.org/abs/2606.00921v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.00766v1",
@@ -507,7 +578,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.00766",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.00766",
+    "paper_url": "http://arxiv.org/abs/2606.00766v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.00649v1",
@@ -534,7 +613,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.00649",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.00649",
+    "paper_url": "http://arxiv.org/abs/2606.00649v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.00645v1",
@@ -556,8 +643,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "shape optimization",
-      "shock wave"
+      "shock wave",
+      "shape optimization"
     ],
     "keywords": [
       "shape optimization",
@@ -589,7 +676,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 气动优化设计"
+    "primary_domain": "流体力学 / 气动优化设计",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.00645",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.00645",
+    "paper_url": "http://arxiv.org/abs/2606.00645v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.00641v1",
@@ -614,12 +709,12 @@
     "official_keywords": [],
     "custom_keywords": [
       "fluid-structure interaction",
-      "lattice boltzmann",
-      "navier-stokes"
+      "navier-stokes",
+      "lattice boltzmann"
     ],
     "keywords": [
-      "fluid-structure interaction",
-      "lattice boltzmann",
+      "FSI",
+      "LBM",
       "navier-stokes"
     ],
     "citation_count": null,
@@ -650,7 +745,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 空气动力学理论"
+    "primary_domain": "流体力学 / 空气动力学理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.00641",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.00641",
+    "paper_url": "http://arxiv.org/abs/2606.00641v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.00595v1",
@@ -673,14 +776,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "reinforcement learning",
       "cilia",
-      "ciliary",
-      "reinforcement learning"
+      "ciliary"
     ],
     "keywords": [
+      "RL",
       "cilia",
-      "ciliary",
-      "reinforcement learning"
+      "ciliary"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -709,7 +812,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.00595",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.00595",
+    "paper_url": "http://arxiv.org/abs/2606.00595v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.00319v1",
@@ -751,7 +862,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.00319",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.00319",
+    "paper_url": "http://arxiv.org/abs/2606.00319v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.31542v1",
@@ -777,7 +896,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.31542",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.31542",
+    "paper_url": "http://arxiv.org/abs/2605.31542v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.31385v1",
@@ -818,7 +945,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.31385",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.31385",
+    "paper_url": "http://arxiv.org/abs/2605.31385v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.31380v1",
@@ -859,7 +994,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.31380",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.31380",
+    "paper_url": "http://arxiv.org/abs/2605.31380v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.31285v1",
@@ -897,7 +1040,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.31285",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.31285",
+    "paper_url": "http://arxiv.org/abs/2605.31285v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.31078v1",
@@ -923,7 +1074,15 @@
     "citation_count": 0,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.31078",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.31078",
+    "paper_url": "http://arxiv.org/abs/2605.31078v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.31011v1",
@@ -950,7 +1109,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.31011",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.31011",
+    "paper_url": "http://arxiv.org/abs/2605.31011v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.30878v1",
@@ -975,7 +1142,7 @@
       "lattice boltzmann"
     ],
     "keywords": [
-      "lattice boltzmann"
+      "LBM"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -989,7 +1156,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.30878",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.30878",
+    "paper_url": "http://arxiv.org/abs/2605.30878v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.30805v1",
@@ -1015,7 +1190,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.30805",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.30805",
+    "paper_url": "http://arxiv.org/abs/2605.30805v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.30659v1",
@@ -1037,13 +1220,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "adaptive mesh",
       "adaptive mesh refinement",
+      "adaptive mesh",
+      "neural network",
+      "multiphase flows",
       "bubble",
       "droplet",
-      "finite element",
-      "multiphase flows",
-      "neural network"
+      "finite element"
     ],
     "keywords": [
       "adaptive mesh",
@@ -1051,7 +1234,7 @@
       "bubble",
       "droplet",
       "finite element",
-      "multiphase flows",
+      "multiphase flow",
       "neural network"
     ],
     "citation_count": null,
@@ -1073,7 +1256,15 @@
         ]
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.30659",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.30659",
+    "paper_url": "http://arxiv.org/abs/2605.30659v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.30277v1",
@@ -1097,28 +1288,26 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "autoencoder",
-      "cfd",
-      "computational fluid dynamics",
-      "fluid dynamics",
+      "fourier neural operator",
       "fno",
-      "neural operator",
-      "reduced-order model",
-      "rom",
       "surrogate model",
-      "vortex"
+      "fluid dynamics",
+      "reduced-order model",
+      "deeponet",
+      "autoencoder",
+      "computational fluid dynamics",
+      "neural operator",
+      "cfd"
     ],
     "keywords": [
-      "autoencoder",
-      "cfd",
-      "computational fluid dynamics",
+      "AE",
+      "CFD",
+      "FNO",
+      "Neural Operator",
+      "ROM",
+      "deeponet",
       "fluid dynamics",
-      "fno",
-      "neural operator",
-      "reduced-order model",
-      "rom",
-      "surrogate model",
-      "vortex"
+      "surrogate model"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -1154,7 +1343,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.30277",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.30277",
+    "paper_url": "http://arxiv.org/abs/2605.30277v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.30077v1",
@@ -1178,9 +1375,9 @@
     "official_keywords": [],
     "custom_keywords": [
       "boundary layer",
+      "wind farm",
       "boundary-layer flow",
-      "les",
-      "wind farm"
+      "les"
     ],
     "keywords": [
       "boundary layer",
@@ -1224,7 +1421,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 风能与海洋工程流体"
+    "primary_domain": "流体力学 / 风能与海洋工程流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.30077",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.30077",
+    "paper_url": "http://arxiv.org/abs/2605.30077v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.29887v1",
@@ -1245,11 +1450,11 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "lattice boltzmann",
-      "vortex"
+      "vortex",
+      "lattice boltzmann"
     ],
     "keywords": [
-      "lattice boltzmann",
+      "LBM",
       "vortex"
     ],
     "citation_count": null,
@@ -1277,7 +1482,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.29887",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.29887",
+    "paper_url": "http://arxiv.org/abs/2605.29887v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.29842v2",
@@ -1316,7 +1529,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.29842",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.29842",
+    "paper_url": "http://arxiv.org/abs/2605.29842v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.29333v1",
@@ -1357,7 +1578,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.29333",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.29333",
+    "paper_url": "http://arxiv.org/abs/2605.29333v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.29328v1",
@@ -1386,7 +1615,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.29328",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.29328",
+    "paper_url": "http://arxiv.org/abs/2605.29328v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.29211v1",
@@ -1409,16 +1646,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
-      "physics-informed",
       "physics-informed neural network",
-      "pinn"
+      "physics-informed",
+      "pinn",
+      "neural network"
     ],
     "keywords": [
-      "neural network",
-      "physics-informed",
-      "physics-informed neural network",
-      "pinn"
+      "PINN",
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -1436,7 +1671,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络"
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.29211",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.29211",
+    "paper_url": "http://arxiv.org/abs/2605.29211v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.29050v1",
@@ -1462,7 +1705,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.29050",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.29050",
+    "paper_url": "http://arxiv.org/abs/2605.29050v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.28907v1",
@@ -1488,7 +1739,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.28907",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.28907",
+    "paper_url": "http://arxiv.org/abs/2605.28907v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.28633v1",
@@ -1515,7 +1774,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.28633",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.28633",
+    "paper_url": "http://arxiv.org/abs/2605.28633v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.28627v1",
@@ -1537,16 +1804,15 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "airfoil",
-      "cfd",
-      "computational fluid dynamics",
       "fluid dynamics",
-      "vortex"
+      "computational fluid dynamics",
+      "cfd",
+      "vortex",
+      "airfoil"
     ],
     "keywords": [
+      "CFD",
       "airfoil",
-      "cfd",
-      "computational fluid dynamics",
       "fluid dynamics",
       "vortex"
     ],
@@ -1578,7 +1844,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 空气动力学理论"
+    "primary_domain": "流体力学 / 空气动力学理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.28627",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.28627",
+    "paper_url": "http://arxiv.org/abs/2605.28627v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.28555v1",
@@ -1600,9 +1874,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "boundary layer",
+      "turbulence",
       "geostrophic",
-      "turbulence"
+      "boundary layer"
     ],
     "keywords": [
       "boundary layer",
@@ -1634,7 +1908,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.28555",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.28555",
+    "paper_url": "http://arxiv.org/abs/2605.28555v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.28475v1",
@@ -1665,7 +1947,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.28475",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.28475",
+    "paper_url": "http://arxiv.org/abs/2605.28475v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.28357v1",
@@ -1691,7 +1981,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.28357",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.28357",
+    "paper_url": "http://arxiv.org/abs/2605.28357v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.28350v1",
@@ -1716,7 +2014,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.28350",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.28350",
+    "paper_url": "http://arxiv.org/abs/2605.28350v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.28245v2",
@@ -1739,19 +2045,19 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "airfoil",
-      "data-driven",
       "flow estimation",
-      "navier-stokes",
+      "data-driven",
       "pod",
-      "supervised learning"
+      "navier-stokes",
+      "supervised learning",
+      "airfoil"
     ],
     "keywords": [
+      "POD",
       "airfoil",
       "data-driven",
       "flow estimation",
       "navier-stokes",
-      "pod",
       "supervised learning"
     ],
     "citation_count": null,
@@ -1794,7 +2100,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动"
+    "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.28245",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.28245",
+    "paper_url": "http://arxiv.org/abs/2605.28245v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.28135v1",
@@ -1816,16 +2130,15 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "computational fluid dynamics",
       "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd",
       "lattice boltzmann"
     ],
     "keywords": [
-      "cfd",
-      "computational fluid dynamics",
-      "fluid dynamics",
-      "lattice boltzmann"
+      "CFD",
+      "LBM",
+      "fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -1843,7 +2156,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.28135",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.28135",
+    "paper_url": "http://arxiv.org/abs/2605.28135v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.27871v1",
@@ -1906,7 +2227,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 燃烧与传热"
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.27871",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.27871",
+    "paper_url": "http://arxiv.org/abs/2605.27871v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.27792v1",
@@ -1928,10 +2257,10 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "dns",
-      "flow control",
       "turbulence",
-      "vortex"
+      "vortex",
+      "dns",
+      "flow control"
     ],
     "keywords": [
       "dns",
@@ -1968,7 +2297,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.27792",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.27792",
+    "paper_url": "http://arxiv.org/abs/2605.27792v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.27756v1",
@@ -1995,13 +2332,13 @@
     "official_keywords": [],
     "custom_keywords": [
       "data-driven",
-      "neural network",
-      "pod"
+      "pod",
+      "neural network"
     ],
     "keywords": [
+      "POD",
       "data-driven",
-      "neural network",
-      "pod"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -2018,7 +2355,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.27756",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.27756",
+    "paper_url": "http://arxiv.org/abs/2605.27756v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.27725v1",
@@ -2042,20 +2387,19 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "computational fluid dynamics",
       "design optimization",
       "fluid dynamics",
+      "reduced-order model",
       "pod",
-      "reduced-order model"
+      "computational fluid dynamics",
+      "cfd"
     ],
     "keywords": [
-      "cfd",
-      "computational fluid dynamics",
+      "CFD",
+      "POD",
+      "ROM",
       "design optimization",
-      "fluid dynamics",
-      "pod",
-      "reduced-order model"
+      "fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -2082,7 +2426,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.27725",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.27725",
+    "paper_url": "http://arxiv.org/abs/2605.27725v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.27626v1",
@@ -2103,11 +2455,11 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "bubble",
-      "dns",
-      "vortex",
+      "wind turbine",
       "vortices",
-      "wind turbine"
+      "bubble",
+      "vortex",
+      "dns"
     ],
     "keywords": [
       "bubble",
@@ -2153,7 +2505,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.27626",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.27626",
+    "paper_url": "http://arxiv.org/abs/2605.27626v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.27606v1",
@@ -2180,7 +2540,7 @@
       "physics-informed"
     ],
     "keywords": [
-      "physics-informed"
+      "PINN"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -2196,7 +2556,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络"
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.27606",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.27606",
+    "paper_url": "http://arxiv.org/abs/2605.27606v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.27534v1",
@@ -2218,18 +2586,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "adaptive mesh",
+      "vof",
       "adaptive mesh refinement",
-      "bubble",
       "interface tracking",
-      "vof"
+      "bubble",
+      "adaptive mesh"
     ],
     "keywords": [
+      "VOF",
       "adaptive mesh",
       "adaptive mesh refinement",
       "bubble",
-      "interface tracking",
-      "vof"
+      "interface tracking"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -2258,7 +2626,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.27534",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.27534",
+    "paper_url": "http://arxiv.org/abs/2605.27534v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.02617v1",
@@ -2302,7 +2678,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.02617",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.02617",
+    "paper_url": "http://arxiv.org/abs/2606.02617v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.27108v1",
@@ -2328,7 +2712,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.27108",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.27108",
+    "paper_url": "http://arxiv.org/abs/2605.27108v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.27004v1",
@@ -2349,11 +2741,11 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "lattice boltzmann",
-      "navier-stokes"
+      "navier-stokes",
+      "lattice boltzmann"
     ],
     "keywords": [
-      "lattice boltzmann",
+      "LBM",
       "navier-stokes"
     ],
     "citation_count": null,
@@ -2372,7 +2764,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.27004",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.27004",
+    "paper_url": "http://arxiv.org/abs/2605.27004v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26989v1",
@@ -2397,7 +2797,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26989",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26989",
+    "paper_url": "http://arxiv.org/abs/2605.26989v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26981v1",
@@ -2419,11 +2827,11 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "reduced-order model",
-      "turbulent flow"
+      "turbulent flow",
+      "reduced-order model"
     ],
     "keywords": [
-      "reduced-order model",
+      "ROM",
       "turbulent flow"
     ],
     "citation_count": null,
@@ -2441,7 +2849,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26981",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26981",
+    "paper_url": "http://arxiv.org/abs/2605.26981v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26806v1",
@@ -2465,13 +2881,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "compressible flow",
-      "data-driven",
-      "flow instability",
+      "uncertainty quantification",
       "fluid dynamics",
       "generative model",
       "machine learning",
-      "uncertainty quantification",
+      "data-driven",
+      "flow instability",
+      "compressible flow",
       "vortex"
     ],
     "keywords": [
@@ -2516,7 +2932,15 @@
         ]
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26806",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26806",
+    "paper_url": "http://arxiv.org/abs/2605.26806v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26746v1",
@@ -2537,9 +2961,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "isotropic turbulence",
       "turbulence",
-      "turbulent flow"
+      "turbulent flow",
+      "isotropic turbulence"
     ],
     "keywords": [
       "isotropic turbulence",
@@ -2563,7 +2987,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26746",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26746",
+    "paper_url": "http://arxiv.org/abs/2605.26746v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.30375v1",
@@ -2588,19 +3020,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "acceleration",
-      "cfd",
-      "computational fluid dynamics",
-      "data-driven",
-      "deep learning",
       "flow simulation",
       "fluid dynamics",
-      "multigrid"
+      "acceleration",
+      "deep learning",
+      "data-driven",
+      "computational fluid dynamics",
+      "multigrid",
+      "cfd"
     ],
     "keywords": [
+      "CFD",
       "acceleration",
-      "cfd",
-      "computational fluid dynamics",
       "data-driven",
       "deep learning",
       "flow simulation",
@@ -2638,7 +3069,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨"
+    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.30375",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.30375",
+    "paper_url": "http://arxiv.org/abs/2605.30375v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26699v1",
@@ -2659,9 +3098,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "floating offshore",
       "offshore wind",
-      "wind turbine"
+      "wind turbine",
+      "floating offshore"
     ],
     "keywords": [
       "floating offshore",
@@ -2682,7 +3121,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 风能与海洋工程流体"
+    "primary_domain": "流体力学 / 风能与海洋工程流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26699",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26699",
+    "paper_url": "http://arxiv.org/abs/2605.26699v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26677v1",
@@ -2706,7 +3153,7 @@
       "lattice boltzmann"
     ],
     "keywords": [
-      "lattice boltzmann"
+      "LBM"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -2720,7 +3167,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26677",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26677",
+    "paper_url": "http://arxiv.org/abs/2605.26677v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26416v1",
@@ -2746,12 +3201,12 @@
     "official_keywords": [],
     "custom_keywords": [
       "pod",
-      "rom",
-      "stabilization"
+      "stabilization",
+      "rom"
     ],
     "keywords": [
-      "pod",
-      "rom",
+      "POD",
+      "ROM",
       "stabilization"
     ],
     "citation_count": null,
@@ -2768,7 +3223,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26416",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26416",
+    "paper_url": "http://arxiv.org/abs/2605.26416v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26359v1",
@@ -2793,7 +3256,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26359",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26359",
+    "paper_url": "http://arxiv.org/abs/2605.26359v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26358v1",
@@ -2817,23 +3288,23 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "closure model",
+      "physics-informed",
+      "turbulence",
+      "neural network",
       "deep learning",
       "machine learning",
       "navier-stokes",
-      "neural network",
-      "physics-informed",
-      "rans",
       "reynolds stress",
-      "turbulence"
+      "closure model",
+      "rans"
     ],
     "keywords": [
+      "PINN",
       "closure model",
       "deep learning",
       "machine learning",
       "navier-stokes",
       "neural network",
-      "physics-informed",
       "rans",
       "reynolds stress",
       "turbulence"
@@ -2871,7 +3342,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合"
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26358",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26358",
+    "paper_url": "http://arxiv.org/abs/2605.26358v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26085v1",
@@ -2903,7 +3382,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26085",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26085",
+    "paper_url": "http://arxiv.org/abs/2605.26085v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.26059v1",
@@ -2928,19 +3415,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "computational fluid dynamics",
-      "fluid dynamics",
       "inverse design",
+      "fluid dynamics",
+      "computational fluid dynamics",
       "neural operator",
+      "cfd",
       "speedup"
     ],
     "keywords": [
-      "cfd",
-      "computational fluid dynamics",
+      "CFD",
+      "Neural Operator",
       "fluid dynamics",
       "inverse design",
-      "neural operator",
       "speedup"
     ],
     "citation_count": null,
@@ -2977,7 +3463,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨"
+    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.26059",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.26059",
+    "paper_url": "http://arxiv.org/abs/2605.26059v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.25915v1",
@@ -2999,9 +3493,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "acceleration",
+      "vortex",
       "turbulence",
-      "vortex"
+      "acceleration"
     ],
     "keywords": [
       "acceleration",
@@ -3024,7 +3518,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25915",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25915",
+    "paper_url": "http://arxiv.org/abs/2605.25915v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.25544v1",
@@ -3050,7 +3552,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25544",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25544",
+    "paper_url": "http://arxiv.org/abs/2605.25544v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.25539v2",
@@ -3071,8 +3581,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "isotropic turbulence",
-      "turbulence"
+      "turbulence",
+      "isotropic turbulence"
     ],
     "keywords": [
       "isotropic turbulence",
@@ -3094,17 +3604,26 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25539",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25539",
+    "paper_url": "http://arxiv.org/abs/2605.25539v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
-    "id": "2605.25403v1",
+    "id": "2605.25403",
     "title": "A High-Performance, Cross-Platform Open-Source Solver for the Incompressible Navier-Stokes Equations in FEALPy",
-    "authors": "Wang Pengxiang, Huang Xianbo, Peng Li, Wei Huayi",
+    "authors": "Pengxiang Wang, Xianbo Huang, Peng Li, Wei Huayi",
     "abstract": "To address the dual challenges of performance portability across heterogeneous hardware and the high usability barriers of conventional computational fluid dynamics (CFD) software, this paper introduces FEALPy.CFD, a high performance, open-source solver for the incompressible Navier-Stokes equations developed within the FEALPy framework. The solver's core innovation is its backend-agnostic design, which supports multiple computational backends like NumPy, PyTorch, and JAX to enable seamless switching between CPU and GPU computations with minimal code modification, thereby maximizing hardware utilization and code portability. Its highly modular architecture provides a library of composable components for various spatial discretization schemes, greatly simplifying the development and integration of new algorithms.Validation on benchmark cases confirms that the implemented numerical schemes achieve their theoretical orders of convergence. Furthermore, the capability to select a suitable backend architecture for different computational tasks fully leverages the hardware's potential, delivering substantial efficiency gains. By lowering the technical barrier to high-performance, cross-platform fluid dynamics simulation, FEALPy.CFD offers a powerful and accessible tool for academic research, engineering applications, and reproducible computational science.",
     "published": "2026-05-25",
-    "arxiv_url": "http://arxiv.org/abs/2605.25403v1",
+    "arxiv_url": "https://arxiv.org/abs/2605.25403",
     "pdf_url": "https://arxiv.org/pdf/2605.25403v1",
     "categories": [
+      "Physics",
       "physics.flu-dyn"
     ],
     "conference": "",
@@ -3115,20 +3634,19 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "computational fluid dynamics",
       "fluid dynamics",
+      "computational fluid dynamics",
       "navier-stokes",
+      "cfd",
       "open-source solver"
     ],
     "keywords": [
-      "cfd",
-      "computational fluid dynamics",
+      "CFD",
       "fluid dynamics",
       "navier-stokes",
       "open-source solver"
     ],
-    "citation_count": null,
+    "citation_count": 0,
     "impact_factor": null,
     "classification_score": {
       "流体力学 / 计算流体力学方法": {
@@ -3145,7 +3663,24 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 计算流体力学方法"
+    "primary_domain": "流体力学 / 计算流体力学方法",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25403",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25403",
+    "paper_url": "https://www.semanticscholar.org/paper/8a5242b521493062f085c014ba9b3435088e7c35",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "semantic_scholar",
+    "external_ids": {
+      "ArXiv": "2605.25403",
+      "CorpusId": 288669401
+    },
+    "semantic_scholar_id": "8a5242b521493062f085c014ba9b3435088e7c35",
+    "sources": [
+      "arxiv",
+      "semantic_scholar"
+    ]
   },
   {
     "id": "2605.25387v1",
@@ -3186,7 +3721,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25387",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25387",
+    "paper_url": "http://arxiv.org/abs/2605.25387v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.25329v1",
@@ -3208,8 +3751,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "navier-stokes",
-      "turbulence"
+      "turbulence",
+      "navier-stokes"
     ],
     "keywords": [
       "navier-stokes",
@@ -3232,7 +3775,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25329",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25329",
+    "paper_url": "http://arxiv.org/abs/2605.25329v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.25282v2",
@@ -3259,7 +3810,7 @@
       "lattice boltzmann"
     ],
     "keywords": [
-      "lattice boltzmann"
+      "LBM"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -3275,7 +3826,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25282",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25282",
+    "paper_url": "http://arxiv.org/abs/2605.25282v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.25167v1",
@@ -3315,7 +3874,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25167",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25167",
+    "paper_url": "http://arxiv.org/abs/2605.25167v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.25096v1",
@@ -3340,7 +3907,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25096",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25096",
+    "paper_url": "http://arxiv.org/abs/2605.25096v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.25056v1",
@@ -3385,7 +3960,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25056",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25056",
+    "paper_url": "http://arxiv.org/abs/2605.25056v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.25003v1",
@@ -3411,7 +3994,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.25003",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.25003",
+    "paper_url": "http://arxiv.org/abs/2605.25003v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.24997v1",
@@ -3436,7 +4027,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.24997",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.24997",
+    "paper_url": "http://arxiv.org/abs/2605.24997v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.24901v1",
@@ -3481,7 +4080,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.24901",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.24901",
+    "paper_url": "http://arxiv.org/abs/2605.24901v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.24763v1",
@@ -3507,25 +4114,24 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "computational fluid dynamics",
-      "data-driven",
-      "deeponet",
+      "physics-informed",
+      "turbulence",
       "fluid dynamics",
       "lstm",
+      "deeponet",
       "machine learning",
-      "physics-informed",
-      "turbulence"
+      "data-driven",
+      "computational fluid dynamics",
+      "cfd"
     ],
     "keywords": [
-      "cfd",
-      "computational fluid dynamics",
+      "CFD",
+      "PINN",
       "data-driven",
       "deeponet",
       "fluid dynamics",
       "lstm",
       "machine learning",
-      "physics-informed",
       "turbulence"
     ],
     "citation_count": null,
@@ -3573,7 +4179,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.24763",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.24763",
+    "paper_url": "http://arxiv.org/abs/2605.24763v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.24672v1",
@@ -3598,7 +4212,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.24672",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.24672",
+    "paper_url": "http://arxiv.org/abs/2605.24672v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.24544v1",
@@ -3621,9 +4243,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "turbulence",
       "boundary layer",
-      "machine learning",
-      "turbulence"
+      "machine learning"
     ],
     "keywords": [
       "boundary layer",
@@ -3633,7 +4255,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.24544",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.24544",
+    "paper_url": "http://arxiv.org/abs/2605.24544v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.24226v1",
@@ -3655,13 +4285,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "combustion",
-      "dns",
-      "flame",
-      "navier-stokes",
-      "rans",
       "stabilization",
-      "vortices"
+      "combustion",
+      "vortices",
+      "navier-stokes",
+      "flame",
+      "dns",
+      "rans"
     ],
     "keywords": [
       "combustion",
@@ -3710,7 +4340,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.24226",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.24226",
+    "paper_url": "http://arxiv.org/abs/2605.24226v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.24150v1",
@@ -3733,16 +4371,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "data-driven",
       "deep learning",
-      "pod"
+      "pod",
+      "data-driven",
+      "cfd"
     ],
     "keywords": [
-      "cfd",
+      "CFD",
+      "POD",
       "data-driven",
-      "deep learning",
-      "pod"
+      "deep learning"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -3761,7 +4399,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.24150",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.24150",
+    "paper_url": "http://arxiv.org/abs/2605.24150v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.24129v1",
@@ -3787,7 +4433,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.24129",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.24129",
+    "paper_url": "http://arxiv.org/abs/2605.24129v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23877v1",
@@ -3809,8 +4463,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "hemodynamics",
-      "microfluidic"
+      "microfluidic",
+      "hemodynamics"
     ],
     "keywords": [
       "hemodynamics",
@@ -3831,7 +4485,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23877",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23877",
+    "paper_url": "http://arxiv.org/abs/2605.23877v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23869v1",
@@ -3869,7 +4531,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 气动优化设计"
+    "primary_domain": "流体力学 / 气动优化设计",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23869",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23869",
+    "paper_url": "http://arxiv.org/abs/2605.23869v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23812v1",
@@ -3911,7 +4581,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习"
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23812",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23812",
+    "paper_url": "http://arxiv.org/abs/2605.23812v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23800v1",
@@ -3936,7 +4614,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23800",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23800",
+    "paper_url": "http://arxiv.org/abs/2605.23800v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23729v1",
@@ -3976,7 +4662,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23729",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23729",
+    "paper_url": "http://arxiv.org/abs/2605.23729v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23620v1",
@@ -3998,9 +4692,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "microfluidic",
       "bubble",
-      "cavitation",
-      "microfluidic"
+      "cavitation"
     ],
     "keywords": [
       "bubble",
@@ -4028,7 +4722,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23620",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23620",
+    "paper_url": "http://arxiv.org/abs/2605.23620v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23396v1",
@@ -4049,8 +4751,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "stabilization",
-      "vortices"
+      "vortices",
+      "stabilization"
     ],
     "keywords": [
       "stabilization",
@@ -4072,7 +4774,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23396",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23396",
+    "paper_url": "http://arxiv.org/abs/2605.23396v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23380v1",
@@ -4098,7 +4808,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23380",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23380",
+    "paper_url": "http://arxiv.org/abs/2605.23380v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23309v1",
@@ -4123,14 +4841,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "physics-informed",
       "cardiovascular",
-      "fluid mechanics",
-      "physics-informed"
+      "fluid mechanics"
     ],
     "keywords": [
+      "PINN",
       "cardiovascular",
-      "fluid mechanics",
-      "physics-informed"
+      "fluid mechanics"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -4169,7 +4887,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23309",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23309",
+    "paper_url": "http://arxiv.org/abs/2605.23309v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23303v1",
@@ -4190,21 +4916,28 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "computational fluid dynamics",
       "fluid dynamics",
-      "navier-stokes"
+      "computational fluid dynamics",
+      "navier-stokes",
+      "cfd"
     ],
     "keywords": [
-      "cfd",
-      "computational fluid dynamics",
+      "CFD",
       "fluid dynamics",
       "navier-stokes"
     ],
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23303",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23303",
+    "paper_url": "http://arxiv.org/abs/2605.23303v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23166v1",
@@ -4249,7 +4982,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23166",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23166",
+    "paper_url": "http://arxiv.org/abs/2605.23166v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23046v1",
@@ -4271,8 +5012,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "isotropic turbulence",
-      "turbulence"
+      "turbulence",
+      "isotropic turbulence"
     ],
     "keywords": [
       "isotropic turbulence",
@@ -4293,7 +5034,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23046",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23046",
+    "paper_url": "http://arxiv.org/abs/2605.23046v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.23037v1",
@@ -4318,13 +5067,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "boiling",
+      "data-driven",
       "cfd",
-      "data-driven"
+      "boiling"
     ],
     "keywords": [
+      "CFD",
       "boiling",
-      "cfd",
       "data-driven"
     ],
     "citation_count": null,
@@ -4353,7 +5102,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.23037",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.23037",
+    "paper_url": "http://arxiv.org/abs/2605.23037v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22982v1",
@@ -4378,7 +5135,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22982",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22982",
+    "paper_url": "http://arxiv.org/abs/2605.22982v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22793v1",
@@ -4409,7 +5174,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22793",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22793",
+    "paper_url": "http://arxiv.org/abs/2605.22793v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22710v1",
@@ -4450,7 +5223,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22710",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22710",
+    "paper_url": "http://arxiv.org/abs/2605.22710v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22648v1",
@@ -4473,10 +5254,10 @@
     "official_keywords": [],
     "custom_keywords": [
       "aortic",
-      "cardiovascular",
       "fluid dynamics",
-      "vortex",
-      "vortices"
+      "cardiovascular",
+      "vortices",
+      "vortex"
     ],
     "keywords": [
       "aortic",
@@ -4514,7 +5295,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22648",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22648",
+    "paper_url": "http://arxiv.org/abs/2605.22648v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22546v1",
@@ -4535,8 +5324,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "airfoil",
-      "vortex"
+      "vortex",
+      "airfoil"
     ],
     "keywords": [
       "airfoil",
@@ -4567,7 +5356,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22546",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22546",
+    "paper_url": "http://arxiv.org/abs/2605.22546v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22326v2",
@@ -4588,12 +5385,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "turbulence",
       "acceleration",
       "eddy viscosity",
       "heat transfer",
-      "turbulence",
-      "vortex",
-      "vortices"
+      "vortices",
+      "vortex"
     ],
     "keywords": [
       "acceleration",
@@ -4627,7 +5424,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22326",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22326",
+    "paper_url": "http://arxiv.org/abs/2605.22326v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22274v1",
@@ -4653,7 +5458,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22274",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22274",
+    "paper_url": "http://arxiv.org/abs/2605.22274v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22214v1",
@@ -4674,14 +5487,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "droplet",
-      "lattice boltzmann",
       "microfluidic",
-      "phase separation"
+      "lattice boltzmann",
+      "phase separation",
+      "droplet"
     ],
     "keywords": [
+      "LBM",
       "droplet",
-      "lattice boltzmann",
       "microfluidic",
       "phase separation"
     ],
@@ -4713,7 +5526,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22214",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22214",
+    "paper_url": "http://arxiv.org/abs/2605.22214v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22212v1",
@@ -4745,7 +5566,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22212",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22212",
+    "paper_url": "http://arxiv.org/abs/2605.22212v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22107v1",
@@ -4766,8 +5595,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "dns",
-      "turbulence"
+      "turbulence",
+      "dns"
     ],
     "keywords": [
       "dns",
@@ -4788,7 +5617,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22107",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22107",
+    "paper_url": "http://arxiv.org/abs/2605.22107v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22042v1",
@@ -4814,7 +5651,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22042",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22042",
+    "paper_url": "http://arxiv.org/abs/2605.22042v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21872v1",
@@ -4835,9 +5680,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "boundary layer",
+      "vortices",
       "vortex",
-      "vortices"
+      "boundary layer"
     ],
     "keywords": [
       "boundary layer",
@@ -4867,7 +5712,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21872",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21872",
+    "paper_url": "http://arxiv.org/abs/2605.21872v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21826v1",
@@ -4893,7 +5746,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21826",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21826",
+    "paper_url": "http://arxiv.org/abs/2605.21826v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21672v1",
@@ -4917,9 +5778,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "turbulence",
       "mixing layer",
-      "reynolds stress",
-      "turbulence"
+      "reynolds stress"
     ],
     "keywords": [
       "mixing layer",
@@ -4941,7 +5802,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21672",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21672",
+    "paper_url": "http://arxiv.org/abs/2605.21672v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21567v1",
@@ -4963,10 +5832,10 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cilia",
-      "ciliary",
       "microfluidic",
-      "navier-stokes"
+      "cilia",
+      "navier-stokes",
+      "ciliary"
     ],
     "keywords": [
       "cilia",
@@ -4992,7 +5861,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21567",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21567",
+    "paper_url": "http://arxiv.org/abs/2605.21567v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21354v1",
@@ -5031,7 +5908,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 燃烧与传热"
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21354",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21354",
+    "paper_url": "http://arxiv.org/abs/2605.21354v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21329v1",
@@ -5054,8 +5939,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "isotropic turbulence",
-      "turbulence"
+      "turbulence",
+      "isotropic turbulence"
     ],
     "keywords": [
       "isotropic turbulence",
@@ -5076,7 +5961,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21329",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21329",
+    "paper_url": "http://arxiv.org/abs/2605.21329v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21196v1",
@@ -5106,7 +5999,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21196",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21196",
+    "paper_url": "http://arxiv.org/abs/2605.21196v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21191v1",
@@ -5152,7 +6053,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21191",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21191",
+    "paper_url": "http://arxiv.org/abs/2605.21191v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21030v1",
@@ -5178,7 +6087,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21030",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21030",
+    "paper_url": "http://arxiv.org/abs/2605.21030v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.20778v1",
@@ -5201,16 +6118,15 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "deep reinforcement learning",
       "drl",
+      "reinforcement learning",
       "flow control",
-      "reinforcement learning"
+      "deep reinforcement learning"
     ],
     "keywords": [
-      "deep reinforcement learning",
-      "drl",
-      "flow control",
-      "reinforcement learning"
+      "DRL",
+      "RL",
+      "flow control"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -5229,7 +6145,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习"
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.20778",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.20778",
+    "paper_url": "http://arxiv.org/abs/2605.20778v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.20571v1",
@@ -5258,7 +6182,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.20571",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.20571",
+    "paper_url": "http://arxiv.org/abs/2605.20571v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.20565v1",
@@ -5280,17 +6212,17 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "bubble",
-      "isotropic turbulence",
-      "lattice boltzmann",
+      "turbulence",
       "multiphase flows",
-      "turbulence"
+      "isotropic turbulence",
+      "bubble",
+      "lattice boltzmann"
     ],
     "keywords": [
+      "LBM",
       "bubble",
       "isotropic turbulence",
-      "lattice boltzmann",
-      "multiphase flows",
+      "multiphase flow",
       "turbulence"
     ],
     "citation_count": null,
@@ -5321,7 +6253,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.20565",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.20565",
+    "paper_url": "http://arxiv.org/abs/2605.20565v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.20472v1",
@@ -5351,7 +6291,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.20472",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.20472",
+    "paper_url": "http://arxiv.org/abs/2605.20472v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.00063v1",
@@ -5378,7 +6326,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.00063",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.00063",
+    "paper_url": "http://arxiv.org/abs/2606.00063v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.20046v1",
@@ -5399,9 +6355,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "isotropic turbulence",
       "turbulence",
-      "vortex"
+      "vortex",
+      "isotropic turbulence"
     ],
     "keywords": [
       "isotropic turbulence",
@@ -5424,7 +6380,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.20046",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.20046",
+    "paper_url": "http://arxiv.org/abs/2605.20046v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19994v1",
@@ -5445,20 +6409,19 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "bubble",
-      "cfd",
-      "combustion",
-      "computational fluid dynamics",
-      "fluid dynamics",
-      "rans",
       "turbulence",
-      "vortex"
+      "combustion",
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd",
+      "bubble",
+      "vortex",
+      "rans"
     ],
     "keywords": [
+      "CFD",
       "bubble",
-      "cfd",
       "combustion",
-      "computational fluid dynamics",
       "fluid dynamics",
       "rans",
       "turbulence",
@@ -5505,7 +6468,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19994",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19994",
+    "paper_url": "http://arxiv.org/abs/2605.19994v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19921v1",
@@ -5526,8 +6497,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "isotropic turbulence",
-      "turbulence"
+      "turbulence",
+      "isotropic turbulence"
     ],
     "keywords": [
       "isotropic turbulence",
@@ -5548,7 +6519,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19921",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19921",
+    "paper_url": "http://arxiv.org/abs/2605.19921v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19796v1",
@@ -5569,13 +6548,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "turbulence",
       "lattice boltzmann",
       "les",
-      "rans",
-      "turbulence"
+      "rans"
     ],
     "keywords": [
-      "lattice boltzmann",
+      "LBM",
       "les",
       "rans",
       "turbulence"
@@ -5602,7 +6581,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19796",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19796",
+    "paper_url": "http://arxiv.org/abs/2605.19796v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19774v1",
@@ -5627,7 +6614,15 @@
     "citation_count": 0,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19774",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19774",
+    "paper_url": "http://arxiv.org/abs/2605.19774v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19732v1",
@@ -5650,14 +6645,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "combustion",
-      "deep learning",
-      "dns",
-      "droplet",
-      "les",
       "les subgrid",
+      "combustion",
       "spray",
-      "super-resolution"
+      "deep learning",
+      "super-resolution",
+      "droplet",
+      "dns",
+      "les"
     ],
     "keywords": [
       "combustion",
@@ -5709,7 +6704,15 @@
         ]
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合"
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19732",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19732",
+    "paper_url": "http://arxiv.org/abs/2605.19732v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19730v2",
@@ -5735,7 +6738,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19730",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19730",
+    "paper_url": "http://arxiv.org/abs/2605.19730v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19589v1",
@@ -5760,22 +6771,22 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "graph neural network",
-      "navier-stokes",
-      "neural network",
       "physics-informed",
-      "rans",
-      "spray",
+      "turbulence",
+      "graph neural network",
       "transformer",
-      "turbulence"
+      "neural network",
+      "spray",
+      "navier-stokes",
+      "cfd",
+      "rans"
     ],
     "keywords": [
-      "cfd",
-      "graph neural network",
+      "CFD",
+      "GNN",
+      "PINN",
       "navier-stokes",
       "neural network",
-      "physics-informed",
       "rans",
       "spray",
       "transformer",
@@ -5810,7 +6821,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19589",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19589",
+    "paper_url": "http://arxiv.org/abs/2605.19589v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19565v1",
@@ -5835,20 +6854,19 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "surrogate model",
       "aerodynamics",
-      "aircraft aerodynamics",
-      "cfd",
-      "computational fluid dynamics",
       "fluid dynamics",
-      "les",
+      "aircraft aerodynamics",
       "rans",
-      "surrogate model"
+      "computational fluid dynamics",
+      "cfd",
+      "les"
     ],
     "keywords": [
+      "CFD",
       "aerodynamics",
       "aircraft aerodynamics",
-      "cfd",
-      "computational fluid dynamics",
       "fluid dynamics",
       "les",
       "rans",
@@ -5882,7 +6900,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 空气动力学理论"
+    "primary_domain": "流体力学 / 空气动力学理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19565",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19565",
+    "paper_url": "http://arxiv.org/abs/2605.19565v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19468v1",
@@ -5920,7 +6946,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 空气动力学理论"
+    "primary_domain": "流体力学 / 空气动力学理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19468",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19468",
+    "paper_url": "http://arxiv.org/abs/2605.19468v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19427v1",
@@ -5946,7 +6980,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19427",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19427",
+    "paper_url": "http://arxiv.org/abs/2605.19427v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19379v1",
@@ -5978,7 +7020,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19379",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19379",
+    "paper_url": "http://arxiv.org/abs/2605.19379v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19286v1",
@@ -6002,12 +7052,20 @@
       "pod"
     ],
     "keywords": [
-      "pod"
+      "POD"
     ],
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19286",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19286",
+    "paper_url": "http://arxiv.org/abs/2605.19286v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19244v1",
@@ -6030,8 +7088,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "isotropic turbulence",
-      "turbulence"
+      "turbulence",
+      "isotropic turbulence"
     ],
     "keywords": [
       "isotropic turbulence",
@@ -6052,7 +7110,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19244",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19244",
+    "paper_url": "http://arxiv.org/abs/2605.19244v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19187v1",
@@ -6082,7 +7148,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19187",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19187",
+    "paper_url": "http://arxiv.org/abs/2605.19187v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2606.00055v1",
@@ -6115,7 +7189,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2606.00055",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.00055",
+    "paper_url": "http://arxiv.org/abs/2606.00055v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19076v1",
@@ -6140,16 +7222,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "autoencoder",
-      "inverse problem",
-      "rom",
       "uncertainty quantification",
-      "weno"
+      "weno",
+      "autoencoder",
+      "rom",
+      "inverse problem"
     ],
     "keywords": [
-      "autoencoder",
+      "AE",
+      "ROM",
       "inverse problem",
-      "rom",
       "uncertainty quantification",
       "weno"
     ],
@@ -6188,7 +7270,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19076",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19076",
+    "paper_url": "http://arxiv.org/abs/2605.19076v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.19057v1",
@@ -6215,20 +7305,20 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "acceleration",
-      "adaptive mesh",
-      "adaptive mesh refinement",
-      "data-driven",
       "physics-informed",
       "turbulence",
-      "uncertainty quantification"
+      "uncertainty quantification",
+      "adaptive mesh refinement",
+      "acceleration",
+      "data-driven",
+      "adaptive mesh"
     ],
     "keywords": [
+      "PINN",
       "acceleration",
       "adaptive mesh",
       "adaptive mesh refinement",
       "data-driven",
-      "physics-informed",
       "turbulence",
       "uncertainty quantification"
     ],
@@ -6276,7 +7366,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络"
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.19057",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.19057",
+    "paper_url": "http://arxiv.org/abs/2605.19057v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.18946v1",
@@ -6318,7 +7416,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.18946",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.18946",
+    "paper_url": "http://arxiv.org/abs/2605.18946v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.18439v1",
@@ -6339,9 +7445,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "vortex",
       "acceleration",
-      "bubble",
-      "vortex"
+      "bubble"
     ],
     "keywords": [
       "acceleration",
@@ -6373,7 +7479,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.18439",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.18439",
+    "paper_url": "http://arxiv.org/abs/2605.18439v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.18340v1",
@@ -6397,18 +7511,17 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "computational fluid dynamics",
       "fluid dynamics",
+      "pinn",
       "neural network",
-      "pinn"
+      "computational fluid dynamics",
+      "cfd"
     ],
     "keywords": [
-      "cfd",
-      "computational fluid dynamics",
+      "CFD",
+      "PINN",
       "fluid dynamics",
-      "neural network",
-      "pinn"
+      "neural network"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -6427,7 +7540,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络"
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.18340",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.18340",
+    "paper_url": "http://arxiv.org/abs/2605.18340v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.18336v1",
@@ -6458,7 +7579,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.18336",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.18336",
+    "paper_url": "http://arxiv.org/abs/2605.18336v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.18273v1",
@@ -6498,7 +7627,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 空气动力学理论"
+    "primary_domain": "流体力学 / 空气动力学理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.18273",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.18273",
+    "paper_url": "http://arxiv.org/abs/2605.18273v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.18223v1",
@@ -6523,7 +7660,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.18223",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.18223",
+    "paper_url": "http://arxiv.org/abs/2605.18223v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.18216v1",
@@ -6548,7 +7693,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.18216",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.18216",
+    "paper_url": "http://arxiv.org/abs/2605.18216v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.18076v1",
@@ -6574,7 +7727,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.18076",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.18076",
+    "paper_url": "http://arxiv.org/abs/2605.18076v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.20250v1",
@@ -6599,14 +7760,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "physics-informed",
       "cnn",
-      "navier-stokes",
-      "physics-informed"
+      "navier-stokes"
     ],
     "keywords": [
+      "PINN",
       "cnn",
-      "navier-stokes",
-      "physics-informed"
+      "navier-stokes"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -6624,7 +7785,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络"
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.20250",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.20250",
+    "paper_url": "http://arxiv.org/abs/2605.20250v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17917v1",
@@ -6665,7 +7834,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17917",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17917",
+    "paper_url": "http://arxiv.org/abs/2605.17917v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17888v1",
@@ -6687,14 +7864,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "fno",
-      "lstm",
-      "resolvent analysis",
       "turbulence",
+      "fno",
+      "resolvent analysis",
+      "lstm",
       "turbulent flow"
     ],
     "keywords": [
-      "fno",
+      "FNO",
       "lstm",
       "resolvent analysis",
       "turbulence",
@@ -6717,7 +7894,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17888",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17888",
+    "paper_url": "http://arxiv.org/abs/2605.17888v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17644v1",
@@ -6740,9 +7925,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
       "turbulence",
-      "turbulence modeling"
+      "turbulence modeling",
+      "les"
     ],
     "keywords": [
       "les",
@@ -6773,7 +7958,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合"
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17644",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17644",
+    "paper_url": "http://arxiv.org/abs/2605.17644v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17614v1",
@@ -6798,7 +7991,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17614",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17614",
+    "paper_url": "http://arxiv.org/abs/2605.17614v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17569v2",
@@ -6827,7 +8028,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17569",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17569",
+    "paper_url": "http://arxiv.org/abs/2605.17569v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17560v1",
@@ -6868,7 +8077,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17560",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17560",
+    "paper_url": "http://arxiv.org/abs/2605.17560v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17519v1",
@@ -6894,7 +8111,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17519",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17519",
+    "paper_url": "http://arxiv.org/abs/2605.17519v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17502v1",
@@ -6926,7 +8151,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17502",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17502",
+    "paper_url": "http://arxiv.org/abs/2605.17502v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17402v1",
@@ -6965,7 +8198,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17402",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17402",
+    "paper_url": "http://arxiv.org/abs/2605.17402v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17319v1",
@@ -6986,13 +8227,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "acceleration",
+      "vortex",
       "fluid-structure interaction",
-      "vortex"
+      "acceleration"
     ],
     "keywords": [
+      "FSI",
       "acceleration",
-      "fluid-structure interaction",
       "vortex"
     ],
     "citation_count": null,
@@ -7020,7 +8261,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17319",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17319",
+    "paper_url": "http://arxiv.org/abs/2605.17319v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17132v1",
@@ -7043,8 +8292,8 @@
     "official_keywords": [],
     "custom_keywords": [
       "adaptive mesh",
-      "adaptive mesh refinement",
-      "vortex"
+      "vortex",
+      "adaptive mesh refinement"
     ],
     "keywords": [
       "adaptive mesh",
@@ -7073,7 +8322,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17132",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17132",
+    "paper_url": "http://arxiv.org/abs/2605.17132v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17121v1",
@@ -7104,7 +8361,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17121",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17121",
+    "paper_url": "http://arxiv.org/abs/2605.17121v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.17099v1",
@@ -7128,12 +8393,20 @@
       "pod"
     ],
     "keywords": [
-      "pod"
+      "POD"
     ],
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.17099",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.17099",
+    "paper_url": "http://arxiv.org/abs/2605.17099v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.22849v1",
@@ -7161,12 +8434,20 @@
       "reduced-order model"
     ],
     "keywords": [
-      "reduced-order model"
+      "ROM"
     ],
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.22849",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.22849",
+    "paper_url": "http://arxiv.org/abs/2605.22849v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.18881v1",
@@ -7193,7 +8474,7 @@
       "reinforcement learning"
     ],
     "keywords": [
-      "reinforcement learning"
+      "RL"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -7209,7 +8490,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习"
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.18881",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.18881",
+    "paper_url": "http://arxiv.org/abs/2605.18881v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.16573v1",
@@ -7232,9 +8521,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid dynamics",
       "emulator",
-      "flow matching",
-      "fluid dynamics"
+      "flow matching"
     ],
     "keywords": [
       "emulator",
@@ -7244,7 +8533,15 @@
     "citation_count": 0,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.16573",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.16573",
+    "paper_url": "http://arxiv.org/abs/2605.16573v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.16125v1",
@@ -7271,7 +8568,15 @@
     "citation_count": 0,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.16125",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.16125",
+    "paper_url": "http://arxiv.org/abs/2605.16125v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.16082v1",
@@ -7296,8 +8601,8 @@
     "official_keywords": [],
     "custom_keywords": [
       "finite element",
-      "finite volume",
-      "speedup"
+      "speedup",
+      "finite volume"
     ],
     "keywords": [
       "finite element",
@@ -7307,7 +8612,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.16082",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.16082",
+    "paper_url": "http://arxiv.org/abs/2605.16082v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.15879v1",
@@ -7349,7 +8662,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.15879",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.15879",
+    "paper_url": "http://arxiv.org/abs/2605.15879v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.15844v1",
@@ -7370,14 +8691,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "droplet",
+      "vof",
       "physics-guided",
-      "vof"
+      "droplet"
     ],
     "keywords": [
-      "droplet",
-      "physics-guided",
-      "vof"
+      "PINN",
+      "VOF",
+      "droplet"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -7394,7 +8715,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.15844",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.15844",
+    "paper_url": "http://arxiv.org/abs/2605.15844v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.15438v1",
@@ -7420,20 +8749,19 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "finite element",
       "flow control",
-      "navier-stokes",
-      "reduced-order model",
-      "rom",
       "stabilization",
+      "reduced-order model",
+      "navier-stokes",
+      "rom",
+      "finite element",
       "vortex"
     ],
     "keywords": [
+      "ROM",
       "finite element",
       "flow control",
       "navier-stokes",
-      "reduced-order model",
-      "rom",
       "stabilization",
       "vortex"
     ],
@@ -7486,7 +8814,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.15438",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.15438",
+    "paper_url": "http://arxiv.org/abs/2605.15438v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.15379v1",
@@ -7516,7 +8852,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.15379",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.15379",
+    "paper_url": "http://arxiv.org/abs/2605.15379v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.14957v1",
@@ -7558,7 +8902,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.14957",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.14957",
+    "paper_url": "http://arxiv.org/abs/2605.14957v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.14951v1",
@@ -7583,7 +8935,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.14951",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.14951",
+    "paper_url": "http://arxiv.org/abs/2605.14951v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.14576v1",
@@ -7610,7 +8970,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.14576",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.14576",
+    "paper_url": "http://arxiv.org/abs/2605.14576v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.14505v1",
@@ -7631,14 +8999,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "dns",
-      "lattice boltzmann",
       "turbulence",
-      "vortex"
+      "vortex",
+      "dns",
+      "lattice boltzmann"
     ],
     "keywords": [
+      "LBM",
       "dns",
-      "lattice boltzmann",
       "turbulence",
       "vortex"
     ],
@@ -7668,7 +9036,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.14505",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.14505",
+    "paper_url": "http://arxiv.org/abs/2605.14505v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.14397v1",
@@ -7711,7 +9087,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 计算流体力学方法"
+    "primary_domain": "流体力学 / 计算流体力学方法",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.14397",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.14397",
+    "paper_url": "http://arxiv.org/abs/2605.14397v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.14383v1",
@@ -7738,7 +9122,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.14383",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.14383",
+    "paper_url": "http://arxiv.org/abs/2605.14383v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.14024v1",
@@ -7764,17 +9156,26 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.14024",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.14024",
+    "paper_url": "http://arxiv.org/abs/2605.14024v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
-    "id": "2605.14022v1",
+    "id": "2605.14022",
     "title": "Policy-DRIFT: Dynamic Reward-Informed Flow Trajectory Steering",
-    "authors": "Atharva Mahajan, Abhijeet Vishwasrao, Yuning Wang, Ricardo Vinuesa",
-    "abstract": "Skin-friction drag induced by wall-bounded turbulent flows accounts for a substantial fraction of energy consumption across commercial aerospace, wind energy, and marine transport. Its active reduction is one of the highest-value targets in engineering fluid dynamics. Deep reinforcement learning (DRL) has emerged as the leading approach for real-time flow control, yet its performance ceiling is set not by algorithmic capability but by reward structure, the naive scalar objective does not optimally reflect the underlying physics. Policy-DRIFT bypasses this ceiling by relocating reward information from policy gradients to generative model inference: a conditional flow matching model (CFM) constructs a physically-grounded manifold of realisable flow states spanning multiple control regimes, Terminal Reward Guidance (TRG) steers samples toward reward-maximising targets at inference, and a lightweight DRL policy, structurally decoupled from reward quality, tracks these full-field targets via root-mean-squared error (RMSE) minimisation. The test case is turbulent channel flow simulated using direct numerical simulation (DNS) at friction Reynolds number of $\\mathrm{Re}_τ= 180$, which is the canonical benchmark for wall-bounded turbulence. Policy-DRIFT achieves $49\\%$ drag reduction approaching the theoretical upper bound, which is $\\approx 16\\%$ higher than the DRL benchmark, while consuming 37$\\times$ less actuation energy. Our approach combines generative methods with active flow control, marking a paradigm shift towards controlling complex physical systems efficiently.",
+    "authors": "A. Mahajan, A. Vishwasrao, Yuning Wang, Ricardo Vinuesa",
+    "abstract": "Skin-friction drag induced by wall-bounded turbulent flows accounts for a substantial fraction of energy consumption across commercial aerospace, wind energy, and marine transport. Its active reduction is one of the highest-value targets in engineering fluid dynamics. Deep reinforcement learning (DRL) has emerged as the leading approach for real-time flow control, yet its performance ceiling is set not by algorithmic capability but by reward structure, the naive scalar objective does not optimally reflect the underlying physics. Policy-DRIFT bypasses this ceiling by relocating reward information from policy gradients to generative model inference: a conditional flow matching model (CFM) constructs a physically-grounded manifold of realisable flow states spanning multiple control regimes, Terminal Reward Guidance (TRG) steers samples toward reward-maximising targets at inference, and a lightweight DRL policy, structurally decoupled from reward quality, tracks these full-field targets via root-mean-squared error (RMSE) minimisation. The test case is turbulent channel flow simulated using direct numerical simulation (DNS) at friction Reynolds number of $\\mathrm{Re}_\\tau = 180$, which is the canonical benchmark for wall-bounded turbulence. Policy-DRIFT achieves $49\\%$ drag reduction approaching the theoretical upper bound, which is $\\approx 16\\%$ higher than the DRL benchmark, while consuming 37$\\times$ less actuation energy. Our approach combines generative methods with active flow control, marking a paradigm shift towards controlling complex physical systems efficiently.",
     "published": "2026-05-13",
-    "arxiv_url": "http://arxiv.org/abs/2605.14022v1",
+    "arxiv_url": "https://arxiv.org/abs/2605.14022",
     "pdf_url": "https://arxiv.org/pdf/2605.14022v1",
     "categories": [
+      "Physics",
       "physics.flu-dyn"
     ],
     "conference": "",
@@ -7787,30 +9188,29 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "active flow control",
-      "deep reinforcement learning",
-      "dns",
       "drag reduction",
-      "drl",
+      "turbulence",
       "flow control",
-      "flow matching",
-      "fluid dynamics",
+      "deep reinforcement learning",
+      "drl",
       "reinforcement learning",
-      "turbulence"
+      "fluid dynamics",
+      "generative model",
+      "flow matching",
+      "dns"
     ],
     "keywords": [
-      "active flow control",
-      "deep reinforcement learning",
+      "DRL",
+      "RL",
       "dns",
       "drag reduction",
-      "drl",
       "flow control",
       "flow matching",
       "fluid dynamics",
-      "reinforcement learning",
+      "generative model",
       "turbulence"
     ],
-    "citation_count": null,
+    "citation_count": 0,
     "impact_factor": null,
     "classification_score": {
       "流体力学 / 智能CFD / 流动控制与强化学习": {
@@ -7865,7 +9265,24 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习"
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.14022",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.14022",
+    "paper_url": "https://www.semanticscholar.org/paper/b66c599dc0cc4e81c2a1e7e3ce2237e5a24d41e7",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "semantic_scholar",
+    "external_ids": {
+      "ArXiv": "2605.14022",
+      "CorpusId": 288258706
+    },
+    "semantic_scholar_id": "b66c599dc0cc4e81c2a1e7e3ce2237e5a24d41e7",
+    "sources": [
+      "arxiv",
+      "semantic_scholar"
+    ]
   },
   {
     "id": "2605.13671v1",
@@ -7912,7 +9329,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.13671",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.13671",
+    "paper_url": "http://arxiv.org/abs/2605.13671v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.13654v1",
@@ -7936,8 +9361,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "isotropic turbulence",
-      "turbulence"
+      "turbulence",
+      "isotropic turbulence"
     ],
     "keywords": [
       "isotropic turbulence",
@@ -7958,7 +9383,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.13654",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.13654",
+    "paper_url": "http://arxiv.org/abs/2605.13654v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.13633v1",
@@ -8003,7 +9436,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 燃烧与传热"
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.13633",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.13633",
+    "paper_url": "http://arxiv.org/abs/2605.13633v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.13552v1",
@@ -8041,7 +9482,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 燃烧与传热"
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.13552",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.13552",
+    "paper_url": "http://arxiv.org/abs/2605.13552v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.13196v1",
@@ -8065,12 +9514,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "microfluidic",
-      "multiphase flows"
+      "multiphase flows",
+      "microfluidic"
     ],
     "keywords": [
       "microfluidic",
-      "multiphase flows"
+      "multiphase flow"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -8097,7 +9546,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.13196",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.13196",
+    "paper_url": "http://arxiv.org/abs/2605.13196v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.13195v1",
@@ -8119,8 +9576,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "heat transfer",
-      "turbulent flow"
+      "turbulent flow",
+      "heat transfer"
     ],
     "keywords": [
       "heat transfer",
@@ -8153,7 +9610,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 燃烧与传热"
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.13195",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.13195",
+    "paper_url": "http://arxiv.org/abs/2605.13195v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.13912v1",
@@ -8200,7 +9665,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.13912",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.13912",
+    "paper_url": "http://arxiv.org/abs/2605.13912v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.12915v1",
@@ -8222,9 +9695,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "coarse-grid",
+      "vortices",
       "vortex",
-      "vortices"
+      "coarse-grid"
     ],
     "keywords": [
       "coarse-grid",
@@ -8246,7 +9719,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.12915",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12915",
+    "paper_url": "http://arxiv.org/abs/2605.12915v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.12723v1",
@@ -8269,12 +9750,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "deeponet",
-      "pod"
+      "pod",
+      "deeponet"
     ],
     "keywords": [
-      "deeponet",
-      "pod"
+      "POD",
+      "deeponet"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -8289,7 +9770,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.12723",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12723",
+    "paper_url": "http://arxiv.org/abs/2605.12723v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.12696v1",
@@ -8314,7 +9803,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.12696",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12696",
+    "paper_url": "http://arxiv.org/abs/2605.12696v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.12621v1",
@@ -8358,7 +9855,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.12621",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12621",
+    "paper_url": "http://arxiv.org/abs/2605.12621v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.12470v1",
@@ -8388,7 +9893,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.12470",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12470",
+    "paper_url": "http://arxiv.org/abs/2605.12470v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.12393v1",
@@ -8430,7 +9943,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.12393",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12393",
+    "paper_url": "http://arxiv.org/abs/2605.12393v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.12304v1",
@@ -8452,18 +9973,17 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "airfoil",
-      "cfd",
-      "computational fluid dynamics",
-      "data-driven",
+      "turbulence",
       "fluid dynamics",
       "machine learning",
-      "turbulence"
+      "data-driven",
+      "computational fluid dynamics",
+      "cfd",
+      "airfoil"
     ],
     "keywords": [
+      "CFD",
       "airfoil",
-      "cfd",
-      "computational fluid dynamics",
       "data-driven",
       "fluid dynamics",
       "machine learning",
@@ -8472,7 +9992,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.12304",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12304",
+    "paper_url": "http://arxiv.org/abs/2605.12304v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.12254v1",
@@ -8497,7 +10025,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.12254",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12254",
+    "paper_url": "http://arxiv.org/abs/2605.12254v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.12166v1",
@@ -8527,7 +10063,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.12166",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12166",
+    "paper_url": "http://arxiv.org/abs/2605.12166v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21509v1",
@@ -8550,8 +10094,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "droplet",
-      "turbulence"
+      "turbulence",
+      "droplet"
     ],
     "keywords": [
       "droplet",
@@ -8579,7 +10123,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21509",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21509",
+    "paper_url": "http://arxiv.org/abs/2605.21509v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.13895v1",
@@ -8605,7 +10157,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.13895",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.13895",
+    "paper_url": "http://arxiv.org/abs/2605.13895v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.12014v1",
@@ -8631,7 +10191,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.12014",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12014",
+    "paper_url": "http://arxiv.org/abs/2605.12014v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.11991v1",
@@ -8652,9 +10220,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "multiphase flow",
       "dns",
       "finite volume",
-      "multiphase flow",
       "two-phase flow"
     ],
     "keywords": [
@@ -8679,21 +10247,31 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.11991",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.11991",
+    "paper_url": "http://arxiv.org/abs/2605.11991v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
-    "id": "2605.11981v1",
+    "id": "10.1088/1742-6596/3230/1/012017",
     "title": "High-lift Wing Separation Control via Bayesian Optimization and Deep Reinforcement Learning",
-    "authors": "Ricard Montalà, Bernat Font, Oriol Lehmkuhl, Ricardo Vinuesa, Ivette Rodriguez",
-    "abstract": "This study investigates active flow control (AFC) of a 30P30N high-lift wing at a Reynolds number Re$_c$ = 450,000 and angle of attack $α$ = 23$^\\circ$ using wallresolved large-eddy simulations (LES). Two optimization strategies are explored: open-loop Bayesian optimization (BO) and closed-loop deep reinforcement learning (DRL), both targeting the mitigation of stall and the improvement of aerodynamic efficiency via synthetic jets on the slat, main, and flap elements. The uncontrolled configuration was validated against literature data, confirming the reliability of the LES setup. The BO framework successfully identified steady jet velocities that increased efficiency by +10.9% through a -9.7% drag reduction while maintaining lift. In contrast, the DRL agent, despite leveraging instantaneous flow information from distributed sensors, achieved only minor improvements in lift and drag, with negligible efficiency gain. Training analysis indicated that the penalty-dominated reward constrained exploration. These results highlight the need for carefully designed rewards and computational acceleration strategies in DRL-based flow control at high Reynolds numbers.",
-    "published": "2026-05-12",
-    "arxiv_url": "http://arxiv.org/abs/2605.11981v1",
-    "pdf_url": "https://arxiv.org/pdf/2605.11981v1",
+    "authors": "R. Montalà, B. Font, O. Lehmkuhl, Ricardo Vinuesa, I. Rodríguez",
+    "abstract": "This study investigates active flow control (AFC) of a 30P30N high-lift wing at a Reynolds number Rec = 450,000 and angle of attack α = 23◦ using wall-resolved large-eddy simulations (LES). Two optimization strategies are explored: open-loop Bayesian optimization (BO) and closed-loop deep reinforcement learning (DRL), both targeting the mitigation of stall and the improvement of aerodynamic efficiency via synthetic jets on the slat, main, and flap elements. The uncontrolled configuration was validated against literature data, confirming the reliability of the LES setup. The BO framework successfully identified steady jet velocities that increased efficiency by +10.9% through a -9.7% drag reduction while maintaining lift. In contrast, the DRL agent, despite leveraging instantaneous flow information from distributed sensors, achieved only minor improvements in lift and drag, with negligible efficiency gain. Training analysis indicated that the penalty-dominated reward constrained exploration. These results highlight the need for carefully designed rewards and computational acceleration strategies in DRL-based flow control at high Reynolds numbers.",
+    "published": "2026-05-01",
+    "arxiv_url": "https://arxiv.org/abs/2605.11981",
+    "pdf_url": "",
     "categories": [
-      "physics.flu-dyn",
-      "cs.AI"
+      "Computer Science",
+      "Physics",
+      "cs.AI",
+      "physics.flu-dyn"
     ],
-    "conference": "",
+    "conference": "Journal of Physics: Conference Series",
     "code_link": "",
     "tags": [
       "机器学习",
@@ -8703,26 +10281,25 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "acceleration",
-      "active flow control",
-      "deep reinforcement learning",
       "drag reduction",
-      "drl",
       "flow control",
+      "deep reinforcement learning",
+      "drl",
+      "reinforcement learning",
+      "acceleration",
       "les",
-      "reinforcement learning"
+      "active flow control"
     ],
     "keywords": [
+      "DRL",
+      "RL",
       "acceleration",
       "active flow control",
-      "deep reinforcement learning",
       "drag reduction",
-      "drl",
       "flow control",
-      "les",
-      "reinforcement learning"
+      "les"
     ],
-    "citation_count": null,
+    "citation_count": 0,
     "impact_factor": null,
     "classification_score": {
       "流体力学 / 智能CFD / 流动控制与强化学习": {
@@ -8752,7 +10329,29 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习"
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "venue": "Journal of Physics: Conference Series",
+    "doi": "10.1088/1742-6596/3230/1/012017",
+    "arxiv_id": "2605.11981",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.11981",
+    "paper_url": "https://www.semanticscholar.org/paper/7e4dbe4e4c5a873d80fb7c184db7156728e178f6",
+    "publication_type": "journal",
+    "is_preprint": false,
+    "source": "semantic_scholar",
+    "publication_types": [
+      "JournalArticle",
+      "Conference"
+    ],
+    "external_ids": {
+      "ArXiv": "2605.11981",
+      "DOI": "10.1088/1742-6596/3230/1/012017",
+      "CorpusId": 288186376
+    },
+    "semantic_scholar_id": "7e4dbe4e4c5a873d80fb7c184db7156728e178f6",
+    "sources": [
+      "arxiv",
+      "semantic_scholar"
+    ]
   },
   {
     "id": "2605.11916v1",
@@ -8792,7 +10391,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.11916",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.11916",
+    "paper_url": "http://arxiv.org/abs/2605.11916v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.11896v1",
@@ -8814,16 +10421,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "vof",
       "cfd",
-      "finite volume",
       "two-phase flows",
-      "vof"
+      "finite volume"
     ],
     "keywords": [
-      "cfd",
+      "CFD",
+      "VOF",
       "finite volume",
-      "two-phase flows",
-      "vof"
+      "two-phase flow"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -8841,7 +10448,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.11896",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.11896",
+    "paper_url": "http://arxiv.org/abs/2605.11896v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.13892v1",
@@ -8865,17 +10480,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "fluid dynamics",
-      "neural network",
       "physics-informed",
       "physics-informed neural network",
+      "fluid dynamics",
+      "neural network",
       "speedup"
     ],
     "keywords": [
+      "PINN",
       "fluid dynamics",
       "neural network",
-      "physics-informed",
-      "physics-informed neural network",
       "speedup"
     ],
     "citation_count": null,
@@ -8906,7 +10520,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络"
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.13892",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.13892",
+    "paper_url": "http://arxiv.org/abs/2605.13892v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.11843v1",
@@ -8931,9 +10553,9 @@
     "official_keywords": [],
     "custom_keywords": [
       "data-driven",
-      "machine learning",
       "sgs model",
-      "turbulence"
+      "turbulence",
+      "machine learning"
     ],
     "keywords": [
       "data-driven",
@@ -8957,7 +10579,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合"
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.11843",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.11843",
+    "paper_url": "http://arxiv.org/abs/2605.11843v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.11454v1",
@@ -8979,8 +10609,8 @@
     "official_keywords": [],
     "custom_keywords": [
       "combustion",
-      "flame",
-      "turbulence"
+      "turbulence",
+      "flame"
     ],
     "keywords": [
       "combustion",
@@ -9010,7 +10640,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 燃烧与传热"
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.11454",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.11454",
+    "paper_url": "http://arxiv.org/abs/2605.11454v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.11293v2",
@@ -9032,8 +10670,8 @@
     "official_keywords": [],
     "custom_keywords": [
       "inverse problem",
-      "isotropic turbulence",
-      "turbulence"
+      "turbulence",
+      "isotropic turbulence"
     ],
     "keywords": [
       "inverse problem",
@@ -9055,7 +10693,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.11293",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.11293",
+    "paper_url": "http://arxiv.org/abs/2605.11293v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.10737v1",
@@ -9078,12 +10724,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "fluid-structure interaction",
       "turbulence",
+      "fluid-structure interaction",
       "wind turbine"
     ],
     "keywords": [
-      "fluid-structure interaction",
+      "FSI",
       "turbulence",
       "wind turbine"
     ],
@@ -9125,7 +10771,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 风能与海洋工程流体"
+    "primary_domain": "流体力学 / 风能与海洋工程流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.10737",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.10737",
+    "paper_url": "http://arxiv.org/abs/2605.10737v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.10301v1",
@@ -9166,7 +10820,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.10301",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.10301",
+    "paper_url": "http://arxiv.org/abs/2605.10301v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.10028v1",
@@ -9190,10 +10852,10 @@
     "official_keywords": [],
     "custom_keywords": [
       "combustion",
-      "flame",
-      "les",
+      "neural network",
       "machine learning",
-      "neural network"
+      "flame",
+      "les"
     ],
     "keywords": [
       "combustion",
@@ -9205,7 +10867,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.10028",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.10028",
+    "paper_url": "http://arxiv.org/abs/2605.10028v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.09779v1",
@@ -9232,7 +10902,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.09779",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.09779",
+    "paper_url": "http://arxiv.org/abs/2605.09779v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.09559v1",
@@ -9256,9 +10934,9 @@
     "official_keywords": [],
     "custom_keywords": [
       "heat transfer",
+      "vortices",
       "navier-stokes",
-      "shock wave",
-      "vortices"
+      "shock wave"
     ],
     "keywords": [
       "heat transfer",
@@ -9305,7 +10983,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 空气动力学理论"
+    "primary_domain": "流体力学 / 空气动力学理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.09559",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.09559",
+    "paper_url": "http://arxiv.org/abs/2605.09559v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.09172v1",
@@ -9331,7 +11017,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.09172",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.09172",
+    "paper_url": "http://arxiv.org/abs/2605.09172v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.08906v1",
@@ -9356,7 +11050,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.08906",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.08906",
+    "paper_url": "http://arxiv.org/abs/2605.08906v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.08849v1",
@@ -9381,7 +11083,7 @@
       "turbulent flow"
     ],
     "keywords": [
-      "pod",
+      "POD",
       "turbulent flow"
     ],
     "citation_count": null,
@@ -9399,7 +11101,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.08849",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.08849",
+    "paper_url": "http://arxiv.org/abs/2605.08849v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.08832v2",
@@ -9422,19 +11132,18 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "fluid dynamics",
       "aneurysm",
       "autoencoder",
-      "cfd",
       "computational fluid dynamics",
-      "fluid dynamics",
+      "cfd",
       "hemodynamics",
       "supervised learning"
     ],
     "keywords": [
+      "AE",
+      "CFD",
       "aneurysm",
-      "autoencoder",
-      "cfd",
-      "computational fluid dynamics",
       "fluid dynamics",
       "hemodynamics",
       "supervised learning"
@@ -9469,7 +11178,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 生物与医学流体"
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.08832",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.08832",
+    "paper_url": "http://arxiv.org/abs/2605.08832v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.08430v1",
@@ -9512,7 +11229,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.08430",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.08430",
+    "paper_url": "http://arxiv.org/abs/2605.08430v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.07966v1",
@@ -9556,7 +11281,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.07966",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.07966",
+    "paper_url": "http://arxiv.org/abs/2605.07966v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.07901v1",
@@ -9579,8 +11312,8 @@
     "official_keywords": [],
     "custom_keywords": [
       "bubble",
-      "cavitation",
-      "vortex"
+      "vortex",
+      "cavitation"
     ],
     "keywords": [
       "bubble",
@@ -9613,7 +11346,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.07901",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.07901",
+    "paper_url": "http://arxiv.org/abs/2605.07901v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.07874v1",
@@ -9653,7 +11394,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.07874",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.07874",
+    "paper_url": "http://arxiv.org/abs/2605.07874v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21501v1",
@@ -9698,7 +11447,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21501",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21501",
+    "paper_url": "http://arxiv.org/abs/2605.21501v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.07791v1",
@@ -9740,7 +11497,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.07791",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.07791",
+    "paper_url": "http://arxiv.org/abs/2605.07791v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.07759v1",
@@ -9762,8 +11527,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "droplet",
-      "finite element"
+      "finite element",
+      "droplet"
     ],
     "keywords": [
       "droplet",
@@ -9781,7 +11546,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.07759",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.07759",
+    "paper_url": "http://arxiv.org/abs/2605.07759v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.07754v1",
@@ -9826,7 +11599,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.07754",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.07754",
+    "paper_url": "http://arxiv.org/abs/2605.07754v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.07688v1",
@@ -9847,8 +11628,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "droplet",
-      "heat transfer"
+      "heat transfer",
+      "droplet"
     ],
     "keywords": [
       "droplet",
@@ -9874,7 +11655,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.07688",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.07688",
+    "paper_url": "http://arxiv.org/abs/2605.07688v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.07504v1",
@@ -9896,8 +11685,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "environmental fluid",
-      "turbulence"
+      "turbulence",
+      "environmental fluid"
     ],
     "keywords": [
       "environmental fluid",
@@ -9930,7 +11719,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 环境与地球物理流体"
+    "primary_domain": "流体力学 / 环境与地球物理流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.07504",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.07504",
+    "paper_url": "http://arxiv.org/abs/2605.07504v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.07131v2",
@@ -9953,14 +11750,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
       "physics-informed",
-      "pinn"
+      "pinn",
+      "cfd"
     ],
     "keywords": [
-      "cfd",
-      "physics-informed",
-      "pinn"
+      "CFD",
+      "PINN"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -9978,7 +11774,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络"
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.07131",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.07131",
+    "paper_url": "http://arxiv.org/abs/2605.07131v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.06657v1",
@@ -10019,7 +11823,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 燃烧与传热"
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.06657",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.06657",
+    "paper_url": "http://arxiv.org/abs/2605.06657v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.06607v3",
@@ -10041,21 +11853,28 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
+      "fluid dynamics",
       "computational fluid dynamics",
       "dns",
-      "fluid dynamics"
+      "cfd"
     ],
     "keywords": [
-      "cfd",
-      "computational fluid dynamics",
+      "CFD",
       "dns",
       "fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.06607",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.06607",
+    "paper_url": "http://arxiv.org/abs/2605.06607v3",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.06526v1",
@@ -10082,7 +11901,7 @@
       "reduced-order model"
     ],
     "keywords": [
-      "reduced-order model"
+      "ROM"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -10097,7 +11916,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.06526",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.06526",
+    "paper_url": "http://arxiv.org/abs/2605.06526v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.06144v1",
@@ -10122,7 +11949,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.06144",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.06144",
+    "paper_url": "http://arxiv.org/abs/2605.06144v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.06026v1",
@@ -10145,11 +11980,11 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "topology optimization",
       "heat transfer",
       "navier-stokes",
-      "rans",
-      "topology optimization",
-      "turbulent flow"
+      "turbulent flow",
+      "rans"
     ],
     "keywords": [
       "heat transfer",
@@ -10195,7 +12030,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 燃烧与传热"
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.06026",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.06026",
+    "paper_url": "http://arxiv.org/abs/2605.06026v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.05975v1",
@@ -10220,9 +12063,9 @@
     "official_keywords": [],
     "custom_keywords": [
       "flow matching",
+      "speedup",
       "generative model",
-      "machine learning",
-      "speedup"
+      "machine learning"
     ],
     "keywords": [
       "flow matching",
@@ -10245,7 +12088,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨"
+    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.05975",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.05975",
+    "paper_url": "http://arxiv.org/abs/2605.05975v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.08244v1",
@@ -10268,8 +12119,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "geostrophic",
-      "turbulence"
+      "turbulence",
+      "geostrophic"
     ],
     "keywords": [
       "geostrophic",
@@ -10289,7 +12140,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.08244",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.08244",
+    "paper_url": "http://arxiv.org/abs/2605.08244v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.05875v2",
@@ -10315,7 +12174,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.05875",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.05875",
+    "paper_url": "http://arxiv.org/abs/2605.05875v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.05874v1",
@@ -10353,7 +12220,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 燃烧与传热"
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.05874",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.05874",
+    "paper_url": "http://arxiv.org/abs/2605.05874v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.05658v2",
@@ -10381,7 +12256,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.05658",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.05658",
+    "paper_url": "http://arxiv.org/abs/2605.05658v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.05585v1",
@@ -10402,8 +12285,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "bubble",
-      "turbulence"
+      "turbulence",
+      "bubble"
     ],
     "keywords": [
       "bubble",
@@ -10434,7 +12317,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.05585",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.05585",
+    "paper_url": "http://arxiv.org/abs/2605.05585v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.05574v1",
@@ -10459,7 +12350,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.05574",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.05574",
+    "paper_url": "http://arxiv.org/abs/2605.05574v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.05540v1",
@@ -10498,7 +12397,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.05540",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.05540",
+    "paper_url": "http://arxiv.org/abs/2605.05540v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.05465v1",
@@ -10548,7 +12455,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.05465",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.05465",
+    "paper_url": "http://arxiv.org/abs/2605.05465v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.08232v1",
@@ -10572,12 +12487,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "turbulence",
       "combustion",
-      "data-driven",
-      "flame",
-      "machine learning",
       "neural network",
-      "turbulence"
+      "data-driven",
+      "machine learning",
+      "flame"
     ],
     "keywords": [
       "combustion",
@@ -10590,7 +12505,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.08232",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.08232",
+    "paper_url": "http://arxiv.org/abs/2605.08232v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.05108v1",
@@ -10619,7 +12542,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.05108",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.05108",
+    "paper_url": "http://arxiv.org/abs/2605.05108v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.04884v1",
@@ -10640,16 +12571,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "airfoil",
-      "cfd",
       "drag reduction",
-      "shape optimization",
+      "wing optimization",
+      "cfd",
       "vortex",
-      "wing optimization"
+      "airfoil",
+      "shape optimization"
     ],
     "keywords": [
+      "CFD",
       "airfoil",
-      "cfd",
       "drag reduction",
       "shape optimization",
       "vortex",
@@ -10696,7 +12627,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 气动优化设计"
+    "primary_domain": "流体力学 / 气动优化设计",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.04884",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.04884",
+    "paper_url": "http://arxiv.org/abs/2605.04884v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.04878v1",
@@ -10721,7 +12660,7 @@
       "lattice boltzmann"
     ],
     "keywords": [
-      "lattice boltzmann"
+      "LBM"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -10737,7 +12676,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.04878",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.04878",
+    "paper_url": "http://arxiv.org/abs/2605.04878v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.04782v1",
@@ -10758,8 +12705,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "les",
-      "wind farm"
+      "wind farm",
+      "les"
     ],
     "keywords": [
       "les",
@@ -10780,7 +12727,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 风能与海洋工程流体"
+    "primary_domain": "流体力学 / 风能与海洋工程流体",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.04782",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.04782",
+    "paper_url": "http://arxiv.org/abs/2605.04782v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.04424v1",
@@ -10807,7 +12762,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.04424",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.04424",
+    "paper_url": "http://arxiv.org/abs/2605.04424v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.04335v1",
@@ -10830,15 +12793,15 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics",
       "fluid-structure interaction",
+      "fluid dynamics",
+      "computational fluid dynamics",
       "speedup"
     ],
     "keywords": [
-      "computational fluid dynamics",
+      "CFD",
+      "FSI",
       "fluid dynamics",
-      "fluid-structure interaction",
       "speedup"
     ],
     "citation_count": null,
@@ -10856,7 +12819,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 空气动力学理论"
+    "primary_domain": "流体力学 / 空气动力学理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.04335",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.04335",
+    "paper_url": "http://arxiv.org/abs/2605.04335v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.04198v1",
@@ -10890,7 +12861,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.04198",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.04198",
+    "paper_url": "http://arxiv.org/abs/2605.04198v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03973v1",
@@ -10911,8 +12890,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "heat transfer",
-      "resolvent analysis"
+      "resolvent analysis",
+      "heat transfer"
     ],
     "keywords": [
       "heat transfer",
@@ -10940,7 +12919,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03973",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03973",
+    "paper_url": "http://arxiv.org/abs/2605.03973v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03933v1",
@@ -10961,10 +12948,10 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "boundary layer",
+      "turbulence",
       "eddy viscosity",
       "storm",
-      "turbulence",
+      "boundary layer",
       "turbulent flow"
     ],
     "keywords": [
@@ -11024,7 +13011,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03933",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03933",
+    "paper_url": "http://arxiv.org/abs/2605.03933v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03924v2",
@@ -11070,7 +13065,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03924",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03924",
+    "paper_url": "http://arxiv.org/abs/2605.03924v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03915v1",
@@ -11100,7 +13103,15 @@
     "citation_count": 0,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03915",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03915",
+    "paper_url": "http://arxiv.org/abs/2605.03915v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.21499v1",
@@ -11124,16 +13135,16 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "surrogate model",
+      "fluid dynamics",
+      "lstm",
       "autoencoder",
       "computational fluid dynamics",
-      "fluid dynamics",
-      "latent space",
-      "lstm",
-      "surrogate model"
+      "latent space"
     ],
     "keywords": [
-      "autoencoder",
-      "computational fluid dynamics",
+      "AE",
+      "CFD",
       "fluid dynamics",
       "latent space",
       "lstm",
@@ -11156,7 +13167,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.21499",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.21499",
+    "paper_url": "http://arxiv.org/abs/2605.21499v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03850v1",
@@ -11181,7 +13200,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03850",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03850",
+    "paper_url": "http://arxiv.org/abs/2605.03850v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03843v1",
@@ -11221,7 +13248,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03843",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03843",
+    "paper_url": "http://arxiv.org/abs/2605.03843v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03810v1",
@@ -11247,7 +13282,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03810",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03810",
+    "paper_url": "http://arxiv.org/abs/2605.03810v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03768v1",
@@ -11289,7 +13332,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03768",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03768",
+    "paper_url": "http://arxiv.org/abs/2605.03768v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03646v3",
@@ -11333,7 +13384,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03646",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03646",
+    "paper_url": "http://arxiv.org/abs/2605.03646v3",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03617v2",
@@ -11375,7 +13434,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 空气动力学理论"
+    "primary_domain": "流体力学 / 空气动力学理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03617",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03617",
+    "paper_url": "http://arxiv.org/abs/2605.03617v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03504v1",
@@ -11413,7 +13480,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03504",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03504",
+    "paper_url": "http://arxiv.org/abs/2605.03504v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03479v1",
@@ -11442,7 +13517,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03479",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03479",
+    "paper_url": "http://arxiv.org/abs/2605.03479v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03417v1",
@@ -11463,8 +13546,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "flow instability",
-      "shear flow"
+      "shear flow",
+      "flow instability"
     ],
     "keywords": [
       "flow instability",
@@ -11487,7 +13570,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03417",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03417",
+    "paper_url": "http://arxiv.org/abs/2605.03417v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03239v1",
@@ -11517,7 +13608,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03239",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03239",
+    "paper_url": "http://arxiv.org/abs/2605.03239v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03201v1",
@@ -11543,7 +13642,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03201",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03201",
+    "paper_url": "http://arxiv.org/abs/2605.03201v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.03049v1",
@@ -11583,7 +13690,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.03049",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.03049",
+    "paper_url": "http://arxiv.org/abs/2605.03049v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.02996v2",
@@ -11612,7 +13727,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.02996",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.02996",
+    "paper_url": "http://arxiv.org/abs/2605.02996v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.02419v1",
@@ -11638,7 +13761,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.02419",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.02419",
+    "paper_url": "http://arxiv.org/abs/2605.02419v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.08155v1",
@@ -11666,7 +13797,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.08155",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.08155",
+    "paper_url": "http://arxiv.org/abs/2605.08155v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.02185v1",
@@ -11687,14 +13826,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
       "fluid dynamics",
+      "computational fluid dynamics",
       "lattice boltzmann"
     ],
     "keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics",
-      "lattice boltzmann"
+      "CFD",
+      "LBM",
+      "fluid dynamics"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -11711,7 +13850,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.02185",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.02185",
+    "paper_url": "http://arxiv.org/abs/2605.02185v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.01867v1",
@@ -11754,7 +13901,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.01867",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.01867",
+    "paper_url": "http://arxiv.org/abs/2605.01867v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.01820v1",
@@ -11780,7 +13935,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.01820",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.01820",
+    "paper_url": "http://arxiv.org/abs/2605.01820v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.01774v1",
@@ -11801,12 +13964,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "heat transfer",
-      "lattice boltzmann"
+      "lattice boltzmann",
+      "heat transfer"
     ],
     "keywords": [
-      "heat transfer",
-      "lattice boltzmann"
+      "LBM",
+      "heat transfer"
     ],
     "citation_count": null,
     "impact_factor": null,
@@ -11828,7 +13991,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.01774",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.01774",
+    "paper_url": "http://arxiv.org/abs/2605.01774v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.01751v1",
@@ -11853,7 +14024,15 @@
     "citation_count": null,
     "impact_factor": null,
     "classification_score": {},
-    "primary_domain": "流体力学 / 其他"
+    "primary_domain": "流体力学 / 其他",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.01751",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.01751",
+    "paper_url": "http://arxiv.org/abs/2605.01751v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.01196v1",
@@ -11894,7 +14073,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.01196",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.01196",
+    "paper_url": "http://arxiv.org/abs/2605.01196v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.01015v1",
@@ -11915,11 +14102,11 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "boundary layer",
-      "dns",
-      "finite volume",
+      "turbulence",
       "finite volume method",
-      "turbulence"
+      "finite volume",
+      "boundary layer",
+      "dns"
     ],
     "keywords": [
       "boundary layer",
@@ -11963,7 +14150,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.01015",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.01015",
+    "paper_url": "http://arxiv.org/abs/2605.01015v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.00481v1",
@@ -12004,7 +14199,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.00481",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.00481",
+    "paper_url": "http://arxiv.org/abs/2605.00481v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.00937v1",
@@ -12028,21 +14231,20 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "fluid dynamics",
       "fluid-structure interaction",
-      "fsi",
+      "transformer",
+      "fluid dynamics",
       "lstm",
       "machine learning",
       "neural operator",
-      "transformer"
+      "fsi"
     ],
     "keywords": [
+      "FSI",
+      "Neural Operator",
       "fluid dynamics",
-      "fluid-structure interaction",
-      "fsi",
       "lstm",
       "machine learning",
-      "neural operator",
       "transformer"
     ],
     "citation_count": null,
@@ -12073,7 +14275,15 @@
         ]
       }
     },
-    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习"
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.00937",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.00937",
+    "paper_url": "http://arxiv.org/abs/2605.00937v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.00335v1",
@@ -12094,9 +14304,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "vortex",
       "acceleration",
-      "dns",
-      "vortex"
+      "dns"
     ],
     "keywords": [
       "acceleration",
@@ -12117,7 +14327,15 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理"
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.00335",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.00335",
+    "paper_url": "http://arxiv.org/abs/2605.00335v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
   },
   {
     "id": "2605.00303v1",
@@ -12138,11 +14356,11 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "acceleration",
-      "adaptive mesh",
       "adaptive mesh refinement",
+      "acceleration",
+      "navier-stokes",
       "bubble",
-      "navier-stokes"
+      "adaptive mesh"
     ],
     "keywords": [
       "acceleration",
@@ -12177,6 +14395,76 @@
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论"
+    "primary_domain": "流体力学 / 多相流理论",
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2605.00303",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.00303",
+    "paper_url": "http://arxiv.org/abs/2605.00303v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv"
+  },
+  {
+    "id": "2605.18606",
+    "title": "Physics-Aligned Canonical Equivariant Fourier Neural Operator under Symmetry-Induced Shifts",
+    "authors": "Jiaxi Xu, Changhong Mou, Yeyu Zhang, Feng He",
+    "abstract": "Neural operators approximate PDE solution maps, but they need not respect the symmetries of the governing equation. In out-of-distribution (OOD) regimes, a standard neural operator must often learn coordinate alignment and physical evolution within a single map, which can hurt generalization. We use known continuous symmetries of evolution equations on periodic domains to separate these two roles. We propose the Physics-Aligned Canonical Equivariant Fourier Neural Operator (PACE-FNO), which estimates the input frame with a Lie-algebra coordinate estimator, maps the field to a reference frame, applies a standard Fourier Neural Operator (FNO), and restores the prediction to the target frame. We train alignment and operator prediction jointly using bounded symmetry perturbations, with an optional low-dimensional refinement step that updates the estimated frame at inference. Equivariance is enforced by the input and output transformations, while the FNO architecture remains unchanged. Across 1-D and 2-D Burgers, shallow-water, and Navier-Stokes equations on periodic domains, PACE-FNO matches the in-distribution (ID) accuracy of standard neural operators and reduces out-of-distribution (OOD) relative error by up to 12x over FNO with symmetry augmentation (FNO+Aug) under translations and Galilean shifts, with smaller gains for coupled rotation-translation shifts. Ablations show that aligning the input and restoring the output frame account for most OOD gains; inference-time refinement provides a smaller correction.",
+    "published": "2026-05-18",
+    "paper_url": "https://www.semanticscholar.org/paper/01f6067c86ef2a86e6ee5cdd686f7def194d8ca1",
+    "arxiv_id": "2605.18606",
+    "arxiv_url": "https://arxiv.org/abs/2605.18606",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.18606",
+    "categories": [
+      "Computer Science"
+    ],
+    "venue": "",
+    "conference": "",
+    "publication_types": [],
+    "publication_type": "preprint",
+    "doi": "",
+    "external_ids": {
+      "ArXiv": "2605.18606",
+      "CorpusId": 288653768
+    },
+    "semantic_scholar_id": "01f6067c86ef2a86e6ee5cdd686f7def194d8ca1",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator",
+      "navier-stokes"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": true,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 10,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "fno"
+        ],
+        "context_hits": [
+          "navier-stokes"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fourier neural operator",
+      "navier-stokes",
+      "fno",
+      "neural operator"
+    ]
   }
 ]
