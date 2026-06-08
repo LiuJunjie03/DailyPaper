@@ -334,6 +334,67 @@ PARENT_TAGS = {
     "流体力学 / 计算流体力学方法": ["流体力学"],
 }
 
+# 关键词规范化映射：同义词/全称 → 规范缩写形式
+KEYWORD_CANONICAL = {
+    # PINN 系列
+    "physics-informed neural network": "PINN",
+    "physics-informed": "PINN",
+    "physics-guided": "PINN",
+    "physics-constrained": "PINN",
+    "variational pinn": "PINN",
+    "cpinn": "PINN",
+    "physics-embedded": "PINN",
+    "pinn": "PINN",
+    # 算子/代理模型
+    "fourier neural operator": "FNO",
+    "fno": "FNO",
+    "neural operator": "Neural Operator",
+    "graph neural network": "GNN",
+    "gnn": "GNN",
+    "reduced-order model": "ROM",
+    "reduced-order": "ROM",
+    "reduced order": "ROM",
+    "rom": "ROM",
+    "proper orthogonal decomposition": "POD",
+    "pod": "POD",
+    # CFD
+    "computational fluid dynamics": "CFD",
+    "cfd": "CFD",
+    # 湍流模拟方法
+    "large eddy simulation": "LES",
+    "direct numerical simulation": "DNS",
+    "reynolds-averaged navier-stokes": "RANS",
+    # 控制与学习
+    "deep reinforcement learning": "DRL",
+    "drl": "DRL",
+    "reinforcement learning": "RL",
+    # 流固耦合
+    "fluid-structure interaction": "FSI",
+    "fsi": "FSI",
+    # 其他缩写
+    "discrete element method": "DEM",
+    "dem": "DEM",
+    "smoothed particle hydrodynamics": "SPH",
+    "sph": "SPH",
+    "volume of fluid": "VOF",
+    "vof": "VOF",
+    "lattice boltzmann": "LBM",
+    "lattice boltzmann method": "LBM",
+    "variational autoencoder": "VAE",
+    "cvae": "VAE",
+    "autoencoder": "AE",
+    "generative adversarial network": "GAN",
+    "convolutional neural network": "CNN",
+    "recurrent neural network": "RNN",
+    # 拼写变体统一
+    "surrogate modelling": "surrogate model",
+    "surrogate modeling": "surrogate model",
+    "turbulence modelling": "turbulence modeling",
+    "aerodynamic design optimization": "aerodynamic optimization",
+    "two-phase flows": "two-phase flow",
+    "multiphase flows": "multiphase flow",
+}
+
 
 def normalize_title(title: str) -> str:
     return re.sub(r"\s+", " ", (title or "").lower().strip())
@@ -569,7 +630,7 @@ class PaperFetcher:
         paper["primary_domain"] = paper["tags"][-1] if paper.get("tags") else ""
         official_keywords = paper.get("official_keywords") or []
         paper["custom_keywords"] = self.extract_paper_keywords(paper)
-        paper["keywords"] = sorted(set(official_keywords + paper["custom_keywords"]))
+        paper["keywords"] = self._normalize_keywords(official_keywords + paper["custom_keywords"])
         return paper
 
     def _identity_keys(self, paper: Dict) -> List[str]:
@@ -611,7 +672,7 @@ class PaperFetcher:
             if new.get("citation_count") is not None
             else old.get("citation_count")
         )
-        merged["keywords"] = sorted(set((old.get("keywords") or []) + (new.get("keywords") or [])))
+        merged["keywords"] = self._normalize_keywords((old.get("keywords") or []) + (new.get("keywords") or []))
         merged["categories"] = sorted(set((old.get("categories") or []) + (new.get("categories") or [])))
         merged["sources"] = sorted(set((old.get("sources") or [old.get("source", "unknown")]) + (new.get("sources") or [new.get("source", "unknown")])))
         merged["source"] = primary.get("source") or merged.get("source") or "unknown"
@@ -717,6 +778,14 @@ class PaperFetcher:
         
         # 最多保留10个关键词（适配新增词汇，多保留2个）
         return extracted[:10]
+
+    def _normalize_keywords(self, keywords: List[str]) -> List[str]:
+        """将同义关键词合并为规范缩写形式，去重并排序"""
+        normalized = set()
+        for kw in keywords:
+            canonical = KEYWORD_CANONICAL.get(kw.lower().strip(), kw)
+            normalized.add(canonical)
+        return sorted(normalized)
 
     def classify_paper(self, paper: Dict) -> List[str]:
         """Classify into the smallest CFD/fluid subdomain using strict scored rules."""

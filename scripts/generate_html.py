@@ -11,6 +11,17 @@ from typing import List, Dict
 import logging
 import yaml
 import os
+import copy
+
+# 关键词规范化：从 fetch_papers 导入映射表
+try:
+    from fetch_papers import KEYWORD_CANONICAL
+except ImportError:
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("fetch_papers", Path(__file__).parent / "fetch_papers.py")
+    _fp = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(_fp)
+    KEYWORD_CANONICAL = _fp.KEYWORD_CANONICAL
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -94,7 +105,22 @@ class HTMLGenerator:
         self.output_dir = Path(output_dir)
         self.papers = []
         self.papers_by_month = {}  # 按月份分组的论文
-        
+
+    @staticmethod
+    def _normalize_papers_keywords(papers: List[Dict]) -> List[Dict]:
+        """对论文列表的关键词进行规范化（深拷贝，不修改原数据）"""
+        result = []
+        for p in papers:
+            p_copy = copy.deepcopy(p)
+            kws = p_copy.get("keywords") or []
+            normalized = set()
+            for kw in kws:
+                canonical = KEYWORD_CANONICAL.get(kw.lower().strip(), kw)
+                normalized.add(canonical)
+            p_copy["keywords"] = sorted(normalized)
+            result.append(p_copy)
+        return result
+
     def load_papers(self):
         """加载论文数据（从月度JSON文件读取，替代原papers.json）"""
         # 清空原有数据
@@ -132,12 +158,13 @@ class HTMLGenerator:
         """生成按月份分离的数据文件（适配已有月度文件，仅同步到docs目录）"""
         data_dir = self.output_dir / "data"
         data_dir.mkdir(parents=True, exist_ok=True)
-        
-        # 同步已有月度文件到docs/data目录
+
+        # 同步已有月度文件到docs/data目录（规范化关键词）
         for year_month, papers in self.papers_by_month.items():
             file_path = data_dir / f"{year_month}.json"
+            normalized = self._normalize_papers_keywords(papers)
             with open(file_path, 'w', encoding='utf-8') as f:
-                json.dump(papers, f, ensure_ascii=False, indent=2)
+                json.dump(normalized, f, ensure_ascii=False, indent=2)
             logger.info(f"同步月度数据文件到输出目录: {file_path} ({len(papers)} 篇)")
         
         # 生成/更新索引文件
@@ -1177,9 +1204,13 @@ footer::before {
 """
         css_dir = self.output_dir / "css"
         css_dir.mkdir(parents=True, exist_ok=True)
-        with open(css_dir / "style.css", 'w', encoding='utf-8') as f:
-            f.write(css)
-        logger.info("生成 CSS 样式文件（包含关键词区分样式）")
+        css_file = css_dir / "style.css"
+        if not css_file.exists():
+            with open(css_file, 'w', encoding='utf-8') as f:
+                f.write(css)
+            logger.info("生成 CSS 样式文件（包含关键词区分样式）")
+        else:
+            logger.info("CSS 样式文件已存在，跳过生成（保留自定义样式）")
     
     def generate_js(self):
         """生成 JavaScript 文件（包含重要程度排序逻辑）"""
@@ -2031,11 +2062,14 @@ document.addEventListener('DOMContentLoaded', function() {{
         
         js_dir = self.output_dir / "js"
         js_dir.mkdir(parents=True, exist_ok=True)
-        
-        with open(js_dir / "main.js", 'w', encoding='utf-8') as f:
-            f.write(js)
-        
-        logger.info("生成 JavaScript 文件")
+
+        js_file = js_dir / "main.js"
+        if not js_file.exists():
+            with open(js_file, 'w', encoding='utf-8') as f:
+                f.write(js)
+            logger.info("生成 JavaScript 文件")
+        else:
+            logger.info("JavaScript 文件已存在，跳过生成（保留自定义脚本）")
     
     def run(self):
         """运行生成流程"""
