@@ -61,11 +61,11 @@ header::after {
     height: 40px;
     background: var(--bg);
     clip-path: polygon(
-0% 60%, 5% 55%, 10% 50%, 15% 48%, 20% 50%, 25% 55%,
-30% 58%, 35% 55%, 40% 48%, 45% 42%, 50% 40%,
-55% 42%, 60% 48%, 65% 55%, 70% 58%, 75% 55%,
-80% 50%, 85% 48%, 90% 50%, 95% 55%, 100% 60%,
-100% 100%, 0% 100%
+        0% 60%, 5% 55%, 10% 50%, 15% 48%, 20% 50%, 25% 55%,
+        30% 58%, 35% 55%, 40% 48%, 45% 42%, 50% 40%,
+        55% 42%, 60% 48%, 65% 55%, 70% 58%, 75% 55%,
+        80% 50%, 85% 48%, 90% 50%, 95% 55%, 100% 60%,
+        100% 100%, 0% 100%
     );
 }
 
@@ -78,7 +78,7 @@ header::before {
     width: 200%;
     height: 100%;
     background: radial-gradient(ellipse at 30% 20%, rgba(0, 180, 216, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 60%, rgba(144, 224, 239, 0.1) 0%, transparent 40%);
+                radial-gradient(ellipse at 70% 60%, rgba(144, 224, 239, 0.1) 0%, transparent 40%);
     animation: shimmer 8s ease-in-out infinite alternate;
 }
 
@@ -143,41 +143,211 @@ nav {
     gap: 0.5rem;
 }
 
+/* 月份按钮：等宽网格排列 */
+.month-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 6px;
+}
+
+/* 发表状态 / 全文状态 / 排序：分段控制器 */
+.status-filters,
+.pdf-filters,
+.sort-filters {
+    display: inline-flex;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+}
+
 .category-filters {
     flex-direction: column;
     align-items: flex-start;
 }
 
-.category-breadcrumb,
-.category-children {
+.category-breadcrumb {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    align-items: center;
 }
 
+/* 研究领域子分类：树状连接线布局 */
 .category-children {
-    padding-left: 0.75rem;
-    border-left: 3px solid var(--light-blue);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 4px;
+    padding-left: 2.4rem;
+    margin-top: 6px;
+    margin-left: 0.8rem;
+    border-left: 2px solid rgba(0, 180, 216, 0.2);
+    position: relative;
 }
 
-.category-back-btn {
-    border-color: var(--text-muted) !important;
-    color: var(--text-secondary) !important;
+/* 逐级缩进：每深一级多缩 4rem */
+.category-children[data-depth="1"] {
+    padding-left: 2.4rem;
+    margin-left: 4rem;
+}
+.category-children[data-depth="2"] {
+    padding-left: 2.4rem;
+    margin-left: 8rem;
+}
+.category-children[data-depth="3"] {
+    padding-left: 2.4rem;
+    margin-left: 12rem;
 }
 
-.filter-btn {
-    padding: 0.5rem 1rem;
-    border: 2px solid var(--ocean);
+/* 每个子分类节点的水平连接线 */
+.category-children > .filter-btn::before {
+    content: '';
+    position: absolute;
+    left: -2.4rem;
+    top: 50%;
+    width: 2rem;
+    border-top: 2px solid rgba(0, 180, 216, 0.2);
+}
+
+/* 子分类节点圆点指示器 */
+.category-children > .filter-btn::after {
+    content: '';
+    position: absolute;
+    left: -2.4rem;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--light-blue);
+    transform: translate(calc(-50% - 1px), -50%);
+    transition: all 0.2s;
+}
+
+.category-children > .filter-btn:hover::after {
+    background: var(--cyan);
+    transform: translate(calc(-50% - 1px), -50%) scale(1.3);
+}
+
+.category-children > .filter-btn.active::after {
     background: white;
-    color: var(--ocean);
-    border-radius: 20px;
+    box-shadow: 0 0 6px rgba(0, 119, 182, 0.5);
+}
+
+.category-children > .filter-btn.active::after {
+    background: white;
+    box-shadow: 0 0 6px rgba(0, 119, 182, 0.5);
+}
+
+/* 返回按钮：路径导航风格 */
+.category-back-btn {
+    border: none !important;
+    color: var(--text-muted) !important;
+    background: transparent !important;
+    font-size: 0.82rem !important;
+    padding: 0.3rem 0.6rem !important;
+    opacity: 0.7;
+    transition: opacity 0.2s !important;
+}
+
+.category-back-btn:hover {
+    opacity: 1;
+    color: var(--ocean) !important;
+}
+
+.category-back-btn::before {
+    content: '← ';
+}
+
+/* 通用按钮：圆角矩形（非药丸） */
+.filter-btn {
+    padding: 0.45rem 1rem;
+    border: 1.5px solid var(--border);
+    background: white;
+    color: var(--text-secondary);
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s;
-    font-size: 0.9rem;
+    transition: all 0.25s;
+    font-size: 0.88rem;
+    position: relative;
+}
+
+/* 月份按钮 */
+.month-filters > .filter-btn {
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.82rem;
+    border-color: var(--border);
+}
+
+.month-filters > .filter-btn:hover {
+    border-color: var(--ocean);
+    background: var(--foam);
+    color: var(--ocean);
+}
+
+.month-filters > .filter-btn.active {
+    background: var(--ocean);
+    color: white;
+    border-color: var(--ocean);
+}
+
+/* 分段控制按钮（发表状态 / 全文状态 / 排序） */
+.status-filters > .filter-btn,
+.pdf-filters > .filter-btn,
+.sort-filters > .filter-btn {
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid var(--border);
+    background: transparent;
+    padding: 0.45rem 1.2rem;
+}
+
+.status-filters > .filter-btn:last-child,
+.pdf-filters > .filter-btn:last-child,
+.sort-filters > .filter-btn:last-child {
+    border-right: none;
+}
+
+.status-filters > .filter-btn:hover,
+.pdf-filters > .filter-btn:hover,
+.sort-filters > .filter-btn:hover {
+    background: var(--foam);
+    color: var(--ocean);
+}
+
+.status-filters > .filter-btn.active,
+.pdf-filters > .filter-btn.active,
+.sort-filters > .filter-btn.active {
+    background: linear-gradient(135deg, var(--ocean), var(--cyan));
+    color: white;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/* 分类按钮：保持独立圆角 */
+.category-filters .filter-btn {
+    border-color: var(--ocean);
+    color: var(--ocean);
+    background: white;
+    padding: 0.4rem 1rem;
+    margin: 1px 0;
+}
+
+.category-filters .filter-btn:hover {
+    background: var(--foam);
+}
+
+.category-filters .filter-btn.active {
+    background: linear-gradient(135deg, var(--ocean), var(--cyan));
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.3);
 }
 
 .filter-btn:hover {
     background: var(--foam);
+    color: var(--ocean);
 }
 
 .filter-btn.active {
@@ -600,9 +770,9 @@ footer a:hover {
 /* Body 背景流线图案 */
 body {
     background-image:
-radial-gradient(circle at 20% 50%, rgba(0, 119, 182, 0.03) 0%, transparent 50%),
-radial-gradient(circle at 80% 20%, rgba(0, 180, 216, 0.04) 0%, transparent 40%),
-radial-gradient(circle at 50% 80%, rgba(0, 119, 182, 0.03) 0%, transparent 45%);
+        radial-gradient(circle at 20% 50%, rgba(0, 119, 182, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 180, 216, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(0, 119, 182, 0.03) 0%, transparent 45%);
     background-attachment: fixed;
 }
 
@@ -637,13 +807,13 @@ nav::before {
     height: 3px;
     margin: -1.5rem -20px 1.2rem;
     background: linear-gradient(90deg,
-transparent 0%,
-var(--foam) 15%,
-var(--light-blue) 30%,
-var(--cyan) 50%,
-var(--light-blue) 70%,
-var(--foam) 85%,
-transparent 100%
+        transparent 0%,
+        var(--foam) 15%,
+        var(--light-blue) 30%,
+        var(--cyan) 50%,
+        var(--light-blue) 70%,
+        var(--foam) 85%,
+        transparent 100%
     );
     border-radius: 3px;
     opacity: 0.6;
@@ -685,10 +855,10 @@ footer::before {
     pointer-events: none;
 }
 
-/* 筛选区域之间的分隔线 — 流线风格 */
+/* 筛选区域之间的分隔线 */
 .filter-group + .filter-group {
-    padding-top: 0.6rem;
-    border-top: 1px dashed var(--border);
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(0, 119, 182, 0.06);
 }
 
 /* 结果栏装饰 */
@@ -725,30 +895,48 @@ footer::before {
 /* 响应式设计 */
 @media (max-width: 768px) {
     header h1 {
-font-size: 2rem;
+        font-size: 2rem;
     }
 
     header {
-padding-bottom: 3rem;
+        padding-bottom: 3rem;
     }
 
     .filters {
-justify-content: center;
+        justify-content: center;
+    }
+
+    .month-filters {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+
+    .category-children {
+        padding-left: 1.6rem;
+        margin-left: 0;
+    }
+    .category-children[data-depth="1"] {
+        margin-left: 1.6rem;
+    }
+    .category-children[data-depth="2"] {
+        margin-left: 3.2rem;
+    }
+    .category-children[data-depth="3"] {
+        margin-left: 4.8rem;
     }
 
     .paper-meta {
-flex-direction: column;
-gap: 0.3rem;
+        flex-direction: column;
+        gap: 0.3rem;
     }
 
     .keyword-label {
-min-width: auto;
-margin-bottom: 0.2rem;
+        min-width: auto;
+        margin-bottom: 0.2rem;
     }
 
     .official-keywords, .custom-keywords {
-flex-direction: column;
-align-items: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     /* 移动端隐藏公式装饰 */
