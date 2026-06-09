@@ -7,8 +7,37 @@ import hashlib
 import logging
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
+from urllib.parse import urljoin
+
+from bs4 import BeautifulSoup
+
+from fetchers.browser import evaluate_in_chrome
+from fetchers.cnki_detail import enrich_cnki_paper
 
 logger = logging.getLogger(__name__)
+
+
+DEFAULT_KNS_BASE_URL = "https://kns.cnki.net"
+
+
+def normalize_title(title: str) -> str:
+    return re.sub(r"\s+", " ", (title or "").lower().strip())
+
+
+def _cnki_url(cnki_config: Dict, key: str, default_path: str) -> str:
+    configured = cnki_config.get(key)
+    if configured:
+        return configured
+    base_url = cnki_config.get("kns_base_url") or DEFAULT_KNS_BASE_URL
+    return urljoin(base_url.rstrip("/") + "/", default_path.lstrip("/"))
+
+
+def _absolute_cnki_url(cnki_config: Dict, href: str) -> str:
+    href = href or ""
+    if href.startswith(("http://", "https://")):
+        return href
+    base_url = cnki_config.get("detail_base_url") or cnki_config.get("kns_base_url") or DEFAULT_KNS_BASE_URL
+    return urljoin(base_url.rstrip("/") + "/", href.lstrip("/"))
 
 
 def _fetch_cnki_with_browser(fetcher, queries: List[str], cnki_config: Dict) -> Optional[List[Dict]]:
@@ -78,7 +107,8 @@ async () => {{
 }}
 """
         logger.info(f"CNKI browser search: {query}")
-        data = fetcher._evaluate_in_chrome("https://kns.cnki.net/kns8s/search", script, "CNKI", cnki_config)
+        search_page_url = _cnki_url(cnki_config, "search_page_url", "/kns8s/search")
+        data = evaluate_in_chrome(search_page_url, script, "CNKI", fetcher.config, cnki_config)
         if data is None:
             return None
         if data.get("error") == "captcha":
@@ -99,7 +129,7 @@ async () => {{
                 "authors": item.get("authors", ""),
                 "abstract": "",
                 "published": item.get("date") or "unknown",
-                "paper_url": item.get("href", ""),
+                "paper_url": _absolute_cnki_url(cnki_config, item.get("href", "")),
                 "arxiv_id": "",
                 "arxiv_url": "",
                 "pdf_url": "",
@@ -119,6 +149,8 @@ async () => {{
                 "impact_factor": fetcher.get_impact_factor({"conference": venue}),
                 "source": "cnki",
             }
+            if cnki_config.get("enrich_details", True):
+                paper = enrich_cnki_paper(fetcher, paper, cnki_config)
             all_papers.append(fetcher._finalize_paper(paper))
         time.sleep(2)
 
@@ -134,7 +166,7 @@ def fetch_cnki_papers(fetcher) -> List[Dict]:
     queries = fetcher._flatten_queries(cnki_config.get("queries", []))
     max_per_query = cnki_config.get("max_results_per_query", 20)
 
-    browser_papers = fetcher._fetch_cnki_with_browser(queries, cnki_config)
+    browser_papers = _fetch_cnki_with_browser(fetcher, queries, cnki_config)
     if browser_papers is not None:
         logger.info(f"CNKI browser backend returned {len(browser_papers)} papers")
         return browser_papers
@@ -152,7 +184,7 @@ def fetch_cnki_papers(fetcher) -> List[Dict]:
 
     # 先访问主页获取 cookies
     try:
-        session.get("https://kns.cnki.net/", timeout=15)
+        session.get(_cnki_url(cnki_config, "home_url", "/"), timeout=15)
         time.sleep(1)
     except Exception as e:
         logger.warning(f"CNKI 主页访问失败: {e}")
@@ -161,7 +193,7 @@ def fetch_cnki_papers(fetcher) -> List[Dict]:
         logger.info(f"CNKI 搜索: {query}")
         try:
             # 第一步：发起搜索请求，获取搜索结果页
-            search_url = "https://kns.cnki.net/kns8s/defaultresult/index"
+            search_url = _cnki_url(cnki_config, "default_result_url", "/kns8s/defaultresult/index")
             params = {
                 "classid": "WD0",
                 "korder": "SU",
@@ -175,7 +207,7 @@ def fetch_cnki_papers(fetcher) -> List[Dict]:
 
             # 第二步：POST 请求获取结果数据（CNKI 的 AJAX 加载方式）
             time.sleep(1)
-            grid_url = "https://kns.cnki.net/kns8s/brief/grid"
+            grid_url = _cnki_url(cnki_config, "grid_url", "/kns8s/brief/grid")
             form_data = {
                 "action": "",
                 "NaviCode": "*",
@@ -229,7 +261,7 @@ def fetch_cnki_papers(fetcher) -> List[Dict]:
 
                     # 链接
                     href = title_elem.get("href", "")
-                    paper_url = href if href.startswith("http") else f"https://kns.cnki.net{href}"
+                    paper_url = _absolute_cnki_url(cnki_config, href)
 
                     # 作者
                     author_elem = item.select_one("td.author") or item.select_one("td.author a")
@@ -279,6 +311,8 @@ def fetch_cnki_papers(fetcher) -> List[Dict]:
                         "source": "cnki",
                     }
 
+                    if cnki_config.get("enrich_details", True):
+                        paper = enrich_cnki_paper(fetcher, paper, cnki_config, session=session)
                     paper = fetcher._finalize_paper(paper)
                     all_papers.append(paper)
 

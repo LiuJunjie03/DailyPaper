@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('JavaScript loaded');
+    const DEBUG = false;
+    const debugLog = (...args) => {
+if (DEBUG) console.log(...args);
+    };
 
     // 获取DOM元素
     const monthBtns = document.querySelectorAll('.month-btn');
@@ -16,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultsCount = document.getElementById('resultsCount');
     const papersContainer = document.getElementById('papers-container');
 
-    console.log('DOM elements:', {
+    debugLog('DOM elements:', {
 monthBtns: monthBtns.length,
 statusBtns: statusBtns.length,
 pdfBtns: pdfBtns.length,
@@ -36,7 +39,6 @@ papersContainer: !!papersContainer
     let currentStatus = 'all';
     let currentPdf = 'all';
     let currentCategory = 'all';
-    let currentCategoryParent = '';
     let currentSort = 'date-desc';
     let searchTerm = '';
     let filteredPapers = [];
@@ -47,6 +49,7 @@ papersContainer: !!papersContainer
     let observer = null;
     let monthsCache = {};  // 缓存已加载的月份数据
     let selectedPaperIds = new Set();
+    let searchTimer = null;
 
     // 配置里的分类列表（从Python传入）
     
@@ -144,18 +147,39 @@ try {
 }
     }
 
-    function escapeBibTeX(value) {
-const backslash = String.fromCharCode(92);
-const text = String(value ?? '').trim();
-let escaped = '';
-for (const char of text) {
-    escaped += ['{', '}', backslash].includes(char) ? backslash + char : char;
-}
-return escaped.split(/\s+/).join(' ');
+    function dataURL(path) {
+const version = window.DATA_VERSION || 'dev';
+const separator = path.includes('?') ? '&' : '?';
+return `${path}${separator}v=${encodeURIComponent(version)}`;
     }
 
     function isPreprint(paper) {
 return paper.is_preprint === true || paper.publication_type === 'preprint' || (!paper.venue && !paper.conference);
+    }
+
+    function formatDate(dateStr) {
+	if (!dateStr) return '未知';
+	if (/^\d{4}$/.test(dateStr)) return dateStr + '年';
+	if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+	    const [y, m, d] = dateStr.split('-');
+	    return y + '年' + parseInt(m) + '月' + parseInt(d) + '日';
+	}
+	return dateStr;
+    }
+
+    function parseDate(dateStr) {
+	if (!isCompleteDate(dateStr)) return new Date(0);
+	return new Date(dateStr + 'T00:00:00Z');
+    }
+
+    function isCompleteDate(dateStr) {
+	return /^\d{4}-\d{2}-\d{2}$/.test(String(dateStr || ''));
+    }
+
+    function sortTimestamp(paper) {
+	const parsed = parseDate(paper.published);
+	const value = parsed.getTime();
+	return Number.isNaN(value) ? 0 : value;
     }
 
     function hasPDF(paper) {
@@ -165,7 +189,11 @@ return Boolean(paper.pdf_url || paper.preprint_pdf_url || paper.arxiv_id);
     function sourceLabel(source, paper = {}) {
 if (source === 'semantic_scholar') return 'Semantic Scholar';
 if (source === 'arxiv') return 'arXiv';
-if (paper.semantic_scholar_id || paper.doi || String(paper.paper_url || '').includes('semanticscholar.org')) return 'Semantic Scholar';
+if (source === 'google_scholar') {
+    return String(paper.paper_url || '').includes('nature.com') ? 'Nature' : 'Google Scholar';
+}
+if (String(paper.paper_url || '').includes('nature.com')) return 'Nature';
+if (paper.semantic_scholar_id || String(paper.paper_url || '').includes('semanticscholar.org')) return 'Semantic Scholar';
 if (paper.arxiv_id || String(paper.arxiv_url || paper.paper_url || '').includes('arxiv.org')) return 'arXiv';
 return source ? String(source) : 'Literature';
     }
@@ -177,12 +205,69 @@ if (type === 'conference') return 'Conference';
 return 'Published';
     }
 
+    function sourceScore(paper) {
+const source = paper.source || '';
+if (source === 'semantic_scholar') return 10;
+if (source === 'arxiv') return 8;
+if (source === 'google_scholar' && paper.abstract_status === 'enriched') return 7;
+if (source === 'google_scholar') return 4;
+return 5;
+    }
+
+    function daysSincePublished(paper) {
+if (!isCompleteDate(paper.published)) return 365;
+const date = parseDate(paper.published);
+if (Number.isNaN(date.getTime())) return 365;
+return Math.max(0, Math.floor((Date.now() - date.getTime()) / 86400000));
+    }
+
+    function tagScore(paper) {
+const tags = paper.tags || [];
+let score = 0;
+if (tags.includes('流体力学 / 智能CFD')) score += 8;
+if (tags.includes('机器学习')) score += 3;
+if (tags.some(tag => tag.includes('流动控制与强化学习'))) score += 3;
+return score;
+    }
+
+    function recommendationDetails(paper) {
+const citation = Number(paper.citation_count || 0);
+const citationScore = citation > 0 ? Math.min(14, Math.log10(citation + 1) * 6) : 0;
+const recencyScore = Math.max(0, 12 - Math.min(daysSincePublished(paper), 180) / 15);
+const publishedScore = isPreprint(paper) ? 2 : 8;
+const pdfScore = hasPDF(paper) ? 6 : 0;
+const abstractScore = paper.abstract && paper.abstract_status !== 'unreliable_google_scholar_snippet' ? 5 : 0;
+const keywordScore = Array.isArray(paper.keywords) && paper.keywords.length > 0 ? 3 : 0;
+const score = sourceScore(paper) + citationScore + recencyScore + publishedScore + pdfScore + abstractScore + keywordScore + tagScore(paper);
+const reasons = [];
+if (!isPreprint(paper)) reasons.push('已发表');
+if (hasPDF(paper)) reasons.push('有PDF');
+if (paper.abstract && paper.abstract_status !== 'unreliable_google_scholar_snippet') reasons.push('摘要可靠');
+if ((paper.tags || []).includes('流体力学 / 智能CFD')) reasons.push('智能CFD');
+if (citation > 0) reasons.push(`引用${citation}`);
+if (citation === 0 && !paper.impact_factor) reasons.push('数据不足按日期补偿');
+return { score, reasons };
+    }
+
+    function recommendationScore(paper) {
+return recommendationDetails(paper).score;
+    }
+
+    function tagClass(tag) {
+if (tag.includes('智能CFD')) return 'tag-smart';
+if (tag.includes('机器学习')) return 'tag-ml';
+if (tag.includes('湍流')) return 'tag-turbulence';
+if (tag.includes('多相流')) return 'tag-multiphase';
+if (tag.includes('流动控制')) return 'tag-control';
+return 'tag-fluid';
+    }
+
     // 加载月份索引
     async function loadMonthsIndex() {
 try {
-    const response = await fetch('data/index.json');
+    const response = await fetch(dataURL('data/index.json'));
     const monthsIndex = await response.json();
-    console.log('Months index loaded:', monthsIndex);
+    debugLog('Months index loaded:', monthsIndex);
 
     // 默认加载：如果 URL 指定了月份则加载对应月份，否则加载全部
     if (monthsIndex.length > 0) {
@@ -234,19 +319,19 @@ try {
 if (month === 'all') {
     // 加载所有月份
     try {
-        const response = await fetch('data/index.json');
+        const response = await fetch(dataURL('data/index.json'));
         const monthsIndex = await response.json();
 
         // 加载所有月份数据
         allPapersData = [];
         for (const monthInfo of monthsIndex) {
             if (!monthsCache[monthInfo.month]) {
-                const monthResponse = await fetch(`data/${monthInfo.month}.json`);
+                const monthResponse = await fetch(dataURL(`data/${monthInfo.month}.json`));
                 monthsCache[monthInfo.month] = await monthResponse.json();
             }
             allPapersData.push(...monthsCache[monthInfo.month]);
         }
-        console.log(`Loaded all months, total ${allPapersData.length} papers`);
+        debugLog(`Loaded all months, total ${allPapersData.length} papers`);
     } catch (e) {
         console.error('Failed to load all months data:', e);
     }
@@ -254,16 +339,16 @@ if (month === 'all') {
     // 加载单个月份
     if (!monthsCache[month]) {
         try {
-            const response = await fetch(`data/${month}.json`);
+            const response = await fetch(dataURL(`data/${month}.json`));
             monthsCache[month] = await response.json();
-            console.log(`Loaded month ${month}, ${monthsCache[month].length} papers`);
+            debugLog(`Loaded month ${month}, ${monthsCache[month].length} papers`);
         } catch (e) {
             console.error(`Failed to load month ${month}:`, e);
             return;
         }
     }
     allPapersData = monthsCache[month];
-    console.log(`Using cached data for ${month}, ${allPapersData.length} papers`);
+    debugLog(`Using cached data for ${month}, ${allPapersData.length} papers`);
 }
 
 // 数据加载完成后，触发筛选
@@ -276,9 +361,14 @@ const paperId = String(paper.id || '');
 const escapedId = escapeAttribute(paperId);
 const title = escapeHTML(paper.title);
 const authors = escapeHTML(paper.authors);
-const abstract = escapeHTML(paper.abstract);
+const hasReliableAbstract = Boolean(String(paper.abstract || '').trim())
+    && paper.abstract_status !== 'unreliable_google_scholar_snippet';
+const abstract = hasReliableAbstract
+    ? escapeHTML(paper.abstract)
+    : '暂无可靠摘要。Google Scholar 仅提供搜索片段，已隐藏原始片段以避免误读。';
+const abstractSummary = hasReliableAbstract ? '查看摘要' : '摘要待补全';
 const published = escapeHTML(paper.published);
-const tags = paper.tags ? paper.tags.map(tag => `<span class="tag">${escapeHTML(categoryLabel(tag))}</span>`).join('') : '';
+const tags = paper.tags ? paper.tags.map(tag => `<span class="tag ${tagClass(tag)}">${escapeHTML(categoryLabel(tag))}</span>`).join('') : '';
 const keywords = paper.keywords ? paper.keywords.map(kw => `<span class="tag keyword">${escapeHTML(kw)}</span>`).join('') : '';
 const checked = selectedPaperIds.has(paperId) ? 'checked' : '';
 const paperURL = safeURL(paper.paper_url || paper.arxiv_url, paperId ? `https://arxiv.org/abs/${encodeURIComponent(paperId)}` : '#');
@@ -314,13 +404,10 @@ if (venue) {
     }
 }
 
-// 新增：渲染引用数和影响因子
-const citationText = paper.citation_count ? `📊 引用数: ${paper.citation_count}` : "📊 引用数: 暂无";
-const impactText = paper.impact_factor ? `🌟 影响因子: ${paper.impact_factor}` : "🌟 影响因子: 暂无";
-
-const safeCitationText = paper.citation_count ? `引用数: ${escapeHTML(paper.citation_count)}` : "引用数: 暂无";
-const safeImpactText = paper.impact_factor ? `推荐分: ${escapeHTML(paper.impact_factor)}` : "推荐分: 暂无";
-const firstCategory = paper.categories && paper.categories.length > 0 ? paper.categories[0] : '';
+const safeCitationText = paper.citation_count ? `引用数: ${escapeHTML(paper.citation_count)}` : '';
+const recommendation = recommendationDetails(paper);
+const safeScoreText = recommendation.score.toFixed(1);
+const scoreReasons = recommendation.reasons.length ? recommendation.reasons.join(' · ') : '数据不足时按日期补偿';
 
 return `
     <article class="paper-card" data-date="${published}" data-status="${status}" data-tags="${paper.tags ? escapeAttribute(paper.tags.join(',')) : ''}" data-paper-id="${escapedId}">
@@ -337,8 +424,8 @@ return `
                 ${sourceBadge}
                 ${typeBadge}
                 ${venueBadge}
-                <span class="meta-item">${safeCitationText}</span>
-                <span class="meta-item">${safeImpactText}</span>
+                ${safeCitationText ? `<span class="meta-item">${safeCitationText}</span>` : ''}
+                <span class="score-pill" title="${escapeAttribute(scoreReasons)}">推荐分 ${safeScoreText}</span>
                 ${sourcePageLink}
                 ${doiLink}
                 ${arxivLink}
@@ -355,7 +442,7 @@ return `
             ${keywordsSection}
             <div class="paper-abstract">
                 <details>
-                    <summary>查看摘要</summary>
+                    <summary>${abstractSummary}</summary>
                     <p>${abstract}</p>
                 </details>
             </div>
@@ -493,7 +580,7 @@ renderCategoryNav();
 
     // 筛选和排序论文（包含重要程度排序）
     function filterAndSortPapers() {
-console.log('Filtering papers:', { currentStatus, currentPdf, currentCategory, searchTerm, currentSort });
+debugLog('Filtering papers:', { currentStatus, currentPdf, currentCategory, searchTerm, currentSort });
 
 // 筛选
 filteredPapers = allPapersData.filter(paper => {
@@ -509,27 +596,21 @@ filteredPapers = allPapersData.filter(paper => {
     return matchStatus && matchPdf && matchCategory && matchSearch;
 });
 
-console.log(`Filtered to ${filteredPapers.length} papers`);
+debugLog(`Filtered to ${filteredPapers.length} papers`);
 
 // 排序（新增重要程度排序）
 filteredPapers.sort((a, b) => {
-    const dateA = new Date(a.published);
-    const dateB = new Date(b.published);
+    const dateA = sortTimestamp(a);
+    const dateB = sortTimestamp(b);
 
     if (currentSort === 'date-desc') {
         return dateB - dateA;
     } else if (currentSort === 'date-asc') {
         return dateA - dateB;
     } else if (currentSort === 'importance-desc') {
-        // 重要程度：先按影响因子降序，再按引用数降序
-        const impactA = a.impact_factor || 0;
-        const impactB = b.impact_factor || 0;
-        if (impactA !== impactB) {
-            return impactB - impactA;
-        }
-        const citeA = a.citation_count || 0;
-        const citeB = b.citation_count || 0;
-        return citeB - citeA;
+        const scoreDiff = recommendationScore(b) - recommendationScore(a);
+        if (scoreDiff !== 0) return scoreDiff;
+        return dateB - dateA;
     }
     return 0;
 });
@@ -561,7 +642,7 @@ saveStateToURL();
     // 加载更多论文
     function loadMorePapers() {
 if (isLoading || loadedCount >= filteredPapers.length) {
-    console.log('Skip loading:', { isLoading, loadedCount, total: filteredPapers.length });
+    debugLog('Skip loading:', { isLoading, loadedCount, total: filteredPapers.length });
     return;
 }
 
@@ -719,7 +800,8 @@ btn.addEventListener('click', function(e) {
     if (searchInput) {
 searchInput.addEventListener('input', function() {
     searchTerm = this.value.toLowerCase();
-    filterAndSortPapers();
+    window.clearTimeout(searchTimer);
+    searchTimer = window.setTimeout(filterAndSortPapers, 180);
 });
     }
 
@@ -745,7 +827,7 @@ papersContainer.addEventListener('change', function(e) {
 
     if (selectAllBtn) {
 selectAllBtn.addEventListener('click', function() {
-    filteredPapers.forEach(paper => selectedPaperIds.add(String(paper.id || '')));
+    filteredPapers.slice(0, loadedCount).forEach(paper => selectedPaperIds.add(String(paper.id || '')));
     document.querySelectorAll('.paper-checkbox').forEach(cb => cb.checked = true);
     updateSelectedCount();
 });
@@ -860,8 +942,6 @@ const arxivUrls = selectedPapers
 // 去重
 const uniqueDois = [...new Set(dois)];
 const uniqueArxiv = [...new Set(arxivUrls)];
-// 去掉已有 DOI 的论文对应的 arXiv 链接（避免重复）
-const doiSet = new Set(uniqueDois);
 const finalArxiv = uniqueArxiv;
 
 if (uniqueDois.length === 0 && finalArxiv.length === 0) {
@@ -871,18 +951,18 @@ if (uniqueDois.length === 0 && finalArxiv.length === 0) {
 
 let text = '';
 if (uniqueDois.length > 0) {
-    text += '=== DOI (Zotero 点击魔法棒图标，逐个粘贴) ===\\n';
+    text += '=== DOI ===\\n';
     text += uniqueDois.join('\\n');
 }
 if (finalArxiv.length > 0) {
     if (text) text += '\\n\\n';
-    text += '=== arXiv URL (Zotero 点击魔法棒图标，逐个粘贴) ===\\n';
+    text += '=== arXiv URL ===\\n';
     text += finalArxiv.join('\\n');
 }
 
 navigator.clipboard.writeText(text).then(() => {
     const total = uniqueDois.length + finalArxiv.length;
-    const msg = `已复制 ${total} 个标识符（${uniqueDois.length} DOI + ${finalArxiv.length} arXiv）\\n\\n导入 Zotero 方法：\\n1. 点击 Zotero 工具栏的"通过标识符添加"按钮（魔法棒 🪄 图标）\\n2. 粘贴一个 DOI 或 arXiv 链接，回车\\n3. Zotero 自动获取元数据 + 开放获取 PDF\\n4. 重复粘贴下一个`;
+    const msg = `已复制 ${total} 个标识符（${uniqueDois.length} DOI + ${finalArxiv.length} arXiv）。`;
     alert(msg);
 }).catch(() => {
     // Fallback: 用 textarea 复制
@@ -906,6 +986,6 @@ copyDoiBtn.addEventListener('click', function(e) {
     }
 
     // 初始化
-    console.log('Initializing...');
+    debugLog('Initializing...');
     loadMonthsIndex();
 });

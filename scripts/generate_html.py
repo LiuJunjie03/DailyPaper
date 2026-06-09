@@ -7,6 +7,7 @@
 import json
 from pathlib import Path
 from datetime import datetime
+import re
 from typing import List, Dict
 import logging
 import yaml
@@ -32,6 +33,17 @@ except ImportError:
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+def is_complete_publication_date(value: str) -> bool:
+    """Return True only for real day-level publication dates."""
+    return bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(value or "")))
+
+
+def publication_date_key(paper: Dict) -> str:
+    """Sortable date key; incomplete year/month placeholders sort last."""
+    published = str(paper.get("published", ""))
+    return published if is_complete_publication_date(published) else "0000-00-00"
 
 # 加载config.yaml的函数
 def load_config():
@@ -164,14 +176,29 @@ class HTMLGenerator:
         return '\n                    '.join(buttons)
     
     def generate_index_html(self):
-        """生成主页 HTML（新增重要程度排序按钮）"""
+        """生成主页 HTML"""
         published_count = sum(1 for p in self.papers if p.get('conference'))
         preprint_count = sum(1 for p in self.papers if not p.get('conference'))
+        pdf_count = sum(1 for p in self.papers if p.get('pdf_url') or p.get('preprint_pdf_url') or p.get('arxiv_id'))
+        today = datetime.now().strftime("%Y-%m-%d")
+        current_month = datetime.now().strftime("%Y-%m")
+        today_count = sum(1 for p in self.papers if str(p.get('published', '')) == today)
+        current_month_count = sum(
+            1 for p in self.papers
+            if is_complete_publication_date(p.get('published', ''))
+            and str(p.get('published', '')).startswith(current_month)
+        )
+        smart_cfd_count = sum(1 for p in self.papers if "流体力学 / 智能CFD" in p.get('tags', []))
         
         # 动态计算每个分类的论文数
         category_counts = {'all': len(self.papers)}
         for category in CATEGORIES:
             category_counts[category] = sum(1 for p in self.papers if category in p.get('tags', []))
+
+        template_dir = Path(__file__).parent / "templates"
+        css_hash = self._content_hash((template_dir / "style.css").read_text(encoding="utf-8"))
+        js_hash = self._content_hash((template_dir / "main.js").read_text(encoding="utf-8"))
+        data_hash = self._content_hash(json.dumps(self.papers, ensure_ascii=False, sort_keys=True))
         
         html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -179,8 +206,9 @@ class HTMLGenerator:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DailyPaper - CFD+ML 最新论文</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v={css_hash}">
     <script>window.CATEGORIES = {json.dumps(CATEGORIES)};</script>
+    <script>window.DATA_VERSION = "{data_hash}";</script>
 </head>
 <body>
     <header>
@@ -191,31 +219,69 @@ class HTMLGenerator:
             Re = ρvL/μ
         </div>
         <div class="container">
-            <h1>📚 DailyPaper</h1>
-            <p class="subtitle">每日自动更新 计算流体力学+机器学习 领域最新论文</p>
+            <h1>DailyPaper</h1>
+            <p class="subtitle">计算流体力学 + 机器学习论文雷达</p>
             <p class="update-time">最后更新: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} UTC</p>
         </div>
     </header>
     
     <nav class="container">
-        <div class="filter-section">
+        <div class="dashboard-summary" aria-label="数据概览">
+            <div class="summary-item">
+                <span class="summary-value">{today_count}</span>
+                <span class="summary-label">今日新增</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value">{current_month_count}</span>
+                <span class="summary-label">本月新增</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value">{pdf_count}</span>
+                <span class="summary-label">有 PDF</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value">{published_count}</span>
+                <span class="summary-label">已发表</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value">{smart_cfd_count}</span>
+                <span class="summary-label">智能 CFD</span>
+            </div>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 搜索标题、作者、摘要..." aria-label="搜索论文">
+        </div>
+        <div class="quick-filter-row">
             <div class="filter-group">
-                <label class="filter-label">📅 月份：</label>
-                <div class="filters month-filters">
-                    <button class="filter-btn month-btn active" data-month="all">全部 ({len(self.papers)})</button>
-                    {self.generate_month_buttons()}
+                <label class="filter-label">排序方式</label>
+                <div class="filters sort-filters">
+                    <button class="filter-btn sort-btn active" data-sort="date-desc">最新优先</button>
+                    <button class="filter-btn sort-btn" data-sort="date-asc">最早优先</button>
+                    <button class="filter-btn sort-btn" data-sort="importance-desc">推荐优先</button>
                 </div>
             </div>
             <div class="filter-group">
-                <label class="filter-label">📌 发表状态：</label>
+                <label class="filter-label">发表状态</label>
                 <div class="filters status-filters">
                     <button class="filter-btn status-btn active" data-status="all">全部 ({len(self.papers)})</button>
                     <button class="filter-btn status-btn" data-status="published">已发表 ({published_count})</button>
                     <button class="filter-btn status-btn" data-status="preprint">预印本 ({preprint_count})</button>
                 </div>
             </div>
+            <p class="sort-note">推荐分综合发表状态、来源、PDF、摘要、关键词、引用和日期；数据不足时按日期补偿。</p>
+        </div>
+        <details class="filter-panel">
+            <summary>筛选条件</summary>
+            <div class="filter-section">
             <div class="filter-group">
-                <label class="filter-label">📄 全文状态：</label>
+                <label class="filter-label">月份</label>
+                <div class="filters month-filters">
+                    <button class="filter-btn month-btn active" data-month="all">全部 ({len(self.papers)})</button>
+                    {self.generate_month_buttons()}
+                </div>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">全文状态</label>
                 <div class="filters pdf-filters">
                     <button class="filter-btn pdf-btn active" data-pdf="all">全部</button>
                     <button class="filter-btn pdf-btn" data-pdf="available">有PDF</button>
@@ -223,31 +289,20 @@ class HTMLGenerator:
                 </div>
             </div>
             <div class="filter-group">
-                <label class="filter-label">🏷️ 研究领域：</label>
+                <label class="filter-label">研究领域</label>
                 <div class="filters category-filters">
                     {self.generate_category_buttons(category_counts)}
                 </div>
             </div>
-            <div class="filter-group">
-                <label class="filter-label">🔄 排序方式：</label>
-                <div class="filters sort-filters">
-                    <button class="filter-btn sort-btn active" data-sort="date-desc">最新优先</button>
-                    <button class="filter-btn sort-btn" data-sort="date-asc">最早优先</button>
-                    <!-- 关键修改2：添加重要程度排序按钮 -->
-                    <button class="filter-btn sort-btn" data-sort="importance-desc">重要程度优先</button>
-                </div>
             </div>
-        </div>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="🔍 搜索论文标题、作者、摘要..." aria-label="搜索论文">
-        </div>
+        </details>
         <div class="results-info">
             <span id="resultsCount">加载中...</span>
             <div class="export-controls">
-                <button class="select-btn" id="selectAllBtn">✓ 全选</button>
+                <button class="select-btn" id="selectAllBtn">✓ 选中当前页</button>
                 <button class="select-btn" id="clearAllBtn">✗ 清空</button>
                 <button class="export-btn" id="exportBtn">🔗 打开PDF (<span id="selectedCount">0</span>)</button>
-                <button class="export-btn export-btn-secondary" id="copyDoiBtn">📋 复制DOI导入Zotero</button>
+                <button class="export-btn export-btn-secondary" id="copyDoiBtn">📋 复制标识符</button>
             </div>
         </div>
     </nav>
@@ -264,7 +319,7 @@ class HTMLGenerator:
         </div>
     </footer>
     
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v={js_hash}"></script>
 </body>
 </html>
 """

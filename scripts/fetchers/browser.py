@@ -20,6 +20,9 @@ def cdp_base_url(config: dict, source_config: dict) -> str:
 
 def evaluate_in_chrome(url: str, script: str, source_name: str, config: dict, source_config: dict) -> Optional[dict]:
     """通过 Chrome DevTools Protocol 执行 DOM 提取脚本"""
+    timeout = int(source_config.get("browser_timeout", config.get("browser", {}).get("timeout", 30)))
+    ws = None
+    tab_id = None
     try:
         import websocket
     except ImportError:

@@ -157,6 +157,31 @@ return `${path}${separator}v=${encodeURIComponent(version)}`;
 return paper.is_preprint === true || paper.publication_type === 'preprint' || (!paper.venue && !paper.conference);
     }
 
+    function formatDate(dateStr) {
+	if (!dateStr) return '未知';
+	if (/^\d{4}$/.test(dateStr)) return dateStr + '年';
+	if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+	    const [y, m, d] = dateStr.split('-');
+	    return y + '年' + parseInt(m) + '月' + parseInt(d) + '日';
+	}
+	return dateStr;
+    }
+
+    function parseDate(dateStr) {
+	if (!isCompleteDate(dateStr)) return new Date(0);
+	return new Date(dateStr + 'T00:00:00Z');
+    }
+
+    function isCompleteDate(dateStr) {
+	return /^\d{4}-\d{2}-\d{2}$/.test(String(dateStr || ''));
+    }
+
+    function sortTimestamp(paper) {
+	const parsed = parseDate(paper.published);
+	const value = parsed.getTime();
+	return Number.isNaN(value) ? 0 : value;
+    }
+
     function hasPDF(paper) {
 return Boolean(paper.pdf_url || paper.preprint_pdf_url || paper.arxiv_id);
     }
@@ -180,13 +205,61 @@ if (type === 'conference') return 'Conference';
 return 'Published';
     }
 
-    function recommendationScore(paper) {
+    function sourceScore(paper) {
+const source = paper.source || '';
+if (source === 'semantic_scholar') return 10;
+if (source === 'arxiv') return 8;
+if (source === 'google_scholar' && paper.abstract_status === 'enriched') return 7;
+if (source === 'google_scholar') return 4;
+return 5;
+    }
+
+    function daysSincePublished(paper) {
+if (!isCompleteDate(paper.published)) return 365;
+const date = parseDate(paper.published);
+if (Number.isNaN(date.getTime())) return 365;
+return Math.max(0, Math.floor((Date.now() - date.getTime()) / 86400000));
+    }
+
+    function tagScore(paper) {
+const tags = paper.tags || [];
+let score = 0;
+if (tags.includes('流体力学 / 智能CFD')) score += 8;
+if (tags.includes('机器学习')) score += 3;
+if (tags.some(tag => tag.includes('流动控制与强化学习'))) score += 3;
+return score;
+    }
+
+    function recommendationDetails(paper) {
 const citation = Number(paper.citation_count || 0);
-const impact = Number(paper.impact_factor || 0);
-const hasVenue = isPreprint(paper) ? 0 : 1;
-const pdfBonus = hasPDF(paper) ? 0.5 : 0;
-const keywordBonus = Array.isArray(paper.keywords) && paper.keywords.length > 0 ? 0.35 : 0;
-return impact * 3 + Math.log10(citation + 1) * 2 + hasVenue + pdfBonus + keywordBonus;
+const citationScore = citation > 0 ? Math.min(14, Math.log10(citation + 1) * 6) : 0;
+const recencyScore = Math.max(0, 12 - Math.min(daysSincePublished(paper), 180) / 15);
+const publishedScore = isPreprint(paper) ? 2 : 8;
+const pdfScore = hasPDF(paper) ? 6 : 0;
+const abstractScore = paper.abstract && paper.abstract_status !== 'unreliable_google_scholar_snippet' ? 5 : 0;
+const keywordScore = Array.isArray(paper.keywords) && paper.keywords.length > 0 ? 3 : 0;
+const score = sourceScore(paper) + citationScore + recencyScore + publishedScore + pdfScore + abstractScore + keywordScore + tagScore(paper);
+const reasons = [];
+if (!isPreprint(paper)) reasons.push('已发表');
+if (hasPDF(paper)) reasons.push('有PDF');
+if (paper.abstract && paper.abstract_status !== 'unreliable_google_scholar_snippet') reasons.push('摘要可靠');
+if ((paper.tags || []).includes('流体力学 / 智能CFD')) reasons.push('智能CFD');
+if (citation > 0) reasons.push(`引用${citation}`);
+if (citation === 0 && !paper.impact_factor) reasons.push('数据不足按日期补偿');
+return { score, reasons };
+    }
+
+    function recommendationScore(paper) {
+return recommendationDetails(paper).score;
+    }
+
+    function tagClass(tag) {
+if (tag.includes('智能CFD')) return 'tag-smart';
+if (tag.includes('机器学习')) return 'tag-ml';
+if (tag.includes('湍流')) return 'tag-turbulence';
+if (tag.includes('多相流')) return 'tag-multiphase';
+if (tag.includes('流动控制')) return 'tag-control';
+return 'tag-fluid';
     }
 
     // 加载月份索引
@@ -288,9 +361,14 @@ const paperId = String(paper.id || '');
 const escapedId = escapeAttribute(paperId);
 const title = escapeHTML(paper.title);
 const authors = escapeHTML(paper.authors);
-const abstract = escapeHTML(paper.abstract);
+const hasReliableAbstract = Boolean(String(paper.abstract || '').trim())
+    && paper.abstract_status !== 'unreliable_google_scholar_snippet';
+const abstract = hasReliableAbstract
+    ? escapeHTML(paper.abstract)
+    : '暂无可靠摘要。Google Scholar 仅提供搜索片段，已隐藏原始片段以避免误读。';
+const abstractSummary = hasReliableAbstract ? '查看摘要' : '摘要待补全';
 const published = escapeHTML(paper.published);
-const tags = paper.tags ? paper.tags.map(tag => `<span class="tag">${escapeHTML(categoryLabel(tag))}</span>`).join('') : '';
+const tags = paper.tags ? paper.tags.map(tag => `<span class="tag ${tagClass(tag)}">${escapeHTML(categoryLabel(tag))}</span>`).join('') : '';
 const keywords = paper.keywords ? paper.keywords.map(kw => `<span class="tag keyword">${escapeHTML(kw)}</span>`).join('') : '';
 const checked = selectedPaperIds.has(paperId) ? 'checked' : '';
 const paperURL = safeURL(paper.paper_url || paper.arxiv_url, paperId ? `https://arxiv.org/abs/${encodeURIComponent(paperId)}` : '#');
@@ -327,7 +405,9 @@ if (venue) {
 }
 
 const safeCitationText = paper.citation_count ? `引用数: ${escapeHTML(paper.citation_count)}` : '';
-const safeScoreText = `推荐分: ${recommendationScore(paper).toFixed(1)}`;
+const recommendation = recommendationDetails(paper);
+const safeScoreText = recommendation.score.toFixed(1);
+const scoreReasons = recommendation.reasons.length ? recommendation.reasons.join(' · ') : '数据不足时按日期补偿';
 
 return `
     <article class="paper-card" data-date="${published}" data-status="${status}" data-tags="${paper.tags ? escapeAttribute(paper.tags.join(',')) : ''}" data-paper-id="${escapedId}">
@@ -345,7 +425,7 @@ return `
                 ${typeBadge}
                 ${venueBadge}
                 ${safeCitationText ? `<span class="meta-item">${safeCitationText}</span>` : ''}
-                <span class="meta-item">${safeScoreText}</span>
+                <span class="score-pill" title="${escapeAttribute(scoreReasons)}">推荐分 ${safeScoreText}</span>
                 ${sourcePageLink}
                 ${doiLink}
                 ${arxivLink}
@@ -362,7 +442,7 @@ return `
             ${keywordsSection}
             <div class="paper-abstract">
                 <details>
-                    <summary>查看摘要</summary>
+                    <summary>${abstractSummary}</summary>
                     <p>${abstract}</p>
                 </details>
             </div>
@@ -520,8 +600,8 @@ debugLog(`Filtered to ${filteredPapers.length} papers`);
 
 // 排序（新增重要程度排序）
 filteredPapers.sort((a, b) => {
-    const dateA = new Date(a.published);
-    const dateB = new Date(b.published);
+    const dateA = sortTimestamp(a);
+    const dateB = sortTimestamp(b);
 
     if (currentSort === 'date-desc') {
         return dateB - dateA;

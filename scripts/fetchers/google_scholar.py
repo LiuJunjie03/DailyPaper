@@ -8,7 +8,27 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from urllib.parse import quote_plus
 
+from fetchers.browser import evaluate_in_chrome
+
 logger = logging.getLogger(__name__)
+
+
+def normalize_title(title: str) -> str:
+    return re.sub(r"\s+", " ", (title or "").lower().strip())
+
+
+def _looks_like_scholar_snippet(text: str) -> bool:
+    """Google Scholar search snippets are fragments, not reliable abstracts."""
+    text = (text or "").strip()
+    if not text:
+        return False
+    return (
+        len(text) < 220
+        or text[:1].islower()
+        or "..." in text
+        or re.search(r"\s{2,}", text) is not None
+        or not text.endswith((".", "!", "?"))
+    )
 
 
 def _fetch_google_scholar_with_browser(fetcher, queries: List[str], gs_config: Dict) -> Optional[List[Dict]]:
@@ -56,7 +76,7 @@ async () => {
             f"?q={quote_plus(query)}&hl=en&num={max_per_query}&as_ylo={year_from}"
         )
         logger.info(f"Google Scholar browser search: {query}")
-        data = fetcher._evaluate_in_chrome(url, script, "Google Scholar", gs_config)
+        data = evaluate_in_chrome(url, script, "Google Scholar", fetcher.config, gs_config)
         if data is None:
             return None
         if data.get("error") == "captcha":
@@ -72,11 +92,14 @@ async () => {
             journal_year = item.get("journalYear", "")
             year_match = re.search(r"(19|20)\d{2}", journal_year)
             venue = re.sub(r"\b(19|20)\d{2}\b", "", journal_year).strip(" ,;-")
+            snippet = item.get("snippet", "")
             paper = {
                 "id": f"gs-{item.get('dataCid') or hashlib.md5(title_norm.encode()).hexdigest()[:12]}",
                 "title": title,
                 "authors": item.get("authors", ""),
-                "abstract": item.get("snippet", ""),
+                "abstract": "",
+                "abstract_status": "unreliable_google_scholar_snippet",
+                "scholar_snippet": snippet,
                 "published": year_match.group(0) if year_match else str(year_from),
                 "paper_url": item.get("href", "") or item.get("fullTextUrl", ""),
                 "arxiv_id": "",
@@ -117,7 +140,7 @@ def fetch_google_scholar_papers(fetcher) -> List[Dict]:
     year_from = gs_config.get("year_from",
         (datetime.now(timezone.utc) - timedelta(days=365)).year)
 
-    browser_papers = fetcher._fetch_google_scholar_with_browser(queries, gs_config)
+    browser_papers = _fetch_google_scholar_with_browser(fetcher, queries, gs_config)
     if browser_papers is not None:
         logger.info(f"Google Scholar browser backend returned {len(browser_papers)} papers")
         return browser_papers
@@ -157,12 +180,21 @@ def fetch_google_scholar_papers(fetcher) -> List[Dict]:
 
                 venue = bib.get("venue", "") or bib.get("journal", "") or ""
                 pub_year = str(bib.get("pub_year", "")) if bib.get("pub_year") else ""
+                abstract = bib.get("abstract", "") or ""
+                abstract_status = "ok"
+                scholar_snippet = ""
+                if _looks_like_scholar_snippet(abstract):
+                    scholar_snippet = abstract
+                    abstract = ""
+                    abstract_status = "unreliable_google_scholar_snippet"
 
                 paper = {
                     "id": f"gs-{hashlib.md5(title_norm.encode()).hexdigest()[:12]}",
                     "title": title,
                     "authors": authors_str,
-                    "abstract": bib.get("abstract", ""),
+                    "abstract": abstract,
+                    "abstract_status": abstract_status,
+                    "scholar_snippet": scholar_snippet,
                     "published": pub_year or "unknown",
                     "paper_url": result.get("pub_url", "") or result.get("eprint_url", "") or "",
                     "arxiv_id": "",
