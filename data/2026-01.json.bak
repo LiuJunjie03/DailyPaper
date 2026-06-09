@@ -1,0 +1,2759 @@
+[
+  {
+    "id": "2602.00378v2",
+    "title": "Parametrization of subgrid scales in long-term simulations of the shallow-water equations using machine learning and convex limiting",
+    "authors": "Md Amran Hossan Mojamder, Zhihang Xu, Min Wang, Ilya Timofeyev",
+    "abstract": "We present a method for parametrizing sub-grid processes in the Shallow Water equations. We define coarse variables and local spatial averages and use a feed-forward neural network to learn sub-grid fluxes. Our method results in a local parametrization that uses a four-point computational stencil, which has several advantages over globally coupled parametrizations. We demonstrate numerically that our method improves energy balance in long-term turbulent simulations and also accurately reproduces individual solutions. The long-term simulations refer to numerical studies where a fluid flow is simulated over a duration long enough to reach a statistical steady state. The neural network parametrization can be easily combined with flux limiting to reduce oscillations near shocks. More importantly, our method provides reliable parametrizations, even in dynamical regimes that are not included in the training data.",
+    "published": "2026-01-30",
+    "arxiv_url": "http://arxiv.org/abs/2602.00378v2",
+    "pdf_url": "https://arxiv.org/pdf/2602.00378v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.ao-ph",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "neural network",
+      "machine learning"
+    ],
+    "keywords": [
+      "machine learning",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2602.00378",
+    "paper_url": "http://arxiv.org/abs/2602.00378v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2602.00378"
+  },
+  {
+    "id": "2601.21681v1",
+    "title": "LLM4Fluid: Large Language Models as Generalizable Neural Solvers for Fluid Dynamics",
+    "authors": "Qisong Xiao, Xinhai Chen, Qinglin Wang, Xiaowei Guo, Binglin Wang, Weifeng Chen, Zhichao Wang, Yunfei Liu, Rui Xia, Hang Zou, Gencheng Liu, Shuai Li, Jie Liu",
+    "abstract": "Deep learning has emerged as a promising paradigm for spatio-temporal modeling of fluid dynamics. However, existing approaches often suffer from limited generalization to unseen flow conditions and typically require retraining when applied to new scenarios. In this paper, we present LLM4Fluid, a spatio-temporal prediction framework that leverages Large Language Models (LLMs) as generalizable neural solvers for fluid dynamics. The framework first compresses high-dimensional flow fields into a compact latent space via reduced-order modeling enhanced with a physics-informed disentanglement mechanism, effectively mitigating spatial feature entanglement while preserving essential flow structures. A pretrained LLM then serves as a temporal processor, autoregressively predicting the dynamics of physical sequences with time series prompts. To bridge the modality gap between prompts and physical sequences, which can otherwise degrade prediction accuracy, we propose a dedicated modality alignment strategy that resolves representational mismatch and stabilizes long-term prediction. Extensive experiments across diverse flow scenarios demonstrate that LLM4Fluid functions as a robust and generalizable neural solver without retraining, achieving state-of-the-art accuracy while exhibiting powerful zero-shot and in-context learning capabilities. Code and datasets are publicly available at https://github.com/qisongxiao/LLM4Fluid.",
+    "published": "2026-01-29",
+    "arxiv_url": "http://arxiv.org/abs/2601.21681v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.21681v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "physics-informed",
+      "neural solver",
+      "fluid dynamics",
+      "deep learning",
+      "latent space"
+    ],
+    "keywords": [
+      "PINN",
+      "deep learning",
+      "fluid dynamics",
+      "latent space",
+      "neural solver"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2601.21681",
+    "paper_url": "http://arxiv.org/abs/2601.21681v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 7,
+        "strong_hits": [
+          "reduced-order",
+          "latent space"
+        ],
+        "context_hits": [
+          "deep learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 数值方法增强": {
+        "score": 4,
+        "strong_hits": [
+          "neural solver"
+        ],
+        "context_hits": [
+          "deep learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 6,
+        "strong_hits": [
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "deep learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.21681"
+  },
+  {
+    "id": "2602.02531v1",
+    "title": "Hypersonic Flow Control: Generalized Deep Reinforcement Learning for Hypersonic Intake Unstart Control under Uncertainty",
+    "authors": "Trishit Mondal, Ameya D. Jagtap",
+    "abstract": "The hypersonic unstart phenomenon poses a major challenge to reliable air-breathing propulsion at Mach 5 and above, where strong shock-boundary-layer interactions and rapid pressure fluctuations can destabilize inlet operation. Here, we demonstrate a deep reinforcement learning (DRL)- based active flow control strategy to control unstart in a canonical two-dimensional hypersonic inlet at Mach 5 and Reynolds number $5\\times 10^6$. The in-house CFD solver enables high-fidelity simulations with adaptive mesh refinement, resolving key flow features, including shock motion, boundary-layer dynamics, and flow separation, that are essential for learning physically consistent control policies suitable for real-time deployment. The DRL controller robustly stabilizes the inlet over a wide range of back pressures representative of varying combustion chamber conditions. It further generalizes to previously unseen scenarios, including different back-pressure levels, Reynolds numbers, and sensor configurations, while operating with noisy measurements, thereby demonstrating strong zero-shot generalization. Control remains robust in the presence of noisy sensor measurements, and a minimal, optimally selected sensor set achieves comparable performance, enabling practical implementation. These results establish a data-driven approach for real-time hypersonic flow control under realistic operational uncertainties.",
+    "published": "2026-01-27",
+    "arxiv_url": "http://arxiv.org/abs/2602.02531v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.02531v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 流动控制与强化学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow control",
+      "deep reinforcement learning",
+      "hypersonic flow",
+      "adaptive mesh refinement",
+      "drl",
+      "reinforcement learning",
+      "combustion",
+      "data-driven",
+      "cfd",
+      "adaptive mesh"
+    ],
+    "keywords": [
+      "CFD",
+      "DRL",
+      "RL",
+      "adaptive mesh",
+      "adaptive mesh refinement",
+      "combustion",
+      "data-driven",
+      "flow control",
+      "hypersonic flow"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2602.02531",
+    "paper_url": "http://arxiv.org/abs/2602.02531v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 18,
+        "strong_hits": [
+          "flow control",
+          "active flow control",
+          "reinforcement learning",
+          "deep reinforcement learning",
+          "drl"
+        ],
+        "context_hits": [
+          "cfd",
+          "flow",
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 空气动力学理论": {
+        "score": 5,
+        "strong_hits": [
+          "hypersonic flow"
+        ],
+        "context_hits": [
+          "flow",
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 燃烧与传热": {
+        "score": 5,
+        "strong_hits": [
+          "combustion"
+        ],
+        "context_hits": [
+          "flow",
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 计算流体力学方法": {
+        "score": 4,
+        "strong_hits": [
+          "adaptive mesh refinement"
+        ],
+        "context_hits": [
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2602.02531"
+  },
+  {
+    "id": "2601.20052v1",
+    "title": "Explainable deep learning reveals the physical mechanisms behind the turbulent kinetic energy equation",
+    "authors": "Francisco Alcántara-Ávila, Andrés Cremades, Sergio Hoyas, Ricardo Vinuesa",
+    "abstract": "In this work, we investigate the physical mechanisms governing turbulent kinetic energy transport using explainable deep learning (XDL). An XDL model based on SHapley Additive exPlanations (SHAP) is used to identify and percolate high-importance structures for the evolution of the turbulent kinetic energy budget terms of a turbulent channel flow at a friction Reynolds number of $Re_τ= 125$. The results show that the important structures are predominantly located in the near-wall region and are more frequently associated with sweep-type events. In the viscous layer, the SHAP structures relevant for production and viscous diffusion are almost entirely contained within those relevant for dissipation, revealing a clear hierarchical organization of near-wall turbulence. In the outer layer, this hierarchical organization breaks down and only velocity-pressure-gradient correlation and turbulent transport SHAP structures remain, with a moderate spatial coincidence of approximately $60\\%$. Finally, we show that none of the coherent structures classically studied in turbulence are capable of representing the mechanisms behind the various terms of the turbulent kinetic energy budget throughout the channel. These results reveal dissipation as the dominant organizing mechanism of near-wall turbulence, constraining production and viscous diffusion within a single structural hierarchy that breaks down in the outer layer.",
+    "published": "2026-01-27",
+    "arxiv_url": "http://arxiv.org/abs/2601.20052v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.20052v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "deep learning",
+      "turbulence"
+    ],
+    "keywords": [
+      "deep learning",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2601.20052",
+    "paper_url": "http://arxiv.org/abs/2601.20052v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.20052"
+  },
+  {
+    "id": "2601.13190v2",
+    "title": "LAViG-FLOW: Latent Autoregressive Video Generation for Fluid Flow Simulations",
+    "authors": "Vittoria De Pellegrini, Tariq Alkhalifah",
+    "abstract": "Modeling and forecasting subsurface multiphase fluid flow fields underpin applications ranging from geological CO2 sequestration (GCS) operations to geothermal production. This is essential for ensuring both operational performance and long-term safety. While high fidelity multiphase simulators are widely used for this purpose, they become prohibitively expensive once many forward runs are required for inversion purposes and to quantify uncertainty. To tackle this challenge, we propose LAViG-FLOW, a latent autoregressive video generation diffusion framework that explicitly learns the coupled evolution of saturation and pressure fields. Each state variable is compressed by a dedicated 2D autoencoder, and a Video Diffusion Transformer (VDiT) models their coupled distribution across time. We first train the model on a given time horizon to learn their coupled relationship and then fine-tune it autoregressively so it can extrapolate beyond the observed time window. Evaluated on an open-source CO2 sequestration dataset, LAViG-FLOW generates saturation and pressure fields that stay consistent across time while running two orders of magnitude faster than traditional numerical solvers.",
+    "published": "2026-01-19",
+    "arxiv_url": "http://arxiv.org/abs/2601.13190v2",
+    "pdf_url": "https://arxiv.org/pdf/2601.13190v2",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "autoencoder",
+      "transformer"
+    ],
+    "keywords": [
+      "AE",
+      "transformer"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2601.13190",
+    "paper_url": "http://arxiv.org/abs/2601.13190v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.13190"
+  },
+  {
+    "id": "2601.06244v1",
+    "title": "Hard Constraint Projection in a Physics Informed Neural Network",
+    "authors": "Miranda J. S. Horne, Peter K. Jimack, Amirul Khan, He Wang",
+    "abstract": "In this work, we embed hard constraints in a physics informed neural network (PINN) which predicts solutions to the 2D incompressible Navier Stokes equations. We extend the hard constraint method introduced by Chen et al. (arXiv:2012.06148) from a linear PDE to a strongly non-linear PDE. The PINN is used to estimate the stream function and pressure of the fluid, and by differentiating the stream function we can recover an incompressible velocity field. An unlearnable hard constraint projection (HCP) layer projects the predicted velocity and pressure to a hyperplane that admits only exact solutions to a discretised form of the governing equations.",
+    "published": "2026-01-09",
+    "arxiv_url": "http://arxiv.org/abs/2601.06244v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06244v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "hard constraint",
+      "pinn",
+      "neural network"
+    ],
+    "keywords": [
+      "PINN",
+      "hard constraint",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2601.06244",
+    "paper_url": "http://arxiv.org/abs/2601.06244v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 9,
+        "strong_hits": [
+          "pinn",
+          "hard constraint projection"
+        ],
+        "context_hits": [
+          "pde",
+          "fluid",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.06244"
+  },
+  {
+    "id": "2601.06183v1",
+    "title": "Data-Driven Reduced-Complexity Modeling of Fluid Flows: A Community Challenge",
+    "authors": "Oliver T. Schmidt, Aaron Towne, Adrian Lozano-Duran, Scott T. M. Dawson, Ricardo Vinuesa",
+    "abstract": "We introduce a community challenge designed to facilitate direct comparisons between data-driven methods for compression, forecasting, and sensing of complex aerospace flows. The challenge is organized into three tracks that target these complementary capabilities: compression (compact representations for large datasets), forecasting (predicting future flow states from a finite history), and sensing (inferring unmeasured flow states from limited measurements). Across these tracks, multiple challenges span diverse flow datasets and use cases, each emphasizing different model requirements. The challenge is open to anyone, and we invite broad participation to build a comprehensive and balanced picture of what works and where current methods fall short. To support fair comparisons, we provide standardized success metrics, evaluation tools, and baseline implementations, with one classical and one machine-learning baseline per challenge. Final assessments use blind tests on withheld data. We explicitly encourage negative results and careful analyses of limitations. Outcomes will be disseminated through an AIAA Journal Virtual Collection and invited presentations at AIAA conferences.",
+    "published": "2026-01-07",
+    "arxiv_url": "http://arxiv.org/abs/2601.06183v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.06183v1",
+    "categories": [
+      "cs.LG",
+      "nlin.CD",
+      "physics.comp-ph",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "data-driven"
+    ],
+    "keywords": [
+      "data-driven"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2601.06183",
+    "paper_url": "http://arxiv.org/abs/2601.06183v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 4,
+        "strong_hits": [
+          "reduced-complexity"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.06183"
+  },
+  {
+    "id": "2601.01922v1",
+    "title": "Efficient temporal prediction of compressible flows in irregular domains using Fourier neural operators",
+    "authors": "Yifan Nie, Qiaoxin Li",
+    "abstract": "This paper investigates the temporal evolution of high-speed compressible fluids in irregular flow fields using the Fourier Neural Operator (FNO). We reconstruct the irregular flow field point set into sequential format compatible with FNO input requirements, and then embed temporal bundling technique within a recurrent neural network (RNN) for multi-step prediction. We further employ a composite loss function to balance errors across different physical quantities. Experiments are conducted on three different types of irregular flow fields, including orthogonal and non-orthogonal grid configurations. Then we comprehensively analyze the physical component loss curves, flow field visualizations, and physical profiles. Results demonstrate that our approach significantly surpasses traditional numerical methods in computational efficiency while achieving high accuracy, with maximum relative $L_2$ errors of (0.78, 0.57, 0.35)% for ($p$, $T$, $\\mathbf{u}$) respectively. This verifies that the method can efficiently and accurately simulate the temporal evolution of high-speed compressible flows in irregular domains.",
+    "published": "2026-01-05",
+    "arxiv_url": "http://arxiv.org/abs/2601.01922v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01922v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fourier neural operator",
+      "fno",
+      "rnn",
+      "neural network",
+      "neural operator"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator",
+      "neural network",
+      "rnn"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2601.01922",
+    "paper_url": "http://arxiv.org/abs/2601.01922v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 11,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "fno"
+        ],
+        "context_hits": [
+          "neural network",
+          "flow field"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.01922"
+  },
+  {
+    "id": "2601.01590v1",
+    "title": "Identifying recurrent flows in high-dimensional dissipative chaos from low-dimensional embeddings",
+    "authors": "Pierre Beck, Tobias M. Schneider",
+    "abstract": "Unstable periodic orbits (UPOs) are the non-chaotic, dynamical building blocks of spatio-temporal chaos, motivating a first-principles based theory for turbulence ever since the discovery of deterministic chaos. Despite their key role in the ergodic theory approach to fluid turbulence, identifying UPOs is challenging for two reasons: chaotic dynamics and the high-dimensionality of the spatial discretization. We address both issues at once by proposing a loop convergence algorithm for UPOs directly within a low-dimensional embedding of the chaotic attractor. The convergence algorithm circumvents time-integration, hence avoiding instabilities from exponential error amplification, and operates on a latent dynamics obtained by pulling back the physical equations using automatic differentiation through the learned embedding function. The interpretable latent dynamics is accurate in a statistical sense, and, crucially, the embedding preserves the internal structure of the attractor, which we demonstrate through an equivalence between the latent and physical UPOs of both a model PDE and the 2D Navier-Stokes equations. This allows us to exploit the collapse of high-dimensional dissipative systems onto a lower dimensional manifold, and identify UPOs in the low-dimensional embedding.",
+    "published": "2026-01-04",
+    "arxiv_url": "http://arxiv.org/abs/2601.01590v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01590v1",
+    "categories": [
+      "nlin.CD",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 湍流与流动机理"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "turbulence",
+      "navier-stokes"
+    ],
+    "keywords": [
+      "navier-stokes",
+      "turbulence"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2601.01590",
+    "paper_url": "http://arxiv.org/abs/2601.01590v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 湍流与流动机理": {
+        "score": 6,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "fluid",
+          "navier-stokes",
+          "physics.flu-dyn"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.01590"
+  },
+  {
+    "id": "2601.01357v1",
+    "title": "Towards LLM-enabled autonomous combustion research: A literature-aware agent for self-corrective modeling workflows",
+    "authors": "Ke Xiao, Haoze Zhang, Runze Mao, Han Li, Zhi X. Chen",
+    "abstract": "The rapid evolution of large language models (LLMs) is transforming artificial intelligence into autonomous research partners, yet a critical gap persists in complex scientific domains such as combustion modeling. Here, practical AI assistance requires the seamless integration of domain literature knowledge with robust execution capabilities for expertise-intensive tools such as computational fluid dynamics (CFD) codes. To bridge this gap, we introduce FlamePilot, an LLM agent designed to empower combustion modeling research through automated and self-corrective CFD workflows. FlamePilot differentiates itself through an architecture that leverages atomic tools to ensure the robust setup and execution of complex simulations in both OpenFOAM and extended frameworks such as DeepFlame. The system is also capable of learning from scientific articles, extracting key information to guide the simulation from initial setup to optimized results. Validation on a public benchmark shows FlamePilot achieved a perfect 1.0 executability score and a 0.438 success rate, surpassing the prior best reported agent scores of 0.625 and 0.250, respectively. Furthermore, a detailed case study on Moderate or Intense Low-oxygen Dilution (MILD) combustion simulation demonstrates its efficacy as a collaborative research copilot, where FlamePilot autonomously translated a research paper into a configured simulation, conducted the simulation, post-processed the results, proposed evidence-based refinements, and managed a multi-step parameter study to convergence under minimal human intervention. By adopting a transparent and interpretable paradigm, FlamePilot establishes a foundational framework for AI-empowered combustion modeling, fostering a collaborative partnership where the agent manages workflow orchestration, freeing the researcher for high-level analysis.",
+    "published": "2026-01-04",
+    "arxiv_url": "http://arxiv.org/abs/2601.01357v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.01357v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 燃烧与传热"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "combustion",
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd"
+    ],
+    "keywords": [
+      "CFD",
+      "combustion",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2601.01357",
+    "paper_url": "http://arxiv.org/abs/2601.01357v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 燃烧与传热": {
+        "score": 6,
+        "strong_hits": [
+          "combustion"
+        ],
+        "context_hits": [
+          "fluid",
+          "simulation",
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.01357"
+  },
+  {
+    "id": "2601.00342v1",
+    "title": "Solving nonlinear subsonic compressible flow in infinite domain via multi-stage neural networks",
+    "authors": "Xuehui Qian, Hongkai Tao, Yongji Wang",
+    "abstract": "In aerodynamics, accurately modeling subsonic compressible flow over airfoils is critical for aircraft design. However, solving the governing nonlinear perturbation velocity potential equation presents computational challenges. Traditional approaches often rely on linearized equations or finite, truncated domains, which introduce non-negligible errors and limit applicability in real-world scenarios. In this study, we propose a novel framework utilizing Physics-Informed Neural Networks (PINNs) to solve the full nonlinear compressible potential equation in an unbounded (infinite) domain. We address the unbounded-domain and convergence challenges inherent in standard PINNs by incorporating a coordinate transformation and embedding physical asymptotic constraints directly into the network architecture. Furthermore, we employ a Multi-Stage PINN (MS-PINN) approach to iteratively minimize residuals, achieving solution accuracy approaching machine precision. We validate this framework by simulating flow over circular and elliptical geometries, comparing our results against traditional finite-domain and linearized solutions. Our findings quantify the noticeable discrepancies introduced by domain truncation and linearization, particularly at higher Mach numbers, and demonstrate that this new framework is a robust, high-fidelity tool for computational fluid dynamics.",
+    "published": "2026-01-01",
+    "arxiv_url": "http://arxiv.org/abs/2601.00342v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.00342v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络",
+      "流体力学 / 空气动力学理论"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "physics-informed",
+      "aerodynamics",
+      "fluid dynamics",
+      "pinn",
+      "computational fluid dynamics",
+      "compressible flow"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "aerodynamics",
+      "compressible flow",
+      "fluid dynamics"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2601.00342",
+    "paper_url": "http://arxiv.org/abs/2601.00342v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 8,
+        "strong_hits": [
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 空气动力学理论": {
+        "score": 8,
+        "strong_hits": [
+          "aerodynamics",
+          "compressible flow"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 空气动力学理论",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.00342",
+    "publication_date_source": "arxiv"
+  },
+  {
+    "id": "10.1063/5.0303684",
+    "title": "Physics-informed neural network for prediction and reconstruction of complex fluid flows under arbitrary boundary conditions",
+    "authors": "Liangzhu Ma, Ruizhi Zhai, Jiangtao Ren, Lirui Li, Deshun Yin, Guangjian Xiang",
+    "abstract": "In production and daily life, most fluids exhibit complex rheological properties, which pose significant challenges for computational fluid dynamics simulations. In practical engineering applications, when rapid problem detection and analysis of a specific section are required, certain boundary conditions are often difficult to determine accurately. Traditional simulation methods, which strictly depend on boundary conditions and mesh partitioning, struggle to compute flow fields, thereby limiting the rapid localization and analysis of failure zones or suspect regions. To address these limitations, this paper proposes a new calculation process for calculating complex fluids under complex boundary (CFB) conditions based on the Physical Information Neural Network (PINN) method. Hereafter, we refer to this method as CFB_PINN. It provides a comprehensive derivation of the partial differential equation loss function for complex fluids. Taking the flow-field calculation of the Herschel–Bulkley fluid model as an example, the method becomes applicable to any complex fluid model by constructing the viscosity field and its partial-derivative field before computing the loss function. Incorporating different boundary-handling strategies enables adaptability to arbitrary boundary configurations. Comparative analyses under multiple boundary conditions demonstrate that CFB_PINN achieves excellent predictive capability—both for flow fields with fully known boundaries and for reconstruction under partially unknown boundaries. The results show strong consistency with finite volume method calculations, rapid convergence of the loss function, and accurate computation of viscosity fields, thereby offering valuable guidance for process optimization.",
+    "published": "2026-01-05",
+    "paper_url": "https://www.semanticscholar.org/paper/356d6118f7608d0483337a1b0fbb7ed61faf734e",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [],
+    "venue": "The Physics of Fluids",
+    "conference": "The Physics of Fluids",
+    "publication_types": [
+      "JournalArticle"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1063/5.0303684",
+    "external_ids": {
+      "DOI": "10.1063/5.0303684",
+      "CorpusId": 284516706
+    },
+    "semantic_scholar_id": "356d6118f7608d0483337a1b0fbb7ed61faf734e",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "finite volume",
+      "finite volume method",
+      "fluid dynamics",
+      "neural network"
+    ],
+    "citation_count": 0,
+    "impact_factor": 3.5,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 12,
+        "strong_hits": [
+          "physics-informed neural network",
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "physics-informed neural network",
+      "fluid dynamics",
+      "pinn",
+      "finite volume method",
+      "finite volume",
+      "neural network",
+      "computational fluid dynamics"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.12677/ijfd.2026.141002",
+    "title": "Fluid Flow Characteristics and Numerical Simulation Analysis of Aneurysm-Bearing Vessel Models Based on Computational Fluid Dynamics",
+    "authors": "美秀 潘",
+    "abstract": "",
+    "published": "2026-02-13",
+    "paper_url": "https://www.semanticscholar.org/paper/feea7e6f01db2dbf6a246aa27bfa758f4278d301",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of Fluid Dynamics",
+    "conference": "International Journal of Fluid Dynamics",
+    "publication_types": [
+      "JournalArticle"
+    ],
+    "publication_type": "journal",
+    "doi": "10.12677/ijfd.2026.141002",
+    "external_ids": {
+      "DOI": "10.12677/ijfd.2026.141002",
+      "CorpusId": 285638929
+    },
+    "semantic_scholar_id": "feea7e6f01db2dbf6a246aa27bfa758f4278d301",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 生物与医学流体"
+    ],
+    "keywords": [
+      "CFD",
+      "aneurysm",
+      "fluid dynamics"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 生物与医学流体": {
+        "score": 6,
+        "strong_hits": [
+          "aneurysm"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "simulation"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 生物与医学流体",
+    "custom_keywords": [
+      "aneurysm",
+      "fluid dynamics",
+      "computational fluid dynamics"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.1117/12.3094075",
+    "title": "Optical-SDFNet: a hybrid optical-driven neural operator for aerodynamic pressure field prediction",
+    "authors": "Zhenzhou Niu, Qiang Liu",
+    "abstract": "With the expanding application of computational fluid dynamics (CFD) in complex engineering scenarios, improving simulation efficiency while maintaining prediction accuracy has become a key issue. To address the high computational overhead and low modeling efficiency of traditional methods for high Reynolds number flow fields and complex geometries, this paper proposes a hybrid neural operator model that integrates a Unified Network (UNet) backbone, a Signed Distance Function (SDF) encoder, and a Finite Volume Graph Neural Network (FVGN). This model enhances geometric perception through SDF, extracts local features using UNet, and models surface topology using FVGN, achieving efficient fusion of multi-scale physical features. Experimental results demonstrate that this method significantly outperforms traditional neural networks on multiple public datasets, achieving excellent performance in prediction accuracy, inference speed, and model robustness. The method particularly improves reconstruction capabilities in high-pressure gradient regions. Further ablation experiments and visualization analysis validate the effectiveness and synergy of each module. This method provides an efficient and scalable solution for rapid aerodynamic prediction of complex three-dimensional structures, demonstrating excellent engineering practicality and potential for widespread adoption. Furthermore, by incorporating optical sensing data from wind tunnel experiments, the model achieves higher fidelity and better alignment with real-world aerodynamic conditions.",
+    "published": "2026-01-31",
+    "paper_url": "https://www.semanticscholar.org/paper/5c2b3cac5b2ef143474f01173542288de86a8b45",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [
+      "Engineering"
+    ],
+    "venue": "International Conference on Communication, Information and Digital Technologies",
+    "conference": "International Conference on Communication, Information and Digital Technologies",
+    "publication_types": [
+      "Conference"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1117/12.3094075",
+    "external_ids": {
+      "DOI": "10.1117/12.3094075",
+      "CorpusId": 285255985
+    },
+    "semantic_scholar_id": "5c2b3cac5b2ef143474f01173542288de86a8b45",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "GNN",
+      "Neural Operator",
+      "finite volume",
+      "fluid dynamics",
+      "neural network"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 12,
+        "strong_hits": [
+          "neural operator",
+          "graph neural network",
+          "field prediction"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "cfd",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "graph neural network",
+      "fluid dynamics",
+      "finite volume",
+      "neural network",
+      "computational fluid dynamics",
+      "cfd",
+      "neural operator"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.70251/hyjr2348.422634",
+    "title": "Analysis of the Accuracy and Efficiency of Neural Networks to Simulate Navier-Stokes Fluid Flows with Obstacles",
+    "authors": "Elliot McGuire, Rui Hespanha, Jo˜ao P. Hespanha",
+    "abstract": "Conventional fluid simulations can be time consuming and energy intensive. We researched\nthe viability of a neural network for simulating incompressible fluids in a randomized obstacleheavy\nenvironment, as an alternative to the numerical simulation of the Navier-Stokes equation. We\nhypothesized that the neural network predictions would have a relatively low error for simulations over\na small number of time steps, but errors would eventually accumulate to the point that the output would\nbecome very noisy. Over a rich set of obstacle configurations, we achieved a root-mean-square-error\nof 0.32% on our training dataset and 0.36% on a testing dataset. These errors only grew to 1.45% and\n2.34% at time step t = 10 a nd, 2 .11% a nd 4 .16% a t t ime s tep t = 2 0. We a lso f ound t hat a n a ccurate\nneural network can be approximately 8,800 times faster at predicting the flow than a conventional\nsimulation. These findings indicate that neural networks can be extremely useful at simulating fluids in\nobstacle-heavy environments. Useful applications include modeling forest fire smoke, pipe fluid flow,\nand underwater/flood currents.",
+    "published": "2026-03-10",
+    "paper_url": "https://www.semanticscholar.org/paper/3c11911c8049c2f18987fb4167ca50add9b62ff3",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [],
+    "venue": "American Journal of Student Research",
+    "conference": "American Journal of Student Research",
+    "publication_types": [
+      "JournalArticle"
+    ],
+    "publication_type": "journal",
+    "doi": "10.70251/hyjr2348.422634",
+    "external_ids": {
+      "DOI": "10.70251/hyjr2348.422634",
+      "CorpusId": 286487100
+    },
+    "semantic_scholar_id": "3c11911c8049c2f18987fb4167ca50add9b62ff3",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "navier-stokes",
+      "neural network"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "navier-stokes",
+      "neural network"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "2601.13673",
+    "title": "Manifold Learning with Implicit Physics Embedding for Reduced-Order Flow-Field Modeling",
+    "authors": "Weiji Wang, Chunlin Gong, Xuyi Jia, Chunna Li",
+    "abstract": "Nonlinear manifold learning (ML) based reduced-order models (ROMs) can substantially improve the quality of nonlinear flow-field modeling. However, noise and the lack of physical information often distort the dimensionality-reduction process, reducing the robustness and accuracy of flow-field prediction. To address this problem, we propose a novel manifold learning ROM with implicit physics embedding (IPE-ML). Starting from data-driven manifold coordinates, we incorporate physical parameters (e.g., angle of attack, Mach number) into manifold coordinates system by minimizing the prediction error of Gaussian process regression (GPR) model, thereby fine-tuning the manifold structure. These adjusted coordinates are then used to construct a flow-fields prediction model that predict nonlinear flow-field more accurately. The method is validated on two test cases: transonic flow-field modeling of the RAE2822 and supersonic flow-field modeling of the hexagon airfoil. The results indicate that the proposed IPE-ML can significantly improve the overall prediction accuracy of nonlinear flow fields. In transonic case, shock-related errors have been notably reduced, while in supersonic case the method can confine errors to small local regions. This study offers a new perspective on embedding physical information into nonlinear ROMs.",
+    "published": "2026-01-20",
+    "paper_url": "https://www.semanticscholar.org/paper/1f2d0258b05fefc861e237695e63891ae589dc15",
+    "arxiv_id": "2601.13673",
+    "arxiv_url": "https://arxiv.org/abs/2601.13673",
+    "pdf_url": "https://arxiv.org/pdf/2601.13673",
+    "categories": [
+      "Physics"
+    ],
+    "venue": "",
+    "conference": "",
+    "publication_types": [],
+    "publication_type": "preprint",
+    "doi": "",
+    "external_ids": {
+      "ArXiv": "2601.13673",
+      "CorpusId": 284911841
+    },
+    "semantic_scholar_id": "1f2d0258b05fefc861e237695e63891ae589dc15",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "ROM",
+      "airfoil",
+      "data-driven"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": true,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 10,
+        "strong_hits": [
+          "reduced-order",
+          "rom",
+          "field prediction"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 空气动力学理论": {
+        "score": 4,
+        "strong_hits": [
+          "airfoil"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.13673",
+    "custom_keywords": [
+      "data-driven",
+      "airfoil",
+      "rom"
+    ]
+  },
+  {
+    "id": "10.1017/jfm.2025.11035",
+    "title": "Model predictive control of fluid–structure interaction via Koopman-based reduced-order model",
+    "authors": "Haokui Jiang, Shunxiang Cao",
+    "abstract": "Abstract This study presents an active flow control framework for fluid–structure interaction (FSI) systems involving a flexible plate in the wake of a cylinder, by integrating Koopman-based reduced-order models (ROMs) with model predictive control (MPC). Specifically, a novel switched-system control strategy is developed, wherein kernel dynamic mode decomposition (DMD) and residual DMD are jointly employed to construct accurate ROMs capable of capturing strongly nonlinear FSI dynamics. This approach ensures accurate low-order representations across multiple control inputs, while suppressing spurious modes. The resulting Koopman ROMs provide fast state predictions over a receding horizon, enabling an MPC optimiser to determine real-time actuation. To improve control performance, resolvent analysis is utilised to optimise the actuator–probe placement. Remarkably, only three strategically placed structural probes are sufficient to capture dominant Koopman modes and enable effective closed-loop control. The proposed framework is then applied to regulate synthetic jets on the cylinder to suppress the plate’s flapping. It successfully stabilises large-amplitude (LAF), small-deflection (SDF) and small-amplitude (SAF) flapping regimes within a unified control strategy. By combining Koopman modal decomposition with an analysis of system energy evolution, we elucidate distinct control mechanisms across these regimes. For LAF and SAF cases, control is achieved primarily through local modulation of existing saturated modes, which requires relatively low actuation energy. In contrast, stabilisation of the SDF case involves the emergence of entirely new Koopman modes that disrupt the original symmetry-breaking dynamics, resulting in increased control input. The framework matches the control performance of reinforcement learning while markedly reducing computational cost.",
+    "published": "2026-01-05",
+    "paper_url": "https://www.semanticscholar.org/paper/cf3de954b892bb44f0cc3eb3976e44493b4f518f",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [],
+    "venue": "Journal of Fluid Mechanics",
+    "conference": "Journal of Fluid Mechanics",
+    "publication_types": [
+      "JournalArticle"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1017/jfm.2025.11035",
+    "external_ids": {
+      "DOI": "10.1017/jfm.2025.11035",
+      "CorpusId": 284476101
+    },
+    "semantic_scholar_id": "cf3de954b892bb44f0cc3eb3976e44493b4f518f",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 流动控制与强化学习"
+    ],
+    "keywords": [
+      "FSI",
+      "RL",
+      "ROM",
+      "active flow control",
+      "closed-loop control",
+      "flow control",
+      "koopman",
+      "resolvent analysis"
+    ],
+    "citation_count": 1,
+    "impact_factor": 4.0,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 3,
+        "strong_hits": [
+          "reduced-order",
+          "koopman"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 15,
+        "strong_hits": [
+          "flow control",
+          "active flow control",
+          "reinforcement learning",
+          "closed-loop control"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "wake"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 5,
+        "strong_hits": [
+          "resolvent analysis"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 空气动力学理论": {
+        "score": 5,
+        "strong_hits": [
+          "fsi"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "custom_keywords": [
+      "flow control",
+      "closed-loop control",
+      "reinforcement learning",
+      "resolvent analysis",
+      "reduced-order model",
+      "fsi",
+      "koopman",
+      "active flow control"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.1080/19942060.2026.2619155",
+    "title": "A machine learning-based closure for unsteady RANS simulations of vortex shedding",
+    "authors": "A. Kawabata, A. Yakeno, S. Obayashi, R. D. Sandberg",
+    "abstract": "",
+    "published": "2026-01-29",
+    "paper_url": "https://www.semanticscholar.org/paper/7450a58727e336511fe2045a30635bea479246b3",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [],
+    "venue": "Engineering Applications of Computational Fluid Mechanics",
+    "conference": "Engineering Applications of Computational Fluid Mechanics",
+    "publication_types": [
+      "JournalArticle"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1080/19942060.2026.2619155",
+    "external_ids": {
+      "DOI": "10.1080/19942060.2026.2619155",
+      "CorpusId": 285225521
+    },
+    "semantic_scholar_id": "7450a58727e336511fe2045a30635bea479246b3",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "machine learning",
+      "rans",
+      "vortex"
+    ],
+    "citation_count": 1,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "vortex",
+      "rans",
+      "machine learning"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.1063/5.0299551",
+    "title": "Generating small-scale turbulence in jet flows by training with a machine learning method",
+    "authors": "S. Choi, Yeulwoo Kim, Jin Hwan Hwang",
+    "abstract": "Turbulent jet flows require significant computational resources at high Reynolds numbers when simulated using large-eddy simulation (LES). To address this challenge, a convolutional neural network (CNN) was used to reproduce small-scale fluctuations from large-scale velocity fields in turbulent jet flows. High-resolution LES data were used as ground truth, and the fast Fourier transform was applied to separate large-scale and subgrid-scale (SGS) components. The CNN was trained to predict SGS velocity fields using the large-scale components extracted from coarse-grid LES data. The performance of the model was evaluated under a 20% and 40% decrease in data resolution, and with a 50% increase in Reynolds number. The CNN-generated velocity fields reproduced energy spectra and turbulent kinetic energy, which closely agreed with those of the high-resolution LES. Although turbulence production and dissipation were less accurately predicted, due to complex energy transfer mechanisms, the CNN outputs demonstrated physical consistency in terms of mass and momentum conservation.",
+    "published": "2026-01-20",
+    "paper_url": "https://www.semanticscholar.org/paper/1919032d69eedee3ea177c88ef082bc57097ae2c",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [],
+    "venue": "The Physics of Fluids",
+    "conference": "The Physics of Fluids",
+    "publication_types": [
+      "JournalArticle"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1063/5.0299551",
+    "external_ids": {
+      "DOI": "10.1063/5.0299551",
+      "CorpusId": 284950788
+    },
+    "semantic_scholar_id": "1919032d69eedee3ea177c88ef082bc57097ae2c",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合",
+      "流体力学 / 智能CFD / 加速求解与超分辨"
+    ],
+    "keywords": [
+      "cnn",
+      "coarse-grid",
+      "les",
+      "machine learning",
+      "neural network",
+      "turbulence"
+    ],
+    "citation_count": 0,
+    "impact_factor": 3.5,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 6,
+        "strong_hits": [
+          "subgrid-scale"
+        ],
+        "context_hits": [
+          "les",
+          "machine learning",
+          "neural network"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 加速求解与超分辨": {
+        "score": 5,
+        "strong_hits": [
+          "coarse-grid"
+        ],
+        "context_hits": [
+          "machine learning",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
+    "custom_keywords": [
+      "turbulence",
+      "cnn",
+      "neural network",
+      "machine learning",
+      "coarse-grid",
+      "les"
+    ]
+  },
+  {
+    "id": "10.1063/5.0309160",
+    "title": "Construction of an interpretable model for airfoil aerodynamic characteristics based on the light gradient boosting machine—Shapley additive explanation framework",
+    "authors": "Zilin Cai, Zhongjun Yu, Haibo Niu",
+    "abstract": "To achieve high-precision prediction and efficient optimization of airfoil aerodynamic performance, this study proposes a Light Gradient Boosting Machine (LightGBM)-based model for predicting airfoil lift (CL) and drag (CD) coefficients. The model's performance was compared with four classic machine learning algorithms (Random Forest, XGBoost, AdaBoost, and Gradient Boosting Machine), and its generalization ability was verified using a novel dataset. Combined with the Shapley value (SHAP) explainable model, feature analysis of CL and CD was conducted. Results show the LightGBM model exhibits optimal predictive performance: R2 values for CL are 0.996 (training set) and 0.9854 (test set), while those for CD are 0.9996 and 0.9858, outperforming other algorithms. In contrast, AdaBoost suffers severe overfitting and is unsuitable for the task. SHAP analysis identifies core control parameters (c4, c3, c13 for CL; c4, c6, c7 for CD) and key interaction combinations (e.g., c13 × c14 for CL, c3 × c4 for CD), quantifying parameter contribution intensities and breaking the “black-box” limitation of traditional models. The SHAP-based optimization strategy reduces computational fluid dynamics (CFD) simulation blindness, shortening R&D cycles and computational costs. This study integrates high-precision prediction, interpretable analysis, and efficient optimization, providing a cost-effective technical path for rapid design and engineering application of high-performance airfoils.",
+    "published": "2026-01-05",
+    "paper_url": "https://www.semanticscholar.org/paper/0f2c7364b2dcbd8c65a8da2752672d9f3b02b82d",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [],
+    "venue": "The Physics of Fluids",
+    "conference": "The Physics of Fluids",
+    "publication_types": [
+      "JournalArticle"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1063/5.0309160",
+    "external_ids": {
+      "DOI": "10.1063/5.0309160",
+      "CorpusId": 284560486
+    },
+    "semantic_scholar_id": "0f2c7364b2dcbd8c65a8da2752672d9f3b02b82d",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "airfoil",
+      "fluid dynamics",
+      "machine learning"
+    ],
+    "citation_count": 0,
+    "impact_factor": 3.5,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "fluid dynamics",
+      "machine learning",
+      "computational fluid dynamics",
+      "cfd",
+      "airfoil"
+    ]
+  },
+  {
+    "id": "10.1017/jfm.2025.11086",
+    "title": "Experimental deep reinforcement learning control of a turbulent boundary layer with plasma actuators for skin-friction drag reduction",
+    "authors": "Z. Fang, H. Zong, Yun Wu, Jinping Li, Z. Su, B. Wei",
+    "abstract": "Abstract Experimental deep reinforcement learning (DRL) control of a turbulent boundary layer is conducted for the first time at \n$Re_\\tau$\n = 1196, with the aim of friction-drag reduction. Two hot films, an impinging plasma jet actuator array and two wall hot wires act as the state detector, flow disturber and reward evaluator, respectively. The control law parametrised by a radial basis function network is executed in real time on a field programmable gate array and optimised using a classical value-based algorithm (deep Q-network). Results show that DRL control requires only 30 s to train a closed-loop control law with satisfactory drag-reduction performance. Compared with open-loop control where only fine-tuned periodical forcing can reduce the friction drag, the experimental efficiency is improved significantly. Proper setting of the hyper-parameters is crucial in DRL. Particularly, the reward time delay and control frequency need to match the convection time scale and the characteristic frequency of the turbulent boundary layer. The optimal DRL control setting achieves 6.7 % relative drag reduction, almost three times that of the best open-loop control (2.3 %). Physically, plasma actuation induces alternating low-speed and high-speed zones that confine the sidewise motion of turbulent streaks. The final control law optimised by DRL can be simplified as a threshold control, firing the plasma actuator after perceiving a streak burst event and a long-lasting high-speed zone. Control benefits are attributed to the increase in the occurrence probability of high-reward states and the elevation of mean reward at different clusters.",
+    "published": "2026-01-15",
+    "paper_url": "https://www.semanticscholar.org/paper/b127351dfe35fefbc19182069e3499ac41253c8e",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [],
+    "venue": "Journal of Fluid Mechanics",
+    "conference": "Journal of Fluid Mechanics",
+    "publication_types": [
+      "JournalArticle"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1017/jfm.2025.11086",
+    "external_ids": {
+      "DOI": "10.1017/jfm.2025.11086",
+      "CorpusId": 284718513
+    },
+    "semantic_scholar_id": "b127351dfe35fefbc19182069e3499ac41253c8e",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 流动控制与强化学习"
+    ],
+    "keywords": [
+      "DRL",
+      "RL",
+      "boundary layer",
+      "closed-loop control",
+      "drag reduction"
+    ],
+    "citation_count": 3,
+    "impact_factor": 4.0,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 16,
+        "strong_hits": [
+          "reinforcement learning",
+          "deep reinforcement learning",
+          "drl",
+          "closed-loop control"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "turbulent",
+          "boundary layer"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 气动优化设计": {
+        "score": 4,
+        "strong_hits": [
+          "drag reduction"
+        ],
+        "context_hits": [
+          "drag"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 空气动力学理论": {
+        "score": 5,
+        "strong_hits": [
+          "boundary layer"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "custom_keywords": [
+      "drag reduction",
+      "closed-loop control",
+      "deep reinforcement learning",
+      "drl",
+      "reinforcement learning",
+      "boundary layer"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "2601.04400",
+    "title": "JAX-Shock: A Differentiable, GPU-Accelerated, Shock-Capturing Neural Solver for Compressible Flow Simulation",
+    "authors": "Bo Zhang",
+    "abstract": "Understanding shock-solid interactions remains a central challenge in compressiblefluiddynamics. WepresentJAX-Shock: afully-differentiable,GPU-accelerated, high-order shock-capturing solver for efficient simulation of the compressible Navier-Stokes equations. Built entirely in JAX, the framework leverages automatic differentiation to enable gradient-based optimization, parameter inference, and end-to-end training of deep learning-augmented models. The solver integrates fifth-order WENO reconstruction with an HLLC flux to resolve shocks and discontinuities with high fidelity. To handle complex geometries, an immersed boundary method is implemented for accurate representation of solid interfaces within the compressible flow field. In addition, we introduce a neural flux module trained to augment the numerical fluxes with data-driven corrections, significantly improving accuracy and generalization. JAX-Shock also supports sequence-to-sequence learning for shock interaction prediction and reverse-mode inference to identify key physical parameters from data. Compared with purely data-driven approaches, JAX-Shock enhances generalization while preserving physical consistency. The framework establishes a flexible platform for differentiable physics, learning-based modeling, and inverse design in compressible flow regimes dominated by complex shock-solid interactions.",
+    "published": "2026-01-07",
+    "paper_url": "https://www.semanticscholar.org/paper/91d4ec60da42377ac722b6528af1ac1a4db9d451",
+    "arxiv_id": "2601.04400",
+    "arxiv_url": "https://arxiv.org/abs/2601.04400",
+    "pdf_url": "https://arxiv.org/pdf/2601.04400",
+    "categories": [
+      "Physics"
+    ],
+    "venue": "",
+    "conference": "",
+    "publication_types": [],
+    "publication_type": "preprint",
+    "doi": "",
+    "external_ids": {
+      "ArXiv": "2601.04400",
+      "CorpusId": 284544023
+    },
+    "semantic_scholar_id": "91d4ec60da42377ac722b6528af1ac1a4db9d451",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 数值方法增强"
+    ],
+    "keywords": [
+      "compressible flow",
+      "data-driven",
+      "deep learning",
+      "flow simulation",
+      "inverse design",
+      "navier-stokes",
+      "neural solver",
+      "weno"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": true,
+    "classification_score": {
+      "流体力学 / 智能CFD / 数值方法增强": {
+        "score": 10,
+        "strong_hits": [
+          "weno",
+          "neural solver"
+        ],
+        "context_hits": [
+          "navier-stokes",
+          "shock",
+          "data-driven",
+          "deep learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 数值方法增强",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.04400",
+    "custom_keywords": [
+      "flow simulation",
+      "inverse design",
+      "neural solver",
+      "weno",
+      "deep learning",
+      "data-driven",
+      "navier-stokes",
+      "compressible flow"
+    ],
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.52783/tjjpt.v47.i01.10589",
+    "title": "Advances in Pipeline Leak Detection: A Review of Computational Fluid Dynamics, Machine Learning, and Hybrid Diagnostic Frameworks",
+    "authors": "Koyndrik Bhattacharjee",
+    "abstract": "Pipeline leakage is one of the current economically important operational issues in the water distribution systems, petroleum and chemical processing and pharmaceutical fluid procedures networks in the world. Over the past two decades the technology of the leak detection has been transformed fundamentally- beginning with manual scrutiny and primitive pressure assessments to considerably more intricate sensor-based, signal-driven, and the most current concentrating on hybrid-calculation-machine learning diagnostic schemes. The given review critically reviews the current state of the field of pipeline leak detection and particularly how the combination of computational fluid dynamics (CFD) simulation and supervised and unsupervised machine learning can take place. The paper in question categorizes the previous detection methodologies in terms of hardware-based, software-based and hybrid ML-CFD and evaluates the capability, constraints and practicable restrictions of its application with regards to synthesis of over thirty representative publications published in the period between ninth year 1987 and 2025. Much attention is specifically paid to such emergent themes as: Science (i) used physics-consistency of generating synthetic training data via physics simulation through COMSOL Multiphysics and ANSYS based models; (ii) the relative usefulness of classical ML algorithms (Random Forest, Support Vector machine, Ridge Regression, Gradient Boosting) versus deep learning models ( CNN, LSTM, hybrid CNNLSTM); (iii) how pre-electra-steady-state single-audioid models can be applied to the problem of variability; variability (iv) the treatment of This review has highlighted the presence of such unanswered challenges as the pre-eminence of steady-state single-fluid research, lack of experimental validation, and lack of standardized benchmark datasets, and suggests a systematic research agenda to fully autonomous, multi-fluid, real-time pipeline integrity management systems.",
+    "published": "2026-01-05",
+    "paper_url": "https://www.semanticscholar.org/paper/901bc4f06feda9d1b8a39971c2c029b01eb7231e",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [],
+    "venue": "Tuijin Jishu/Journal of Propulsion Technology",
+    "conference": "Tuijin Jishu/Journal of Propulsion Technology",
+    "publication_types": [
+      "JournalArticle",
+      "Review"
+    ],
+    "publication_type": "journal",
+    "doi": "10.52783/tjjpt.v47.i01.10589",
+    "external_ids": {
+      "DOI": "10.52783/tjjpt.v47.i01.10589",
+      "CorpusId": 287538183
+    },
+    "semantic_scholar_id": "901bc4f06feda9d1b8a39971c2c029b01eb7231e",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "cnn",
+      "deep learning",
+      "fluid dynamics",
+      "lstm",
+      "machine learning"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "fluid dynamics",
+      "cnn",
+      "lstm",
+      "machine learning",
+      "deep learning",
+      "computational fluid dynamics",
+      "cfd"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.3390/books978-3-7258-6459-1",
+    "title": "Machine Learning and Artificial Intelligence in Fluid Mechanics",
+    "authors": "",
+    "abstract": "Fluid mechanics research has evolved during the past few years towards the direction of exploiting massive amounts of data generated from knowledge gathered insofar, either from experimental measurements or simulations. The application of novel machine learning (ML) techniques is currently the latest trend in the field and has almost reached standardization. Computational boosting, advanced turbulence modeling, bridging among scales, hybrid simulation schemes, and flow feature extraction are concepts that scientists and engineers must deal with. This Reprint joins together data science methods and advanced artificial intelligence (AI) and ML techniques, in order to apply them to popular fluid mechanics problems, in an alternative though effective and accurate manner, strictly bound to the physical problem. Detailed reviews on the AI/CFD intersection and the future of ML in fluid dynamics can be found in this Reprint, along with novel research papers on topics related to scientific ML, physics-informed neural networks, intelligent fluid dynamics, industrial applications of AI, and explainable and trustworthy AI.",
+    "published": "2026-01-27",
+    "paper_url": "https://www.semanticscholar.org/paper/7e56b86a6f0ac52b52f5f0a67e52583c689b0bf7",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "categories": [],
+    "venue": "",
+    "conference": "",
+    "publication_types": [
+      "Book",
+      "Review"
+    ],
+    "publication_type": "journal",
+    "doi": "10.3390/books978-3-7258-6459-1",
+    "external_ids": {
+      "DOI": "10.3390/books978-3-7258-6459-1",
+      "CorpusId": 285328143
+    },
+    "semantic_scholar_id": "7e56b86a6f0ac52b52f5f0a67e52583c689b0bf7",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "fluid dynamics",
+      "fluid mechanics",
+      "machine learning",
+      "turbulence",
+      "turbulence modeling"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 5,
+        "strong_hits": [
+          "turbulence modeling"
+        ],
+        "context_hits": [
+          "machine learning",
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 7,
+        "strong_hits": [
+          "physics-informed"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "flow",
+          "machine learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "custom_keywords": [
+      "physics-informed",
+      "turbulence",
+      "fluid dynamics",
+      "machine learning",
+      "cfd",
+      "turbulence modeling",
+      "fluid mechanics"
+    ],
+    "preprint_pdf_url": "",
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.2523/iptc-25141-ms",
+    "title": "Fourier Neural Operator-Accelerated Physics-Informed Framework for Ultra-Long-Term Fracture Conductivity Prediction in Shale Reservoirs",
+    "authors": "Cong Lu, Zhile Han, Shouxin Wang, Chi Chen, Qiuyue Li, Jianchun Guo, Haosen Zhang",
+    "abstract": "\n Accurate and efficient prediction of hydraulic fracture conductivity in shale reservoirs over ultra-long-term (>5 years) production lifecycles is critical for optimizing well performance and development strategies. While comprehensive, traditional physics-based coupled models face prohibitive computational costs when simulating the complex interplay of mechanics, fluid flow, and irreversible damage (e.g., creep, plasticity) within Supported Grain-Porous Media Fracture Systems (SG-PMFS), severely limiting large-scale sensitivity analyses and design optimization.\n This study proposes a physics-informed data-driven framework centered on the Fourier Neural Operator (FNO) to achieve rapid, ultra-long-term prediction of hydraulic fracture conductivity. A high-fidelity numerical model, incorporating multi-physics mechanisms such as shale creep, proppant embedment and crushing, and fluid-solid coupling, was used to generate the training dataset. A key finding is an intrinsic trade-off revealed in recursive prediction using FNO models trained on different timesteps (1-month, 3-month, and 12-month): the short-timestep model excels in initial accuracy but suffers from significant error accumulation in long-term forecasts, whereas long-timestep models exhibit superior long-term stability and accuracy at the expense of initial precision.\n To address this challenge, a novel Hierarchical Temporal Aggregation (HTA) strategy is introduced. This strategy dynamically switches between the optimal models based on the prediction horizon, leveraging the high precision of the short-timestep model for the initial phase and the stability of long-timestep models for later stages. Results demonstrate that the HTA strategy effectively mitigates the accumulation of recursive errors, maintaining the Mean Absolute Percentage Error (MAPE) consistently below 2% throughout the medium-to ultra-long-term forecast. Compared to the high-fidelity physics-based simulations, this framework achieves a computational speed-up exceeding three orders of magnitude (>1440x). This methodology provides a decision-support tool for fracture design and production strategy optimization in unconventional reservoirs, significantly enhancing the feasibility of ‘what-if’ scenario analyses.",
+    "published": "2026-01-13",
+    "paper_url": "https://www.semanticscholar.org/paper/d2b835b41cb692c2ad840c801f3ebcb88bf66346",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "IPTC Summit on AI for the Energy Industry",
+    "conference": "IPTC Summit on AI for the Energy Industry",
+    "publication_types": [],
+    "publication_type": "journal",
+    "doi": "10.2523/iptc-25141-ms",
+    "external_ids": {
+      "DOI": "10.2523/iptc-25141-ms",
+      "CorpusId": 284781127
+    },
+    "semantic_scholar_id": "d2b835b41cb692c2ad840c801f3ebcb88bf66346",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator",
+      "PINN",
+      "data-driven",
+      "design optimization"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 10,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "fno"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 6,
+        "strong_hits": [
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 气动优化设计": {
+        "score": 3,
+        "strong_hits": [
+          "design optimization"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fourier neural operator",
+      "physics-informed",
+      "design optimization",
+      "fno",
+      "data-driven",
+      "neural operator"
+    ]
+  },
+  {
+    "id": "gs-8501bb2db6e7",
+    "title": "Physics-informed neural networks for modeling turbulent combustion",
+    "authors": "Z Cao, K Luo, K Liu, Y Cheng, J Xing, L Jiang, J Fan",
+    "abstract": "",
+    "published": "2025-09-09",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S0016236125022008",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Fuel",
+    "conference": "Fuel",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "combustion",
+      "fluid dynamics",
+      "neural network"
+    ],
+    "citation_count": 18,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 9,
+        "strong_hits": [
+          "physics-informed neural network",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "physics-informed neural network",
+      "fluid dynamics",
+      "combustion",
+      "neural network",
+      "computational fluid dynamics",
+      "cfd"
+    ],
+    "scholar_snippet": "Physics-informed neural networks (PINNs), as a promising  in the field of computational fluid  dynamics (CFD). This study  to ultimately develop a physics-informed neural network model.",
+    "abstract_status": "unreliable_google_scholar_snippet"
+  },
+  {
+    "id": "gs-3fb1496290ad",
+    "title": "Physics-informed neural networks for hidden boundary detection and flow field reconstruction",
+    "authors": "Y Zhu, W Chen, J Deng, X Bian",
+    "abstract": "Simultaneously detecting hidden solid boundaries and reconstructing flow fields from sparse observations poses a significant inverse challenge in fluid mechanics. This study presents a physics-informed neural network (PINN) framework designed to infer the presence, shape, and motion of static or moving solid boundaries within a flow field. By integrating a body fraction parameter into the governing equations, the model enforces no-slip/no-penetration boundary conditions in solid regions while preserving conservation laws of fluid dynamics. Using partial flow field data, the method simultaneously reconstructs the unknown flow field and infers the body fraction distribution, thereby revealing solid boundaries. The framework is validated across diverse scenarios, including incompressible Navier-Stokes and compressible Euler flows, such as steady flow past a fixed cylinder, an inline oscillating cylinder, and subsonic flow over an airfoil. The results demonstrate accurate detection of hidden boundaries, reconstruction of missing flow data, and estimation of trajectories and velocities of a moving body. Further analysis examines the effects of data sparsity, velocity-only measurements, and noise on inference accuracy. The proposed method exhibits robustness and versatility, highlighting its potential for applications when only limited experimental or numerical data are available.",
+    "published": "2025-06-23",
+    "paper_url": "https://link.springer.com/article/10.1007/s10409-025-25273-x",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2503.24074",
+    "categories": [],
+    "venue": "Acta Mechanica Sinica",
+    "conference": "Acta Mechanica Sinica",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.48550/arxiv.2503.24074",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络",
+      "流体力学 / 智能CFD / 流场重建与数据驱动"
+    ],
+    "keywords": [
+      "PINN",
+      "flow field reconstruction",
+      "fluid mechanics",
+      "neural network"
+    ],
+    "citation_count": 12,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 10,
+        "strong_hits": [
+          "physics-informed neural network",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network",
+          "flow field"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流场重建与数据驱动": {
+        "score": 10,
+        "strong_hits": [
+          "flow field reconstruction",
+          "field reconstruction"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network",
+          "flow field"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
+    "custom_keywords": [
+      "physics-informed",
+      "flow field reconstruction",
+      "physics-informed neural network",
+      "neural network",
+      "fluid mechanics"
+    ],
+    "scholar_snippet": "in fluid mechanics. This study presents a physics-informed neural network framework  of  static or moving solid boundaries within a flow field. By integrating a body fraction parameter into",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:52:10.834708+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4417054649"
+  },
+  {
+    "id": "gs-c5789f84433a",
+    "title": "Using physics informed neural network (PINN) and neural network (NN) to improve a k−ω turbulence model",
+    "authors": "L Davidson",
+    "abstract": "",
+    "published": "2026-05-02",
+    "paper_url": "https://www.tandfonline.com/doi/abs/10.1080/14685248.2026.2665148",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.tandfonline.com/doi/full/10.1080/14685248.2026.2665148",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Journal of Turbulence",
+    "conference": "Journal of Turbulence",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "neural network",
+      "turbulence"
+    ],
+    "citation_count": 4,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 5,
+        "strong_hits": [
+          "pinn"
+        ],
+        "context_hits": [
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "pinn",
+      "turbulence",
+      "neural network"
+    ],
+    "scholar_snippet": "New values of the constants are found by PINN ( C μ keeps its  simulations are carried out  for the converging-diverging channel flow (the same flow that was used when training the PINN",
+    "abstract_status": "unreliable_google_scholar_snippet"
+  },
+  {
+    "id": "gs-a0ce6147123f",
+    "title": "New approach of the solution of physical fields of fluid dynamics: Physics-informed long short-term memory network",
+    "authors": "Z Li, G Hu",
+    "abstract": "",
+    "published": "2026-02-01",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S0142727X25002826",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of Heat and Fluid Flow",
+    "conference": "International Journal of Heat and Fluid Flow",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "fluid dynamics"
+    ],
+    "citation_count": 5,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 9,
+        "strong_hits": [
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "fluid dynamics",
+      "pinn",
+      "computational fluid dynamics",
+      "cfd"
+    ],
+    "scholar_snippet": "ability of complex dynamic system behavior. The computational fluid dynamics (CFD) is used  to  PINN is employed to encode the physical constraints in depth, and obtain the internal",
+    "abstract_status": "unreliable_google_scholar_snippet"
+  },
+  {
+    "id": "gs-15012bd35d49",
+    "title": "Geometry-Informed Neural Operator for Predicting Surface Flow Field of 3D Variable-Geometry Aerospace Vehicles across a Wide-Speed Range",
+    "authors": "Y Feng, K Chen, H Lou, L Lv, L Xu, X Hu, B Ai",
+    "abstract": "",
+    "published": "2026-06-01",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S1270963826001653",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Aerospace Science and …",
+    "conference": "Aerospace Science and …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "Neural Operator"
+    ],
+    "citation_count": 1,
+    "impact_factor": 63.8,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 5,
+        "strong_hits": [
+          "neural operator"
+        ],
+        "context_hits": [
+          "cfd",
+          "flow field"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "neural operator",
+      "cfd"
+    ],
+    "scholar_snippet": "The model is trained on a limited dataset consisting of 120 high-fidelity CFD samples. The   , and predicts flow fields that agree well with CFD simulations, successfully capturing key flow",
+    "abstract_status": "unreliable_google_scholar_snippet"
+  },
+  {
+    "id": "gs-f40bd82c9c3b",
+    "title": "A fast transonic airfoil flow field prediction model based on a modified Fourier neural operator",
+    "authors": "W Tang, C Wu, Y Yang, Y Zhang",
+    "abstract": "Traditional aerodynamic optimization coupled with computational fluid dynamics is associated with a high computational cost. Surrogate models based on deep learning methods can rapidly predict flow fields from the grid input but often suffer from poor accuracy and generalizability. This study introduces a modified Fourier neural operator for flow field prediction. Unlike most convolution-based models, the Fourier neural operator learns the solution operator directly in the function space, enhancing predictive accuracy and generalizability. The proposed model incorporates a shallow feature extractor, a boundary variable fine-tuner, and several physical priors, including the initial flow field and boundary conditions. The model is trained on uniformly parameterized algebraic grids to accelerate grid generation in aerodynamic optimization. The prediction error for the flow field and force coefficients on the validation and test sets is reduced by 70% to 90% compared with that of the previous convolutional model. The proposed model can make precise predictions for supercritical airfoils under typical working conditions, with a drag coefficient error of approximately 1 drag count on the validation set, and generalizes better than previous convolution-based methods do on extrapolative inflow conditions and airfoils.",
+    "published": "2025-08-29",
+    "paper_url": "https://link.springer.com/article/10.1007/s11433-024-2659-1",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.sciengine.com/parse/pdf/1674-7348/A2E8B963F4AC4D0599600AAAFD937217.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Science China Physics, Mechanics & …",
+    "conference": "Science China Physics, Mechanics & …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "FNO",
+      "Neural Operator",
+      "airfoil",
+      "flow field prediction"
+    ],
+    "citation_count": 3,
+    "impact_factor": 63.8,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 14,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "flow field prediction",
+          "field prediction"
+        ],
+        "context_hits": [
+          "cfd",
+          "flow field"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 空气动力学理论": {
+        "score": 5,
+        "strong_hits": [
+          "airfoil"
+        ],
+        "context_hits": [
+          "flow",
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fourier neural operator",
+      "flow field prediction",
+      "neural operator",
+      "cfd",
+      "airfoil"
+    ],
+    "scholar_snippet": "An airfoil is randomly selected from test set 2, and the time needed for grid generation  and flow field prediction is compared between CFD simulations and the FNOmod",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:52:48.607511+00:00",
+    "abstract_source": "publisher_meta"
+  },
+  {
+    "id": "gs-2b35613a7799",
+    "title": "Accelerating Porous Media Flow Simulations With Fourier Neural Operators: An Application to Geologic Storage of CO2",
+    "authors": "A Chandra, M Koch, S Pawar, A Panda",
+    "abstract": "This study aims to develop surrogate models to accelerate decision‐making processes related to porous media flows, using geologic storage of carbon dioxide ( CO2$CO_2$ ) as an example. Several engineering problems, including selection of subsurface CO2$CO_2$ storage sites, often requires costly and complex simulations of flow fields. In this work, a Fourier Neural Operator (FNO) based model is developed for real‐time, high‐resolution simulation of CO2$CO_2$ plume migration. The model is trained on a comprehensive dataset derived from realistic subsurface parameters and achieves a computational speed‐up of O(103to105)$\\mathcal {O}(10^3 \\textrm { to } 10^5)$ when compared to numerical simulators used in this work, with only a minimal reduction in predictive accuracy. Super‐resolution experiments are also investigated to reduce the computational cost of training the FNO‐based models. Additionally, various strategies are proposed to enhance the reliability of model predictions, which is crucial for evaluating actual geological storage sites. This framework, based on NVIDIA's PhysicsNeMo library, enables rapid screening of sites for CCS. This work scales data‐driven models to realistic 3D systems that better reflect real‐life subsurface aquifers and reservoirs, paving the way for building next‐generation digital twins for subsurface CCS applications. The workflows and strategies discussed can be easily adapted to other material systems and energy solutions, such as geothermal reservoir modeling, flow batteries, fuel cells, and hydrogen storage.",
+    "published": "2025-09-18",
+    "paper_url": "https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/adts.202500747",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://authors.library.caltech.edu/records/gg8jk-tkt80/files/adts70131-sup-0001-supmat.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "… and Simulations",
+    "conference": "… and Simulations",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1002/adts.202500747",
+    "external_ids": {},
+    "semantic_scholar_id": "8f3025439b9e6f8dc40781c64bb4251d4f058921",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator"
+    ],
+    "citation_count": 4,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 6,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "fno"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fourier neural operator",
+      "fno",
+      "neural operator"
+    ],
+    "scholar_snippet": ", often requires costly and complex simulations of flow fields. In this work, a Fourier Neural  Operator (FNO) based model is developed for real-time, high-resolution simulation of C O 2 $",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-09T12:45:27.119850+00:00",
+    "abstract_source": "semantic_scholar"
+  },
+  {
+    "id": "gs-d60000948ce2",
+    "title": "Accelerated ccs site screening using fourier neural operator based surrogates for flow simulations",
+    "authors": "S Pawar, A Panda, A Chandra, P Devarakota",
+    "abstract": "",
+    "published": "2026-02-01",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S1750583626000186",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=5066408",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of …",
+    "conference": "International Journal of …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator",
+      "flow simulation"
+    ],
+    "citation_count": 6,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 7,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator"
+        ],
+        "context_hits": [
+          "flow simulation"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "flow simulation",
+      "neural operator",
+      "fourier neural operator"
+    ],
+    "scholar_snippet": "simulation equations by using large, annotated datasets of input–output pairs. Finite-volume  method based subsurface fluid flow simulation  compared to numerical simulations used in",
+    "abstract_status": "unreliable_google_scholar_snippet"
+  },
+  {
+    "id": "gs-34f1631c885c",
+    "title": "Data-driven turbulence modeling approach for cold-wall hypersonic boundary layers",
+    "authors": "MI Zafar, X Zhou, CJ Roy, D Stelter",
+    "abstract": "Wall-cooling effect in hypersonic boundary layers can significantly alter the near-wall turbulence behavior, which is not accurately modeled by traditional RANS turbulence models. To address this shortcoming, this paper presents a turbulence modeling approach for hypersonic flows with cold-wall conditions using an iterative ensemble Kalman method. Specifically, a neural-network-based turbulence model is used to provide closure mapping from mean flow quantities to Reynolds stress as well as a variable turbulent Prandtl number. Sparse observation data of velocity and temperature are used to train the turbulence model. This approach is analyzed using direct numerical simulation database for zero-pressure gradient (ZPG) boundary layer flows over a flat plate with a Mach number between 6 and 14 and wall-to-recovery temperature ratios ranging from 0.18 to 0.76. Two training cases are conducted: 1) a single training case with observation data from one flow case, 2) a joint training case where data from two flow cases are simultaneously used for training. Trained models are also tested for generalizability on the remaining flow cases in each of the training cases. The results are also analyzed for insights to inform the future work towards enhancing the generalizability of the learned turbulence model.",
+    "published": "2026-04-01",
+    "paper_url": "https://arc.aiaa.org/doi/abs/10.2514/1.T7127",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2406.17446",
+    "categories": [],
+    "venue": "Journal of Thermophysics …",
+    "conference": "Journal of Thermophysics …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.48550/arxiv.2406.17446",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "keywords": [
+      "data-driven",
+      "data-driven turbulence",
+      "turbulence",
+      "turbulence modeling"
+    ],
+    "citation_count": 9,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 7,
+        "strong_hits": [
+          "turbulence modeling",
+          "data-driven turbulence"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "custom_keywords": [
+      "data-driven",
+      "turbulence",
+      "data-driven turbulence",
+      "turbulence modeling"
+    ],
+    "scholar_snippet": "This paper represents a preliminary effort in creating data-driven turbulence models for  hypersonic flows, subsequently aiming to address a broader spectrum of flow scenarios beyond",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:53:11.749771+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4400064989"
+  },
+  {
+    "id": "gs-eb50b4d5b487",
+    "title": "Data-driven closure model for large-scale eddies in the energy-containing range of turbulence",
+    "authors": "S Matsumoto, M Inubushi, S Goto",
+    "abstract": "",
+    "published": "2026-05-28",
+    "paper_url": "https://link.aps.org/doi/10.1103/v4lk-819q",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Physical Review Fluids",
+    "conference": "Physical Review Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "keywords": [
+      "closure model",
+      "data-driven",
+      "turbulence"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 4,
+        "strong_hits": [
+          "closure model"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 3,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "custom_keywords": [
+      "data-driven",
+      "turbulence",
+      "closure model"
+    ],
+    "scholar_snippet": "for large-scale eddies in the energycontaining range of turbulence. To this end, we construct  a data-driven closure model for the largest eddies in turbulence driven by the steady Taylor-",
+    "abstract_status": "unreliable_google_scholar_snippet"
+  },
+  {
+    "id": "gs-05a7a08c3175",
+    "title": "Toward a unified data-driven turbulence model through multi-objective learning",
+    "authors": "Z Liu, H Wang, Z Zhao, H Xiao",
+    "abstract": "Abstract Turbulence remains one of the last unresolved problems of classical physics and a major bottleneck to accurate flow prediction in climate, aerospace, and energy systems. Industrial simulations therefore rely on averaged representations of turbulence, which often struggle to predict flows governed by multiple interacting mechanisms. We present a unified, data-driven turbulence modeling framework designed to learn robustly from sparse, indirect observations across diverse flow regimes. The framework embeds physical consistency into a flexible, frame-invariant closure, automatically selects representative training cases based on similarity of flow-feature distributions, and learns a single, unified model through a multi-objective ensemble strategy that balances competing objectives across flows and quantities of interest. The resulting unified foundation model adapts seamlessly across regimes without manual intervention. It outperforms existing turbulence models across a broad spectrum of canonical flows and maintains improved performance in complex three-dimensional configurations of industrial relevance, including a gas turbine diffuser, a generic car, and a generic aircraft. When application-specific accuracy is required, the framework further enables specialist models through additive fine-tuning on targeted flow datasets. The results demonstrate the feasibility of a deployable and generalized turbulence modeling approach that unifies multiple flow mechanisms within a single architecture for a broad range of natural and industrial flows.",
+    "published": "2026-06-04",
+    "paper_url": "https://academic.oup.com/nsr/advance-article-abstract/doi/10.1093/nsr/nwag344/8702617",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://academic.oup.com/nsr/advance-article-pdf/doi/10.1093/nsr/nwag344/68477324/nwag344.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "National Science Review",
+    "conference": "National Science Review",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1093/nsr/nwag344",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "keywords": [
+      "data-driven",
+      "data-driven turbulence",
+      "turbulence",
+      "turbulence modeling"
+    ],
+    "citation_count": 0,
+    "impact_factor": 63.8,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 7,
+        "strong_hits": [
+          "turbulence modeling",
+          "data-driven turbulence"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 3,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "custom_keywords": [
+      "data-driven",
+      "turbulence",
+      "data-driven turbulence",
+      "turbulence modeling"
+    ],
+    "scholar_snippet": "of turbulence, which often struggle to predict flows governed by multiple interacting mechanisms.  We present a unified, data-driven turbulence modeling  -invariant closure, automatically",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:53:25.123109+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4414746142"
+  },
+  {
+    "id": "gs-bce743cfa564",
+    "title": "The Engineering Turbulence Problem and a Data-Driven Solution",
+    "authors": "J Li, RF Kunz, G Huang, XI Yang",
+    "abstract": "In fluid engineering, the turbulence problem is the longstanding challenge of obtaining accurate predictions of engineering quantities at affordable computational cost. Viewed through the lens of computational complexity, a practical algorithm requires cost growth no worse than $O(N)$, where $N$ denotes the problem size. For turbulent flows, the problem size may be approximated by the number of dynamically relevant scales and, therefore, by the Reynolds number $Re$. On this basis, the cost of a practical method should scale no worse than $O(Re)$. We propose a multi-fidelity, physics-constrained, data-driven framework that formally satisfies this criterion. For demonstration, we augment the Spalart--Allmaras (SA) model through field inversion and machine learning (FIML) using a constrained formulation that preserves the law of the wall. The model is trained at low Reynolds number, where high-fidelity data are affordable, and is then deployed at higher Reynolds numbers. Relative to the target Reynolds number, the high-fidelity calculation contributes a cost of $O(Re^0)$, the FIML stage also contributes $O(Re^0)$, and the low-fidelity RANS prediction scales as $O(\\log(Re))$. The overall formal cost scaling is therefore $O(\\log(Re))$. The framework is assessed in plane channel flow and in the periodic hill with slope factor $\\alpha=1$. In channel flow, a model trained at $Re_\\tau=1000$ corrects the wake-layer error of the baseline SA model and retains this improvement when extrapolated to $Re_\\tau=5200$. In the periodic hill, a model trained at $Re_b=5600$ is tested at $Re_b=10595$, $19000$, and $37000$. The constrained formulation preserves the correct separation and recovery behavior as Reynolds number increases. For comparison, we include results from conventional unconstrained FIML and from the baseline model. Across all tested Reynolds numbers, the constrained model yields the lowest root-mean-square error and exhibits nearly Reynolds-number-independent error, indicating robust extrapolation.",
+    "published": "2026-06-08",
+    "paper_url": "https://arc.aiaa.org/doi/abs/10.2514/6.2026-4770",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "AIAA AVIATION 2026 Forum",
+    "conference": "AIAA AVIATION 2026 Forum",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.2514/6.2026-4770",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "keywords": [
+      "PINN",
+      "data-driven",
+      "data-driven turbulence",
+      "turbulence",
+      "turbulence modeling"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 7,
+        "strong_hits": [
+          "turbulence modeling",
+          "data-driven turbulence"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 3,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "custom_keywords": [
+      "turbulence",
+      "physics-constrained",
+      "data-driven turbulence",
+      "data-driven",
+      "turbulence modeling"
+    ],
+    "scholar_snippet": "Despite these advances, most prior work in data-driven turbulence modeling has  In  this paper, we introduce a multi-fidelity, physics-constrained, data-driven turbulence-modeling",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:53:29.705601+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W7163566212"
+  },
+  {
+    "id": "gs-2be6f967775e",
+    "title": "Towards active flow control strategies through deep reinforcement learning",
+    "authors": "R Montalà, B Font, P Suárez, J Rabault",
+    "abstract": "This paper presents a deep reinforcement learning (DRL) framework for active flow control (AFC) to reduce drag in aerodynamic bodies.Tested on a 3D cylinder at Re = 100, the DRL approach achieved a 9.32% drag reduction and a 78.4% decrease in lift oscillations by learning advanced actuation strategies.The methodology integrates a CFD solver with a DRL model using an in-memory database for efficient communication between the two instances, making it scalable to more complex flows and higher Reynolds numbers.",
+    "published": "2026-03-15",
+    "paper_url": "https://link.springer.com/chapter/10.1007/978-3-032-17696-7_11",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2411.05536",
+    "categories": [],
+    "venue": "… , Numerical Tools and …",
+    "conference": "… , Numerical Tools and …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.23967/eccomas.2024.115",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 流动控制与强化学习"
+    ],
+    "keywords": [
+      "CFD",
+      "DRL",
+      "RL",
+      "active flow control",
+      "flow control",
+      "fluid dynamics"
+    ],
+    "citation_count": 4,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 18,
+        "strong_hits": [
+          "flow control",
+          "active flow control",
+          "reinforcement learning",
+          "deep reinforcement learning",
+          "drl"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "custom_keywords": [
+      "flow control",
+      "deep reinforcement learning",
+      "drl",
+      "reinforcement learning",
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd",
+      "active flow control"
+    ],
+    "scholar_snippet": "” problem with minimal overhead and employs a GPU-enabled code for computational  fluid dynamics (CFD) simulations. This approach ensures rapid trajectory collection for DRL",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:53:34.162141+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4406632252"
+  },
+  {
+    "id": "gs-6e0b13bbd3e4",
+    "title": "Application of a Physics‐Informed Neural Network Surrogate Model Based on CFD Data for Modeling Flow Around a Cylinder Under Thermal Effects",
+    "authors": "A Issakhov, A Daminov, A Sabyrkulova",
+    "abstract": "ABSTRACT This paper examines the application of PINN models to solving a two‐dimensional cylinder flow problem with limited data. Using data obtained by direct numerical simulation, a surrogate PINN model was developed and trained. The model utilizes the governing equations of fluid dynamics and heat transfer, enabling it to accurately predict flow parameters such as velocity components, pressure, and temperature. The direct computational flow model was numerically solved using the SIMPLE algorithm, which couples pressures and velocities. The results showed that the PINN model, which does not contain initial and boundary conditions from direct numerical simulation, is capable of reproducing complex dynamic processes such as the formation of a Kármán vortex street behind a cylinder. However, limitations were identified due to the lack of initial and boundary conditions, which led to increased errors at the boundaries of the computational domain. For example, from the data obtained using the PINN model, a very small absolute difference in error for the velocity and temperature components between the reference data and the predicted values can be noted. Thus, for the horizontal velocity component, the maximum relative error was no more than 2.5%. For the temperature component, the relative error was no more than 0.02%. However, the relative error for pressure was 60%–75%. The main reason for this large error is the lack of a reference pressure value or initial pressure conditions in the loss function. The results show that the PINN surrogate model with eight hidden layers of 200 neurons successfully copes with the task of modeling complex unsteady flow. The integration of physical laws made it possible to achieve relatively satisfactory accuracy using only 10,000 data points.",
+    "published": "2025-11-09",
+    "paper_url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/fld.70024",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "… Methods in Fluids",
+    "conference": "… Methods in Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1002/fld.70024",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "neural network",
+      "surrogate model"
+    ],
+    "citation_count": 1,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 5,
+        "strong_hits": [
+          "surrogate model"
+        ],
+        "context_hits": [
+          "cfd",
+          "neural network"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 6,
+        "strong_hits": [
+          "pinn"
+        ],
+        "context_hits": [
+          "cfd",
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "pinn",
+      "cfd",
+      "surrogate model",
+      "neural network"
+    ],
+    "scholar_snippet": "This paper proposes to study thermal unsteady flow past a  a surrogate model based on  the PINN model that can accurately predict various characteristics obtained from direct CFD",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:53:38.858114+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4416058407"
+  },
+  {
+    "id": "gs-92e5e3610454",
+    "title": "POD-Kriging surrogate modeling for rapid prediction of the impact of façade protruding rib geometries on urban canyon wind flow",
+    "authors": "Y Zhang, X Zheng",
+    "abstract": "",
+    "published": "2026-03-01",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S0360132326000041",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Building and Environment",
+    "conference": "Building and Environment",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "POD",
+      "les",
+      "surrogate model"
+    ],
+    "citation_count": 1,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 10,
+        "strong_hits": [
+          "surrogate model",
+          "surrogate modeling",
+          "pod"
+        ],
+        "context_hits": [
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "pod",
+      "cfd",
+      "surrogate model",
+      "les"
+    ],
+    "scholar_snippet": "order surrogate model using the Proper Orthogonal Decomposition (POD) and Kriging surrogate  model to predict wind  Based on CFD data from LES simulations, the model is trained to",
+    "abstract_status": "unreliable_google_scholar_snippet"
+  },
+  {
+    "id": "gs-69575cefabd3",
+    "title": "Differentiable multiphase flow model for physics-informed machine learning in reservoir pressure management",
+    "authors": "H Ur Rashid, A Pachalieva, D O'Malley",
+    "abstract": "Accurate subsurface reservoir pressure control is extremely challenging due to geological heterogeneity and multiphase fluid-flow dynamics. Predicting behavior in this setting relies on high-fidelity physics-based simulations that are computationally expensive. Yet, the uncertain, heterogeneous properties that control these flows make it necessary to perform many of these expensive simulations, which is often prohibitive. To address these challenges, we introduce a physics-informed machine learning workflow that couples a fully differentiable multiphase flow simulator, which is implemented in the DPFEHM framework with a convolutional neural network (CNN). The CNN learns to predict fluid extraction rates from heterogeneous permeability fields to enforce pressure limits at critical reservoir locations. By incorporating transient multiphase flow physics into the training process, our method enables more practical and accurate predictions for realistic injection-extraction scenarios compared to previous works. To speed up training, we pretrain the model on single-phase, steady-state simulations and then finetune it on full multiphase scenarios, which dramatically reduces the computational cost. We demonstrate that high-accuracy training can be achieved with fewer than three thousand full-physics multiphase flow simulations - compared to previous estimates requiring up to ten million. This drastic reduction in the number of simulations is achieved by leveraging transfer learning from much less expensive single phase simulations.",
+    "published": "2026-02-24",
+    "paper_url": "https://www.nature.com/articles/s41598-026-37063-3",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.nature.com/articles/s41598-026-37063-3",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Scientific Reports",
+    "conference": "Scientific Reports",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1038/s41598-026-37063-3",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "machine learning",
+      "multiphase flow",
+      "two-phase flow"
+    ],
+    "citation_count": 3,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 8,
+        "strong_hits": [
+          "physics-informed",
+          "physics-informed machine learning"
+        ],
+        "context_hits": [
+          "flow",
+          "machine learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 多相流理论": {
+        "score": 3,
+        "strong_hits": [
+          "multiphase flow",
+          "two-phase flow"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": [
+          "machine learning"
+        ]
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "multiphase flow",
+      "two-phase flow",
+      "machine learning"
+    ],
+    "scholar_snippet": "Our workflow uses a heterogeneous permeability fields and transient two-phase flow to  improve prediction accuracy, while the use of automatic differentiation within the DPFEHM",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:53:53.340219+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W7131299078"
+  }
+]

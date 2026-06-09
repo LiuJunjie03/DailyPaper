@@ -1,0 +1,418 @@
+[
+  {
+    "id": "2511.22819v1",
+    "title": "Resolving Sharp Gradients of Unstable Singularities to Machine Precision via Neural Networks",
+    "authors": "Yongji Wang, Tristan Léger, Ching-Yao Lai, Tristan Buckmaster",
+    "abstract": "Recent work introduced a robust computational framework combining embedded mathematical structures, advanced optimization, and neural network architecture, leading to the discovery of multiple unstable self-similar solutions for key fluid dynamics equations, including the Incompressible Porous Media (IPM) and 2D Boussinesq systems. While this framework confirmed the existence of these singularities, an accuracy level approaching double-float machine precision was only achieved for stable and 1st unstable solutions of the 1D Córdoba-Córdoba-Fontelos model. For highly unstable solutions characterized by extreme gradients, the accuracy remained insufficient for validation. The primary obstacle is the presence of sharp solution gradients. Those gradients tend to induce large, localized PDE residuals during training, which not only hinder convergence, but also obscure the subtle signals near the origin required to identify the correct self-similar scaling parameter lambda of the solutions. In this work, we introduce a gradient-normalized PDE residual re-weighting scheme to resolve the high-gradient challenge while amplifying the critical residual signals at the origin for lambda identification. Coupled with the multi-stage neural network architecture, the PDE residuals are reduced to the level of round-off error across a wide spectrum of unstable self-similar singularities previously discovered. Furthermore, our method enables the discovery of new highly unstable singularities, i.e. the 4th unstable solution for IPM equations and a novel family of highly unstable solitons for the Nonlinear Schrödinger equations. This results in achieving high-gradient solutions with high precision, providing an important ingredient for bridging the gap between numerical discovery and computer-assisted proofs for unstable phenomena in nonlinear PDEs.",
+    "published": "2025-11-28",
+    "arxiv_url": "http://arxiv.org/abs/2511.22819v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.22819v1",
+    "categories": [
+      "math.AP",
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics",
+      "neural network"
+    ],
+    "keywords": [
+      "fluid dynamics",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2511.22819",
+    "paper_url": "http://arxiv.org/abs/2511.22819v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2511.22819"
+  },
+  {
+    "id": "2512.00104v1",
+    "title": "Learning with Physical Constraints",
+    "authors": "Miguel A. Mendez, Jan van Den Berghe, Manuel Ratz, Matilde Fiore, Lorenzo Schena",
+    "abstract": "This chapter provides three tutorial exercises on physics-constrained regression. These are implemented as toy problems that seek to mimic grand challenges in (1) the super-resolution and data assimilation of the velocity field in image velocimetry, (2) data-driven turbulence modeling, and (3) system identification and digital twinning for forecasting and control. The Python codes for all exercises are provided in the course repository.",
+    "published": "2025-11-27",
+    "arxiv_url": "http://arxiv.org/abs/2512.00104v1",
+    "pdf_url": "https://arxiv.org/pdf/2512.00104v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "stat.ML"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "turbulence",
+      "physics-constrained",
+      "data-driven turbulence",
+      "data assimilation",
+      "data-driven",
+      "super-resolution",
+      "turbulence modeling"
+    ],
+    "keywords": [
+      "PINN",
+      "data assimilation",
+      "data-driven",
+      "data-driven turbulence",
+      "super-resolution",
+      "turbulence",
+      "turbulence modeling"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2512.00104",
+    "paper_url": "http://arxiv.org/abs/2512.00104v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 7,
+        "strong_hits": [
+          "turbulence modeling",
+          "data-driven turbulence"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 加速求解与超分辨": {
+        "score": 4,
+        "strong_hits": [
+          "super-resolution"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流场重建与数据驱动": {
+        "score": 4,
+        "strong_hits": [
+          "data assimilation"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "physics.flu-dyn"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2512.00104"
+  },
+  {
+    "id": "2511.18820v2",
+    "title": "Unsupervised simulation of incompressible flows with physics- and equality- constrained artificial neural networks",
+    "authors": "Qifeng Hu, Inanc Senocak",
+    "abstract": "Physics-informed neural networks (PINNs) have shown promise for solving partial differential equations, yet their success in simulating incompressible flows at high Reynolds numbers remains limited. Existing approaches rely on auxiliary labeled data, supervised pretraining, or reference solutions, and no purely unsupervised method comparable to conventional finite-difference or finite-volume solvers has been demonstrated. We attribute this gap to the absence of a mechanism for enforcing the divergence-free constraint and boundary conditions to strict tolerances. To address this, we adopt the physics- and equality-constrained artificial neural network (PECANN) framework with a conditionally adaptive augmented Lagrangian method (CA-ALM), and introduce a pressure-Poisson-based objective. The residual of the pressure Poisson equation is minimized subject to the momentum and continuity equations and boundary conditions on the primitive variables as equality constraints, with CA-ALM enforcing all constraints tightly. For advection-dominated, high-Reynolds-number flows, we further propose an adaptive vanishing entropy viscosity that stabilizes early training without influencing the converged solution. A baseline that instead uses the momentum residual as the objective proves ineffective under the same machinery, underscoring the critical role of the pressure-Poisson objective. The method is assessed on lid-driven cavity flow up to $Re=7{,}500$, three-dimensional unsteady Beltrami flow, and steady and unsteady flow past a circular cylinder with general inflow-outflow boundary conditions, including an ablation study identifying admissible outlet conditions -- all without labeled data or supervised pretraining. Notably, it captures the spontaneous onset of periodic vortex shedding in unsteady cylinder flow without external perturbations, starting from a randomly initialized network.",
+    "published": "2025-11-24",
+    "arxiv_url": "http://arxiv.org/abs/2511.18820v2",
+    "pdf_url": "https://arxiv.org/pdf/2511.18820v2",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "physics-informed",
+      "vortex",
+      "neural network"
+    ],
+    "keywords": [
+      "PINN",
+      "neural network",
+      "vortex"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2511.18820",
+    "paper_url": "http://arxiv.org/abs/2511.18820v2",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 5,
+        "strong_hits": [
+          "physics-informed"
+        ],
+        "context_hits": [
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2511.18820"
+  },
+  {
+    "id": "2511.17754v1",
+    "title": "Periodicity-Enforced Neural Network for Designing Deterministic Lateral Displacement Devices",
+    "authors": "Andrew Lee, Mahir Mobarrat, Xiaolin Chen",
+    "abstract": "Deterministic Lateral Displacement (DLD) devices enable liquid biopsy for cancer detection by separating circulating tumor cells (CTCs) from blood samples based on size, but designing these microfluidic devices requires computationally expensive Navier-Stokes simulations and particle-tracing analyses. While recent surrogate modeling approaches using deep learning have accelerated this process, they often inadequately handle the critical periodic boundary conditions of DLD unit cells, leading to cumulative errors in multi-unit device predictions. This paper introduces a periodicity-enforced surrogate modeling approach that incorporates periodic layers, neural network components that guarantee exact periodicity without penalty terms or output modifications, into deep learning architectures for DLD device design. The proposed method employs three sub-networks to predict steady-state, non-dimensional velocity and pressure fields (u, v, p) rather than directly predicting critical diameters or particle trajectories, enabling complete flow field characterization and enhanced design flexibility. Periodic layers ensure exact matching of flow variables across unit cell boundaries through architectural enforcement rather than soft penalty-based approaches. Validation on 120 CFD-generated geometries demonstrates that the periodic layer implementation achieves 0.478% critical diameter error while maintaining perfect periodicity consistency, representing an 85.4% improvement over baseline methods. The approach enables efficient and accurate DLD device design with guaranteed boundary condition satisfaction for multi-unit device applications.",
+    "published": "2025-11-21",
+    "arxiv_url": "http://arxiv.org/abs/2511.17754v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.17754v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "microfluidic",
+      "neural network",
+      "deep learning",
+      "navier-stokes",
+      "cfd"
+    ],
+    "keywords": [
+      "CFD",
+      "deep learning",
+      "microfluidic",
+      "navier-stokes",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2511.17754",
+    "paper_url": "http://arxiv.org/abs/2511.17754v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 8,
+        "strong_hits": [
+          "surrogate modeling"
+        ],
+        "context_hits": [
+          "navier-stokes",
+          "cfd",
+          "neural network",
+          "deep learning",
+          "flow field"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2511.17754"
+  },
+  {
+    "id": "2511.17475v1",
+    "title": "Addressing A Posteriori Performance Degradation in Neural Network Subgrid Stress Models",
+    "authors": "Andy Wu, Sanjiva K. Lele",
+    "abstract": "Neural network subgrid stress models often have a priori performance that is far better than the a posteriori performance, leading to neural network models that look very promising a priori completely failing in a posteriori Large Eddy Simulations (LES). This performance gap can be decreased by combining two different methods, training data augmentation and reducing input complexity to the neural network. Augmenting the training data with two different filters before training the neural networks has no performance degradation a priori as compared to a neural network trained with one filter. A posteriori, neural networks trained with two different filters are far more robust across two different LES codes with different numerical schemes. In addition, by ablating away the higher order terms input into the neural network, the a priori versus a posteriori performance changes become less apparent. When combined, neural networks that use both training data augmentation and a less complex set of inputs have a posteriori performance far more reflective of their a priori evaluation.",
+    "published": "2025-11-21",
+    "arxiv_url": "http://arxiv.org/abs/2511.17475v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.17475v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "les",
+      "neural network"
+    ],
+    "keywords": [
+      "les",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2511.17475",
+    "paper_url": "http://arxiv.org/abs/2511.17475v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 5,
+        "strong_hits": [
+          "subgrid stress"
+        ],
+        "context_hits": [
+          "les",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2511.17475"
+  },
+  {
+    "id": "2511.14581v1",
+    "title": "Online learning of subgrid-scale models for quasi-geostrophic turbulence in planetary interiors",
+    "authors": "Hugo Frezat, Thomas Gastine, Alexandre Fournier",
+    "abstract": "The use of machine learning to represent subgrid-scale (SGS) dynamics is now well established in weather forecasting and climate modelling. Recent advances have demonstrated that SGS models trained via ``online'' end-to-end learning -- where the dynamical solver operating on the filtered equations participates in the training -- can outperform traditional physics-based approaches. Most studies, however, have focused on idealised periodic domains, neglecting the mechanical boundaries present e.g. in planetary interiors. To address this issue, we consider two-dimensional quasi-geostrophic turbulent flow in an axisymmetric bounded domain that we model using a pseudo-spectral differentiable solver, thereby enabling online learning. We examine three configurations, varying the geometry (between an exponential container and a spherical shell) and the rotation rate. Flow is driven by a prescribed analytical forcing, allowing for precise control over the energy injection scale and an exact estimate of the power input. We evaluate the accuracy of the online-trained SGS model against the reference direct numerical simulation using integral quantities and spectral diagnostics. In all configurations, we show that an SGS model trained on data spanning only one turnover time remains stable and accurate over integrations at least a hundred times longer than the training period. Moreover, we demonstrate the model's remarkable ability to reproduce slow processes occurring on time scales far exceeding the training duration, such as the inward drift of jets in the spherical shell. These results suggest a promising path towards developing SGS models for planetary and stellar interior dynamics, including dynamo processes.",
+    "published": "2025-11-18",
+    "arxiv_url": "http://arxiv.org/abs/2511.14581v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.14581v1",
+    "categories": [
+      "physics.flu-dyn",
+      "astro-ph.EP",
+      "cs.LG"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "turbulence",
+      "sgs model",
+      "climate",
+      "machine learning",
+      "geostrophic",
+      "weather forecasting",
+      "turbulent flow",
+      "differentiable solver"
+    ],
+    "keywords": [
+      "climate",
+      "differentiable solver",
+      "geostrophic",
+      "machine learning",
+      "sgs model",
+      "turbulence",
+      "turbulent flow",
+      "weather forecasting"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2511.14581",
+    "paper_url": "http://arxiv.org/abs/2511.14581v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 8,
+        "strong_hits": [
+          "subgrid-scale",
+          "sgs model"
+        ],
+        "context_hits": [
+          "turbulent flow",
+          "machine learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 数值方法增强": {
+        "score": 4,
+        "strong_hits": [
+          "differentiable solver"
+        ],
+        "context_hits": [
+          "machine learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "turbulence",
+          "turbulent flow"
+        ],
+        "context_hits": [
+          "flow",
+          "physics.flu-dyn"
+        ],
+        "negative_hits": [
+          "machine learning"
+        ]
+      },
+      "流体力学 / 环境与地球物理流体": {
+        "score": 4,
+        "strong_hits": [
+          "weather forecasting",
+          "climate"
+        ],
+        "context_hits": [
+          "flow",
+          "simulation"
+        ],
+        "negative_hits": [
+          "machine learning"
+        ]
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2511.14581"
+  }
+]

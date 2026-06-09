@@ -1,0 +1,217 @@
+[
+  {
+    "id": "2510.00233v1",
+    "title": "Differentiable Autoencoding Neural Operator for Interpretable and Integrable Latent Space Modeling",
+    "authors": "Siva Viknesh, Amirhossein Arzani",
+    "abstract": "Scientific machine learning has enabled the extraction of physical insights from high-dimensional spatiotemporal flow data using linear and nonlinear dimensionality reduction techniques. Despite these advances, achieving interpretability within the latent space remains a challenge. To address this, we propose the DIfferentiable Autoencoding Neural Operator (DIANO), a deterministic autoencoding neural operator framework that constructs physically interpretable latent spaces for both dimensional and geometric reduction, with the provision to enforce differential governing equations directly within the latent space. Built upon neural operators, DIANO compresses high-dimensional input functions into a low-dimensional latent space via spatial coarsening through an encoding neural operator and subsequently reconstructs the original inputs using a decoding neural operator through spatial refinement. We assess DIANO's latent space interpretability and performance in dimensionality reduction against baseline models, including the Convolutional Neural Operator and standard autoencoders. Furthermore, a fully differentiable partial differential equation (PDE) solver is developed and integrated within the latent space, enabling the temporal advancement of both high- and low-fidelity PDEs, thereby embedding physical priors into the latent dynamics. We further investigate various PDE formulations, including the 2D unsteady advection-diffusion and the 3D Pressure-Poisson equation, to examine their influence on shaping the latent flow representations. Benchmark problems considered include flow past a 2D cylinder, flow through a 2D symmetric stenosed artery, and a 3D patient-specific coronary artery. These case studies demonstrate DIANO's capability to solve PDEs within a latent space that facilitates both dimensional and geometrical reduction while allowing latent interpretability.",
+    "published": "2025-09-30",
+    "arxiv_url": "http://arxiv.org/abs/2510.00233v1",
+    "pdf_url": "https://arxiv.org/pdf/2510.00233v1",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "latent space",
+      "neural operator",
+      "machine learning"
+    ],
+    "keywords": [
+      "Neural Operator",
+      "latent space",
+      "machine learning"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2510.00233",
+    "paper_url": "http://arxiv.org/abs/2510.00233v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 9,
+        "strong_hits": [
+          "neural operator",
+          "latent space"
+        ],
+        "context_hits": [
+          "machine learning",
+          "spatiotemporal",
+          "flow data"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.00233"
+  },
+  {
+    "id": "2509.24556v1",
+    "title": "Deep Reinforcement Learning in Action: Real-Time Control of Vortex-Induced Vibrations",
+    "authors": "Hussam Sababha, Bernat Font, Mohammed Daqaq",
+    "abstract": "This study showcases an experimental deployment of deep reinforcement learning (DRL) for active flow control (AFC) of vortex-induced vibrations (VIV) in a circular cylinder at a high Reynolds number (Re = 3000) using rotary actuation. Departing from prior work that relied on low-Reynolds-number numerical simulations, this research demonstrates real-time control in a challenging experimental setting, successfully addressing practical constraints such as actuator delay. When the learning algorithm is provided with state feedback alone (displacement and velocity of the oscillating cylinder), the DRL agent learns a low-frequency rotary control strategy that achieves up to 80% vibration suppression which leverages the traditional lock-on phenomenon. While this level of suppression is significant, it remains below the performance achieved using high-frequency rotary actuation. The reduction in performance is attributed to actuation delays and can be mitigated by augmenting the learning algorithm with past control actions. This enables the agent to learn a high-frequency rotary control strategy that effectively modifies vortex shedding and achieves over 95% vibration attenuation. These results demonstrate the adaptability of DRL for AFC in real-world experiments and its ability to overcome instrumental limitations such as actuation lag.",
+    "published": "2025-09-29",
+    "arxiv_url": "http://arxiv.org/abs/2509.24556v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.24556v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "physics.flu-dyn"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 流动控制与强化学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow control",
+      "deep reinforcement learning",
+      "drl",
+      "reinforcement learning",
+      "vortex",
+      "active flow control"
+    ],
+    "keywords": [
+      "DRL",
+      "RL",
+      "active flow control",
+      "flow control",
+      "vortex"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2509.24556",
+    "paper_url": "http://arxiv.org/abs/2509.24556v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 16,
+        "strong_hits": [
+          "flow control",
+          "active flow control",
+          "reinforcement learning",
+          "deep reinforcement learning",
+          "drl"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 5,
+        "strong_hits": [
+          "vortex"
+        ],
+        "context_hits": [
+          "flow",
+          "physics.flu-dyn"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2509.24556"
+  },
+  {
+    "id": "2509.24264v1",
+    "title": "Graph-Based Learning of Free Surface Dynamics in Generalized Newtonian Fluids using Smoothed Particle Hydrodynamics",
+    "authors": "Hyo-Jin Kim, Jaekwang Kim, Hyung-Jun Park",
+    "abstract": "In this study, we propose a graph neural network (GNN) model for efficiently predicting the flow behavior of non-Newtonian fluids with free surface dynamics. The numerical analysis of non-Newtonian fluids presents significant challenges, as traditional algorithms designed for Newtonian fluids with constant viscosity often struggle to converge when applied to non-Newtonian cases, where rheological properties vary dynamically with flow conditions. Among these, power-law fluids exhibit viscosity that decreases exponentially as the shear rate increases, making numerical simulations particularly difficult. The complexity further escalates in free surface flow scenarios, where computational challenges intensify. In such cases, particle-based methods like smoothed particle hydrodynamics (SPH) provide advantages over traditional grid-based techniques, such as the finite element method (FEM). Building on this approach, we introduce a novel GNN-based numerical model to enhance the computational efficiency of non-Newtonian power-law fluid flow simulations. Our model is trained on SPH simulation data, learning the effects of particle accelerations in the presence of SPH interactions based on the fluid's power-law parameters. The GNN significantly accelerates computations while maintaining reliable accuracy in benchmark tests, including dam-break and droplet impact simulations. The results underscore the potential of GNN-based simulation frameworks for efficiently modeling non-Newtonian fluid behavior, paving the way for future advancements in data-driven fluid simulations.",
+    "published": "2025-09-29",
+    "arxiv_url": "http://arxiv.org/abs/2509.24264v1",
+    "pdf_url": "https://arxiv.org/pdf/2509.24264v1",
+    "categories": [
+      "physics.flu-dyn",
+      "cs.LG",
+      "physics.comp-ph"
+    ],
+    "conference": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "graph neural network",
+      "finite element method",
+      "sph",
+      "gnn",
+      "data-driven",
+      "neural network",
+      "droplet",
+      "finite element"
+    ],
+    "keywords": [
+      "GNN",
+      "SPH",
+      "data-driven",
+      "droplet",
+      "finite element",
+      "finite element method",
+      "neural network"
+    ],
+    "citation_count": null,
+    "impact_factor": null,
+    "venue": "",
+    "doi": "",
+    "arxiv_id": "2509.24264",
+    "paper_url": "http://arxiv.org/abs/2509.24264v1",
+    "publication_type": "preprint",
+    "is_preprint": true,
+    "source": "arxiv",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 8,
+        "strong_hits": [
+          "graph neural network",
+          "gnn"
+        ],
+        "context_hits": [
+          "neural network",
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 多相流理论": {
+        "score": 4,
+        "strong_hits": [
+          "sph",
+          "droplet"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": [
+          "neural network"
+        ]
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2509.24264"
+  }
+]

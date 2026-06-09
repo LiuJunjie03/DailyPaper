@@ -64,13 +64,13 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "physics-constrained",
-      "data-driven turbulence",
-      "data assimilation",
       "data-driven",
+      "turbulence",
+      "data assimilation",
+      "turbulence modeling",
+      "physics-constrained",
       "super-resolution",
-      "turbulence modeling"
+      "data-driven turbulence"
     ],
     "keywords": [
       "PINN",
@@ -215,10 +215,10 @@
     "official_keywords": [],
     "custom_keywords": [
       "microfluidic",
-      "neural network",
       "deep learning",
-      "navier-stokes",
-      "cfd"
+      "neural network",
+      "cfd",
+      "navier-stokes"
     ],
     "keywords": [
       "CFD",
@@ -332,14 +332,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "sgs model",
-      "climate",
-      "machine learning",
+      "differentiable solver",
       "geostrophic",
-      "weather forecasting",
+      "turbulence",
+      "machine learning",
       "turbulent flow",
-      "differentiable solver"
+      "climate",
+      "sgs model",
+      "weather forecasting"
     ],
     "keywords": [
       "climate",
@@ -414,5 +414,184 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "preprint_pdf_url": "https://arxiv.org/pdf/2511.14581"
+  },
+  {
+    "id": "gs-6e0b13bbd3e4",
+    "title": "Application of a Physics‐Informed Neural Network Surrogate Model Based on CFD Data for Modeling Flow Around a Cylinder Under Thermal Effects",
+    "authors": "A Issakhov, A Daminov, A Sabyrkulova",
+    "abstract": "ABSTRACT This paper examines the application of PINN models to solving a two‐dimensional cylinder flow problem with limited data. Using data obtained by direct numerical simulation, a surrogate PINN model was developed and trained. The model utilizes the governing equations of fluid dynamics and heat transfer, enabling it to accurately predict flow parameters such as velocity components, pressure, and temperature. The direct computational flow model was numerically solved using the SIMPLE algorithm, which couples pressures and velocities. The results showed that the PINN model, which does not contain initial and boundary conditions from direct numerical simulation, is capable of reproducing complex dynamic processes such as the formation of a Kármán vortex street behind a cylinder. However, limitations were identified due to the lack of initial and boundary conditions, which led to increased errors at the boundaries of the computational domain. For example, from the data obtained using the PINN model, a very small absolute difference in error for the velocity and temperature components between the reference data and the predicted values can be noted. Thus, for the horizontal velocity component, the maximum relative error was no more than 2.5%. For the temperature component, the relative error was no more than 0.02%. However, the relative error for pressure was 60%–75%. The main reason for this large error is the lack of a reference pressure value or initial pressure conditions in the loss function. The results show that the PINN surrogate model with eight hidden layers of 200 neurons successfully copes with the task of modeling complex unsteady flow. The integration of physical laws made it possible to achieve relatively satisfactory accuracy using only 10,000 data points.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "This paper proposes to study thermal unsteady flow past a  a surrogate model based on  the PINN model that can accurately predict various characteristics obtained from direct CFD",
+    "published": "2025-11-09",
+    "paper_url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/fld.70024",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "… Methods in Fluids",
+    "conference": "… Methods in Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1002/fld.70024",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "fluid dynamics",
+      "heat transfer",
+      "neural network",
+      "surrogate model",
+      "vortex"
+    ],
+    "citation_count": 1,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 5,
+        "strong_hits": [
+          "surrogate model"
+        ],
+        "context_hits": [
+          "cfd",
+          "neural network"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 7,
+        "strong_hits": [
+          "pinn"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 燃烧与传热": {
+        "score": 3,
+        "strong_hits": [
+          "heat transfer"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "simulation",
+          "cfd"
+        ],
+        "negative_hits": [
+          "neural network"
+        ]
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "neural network",
+      "surrogate model",
+      "cfd",
+      "fluid dynamics",
+      "heat transfer",
+      "pinn",
+      "vortex"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:53:38.858114+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4416058407",
+    "sources": [
+      "google_scholar"
+    ]
+  },
+  {
+    "id": "gs-10ac11c12d02",
+    "title": "Physics-aware neural operator for high-fidelity fluid dynamics modeling with geometric and spectral priors",
+    "authors": "X Hu, Q Ma, P Zhao, X Wang",
+    "abstract": "Accurate and efficient prediction of fluid dynamics plays a critical role in aerospace engineering, energy systems, and environmental applications, where reliable flow modeling supports design optimization and reduces computational costs. Traditional computational fluid dynamics (CFD) solvers, while highly accurate, become prohibitively expensive for unsteady and multi-scale flows. Recent neural operator approaches provide an attractive alternative by learning mappings between flow states and solutions, yet their current formulations struggle to preserve physical consistency under complex geometries and often exhibit strong low-frequency bias, which limits their capability to capture essential multi-scale features in fluid dynamics. To overcome these issues, we propose a physics-aware neural operator that unifies global flow coherence modeling and local geometric consistency under a spectral balancing mechanism. Specifically, our approach captures long-range dependencies through an efficient attention-based integral representation while refining local gradients via convolutional operators, and employs adaptive normalization to mitigate low-frequency dominance. This design ensures physical consistency and accurate multi-scale feature representation without compromising efficiency. We validate the proposed approach on multiple fluid dynamics benchmarks, including canonical flow problems and complex geometry scenarios. Compared to state-of-the-art operator learning models, our method significantly reduces prediction error while maintaining strong generalization under limited training data. These results demonstrate the potential of physics-aware neural operators as an efficient and accurate alternative to traditional CFD solvers for complex fluid dynamics applications.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "-of-the-art operator learning models, our method significantly reduces prediction error while   as an efficient and accurate alternative to traditional CFD solvers for complex fluid dynamics",
+    "published": "2025-11-06",
+    "paper_url": "https://pubs.aip.org/aip/pof/article/37/11/115111/3371210",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Physics of Fluids",
+    "conference": "Physics of Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1063/5.0299765",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "Neural Operator",
+      "design optimization",
+      "flow modeling",
+      "fluid dynamics",
+      "operator learning"
+    ],
+    "citation_count": 2,
+    "impact_factor": 3.5,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 8,
+        "strong_hits": [
+          "neural operator",
+          "operator learning"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 气动优化设计": {
+        "score": 3,
+        "strong_hits": [
+          "design optimization"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "operator learning",
+      "flow modeling",
+      "neural operator",
+      "design optimization",
+      "computational fluid dynamics",
+      "cfd",
+      "fluid dynamics"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:40:59.946834+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4415958253",
+    "sources": [
+      "google_scholar"
+    ]
   }
 ]
