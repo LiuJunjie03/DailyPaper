@@ -7,7 +7,51 @@ sources:
       # - cs.LG            # 机器学习
       - physics.flu-dyn  # 流体动力学
     max_results: 1000  # 每次抓取的最大论文数
-    days_back: 180  # 抓取一定天数的论文
+    days_back: 30  # 抓取一定天数的论文
+
+  # Crossref 数据源（正式发表论文元数据）
+  crossref:
+    enabled: true
+    queries:
+      physics_informed_learning:
+        - "physics-informed neural networks fluid dynamics"
+        - "PINN computational fluid dynamics"
+      neural_operator_surrogate:
+        - "neural operator computational fluid dynamics"
+        - "Fourier neural operator fluid simulation"
+      turbulence_modeling:
+        - "machine learning turbulence closure RANS LES"
+      aerodynamic_optimization:
+        - "aerodynamic optimization machine learning"
+      multiphase_flow:
+        - "machine learning multiphase flow"
+      numerical_methods:
+        - "differentiable CFD solver neural"
+    max_results_per_query: 20
+    days_back: 30
+    mailto: "research@dailyPaper.org"
+
+  # OpenAlex 数据源（开放学术图谱）
+  openalex:
+    enabled: true
+    queries:
+      physics_informed_learning:
+        - "physics-informed neural networks fluid dynamics"
+        - "PINN CFD simulation"
+      neural_operator_surrogate:
+        - "neural operator CFD flow prediction"
+        - "Fourier neural operator fluid"
+      turbulence_modeling:
+        - "machine learning turbulence modeling RANS"
+      aerodynamic_optimization:
+        - "aerodynamic optimization machine learning"
+      multiphase_flow:
+        - "machine learning multiphase flow interface"
+      numerical_methods:
+        - "differentiable solver CFD neural"
+    max_results_per_query: 20
+    days_back: 30
+    mailto: "research@dailyPaper.org"
 
   # Google Scholar 数据源（使用 scholarly 库）
   google_scholar:
@@ -32,7 +76,7 @@ sources:
         - "machine learning multiphase flow prediction"
         - "neural network interface capturing"
     max_results_per_query: 10
-    year_from: 2025
+    year_from: 2026
 
   # CNKI 知网数据源（中文论文）
   cnki:
@@ -86,7 +130,7 @@ sources:
         - "uncertainty quantification CFD surrogate model fluid dynamics"
         - "data assimilation inverse problem fluid dynamics machine learning"
     max_results_per_query: 20
-    days_back: 180
+    days_back: 30
 
 # 领域分类关键词
 categories:

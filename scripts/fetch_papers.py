@@ -6,6 +6,8 @@ import os
 import re
 import time
 import hashlib
+import argparse
+import calendar
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional, Tuple
 import logging
@@ -21,6 +23,8 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+_CASCADE_JSON_CACHE = {}
 
 
 FLUID_RELATED_TAGS = {
@@ -420,6 +424,100 @@ def term_in_text(text: str, term: str) -> bool:
     return re.search(rf"(?<![a-z0-9]){escaped}(?![a-z0-9])", text) is not None
 
 
+# ═══════════════════════════════════════════════════════════
+#  级联补全工具函数
+# ═══════════════════════════════════════════════════════════
+
+def _cascade_request_json(url: str, params: Optional[Dict] = None, timeout: int = 20) -> Optional[Dict]:
+    """级联补全专用 JSON 请求，429 自动重试"""
+    cache_key = (url, tuple(sorted((params or {}).items())))
+    if cache_key in _CASCADE_JSON_CACHE:
+        return _CASCADE_JSON_CACHE[cache_key]
+    for attempt in range(3):
+        try:
+            resp = requests.get(url, params=params, timeout=timeout,
+                                headers={"User-Agent": "DailyPaperBot/1.0 (mailto:research@dailyPaper.org)"})
+            if resp.status_code == 200:
+                data = resp.json()
+                _CASCADE_JSON_CACHE[cache_key] = data
+                return data
+            if resp.status_code == 429:
+                time.sleep(5 * (attempt + 1))
+                continue
+            return None
+        except requests.RequestException:
+            if attempt == 2:
+                return None
+            time.sleep(2)
+    return None
+
+
+def _cascade_normalize_title(title: str) -> str:
+    """标题归一化（用于比较）"""
+    title = (title or "").lower()
+    title = re.sub(r"[^a-z0-9]+", " ", title)
+    return re.sub(r"\s+", " ", title).strip()
+
+
+def _cascade_title_matches(expected: str, candidate: str, threshold: float = 0.85) -> bool:
+    """判断两个标题是否匹配"""
+    from difflib import SequenceMatcher
+    left = _cascade_normalize_title(expected)
+    right = _cascade_normalize_title(candidate)
+    if not left or not right:
+        return False
+    if left == right:
+        return True
+    if left in right or right in left:
+        return True
+    return SequenceMatcher(None, left, right).ratio() >= threshold
+
+
+def _cascade_crossref_date(item: Dict) -> str:
+    """从 Crossref 工作记录提取日期（published-online > published-print > created）"""
+    for field in ("published-online", "published-print", "created"):
+        parts = (item.get(field) or {}).get("date-parts") or []
+        if not parts or not parts[0]:
+            continue
+        dp = parts[0]
+        y = dp[0] if len(dp) > 0 else None
+        m = dp[1] if len(dp) > 1 else None
+        d = dp[2] if len(dp) > 2 else None
+        if not y or not m:
+            continue
+        if not d:
+            d = 1
+        return f"{y:04d}-{m:02d}-{d:02d}"
+    return ""
+
+
+def _cascade_openalex_abstract(inverted_index: Optional[Dict]) -> str:
+    """从 OpenAlex 的 inverted index 重建摘要文本"""
+    if not inverted_index:
+        return ""
+    words = []
+    for word, positions in inverted_index.items():
+        for pos in positions:
+            words.append((pos, word))
+    return " ".join(word for _, word in sorted(words))
+
+
+def _is_reliable_abstract(text: str) -> bool:
+    """判断摘要是否可靠"""
+    if not text or len(text) < 220:
+        return False
+    if not text[0].isupper():
+        return False
+    if "  " in text:
+        return False
+    if not text[-1] in ".!?":
+        return False
+    bad_prefixes = ("cookies", "enable javascript", "we use cookies", "this site")
+    if any(text.lower().startswith(p) for p in bad_prefixes):
+        return False
+    return True
+
+
 def is_relevant_paper(paper: Dict) -> bool:
     tags = set(paper.get("tags") or [])
     if tags & FLUID_RELATED_TAGS:
@@ -489,6 +587,17 @@ class PaperFetcher:
             self.config.get("sources", {}).get("semantic_scholar", {}).get("api_key", "")
             or os.environ.get("SEMANTIC_SCHOLAR_API_KEY", "")
         )
+
+    def set_date_window(self, start_date: str = "", end_date: str = ""):
+        """Apply a date window to sources that support month/range fetching."""
+        if not start_date and not end_date:
+            return
+        for source_name in ("arxiv", "crossref", "openalex", "semantic_scholar"):
+            source = self.config.get("sources", {}).setdefault(source_name, {})
+            if start_date:
+                source["start_date"] = start_date
+            if end_date:
+                source["end_date"] = end_date
 
     def _validate_config(self):
         """校验 config.yaml 关键字段是否存在"""
@@ -742,6 +851,16 @@ class PaperFetcher:
             else:
                 paper["source"] = "unknown"
         paper["impact_factor"] = paper.get("impact_factor") or self.get_impact_factor(paper)
+        # 日期来源追踪（新增）
+        if "date_source" not in paper:
+            src = paper.get("source", "")
+            if src in ("arxiv", "crossref", "openalex", "semantic_scholar", "cnki", "google_scholar"):
+                paper["date_source"] = src
+            else:
+                paper["date_source"] = ""
+        if "date_status" not in paper:
+            src = paper.get("source", "")
+            paper["date_status"] = "reliable" if src in ("arxiv", "crossref", "semantic_scholar") else "approximate"
         paper["tags"] = self.classify_paper(paper)
         paper["primary_domain"] = paper["tags"][-1] if paper.get("tags") else ""
         official_keywords = paper.get("official_keywords") or []
@@ -764,8 +883,13 @@ class PaperFetcher:
 
     def _source_rank(self, paper: Dict) -> int:
         rank = 0
-        if paper.get("source") == "semantic_scholar":
+        source = paper.get("source", "")
+        if source == "semantic_scholar":
             rank += 30
+        elif source == "crossref":
+            rank += 25   # 正式出版元数据，质量高
+        elif source == "openalex":
+            rank += 20   # 元数据较全，但可能含预印本
         if paper.get("doi"):
             rank += 20
         if paper.get("venue") or paper.get("conference"):
@@ -793,6 +917,293 @@ class PaperFetcher:
         merged["sources"] = sorted(set((old.get("sources") or [old.get("source", "unknown")]) + (new.get("sources") or [new.get("source", "unknown")])))
         merged["source"] = primary.get("source") or merged.get("source") or "unknown"
         return self._finalize_paper(merged)
+
+    # ═══════════════════════════════════════════════════════════
+    #  级联补全：Crossref → OpenAlex → Semantic Scholar → publisher meta
+    # ═══════════════════════════════════════════════════════════
+
+    def _cascade_enrich_papers(self, papers: List[Dict]) -> None:
+        """对每篇论文依次从 Crossref → OpenAlex → Semantic Scholar → publisher 补全元数据。
+        原地修改论文字典，不返回新列表。"""
+        enriched_count = 0
+        total = len(papers)
+
+        for i, paper in enumerate(papers):
+            needs_enrichment = (
+                not paper.get("doi")
+                or not paper.get("abstract", "").strip()
+                or paper.get("date_status") not in ("reliable",)
+                or not paper.get("venue")
+            )
+            if not needs_enrichment:
+                continue
+
+            title = paper.get("title", "")
+            if not title:
+                continue
+
+            before = json.dumps({
+                "doi": paper.get("doi"),
+                "abstract": bool((paper.get("abstract") or "").strip()),
+                "date_status": paper.get("date_status"),
+                "venue": paper.get("venue"),
+                "citation_count": paper.get("citation_count"),
+            }, ensure_ascii=False, sort_keys=True)
+
+            # 级联第1步：Crossref（正式出版元数据；有 DOI 时优先直查）
+            if self._needs_crossref_enrichment(paper):
+                self._enrich_from_crossref(paper)
+                time.sleep(0.15)
+
+            # 级联第2步：OpenAlex（开放摘要/引用/venue 补充）
+            if self._needs_openalex_enrichment(paper):
+                self._enrich_from_openalex(paper)
+                time.sleep(0.15)
+
+            # 级联第3步：Semantic Scholar（最后再用，降低 429 概率）
+            if self._needs_semantic_scholar_enrichment(paper):
+                self._enrich_from_semantic_scholar(paper)
+                time.sleep(0.15)
+
+            # 级联第4步：publisher meta（抓取网页 meta 标签）
+            if self._needs_publisher_enrichment(paper):
+                self._enrich_from_publisher(paper)
+
+            after = json.dumps({
+                "doi": paper.get("doi"),
+                "abstract": bool((paper.get("abstract") or "").strip()),
+                "date_status": paper.get("date_status"),
+                "venue": paper.get("venue"),
+                "citation_count": paper.get("citation_count"),
+            }, ensure_ascii=False, sort_keys=True)
+            if after != before:
+                enriched_count += 1
+            if (i + 1) % 20 == 0:
+                logger.info(f"级联补全进度: {i+1}/{total}")
+
+        logger.info(f"级联补全完成: {enriched_count}/{total} 篇需要补全")
+
+    def _has_reliable_abstract(self, paper: Dict) -> bool:
+        return bool((paper.get("abstract") or "").strip()) and paper.get("abstract_status") != "unreliable_google_scholar_snippet"
+
+    def _has_complete_date(self, paper: Dict) -> bool:
+        return bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(paper.get("published", ""))))
+
+    def _metadata_complete(self, paper: Dict) -> bool:
+        return (
+            bool(paper.get("doi") or paper.get("arxiv_id"))
+            and self._has_reliable_abstract(paper)
+            and self._has_complete_date(paper)
+            and bool(paper.get("venue") or paper.get("conference") or paper.get("is_preprint"))
+        )
+
+    def _needs_crossref_enrichment(self, paper: Dict) -> bool:
+        if paper.get("source") == "arxiv" and not paper.get("doi"):
+            return False
+        return not self._metadata_complete(paper) and (
+            bool(paper.get("doi"))
+            or not paper.get("doi")
+            or not self._has_complete_date(paper)
+            or not paper.get("venue")
+        )
+
+    def _needs_openalex_enrichment(self, paper: Dict) -> bool:
+        return not self._metadata_complete(paper) and (
+            not self._has_reliable_abstract(paper)
+            or not self._has_complete_date(paper)
+            or not paper.get("doi")
+            or paper.get("citation_count") is None
+            or not paper.get("venue")
+        )
+
+    def _needs_semantic_scholar_enrichment(self, paper: Dict) -> bool:
+        return not self._metadata_complete(paper) and (
+            not self._has_reliable_abstract(paper)
+            or not paper.get("semantic_scholar_id")
+            or paper.get("citation_count") is None
+            or (not paper.get("doi") and not paper.get("arxiv_id"))
+        )
+
+    def _needs_publisher_enrichment(self, paper: Dict) -> bool:
+        return not self._has_reliable_abstract(paper)
+
+    def _enrich_from_crossref(self, paper: Dict) -> None:
+        """从 Crossref 补全单篇论文的元数据"""
+        from urllib.parse import quote
+        doi = (paper.get("doi") or "").strip()
+        results = []
+
+        # DOI 直查
+        if doi:
+            data = _cascade_request_json(f"https://api.crossref.org/works/{quote(doi, safe='')}")
+            if data and data.get("message"):
+                results.append(data["message"])
+
+        # 标题搜索
+        if not results:
+            data = _cascade_request_json(
+                "https://api.crossref.org/works",
+                params={"query.title": paper.get("title", ""), "rows": 3},
+            )
+            if data:
+                for item in ((data.get("message") or {}).get("items") or []):
+                    item_title = " ".join(item.get("title") or [])
+                    if _cascade_title_matches(paper.get("title", ""), item_title):
+                        results.append(item)
+                        break
+
+        for item in results[:1]:
+            # 补全 DOI
+            if not paper.get("doi") and item.get("DOI"):
+                paper["doi"] = item["DOI"].strip().lower()
+            # 补全日期
+            if paper.get("date_status") != "reliable":
+                date = _cascade_crossref_date(item)
+                if date:
+                    paper["published"] = date
+                    paper["date_source"] = "crossref"
+                    paper["date_status"] = "reliable"
+            # 补全摘要
+            if not paper.get("abstract", "").strip():
+                abstract = item.get("abstract", "")
+                if abstract:
+                    abstract = re.sub(r"<[^>]+>", " ", abstract)
+                    abstract = re.sub(r"\s+", " ", abstract).strip()
+                    if _is_reliable_abstract(abstract):
+                        paper["abstract"] = abstract
+            # 补全 venue
+            if not paper.get("venue"):
+                container = item.get("container-title") or []
+                if container:
+                    paper["venue"] = container[0].strip()
+                    paper["conference"] = paper["conference"] or paper["venue"]
+            # 补全引用数
+            if paper.get("citation_count") is None:
+                count = item.get("is-referenced-by-count")
+                if count is not None:
+                    paper["citation_count"] = count
+
+    def _enrich_from_openalex(self, paper: Dict) -> None:
+        """从 OpenAlex 补全单篇论文的元数据"""
+        data = _cascade_request_json(
+            "https://api.openalex.org/works",
+            params={
+                "search": paper.get("title", ""),
+                "per_page": 3,
+                "mailto": "research@dailyPaper.org",
+            },
+        )
+        if not data:
+            return
+
+        for item in (data.get("results") or []):
+            if not _cascade_title_matches(paper.get("title", ""), item.get("title", "")):
+                continue
+            # 补全 DOI
+            if not paper.get("doi"):
+                raw_doi = (item.get("doi") or "").replace("https://doi.org/", "")
+                if raw_doi:
+                    paper["doi"] = raw_doi
+            # 补全日期
+            if paper.get("date_status") != "reliable":
+                pub_date = item.get("publication_date") or ""
+                if re.fullmatch(r"\d{4}-\d{2}-\d{2}", pub_date):
+                    paper["published"] = pub_date
+                    paper["date_source"] = "openalex"
+                    paper["date_status"] = "approximate"
+            # 补全摘要（从 inverted index 重建）
+            if not paper.get("abstract", "").strip():
+                abstract = _cascade_openalex_abstract(item.get("abstract_inverted_index"))
+                if _is_reliable_abstract(abstract):
+                    paper["abstract"] = abstract
+            # 补全 venue
+            if not paper.get("venue"):
+                loc = item.get("primary_location") or {}
+                src = loc.get("source") or {}
+                venue = src.get("display_name") or ""
+                if venue:
+                    paper["venue"] = venue
+                    paper["conference"] = paper["conference"] or venue
+            # 补全引用数
+            if paper.get("citation_count") is None:
+                count = item.get("cited_by_count")
+                if count is not None:
+                    paper["citation_count"] = count
+            break  # 只取第一个匹配
+
+    def _enrich_from_semantic_scholar(self, paper: Dict) -> None:
+        """从 Semantic Scholar 补全单篇论文的元数据"""
+        data = _cascade_request_json(
+            "https://api.semanticscholar.org/graph/v1/paper/search",
+            params={
+                "query": paper.get("title", ""),
+                "fields": "paperId,title,abstract,externalIds,publicationDate,citationCount,venue",
+                "limit": 3,
+            },
+        )
+        if not data:
+            return
+
+        for item in (data.get("data") or []):
+            if not _cascade_title_matches(paper.get("title", ""), item.get("title", "")):
+                continue
+            # 补全 DOI / arXiv ID
+            ext = item.get("externalIds") or {}
+            if not paper.get("doi") and ext.get("DOI"):
+                paper["doi"] = ext["DOI"]
+            if not paper.get("arxiv_id") and ext.get("ArXiv"):
+                paper["arxiv_id"] = ext["ArXiv"]
+                paper["arxiv_url"] = f"https://arxiv.org/abs/{ext['ArXiv']}"
+                paper["preprint_pdf_url"] = f"https://arxiv.org/pdf/{ext['ArXiv']}"
+            # 补全日期
+            if paper.get("date_status") != "reliable":
+                pub_date = item.get("publicationDate") or ""
+                if re.fullmatch(r"\d{4}-\d{2}-\d{2}", pub_date):
+                    paper["published"] = pub_date
+                    paper["date_source"] = "semantic_scholar"
+                    paper["date_status"] = "approximate"
+            # 补全摘要
+            if not paper.get("abstract", "").strip():
+                abstract = (item.get("abstract") or "").strip()
+                if _is_reliable_abstract(abstract):
+                    paper["abstract"] = abstract
+            # 补全 venue
+            if not paper.get("venue"):
+                venue = item.get("venue") or ""
+                if venue:
+                    paper["venue"] = venue
+                    paper["conference"] = paper["conference"] or venue
+            # 补全引用数
+            if paper.get("citation_count") is None:
+                count = item.get("citationCount")
+                if count is not None:
+                    paper["citation_count"] = count
+            # 补全 Semantic Scholar ID
+            if not paper.get("semantic_scholar_id") and item.get("paperId"):
+                paper["semantic_scholar_id"] = item["paperId"]
+            break
+
+    def _enrich_from_publisher(self, paper: Dict) -> None:
+        """从出版商网页 meta 标签补全摘要"""
+        if paper.get("abstract", "").strip():
+            return  # 已有摘要，跳过
+        url = paper.get("paper_url") or paper.get("arxiv_url") or ""
+        if not url:
+            return
+        try:
+            resp = requests.get(url, timeout=15, headers={"User-Agent": "DailyPaperBot/1.0"})
+            if resp.status_code != 200:
+                return
+            soup = BeautifulSoup(resp.text, "lxml")
+            for tag_name in ("citation_abstract", "dc.description", "description", "og:description"):
+                tag = soup.find("meta", attrs={"name": tag_name}) or soup.find("meta", attrs={"property": tag_name})
+                if tag and tag.get("content"):
+                    abstract = re.sub(r"\s+", " ", tag["content"]).strip()
+                    if _is_reliable_abstract(abstract):
+                        paper["abstract"] = abstract
+                        break
+        except Exception:
+            pass
 
     def _merge_paper_list(self, papers: List[Dict]) -> List[Dict]:
         merged = []
@@ -957,6 +1368,17 @@ class PaperFetcher:
         """用 Semantic Scholar 语义搜索替代关键词匹配"""
         from fetchers.semantic_scholar import fetch_semantic_scholar_papers as _fetch
         return _fetch(self)
+
+    def fetch_crossref_papers(self) -> List[Dict]:
+        """Crossref 数据源抓取（正式发表论文）"""
+        from fetchers.crossref_fetcher import fetch_crossref_papers as _fetch
+        return _fetch(self)
+
+    def fetch_openalex_papers(self) -> List[Dict]:
+        """OpenAlex 数据源抓取（开放学术图谱）"""
+        from fetchers.openalex_fetcher import fetch_openalex_papers as _fetch
+        return _fetch(self)
+
     def _flatten_queries(self, raw_queries) -> List[str]:
         if isinstance(raw_queries, dict):
             queries = []
@@ -996,6 +1418,22 @@ class PaperFetcher:
         papers.extend(arxiv_papers)
 
         try:
+            crossref_papers = self.fetch_crossref_papers()
+        except Exception as e:
+            logger.warning(f"Crossref 抓取失败: {e}")
+            crossref_papers = []
+        logger.info(f"Crossref: {len(crossref_papers)} 篇")
+        papers.extend(crossref_papers)
+
+        try:
+            openalex_papers = self.fetch_openalex_papers()
+        except Exception as e:
+            logger.warning(f"OpenAlex 抓取失败: {e}")
+            openalex_papers = []
+        logger.info(f"OpenAlex: {len(openalex_papers)} 篇")
+        papers.extend(openalex_papers)
+
+        try:
             ss_papers = self.fetch_semantic_scholar_papers()
         except Exception as e:
             logger.warning(f"Semantic Scholar 抓取失败: {e}")
@@ -1021,6 +1459,12 @@ class PaperFetcher:
 
         papers = self._merge_paper_list([p for p in papers if is_relevant_paper(p)])
         logger.info(f"抓取结果合并去重后: {len(papers)} 篇")
+
+        # 级联补全元数据（Crossref → OpenAlex → Semantic Scholar → publisher meta）
+        self._cascade_enrich_papers(papers)
+
+        # 重新 merge（级联补全可能新增 DOI/arXiv ID）
+        papers = self._merge_paper_list(papers)
 
         # ========== 新增：按月份拆分数据（和main.js加载逻辑对齐） ==========
         existing_papers = []
@@ -1051,9 +1495,11 @@ class PaperFetcher:
             pub = paper.get("published", "")
             if pub and len(pub) == 4 and pub.isdigit():
                 paper["published"] = f"{pub}-01-01"
+                paper["date_status"] = paper.get("date_status") or "year_only"
             elif pub and len(pub) == 7:
                 # 只有 YYYY-MM，补充为该月1号
                 paper["published"] = f"{pub}-01"
+                paper["date_status"] = paper.get("date_status") or "approximate"
 
         month_papers = {}
         for paper in papers:
@@ -1098,10 +1544,31 @@ class PaperFetcher:
         with open(os.path.join(docs_dir, "papers.json"), "w", encoding="utf-8") as f:
             json.dump(papers, f, ensure_ascii=False, indent=2)
 
+def _month_window(month: str) -> Tuple[str, str]:
+    if not re.fullmatch(r"\d{4}-\d{2}", month or ""):
+        raise ValueError("--month must use YYYY-MM format")
+    year, month_num = [int(part) for part in month.split("-")]
+    last_day = calendar.monthrange(year, month_num)[1]
+    return f"{year:04d}-{month_num:02d}-01", f"{year:04d}-{month_num:02d}-{last_day:02d}"
+
+
 def main():
     """主函数：一键抓取+分类+保存+同步"""
+    parser = argparse.ArgumentParser(description="Fetch DailyPaper records from configured sources.")
+    parser.add_argument("--month", help="Fetch a single month, e.g. 2026-01.")
+    parser.add_argument("--start-date", help="Inclusive start date, YYYY-MM-DD.")
+    parser.add_argument("--end-date", help="Inclusive end date, YYYY-MM-DD.")
+    args = parser.parse_args()
+
     try:
         fetcher = PaperFetcher()  # 实例化时调用__init__，正确初始化self.config
+        if args.month:
+            start_date, end_date = _month_window(args.month)
+            fetcher.set_date_window(start_date, end_date)
+            logger.info(f"按月抓取窗口: {start_date} 到 {end_date}")
+        elif args.start_date or args.end_date:
+            fetcher.set_date_window(args.start_date or "", args.end_date or "")
+            logger.info(f"按日期抓取窗口: {args.start_date or 'open'} 到 {args.end_date or 'open'}")
         fetcher.save_papers()
         logger.info("\n✅ 全部完成！直接打开 docs/index.html 即可查看结果")
     except Exception as e:

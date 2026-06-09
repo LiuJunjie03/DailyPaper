@@ -368,6 +368,9 @@ const abstract = hasReliableAbstract
     : '暂无可靠摘要。Google Scholar 仅提供搜索片段，已隐藏原始片段以避免误读。';
 const abstractSummary = hasReliableAbstract ? '查看摘要' : '摘要待补全';
 const published = escapeHTML(paper.published);
+const publishedFormatted = formatDate(paper.published);
+const dateFlag = (paper.date_status === 'year_only' || paper.date_status === 'unreliable')
+    ? '<span class="date-flag" title="日期待核实">⚠</span>' : '';
 const tags = paper.tags ? paper.tags.map(tag => `<span class="tag ${tagClass(tag)}">${escapeHTML(categoryLabel(tag))}</span>`).join('') : '';
 const keywords = paper.keywords ? paper.keywords.map(kw => `<span class="tag keyword">${escapeHTML(kw)}</span>`).join('') : '';
 const checked = selectedPaperIds.has(paperId) ? 'checked' : '';
@@ -420,7 +423,7 @@ return `
                 <a href="${escapeAttribute(paperURL)}" target="_blank" rel="noopener noreferrer">${title}</a>
             </h2>
             <div class="paper-meta">
-                <span class="meta-item">${published}</span>
+                <span class="meta-item" title="${published}">${publishedFormatted}</span>${dateFlag}
                 ${sourceBadge}
                 ${typeBadge}
                 ${venueBadge}

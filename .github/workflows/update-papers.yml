@@ -7,6 +7,19 @@ on:
 
   # 支持手动触发
   workflow_dispatch:
+    inputs:
+      start_month:
+        description: 'Backfill start month (YYYY-MM), optional'
+        required: false
+        type: string
+      end_month:
+        description: 'Backfill end month (YYYY-MM), optional'
+        required: false
+        type: string
+
+concurrency:
+  group: update-papers-${{ github.ref }}
+  cancel-in-progress: false
 
   # Push 到 main 分支时触发
   # push:
@@ -48,8 +61,21 @@ jobs:
     - name: Fetch papers
       env:
         SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+        START_MONTH: ${{ github.event.inputs.start_month }}
+        END_MONTH: ${{ github.event.inputs.end_month }}
       run: |
-        python scripts/fetch_papers.py
+        if [ -n "$START_MONTH" ] || [ -n "$END_MONTH" ]; then
+          start="${START_MONTH:-2024-01}"
+          end="${END_MONTH:-$(date -u +%Y-%m)}"
+          current="$start"
+          while [ "$(date -u -d "$current-01" +%Y%m)" -le "$(date -u -d "$end-01" +%Y%m)" ]; do
+            echo "Fetching month $current"
+            python scripts/fetch_papers.py --month "$current"
+            current="$(date -u -d "$current-01 +1 month" +%Y-%m)"
+          done
+        else
+          python scripts/fetch_papers.py
+        fi
 
     - name: Update venue info
       run: |

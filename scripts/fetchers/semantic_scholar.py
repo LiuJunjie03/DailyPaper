@@ -9,6 +9,17 @@ from typing import Dict, List, Optional
 logger = logging.getLogger(__name__)
 
 
+def normalize_doi(doi: str) -> str:
+    doi = (doi or "").strip().lower()
+    doi = re.sub(r"^https?://(dx\.)?doi\.org/", "", doi)
+    return doi
+
+
+def _complete_date(value: str) -> str:
+    value = str(value or "")
+    return value if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value) else ""
+
+
 def get_citation_count(title, authors=None, year=None):
     """通过 Semantic Scholar API 获取引用次数（单篇查询，保留兼容）"""
     url = "https://api.semanticscholar.org/graph/v1/paper/search"
@@ -116,6 +127,7 @@ def batch_get_citation_counts(papers: List[Dict], ss_api_key: str = "", batch_si
 
 def fetch_semantic_scholar_papers(fetcher) -> List[Dict]:
     """用 Semantic Scholar 语义搜索替代关键词匹配"""
+    ss_config = fetcher.config.get("sources", {}).get("semantic_scholar", {})
     if not ss_config.get("enabled", False):
         logger.info("Semantic Scholar 数据源已禁用")
         return []
@@ -130,8 +142,18 @@ def fetch_semantic_scholar_papers(fetcher) -> List[Dict]:
     max_per_query = ss_config.get("max_results_per_query", 100)
     days_back = ss_config.get("days_back", 180)
 
-    start_date = datetime.now(timezone.utc) - timedelta(days=days_back)
+    configured_start = _complete_date(ss_config.get("start_date", ""))
+    configured_end = _complete_date(ss_config.get("end_date", ""))
+    start_date = (
+        datetime.strptime(configured_start, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        if configured_start else datetime.now(timezone.utc) - timedelta(days=days_back)
+    )
+    end_date = (
+        datetime.strptime(configured_end, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        if configured_end else None
+    )
     year_from = start_date.year
+    year_filter = f"{year_from}-{end_date.year}" if end_date else f"{year_from}-"
 
     all_papers = []
     seen_ids = set()
@@ -143,7 +165,7 @@ def fetch_semantic_scholar_papers(fetcher) -> List[Dict]:
             "query": query,
             "fields": "paperId,url,title,abstract,authors,year,citationCount,venue,publicationVenue,publicationDate,publicationTypes,externalIds,openAccessPdf,fieldsOfStudy,journal",
             "limit": max_per_query,
-            "year": f"{year_from}-"
+            "year": year_filter
         }
 
         try:
@@ -192,7 +214,7 @@ def fetch_semantic_scholar_papers(fetcher) -> List[Dict]:
                 if pub_date:
                     try:
                         dt = datetime.strptime(pub_date, "%Y-%m-%d").replace(tzinfo=timezone.utc)
-                        if dt < start_date:
+                        if dt < start_date or (end_date and dt > end_date):
                             continue
                         published = pub_date
                     except ValueError:

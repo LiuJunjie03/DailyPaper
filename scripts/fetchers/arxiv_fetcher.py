@@ -51,6 +51,8 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
     arxiv_categories = arxiv_config.get("categories", [])
     max_results = arxiv_config.get("max_results", 1000)
     days_back = arxiv_config.get("days_back", 60)
+    configured_start = arxiv_config.get("start_date", "")
+    configured_end = arxiv_config.get("end_date", "")
     
     # 构建ArXiv查询：分类用 OR，关键词用 OR，两者 AND 连接
     if arxiv_categories:
@@ -60,14 +62,32 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
     fluid_kw = "CFD OR fluid dynamics OR turbulence OR aerodynamics OR multiphase flow OR computational fluid dynamics"
     kw_query = f"({fluid_kw})"
 
+    date_query = ""
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(configured_start or "")):
+        end_value = configured_end if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(configured_end or "")) else datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        start_token = str(configured_start).replace("-", "") + "0000"
+        end_token = str(end_value).replace("-", "") + "2359"
+        date_query = f"submittedDate:[{start_token} TO {end_token}]"
+
     if cat_query:
         query = f"({cat_query}) AND {kw_query}"
     else:
         query = kw_query
+    if date_query:
+        query = f"({query}) AND {date_query}"
     logger.info(f"ArXiv查询条件: {query}")
     
     # 时间范围
-    start_date = datetime.now(timezone.utc) - timedelta(days=days_back)
+    start_date = (
+        datetime.strptime(configured_start, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(configured_start or ""))
+        else datetime.now(timezone.utc) - timedelta(days=days_back)
+    )
+    end_date = (
+        datetime.strptime(configured_end, "%Y-%m-%d").replace(tzinfo=timezone.utc) + timedelta(days=1)
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(configured_end or ""))
+        else None
+    )
     start_date_str = start_date.strftime("%Y-%m-%d")
     
     logger.info(f"开始抓取：近{days_back}天，最多{max_results}篇，分类：{arxiv_categories}")
@@ -86,7 +106,7 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
         published = result.published
         if published.tzinfo is None:
             published = published.replace(tzinfo=timezone.utc)
-        if published < start_date:
+        if published < start_date or (end_date and published > end_date):
             continue
         
         # ========== 核心修改：构建paper字典时，新增官方/自定义关键词字段 ==========
