@@ -66,8 +66,8 @@ jobs:
         git config --local user.email 'github-actions[bot]@users.noreply.github.com'
         git add data/ docs/
         if ! git diff --staged --quiet; then
-          git pull --rebase origin main
           git commit -m "Auto update papers - $(date +'%Y-%m-%d')"
+          git pull --rebase origin main
           git push
         else
           echo "No changes to commit"
