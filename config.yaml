@@ -83,8 +83,9 @@ sources:
   cnki:
     enabled: true
     # CNKI 代理 URL：优先读取环境变量 CNKI_HOME_URL / CNKI_KNS_BASE_URL
-    home_url: ""
-    kns_base_url: ""
+    # 以下为本地 VPN 默认值，环境变量设置后会自动覆盖
+    home_url: "http://www--cnki--net--https.cnki.mdjsf.utuvpn.utuedu.com:9000/"
+    kns_base_url: "http://kns--cnki--net--https.cnki.mdjsf.utuvpn.utuedu.com:9000/"
     enrich_details: true
     detail_delay: 1.0
     queries:
