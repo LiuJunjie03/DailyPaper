@@ -48,19 +48,44 @@ def test_frontend_generation_uses_compact_dashboard(tmp_path):
     js = (output_dir / "js" / "main.js").read_text(encoding="utf-8")
 
     assert "dashboard-summary" in html
+    assert "dailyDatePicker" in html
+    assert "按日期查看新增论文" in html
+    assert "summary-detail" in html
+    assert "summary-compare" in html
+    assert "summary-spark" in html
+    assert "summary-ring" in html
+    assert "data-summary-action=\"pdf\"" in html
+    assert "data-summary-action=\"smart-cfd\"" in html
     assert "今日新增" in html
     assert "本月新增" in html
+    assert "较上月" in html
+    assert "总量" in html
     assert "智能 CFD" in html
+    assert "早期在线" in html
     assert "筛选条件" in html
     assert "推荐优先" in html
     assert "数据不足时按日期补偿" in html
     assert "选中当前页" in html
     assert "复制标识符" in html
     assert "dashboard-summary" in css
+    assert "daily-date-picker" in css
+    assert "summary-action" in css
+    assert "再次点击卡片恢复默认" in css
+    assert "summary-spark" in css
+    assert "summary-ring" in css
+    assert "conic-gradient" in css
     assert "filter-panel" in css
     assert "recommendationScore" in js
     assert "recommendationDetails" in js
     assert "score-pill" in js
+    assert "currentDate" in js
+    assert "currentSpecial" in js
+    assert "summaryActionIsActive" in js
+    assert "summaryActions" in js
+    assert "early-access" in js
+    assert "syncDailyPickerToMonth" in js
+    assert "`${month}-01`" in js
+    assert "新增 ${filteredPapers.length} 篇论文" in js
     assert "filteredPapers.slice(0, loadedCount)" in js
     assert "摘要待补全" in js
 
@@ -96,7 +121,7 @@ def test_incomplete_publication_dates_do_not_drive_homepage_stats_or_sorting(tmp
         "authors": ["Ada"],
         "abstract": "A reliable abstract about CFD.",
         "published": today,
-        "tags": ["娴佷綋鍔涘"],
+        "tags": ["流体力学"],
         "keywords": [],
         "categories": ["physics.flu-dyn"],
         "arxiv_url": "https://arxiv.org/abs/2606.00001",

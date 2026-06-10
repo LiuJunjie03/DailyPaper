@@ -5,14 +5,12 @@ import json
 import os
 import re
 import time
-import hashlib
 import argparse
 import calendar
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional, Tuple
 import logging
 from bs4 import BeautifulSoup
-from urllib.parse import quote_plus
 
 # 配置日志（方便查看抓取过程）
 logging.basicConfig(
@@ -1005,11 +1003,15 @@ class PaperFetcher:
         )
 
     def _needs_crossref_enrichment(self, paper: Dict) -> bool:
+        # ArXiv 无 DOI 的论文不适合通过 Crossref 补全
         if paper.get("source") == "arxiv" and not paper.get("doi"):
             return False
-        return not self._metadata_complete(paper) and (
-            bool(paper.get("doi"))
-            or not paper.get("doi")
+        # 元数据已完整的无需补全
+        if self._metadata_complete(paper):
+            return False
+        # 至少缺少一项关键元数据才需要 Crossref 补全
+        return (
+            not paper.get("doi")
             or not self._has_complete_date(paper)
             or not paper.get("venue")
         )
@@ -1293,7 +1295,7 @@ class PaperFetcher:
         提取「自定义预设关键词」（原有逻辑，仅做注释优化）
         """
         # 拼接标题+摘要，转小写（统一匹配）
-        text = (paper["title"] + " " + paper["abstract"]).lower()
+        text = (paper.get("title", "") + " " + paper.get("abstract", "")).lower()
         all_keywords = []
         
         # 收集你yaml中所有分类的关键词（包含新增的中英文）
@@ -1582,17 +1584,9 @@ class PaperFetcher:
         # 保存各月份数据（如data/2026-01.json）—— 已包含official_keywords/custom_keywords
         for month, papers in month_papers.items():
             month_path = os.path.join(data_dir, f"{month}.json")
-            # 写入前备份已有文件（最多保留一个 .bak 副本）
-            if os.path.exists(month_path):
-                import shutil
-                shutil.copy2(month_path, month_path + ".bak")
             with open(month_path, "w", encoding="utf-8") as f:
                 json.dump(papers, f, ensure_ascii=False, indent=2)
             logger.info(f"月份数据已保存到：{month_path}")
-
-        # 同步到docs目录（可选，保留papers.json）—— 同样包含新字段
-        with open(os.path.join(docs_dir, "papers.json"), "w", encoding="utf-8") as f:
-            json.dump(papers, f, ensure_ascii=False, indent=2)
 
 def _month_window(month: str) -> Tuple[str, str]:
     if not re.fullmatch(r"\d{4}-\d{2}", month or ""):

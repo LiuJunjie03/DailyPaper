@@ -18,6 +18,8 @@ if (DEBUG) console.log(...args);
     const selectedCount = document.getElementById('selectedCount');
     const resultsCount = document.getElementById('resultsCount');
     const papersContainer = document.getElementById('papers-container');
+    const dailyDatePicker = document.getElementById('dailyDatePicker');
+    const summaryActions = document.querySelectorAll('.summary-action');
 
     debugLog('DOM elements:', {
 monthBtns: monthBtns.length,
@@ -40,6 +42,8 @@ papersContainer: !!papersContainer
     let currentPdf = 'all';
     let currentCategory = 'all';
     let currentSort = 'date-desc';
+    let currentDate = '';
+    let currentSpecial = '';
     let searchTerm = '';
     let filteredPapers = [];
     let loadedCount = 0;
@@ -176,6 +180,30 @@ return paper.is_preprint === true || paper.publication_type === 'preprint' || (!
 	return /^\d{4}-\d{2}-\d{2}$/.test(String(dateStr || ''));
     }
 
+    function syncDailyPickerToMonth(month) {
+if (!dailyDatePicker || currentDate) return;
+dailyDatePicker.value = /^\d{4}-\d{2}$/.test(String(month || '')) ? `${month}-01` : '';
+    }
+
+    function setSegmentedActive(buttons, key, value) {
+buttons.forEach(btn => btn.classList.toggle('active', btn.dataset[key] === value));
+    }
+
+    function summaryActionIsActive(action) {
+if (action === 'month') return currentMonth === new Date().toISOString().slice(0, 7) && !currentDate;
+if (action === 'pdf') return currentPdf === 'available';
+if (action === 'published') return currentStatus === 'published';
+if (action === 'smart-cfd') return currentCategory === '流体力学 / 智能CFD';
+if (action === 'early-access') return currentSpecial === 'early-access';
+return false;
+    }
+
+    function updateSummaryActionStates() {
+summaryActions.forEach(card => {
+    card.classList.toggle('is-active', summaryActionIsActive(card.dataset.summaryAction));
+});
+    }
+
     function sortTimestamp(paper) {
 	const parsed = parseDate(paper.published);
 	const value = parsed.getTime();
@@ -296,17 +324,22 @@ try {
                 btn.classList.toggle('active', btn.dataset.sort === currentSort);
             });
         }
+        if (params.has('date')) {
+            currentDate = params.get('date');
+            if (dailyDatePicker) dailyDatePicker.value = currentDate;
+        }
         if (params.has('q')) {
             searchTerm = params.get('q').toLowerCase();
             const searchInput = document.getElementById('searchInput');
             if (searchInput) searchInput.value = params.get('q');
         }
 
-        const initialMonth = params.has('month') ? params.get('month') : 'all';
+        const initialMonth = currentDate ? currentDate.slice(0, 7) : (params.has('month') ? params.get('month') : 'all');
         // 高亮正确的月份按钮
         document.querySelectorAll('.month-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.month === initialMonth);
         });
+        syncDailyPickerToMonth(initialMonth);
         await loadMonthData(initialMonth);
     }
 } catch (e) {
@@ -371,6 +404,9 @@ const published = escapeHTML(paper.published);
 const publishedFormatted = formatDate(paper.published);
 const dateFlag = (paper.date_status === 'year_only' || paper.date_status === 'unreliable')
     ? '<span class="date-flag" title="日期待核实">⚠</span>' : '';
+// 预出版论文：显示 badge + "暂未出版"
+const earlyAccessBadge = paper.is_early_access
+    ? '<span class="early-access-badge" title="预出版 / Ahead of Print">预出版</span>' : '';
 const tags = paper.tags ? paper.tags.map(tag => `<span class="tag ${tagClass(tag)}">${escapeHTML(categoryLabel(tag))}</span>`).join('') : '';
 const keywords = paper.keywords ? paper.keywords.map(kw => `<span class="tag keyword">${escapeHTML(kw)}</span>`).join('') : '';
 const checked = selectedPaperIds.has(paperId) ? 'checked' : '';
@@ -423,7 +459,10 @@ return `
                 <a href="${escapeAttribute(paperURL)}" target="_blank" rel="noopener noreferrer">${title}</a>
             </h2>
             <div class="paper-meta">
-                <span class="meta-item" title="${published}">${publishedFormatted}</span>${dateFlag}
+                ${paper.is_early_access
+                    ? `${earlyAccessBadge}<span class="early-access-date">暂未出版</span>`
+                    : `<span class="meta-item" title="${published}">${publishedFormatted}</span>${dateFlag}`
+                }
                 ${sourceBadge}
                 ${typeBadge}
                 ${venueBadge}
@@ -533,6 +572,8 @@ renderCategoryNav();
         if (currentPdf !== 'all') params.set('pdf', currentPdf);
         if (currentCategory !== 'all') params.set('category', currentCategory);
         if (currentSort !== 'date-desc') params.set('sort', currentSort);
+        if (currentDate) params.set('date', currentDate);
+        if (currentSpecial) params.set('special', currentSpecial);
         if (searchTerm) params.set('q', searchTerm);
         const hash = params.toString();
         history.replaceState(null, '', hash ? '#' + hash : window.location.pathname);
@@ -573,6 +614,13 @@ renderCategoryNav();
                 btn.classList.toggle('active', btn.dataset.sort === currentSort);
             });
         }
+        if (params.has('date')) {
+            currentDate = params.get('date');
+            if (dailyDatePicker) dailyDatePicker.value = currentDate;
+        }
+        if (params.has('special')) {
+            currentSpecial = params.get('special');
+        }
         if (params.has('q')) {
             searchTerm = params.get('q').toLowerCase();
             const searchInput = document.getElementById('searchInput');
@@ -595,8 +643,10 @@ filteredPapers = allPapersData.filter(paper => {
     const matchPdf = currentPdf === 'all' || (currentPdf === 'available' ? hasPDF(paper) : !hasPDF(paper));
     const matchCategory = currentCategory === 'all' || tags.includes(currentCategory);
     const matchSearch = searchTerm === '' || text.includes(searchTerm);
+    const matchDate = !currentDate || paper.published === currentDate;
+    const matchSpecial = currentSpecial !== 'early-access' || paper.is_early_access === true;
 
-    return matchStatus && matchPdf && matchCategory && matchSearch;
+    return matchStatus && matchPdf && matchCategory && matchSearch && matchDate && matchSpecial;
 });
 
 debugLog(`Filtered to ${filteredPapers.length} papers`);
@@ -622,8 +672,11 @@ filteredPapers.sort((a, b) => {
 updateStatusButtonCounts();
 updatePDFButtonCounts();
 updateCategoryButtonCounts();
+updateSummaryActionStates();
 if (resultsCount) {
-    resultsCount.textContent = `显示 ${filteredPapers.length} 篇论文`;
+    resultsCount.textContent = currentDate
+        ? `${currentDate} 新增 ${filteredPapers.length} 篇论文`
+        : `显示 ${filteredPapers.length} 篇论文`;
 }
 
 // 重置懒加载
@@ -713,6 +766,9 @@ btn.addEventListener('click', async function() {
     monthBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentMonth = this.dataset.month;
+    currentDate = '';
+    currentSpecial = '';
+    syncDailyPickerToMonth(currentMonth);
 
     resultsCount.textContent = '加载中...';
     papersContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">加载中...</div>';
@@ -721,11 +777,69 @@ btn.addEventListener('click', async function() {
 });
     });
 
+    if (dailyDatePicker) {
+dailyDatePicker.addEventListener('change', async function() {
+    currentDate = this.value || '';
+    currentSpecial = '';
+    if (!currentDate) {
+        currentMonth = 'all';
+        document.querySelectorAll('.month-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.month === 'all');
+        });
+        await loadMonthData('all');
+        return;
+    }
+
+    currentMonth = currentDate.slice(0, 7);
+    document.querySelectorAll('.month-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.month === currentMonth);
+    });
+    if (resultsCount) resultsCount.textContent = '加载中...';
+    if (papersContainer) {
+        papersContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">加载中...</div>';
+    }
+    await loadMonthData(currentMonth);
+});
+    }
+
+    summaryActions.forEach(card => {
+card.addEventListener('click', async function() {
+    const action = this.dataset.summaryAction;
+    const wasActive = summaryActionIsActive(action);
+    currentDate = '';
+    currentSpecial = '';
+    if (dailyDatePicker) dailyDatePicker.value = '';
+
+    if (action === 'month') {
+        currentMonth = wasActive ? 'all' : new Date().toISOString().slice(0, 7);
+        setSegmentedActive(monthBtns, 'month', currentMonth);
+        syncDailyPickerToMonth(currentMonth);
+        await loadMonthData(currentMonth);
+        return;
+    }
+
+    if (action === 'pdf') {
+        currentPdf = wasActive ? 'all' : 'available';
+        setSegmentedActive(pdfBtns, 'pdf', currentPdf);
+    } else if (action === 'published') {
+        currentStatus = wasActive ? 'all' : 'published';
+        setSegmentedActive(statusBtns, 'status', currentStatus);
+    } else if (action === 'smart-cfd') {
+        currentCategory = wasActive ? 'all' : '流体力学 / 智能CFD';
+    } else if (action === 'early-access') {
+        currentSpecial = wasActive ? '' : 'early-access';
+    }
+
+    filterAndSortPapers();
+});
+    });
+
     statusBtns.forEach(btn => {
 btn.addEventListener('click', function() {
     statusBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentStatus = this.dataset.status;
+    currentSpecial = '';
     filterAndSortPapers();
 });
     });
@@ -735,6 +849,7 @@ btn.addEventListener('click', function() {
     pdfBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentPdf = this.dataset.pdf;
+    currentSpecial = '';
     filterAndSortPapers();
 });
     });
@@ -761,6 +876,7 @@ categoryFilters.addEventListener('click', function(e) {
 
     if (categoryButton) {
         currentCategory = categoryButton.dataset.category || 'all';
+        currentSpecial = '';
         filterAndSortPapers();
     }
 });
@@ -796,6 +912,7 @@ btn.addEventListener('click', function(e) {
     sortBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentSort = this.dataset.sort;
+    currentSpecial = '';
     filterAndSortPapers();
 });
     });
@@ -803,6 +920,7 @@ btn.addEventListener('click', function(e) {
     if (searchInput) {
 searchInput.addEventListener('input', function() {
     searchTerm = this.value.toLowerCase();
+    currentSpecial = '';
     window.clearTimeout(searchTimer);
     searchTimer = window.setTimeout(filterAndSortPapers, 180);
 });

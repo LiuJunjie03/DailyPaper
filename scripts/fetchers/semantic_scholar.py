@@ -218,9 +218,11 @@ def fetch_semantic_scholar_papers(fetcher) -> List[Dict]:
                             continue
                         published = pub_date
                     except ValueError:
-                        published = str(item.get("year", "2025"))
+                        year = item.get("year")
+                        published = str(year) if year else "unknown"
                 else:
-                    published = str(item.get("year", "2025"))
+                    year = item.get("year")
+                    published = str(year) if year else "unknown"
 
                 abstract = item.get("abstract") or ""
                 title = item.get("title") or ""

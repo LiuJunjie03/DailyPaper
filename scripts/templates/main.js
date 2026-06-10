@@ -19,6 +19,7 @@ if (DEBUG) console.log(...args);
     const resultsCount = document.getElementById('resultsCount');
     const papersContainer = document.getElementById('papers-container');
     const dailyDatePicker = document.getElementById('dailyDatePicker');
+    const summaryActions = document.querySelectorAll('.summary-action');
 
     debugLog('DOM elements:', {
 monthBtns: monthBtns.length,
@@ -42,6 +43,7 @@ papersContainer: !!papersContainer
     let currentCategory = 'all';
     let currentSort = 'date-desc';
     let currentDate = '';
+    let currentSpecial = '';
     let searchTerm = '';
     let filteredPapers = [];
     let loadedCount = 0;
@@ -181,6 +183,25 @@ return paper.is_preprint === true || paper.publication_type === 'preprint' || (!
     function syncDailyPickerToMonth(month) {
 if (!dailyDatePicker || currentDate) return;
 dailyDatePicker.value = /^\d{4}-\d{2}$/.test(String(month || '')) ? `${month}-01` : '';
+    }
+
+    function setSegmentedActive(buttons, key, value) {
+buttons.forEach(btn => btn.classList.toggle('active', btn.dataset[key] === value));
+    }
+
+    function summaryActionIsActive(action) {
+if (action === 'month') return currentMonth === new Date().toISOString().slice(0, 7) && !currentDate;
+if (action === 'pdf') return currentPdf === 'available';
+if (action === 'published') return currentStatus === 'published';
+if (action === 'smart-cfd') return currentCategory === '流体力学 / 智能CFD';
+if (action === 'early-access') return currentSpecial === 'early-access';
+return false;
+    }
+
+    function updateSummaryActionStates() {
+summaryActions.forEach(card => {
+    card.classList.toggle('is-active', summaryActionIsActive(card.dataset.summaryAction));
+});
     }
 
     function sortTimestamp(paper) {
@@ -403,13 +424,8 @@ const arxivLink = paper.arxiv_url ? `<a href="${escapeAttribute(safeURL(paper.ar
 const pdfLink = paper.pdf_url ? `<a href="${escapeAttribute(safeURL(paper.pdf_url))}" target="_blank" rel="noopener noreferrer" class="code-link">PDF</a>` : '';
 const preprintPdfLink = paper.preprint_pdf_url ? `<a href="${escapeAttribute(safeURL(paper.preprint_pdf_url))}" target="_blank" rel="noopener noreferrer" class="code-link">Preprint PDF</a>` : '';
 
-// 提取代码链接
+// 提取代码链接（已转义，防止 XSS）
 let codeLink = '';
-if (paper.code_link) {
-    codeLink = `<a href="${paper.code_link}" target="_blank" class="code-link">📄 Code/Project</a>`;
-}
-
-// 获取会议徽章
 if (paper.code_link) {
     codeLink = `<a href="${escapeAttribute(safeURL(paper.code_link))}" target="_blank" rel="noopener noreferrer" class="code-link">Code/Project</a>`;
 }
@@ -552,6 +568,7 @@ renderCategoryNav();
         if (currentCategory !== 'all') params.set('category', currentCategory);
         if (currentSort !== 'date-desc') params.set('sort', currentSort);
         if (currentDate) params.set('date', currentDate);
+        if (currentSpecial) params.set('special', currentSpecial);
         if (searchTerm) params.set('q', searchTerm);
         const hash = params.toString();
         history.replaceState(null, '', hash ? '#' + hash : window.location.pathname);
@@ -596,6 +613,9 @@ renderCategoryNav();
             currentDate = params.get('date');
             if (dailyDatePicker) dailyDatePicker.value = currentDate;
         }
+        if (params.has('special')) {
+            currentSpecial = params.get('special');
+        }
         if (params.has('q')) {
             searchTerm = params.get('q').toLowerCase();
             const searchInput = document.getElementById('searchInput');
@@ -619,8 +639,9 @@ filteredPapers = allPapersData.filter(paper => {
     const matchCategory = currentCategory === 'all' || tags.includes(currentCategory);
     const matchSearch = searchTerm === '' || text.includes(searchTerm);
     const matchDate = !currentDate || paper.published === currentDate;
+    const matchSpecial = currentSpecial !== 'early-access' || paper.is_early_access === true;
 
-    return matchStatus && matchPdf && matchCategory && matchSearch && matchDate;
+    return matchStatus && matchPdf && matchCategory && matchSearch && matchDate && matchSpecial;
 });
 
 debugLog(`Filtered to ${filteredPapers.length} papers`);
@@ -646,6 +667,7 @@ filteredPapers.sort((a, b) => {
 updateStatusButtonCounts();
 updatePDFButtonCounts();
 updateCategoryButtonCounts();
+updateSummaryActionStates();
 if (resultsCount) {
     resultsCount.textContent = currentDate
         ? `${currentDate} 新增 ${filteredPapers.length} 篇论文`
@@ -740,6 +762,7 @@ btn.addEventListener('click', async function() {
     this.classList.add('active');
     currentMonth = this.dataset.month;
     currentDate = '';
+    currentSpecial = '';
     syncDailyPickerToMonth(currentMonth);
 
     resultsCount.textContent = '加载中...';
@@ -752,6 +775,7 @@ btn.addEventListener('click', async function() {
     if (dailyDatePicker) {
 dailyDatePicker.addEventListener('change', async function() {
     currentDate = this.value || '';
+    currentSpecial = '';
     if (!currentDate) {
         currentMonth = 'all';
         document.querySelectorAll('.month-btn').forEach(btn => {
@@ -773,11 +797,44 @@ dailyDatePicker.addEventListener('change', async function() {
 });
     }
 
+    summaryActions.forEach(card => {
+card.addEventListener('click', async function() {
+    const action = this.dataset.summaryAction;
+    const wasActive = summaryActionIsActive(action);
+    currentDate = '';
+    currentSpecial = '';
+    if (dailyDatePicker) dailyDatePicker.value = '';
+
+    if (action === 'month') {
+        currentMonth = wasActive ? 'all' : new Date().toISOString().slice(0, 7);
+        setSegmentedActive(monthBtns, 'month', currentMonth);
+        syncDailyPickerToMonth(currentMonth);
+        await loadMonthData(currentMonth);
+        return;
+    }
+
+    if (action === 'pdf') {
+        currentPdf = wasActive ? 'all' : 'available';
+        setSegmentedActive(pdfBtns, 'pdf', currentPdf);
+    } else if (action === 'published') {
+        currentStatus = wasActive ? 'all' : 'published';
+        setSegmentedActive(statusBtns, 'status', currentStatus);
+    } else if (action === 'smart-cfd') {
+        currentCategory = wasActive ? 'all' : '流体力学 / 智能CFD';
+    } else if (action === 'early-access') {
+        currentSpecial = wasActive ? '' : 'early-access';
+    }
+
+    filterAndSortPapers();
+});
+    });
+
     statusBtns.forEach(btn => {
 btn.addEventListener('click', function() {
     statusBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentStatus = this.dataset.status;
+    currentSpecial = '';
     filterAndSortPapers();
 });
     });
@@ -787,6 +844,7 @@ btn.addEventListener('click', function() {
     pdfBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentPdf = this.dataset.pdf;
+    currentSpecial = '';
     filterAndSortPapers();
 });
     });
@@ -813,6 +871,7 @@ categoryFilters.addEventListener('click', function(e) {
 
     if (categoryButton) {
         currentCategory = categoryButton.dataset.category || 'all';
+        currentSpecial = '';
         filterAndSortPapers();
     }
 });
@@ -848,6 +907,7 @@ btn.addEventListener('click', function(e) {
     sortBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentSort = this.dataset.sort;
+    currentSpecial = '';
     filterAndSortPapers();
 });
     });
@@ -855,6 +915,7 @@ btn.addEventListener('click', function(e) {
     if (searchInput) {
 searchInput.addEventListener('input', function() {
     searchTerm = this.value.toLowerCase();
+    currentSpecial = '';
     window.clearTimeout(searchTimer);
     searchTimer = window.setTimeout(filterAndSortPapers, 180);
 });

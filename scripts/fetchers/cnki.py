@@ -26,10 +26,15 @@ def normalize_title(title: str) -> str:
 
 
 def _cnki_url(cnki_config: Dict, key: str, default_path: str) -> str:
+    # 优先使用环境变量（CNKI_HOME_URL / CNKI_KNS_BASE_URL）
+    env_key = f"CNKI_{key.upper()}"
+    env_val = os.environ.get(env_key, "").strip()
+    if env_val:
+        return env_val
     configured = cnki_config.get(key)
     if configured:
         return configured
-    base_url = cnki_config.get("kns_base_url") or DEFAULT_KNS_BASE_URL
+    base_url = os.environ.get("CNKI_KNS_BASE_URL", "").strip() or cnki_config.get("kns_base_url") or DEFAULT_KNS_BASE_URL
     return urljoin(base_url.rstrip("/") + "/", default_path.lstrip("/"))
 
 

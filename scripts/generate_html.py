@@ -6,7 +6,7 @@
 
 import json
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 import re
 from typing import List, Dict
 import logging
@@ -193,13 +193,44 @@ class HTMLGenerator:
         today = datetime.now().strftime("%Y-%m-%d")
         current_month = datetime.now().strftime("%Y-%m")
         today_count = sum(1 for p in self.papers if str(p.get('published', '')) == today)
+        week_start = (datetime.now() - timedelta(days=6)).strftime("%Y-%m-%d")
+        recent_week_count = sum(
+            1 for p in self.papers
+            if is_complete_publication_date(p.get('published', ''))
+            and week_start <= str(p.get('published', '')) <= today
+        )
         current_month_count = sum(
             1 for p in self.papers
             if is_complete_publication_date(p.get('published', ''))
             and str(p.get('published', '')).startswith(current_month)
         )
+        previous_month = (datetime.now().replace(day=1) - timedelta(days=1)).strftime("%Y-%m")
+        previous_month_count = sum(
+            1 for p in self.papers
+            if is_complete_publication_date(p.get('published', ''))
+            and str(p.get('published', '')).startswith(previous_month)
+        )
+        month_delta = current_month_count - previous_month_count
+        if month_delta > 0:
+            month_compare_text = f"较上月 +{month_delta}"
+        elif month_delta < 0:
+            month_compare_text = f"较上月 {month_delta}"
+        else:
+            month_compare_text = "较上月持平"
         smart_cfd_count = sum(1 for p in self.papers if "流体力学 / 智能CFD" in p.get('tags', []))
         early_access_count = sum(1 for p in self.papers if p.get('is_early_access'))
+        total_count = max(len(self.papers), 1)
+        pdf_rate = round(pdf_count * 100 / total_count)
+        published_rate = round(published_count * 100 / total_count)
+        smart_cfd_rate = round(smart_cfd_count * 100 / total_count)
+        early_access_rate = round(early_access_count * 100 / total_count)
+        smart_leaf_counts = {}
+        for paper in self.papers:
+            for tag in paper.get('tags', []):
+                if str(tag).startswith("流体力学 / 智能CFD /"):
+                    smart_leaf_counts[tag] = smart_leaf_counts.get(tag, 0) + 1
+        smart_top = sorted(smart_leaf_counts.items(), key=lambda item: item[1], reverse=True)[:2]
+        smart_top_text = " · ".join(f"{name.split('/')[-1].strip()} {count}" for name, count in smart_top) or "子方向待积累"
         
         # 动态计算每个分类的论文数
         category_counts = {'all': len(self.papers)}
@@ -241,28 +272,40 @@ class HTMLGenerator:
             <div class="summary-item">
                 <span class="summary-value">{today_count}</span>
                 <span class="summary-label">今日新增</span>
+                <span class="summary-detail">近7日 {recent_week_count} 篇</span>
                 <input class="daily-date-picker" id="dailyDatePicker" type="date" value="{today}" aria-label="按日期查看新增论文">
             </div>
-            <div class="summary-item">
+            <button class="summary-item summary-action" type="button" data-summary-action="month" title="查看本月新增论文">
                 <span class="summary-value">{current_month_count}</span>
                 <span class="summary-label">本月新增</span>
-            </div>
-            <div class="summary-item">
+                <span class="summary-detail">{current_month} · 上月 {previous_month_count} 篇</span>
+                <span class="summary-compare">{month_compare_text}</span>
+                <span class="summary-spark"><span style="width: {min(current_month_count, 100)}%"></span></span>
+            </button>
+            <button class="summary-item summary-action summary-rate-card" type="button" data-summary-action="pdf" title="只看有 PDF 的论文">
                 <span class="summary-value">{pdf_count}</span>
                 <span class="summary-label">有 PDF</span>
-            </div>
-            <div class="summary-item">
+                <span class="summary-detail">覆盖率 {pdf_rate}%</span>
+                <span class="summary-ring" style="--rate: {pdf_rate};" aria-label="PDF 覆盖率 {pdf_rate}%"><span>{pdf_rate}%</span></span>
+            </button>
+            <button class="summary-item summary-action summary-rate-card" type="button" data-summary-action="published" title="只看已发表论文">
                 <span class="summary-value">{published_count}</span>
                 <span class="summary-label">已发表</span>
-            </div>
-            <div class="summary-item">
+                <span class="summary-detail">占比 {published_rate}% · 总量 {len(self.papers)}</span>
+                <span class="summary-ring" style="--rate: {published_rate};" aria-label="已发表占比 {published_rate}%"><span>{published_rate}%</span></span>
+            </button>
+            <button class="summary-item summary-action" type="button" data-summary-action="smart-cfd" title="筛选智能 CFD 论文">
                 <span class="summary-value">{smart_cfd_count}</span>
                 <span class="summary-label">智能 CFD</span>
-            </div>
-            <div class="summary-item">
+                <span class="summary-detail">{smart_top_text}</span>
+                <span class="summary-spark"><span style="width: {smart_cfd_rate}%"></span></span>
+            </button>
+            <button class="summary-item summary-action" type="button" data-summary-action="early-access" title="查看早期在线论文">
                 <span class="summary-value">{early_access_count}</span>
-                <span class="summary-label">预出版</span>
-            </div>
+                <span class="summary-label">早期在线</span>
+                <span class="summary-detail">Ahead of Print · 点击筛选</span>
+                <span class="summary-spark"><span style="width: {early_access_rate}%"></span></span>
+            </button>
         </div>
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="🔍 搜索标题、作者、摘要..." aria-label="搜索论文">
@@ -331,7 +374,7 @@ class HTMLGenerator:
     
     <footer>
         <div class="container">
-            <p>© 2025 DailyPaper | 数据来源: ArXiv · Semantic Scholar · Google Scholar · CNKI | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>
+            <p>© {datetime.now().year} DailyPaper | 数据来源: ArXiv · Semantic Scholar · Google Scholar · CNKI | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>
         </div>
     </footer>
     
@@ -420,8 +463,13 @@ class HTMLGenerator:
         html_parts = []
         for paper in self.papers:
             tags_html = ''.join([f'<span class="tag">{tag}</span>' for tag in paper.get('tags', [])])
-            authors_html = ', '.join(paper['authors'][:5])
-            if len(paper['authors']) > 5:
+            authors_str = paper.get('authors', '')
+            if isinstance(authors_str, str):
+                authors_list = [a.strip() for a in authors_str.split(',') if a.strip()]
+            else:
+                authors_list = authors_str
+            authors_html = ', '.join(authors_list[:5])
+            if len(authors_list) > 5:
                 authors_html += ' et al.'
             
             primary_category = paper.get('primary_category', paper['venue'])

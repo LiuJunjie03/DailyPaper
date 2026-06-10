@@ -76,13 +76,15 @@ sources:
         - "machine learning multiphase flow prediction"
         - "neural network interface capturing"
     max_results_per_query: 10
-    year_from: 2026
+    # year_from: 留空则自动使用当前年份（无需每年手动更新）
+    # year_from: 2026
 
   # CNKI 知网数据源（中文论文）
   cnki:
     enabled: true
-    home_url: "http://www--cnki--net--https.cnki.mdjsf.utuvpn.utuedu.com:9000/"
-    kns_base_url: "http://kns--cnki--net--https.cnki.mdjsf.utuvpn.utuedu.com:9000/"
+    # CNKI 代理 URL：优先读取环境变量 CNKI_HOME_URL / CNKI_KNS_BASE_URL
+    home_url: ""
+    kns_base_url: ""
     enrich_details: true
     detail_delay: 1.0
     queries:
