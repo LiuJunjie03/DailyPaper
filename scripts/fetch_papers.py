@@ -9,7 +9,6 @@ import re
 import calendar
 import logging
 import argparse
-from datetime import datetime, timezone
 from typing import Dict, List
 
 import yaml
@@ -34,6 +33,8 @@ from merger import merge_paper_list as _merge_paper_list
 from normalizer import (
     finalize_paper as _finalize_paper,
     get_impact_factor as _get_impact_factor,
+    normalize_dates,
+    ensure_early_access,
     IMPACT_FACTOR_TABLE,
 )
 from store import load_monthly_data, split_papers_by_month, save_monthly_data, build_month_index
@@ -242,25 +243,9 @@ class PaperFetcher:
 
         write_classification_report(papers, data_dir)
 
-        # 确保所有论文都有 is_early_access 字段（兼容从旧 JSON 加载的历史数据）
-        _today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-        for paper in papers:
-            if "is_early_access" not in paper:
-                _pub = paper.get("published", "")
-                paper["is_early_access"] = (
-                    len(_pub) >= 10 and _pub > _today
-                    and bool(paper.get("doi") or paper.get("venue") or paper.get("conference"))
-                )
-
-        # 补全不完整的日期（只有年份的补充为 YYYY-01-01）
-        for paper in papers:
-            pub = paper.get("published", "")
-            if pub and len(pub) == 4 and pub.isdigit():
-                paper["published"] = f"{pub}-01-01"
-                paper["date_status"] = paper.get("date_status") or "year_only"
-            elif pub and len(pub) == 7:
-                paper["published"] = f"{pub}-01"
-                paper["date_status"] = paper.get("date_status") or "approximate"
+        # 历史数据归一化（委托 normalizer.py）
+        ensure_early_access(papers)
+        normalize_dates(papers)
 
         # 按月拆分 → 写入 JSON → 生成索引（委托 store.py）
         month_papers = split_papers_by_month(papers)

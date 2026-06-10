@@ -168,3 +168,27 @@ def finalize_paper(paper: Dict, config: Dict, classifier_module=None) -> Dict:
     paper["custom_keywords"] = _extract_keywords(paper)
     paper["keywords"] = _normalize_kw(official_keywords + paper["custom_keywords"])
     return paper
+
+
+def normalize_dates(papers: list) -> None:
+    """补全不完整的日期字段（只有年份 → YYYY-01-01，只有年月 → YYYY-MM-01）。原地修改。"""
+    for paper in papers:
+        pub = paper.get("published", "")
+        if pub and len(pub) == 4 and pub.isdigit():
+            paper["published"] = f"{pub}-01-01"
+            paper["date_status"] = paper.get("date_status") or "year_only"
+        elif pub and len(pub) == 7:
+            paper["published"] = f"{pub}-01"
+            paper["date_status"] = paper.get("date_status") or "approximate"
+
+
+def ensure_early_access(papers: list) -> None:
+    """为缺少 is_early_access 的历史记录计算该字段。原地修改。"""
+    _today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    for paper in papers:
+        if "is_early_access" not in paper:
+            _pub = paper.get("published", "")
+            paper["is_early_access"] = (
+                len(_pub) >= 10 and _pub > _today
+                and bool(paper.get("doi") or paper.get("venue") or paper.get("conference"))
+            )

@@ -3,6 +3,9 @@
 > 基于 PROJECT_REVIEW.md + PROJECT_ANALYSIS.md 两份审查报告 + 风险反馈修订
 > 修订日期：2026-06-10
 > 原则：每步更小、可回滚、不碰数据迁移
+>
+> **Phase 0–4 阶段验收通过（2026-06-10）**
+> fetch_papers.py 1628→287 行 | 134 tests passed | validate_data.py 零 warning
 
 ---
 
@@ -207,11 +210,11 @@ scripts/common/
 
 ---
 
-## Phase 4：拆分 PaperFetcher 上帝类 — 部分完成
+## Phase 4：拆分 PaperFetcher 上帝类 — 阶段验收通过
 
 > 目标：将 1628 行的 `fetch_papers.py` 拆成职责清晰的小模块
 > 依赖：Phase 2 + Phase 3
-> 当前进度：fetch_papers.py 从 661 行降至 577 行
+> 最终结果：fetch_papers.py 1628→287 行（降 82%）
 
 ### 已完成
 
@@ -242,10 +245,11 @@ scripts/common/
 | enrich | 16 | ✅ is_reliable_abstract、normalize_title、title_matches、openalex_abstract、metadata_complete、needs_crossref |
 
 **当前验收**：
-- `fetch_papers.py` 从 661 行降至 577 行 ✅
-- `save_papers()` 的 I/O 已委托 `store.py` ✅
-- store 模块有 8 个关键用例测试 ✅
-- `pytest -q` 通过（94 passed） ✅
+- `fetch_papers.py` 1628→287 行（降 82%） ✅
+- `save_papers()` 的 I/O 委托 `store.py`，日期补全委托 `normalizer.py` ✅
+- 4 模块 48 个关键用例测试（store 8 / merger 12 / enrich 16 / classifier 12） ✅
+- `validate_data.py` 零 warning（1575 篇全部通过） ✅
+- `pytest -q` 通过（134 passed） ✅
 
 ### 原始计划（参考）
 
