@@ -3,9 +3,9 @@ import logging
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 
-from common.http import request_json
-from common.dates import validate_date
-from common.queries import flatten_queries
+from daily_paper.http import request_json
+from daily_paper.dates import validate_date
+from daily_paper.queries import flatten_queries
 
 logger = logging.getLogger(__name__)
 

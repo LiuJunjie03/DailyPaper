@@ -14,7 +14,7 @@ from typing import Dict, List, Optional
 import requests
 from bs4 import BeautifulSoup
 
-from common.text import clean_text
+from daily_paper.text import clean_text
 from fetchers.browser import evaluate_in_chrome
 
 

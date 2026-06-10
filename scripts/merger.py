@@ -11,7 +11,7 @@
 import re
 from typing import Dict, List, Optional, Callable
 
-from common.text import normalize_title, normalize_doi, normalize_arxiv_id
+from daily_paper.text import normalize_title, normalize_doi, normalize_arxiv_id
 
 
 def identity_keys(paper: Dict) -> List[str]:

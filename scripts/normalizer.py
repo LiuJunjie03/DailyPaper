@@ -12,7 +12,7 @@ import re
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
-from common.text import normalize_doi, normalize_arxiv_id
+from daily_paper.text import normalize_doi, normalize_arxiv_id
 from classifier import classify_paper, extract_paper_keywords, normalize_keywords
 
 # 常见期刊/会议影响因子静态表（可自行扩充）

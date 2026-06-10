@@ -1,16 +1,11 @@
 """Phase 1+2 测试：common 模块 + schema 校验"""
 
-import sys
-import os
 import pytest
 
-# 确保 scripts/ 在 import 路径中
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
-
-from common.text import normalize_title, normalize_doi, normalize_arxiv_id, term_in_text, clean_text
-from common.dates import validate_date, parse_date, in_date_window
-from common.queries import flatten_queries
-from common.schema import validate_paper, REQUIRED_FIELDS
+from daily_paper.text import normalize_title, normalize_doi, normalize_arxiv_id, term_in_text, clean_text
+from daily_paper.dates import validate_date, parse_date, in_date_window
+from daily_paper.queries import flatten_queries
+from daily_paper.schema import validate_paper, REQUIRED_FIELDS
 
 
 # ============================================================

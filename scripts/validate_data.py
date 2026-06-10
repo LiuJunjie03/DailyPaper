@@ -11,7 +11,7 @@ import sys
 # 确保 scripts/ 在 import 路径中
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from common.schema import validate_paper
+from daily_paper.schema import validate_paper
 
 
 def main():

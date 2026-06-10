@@ -6,9 +6,9 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from urllib.parse import quote
 
-from common.http import request_json
-from common.dates import validate_date, in_date_window
-from common.queries import flatten_queries
+from daily_paper.http import request_json
+from daily_paper.dates import validate_date, in_date_window
+from daily_paper.queries import flatten_queries
 
 logger = logging.getLogger(__name__)
 

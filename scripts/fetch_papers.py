@@ -15,7 +15,7 @@ import yaml
 import arxiv
 
 # 从新模块重新导出，保持向后兼容
-from common.text import normalize_title, normalize_doi as _normalize_doi, normalize_arxiv_id as _normalize_arxiv_id
+from daily_paper.text import normalize_title, normalize_doi as _normalize_doi, normalize_arxiv_id as _normalize_arxiv_id
 from classifier import (
     term_in_text,
     is_relevant_paper,
@@ -130,7 +130,7 @@ class PaperFetcher:
         return _get_impact_factor(paper, self.IMPACT_FACTOR_TABLE)
 
     def _flatten_queries(self, raw_queries):
-        from common.queries import flatten_queries
+        from daily_paper.queries import flatten_queries
         return flatten_queries(raw_queries)
 
     def extract_official_keywords(self, result):

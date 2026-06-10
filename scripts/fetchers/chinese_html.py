@@ -12,9 +12,9 @@ from urllib.parse import quote_plus, urljoin
 import requests
 from bs4 import BeautifulSoup
 
-from common.text import normalize_title, clean_text
-from common.dates import parse_date as complete_date, in_date_window
-from common.queries import flatten_queries
+from daily_paper.text import normalize_title, clean_text
+from daily_paper.dates import parse_date as complete_date, in_date_window
+from daily_paper.queries import flatten_queries
 from fetchers.browser import evaluate_in_chrome
 
 

@@ -13,7 +13,7 @@ import os
 import re
 from typing import Dict, List
 
-from common.text import normalize_title
+from daily_paper.text import normalize_title
 
 logger = logging.getLogger(__name__)
 

@@ -8,7 +8,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from urllib.parse import quote_plus
 
-from common.text import normalize_title
+from daily_paper.text import normalize_title
 from fetchers.browser import evaluate_in_chrome
 
 logger = logging.getLogger(__name__)
