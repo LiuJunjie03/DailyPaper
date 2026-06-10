@@ -148,7 +148,8 @@ class HTMLGenerator:
                 'month': year_month,
                 'count': len(papers),
                 'published_count': sum(1 for p in papers if p.get('conference')),
-                'preprint_count': sum(1 for p in papers if not p.get('conference'))
+                'preprint_count': sum(1 for p in papers if not p.get('conference')),
+                'early_access_count': sum(1 for p in papers if p.get('is_early_access'))
             })
         
         index_file = data_dir / "index.json"
@@ -189,6 +190,7 @@ class HTMLGenerator:
             and str(p.get('published', '')).startswith(current_month)
         )
         smart_cfd_count = sum(1 for p in self.papers if "流体力学 / 智能CFD" in p.get('tags', []))
+        early_access_count = sum(1 for p in self.papers if p.get('is_early_access'))
         
         # 动态计算每个分类的论文数
         category_counts = {'all': len(self.papers)}
@@ -230,6 +232,7 @@ class HTMLGenerator:
             <div class="summary-item">
                 <span class="summary-value">{today_count}</span>
                 <span class="summary-label">今日新增</span>
+                <input class="daily-date-picker" id="dailyDatePicker" type="date" value="{today}" aria-label="按日期查看新增论文">
             </div>
             <div class="summary-item">
                 <span class="summary-value">{current_month_count}</span>
@@ -246,6 +249,10 @@ class HTMLGenerator:
             <div class="summary-item">
                 <span class="summary-value">{smart_cfd_count}</span>
                 <span class="summary-label">智能 CFD</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value">{early_access_count}</span>
+                <span class="summary-label">预出版</span>
             </div>
         </div>
         <div class="search-box">

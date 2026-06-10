@@ -409,6 +409,7 @@ nav.container {
 .summary-item:nth-child(3) { border-top-color: var(--green); }
 .summary-item:nth-child(4) { border-top-color: var(--amber); }
 .summary-item:nth-child(5) { border-top-color: var(--violet); }
+.summary-item:nth-child(6) { border-top-color: #ff9800; }
 
 .summary-value {
     display: block;
@@ -424,6 +425,25 @@ nav.container {
     margin-top: 0.25rem;
     color: var(--text-muted);
     font-size: 0.76rem;
+}
+
+.daily-date-picker {
+    width: 100%;
+    margin-top: 0.55rem;
+    padding: 0.35rem 0.45rem;
+    border: 1px solid rgba(192, 86, 106, 0.28);
+    border-radius: 6px;
+    background: #fff8fa;
+    color: var(--deep-sea);
+    font: inherit;
+    font-size: 0.76rem;
+    cursor: pointer;
+}
+
+.daily-date-picker:focus {
+    outline: none;
+    border-color: var(--rose);
+    box-shadow: 0 0 0 3px rgba(192, 86, 106, 0.12);
 }
 
 .quick-filter-row {
@@ -742,6 +762,23 @@ main {
     font-size: 0.8em;
     cursor: help;
     margin-left: 2px;
+}
+
+/* 预出版标志 */
+.early-access-badge {
+    display: inline-block;
+    background: #ff9800;
+    color: white;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.75em;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+.early-access-date {
+    color: #999;
+    font-style: italic;
+    font-size: 0.9em;
 }
 
 .paper-authors {

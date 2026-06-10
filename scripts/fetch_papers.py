@@ -840,6 +840,13 @@ class PaperFetcher:
         )
         paper["publication_type"] = paper.get("publication_type") or self._publication_type(paper)
         paper["is_preprint"] = paper["publication_type"] == "preprint"
+        # 预出版检测：published 在未来且有 DOI/venue（已被接收但未正式见刊）
+        _pub = paper.get("published", "")
+        _today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        paper["is_early_access"] = (
+            len(_pub) >= 10 and _pub > _today
+            and bool(paper.get("doi") or paper.get("venue") or paper.get("conference"))
+        )
         if not paper["is_preprint"] and "arxiv.org" in str(paper.get("pdf_url", "")):
             paper["preprint_pdf_url"] = paper.get("preprint_pdf_url") or paper["pdf_url"]
             paper["pdf_url"] = ""
@@ -1556,6 +1563,7 @@ class PaperFetcher:
                 "count": len(month_items),
                 "published_count": sum(1 for p in month_items if not p.get("is_preprint")),
                 "preprint_count": sum(1 for p in month_items if p.get("is_preprint")),
+                "early_access_count": sum(1 for p in month_items if p.get("is_early_access")),
             })
         with open(os.path.join(data_dir, "index.json"), "w", encoding="utf-8") as f:
             json.dump(index_data, f, ensure_ascii=False, indent=2)
