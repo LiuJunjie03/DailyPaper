@@ -112,6 +112,15 @@ class HTMLGenerator:
             try:
                 with open(month_file, 'r', encoding='utf-8') as f:
                     month_papers = json.load(f)
+                # 确保旧数据也有 is_early_access 字段
+                _today = datetime.now().strftime("%Y-%m-%d")
+                for paper in month_papers:
+                    if "is_early_access" not in paper:
+                        _pub = paper.get("published", "")
+                        paper["is_early_access"] = (
+                            len(_pub) >= 10 and _pub > _today
+                            and bool(paper.get("doi") or paper.get("venue") or paper.get("conference"))
+                        )
                 month_papers = [paper for paper in month_papers if is_relevant_paper(paper)]
                 
                 # 添加到总论文列表

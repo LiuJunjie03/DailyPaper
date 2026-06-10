@@ -1529,6 +1529,16 @@ class PaperFetcher:
 
         self.write_classification_report(papers, data_dir)
 
+        # 确保所有论文都有 is_early_access 字段（兼容从旧 JSON 加载的历史数据）
+        _today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        for paper in papers:
+            if "is_early_access" not in paper:
+                _pub = paper.get("published", "")
+                paper["is_early_access"] = (
+                    len(_pub) >= 10 and _pub > _today
+                    and bool(paper.get("doi") or paper.get("venue") or paper.get("conference"))
+                )
+
         # 补全不完整的日期（只有年份的补充为 YYYY-01-01）
         for paper in papers:
             pub = paper.get("published", "")
