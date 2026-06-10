@@ -6,60 +6,19 @@ import os
 import re
 import time
 from datetime import datetime, timedelta, timezone
-from html import unescape
 from typing import Dict, Iterable, List, Optional
 from urllib.parse import quote_plus, urljoin
 
 import requests
 from bs4 import BeautifulSoup
 
+from common.text import normalize_title, clean_text
+from common.dates import parse_date as complete_date, in_date_window
+from common.queries import flatten_queries
 from fetchers.browser import evaluate_in_chrome
 
 
 logger = logging.getLogger(__name__)
-
-USER_AGENT = "DailyPaperBot/1.0 (+https://github.com/LiuJunjie03/DailyPaper)"
-
-
-def clean_text(text: str) -> str:
-    return re.sub(r"\s+", " ", unescape(text or "")).strip()
-
-
-def normalize_title(title: str) -> str:
-    return re.sub(r"\s+", " ", (title or "").lower().strip())
-
-
-def complete_date(value: str) -> str:
-    value = clean_text(value)
-    match = re.search(r"((?:19|20)\d{2})[-/.年](\d{1,2})(?:[-/.月](\d{1,2}))?", value)
-    if match:
-        year = int(match.group(1))
-        month = int(match.group(2))
-        day = int(match.group(3) or 1)
-        return f"{year:04d}-{month:02d}-{day:02d}"
-    match = re.search(r"(19|20)\d{2}", value)
-    return match.group(0) if match else ""
-
-
-def in_date_window(published: str, from_date: str, until_date: str) -> bool:
-    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", published or ""):
-        return True
-    if from_date and published < from_date:
-        return False
-    if until_date and published > until_date:
-        return False
-    return True
-
-
-def flatten_queries(config: Dict) -> List[str]:
-    raw_queries = config.get("queries", [])
-    if isinstance(raw_queries, dict):
-        queries = []
-        for values in raw_queries.values():
-            queries.extend(values if isinstance(values, list) else [values])
-    else:
-        queries = raw_queries
-    return [str(q).strip() for q in queries if str(q).strip()]
 
 
 def request_html(url: str, params: Optional[Dict] = None, timeout: int = 25) -> Optional[str]:

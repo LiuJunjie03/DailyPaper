@@ -8,13 +8,10 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from urllib.parse import quote_plus
 
+from common.text import normalize_title
 from fetchers.browser import evaluate_in_chrome
 
 logger = logging.getLogger(__name__)
-
-
-def normalize_title(title: str) -> str:
-    return re.sub(r"\s+", " ", (title or "").lower().strip())
 
 
 def _looks_like_scholar_snippet(text: str) -> bool:

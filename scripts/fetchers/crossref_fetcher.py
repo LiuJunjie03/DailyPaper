@@ -1,34 +1,16 @@
 """Crossref 数据源 — 通过关键词搜索发现正式发表论文"""
-import requests
-import time
 import re
+import time
 import logging
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from urllib.parse import quote
 
+from common.http import request_json
+from common.dates import validate_date, in_date_window
+from common.queries import flatten_queries
+
 logger = logging.getLogger(__name__)
-
-USER_AGENT = "DailyPaperBot/1.0 (mailto:research@dailyPaper.org)"
-
-
-def request_json(url: str, params: Optional[Dict] = None, timeout: int = 20) -> Optional[Dict]:
-    """通用 JSON 请求，429 自动重试"""
-    for attempt in range(3):
-        try:
-            resp = requests.get(url, params=params, timeout=timeout,
-                                headers={"User-Agent": USER_AGENT})
-            if resp.status_code == 200:
-                return resp.json()
-            if resp.status_code == 429:
-                time.sleep(5 * (attempt + 1))
-                continue
-            return None
-        except requests.RequestException:
-            if attempt == 2:
-                return None
-            time.sleep(2)
-    return None
 
 
 def _date_from_crossref_parts(value) -> str:
@@ -49,11 +31,6 @@ def _date_from_crossref_parts(value) -> str:
     return ""
 
 
-def _complete_date(value: str) -> str:
-    value = str(value or "")
-    return value if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value) else ""
-
-
 def _clean_abstract(text: str) -> str:
     """清理 Crossref 返回的 JATS XML 摘要"""
     if not text:
@@ -61,16 +38,6 @@ def _clean_abstract(text: str) -> str:
     text = re.sub(r"<[^>]+>", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
     return text
-
-
-def _in_date_window(published: str, from_date: str, until_date: str) -> bool:
-    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", published or ""):
-        return True
-    if from_date and published < from_date:
-        return False
-    if until_date and published > until_date:
-        return False
-    return True
 
 
 def fetch_crossref_papers(fetcher) -> List[Dict]:
@@ -81,21 +48,14 @@ def fetch_crossref_papers(fetcher) -> List[Dict]:
         return []
 
     # 解析查询列表
-    raw_queries = config.get("queries", [])
-    if isinstance(raw_queries, dict):
-        queries = []
-        for values in raw_queries.values():
-            queries.extend(values if isinstance(values, list) else [values])
-    else:
-        queries = raw_queries
-    queries = [str(q).strip() for q in queries if str(q).strip()]
+    queries = flatten_queries(config)
 
     max_per_query = config.get("max_results_per_query", 20)
     days_back = config.get("days_back", 180)
-    from_date = _complete_date(config.get("start_date", "")) or (
+    from_date = validate_date(config.get("start_date", "")) or (
         datetime.now(timezone.utc) - timedelta(days=days_back)
     ).strftime("%Y-%m-%d")
-    until_date = _complete_date(config.get("end_date", ""))
+    until_date = validate_date(config.get("end_date", ""))
 
     all_papers = []
     seen_dois = set()
@@ -145,7 +105,7 @@ def fetch_crossref_papers(fetcher) -> List[Dict]:
 
             # 发表日期
             published = _date_from_crossref_parts(item)
-            if not _in_date_window(published, from_date, until_date):
+            if not in_date_window(published, from_date, until_date):
                 continue
 
             # 期刊/会议名

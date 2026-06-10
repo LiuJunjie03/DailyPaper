@@ -6,18 +6,11 @@ import logging
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 
+from common.text import normalize_doi
+from common.dates import validate_date
+from common.queries import flatten_queries
+
 logger = logging.getLogger(__name__)
-
-
-def normalize_doi(doi: str) -> str:
-    doi = (doi or "").strip().lower()
-    doi = re.sub(r"^https?://(dx\.)?doi\.org/", "", doi)
-    return doi
-
-
-def _complete_date(value: str) -> str:
-    value = str(value or "")
-    return value if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value) else ""
 
 
 def get_citation_count(title, authors=None, year=None):
@@ -132,18 +125,12 @@ def fetch_semantic_scholar_papers(fetcher) -> List[Dict]:
         logger.info("Semantic Scholar 数据源已禁用")
         return []
 
-    raw_queries = ss_config.get("queries", [])
-    if isinstance(raw_queries, dict):
-        queries = []
-        for values in raw_queries.values():
-            queries.extend(values if isinstance(values, list) else [values])
-    else:
-        queries = raw_queries
+    queries = flatten_queries(ss_config)
     max_per_query = ss_config.get("max_results_per_query", 100)
     days_back = ss_config.get("days_back", 180)
 
-    configured_start = _complete_date(ss_config.get("start_date", ""))
-    configured_end = _complete_date(ss_config.get("end_date", ""))
+    configured_start = validate_date(ss_config.get("start_date", ""))
+    configured_end = validate_date(ss_config.get("end_date", ""))
     start_date = (
         datetime.strptime(configured_start, "%Y-%m-%d").replace(tzinfo=timezone.utc)
         if configured_start else datetime.now(timezone.utc) - timedelta(days=days_back)

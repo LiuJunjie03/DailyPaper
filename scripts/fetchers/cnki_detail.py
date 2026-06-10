@@ -14,14 +14,11 @@ from typing import Dict, List, Optional
 import requests
 from bs4 import BeautifulSoup
 
+from common.text import clean_text
 from fetchers.browser import evaluate_in_chrome
 
 
 logger = logging.getLogger(__name__)
-
-
-def clean_text(text: str) -> str:
-    return re.sub(r"\s+", " ", text or "").strip()
 
 
 def _clean_title(text: str) -> str:

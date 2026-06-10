@@ -1,33 +1,13 @@
 """OpenAlex 数据源 — 通过关键词搜索发现论文"""
-import requests
-import time
-import re
 import logging
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 
+from common.http import request_json
+from common.dates import validate_date
+from common.queries import flatten_queries
+
 logger = logging.getLogger(__name__)
-
-USER_AGENT = "DailyPaperBot/1.0 (mailto:research@dailyPaper.org)"
-
-
-def request_json(url: str, params: Optional[Dict] = None, timeout: int = 20) -> Optional[Dict]:
-    """通用 JSON 请求，429 自动重试"""
-    for attempt in range(3):
-        try:
-            resp = requests.get(url, params=params, timeout=timeout,
-                                headers={"User-Agent": USER_AGENT})
-            if resp.status_code == 200:
-                return resp.json()
-            if resp.status_code == 429:
-                time.sleep(5 * (attempt + 1))
-                continue
-            return None
-        except requests.RequestException:
-            if attempt == 2:
-                return None
-            time.sleep(2)
-    return None
 
 
 def _openalex_abstract(inverted_index: Optional[Dict]) -> str:
@@ -41,11 +21,6 @@ def _openalex_abstract(inverted_index: Optional[Dict]) -> str:
     return " ".join(word for _, word in sorted(words))
 
 
-def _complete_date(value: str) -> str:
-    value = str(value or "")
-    return value if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value) else ""
-
-
 def fetch_openalex_papers(fetcher) -> List[Dict]:
     """从 OpenAlex 搜索论文"""
     config = fetcher.config.get("sources", {}).get("openalex", {})
@@ -54,22 +29,15 @@ def fetch_openalex_papers(fetcher) -> List[Dict]:
         return []
 
     # 解析查询列表
-    raw_queries = config.get("queries", [])
-    if isinstance(raw_queries, dict):
-        queries = []
-        for values in raw_queries.values():
-            queries.extend(values if isinstance(values, list) else [values])
-    else:
-        queries = raw_queries
-    queries = [str(q).strip() for q in queries if str(q).strip()]
+    queries = flatten_queries(config)
 
     max_per_query = config.get("max_results_per_query", 20)
     days_back = config.get("days_back", 180)
     mailto = config.get("mailto", "research@dailyPaper.org")
-    from_date = _complete_date(config.get("start_date", "")) or (
+    from_date = validate_date(config.get("start_date", "")) or (
         datetime.now(timezone.utc) - timedelta(days=days_back)
     ).strftime("%Y-%m-%d")
-    until_date = _complete_date(config.get("end_date", ""))
+    until_date = validate_date(config.get("end_date", ""))
 
     all_papers = []
     seen_ids = set()

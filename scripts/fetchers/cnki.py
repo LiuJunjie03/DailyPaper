@@ -20,9 +20,7 @@ logger = logging.getLogger(__name__)
 
 DEFAULT_KNS_BASE_URL = "https://kns.cnki.net"
 
-
-def normalize_title(title: str) -> str:
-    return re.sub(r"\s+", " ", (title or "").lower().strip())
+from common.text import normalize_title
 
 
 def _cnki_url(cnki_config: Dict, key: str, default_path: str) -> str:
