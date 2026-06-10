@@ -1,12 +1,8 @@
 """enrich.py 关键用例测试 — 补全逻辑、摘要判断、OpenAlex 重建"""
 
-import os
-import sys
 import pytest
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
-
-from enrich import (
+from daily_paper.enrich import (
     _is_reliable_abstract,
     _cascade_normalize_title,
     _cascade_title_matches,

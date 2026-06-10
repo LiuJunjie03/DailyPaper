@@ -1,12 +1,8 @@
 """merger.py 关键用例测试 — DOI/ArXiv/标题合并、来源优先级"""
 
-import os
-import sys
 import pytest
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
-
-from merger import identity_keys, source_rank, merge_two_papers, merge_paper_list
+from daily_paper.merge import identity_keys, source_rank, merge_two_papers, merge_paper_list
 
 
 def _paper(title="Test", doi="", arxiv_id="", source="arxiv", **extra):

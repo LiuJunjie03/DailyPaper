@@ -14,9 +14,9 @@ from typing import Dict, List
 import yaml
 import arxiv
 
-# 从新模块重新导出，保持向后兼容
+# 从 daily_paper 包导入核心模块
 from daily_paper.text import normalize_title, normalize_doi as _normalize_doi, normalize_arxiv_id as _normalize_arxiv_id
-from classifier import (
+from daily_paper.classify import (
     term_in_text,
     is_relevant_paper,
     KEYWORD_CANONICAL,
@@ -28,16 +28,16 @@ from classifier import (
     extract_paper_keywords as _extract_paper_keywords,
     write_classification_report,
 )
-from enrich import cascade_enrich_papers
-from merger import merge_paper_list as _merge_paper_list
-from normalizer import (
+from daily_paper.enrich import cascade_enrich_papers
+from daily_paper.merge import merge_paper_list as _merge_paper_list
+from daily_paper.normalizer import (
     finalize_paper as _finalize_paper,
     get_impact_factor as _get_impact_factor,
     normalize_dates,
     ensure_early_access,
     IMPACT_FACTOR_TABLE,
 )
-from store import load_monthly_data, split_papers_by_month, save_monthly_data, build_month_index
+from daily_paper.storage import load_monthly_data, split_papers_by_month, save_monthly_data, build_month_index
 
 # 向后兼容的 normalize_doi / normalize_arxiv_id（保留原始行为）
 def normalize_doi(doi: str) -> str:

@@ -1,12 +1,8 @@
 """classifier.py 关键用例测试 — 相关性判断、分类、关键词"""
 
-import os
-import sys
 import pytest
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
-
-from classifier import (
+from daily_paper.classify import (
     term_in_text,
     is_relevant_paper,
     classify_paper,

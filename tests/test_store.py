@@ -6,11 +6,7 @@ import tempfile
 
 import pytest
 
-# scripts/ 目录需要在 sys.path 上
-import sys
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
-
-from store import load_monthly_data, split_papers_by_month, save_monthly_data, build_month_index
+from daily_paper.storage import load_monthly_data, split_papers_by_month, save_monthly_data, build_month_index
 
 
 def _make_paper(title="Test Paper", published="2026-03-15", source="test"):
