@@ -23,18 +23,13 @@ import yaml
 from bs4 import BeautifulSoup
 
 from fetchers.cnki_detail import enrich_cnki_paper
+from enrich import request_json, normalize_title, openalex_abstract
 
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 CONFIG_PATH = ROOT / "config.yaml"
 USER_AGENT = "DailyPaper abstract enricher (mailto:example@example.com)"
-
-
-def normalize_title(title: str) -> str:
-    title = (title or "").lower()
-    title = re.sub(r"[^a-z0-9]+", " ", title)
-    return re.sub(r"\s+", " ", title).strip()
 
 
 def title_matches(expected: str, candidate: str, threshold: float = 0.88) -> bool:
@@ -68,21 +63,6 @@ def is_reliable_abstract(text: str) -> bool:
         return False
     bad_prefixes = ("cookies", "enable javascript", "this page", "access denied")
     return not text.lower().startswith(bad_prefixes)
-
-
-def request_json(url: str, params: Optional[Dict] = None, timeout: int = 20) -> Optional[Dict]:
-    try:
-        response = requests.get(
-            url,
-            params=params,
-            timeout=timeout,
-            headers={"User-Agent": USER_AGENT},
-        )
-        if response.status_code == 200:
-            return response.json()
-    except requests.RequestException:
-        return None
-    return None
 
 
 def complete_date(value: str) -> str:
@@ -143,16 +123,6 @@ def fetch_semantic_scholar(paper: Dict) -> Optional[Tuple[str, Dict]]:
                 "published": complete_date(item.get("publicationDate", "")) or paper.get("published", ""),
             }
     return None
-
-
-def openalex_abstract(inverted_index: Optional[Dict]) -> str:
-    if not inverted_index:
-        return ""
-    words = []
-    for word, positions in inverted_index.items():
-        for pos in positions:
-            words.append((pos, word))
-    return " ".join(word for _, word in sorted(words))
 
 
 def fetch_openalex(paper: Dict) -> Optional[Tuple[str, Dict]]:

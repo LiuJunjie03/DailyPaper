@@ -434,3 +434,14 @@ def cascade_enrich_papers(papers: List[Dict], config: Dict, delay: float = 0.15)
             logger.info(f"级联补全进度: {i+1}/{total}")
 
     logger.info(f"级联补全完成: {enriched_count}/{total} 篇需要补全")
+
+
+# ═══════════════════════════════════════════════════════════
+#  公共接口 — 供独立补全脚本复用的共享工具函数
+# ═══════════════════════════════════════════════════════════
+
+request_json = _cascade_request_json
+normalize_title = _cascade_normalize_title
+title_matches = _cascade_title_matches
+openalex_abstract = _cascade_openalex_abstract
+is_reliable_abstract = _is_reliable_abstract

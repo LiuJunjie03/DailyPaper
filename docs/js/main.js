@@ -424,13 +424,8 @@ const arxivLink = paper.arxiv_url ? `<a href="${escapeAttribute(safeURL(paper.ar
 const pdfLink = paper.pdf_url ? `<a href="${escapeAttribute(safeURL(paper.pdf_url))}" target="_blank" rel="noopener noreferrer" class="code-link">PDF</a>` : '';
 const preprintPdfLink = paper.preprint_pdf_url ? `<a href="${escapeAttribute(safeURL(paper.preprint_pdf_url))}" target="_blank" rel="noopener noreferrer" class="code-link">Preprint PDF</a>` : '';
 
-// 提取代码链接
+// 提取代码链接（已转义，防止 XSS）
 let codeLink = '';
-if (paper.code_link) {
-    codeLink = `<a href="${paper.code_link}" target="_blank" class="code-link">📄 Code/Project</a>`;
-}
-
-// 获取会议徽章
 if (paper.code_link) {
     codeLink = `<a href="${escapeAttribute(safeURL(paper.code_link))}" target="_blank" rel="noopener noreferrer" class="code-link">Code/Project</a>`;
 }

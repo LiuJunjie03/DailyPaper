@@ -171,57 +171,83 @@ scripts/common/
 
 ---
 
-## Phase 3：统一三套补全体系（1 周）
+## Phase 3：统一三套补全体系 — 部分完成
 
 > 目标：消除 `fetch_papers.py`、`enrich_abstracts.py`、`enrich_metadata.py` 的补全逻辑重叠
 > 依赖：Phase 2 的 `common/` 模块
 
-### 3.1 建立统一的 Enricher 模块
+### 已完成
 
-新增 `scripts/enrich.py`：
+| # | 任务 | 状态 |
+|---|------|------|
+| 1 | 新建 `scripts/enrich.py` — 级联补全主模块（Crossref→OpenAlex→SS→publisher） | ✅ |
+| 2 | `fetch_papers.py` 主流程已通过 `enrich.py` 执行补全 | ✅ |
+| 3 | `enrich.py` 导出公共工具函数（`request_json`, `normalize_title`, `title_matches`, `openalex_abstract`） | ✅ |
+| 4 | `enrich_abstracts.py` 导入 `enrich.py` 的 `request_json`, `normalize_title`, `openalex_abstract`，移除本地重复定义 | ✅ |
+| 5 | `enrich_metadata.py` 导入 `enrich.py` 的 `request_json`, `normalize_title`, `title_matches`, `openalex_abstract`，移除本地重复定义 | ✅ |
 
-```
-enrich.py
-  enrich_paper(paper, providers=['crossref', 'openalex', 'semantic_scholar', 'publisher'])
-  _enrich_from_crossref(paper)      # 合并三文件中的 Crossref 逻辑
-  _enrich_from_openalex(paper)      # 合并三文件中的 OpenAlex 逻辑
-  _enrich_from_semantic_scholar(paper)
-  _enrich_from_publisher(paper)
-  needs_enrichment(paper)           # 统一的补全需求判断
-  is_reliable_abstract(text)        # 统一的摘要可靠性判断
-  rebuild_openalex_abstract(inv_index)
-```
+### 未完成（Legacy 独立脚本）
 
-### 3.2 迁移策略
+`enrich_abstracts.py` 和 `enrich_metadata.py` 仍保留各自的 `fetch_*` 函数。
+原因是它们的返回值 API 不同（返回 `(value, metadata)` 元组 vs `enrich.py` 的原地修改），
+且有独特功能（arXiv 日期/摘要、CNKI 详情页、`--only dates/abstracts` 过滤）。
+这两个脚本标记为 **legacy 独立 CLI 工具**，主流程（`fetch_papers.py`）不再依赖它们。
 
-1. 将 `fetch_papers.py` 中的 `_cascade_enrich_papers()` 及 4 个 `_enrich_from_*()` 迁入 `enrich.py`
-2. `enrich_abstracts.py` 的摘要补全改为调用 `enrich.enrich_paper(paper, providers=[...])`
-3. `enrich_metadata.py` 的元数据补全同理
-4. 统一阈值：标题匹配（0.85）、摘要最小长度（220）、日期解析优先级
+### 待做（如需完全统一）
 
-### 3.3 关键用例测试
-
-为 `enrich.py` 编写以下测试（mock API 返回，不访问外网）：
-
-- **Crossref 补全**：mock `request_json` 返回含 DOI/日期/venue 的 Crossref 记录，验证论文字段被正确填充
-- **OpenAlex 补全**：mock 返回倒排索引摘要，验证 `rebuild_openalex_abstract` 重建结果
-- **Semantic Scholar 补全**：mock 返回含 citation_count 的记录，验证引用数更新
-- **可靠性判断**：传入 < 220 字符摘要、含 cookie 横幅的摘要、正常摘要，验证 `_is_reliable_abstract` 返回值
+- 将 `enrich.py` 的 `_enrich_from_*` 改为返回 `(changed, metadata)` 以兼容独立脚本的调用模式
+- 补充 `enrich.py` 的 arXiv 补全函数（目前独立脚本独有）
+- 为 `enrich.py` 编写关键用例测试（mock API）
 
 **验收**：
-- `git grep -c "_enrich_from_crossref"` 只在 `enrich.py` 出现
-- `enrich_abstracts.py` 和 `enrich_metadata.py` 不再各自实现 API 调用
-- 上述关键用例测试通过
-- `pytest -q` 通过
+- `git grep -c "_enrich_from_crossref"` 只在 `enrich.py` 出现 ✅
+- `enrich_abstracts.py` 和 `enrich_metadata.py` 的共享工具函数已复用 `enrich.py` ✅
+- 独立脚本的 fetcher 函数因 API 差异保留为 legacy 代码
+- `pytest -q` 通过 ✅
 
 ---
 
-## Phase 4：拆分 PaperFetcher 上帝类（1-2 周）
+## Phase 4：拆分 PaperFetcher 上帝类 — 部分完成
 
 > 目标：将 1628 行的 `fetch_papers.py` 拆成职责清晰的小模块
 > 依赖：Phase 2 + Phase 3
+> 当前进度：fetch_papers.py 从 661 行降至 577 行
 
-### 4.1 目标结构
+### 已完成
+
+| 步骤 | 拆出模块 | 状态 |
+|------|----------|------|
+| 1 | `store.py` — 月度 JSON 读写、索引生成 | ✅ `save_papers()` 已委托调用 |
+| 2 | `merger.py` — 身份键、去重、合并策略 | ✅ |
+| 3 | `classifier.py` — 分类规则和评分 | ✅ |
+| 4 | `normalizer.py` — 字段规范化 | ✅ |
+| 5 | `enrich.py` — 级联补全 | ✅ |
+| 6 | `_dispatch_sources()` — 数据源调度提取为方法 | ✅ |
+
+### 未完成
+
+| 步骤 | 说明 |
+|------|------|
+| `scheduler.py` 独立模块 | 当前调度逻辑在 `_dispatch_sources()` 方法中，未抽为独立文件 |
+| `fetch_papers.py` 降至 ≤ 150 行 | 当前 577 行，仍有大量 fetch_*_papers 方法 |
+| 死代码清理 | `generate_papers_html()`、`get_citation_count()` 等待 Phase 5 确认 |
+
+### 关键用例测试
+
+| 模块 | 测试数量 | 状态 |
+|------|----------|------|
+| store | 8 | ✅ 拆分、写入/读回、索引结构、计数统计 |
+| merger | 12 | ✅ identity_keys、source_rank、merge_two、DOI/ArXiv/标题去重 |
+| classifier | 12 | ✅ term_in_text、is_relevant、classify、extract_keywords、normalize |
+| enrich | 16 | ✅ is_reliable_abstract、normalize_title、title_matches、openalex_abstract、metadata_complete、needs_crossref |
+
+**当前验收**：
+- `fetch_papers.py` 从 661 行降至 577 行 ✅
+- `save_papers()` 的 I/O 已委托 `store.py` ✅
+- store 模块有 8 个关键用例测试 ✅
+- `pytest -q` 通过（94 passed） ✅
+
+### 原始计划（参考）
 
 ```
 scripts/

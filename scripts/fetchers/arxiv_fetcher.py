@@ -3,10 +3,104 @@ import re
 import time
 import logging
 from datetime import datetime, timedelta, timezone
-from typing import Dict, List
+from typing import Dict, List, Optional
 import arxiv
+import requests
 
 logger = logging.getLogger(__name__)
+
+
+def batch_get_citation_counts(papers: List[Dict], ss_api_key: str = "", batch_size: int = 20) -> Dict[str, Optional[int]]:
+    """批量获取引用数：使用 Semantic Scholar /paper/batch 接口，
+    通过 ArXiv ID 批量查询，避免逐篇请求导致速率限制。
+    返回 {paper['id']: citation_count} 字典。"""
+    result_map = {}
+
+    # 收集有 ArXiv ID 的论文
+    id_pairs = []  # [(paper_id, arxiv_id), ...]
+    for p in papers:
+        aid = p.get("arxiv_id", "") or ""
+        # 兼容：部分论文的 id 字段本身就是 arxiv_id
+        if not aid and re.match(r"^\d{4}\.\d{4,5}", str(p.get("id", ""))):
+            aid = p.get("id", "")
+        if aid:
+            normalized = re.sub(r"v\d+$", "", aid)
+            id_pairs.append((p["id"], normalized))
+
+    if not id_pairs:
+        return result_map
+
+    headers = {}
+    if ss_api_key:
+        headers["x-api-key"] = ss_api_key
+
+    total_batches = (len(id_pairs) + batch_size - 1) // batch_size
+    consecutive_failures = 0
+    max_consecutive_failures = 3
+
+    logger.info("等待 API 冷却...")
+    time.sleep(3)
+
+    for i in range(0, len(id_pairs), batch_size):
+        batch = id_pairs[i:i + batch_size]
+        ss_ids = [f"ArXiv:{arxiv_id}" for _, arxiv_id in batch]
+        batch_num = i // batch_size + 1
+
+        url = "https://api.semanticscholar.org/graph/v1/paper/batch"
+        params = {"fields": "title,citationCount"}
+
+        try:
+            resp = requests.post(url, params=params, json={"ids": ss_ids}, headers=headers, timeout=30)
+
+            retry_count = 0
+            while resp.status_code == 429 and retry_count < 2:
+                retry_count += 1
+                wait = 30 * retry_count
+                logger.warning(f"批量 API 限速 (批次 {batch_num}/{total_batches})，等待 {wait} 秒后重试...")
+                time.sleep(wait)
+                resp = requests.post(url, params=params, json={"ids": ss_ids}, headers=headers, timeout=30)
+
+            if resp.status_code == 200:
+                consecutive_failures = 0
+                data = resp.json()
+                matched = 0
+                for (paper_id, _), item in zip(batch, data):
+                    if item and item.get("citationCount") is not None:
+                        result_map[paper_id] = item["citationCount"]
+                        matched += 1
+                    else:
+                        result_map[paper_id] = None
+                logger.info(f"批量引用: 批次 {batch_num}/{total_batches} 完成 ({matched}/{len(batch)} 篇命中)")
+            else:
+                consecutive_failures += 1
+                logger.warning(f"批量 API 返回 {resp.status_code} (批次 {batch_num}/{total_batches})")
+                for paper_id, _ in batch:
+                    result_map[paper_id] = None
+
+                if consecutive_failures >= max_consecutive_failures:
+                    logger.warning(f"连续 {max_consecutive_failures} 批次失败，跳过剩余引用查询")
+                    for paper_id, _ in id_pairs[i + batch_size:]:
+                        result_map[paper_id] = None
+                    break
+
+        except Exception as e:
+            consecutive_failures += 1
+            logger.warning(f"批量 API 请求失败: {e}")
+            for paper_id, _ in batch:
+                result_map[paper_id] = None
+
+            if consecutive_failures >= max_consecutive_failures:
+                logger.warning(f"连续 {max_consecutive_failures} 批次失败，跳过剩余引用查询")
+                for paper_id, _ in id_pairs[i + batch_size:]:
+                    result_map[paper_id] = None
+                break
+
+        if i + batch_size < len(id_pairs):
+            time.sleep(3)
+
+    success_count = sum(1 for v in result_map.values() if v is not None)
+    logger.info(f"批量引用查询完成: {len(result_map)} 篇，其中 {success_count} 篇有引用数据 ({success_count*100//max(len(result_map),1)}%)")
+    return result_map
 
 
 def extract_official_keywords(result) -> List[str]:
@@ -168,7 +262,7 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
     all_collected = papers_high_if + papers_other
     if all_collected:
         logger.info(f"批量获取 {len(all_collected)} 篇 ArXiv 论文的引用数...")
-        citation_map = fetcher.batch_get_citation_counts(all_collected)
+        citation_map = batch_get_citation_counts(all_collected, ss_api_key=fetcher.ss_api_key)
         for p in all_collected:
             p["citation_count"] = citation_map.get(p["id"], None)
 

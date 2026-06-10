@@ -19,7 +19,6 @@ import re
 import sys
 import time
 from datetime import datetime, timezone
-from difflib import SequenceMatcher
 from html import unescape
 from pathlib import Path
 from typing import Dict, Iterable, Optional, Tuple
@@ -27,6 +26,8 @@ from urllib.parse import quote
 
 import requests
 from bs4 import BeautifulSoup
+
+from enrich import request_json, normalize_title, title_matches, openalex_abstract
 
 # ── 路径常量 ──────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
@@ -43,45 +44,6 @@ def safe_print(text: str):
     """安全打印（处理编码问题）"""
     sys.stdout.buffer.write(str(text).encode("utf-8", errors="replace") + b"\n")
     sys.stdout.flush()
-
-
-def request_json(url: str, params: Optional[Dict] = None, timeout: int = 20) -> Optional[Dict]:
-    """通用 JSON 请求，429 自动重试"""
-    for attempt in range(3):
-        try:
-            resp = requests.get(url, params=params, timeout=timeout,
-                                headers={"User-Agent": USER_AGENT})
-            if resp.status_code == 200:
-                return resp.json()
-            if resp.status_code == 429:
-                time.sleep(5 * (attempt + 1))
-                continue
-            return None
-        except requests.RequestException:
-            if attempt == 2:
-                return None
-            time.sleep(2)
-    return None
-
-
-def normalize_title(title: str) -> str:
-    """标题归一化（用于比较）"""
-    title = (title or "").lower()
-    title = re.sub(r"[^a-z0-9]+", " ", title)
-    return re.sub(r"\s+", " ", title).strip()
-
-
-def title_matches(expected: str, candidate: str, threshold: float = 0.85) -> bool:
-    """判断两个标题是否匹配"""
-    left = normalize_title(expected)
-    right = normalize_title(candidate)
-    if not left or not right:
-        return False
-    if left == right:
-        return True
-    if left in right or right in left:
-        return True
-    return SequenceMatcher(None, left, right).ratio() >= threshold
 
 
 def clean_text(text: str) -> str:
@@ -261,17 +223,6 @@ def is_reliable_abstract(text: str) -> bool:
     return not text.lower().startswith(bad_prefixes)
 
 
-def _openalex_abstract(inverted_index: Optional[Dict]) -> str:
-    """从 OpenAlex 倒排索引重构摘要文本"""
-    if not inverted_index:
-        return ""
-    words = []
-    for word, positions in inverted_index.items():
-        for pos in positions:
-            words.append((pos, word))
-    return " ".join(word for _, word in sorted(words))
-
-
 def fetch_arxiv_abstract(paper: Dict) -> Optional[Tuple[str, Dict]]:
     """从 arXiv API 获取摘要（权威来源）"""
     arxiv_id = _extract_arxiv_id(paper)
@@ -329,7 +280,7 @@ def fetch_openalex_abstract(paper: Dict) -> Optional[Tuple[str, Dict]]:
                 "mailto": "research@dailyPaper.org"},
     )
     for item in (data or {}).get("results", []):
-        abstract = clean_text(_openalex_abstract(item.get("abstract_inverted_index")))
+        abstract = clean_text(openalex_abstract(item.get("abstract_inverted_index")))
         if title_matches(paper.get("title", ""), item.get("title", "")) and is_reliable_abstract(abstract):
             doi = (item.get("doi") or "").replace("https://doi.org/", "")
             return abstract, {
