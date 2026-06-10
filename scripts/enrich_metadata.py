@@ -27,7 +27,7 @@ from urllib.parse import quote
 import requests
 from bs4 import BeautifulSoup
 
-from enrich import request_json, normalize_title, title_matches, openalex_abstract
+from daily_paper.enrich import request_json, normalize_title, title_matches, openalex_abstract
 
 # ── 路径常量 ──────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent

@@ -22,8 +22,8 @@ import requests
 import yaml
 from bs4 import BeautifulSoup
 
-from fetchers.cnki_detail import enrich_cnki_paper
-from enrich import request_json, normalize_title, openalex_abstract
+from daily_paper.sources.cnki_detail import enrich_cnki_paper
+from daily_paper.enrich import request_json, normalize_title, openalex_abstract
 
 
 ROOT = Path(__file__).resolve().parent.parent

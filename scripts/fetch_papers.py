@@ -146,42 +146,42 @@ class PaperFetcher:
 
     def fetch_arxiv_papers(self) -> List[Dict]:
         """从 ArXiv 抓取论文"""
-        from fetchers.arxiv_fetcher import fetch_arxiv_papers as _fetch
+        from daily_paper.sources.arxiv_fetcher import fetch_arxiv_papers as _fetch
         return _fetch(self)
 
     def fetch_crossref_papers(self) -> List[Dict]:
         """Crossref 数据源抓取（正式发表论文）"""
-        from fetchers.crossref_fetcher import fetch_crossref_papers as _fetch
+        from daily_paper.sources.crossref_fetcher import fetch_crossref_papers as _fetch
         return _fetch(self)
 
     def fetch_openalex_papers(self) -> List[Dict]:
         """OpenAlex 数据源抓取（开放学术图谱）"""
-        from fetchers.openalex_fetcher import fetch_openalex_papers as _fetch
+        from daily_paper.sources.openalex_fetcher import fetch_openalex_papers as _fetch
         return _fetch(self)
 
     def fetch_semantic_scholar_papers(self) -> List[Dict]:
         """用 Semantic Scholar 语义搜索替代关键词匹配"""
-        from fetchers.semantic_scholar import fetch_semantic_scholar_papers as _fetch
+        from daily_paper.sources.semantic_scholar import fetch_semantic_scholar_papers as _fetch
         return _fetch(self)
 
     def fetch_google_scholar_papers(self) -> List[Dict]:
         """Google Scholar 数据源抓取"""
-        from fetchers.google_scholar import fetch_google_scholar_papers as _fetch
+        from daily_paper.sources.google_scholar import fetch_google_scholar_papers as _fetch
         return _fetch(self)
 
     def fetch_cnki_papers(self) -> List[Dict]:
         """CNKI 数据源抓取"""
-        from fetchers.cnki import fetch_cnki_papers as _fetch
+        from daily_paper.sources.cnki import fetch_cnki_papers as _fetch
         return _fetch(self)
 
     def fetch_wanfang_papers(self) -> List[Dict]:
         """Wanfang data source."""
-        from fetchers.wanfang import fetch_wanfang_papers as _fetch
+        from daily_paper.sources.wanfang import fetch_wanfang_papers as _fetch
         return _fetch(self)
 
     def fetch_cqvip_papers(self) -> List[Dict]:
         """CQVIP data source."""
-        from fetchers.cqvip import fetch_cqvip_papers as _fetch
+        from daily_paper.sources.cqvip import fetch_cqvip_papers as _fetch
         return _fetch(self)
 
     # ═══════════════════════════════════════════════════════════
