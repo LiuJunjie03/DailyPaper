@@ -77,6 +77,7 @@ class PaperFetcher:
             self.config.get("sources", {}).get("semantic_scholar", {}).get("api_key", "")
             or os.environ.get("SEMANTIC_SCHOLAR_API_KEY", "")
         )
+        self._source_health = []  # 数据源健康报告
 
     def set_date_window(self, start_date: str = "", end_date: str = ""):
         """Apply a date window to sources that support month/range fetching."""
@@ -189,6 +190,8 @@ class PaperFetcher:
 
     def _dispatch_sources(self):
         """从所有已启用的数据源抓取论文，返回原始论文列表"""
+        import time
+
         source_steps = [
             ("ArXiv", self.fetch_arxiv_papers),
             ("Crossref", self.fetch_crossref_papers),
@@ -199,16 +202,51 @@ class PaperFetcher:
             ("CQVIP", self.fetch_cqvip_papers),
             ("CNKI", self.fetch_cnki_papers),
         ]
+        self._source_health = []
         papers = []
         for name, fetch_fn in source_steps:
+            t0 = time.monotonic()
             try:
                 fetched = fetch_fn()
+                status = "ok"
+                error = ""
             except Exception as e:
                 logger.warning(f"{name} 抓取失败: {e}")
                 fetched = []
-            logger.info(f"{name}: {len(fetched)} 篇")
+                status = "error"
+                error = str(e)[:120]
+            elapsed = round(time.monotonic() - t0, 1)
+            logger.info(f"{name}: {len(fetched)} 篇 ({elapsed}s)")
+            self._source_health.append({
+                "source": name,
+                "status": status,
+                "count": len(fetched),
+                "elapsed_s": elapsed,
+                "error": error,
+            })
             papers.extend(fetched)
         return papers
+
+    def _print_health_report(self):
+        """打印数据源健康报告摘要"""
+        if not self._source_health:
+            return
+        ok_count = sum(1 for h in self._source_health if h["status"] == "ok")
+        err_count = sum(1 for h in self._source_health if h["status"] == "error")
+        total_fetched = sum(h["count"] for h in self._source_health)
+        total_time = sum(h["elapsed_s"] for h in self._source_health)
+
+        logger.info("=" * 60)
+        logger.info("Provider Health Report")
+        logger.info("=" * 60)
+        for h in self._source_health:
+            line = f"  {h['source']:<20s} {h['status']:<6s} {h['count']:>4d} 篇  {h['elapsed_s']:>5.1f}s"
+            if h["error"]:
+                line += f"  ⚠ {h['error']}"
+            logger.info(line)
+        logger.info("-" * 60)
+        logger.info(f"  合计: {ok_count} 正常 / {err_count} 失败 / {total_fetched} 篇 / {total_time:.1f}s")
+        logger.info("=" * 60)
 
     def save_papers(self):
         output_config = self.config.get("output", {})
@@ -251,6 +289,8 @@ class PaperFetcher:
         month_papers = split_papers_by_month(papers)
         save_monthly_data(month_papers, data_dir, docs_dir="")
         build_month_index(data_dir)
+
+        self._print_health_report()
 
 
 def _month_window(month: str):

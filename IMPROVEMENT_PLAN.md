@@ -6,6 +6,9 @@
 >
 > **Phase 0–4 阶段验收通过（2026-06-10）**
 > fetch_papers.py 1628→287 行 | 134 tests passed | validate_data.py 零 warning
+>
+> **Phase 5–6 阶段验收通过（2026-06-10）**
+> generate_html.py 588→345 行 | 136 tests passed | Jinja2 模板化 + 死代码清理 + CI validate + Health Report
 
 ---
 
@@ -302,60 +305,52 @@ scripts/
 
 ---
 
-## Phase 5：前端模板化（1 周）
+## Phase 5：前端模板化 ✅ 已完成
 
-> 目标：将 HTML 从 Python 逻辑中分离
-> 只做 Jinja2 模板化 + 清理，不做 JS 模块化
+> 完成日期：2026-06-10 | generate_html.py 588→345 行 | Jinja2 模板化 + 死代码清理 + CSS 清理
 
-### 5.1 引入 Jinja2 模板
+### 5.1 引入 Jinja2 模板 ✅
 
-| 步骤 | 说明 |
-|------|------|
-| 1 | `pip install jinja2`，同步更新 `requirements.txt` |
-| 2 | 新增 `scripts/templates/index.html` — 将 `generate_index_html()` 中的 205 行 f-string 移入 |
-| 3 | Python 端只计算统计数据 → 传给模板 → 渲染输出 |
+| 步骤 | 说明 | 状态 |
+|------|------|------|
+| 1 | `pip install jinja2`，同步更新 `requirements.txt` | ✅ |
+| 2 | 新增 `scripts/templates/index.html` — 将 f-string HTML 移入 Jinja2 模板 | ✅ |
+| 3 | Python 端只计算统计数据 → 传给模板 → 渲染输出 | ✅ |
 
-### 5.2 清理确认的死代码
+### 5.2 清理确认的死代码 ✅
 
-| 删除目标 | 前置确认 |
-|----------|----------|
-| `generate_papers_html()` (458-516 行) | grep 确认无调用 |
-| `get_category_name()` / `extract_code_links()` / `get_venue_badge()` | 确认仅被 `generate_papers_html()` 使用 |
-| `publication_date_key()` | 确认无调用 |
+| 删除目标 | 前置确认 | 状态 |
+|----------|----------|------|
+| `generate_papers_html()` | grep 确认无调用 | ✅ |
+| `get_category_name()` / `extract_code_links()` / `get_venue_badge()` | 确认仅被 `generate_papers_html()` 使用 | ✅ |
+| `publication_date_key()` | 确认无调用（仅测试引用） | ✅ |
 
-### 5.3 提取 dashboard stats
+### 5.3 提取 dashboard stats ✅
 
-将 `generate_index_html()` 前 50 行的统计计算提取为独立函数：
+已提取 `build_dashboard_stats(papers, papers_by_month) -> dict`，纯计算、无 I/O，有 2 个独立单元测试。
 
-```python
-def build_dashboard_stats(papers: list, papers_by_month: dict) -> dict:
-    """纯计算，无 I/O，可单测"""
-    ...
-```
+### 5.4 CSS 清理 ✅
 
-### 5.4 CSS 清理
-
-| 删除目标 | 说明 |
-|----------|------|
-| `@keyframes shimmer` (90-93 行) | 无规则引用 |
-| `.paper-card::before` 计数器 (1196-1198 行) | 未初始化 |
-| 重复的 `.category-children > .filter-btn.active::after` | 保留一份 |
-| `content: none` 的伪元素 | 安全删除 |
+| 删除目标 | 说明 | 状态 |
+|----------|------|------|
+| `@keyframes shimmer` | 无规则引用 | ✅ |
+| `.paper-card::before` 计数器 | 未初始化 | ✅ |
+| 重复的 `.category-children > .filter-btn.active::after` | 保留一份 | ✅ |
+| `content: none` 的伪元素 | 安全删除 | ✅ |
 
 **验收**：
-- `generate_html.py` 降至 ≤ 350 行
-- HTML 布局修改只需编辑模板文件，不碰 Python
-- `build_dashboard_stats()` 有独立单元测试
-- `pytest -q` 通过
+- `generate_html.py` 降至 345 行 ✅ (≤ 350)
+- HTML 布局修改只需编辑模板文件，不碰 Python ✅
+- `build_dashboard_stats()` 有 2 个独立单元测试 ✅
+- `pytest -q` 通过（136 passed） ✅
 
 ---
 
-## Phase 6：数据发布策略收敛（1 周）
+## Phase 6：数据发布策略收敛 ✅ 已完成
 
-> 目标：厘清源文件和生成物边界，减少仓库噪音
-> 依赖：Phase 4 的 `store.py`
+> 完成日期：2026-06-10 | CI validate + Provider Health Report + docs/README.md
 
-### 6.1 明确目录职责
+### 6.1 明确目录职责 ✅
 
 | 目录 | 角色 | 规则 |
 |------|------|------|
@@ -363,19 +358,20 @@ def build_dashboard_stats(papers: list, papers_by_month: dict) -> dict:
 | `scripts/templates/` | 前端源模板 | 人工维护 |
 | `docs/` | 构建产物 | 由 `generate_html.py` 生成，不手工编辑 |
 
-### 6.2 具体行动
+### 6.2 具体行动 ✅
 
-| # | 任务 |
-|---|------|
-| 1 | 在 `docs/README.md` 声明 `docs/` 是构建产物 |
-| 2 | `python scripts/validate_data.py` 校验命令 — 基于 Phase 1 的 `validate_paper()` |
-| 3 | CI 加入 schema 校验步骤 |
-| 4 | Provider Health Report — 每次抓取输出数据源级别状态（请求次数/成功/失败/限速） |
+| # | 任务 | 状态 |
+|---|------|------|
+| 1 | 在 `docs/README.md` 声明 `docs/` 是构建产物 | ✅ |
+| 2 | `python scripts/validate_data.py` 校验命令 — 基于 Phase 1 的 `validate_paper()` | ✅ |
+| 3 | CI 加入 schema 校验步骤 | ✅ |
+| 4 | Provider Health Report — 每次抓取输出数据源级别状态（来源/状态/篇数/耗时/错误） | ✅ |
 
 **验收**：
-- 每次 CI 能看到每个数据源的健康状态
-- `validate_data.py` 能检测字段缺失/类型错误
-- `pytest -q` 通过
+
+- 每次 CI 能看到每个数据源的健康状态 ✅
+- `validate_data.py` 能检测字段缺失/类型错误 ✅
+- `pytest -q` 通过（136 passed） ✅
 
 ---
 

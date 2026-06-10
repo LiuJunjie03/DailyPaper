@@ -61,6 +61,9 @@ jobs:
     - name: Run tests
       run: pytest -q
 
+    - name: Validate existing data
+      run: python scripts/validate_data.py
+
     - name: Fetch papers
       env:
         SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
@@ -85,6 +88,9 @@ jobs:
       run: |
         python scripts/update_venue.py
       continue-on-error: true
+
+    - name: Validate fetched data
+      run: python scripts/validate_data.py
 
     - name: Generate HTML
       run: |

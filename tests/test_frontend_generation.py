@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from generate_html import HTMLGenerator, is_complete_publication_date, publication_date_key
+from generate_html import HTMLGenerator, is_complete_publication_date, build_dashboard_stats
 from fetchers.cnki import _absolute_cnki_url, _cnki_url
 from fetchers.google_scholar import _looks_like_scholar_snippet
 from fetchers.cnki_detail import apply_cnki_detail, parse_cnki_detail_html
@@ -149,7 +149,6 @@ def test_incomplete_publication_dates_do_not_drive_homepage_stats_or_sorting(tmp
     assert summary_values[:2] == ["1", "1"]
     assert is_complete_publication_date(today)
     assert not is_complete_publication_date(today[:4])
-    assert publication_date_key(complete_paper) > publication_date_key(year_only_paper)
     assert "function isCompleteDate" in js
     assert "function sortTimestamp" in js
     assert "if (!isCompleteDate(paper.published)) return 365;" in js
@@ -231,3 +230,60 @@ def test_cnki_detail_merge_and_enrichment_routing():
     assert updated["official_keywords"] == ["机器学习", "流体力学"]
     assert updated["venue"] == "工程力学"
     assert updated["cnki_detail"]["fund"] == "国家自然科学基金"
+
+
+def test_build_dashboard_stats_pure_computation():
+    """build_dashboard_stats 是纯计算函数，验证核心统计逻辑。"""
+    from datetime import datetime
+
+    today = datetime.now().strftime("%Y-%m-%d")
+    current_month = today[:7]
+    papers = [
+        {
+            "id": "1",
+            "title": "Paper A",
+            "published": today,
+            "tags": ["流体力学", "流体力学 / 智能CFD", "流体力学 / 智能CFD / PINN"],
+            "pdf_url": "https://example.com/a.pdf",
+            "conference": "NeurIPS",
+            "is_early_access": False,
+        },
+        {
+            "id": "2",
+            "title": "Paper B",
+            "published": today,
+            "tags": ["流体力学"],
+            "pdf_url": "",
+            "is_early_access": True,
+        },
+        {
+            "id": "3",
+            "title": "Paper C",
+            "published": "2020-01-01",
+            "tags": ["机器学习"],
+            "is_early_access": False,
+        },
+    ]
+
+    stats = build_dashboard_stats(papers, {current_month: papers[:2]})
+
+    assert stats["today_count"] == 2
+    assert stats["total_count"] == 3
+    assert stats["published_count"] == 1
+    assert stats["preprint_count"] == 2
+    assert stats["pdf_count"] == 1
+    assert stats["smart_cfd_count"] == 1
+    assert stats["early_access_count"] == 1
+    assert stats["pdf_rate"] == 33
+    assert stats["current_month_count"] == 2
+
+
+def test_build_dashboard_stats_empty():
+    """空论文列表不崩溃，返回安全的默认值。"""
+    stats = build_dashboard_stats([], {})
+
+    assert stats["today_count"] == 0
+    assert stats["total_count"] == 0
+    assert stats["pdf_rate"] == 0
+    assert stats["published_rate"] == 0
+    assert stats["smart_top_text"] == "子方向待积累"

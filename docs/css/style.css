@@ -87,11 +87,6 @@ header::before {
     pointer-events: none;
 }
 
-@keyframes shimmer {
-    0%   { transform: translateX(0) translateY(0); }
-    100% { transform: translateX(3%) translateY(1%); }
-}
-
 header h1 {
     font-size: 2.1rem;
     margin-bottom: 0.35rem;
@@ -241,11 +236,6 @@ nav.container {
 .category-children > .filter-btn:hover::after {
     background: var(--cyan);
     transform: translate(calc(-50% - 1px), -50%) scale(1.3);
-}
-
-.category-children > .filter-btn.active::after {
-    background: white;
-    box-shadow: 0 0 6px rgba(0, 119, 182, 0.5);
 }
 
 .category-children > .filter-btn.active::after {
@@ -1175,11 +1165,6 @@ body {
     font-size: 1.5rem;
 }
 
-/* Nav 顶部装饰线 — 模拟流线 */
-nav::before {
-    content: none;
-}
-
 /* Footer 公式装饰 */
 footer::before {
     content: 'ρ(∂v/∂t + v·∇v) = −∇p + μ∇²v + f';
@@ -1190,11 +1175,6 @@ footer::before {
     color: rgba(37, 111, 146, 0.12);
     margin-bottom: 0.8rem;
     letter-spacing: 1px;
-}
-
-/* 论文卡片序号装饰 */
-.paper-card::before {
-    counter-increment: paper-counter;
 }
 
 /* 搜索框右侧放大镜装饰 */
@@ -1220,15 +1200,6 @@ footer::before {
 .filter-group + .filter-group {
     padding-top: 0.8rem;
     border-top: 1px solid rgba(0, 119, 182, 0.06);
-}
-
-/* 结果栏装饰 */
-.results-info::before {
-    content: none;
-}
-
-.results-info::after {
-    content: none;
 }
 
 /* 无结果页面装饰 */
@@ -1386,7 +1357,5 @@ footer::before {
     /* 移动端隐藏公式装饰 */
     .header-formula { display: none; }
     .search-box::after { display: none; }
-    .results-info::before,
-    .results-info::after { display: none; }
     footer::before { font-size: 0.8rem; }
 }

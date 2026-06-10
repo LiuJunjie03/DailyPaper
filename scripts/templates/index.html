@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyPaper - CFD+ML 最新论文</title>
+    <link rel="stylesheet" href="css/style.css?v={{ css_hash }}">
+    <script>window.CATEGORIES = {{ categories_json | safe }};</script>
+    <script>window.DATA_VERSION = "{{ data_hash }}";</script>
+</head>
+<body>
+    <header>
+        <div class="header-formula header-formula-left" aria-hidden="true">
+            ∂ρ/∂t + ∇·(ρ<strong>v</strong>) = 0
+        </div>
+        <div class="header-formula header-formula-right" aria-hidden="true">
+            Re = ρvL/μ
+        </div>
+        <div class="container">
+            <h1>DailyPaper</h1>
+            <p class="subtitle">计算流体力学 + 机器学习论文雷达</p>
+            <p class="update-time">最后更新: {{ now }} UTC</p>
+        </div>
+    </header>
+
+    <nav class="container">
+        <div class="dashboard-summary" aria-label="数据概览">
+            <div class="summary-item">
+                <span class="summary-value">{{ stats.today_count }}</span>
+                <span class="summary-label">今日新增</span>
+                <span class="summary-detail">近7日 {{ stats.recent_week_count }} 篇</span>
+                <input class="daily-date-picker" id="dailyDatePicker" type="date" value="{{ stats.today }}" aria-label="按日期查看新增论文">
+            </div>
+            <button class="summary-item summary-action" type="button" data-summary-action="month" title="查看本月新增论文">
+                <span class="summary-value">{{ stats.current_month_count }}</span>
+                <span class="summary-label">本月新增</span>
+                <span class="summary-detail">{{ stats.current_month }} · 上月 {{ stats.previous_month_count }} 篇</span>
+                <span class="summary-compare">{{ stats.month_compare_text }}</span>
+                <span class="summary-spark"><span style="width: {{ [stats.current_month_count, 100] | min }}%"></span></span>
+            </button>
+            <button class="summary-item summary-action summary-rate-card" type="button" data-summary-action="pdf" title="只看有 PDF 的论文">
+                <span class="summary-value">{{ stats.pdf_count }}</span>
+                <span class="summary-label">有 PDF</span>
+                <span class="summary-detail">覆盖率 {{ stats.pdf_rate }}%</span>
+                <span class="summary-ring" style="--rate: {{ stats.pdf_rate }};" aria-label="PDF 覆盖率 {{ stats.pdf_rate }}%"><span>{{ stats.pdf_rate }}%</span></span>
+            </button>
+            <button class="summary-item summary-action summary-rate-card" type="button" data-summary-action="published" title="只看已发表论文">
+                <span class="summary-value">{{ stats.published_count }}</span>
+                <span class="summary-label">已发表</span>
+                <span class="summary-detail">占比 {{ stats.published_rate }}% · 总量 {{ stats.total_count }}</span>
+                <span class="summary-ring" style="--rate: {{ stats.published_rate }};" aria-label="已发表占比 {{ stats.published_rate }}%"><span>{{ stats.published_rate }}%</span></span>
+            </button>
+            <button class="summary-item summary-action" type="button" data-summary-action="smart-cfd" title="筛选智能 CFD 论文">
+                <span class="summary-value">{{ stats.smart_cfd_count }}</span>
+                <span class="summary-label">智能 CFD</span>
+                <span class="summary-detail">{{ stats.smart_top_text }}</span>
+                <span class="summary-spark"><span style="width: {{ stats.smart_cfd_rate }}%"></span></span>
+            </button>
+            <button class="summary-item summary-action" type="button" data-summary-action="early-access" title="查看早期在线论文">
+                <span class="summary-value">{{ stats.early_access_count }}</span>
+                <span class="summary-label">早期在线</span>
+                <span class="summary-detail">Ahead of Print · 点击筛选</span>
+                <span class="summary-spark"><span style="width: {{ stats.early_access_rate }}%"></span></span>
+            </button>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 搜索标题、作者、摘要..." aria-label="搜索论文">
+        </div>
+        <div class="quick-filter-row">
+            <div class="filter-group">
+                <label class="filter-label">排序方式</label>
+                <div class="filters sort-filters">
+                    <button class="filter-btn sort-btn active" data-sort="date-desc">最新优先</button>
+                    <button class="filter-btn sort-btn" data-sort="date-asc">最早优先</button>
+                    <button class="filter-btn sort-btn" data-sort="importance-desc">推荐优先</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">发表状态</label>
+                <div class="filters status-filters">
+                    <button class="filter-btn status-btn active" data-status="all">全部 ({{ stats.total_count }})</button>
+                    <button class="filter-btn status-btn" data-status="published">已发表 ({{ stats.published_count }})</button>
+                    <button class="filter-btn status-btn" data-status="preprint">预印本 ({{ stats.preprint_count }})</button>
+                </div>
+            </div>
+            <p class="sort-note">推荐分综合发表状态、来源、PDF、摘要、关键词、引用和日期；数据不足时按日期补偿。</p>
+        </div>
+        <details class="filter-panel">
+            <summary>筛选条件</summary>
+            <div class="filter-section">
+            <div class="filter-group">
+                <label class="filter-label">月份</label>
+                <div class="filters month-filters">
+                    <button class="filter-btn month-btn active" data-month="all">全部 ({{ stats.total_count }})</button>
+                    {% for month, count in month_buttons %}
+                    <button class="filter-btn month-btn" data-month="{{ month }}">{{ month }} ({{ count }})</button>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">全文状态</label>
+                <div class="filters pdf-filters">
+                    <button class="filter-btn pdf-btn active" data-pdf="all">全部</button>
+                    <button class="filter-btn pdf-btn" data-pdf="available">有PDF</button>
+                    <button class="filter-btn pdf-btn" data-pdf="missing">无PDF</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">研究领域</label>
+                <div class="filters category-filters">
+                    <button class="filter-btn category-btn active" data-category="all">全部 ({{ category_counts['all'] }})</button>
+                    {% for category, display_name, count in category_buttons %}
+                    <button class="filter-btn category-btn" data-category="{{ category }}">{{ display_name }} ({{ count }})</button>
+                    {% endfor %}
+                </div>
+            </div>
+            </div>
+        </details>
+        <div class="results-info">
+            <span id="resultsCount">加载中...</span>
+            <div class="export-controls">
+                <button class="select-btn" id="selectAllBtn">✓ 选中当前页</button>
+                <button class="select-btn" id="clearAllBtn">✗ 清空</button>
+                <button class="export-btn" id="exportBtn">🔗 打开PDF (<span id="selectedCount">0</span>)</button>
+                <button class="export-btn export-btn-secondary" id="copyDoiBtn">📋 复制标识符</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" aria-label="论文列表">
+        <div id="papers-container">
+            <!-- Papers will be loaded by JavaScript -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© {{ year }} DailyPaper | 数据来源: ArXiv · Semantic Scholar · Google Scholar · CNKI | <a href="https://github.com/LiuJunjie03/DailyPaper" target="_blank">GitHub</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js?v={{ js_hash }}"></script>
+</body>
+</html>
