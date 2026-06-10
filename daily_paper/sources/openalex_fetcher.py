@@ -1,10 +1,12 @@
 """OpenAlex 数据源 — 通过关键词搜索发现论文"""
 import logging
+import re
+import time
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 
-from daily_paper.http import request_json
 from daily_paper.dates import validate_date
+from daily_paper.http import request_json
 from daily_paper.queries import flatten_queries
 
 logger = logging.getLogger(__name__)

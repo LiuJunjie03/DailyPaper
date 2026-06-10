@@ -1,9 +1,10 @@
 """ArXiv 数据源"""
+import logging
 import re
 import time
-import logging
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
+
 import arxiv
 import requests
 
@@ -140,14 +141,14 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
     if not arxiv_config.get("enabled", False):
         logger.warning("ArXiv数据源已禁用！")
         return []
-    
+
     # 提取你的配置参数
     arxiv_categories = arxiv_config.get("categories", [])
     max_results = arxiv_config.get("max_results", 1000)
     days_back = arxiv_config.get("days_back", 60)
     configured_start = arxiv_config.get("start_date", "")
     configured_end = arxiv_config.get("end_date", "")
-    
+
     # 构建ArXiv查询：分类用 OR，关键词用 OR，两者 AND 连接
     if arxiv_categories:
         cat_query = " OR ".join([f"cat:{cat}" for cat in arxiv_categories])
@@ -170,7 +171,7 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
     if date_query:
         query = f"({query}) AND {date_query}"
     logger.info(f"ArXiv查询条件: {query}")
-    
+
     # 时间范围
     start_date = (
         datetime.strptime(configured_start, "%Y-%m-%d").replace(tzinfo=timezone.utc)
@@ -182,10 +183,10 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
         if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(configured_end or ""))
         else None
     )
-    start_date_str = start_date.strftime("%Y-%m-%d")
-    
+    start_date.strftime("%Y-%m-%d")
+
     logger.info(f"开始抓取：近{days_back}天，最多{max_results}篇，分类：{arxiv_categories}")
-    
+
     # 构建搜索（arxiv API 不支持 SubmissionDate 过滤，改为本地过滤）
     search = arxiv.Search(
         query=query,
@@ -193,7 +194,7 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
         sort_by=arxiv.SortCriterion.SubmittedDate,
         sort_order=arxiv.SortOrder.Descending
     )
-    
+
     papers_high_if = []
     papers_other = []
     for result in fetcher.arxiv_client.results(search):
@@ -202,7 +203,7 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
             published = published.replace(tzinfo=timezone.utc)
         if published < start_date or (end_date and published > end_date):
             continue
-        
+
         # ========== 核心修改：构建paper字典时，新增官方/自定义关键词字段 ==========
         paper = {
             "id": result.entry_id.split("/")[-1],
@@ -232,7 +233,7 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
             # 兼容原有keywords字段（合并官方+自定义，去重）
             "keywords": []
         }
-        
+
         if result.comment:
             venues = fetcher.config.get("venues", {})  # fetcher.config已正确初始化
             all_venues = venues.get("conferences", []) + venues.get("journals", [])
@@ -240,14 +241,14 @@ def fetch_arxiv_papers(fetcher) -> List[Dict]:
                 if venue.lower() in result.comment.lower():
                     paper["conference"] = venue
                     break
-        
+
         # 填充分类标签
         paper = fetcher._finalize_paper(paper)
         # 填充自定义关键词
         paper["custom_keywords"] = fetcher.extract_paper_keywords(paper)
         # 合并官方+自定义关键词，去重（保持原有keywords字段兼容）
         paper["keywords"] = list(set(paper["official_keywords"] + paper["custom_keywords"]))
-        
+
         # 补充影响因子
         paper["impact_factor"] = fetcher.get_impact_factor(paper)
 

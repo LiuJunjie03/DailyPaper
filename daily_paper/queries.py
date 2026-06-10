@@ -1,6 +1,6 @@
 """查询词解析工具"""
 
-from typing import Dict, List
+from typing import List
 
 
 def flatten_queries(config_or_raw) -> List[str]:

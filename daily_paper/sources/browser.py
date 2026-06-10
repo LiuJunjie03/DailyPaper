@@ -1,9 +1,10 @@
 """Chrome DevTools Protocol 浏览器自动化工具"""
 import json
-import os
 import logging
+import os
+from typing import Optional
+
 import requests
-from typing import Dict, Optional
 
 logger = logging.getLogger(__name__)
 

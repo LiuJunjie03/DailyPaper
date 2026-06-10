@@ -4,7 +4,7 @@
 字段定义参考 docs/DATA_SCHEMA.md。
 """
 
-from typing import Optional, List, TypedDict
+from typing import List, Optional, TypedDict
 
 
 class PaperRecord(TypedDict, total=False):

@@ -5,16 +5,16 @@
 按 Crossref -> OpenAlex -> Semantic Scholar -> publisher 顺序补全论文元数据。
 """
 
-import requests
-import time
-import re
 import json
 import logging
-from datetime import datetime, timezone
-from typing import Dict, List, Optional, Tuple
+import re
+import time
 from difflib import SequenceMatcher
-from bs4 import BeautifulSoup
+from typing import Dict, List, Optional
 from urllib.parse import quote
+
+import requests
+from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 
@@ -106,7 +106,7 @@ def _is_reliable_abstract(text: str) -> bool:
         return False
     if "  " in text:
         return False
-    if not text[-1] in ".!?":
+    if text[-1] not in ".!?":
         return False
     bad_prefixes = ("cookies", "enable javascript", "we use cookies", "this site")
     if any(text.lower().startswith(p) for p in bad_prefixes):

@@ -10,10 +10,10 @@
 
 import re
 from datetime import datetime, timezone
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
-from daily_paper.text import normalize_doi, normalize_arxiv_id
 from daily_paper.classify import classify_paper, extract_paper_keywords, normalize_keywords
+from daily_paper.text import normalize_arxiv_id, normalize_doi
 
 # 常见期刊/会议影响因子静态表（可自行扩充）
 IMPACT_FACTOR_TABLE = {

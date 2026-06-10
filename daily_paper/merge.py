@@ -9,9 +9,9 @@
 """
 
 import re
-from typing import Dict, List, Optional, Callable
+from typing import Callable, Dict, List, Optional
 
-from daily_paper.text import normalize_title, normalize_doi, normalize_arxiv_id
+from daily_paper.text import normalize_arxiv_id, normalize_doi, normalize_title
 
 
 def identity_keys(paper: Dict) -> List[str]:

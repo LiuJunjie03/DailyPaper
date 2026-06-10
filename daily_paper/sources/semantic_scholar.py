@@ -1,14 +1,15 @@
 """Semantic Scholar 数据源"""
-import requests
-import time
-import re
 import logging
+import re
+import time
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 
-from daily_paper.text import normalize_doi
+import requests
+
 from daily_paper.dates import validate_date
 from daily_paper.queries import flatten_queries
+from daily_paper.text import normalize_doi
 
 logger = logging.getLogger(__name__)
 
@@ -57,7 +58,7 @@ def batch_get_citation_counts(papers: List[Dict], ss_api_key: str = "", batch_si
     consecutive_failures = 0
     max_consecutive_failures = 3
 
-    logger.info(f"等待 API 冷却...")
+    logger.info("等待 API 冷却...")
     time.sleep(3)
 
     for i in range(0, len(id_pairs), batch_size):

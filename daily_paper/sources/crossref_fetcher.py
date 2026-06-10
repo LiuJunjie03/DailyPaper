@@ -1,13 +1,12 @@
 """Crossref 数据源 — 通过关键词搜索发现正式发表论文"""
+import logging
 import re
 import time
-import logging
 from datetime import datetime, timedelta, timezone
-from typing import Dict, List, Optional
-from urllib.parse import quote
+from typing import Dict, List
 
+from daily_paper.dates import in_date_window, validate_date
 from daily_paper.http import request_json
-from daily_paper.dates import validate_date, in_date_window
 from daily_paper.queries import flatten_queries
 
 logger = logging.getLogger(__name__)

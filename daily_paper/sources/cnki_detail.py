@@ -14,9 +14,8 @@ from typing import Dict, List, Optional
 import requests
 from bs4 import BeautifulSoup
 
-from daily_paper.text import clean_text
 from daily_paper.sources.browser import evaluate_in_chrome
-
+from daily_paper.text import clean_text
 
 logger = logging.getLogger(__name__)
 

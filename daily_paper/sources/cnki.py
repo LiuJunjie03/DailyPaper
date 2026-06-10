@@ -1,15 +1,14 @@
 """CNKI (中国知网) 数据源"""
-import requests
-import time
-import re
-import json
 import hashlib
+import json
 import logging
 import os
-from datetime import datetime, timedelta, timezone
+import re
+import time
 from typing import Dict, List, Optional
 from urllib.parse import urljoin
 
+import requests
 from bs4 import BeautifulSoup
 
 from daily_paper.sources.browser import evaluate_in_chrome

@@ -1,15 +1,14 @@
 """Google Scholar 数据源"""
-import requests
-import time
-import re
 import hashlib
 import logging
+import re
+import time
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from urllib.parse import quote_plus
 
-from daily_paper.text import normalize_title
 from daily_paper.sources.browser import evaluate_in_chrome
+from daily_paper.text import normalize_title
 
 logger = logging.getLogger(__name__)
 

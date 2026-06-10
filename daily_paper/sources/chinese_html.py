@@ -12,11 +12,11 @@ from urllib.parse import quote_plus, urljoin
 import requests
 from bs4 import BeautifulSoup
 
-from daily_paper.text import normalize_title, clean_text
-from daily_paper.dates import parse_date as complete_date, in_date_window
+from daily_paper.dates import in_date_window
+from daily_paper.dates import parse_date as complete_date
 from daily_paper.queries import flatten_queries
 from daily_paper.sources.browser import evaluate_in_chrome
-
+from daily_paper.text import clean_text, normalize_title
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +28,7 @@ def request_html(url: str, params: Optional[Dict] = None, timeout: int = 25) -> 
             params=params,
             timeout=timeout,
             headers={
-                "User-Agent": USER_AGENT,
+                "User-Agent": "DailyPaperBot/1.0 (mailto:research@dailyPaper.org)",
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
                 "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
             },
