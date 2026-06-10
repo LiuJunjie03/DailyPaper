@@ -99,6 +99,42 @@ sources:
     max_results_per_query: 20
 
   # 语义搜索数据源（用自然语言描述替代关键词列表）
+  # Wanfang Data Chinese literature source.
+  wanfang:
+    enabled: true
+    search_url: "https://s.wanfangdata.com.cn/paper"
+    query_param: "q"
+    max_results_per_query: 8
+    days_back: 365
+    enrich_details: true
+    use_browser: true
+    detail_delay: 0.3
+    delay: 1.0
+    queries:
+      - "计算流体力学 机器学习"
+      - "物理信息神经网络 流体力学"
+      - "深度学习 湍流模拟"
+      - "代理模型 流场预测"
+      - "强化学习 流动控制"
+
+  # CQVIP/VIP Chinese literature source.
+  cqvip:
+    enabled: true
+    search_url: "https://www.cqvip.com/search"
+    query_param: "k"
+    max_results_per_query: 8
+    days_back: 365
+    enrich_details: true
+    use_browser: true
+    detail_delay: 0.3
+    delay: 1.0
+    queries:
+      - "计算流体力学 机器学习"
+      - "物理信息神经网络 流体力学"
+      - "深度学习 湍流模拟"
+      - "代理模型 流场预测"
+      - "强化学习 流动控制"
+
   semantic_scholar:
     enabled: true
     api_key: ""  # 免费 API key，申请: https://www.semanticscholar.org/product/api#api-key-form

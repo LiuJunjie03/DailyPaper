@@ -592,7 +592,7 @@ class PaperFetcher:
         """Apply a date window to sources that support month/range fetching."""
         if not start_date and not end_date:
             return
-        for source_name in ("arxiv", "crossref", "openalex", "semantic_scholar"):
+        for source_name in ("arxiv", "crossref", "openalex", "semantic_scholar", "wanfang", "cqvip"):
             source = self.config.get("sources", {}).setdefault(source_name, {})
             if start_date:
                 source["start_date"] = start_date
@@ -606,7 +606,7 @@ class PaperFetcher:
             logger.warning("config.yaml 缺少 sources 配置，将不会抓取任何数据源")
             return
 
-        for source_name in ["arxiv", "semantic_scholar", "google_scholar", "cnki"]:
+        for source_name in ["arxiv", "semantic_scholar", "google_scholar", "cnki", "wanfang", "cqvip"]:
             src = sources.get(source_name)
             if src and not isinstance(src, dict):
                 logger.warning(f"config.yaml sources.{source_name} 格式错误（期望字典）")
@@ -1071,6 +1071,8 @@ class PaperFetcher:
                     abstract = re.sub(r"\s+", " ", abstract).strip()
                     if _is_reliable_abstract(abstract):
                         paper["abstract"] = abstract
+                        paper["abstract_status"] = "enriched"
+                        paper["abstract_source"] = "crossref"
             # 补全 venue
             if not paper.get("venue"):
                 container = item.get("container-title") or []
@@ -1116,6 +1118,8 @@ class PaperFetcher:
                 abstract = _cascade_openalex_abstract(item.get("abstract_inverted_index"))
                 if _is_reliable_abstract(abstract):
                     paper["abstract"] = abstract
+                    paper["abstract_status"] = "enriched"
+                    paper["abstract_source"] = "openalex"
             # 补全 venue
             if not paper.get("venue"):
                 loc = item.get("primary_location") or {}
@@ -1167,6 +1171,8 @@ class PaperFetcher:
                 abstract = (item.get("abstract") or "").strip()
                 if _is_reliable_abstract(abstract):
                     paper["abstract"] = abstract
+                    paper["abstract_status"] = "enriched"
+                    paper["abstract_source"] = "semantic_scholar"
             # 补全 venue
             if not paper.get("venue"):
                 venue = item.get("venue") or ""
@@ -1201,6 +1207,8 @@ class PaperFetcher:
                     abstract = re.sub(r"\s+", " ", tag["content"]).strip()
                     if _is_reliable_abstract(abstract):
                         paper["abstract"] = abstract
+                        paper["abstract_status"] = "enriched"
+                        paper["abstract_source"] = "publisher_meta"
                         break
         except Exception:
             pass
@@ -1395,6 +1403,14 @@ class PaperFetcher:
         """CNKI 数据源抓取"""
         from fetchers.cnki import fetch_cnki_papers as _fetch
         return _fetch(self)
+    def fetch_wanfang_papers(self) -> List[Dict]:
+        """Wanfang data source."""
+        from fetchers.wanfang import fetch_wanfang_papers as _fetch
+        return _fetch(self)
+    def fetch_cqvip_papers(self) -> List[Dict]:
+        """CQVIP data source."""
+        from fetchers.cqvip import fetch_cqvip_papers as _fetch
+        return _fetch(self)
     def fetch_arxiv_papers(self) -> List[Dict]:
         """从 ArXiv 抓取论文"""
         from fetchers.arxiv_fetcher import fetch_arxiv_papers as _fetch
@@ -1448,6 +1464,22 @@ class PaperFetcher:
             gs_papers = []
         logger.info(f"Google Scholar: {len(gs_papers)} 篇")
         papers.extend(gs_papers)
+
+        try:
+            wanfang_papers = self.fetch_wanfang_papers()
+        except Exception as e:
+            logger.warning(f"Wanfang fetch failed: {e}")
+            wanfang_papers = []
+        logger.info(f"Wanfang: {len(wanfang_papers)} papers")
+        papers.extend(wanfang_papers)
+
+        try:
+            cqvip_papers = self.fetch_cqvip_papers()
+        except Exception as e:
+            logger.warning(f"CQVIP fetch failed: {e}")
+            cqvip_papers = []
+        logger.info(f"CQVIP: {len(cqvip_papers)} papers")
+        papers.extend(cqvip_papers)
 
         try:
             cnki_papers = self.fetch_cnki_papers()

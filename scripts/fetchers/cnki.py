@@ -5,6 +5,7 @@ import re
 import json
 import hashlib
 import logging
+import os
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from urllib.parse import urljoin
@@ -161,6 +162,13 @@ def fetch_cnki_papers(fetcher) -> List[Dict]:
     cnki_config = fetcher.config.get("sources", {}).get("cnki", {})
     if not cnki_config.get("enabled", False):
         logger.info("CNKI 数据源已禁用")
+        return []
+    if os.environ.get("GITHUB_ACTIONS") == "true" and os.environ.get("ENABLE_CNKI", "").lower() != "true":
+        logger.info(
+            "CNKI skipped on GitHub Actions: CNKI requires an authenticated institution/VPN "
+            "browser session or a reachable proxy. Set ENABLE_CNKI=true only on a runner "
+            "with that access."
+        )
         return []
 
     queries = fetcher._flatten_queries(cnki_config.get("queries", []))

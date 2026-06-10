@@ -3,7 +3,7 @@
     "id": "gs-2b35613a7799",
     "title": "Accelerating Porous Media Flow Simulations With Fourier Neural Operators: An Application to Geologic Storage of CO2",
     "authors": "A Chandra, M Koch, S Pawar, A Panda",
-    "abstract": "This study aims to develop surrogate models to accelerate decision‐making processes related to porous media flows, using geologic storage of carbon dioxide ( CO2$CO_2$ ) as an example. Several engineering problems, including selection of subsurface CO2$CO_2$ storage sites, often requires costly and complex simulations of flow fields. In this work, a Fourier Neural Operator (FNO) based model is developed for real‐time, high‐resolution simulation of CO2$CO_2$ plume migration. The model is trained on a comprehensive dataset derived from realistic subsurface parameters and achieves a computational speed‐up of O(103to105)$\\mathcal {O}(10^3 \\textrm { to } 10^5)$ when compared to numerical simulators used in this work, with only a minimal reduction in predictive accuracy. Super‐resolution experiments are also investigated to reduce the computational cost of training the FNO‐based models. Additionally, various strategies are proposed to enhance the reliability of model predictions, which is crucial for evaluating actual geological storage sites. This framework, based on NVIDIA's PhysicsNeMo library, enables rapid screening of sites for CCS. This work scales data‐driven models to realistic 3D systems that better reflect real‐life subsurface aquifers and reservoirs, paving the way for building next‐generation digital twins for subsurface CCS applications. The workflows and strategies discussed can be easily adapted to other material systems and energy solutions, such as geothermal reservoir modeling, flow batteries, fuel cells, and hydrogen storage.",
+    "abstract": "Abstract This study aims to develop surrogate models to accelerate decision‐making processes related to porous media flows, using geologic storage of carbon dioxide () as an example. Several engineering problems, including selection of subsurface storage sites, often requires costly and complex simulations of flow fields. In this work, a Fourier Neural Operator (FNO) based model is developed for real‐time, high‐resolution simulation of plume migration. The model is trained on a comprehensive dataset derived from realistic subsurface parameters and achieves a computational speed‐up of when compared to numerical simulators used in this work, with only a minimal reduction in predictive accuracy. Super‐resolution experiments are also investigated to reduce the computational cost of training the FNO‐based models. Additionally, various strategies are proposed to enhance the reliability of model predictions, which is crucial for evaluating actual geological storage sites. This framework, based on NVIDIA's PhysicsNeMo library, enables rapid screening of sites for CCS. This work scales data‐driven models to realistic 3D systems that better reflect real‐life subsurface aquifers and reservoirs, paving the way for building next‐generation digital twins for subsurface CCS applications. The workflows and strategies discussed can be easily adapted to other material systems and energy solutions, such as geothermal reservoir modeling, flow batteries, fuel cells, and hydrogen storage.",
     "abstract_status": "enriched",
     "scholar_snippet": ", often requires costly and complex simulations of flow fields. In this work, a Fourier Neural  Operator (FNO) based model is developed for real-time, high-resolution simulation of C O 2 $",
     "published": "2025-09-18",
@@ -49,15 +49,17 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "fno",
       "fourier neural operator",
-      "neural operator",
-      "fno"
+      "neural operator"
     ],
     "abstract_enriched_at": "2026-06-09T12:45:27.119850+00:00",
     "abstract_source": "semantic_scholar",
     "sources": [
       "google_scholar"
-    ]
+    ],
+    "date_source": "crossref",
+    "date_status": "reliable"
   },
   {
     "id": "gs-ad4227500f25",
@@ -110,15 +112,17 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "fno",
       "fourier neural operator",
-      "neural operator",
       "flow simulation",
-      "fno"
+      "neural operator"
     ],
     "scholar_snippet": "flow simulations based on low-resolution data. Accordingly, we assess the potential of FNO  for high-resolution fluid flow simulations  help optimize FNO for future fluid flow simulations.",
     "abstract_status": "enriched",
     "abstract_enriched_at": "2026-06-08T15:50:03.617343+00:00",
-    "abstract_source": "publisher_meta"
+    "abstract_source": "publisher_meta",
+    "date_source": "google_scholar",
+    "date_status": "approximate"
   },
   {
     "id": "gs-b91707be4ad8",
@@ -174,17 +178,19 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "data-driven",
-      "machine learning",
       "two-phase flow",
       "fluid dynamics",
-      "interface tracking"
+      "data-driven",
+      "interface tracking",
+      "machine learning"
     ],
     "scholar_snippet": "in machine learning (ML), data-driven modeling has opened new opportunities for analyzing  and predicting two-phase flow  —phase interface tracking, flow pattern recognition, pressure",
     "abstract_status": "enriched",
     "abstract_enriched_at": "2026-06-08T15:46:36.144472+00:00",
     "abstract_source": "openalex",
-    "openalex_id": "https://openalex.org/W4414584079"
+    "openalex_id": "https://openalex.org/W4414584079",
+    "date_source": "google_scholar",
+    "date_status": "approximate"
   },
   {
     "id": "2510.00233v1",
@@ -208,9 +214,9 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "neural operator",
+      "machine learning",
       "latent space",
-      "machine learning"
+      "neural operator"
     ],
     "keywords": [
       "Neural Operator",
@@ -242,7 +248,9 @@
       }
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
-    "preprint_pdf_url": "https://arxiv.org/pdf/2510.00233"
+    "preprint_pdf_url": "https://arxiv.org/pdf/2510.00233",
+    "date_source": "arxiv",
+    "date_status": "reliable"
   },
   {
     "id": "2509.24556v1",
@@ -267,12 +275,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "active flow control",
-      "flow control",
-      "deep reinforcement learning",
-      "reinforcement learning",
       "vortex",
-      "drl"
+      "reinforcement learning",
+      "active flow control",
+      "deep reinforcement learning",
+      "drl",
+      "flow control"
     ],
     "keywords": [
       "DRL",
@@ -318,7 +326,9 @@
       }
     },
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
-    "preprint_pdf_url": "https://arxiv.org/pdf/2509.24556"
+    "preprint_pdf_url": "https://arxiv.org/pdf/2509.24556",
+    "date_source": "arxiv",
+    "date_status": "reliable"
   },
   {
     "id": "2509.24264v1",
@@ -343,14 +353,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
-      "finite element method",
-      "gnn",
-      "finite element",
-      "neural network",
       "graph neural network",
+      "gnn",
+      "data-driven",
       "sph",
-      "droplet"
+      "droplet",
+      "neural network",
+      "finite element",
+      "finite element method"
     ],
     "keywords": [
       "GNN",
@@ -399,6 +409,8 @@
       }
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
-    "preprint_pdf_url": "https://arxiv.org/pdf/2509.24264"
+    "preprint_pdf_url": "https://arxiv.org/pdf/2509.24264",
+    "date_source": "arxiv",
+    "date_status": "reliable"
   }
 ]

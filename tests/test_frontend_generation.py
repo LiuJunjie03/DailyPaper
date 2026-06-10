@@ -66,14 +66,19 @@ def test_frontend_generation_uses_compact_dashboard(tmp_path):
 
 
 def test_google_scholar_snippets_are_not_reliable_abstracts():
+    """GS snippet 不应作为前端摘要；但若已被可靠来源补全则允许有 abstract。"""
+    _RELIABLE_SOURCES = {"crossref", "openalex", "semantic_scholar", "publisher_meta"}
     data_dir = Path(__file__).parent.parent / "data"
     for month_file in data_dir.glob("????-??.json"):
         papers = json.loads(month_file.read_text(encoding="utf-8"))
         for paper in papers:
             if paper.get("abstract_status") == "unreliable_google_scholar_snippet":
                 assert paper.get("source") == "google_scholar"
-                assert not (paper.get("abstract") or "").strip()
-                assert (paper.get("scholar_snippet") or "").strip()
+                # 如果已被可靠来源补全，abstract 可不为空
+                enriched_by = paper.get("abstract_source", "")
+                if enriched_by not in _RELIABLE_SOURCES:
+                    assert not (paper.get("abstract") or "").strip()
+                    assert (paper.get("scholar_snippet") or "").strip()
 
 
 def test_incomplete_publication_dates_do_not_drive_homepage_stats_or_sorting(tmp_path):

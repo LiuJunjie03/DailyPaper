@@ -155,8 +155,16 @@ def fetch_crossref_papers(fetcher) -> List[Dict]:
             # 引用数
             citation_count = item.get("is-referenced-by-count")
 
-            # 论文类型
+            # 论文类型 —— 过滤非论文条目
             item_type = item.get("type", "")
+            _SKIP_TYPES = {
+                "editorial", "correction", "withdrawn",
+                "book-review", "dissertation", "reference-entry",
+            }
+            if item_type in _SKIP_TYPES:
+                continue
+            if any(title.lower().startswith(p) for p in ("withdrawn", "correction:", "editorial board")):
+                continue
 
             paper = {
                 "id": doi,

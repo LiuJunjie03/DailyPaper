@@ -61,6 +61,7 @@ jobs:
     - name: Fetch papers
       env:
         SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+        ENABLE_CNKI: "false"
         START_MONTH: ${{ github.event.inputs.start_month }}
         END_MONTH: ${{ github.event.inputs.end_month }}
       run: |
