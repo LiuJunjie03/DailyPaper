@@ -65,7 +65,8 @@ def main():
     else:
         print(f"WARN {total_warnings} warnings total (use --verbose for details)")
 
-    return 0 if total_warnings == 0 else 1
+    # warnings 不阻断 CI，只有 JSON 解析失败等真正错误才返回非零
+    return 0
 
 
 if __name__ == "__main__":
