@@ -1,5 +1,241 @@
 [
   {
+    "id": "gs-10909d8c5132",
+    "title": "A physics-informed neural network for predicting the drag coefficient of irregular particles utilizing computational fluid dynamics",
+    "authors": "T Tian, H Zhao, H Zhang, D Han, J Chen",
+    "abstract": "The drag coefficient of particles is a critical physical parameter in multiphase flow systems. Despite the publication of numerous empirical models for drag prediction, these models exhibit limitations as they are often applicable only under specific experimental conditions. Consequently, an accurate and universally applicable formula of drag coefficient that encompasses all particle shapes in high Reynolds number flows remains elusive at present. Based on the existing empirical formula and the prediction ability of neural network, this paper proposes a physics-informed neural network (PINN) to predict the drag coefficient. In addition to sphericity and Reynolds number, the input of model also includes shape description symbol that significantly influence drag coefficient corroborated by the existing literature. A computational fluid dynamics model was developed to calculate the drag coefficients for a series of particles. These particles are solid stones of irregular shape. The shape characteristics of particles and the drag coefficient together form the dataset. Different particles were selected to conduct the pipe sedimentation experiment and develop the corresponding computational fluid dynamics–discrete element method model. The predicted drag coefficient from the PINN model was coupled into the model to verify the practicality of the prediction results. The PINN model is suitable for irregular particles and provides a new feasible method for predicting drag information with enhanced generalizability and reliability.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "To obtain training data, we used computational fluid dynamics (CFD) to calculate the C D of   The final structure of the PINN model proposed in this paper is shown in Fig. 6, where the",
+    "published": "2025-07-24",
+    "paper_url": "https://pubs.aip.org/aip/pof/article/37/7/073369/3355985",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Physics of Fluids",
+    "conference": "Physics of Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1063/5.0279195",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "fluid dynamics",
+      "multiphase flow",
+      "neural network"
+    ],
+    "citation_count": 2,
+    "impact_factor": 3.5,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 12,
+        "strong_hits": [
+          "physics-informed neural network",
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed neural network",
+      "multiphase flow",
+      "neural network",
+      "computational fluid dynamics",
+      "physics-informed",
+      "fluid dynamics",
+      "pinn"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:40:26.693709+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4412633615",
+    "sources": [
+      "google_scholar"
+    ]
+  },
+  {
+    "id": "gs-80b001908ff8",
+    "title": "Probabilistic data-driven turbulence closure modeling by assimilating statistics",
+    "authors": "SR Ephrati",
+    "abstract": "A framework for deriving probabilistic data-driven closure models is proposed for coarse-grained numerical simulations of turbulence in statistically stationary state. The approach unites the ideal large-eddy simulation model [8] and data assimilation methods. The method requires a posteriori measured data to define a stochastic large-eddy simulation model, which is combined with a Bayesian statistical correction enforcing user-specified statistics extracted from high-fidelity flow snapshots. Thus, it enables computationally cheap ensemble simulations by combining knowledge of the local integration error and knowledge of desired flow statistics. An example implementation of the modeling framework is given for two-dimensional Rayleigh-Bénard convection at Rayleigh number Ra = 10 10 , incorporating stochastic perturbations and an ensemble Kalman filtering step in a non-intrusive way. Physical flow dynamics are obtained, whilst kinetic energy spectra and heat flux are accurately reproduced in long-time ensemble forecasts on coarse grids for two discretizations. The model is shown to produce accurate results with as few as 20 high-fidelity flow snapshots as input data.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "data-driven closure models is proposed for coarse-grained numerical simulations of turbulence  in  The approach unites the ideal large-eddy simulation model [8] and data assimilation",
+    "published": "2025-07-15",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S0021999125005170",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.sciencedirect.com/science/article/pii/S0021999125005170",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Journal of Computational Physics",
+    "conference": "Journal of Computational Physics",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1016/j.jcp.2025.114234",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 流场重建与数据驱动"
+    ],
+    "keywords": [
+      "data assimilation",
+      "data-driven",
+      "data-driven turbulence",
+      "ensemble kalman",
+      "turbulence"
+    ],
+    "citation_count": 3,
+    "impact_factor": 5.6,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 4,
+        "strong_hits": [
+          "data-driven turbulence"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流场重建与数据驱动": {
+        "score": 8,
+        "strong_hits": [
+          "data assimilation",
+          "ensemble kalman"
+        ],
+        "context_hits": [
+          "flow",
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
+    "custom_keywords": [
+      "data-driven",
+      "turbulence",
+      "ensemble kalman",
+      "data assimilation",
+      "data-driven turbulence"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:43:15.603688+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4412421339",
+    "sources": [
+      "google_scholar"
+    ]
+  },
+  {
+    "id": "gs-e43389b1136c",
+    "title": "Rapid CFD prediction based on machine learning surrogate model in built environment: A review",
+    "authors": "R Mao, Y Lan, L Liang, T Yu, M Mu, W Leng, Z Long",
+    "abstract": "Computational Fluid Dynamics (CFD) is regarded as an important tool for analyzing the flow field, thermal environment, and air quality around the built environment. However, for built environment applications, the high computational cost of CFD hinders large-scale scenario simulation and efficient design optimization. In the field of built environment research, surrogate modeling has become a key technology to connect the needs of high-fidelity CFD simulation and rapid prediction, whereas the low-dimensional nature of traditional surrogate models is unable to match the physical complexity and prediction needs of built flow fields. Therefore, combining machine learning (ML) with CFD to predict flow fields in built environments offers a promising way to increase simulation speed while maintaining reasonable accuracy. This review briefly reviews traditional surrogate models and focuses on ML-based surrogate models, especially the specific application of neural network architectures in rapidly predicting flow fields in the built environment. The review indicates that ML accelerates the three core aspects of CFD, namely mesh preprocessing, numerical solving, and post-processing visualization, in order to achieve efficient coupled CFD simulation. Although ML surrogate models still face challenges such as data availability, multi-physics field coupling, and generalization capability, the emergence of physical information-driven data enhancement techniques effectively alleviates the above problems. Meanwhile, the integration of traditional methods with ML can further enhance the comprehensive performance of surrogate models. Notably, the online ministry of trained ML models using transfer learning strategies deserves further research. These advances will provide an important basis for advancing efficient and accurate operational solutions in sustainable building design and operation.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "CFD prediction techniques based on ML surrogate models in  methods, models, and  application examples of ML for CFD  and limitations of different surrogate models in different built",
+    "published": "2025-07-28",
+    "paper_url": "https://www.mdpi.com/2311-5521/10/8/193",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.mdpi.com/2311-5521/10/8/193",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Fluids",
+    "conference": "Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.3390/fluids10080193",
+    "external_ids": {},
+    "semantic_scholar_id": "cf3d86b5b5449d4d61f6b1aca646d4edd771e6f8",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "design optimization",
+      "fluid dynamics",
+      "machine learning",
+      "neural network",
+      "surrogate model",
+      "transfer learning"
+    ],
+    "citation_count": 38,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 14,
+        "strong_hits": [
+          "surrogate model",
+          "surrogate modeling",
+          "transfer learning"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "cfd",
+          "neural network",
+          "machine learning",
+          "flow field"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "transfer learning",
+      "neural network",
+      "machine learning",
+      "surrogate model",
+      "computational fluid dynamics",
+      "design optimization",
+      "cfd",
+      "fluid dynamics"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:44:34.259990+00:00",
+    "abstract_source": "semantic_scholar",
+    "sources": [
+      "google_scholar"
+    ]
+  },
+  {
     "id": "2507.21890v1",
     "title": "Data-driven quantum Koopman method for simulating nonlinear dynamics",
     "authors": "Baoyang Zhang, Zhen Lu, Yaomin Zhao, Yue Yang",
@@ -24,11 +260,11 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "data-driven",
+      "accelerated simulation",
       "turbulence",
       "deep learning",
       "autoencoder",
-      "data-driven",
-      "accelerated simulation",
       "koopman"
     ],
     "keywords": [
@@ -100,14 +336,14 @@
     "official_keywords": [],
     "custom_keywords": [
       "adjoint optimization",
-      "fluid dynamics",
-      "sph",
-      "acceleration",
-      "solver-in-the-loop",
       "machine learning",
+      "acceleration",
       "computational fluid dynamics",
+      "solver-in-the-loop",
+      "shape optimization",
       "cfd",
-      "shape optimization"
+      "fluid dynamics",
+      "sph"
     ],
     "keywords": [
       "CFD",

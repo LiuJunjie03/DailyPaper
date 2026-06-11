@@ -1,0 +1,451 @@
+[
+  {
+    "id": "gs-2bd5b48972b3",
+    "title": "Minimizing nature's cost: Exploring data-free physics-informed neural network solvers for fluid mechanics applications",
+    "authors": "A Elmaradny, A Atallah, H Taha",
+    "abstract": "In this paper, we present a novel approach for fluid dynamic simulations by leveraging the capabilities of Physics-Informed Neural Networks (PINNs) guided by the newly unveiled Principle of Minimum Pressure Gradient (PMPG). In a PINN formulation, the physics problem is converted into a minimization problem (typically least squares). The PMPG asserts that for incompressible flows, the total magnitude of the pressure gradient over the domain must be minimum at every time instant, turning fluid mechanics into minimization problems, making it an excellent choice for PINNs formulation. Following the PMPG, the proposed PINN formulation seeks to construct a neural network for the flow field that minimizes Nature's cost function for incompressible flows in contrast to traditional PINNs that minimize the residuals of the Navier–Stokes equations. This technique eliminates the need to train a separate pressure model, thereby reducing training time and computational costs. We demonstrate the effectiveness of this approach through a case study of inviscid flow around a cylinder. The proposed approach outperforms the traditional PINNs approach in terms of training time, convergence rate, and compliance with physical metrics. While demonstrated on a simple geometry, the methodology is extensible to more complex flow fields (e.g., three-dimensional, unsteady, and viscous flows) within the incompressible realm, which is the region of applicability of the PMPG.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "fluid dynamic simulations by leveraging the capabilities of Physics-Informed Neural Networks   at every time instant, turning fluid mechanics into minimization problems, making it an",
+    "published": "2025-02-10",
+    "paper_url": "https://pubs.aip.org/aip/pof/article/37/2/027142/3334755",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://pubs.aip.org/aip/pof/article/37/2/027142/3334755",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Physics of Fluids",
+    "conference": "Physics of Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1063/5.0250022",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "fluid mechanics",
+      "neural network"
+    ],
+    "citation_count": 18,
+    "impact_factor": 3.5,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 13,
+        "strong_hits": [
+          "physics-informed neural network",
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network",
+          "flow field"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed neural network",
+      "fluid mechanics",
+      "neural network",
+      "physics-informed",
+      "pinn"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:40:03.114632+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4407295299",
+    "sources": [
+      "google_scholar"
+    ]
+  },
+  {
+    "id": "gs-29373523cea0",
+    "title": "AI-augmented turbulence and aerodynamic modelling: accelerating high-fidelity CFD simulations with physics-informed neural networks",
+    "authors": "S Sahibzada, FS Malik, S Nasir",
+    "abstract": "Computational Fluid Dynamics (CFD) simulations are essential for understanding and optimizing aerodynamic performance across various engineering applications, from aerospace to automotive design. However, high-fidelity CFD simulations are computationally expensive, requiring extensive time and resources to resolve turbulence and complex flow interactions accurately. This study proposes an AI-augmented turbulence and aerodynamic modeling framework that integrates Physics-Informed Neural Networks (PINNs) with traditional CFD solvers to accelerate high-fidelity simulations while maintaining accuracy [2]. By embedding fundamental fluid dynamics equations into deep learning architectures, our approach enables efficient turbulence modeling, reducing computational time without sacrificing precision. The framework leverages deep neural networks trained on high-resolution CFD data to predict turbulence dynamics and aerodynamic properties, thereby supplementing conventional turbulence models such as Reynolds-Averaged Navier-Stokes (RANS) and Large Eddy Simulation (LES). Our results demonstrate that the AI-augmented approach accelerates CFD simulations by up to 70%, significantly reducing computational costs while preserving high accuracy in key aerodynamic metrics such as drag coefficient, lift-to-drag ratio, and pressure distribution. Comparative analyses with traditional solvers confirm that our model successfully captures complex flow structures and turbulence interactions, validating its effectiveness in real-world aerodynamic applications. This study highlights the transformative potential of physics-informed AI in engineering simulations, bridging the gap between data-driven modeling and physics-based computation. The findings pave the way for the widespread adoption of AI-enhanced aerodynamic analysis, enabling real-time optimization and rapid prototyping in next-generation aerospace, automotive, and renewable energy systems.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "CFD data: The model learns flow structures from high-fidelity simulations. • Physics-Informed  Fine-tuning: Governing fluid dynamics equations are enforced within the network, ensuring",
+    "published": "2025-02-27",
+    "paper_url": "https://www.researchgate.net/profile/Sheharyar-Nasir/publication/389425028_AI-Augmented_Turbulence_and_Aerodynamic_Modelling_Accelerating_High-Fidelity_CFD_Simulations_with_Physics-informed_Neural_Networks/links/67c315b1207c0c20fa9de757/AI-Augmented-Turbulence-and-Aerodynamic-Modelling-Accelerating-High-Fidelity-CFD-Simulations-with-Physics-informed-Neural-Networks.pdf",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.researchgate.net/profile/Sheharyar-Nasir/publication/389425028_AI-Augmented_Turbulence_and_Aerodynamic_Modelling_Accelerating_High-Fidelity_CFD_Simulations_with_Physics-informed_Neural_Networks/links/67c315b1207c0c20fa9de757/AI-Augmented-Turbulence-and-Aerodynamic-Modelling-Accelerating-High-Fidelity-CFD-Simulations-with-Physics-informed-Neural-Networks.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of …",
+    "conference": "International Journal of …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.55524/ijircst.2025.13.1.14",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "data-driven",
+      "deep learning",
+      "fluid dynamics",
+      "les",
+      "rans",
+      "turbulence",
+      "turbulence modeling"
+    ],
+    "citation_count": 20,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 9,
+        "strong_hits": [
+          "turbulence modeling"
+        ],
+        "context_hits": [
+          "rans",
+          "les",
+          "data-driven",
+          "deep learning",
+          "cfd",
+          "navier-stokes"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 9,
+        "strong_hits": [
+          "physics-informed"
+        ],
+        "context_hits": [
+          "navier-stokes",
+          "cfd",
+          "fluid",
+          "flow",
+          "deep learning",
+          "data-driven"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "data-driven",
+      "les",
+      "turbulence",
+      "deep learning",
+      "computational fluid dynamics",
+      "turbulence modeling",
+      "cfd",
+      "fluid dynamics",
+      "rans",
+      "physics-informed"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:40:07.814777+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4407994620",
+    "sources": [
+      "google_scholar"
+    ]
+  },
+  {
+    "id": "gs-e88ecaebe9e3",
+    "title": "A boundary-assimilation Fourier neural operator for predicting initial fields of flow around structures",
+    "authors": "Y Xie, B Deng, C Jiang, C Lv",
+    "abstract": "Repeatedly solving flow around structures with varying parameters using computational fluid dynamics (CFD) is often essential for structural design. This study proposes a boundary-assimilation Fourier neural operator (BAFNO) method to address the challenges of manually setting initial conditions for CFD. The focus of the BAFNO is on the generalization ability to predict initial flow fields without relying on observational data. BAFNO addresses the boundary constraint requirements of the existing physics-informed neural operator models in parametric geometries. Inspired by the ghost node method, the domain boundary conditions are assimilated into the loss function instead of adding penalty terms. Meanwhile, the structure boundaries are assimilated into a damping source term using a level set function. BAFNO can flexibly handle parametric geometries with different shapes and quantities. Subsequently, a series of numerical experiments for flow-around structures are conducted to confirm the performance of the BAFNO. The results indicate that the BAFNO has strong generalization capability, and the BAFNO + CFD can obtain dynamic stable fields faster than the direct CFD.",
+    "published": "2025-02-12",
+    "paper_url": "https://pubs.aip.org/aip/pof/article/37/2/027148/3335812",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://pubs.aip.org/aip/pof/article/37/2/027148/3335812",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Physics of Fluids",
+    "conference": "Physics of Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1063/5.0250780",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习",
+      "流体力学 / 智能CFD / 物理信息神经网络",
+      "流体力学 / 多相流理论"
+    ],
+    "keywords": [
+      "CFD",
+      "FNO",
+      "Neural Operator",
+      "PINN",
+      "fluid dynamics",
+      "level set"
+    ],
+    "citation_count": 2,
+    "impact_factor": 3.5,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 8,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 6,
+        "strong_hits": [
+          "physics-informed"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 多相流理论": {
+        "score": 6,
+        "strong_hits": [
+          "level set"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 多相流理论",
+    "custom_keywords": [
+      "fourier neural operator",
+      "level set",
+      "neural operator",
+      "computational fluid dynamics",
+      "cfd",
+      "fluid dynamics",
+      "physics-informed"
+    ],
+    "scholar_snippet": "is a deficiency in implementing appropriate correction mechanisms for the predicted flow  field results. To achieve the same precision as CFD, we propose the BAFNO + CFD framework.",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:41:11.869659+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4407405228"
+  },
+  {
+    "id": "gs-055fe2bb5e88",
+    "title": "Deep reinforcement learning for active flow control in a turbulent separation bubble",
+    "authors": "Bernat Font, Francisco Alcántara-Ávila, Jean Rabault, Ricardo Vinuesa, Oriol Lehmkuhl",
+    "abstract": "This Nature Communications study numerically compares deep reinforcement learning with classical periodic forcing for controlling a turbulent separation bubble. The authors show that a policy trained on a coarse grid can transfer to a fine grid when the main flow features are resolved, reducing the computational cost of training. On the fine grid, periodic forcing reduces the separation-bubble area by 6.8%, while the DRL controller achieves a 9.0% reduction with smoother, momentum-conserving actuation. The flow analysis links the learned strategy to large-scale counter-rotating vortices sustained over a range of frequencies, and the paper also presents an open-source CFD-DRL framework for exascale systems.",
+    "published": "2025-02-07",
+    "paper_url": "https://www.nature.com/articles/s41467-025-56408-6",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.nature.com/articles/s41467-025-56408-6.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Nature Communications",
+    "conference": "Nature Communications",
+    "publication_types": [],
+    "publication_type": "journal",
+    "doi": "10.1038/s41467-025-56408-6",
+    "external_ids": {
+      "DOI": "10.1038/s41467-025-56408-6",
+      "PMID": "39915442",
+      "PMCID": "PMC11802851"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 流动控制与强化学习"
+    ],
+    "keywords": [
+      "CFD",
+      "DRL",
+      "RL",
+      "active flow control",
+      "bubble",
+      "coarse grid",
+      "flow control",
+      "vortices"
+    ],
+    "citation_count": 69,
+    "impact_factor": 64.8,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 加速求解与超分辨": {
+        "score": 4,
+        "strong_hits": [
+          "coarse grid"
+        ],
+        "context_hits": [
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 18,
+        "strong_hits": [
+          "flow control",
+          "active flow control",
+          "reinforcement learning",
+          "deep reinforcement learning",
+          "drl"
+        ],
+        "context_hits": [
+          "cfd",
+          "flow",
+          "turbulent"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "vortices"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 多相流理论": {
+        "score": 5,
+        "strong_hits": [
+          "bubble"
+        ],
+        "context_hits": [
+          "flow",
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "custom_keywords": [
+      "active flow control",
+      "flow control",
+      "coarse grid",
+      "vortices",
+      "deep reinforcement learning",
+      "cfd",
+      "reinforcement learning",
+      "drl",
+      "bubble"
+    ],
+    "abstract_status": "verified"
+  },
+  {
+    "id": "gs-dc37b6d93edb",
+    "title": "Physics-aware machine learning for computational fluid dynamics surrogate model to estimate ventilation performance",
+    "authors": "M Kim, NK Chau, S Park, PCH Nguyen, SS Baek",
+    "abstract": "Despite substantial advances in numerical simulation techniques, constructing a real-time optimization framework with accurate and fast predictions remains challenging. The difficulty arises from significant computational costs required for estimating a response of complex simulation models. Physics-informed machine learning (PIML) models could be an efficient alternative to solving multiple partial differential equations when boundary conditions change. This study aims to introduce an optimization model combined with a PIML algorithm, called physics-aware recurrent convolutional network (PARC), to explore an optimal ventilation efficiency in a confined engine room space during shipbuilding. Sixty computational fluid dynamics simulations were conducted to generate mean age of air (MAA) field data, which were split into training (45 cases), validation (5 cases), and testing (10 cases) datasets. Engine room structures and fan configurations were incorporated into the PARC model through a shape descriptor neural network, while MAA data were used to train the PARC model. The PARC model accurately predicted the temporal evolution of the MAA field, capturing complex ventilation fan information with an average prediction error of 1.5% at the final time step. Furthermore, the trained PARC model was coupled with the Bayesian optimization (BO) to explore the optimal ventilation efficiency. The results indicated that the optimized fan configurations reduced MAA values by up to 4.5%. The PARC-BO integrated framework offers a rapid and effective method for identifying fan configurations to enhance ventilation efficiency. It has potential applications in various industrial settings requiring improved air quality, such as power plants and coal mines.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "This section presents a CFD model for predicting MAA (including incompressible Navier–Stokes  equations, a scalar equation for MAA, and the shape information of the engine room),",
+    "published": "2025-02-07",
+    "paper_url": "https://pubs.aip.org/aip/pof/article/37/2/027130/3334515",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://pubs.aip.org/aip/pof/article/37/2/027130/3334515",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Physics of …",
+    "conference": "Physics of …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1063/5.0251641",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "fluid dynamics",
+      "machine learning",
+      "neural network",
+      "surrogate model"
+    ],
+    "citation_count": 12,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 6,
+        "strong_hits": [
+          "surrogate model"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "neural network",
+          "machine learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 9,
+        "strong_hits": [
+          "physics-informed",
+          "physics-informed machine learning"
+        ],
+        "context_hits": [
+          "fluid",
+          "neural network",
+          "machine learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "neural network",
+      "machine learning",
+      "surrogate model",
+      "computational fluid dynamics",
+      "fluid dynamics",
+      "physics-informed"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:45:00.743376+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4407253371",
+    "sources": [
+      "google_scholar"
+    ]
+  }
+]

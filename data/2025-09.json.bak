@@ -1,5 +1,192 @@
 [
   {
+    "id": "gs-2b35613a7799",
+    "title": "Accelerating Porous Media Flow Simulations With Fourier Neural Operators: An Application to Geologic Storage of CO2",
+    "authors": "A Chandra, M Koch, S Pawar, A Panda",
+    "abstract": "This study aims to develop surrogate models to accelerate decision‐making processes related to porous media flows, using geologic storage of carbon dioxide ( CO2$CO_2$ ) as an example. Several engineering problems, including selection of subsurface CO2$CO_2$ storage sites, often requires costly and complex simulations of flow fields. In this work, a Fourier Neural Operator (FNO) based model is developed for real‐time, high‐resolution simulation of CO2$CO_2$ plume migration. The model is trained on a comprehensive dataset derived from realistic subsurface parameters and achieves a computational speed‐up of O(103to105)$\\mathcal {O}(10^3 \\textrm { to } 10^5)$ when compared to numerical simulators used in this work, with only a minimal reduction in predictive accuracy. Super‐resolution experiments are also investigated to reduce the computational cost of training the FNO‐based models. Additionally, various strategies are proposed to enhance the reliability of model predictions, which is crucial for evaluating actual geological storage sites. This framework, based on NVIDIA's PhysicsNeMo library, enables rapid screening of sites for CCS. This work scales data‐driven models to realistic 3D systems that better reflect real‐life subsurface aquifers and reservoirs, paving the way for building next‐generation digital twins for subsurface CCS applications. The workflows and strategies discussed can be easily adapted to other material systems and energy solutions, such as geothermal reservoir modeling, flow batteries, fuel cells, and hydrogen storage.",
+    "abstract_status": "enriched",
+    "scholar_snippet": ", often requires costly and complex simulations of flow fields. In this work, a Fourier Neural  Operator (FNO) based model is developed for real-time, high-resolution simulation of C O 2 $",
+    "published": "2025-09-18",
+    "paper_url": "https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/adts.202500747",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://authors.library.caltech.edu/records/gg8jk-tkt80/files/adts70131-sup-0001-supmat.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "… and Simulations",
+    "conference": "… and Simulations",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1002/adts.202500747",
+    "external_ids": {},
+    "semantic_scholar_id": "8f3025439b9e6f8dc40781c64bb4251d4f058921",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator"
+    ],
+    "citation_count": 4,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 6,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "fno"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fourier neural operator",
+      "neural operator",
+      "fno"
+    ],
+    "abstract_enriched_at": "2026-06-09T12:45:27.119850+00:00",
+    "abstract_source": "semantic_scholar",
+    "sources": [
+      "google_scholar"
+    ]
+  },
+  {
+    "id": "gs-ad4227500f25",
+    "title": "Fourier neural operator for high-resolution fluid flow simulation based on low-resolution data: the vorticity equation as an example",
+    "authors": "H Qu, X Zheng, L Yang, Z Song",
+    "abstract": "In oceanic and atmospheric science, finer resolutions have become a prevailing trend in all aspects of development. For high-resolution fluid flow simulations, the computational costs of widely used numerical models increase significantly with the resolution. Artificial intelligence methods have attracted increasing attention because of their high precision and fast computing speeds compared with traditional numerical model methods. The resolution-independent Fourier neural operator (FNO) presents a promising solution to the still challenging problem of high-resolution fluid flow simulations based on low-resolution data. Accordingly, we assess the potential of FNO for high-resolution fluid flow simulations using the vorticity equation as an example. We assess and compare the performance of FNO in multiple high-resolution tests varying the amounts of data and the evolution durations. When assessed with finer resolution data (even up to number of grid points with 1 280 × 1 280), the FNO model, trained at low resolution (number of grid points with 64 × 64) and with limited data, exhibits a stable overall error and good accuracy. Additionally, our work demonstrates that the FNO model takes less time than the traditional numerical method for high-resolution simulations. This suggests that FNO has the prospect of becoming a cost-effective and highly precise model for high-resolution simulations in the future. Moreover, FNO can make longer high-resolution predictions while training with less data by superimposing vorticity fields from previous time steps as input. A suitable initial learning rate can be set according to the frequency principle, and the time intervals of the dataset need to be adjusted according to the spatial resolution of the input when training the FNO model. Our findings can help optimize FNO for future fluid flow simulations.",
+    "published": "2025-09-06",
+    "paper_url": "https://link.springer.com/article/10.1007/s13131-024-2453-1",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Acta Oceanologica Sinica",
+    "conference": "Acta Oceanologica Sinica",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator",
+      "flow simulation"
+    ],
+    "citation_count": 2,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 10,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "fno"
+        ],
+        "context_hits": [
+          "flow simulation"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fourier neural operator",
+      "neural operator",
+      "flow simulation",
+      "fno"
+    ],
+    "scholar_snippet": "flow simulations based on low-resolution data. Accordingly, we assess the potential of FNO  for high-resolution fluid flow simulations  help optimize FNO for future fluid flow simulations.",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:50:03.617343+00:00",
+    "abstract_source": "publisher_meta"
+  },
+  {
+    "id": "gs-b91707be4ad8",
+    "title": "A systematic review of machine learning applications in gas-liquid two-phase flow: From physical modeling to data-driven insights",
+    "authors": "Y Qiu, J Li, Z Wang, R Yokoyama, K Wang",
+    "abstract": "Gas–liquid two-phase flow has long been recognized as a difficult subject in the energy and process industries, mainly because of its highly complex fluid dynamics that make reliable modeling and prediction challenging. Over the years, a wide range of methods have been employed, including experimental studies, semi-empirical correlations, and numerical simulations. With the recent progress in machine learning (ML), data-driven modeling has opened new opportunities for analyzing and predicting two-phase flow behavior. This review summarizes research efforts on several representative problems—phase interface tracking, flow pattern recognition, pressure drop estimation, and critical heat flux (CHF) prediction. For each topic, we first examine conventional experimental and numerical techniques, then discuss emerging ML-based approaches, emphasizing their advantages, limitations, and practical scope. By bringing these methods together, the paper provides an integrated overview of the field and suggests future directions for advancing both fundamental research and industrial applications of two-phase flow. • A comprehensive review of different research methods for gas-liquid two-phase flow. • This paper discusses applications of ML in the gas-liquid two-phase flow. • Emphasis on how ML complements traditional experimental and numerical methods. • Successful applications of ML have been shown to improve prediction accuracy.",
+    "published": "2025-09-28",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S0735193325011583",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "… Communications in Heat …",
+    "conference": "… Communications in Heat …",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1016/j.icheatmasstransfer.2025.109732",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 多相流理论"
+    ],
+    "keywords": [
+      "data-driven",
+      "fluid dynamics",
+      "interface tracking",
+      "machine learning",
+      "two-phase flow"
+    ],
+    "citation_count": 4,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 多相流理论": {
+        "score": 4,
+        "strong_hits": [
+          "two-phase flow",
+          "interface tracking"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": [
+          "machine learning"
+        ]
+      }
+    },
+    "primary_domain": "流体力学 / 多相流理论",
+    "custom_keywords": [
+      "data-driven",
+      "machine learning",
+      "two-phase flow",
+      "fluid dynamics",
+      "interface tracking"
+    ],
+    "scholar_snippet": "in machine learning (ML), data-driven modeling has opened new opportunities for analyzing  and predicting two-phase flow  —phase interface tracking, flow pattern recognition, pressure",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:46:36.144472+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4414584079"
+  },
+  {
     "id": "2510.00233v1",
     "title": "Differentiable Autoencoding Neural Operator for Interpretable and Integrable Latent Space Modeling",
     "authors": "Siva Viknesh, Amirhossein Arzani",
@@ -21,8 +208,8 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "latent space",
       "neural operator",
+      "latent space",
       "machine learning"
     ],
     "keywords": [
@@ -80,12 +267,12 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
+      "active flow control",
       "flow control",
       "deep reinforcement learning",
-      "drl",
       "reinforcement learning",
       "vortex",
-      "active flow control"
+      "drl"
     ],
     "keywords": [
       "DRL",
@@ -156,14 +343,14 @@
     ],
     "official_keywords": [],
     "custom_keywords": [
-      "graph neural network",
-      "finite element method",
-      "sph",
-      "gnn",
       "data-driven",
+      "finite element method",
+      "gnn",
+      "finite element",
       "neural network",
-      "droplet",
-      "finite element"
+      "graph neural network",
+      "sph",
+      "droplet"
     ],
     "keywords": [
       "GNN",
