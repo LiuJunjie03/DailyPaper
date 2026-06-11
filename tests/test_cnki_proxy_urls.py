@@ -4,7 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from fetchers.cnki import _absolute_cnki_url, _cnki_url
+from daily_paper.sources.cnki import _absolute_cnki_url, _cnki_url
 
 
 def test_cnki_urls_can_use_proxy_base():

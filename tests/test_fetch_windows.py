@@ -5,19 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 from fetch_papers import _month_window
-from fetchers import crossref_fetcher, semantic_scholar
-
-
-class FakeFetcher:
-    def __init__(self, config):
-        self.config = config
-        self.ss_api_key = ""
-
-    def get_impact_factor(self, _paper):
-        return None
-
-    def _finalize_paper(self, paper):
-        return paper
+from daily_paper.sources import crossref_fetcher, semantic_scholar
 
 
 def test_month_window_uses_last_day():
@@ -53,7 +41,7 @@ def test_crossref_filters_results_to_configured_month(monkeypatch):
         }
 
     monkeypatch.setattr(crossref_fetcher, "request_json", fake_request_json)
-    fetcher = FakeFetcher({
+    config = {
         "sources": {
             "crossref": {
                 "enabled": True,
@@ -63,15 +51,15 @@ def test_crossref_filters_results_to_configured_month(monkeypatch):
                 "end_date": "2026-01-31",
             }
         }
-    })
+    }
 
-    papers = crossref_fetcher.fetch_crossref_papers(fetcher)
+    papers = crossref_fetcher.fetch_crossref_papers(config)
 
     assert [paper["doi"] for paper in papers] == ["10.1000/january"]
     assert papers[0]["published"] == "2026-01-30"
 
 
 def test_semantic_scholar_disabled_reads_config_without_name_error():
-    fetcher = FakeFetcher({"sources": {"semantic_scholar": {"enabled": False}}})
+    config = {"sources": {"semantic_scholar": {"enabled": False}}}
 
-    assert semantic_scholar.fetch_semantic_scholar_papers(fetcher) == []
+    assert semantic_scholar.fetch_semantic_scholar_papers(config) == []

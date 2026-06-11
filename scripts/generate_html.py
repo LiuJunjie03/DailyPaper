@@ -17,20 +17,7 @@ import hashlib
 from jinja2 import Environment, FileSystemLoader
 
 # 关键词规范化与相关性判断：从 fetch_papers 导入，保持单一数据源
-try:
-    from fetch_papers import KEYWORD_CANONICAL, is_relevant_paper, term_in_text
-    from fetch_papers import FLUID_RELATED_TERMS, FLUID_RELATED_TAGS, FLUID_RELATED_CATEGORIES
-except ImportError:
-    import importlib.util
-    spec = importlib.util.spec_from_file_location("fetch_papers", Path(__file__).parent / "fetch_papers.py")
-    _fp = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(_fp)
-    KEYWORD_CANONICAL = _fp.KEYWORD_CANONICAL
-    is_relevant_paper = _fp.is_relevant_paper
-    term_in_text = _fp.term_in_text
-    FLUID_RELATED_TERMS = _fp.FLUID_RELATED_TERMS
-    FLUID_RELATED_TAGS = _fp.FLUID_RELATED_TAGS
-    FLUID_RELATED_CATEGORIES = _fp.FLUID_RELATED_CATEGORIES
+from fetch_papers import KEYWORD_CANONICAL, is_relevant_paper
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -61,14 +48,32 @@ config = load_config()
 CATEGORIES = list(config.get('categories', {}).keys())
 
 
+def build_subdir_trends(papers_by_month: dict) -> dict:
+    """计算智能CFD子方向按月的论文数量，用于前端趋势折线图"""
+    # 子方向列表：以 "流体力学 / 智能CFD /" 开头的分类
+    subdirs = [c for c in CATEGORIES if c.startswith("流体力学 / 智能CFD /")]
+    months = sorted(papers_by_month.keys())
+    # 只取最近 12 个月
+    recent_months = months[-12:] if len(months) > 12 else months
+    trends = {}
+    for month in recent_months:
+        papers = papers_by_month.get(month, [])
+        for subdir in subdirs:
+            count = sum(1 for p in papers if subdir in p.get('tags', []))
+            trends.setdefault(subdir, {})[month] = count
+    # 子方向简称（取最后一段）
+    short_names = {s: s.split('/')[-1].strip() for s in subdirs}
+    return {"months": recent_months, "subdirs": subdirs, "short_names": short_names, "trends": trends}
+
+
 def build_dashboard_stats(papers: list, papers_by_month: dict) -> dict:
     """纯计算，无 I/O，可单测。返回模板所需的全部统计数据。"""
     today = datetime.now().strftime("%Y-%m-%d")
     current_month = datetime.now().strftime("%Y-%m")
 
     today_count = sum(1 for p in papers if str(p.get('published', '')) == today)
-    week_start = (datetime.now() - timedelta(days=6)).strftime("%Y-%m-%d")
-    recent_week_count = sum(
+    week_start = (datetime.now() - timedelta(days=datetime.now().weekday())).strftime("%Y-%m-%d")
+    this_week_count = sum(
         1 for p in papers
         if is_complete_publication_date(p.get('published', ''))
         and week_start <= str(p.get('published', '')) <= today
@@ -110,13 +115,14 @@ def build_dashboard_stats(papers: list, papers_by_month: dict) -> dict:
             if str(tag).startswith("流体力学 / 智能CFD /"):
                 smart_leaf_counts[tag] = smart_leaf_counts.get(tag, 0) + 1
     smart_top = sorted(smart_leaf_counts.items(), key=lambda item: item[1], reverse=True)[:2]
-    smart_top_text = " · ".join(f"{name.split('/')[-1].strip()} {count}" for name, count in smart_top) or "子方向待积累"
+    smart_top_lines = [f"{name.split('/')[-1].strip()} {count}" for name, count in smart_top] or ["子方向待积累"]
+    smart_top_html = "<br>".join(smart_top_lines)
 
     return {
         "today": today,
         "current_month": current_month,
         "today_count": today_count,
-        "recent_week_count": recent_week_count,
+        "this_week_count": this_week_count,
         "current_month_count": current_month_count,
         "previous_month_count": previous_month_count,
         "month_compare_text": month_compare_text,
@@ -130,7 +136,9 @@ def build_dashboard_stats(papers: list, papers_by_month: dict) -> dict:
         "published_rate": published_rate,
         "smart_cfd_rate": smart_cfd_rate,
         "early_access_rate": early_access_rate,
-        "smart_top_text": smart_top_text,
+        "smart_top_text": " · ".join(smart_top_lines),
+        "smart_top_html": smart_top_html,
+        "smart_top_lines": smart_top_lines,
     }
 
 
@@ -232,6 +240,7 @@ class HTMLGenerator:
     def generate_index_html(self):
         """生成主页 HTML — 通过 Jinja2 模板渲染"""
         stats = build_dashboard_stats(self.papers, self.papers_by_month)
+        subdir_trends = build_subdir_trends(self.papers_by_month)
 
         # 分类统计
         category_counts = {'all': len(self.papers)}
@@ -253,8 +262,12 @@ class HTMLGenerator:
         # 内容哈希
         template_dir = Path(__file__).parent / "templates"
         css_hash = self._content_hash((template_dir / "style.css").read_text(encoding="utf-8"))
-        js_hash = self._content_hash((template_dir / "main.js").read_text(encoding="utf-8"))
-        data_hash = self._content_hash(json.dumps(self.papers, ensure_ascii=False, sort_keys=True))
+        # 合并所有 JS 模块的哈希（任一模块变化都会刷新缓存）
+        js_files = sorted(template_dir.glob("*.js"))
+        js_hash = self._content_hash("".join(f.read_text(encoding="utf-8") for f in js_files))
+        data_hash = self._content_hash(
+            "|".join(sorted(p.get("id", "") for p in self.papers))
+        )
 
         # Jinja2 渲染
         env = Environment(loader=FileSystemLoader(str(template_dir)), autoescape=True)
@@ -264,6 +277,7 @@ class HTMLGenerator:
             js_hash=js_hash,
             data_hash=data_hash,
             categories_json=json.dumps(CATEGORIES),
+            subdir_trends_json=json.dumps(subdir_trends, ensure_ascii=False),
             now=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             year=datetime.now().year,
             stats=stats,
@@ -301,27 +315,24 @@ class HTMLGenerator:
         logger.info("生成 CSS 样式文件")
 
     def generate_js(self):
-        """生成 JavaScript 文件 — 从模板文件读取"""
-        template_path = Path(__file__).parent / "templates" / "main.js"
-        js = template_path.read_text(encoding="utf-8")
-
+        """生成 JavaScript 模块 — 将 templates/ 下所有 .js 文件复制到 docs/js/"""
+        template_dir = Path(__file__).parent / "templates"
         js_dir = self.output_dir / "js"
         js_dir.mkdir(parents=True, exist_ok=True)
 
-        js_file = js_dir / "main.js"
-        content_hash = self._content_hash(js)
-        hash_file = js_dir / "main.js.hash"
+        for js_file in sorted(template_dir.glob("*.js")):
+            content = js_file.read_text(encoding="utf-8")
+            content_hash = self._content_hash(content)
+            hash_file = js_dir / (js_file.name + ".hash")
+            dest = js_dir / js_file.name
 
-        if js_file.exists() and hash_file.exists():
-            existing_hash = hash_file.read_text(encoding="utf-8").strip()
-            if existing_hash == content_hash:
-                logger.info("JavaScript 文件内容未变化，跳过生成")
-                return
+            if dest.exists() and hash_file.exists():
+                if hash_file.read_text(encoding="utf-8").strip() == content_hash:
+                    continue
 
-        with open(js_file, 'w', encoding='utf-8') as f:
-            f.write(js)
-        hash_file.write_text(content_hash, encoding="utf-8")
-        logger.info("生成 JavaScript 文件")
+            dest.write_text(content, encoding="utf-8")
+            hash_file.write_text(content_hash, encoding="utf-8")
+            logger.info(f"生成 JS 模块: {js_file.name}")
 
     def run(self):
         """运行生成流程"""

@@ -43,5 +43,6 @@ def term_in_text(text: str, term: str) -> bool:
 
 
 def clean_text(text: str) -> str:
-    """折叠空白并去除首尾空白，同时解码 HTML 实体"""
-    return re.sub(r"\s+", " ", unescape(text or "")).strip()
+    """清理文本：移除 HTML 标签、折叠空白、解码 HTML 实体"""
+    text = re.sub(r"<[^>]+>", " ", text or "")
+    return re.sub(r"\s+", " ", unescape(text)).strip()

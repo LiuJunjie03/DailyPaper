@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 
 from daily_paper.dates import in_date_window
 from daily_paper.dates import parse_date as complete_date
+from daily_paper.normalizer import IMPACT_FACTOR_TABLE, finalize_paper, get_impact_factor
 from daily_paper.queries import flatten_queries
 from daily_paper.sources.browser import evaluate_in_chrome
 from daily_paper.text import clean_text, normalize_title
@@ -28,7 +29,7 @@ def request_html(url: str, params: Optional[Dict] = None, timeout: int = 25) -> 
             params=params,
             timeout=timeout,
             headers={
-                "User-Agent": "DailyPaperBot/1.0 (mailto:research@dailyPaper.org)",
+                "User-Agent": "DailyPaperBot/1.0",
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
                 "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
             },
@@ -42,7 +43,7 @@ def request_html(url: str, params: Optional[Dict] = None, timeout: int = 25) -> 
     return None
 
 
-def rendered_html(url: str, params: Dict, fetcher, config: Dict, source_label: str) -> Optional[str]:
+def rendered_html(url: str, params: Dict, top_config: Dict, config: Dict, source_label: str) -> Optional[str]:
     if not config.get("use_browser", False):
         return None
     if os.environ.get("GITHUB_ACTIONS") == "true":
@@ -60,7 +61,7 @@ async () => {
   return { html: document.documentElement.outerHTML };
 }
 """
-    data = evaluate_in_chrome(full_url, script, source_label, fetcher.config, config)
+    data = evaluate_in_chrome(full_url, script, source_label, top_config, config)
     if data is None:
         config["_browser_unavailable"] = True
         return None
@@ -178,7 +179,7 @@ def parse_search_results(html: str, base_url: str, config: Dict) -> List[Dict]:
     return records
 
 
-def build_paper(fetcher, source_key: str, source_label: str, prefix: str, record: Dict, config: Dict) -> Optional[Dict]:
+def build_paper(top_config: Dict, source_key: str, source_label: str, prefix: str, record: Dict, config: Dict) -> Optional[Dict]:
     title = record.get("title", "")
     title_norm = normalize_title(title)
     if not title_norm:
@@ -224,14 +225,14 @@ def build_paper(fetcher, source_key: str, source_label: str, prefix: str, record
         "tags": [],
         "keywords": detail.get("keywords") or [],
         "citation_count": None,
-        "impact_factor": fetcher.get_impact_factor({"conference": venue}),
+        "impact_factor": get_impact_factor({"conference": venue}, IMPACT_FACTOR_TABLE),
         "source": source_key,
     }
-    return fetcher._finalize_paper(paper)
+    return finalize_paper(paper, top_config)
 
 
-def fetch_chinese_html_source(fetcher, source_key: str, source_label: str, default_url: str, prefix: str) -> List[Dict]:
-    config = fetcher.config.get("sources", {}).get(source_key, {})
+def fetch_chinese_html_source(top_config: Dict, source_key: str, source_label: str, default_url: str, prefix: str) -> List[Dict]:
+    config = top_config.get("sources", {}).get(source_key, {})
     if not config.get("enabled", False):
         logger.info("%s 数据源已禁用", source_label)
         return []
@@ -253,7 +254,7 @@ def fetch_chinese_html_source(fetcher, source_key: str, source_label: str, defau
             continue
         records = parse_search_results(html, url, config)[:max_per_query]
         if not records:
-            dynamic_html = rendered_html(url, params, fetcher, config, source_label)
+            dynamic_html = rendered_html(url, params, top_config, config, source_label)
             if dynamic_html:
                 records = parse_search_results(dynamic_html, url, config)[:max_per_query]
         query_count = 0
@@ -263,7 +264,7 @@ def fetch_chinese_html_source(fetcher, source_key: str, source_label: str, defau
                 continue
             if not in_date_window(record.get("published", ""), from_date, until_date):
                 continue
-            paper = build_paper(fetcher, source_key, source_label, prefix, record, config)
+            paper = build_paper(top_config, source_key, source_label, prefix, record, config)
             if not paper:
                 continue
             seen_titles.add(title_norm)

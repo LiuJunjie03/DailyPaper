@@ -9,6 +9,12 @@
 >
 > **Phase 5–6 阶段验收通过（2026-06-10）**
 > generate_html.py 588→345 行 | 136 tests passed | Jinja2 模板化 + 死代码清理 + CI validate + Health Report
+>
+> **Phase 7 阶段验收通过（2026-06-10）**
+> daily_paper/ 包 + pyproject.toml + Ruff lint | 136 tests passed | pip install -e .
+>
+> **Phase 8 阶段验收通过（2026-06-11）**
+> main.js 1107→325 行 | ES module 7文件拆分 | 139 tests passed | 浏览器回归待手工验证
 
 ---
 
@@ -65,7 +71,7 @@
 
 ### 1.1 编写 DATA_SCHEMA.md
 
-新增 `docs/DATA_SCHEMA.md`，记录全部 30+ 字段：
+新增 `DATA_SCHEMA.md`，记录全部 30+ 字段：
 
 | 字段分类 | 字段 | 说明 |
 |----------|------|------|
@@ -124,7 +130,7 @@ class PaperRecord(TypedDict, total=False):
 `python scripts/validate_data.py` — 扫描所有 JSON，报告缺失字段和类型异常。
 
 **验收**：
-- `docs/DATA_SCHEMA.md` 覆盖全部字段
+- `DATA_SCHEMA.md` 覆盖全部字段
 - `validate_paper()` 对空记录返回 ≥ 5 条警告
 - `python scripts/validate_data.py` 能对现有数据生成报告
 - **不改变任何现有 JSON 文件格式**
@@ -348,7 +354,7 @@ scripts/
 
 ## Phase 6：数据发布策略收敛 ✅ 已完成
 
-> 完成日期：2026-06-10 | CI validate + Provider Health Report + docs/README.md
+> 完成日期：2026-06-10 | CI validate + Provider Health Report + DOCS_README.md
 
 ### 6.1 明确目录职责 ✅
 
@@ -362,7 +368,7 @@ scripts/
 
 | # | 任务 | 状态 |
 |---|------|------|
-| 1 | 在 `docs/README.md` 声明 `docs/` 是构建产物 | ✅ |
+| 1 | 在 `DOCS_README.md` 声明 `docs/` 是构建产物 | ✅ |
 | 2 | `python scripts/validate_data.py` 校验命令 — 基于 Phase 1 的 `validate_paper()` | ✅ |
 | 3 | CI 加入 schema 校验步骤 | ✅ |
 | 4 | Provider Health Report — 每次抓取输出数据源级别状态（来源/状态/篇数/耗时/错误） | ✅ |
@@ -377,8 +383,10 @@ scripts/
 
 ## Phase 7：包化与工程化 ✅ 已完成
 
-> 完成日期：2026-06-10 | daily_paper/ 包 + pyproject.toml + Ruff + CI pip install -e .
-> 136 tests passed | `pip install -e .` 可安装 | F-level lint 零问题
+> 完成日期：2026-06-11 | daily_paper/ 包 + pyproject.toml + Ruff + CI pip install -e .
+> 136 tests passed | `pip install -e .` dry-run 通过 | 全仓库主路径 Ruff F-level 零问题
+> （主路径 = daily_paper/、scripts/fetch_papers.py、scripts/generate_html.py、scripts/validate_data.py、tests/、.github/）
+> legacy 的 scripts/common/、scripts/fetchers/ 归 Phase 8 清理，不纳入本轮 lint 口径
 
 > 目标：建立长期可维护的工程实践
 
@@ -435,35 +443,46 @@ test → lint → validate-data → fetch → generate → deploy
 
 ---
 
-## Phase 8：JS 模块化（独立阶段）
+## Phase 8：JS 模块化 ✅ 已完成
 
-> 从 Phase 5 中独立出来，风险更高，单独推进
+> 完成日期：2026-06-11 | main.js 1107→325 行（降 71%）| ES module 架构 | 139 tests passed
 
-### 8.1 目标
+### 8.1 拆分结果
 
-将 1112 行的 `main.js` 单体拆为功能模块：
+| 模块 | 行数 | 职责 |
+| ----- | ----- | ----- |
+| `state.js` | 29 | 共享状态对象 + DOM 引用 |
+| `utils.js` | 73 | 纯工具函数（escapeHTML, safeURL, formatDate 等） |
+| `paper-card.js` | 216 | 论文卡片渲染 + 论文属性辅助函数 |
+| `dashboard.js` | 45 | 仪表盘辅助（日期同步、Summary 卡片状态） |
+| `filters.js` | 245 | 筛选/排序/分类导航/懒加载/URL 状态 |
+| `data-loader.js` | 95 | 月份索引 + 月度 JSON 加载/缓存 |
+| `main.js` | 325 | 入口：DOM 查询 + 事件绑定 + 初始化 |
 
-```
-scripts/templates/
-  main.js           # 入口：初始化 + 调度
-  paper-card.js     # 论文卡片渲染
-  filters.js        # 筛选/搜索/分类导航
-  data-loader.js    # JSON 加载 + 缓存
-  dashboard.js      # 仪表盘统计
-  utils.js          # escapeHTML, safeURL 等
-```
+### 8.2 工程变更
 
-### 8.2 注意事项
+| 变更 | 说明 |
+| ----- | ----- |
+| `generate_html.py` | `generate_js()` 改为遍历 `templates/*.js` 逐个部署 |
+| `index.html` 模板 | `<script>` → `<script type="module">` |
+| 缓存策略 | 合并所有 JS 内容计算 hash，任一模块变化刷新缓存 |
+| 死代码清理 | 删除 `loadStateFromURL()`、`downloadFile()`、静态分类按钮绑定 |
 
-- 静态部署方案需同步调整（多 `<script>` 或 ES modules）
-- 缓存策略需重新设计（单文件哈希 → 多文件版本）
-- 脚本加载顺序需测试
-- 清理死代码：`loadStateFromURL()`、`downloadFile()`、857-864 行失效事件绑定
+### 8.3 新增测试
+
+| 测试 | 说明 |
+| ----- | ----- |
+| `test_all_js_modules_are_deployed` | 验证 7 个 JS 模块全部部署到 docs/js/ |
+| `test_entry_module_uses_es_imports` | 验证 main.js 使用 import 语法 |
+| `test_index_html_uses_module_script` | 验证生成的 HTML 包含 `type="module"` |
 
 **验收**：
-- 浏览器回归测试（筛选/搜索/分类/无限滚动/导出）
-- `main.js` 入口 ≤ 400 行
-- 首屏加载性能不退化
+
+- `main.js` 入口 325 行（≤ 400 ✅）
+- `pytest -q` 139 passed ✅
+- `validate_data.py` 1575 papers 0 warnings ✅
+- `ruff check --select F` All checks passed ✅
+- 浏览器回归测试待手工验证（筛选/搜索/分类/无限滚动/导出）
 
 ---
 
@@ -509,7 +528,7 @@ Phase 0A ✅ ── Phase 0B ✅
                                         ▼
                                   Phase 7 (包化 + 工程化)
                                         │
-                                        ├──▶ Phase 8 (JS 模块化)
+                                        ├──▶ Phase 8 ✅ (JS 模块化)
                                         │
                                         └──▶ Schema v2 (远期数据迁移)
 ```

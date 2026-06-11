@@ -35,8 +35,12 @@ def source_rank(paper: Dict) -> int:
     source = paper.get("source", "")
     if source == "semantic_scholar":
         rank += 30
+    elif source == "webofscience":
+        rank += 28   # SCI/WoS 正式出版与引用元数据
     elif source == "crossref":
         rank += 25   # 正式出版元数据，质量高
+    elif source == "sciencedirect":
+        rank += 23   # 出版商页面，正式发表元数据
     elif source == "openalex":
         rank += 20   # 元数据较全，但可能含预印本
     if paper.get("doi"):

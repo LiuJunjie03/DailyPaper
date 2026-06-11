@@ -134,12 +134,12 @@ async () => {
 """
 
 
-def fetch_cnki_detail_with_browser(fetcher, url: str, source_config: Dict) -> Optional[Dict]:
+def fetch_cnki_detail_with_browser(top_config: Dict, url: str, source_config: Dict) -> Optional[Dict]:
     if not url:
         return None
     if source_config.get("_browser_detail_unavailable"):
         return None
-    data = evaluate_in_chrome(url, cnki_detail_script(), "CNKI detail", fetcher.config, source_config)
+    data = evaluate_in_chrome(url, cnki_detail_script(), "CNKI detail", top_config, source_config)
     if not data or data.get("error"):
         if data and data.get("error") == "captcha":
             logger.warning("CNKI detail CAPTCHA required; skipping detail enrichment.")
@@ -201,10 +201,10 @@ def apply_cnki_detail(paper: Dict, detail: Dict) -> Dict:
     return paper
 
 
-def enrich_cnki_paper(fetcher, paper: Dict, source_config: Dict, session: Optional[requests.Session] = None) -> Dict:
+def enrich_cnki_paper(top_config: Dict, paper: Dict, source_config: Dict, session: Optional[requests.Session] = None) -> Dict:
     """Try browser detail extraction first, then static HTML fallback."""
     url = paper.get("paper_url") or ""
-    detail = fetch_cnki_detail_with_browser(fetcher, url, source_config)
+    detail = fetch_cnki_detail_with_browser(top_config, url, source_config)
     if not detail:
         detail = fetch_cnki_detail_with_requests(url, session=session)
     if source_config.get("detail_delay"):

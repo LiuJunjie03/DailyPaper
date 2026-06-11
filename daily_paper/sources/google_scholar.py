@@ -7,6 +7,8 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from urllib.parse import quote_plus
 
+from daily_paper.normalizer import IMPACT_FACTOR_TABLE, finalize_paper, get_impact_factor
+from daily_paper.queries import flatten_queries
 from daily_paper.sources.browser import evaluate_in_chrome
 from daily_paper.text import normalize_title
 
@@ -27,7 +29,7 @@ def _looks_like_scholar_snippet(text: str) -> bool:
     )
 
 
-def _fetch_google_scholar_with_browser(fetcher, queries: List[str], gs_config: Dict) -> Optional[List[Dict]]:
+def _fetch_google_scholar_with_browser(config: Dict, queries: List[str], gs_config: Dict) -> Optional[List[Dict]]:
     max_per_query = min(int(gs_config.get("max_results_per_query", 10)), 20)
     year_from = gs_config.get("year_from", (datetime.now(timezone.utc) - timedelta(days=365)).year)
     all_papers = []
@@ -72,7 +74,7 @@ async () => {
             f"?q={quote_plus(query)}&hl=en&num={max_per_query}&as_ylo={year_from}"
         )
         logger.info(f"Google Scholar browser search: {query}")
-        data = evaluate_in_chrome(url, script, "Google Scholar", fetcher.config, gs_config)
+        data = evaluate_in_chrome(url, script, "Google Scholar", config, gs_config)
         if data is None:
             return None
         if data.get("error") == "captcha":
@@ -88,6 +90,11 @@ async () => {
             journal_year = item.get("journalYear", "")
             year_match = re.search(r"(19|20)\d{2}", journal_year)
             venue = re.sub(r"\b(19|20)\d{2}\b", "", journal_year).strip(" ,;-")
+            # 清洗 Google Scholar 返回的截断省略号
+            venue = re.sub(r"[…\.]{2,}", "", venue).strip(" ,;-")
+            # "arXiv preprint arXiv:xxxx" 不是期刊名，清空
+            if re.search(r"arXiv\s*(preprint)?", venue, re.IGNORECASE):
+                venue = ""
             snippet = item.get("snippet", "")
             paper = {
                 "id": f"gs-{item.get('dataCid') or hashlib.md5(title_norm.encode()).hexdigest()[:12]}",
@@ -114,29 +121,29 @@ async () => {
                 "tags": [],
                 "keywords": [],
                 "citation_count": int(item.get("citedBy") or 0),
-                "impact_factor": fetcher.get_impact_factor({"conference": venue}),
+                "impact_factor": get_impact_factor({"conference": venue}, IMPACT_FACTOR_TABLE),
                 "source": "google_scholar",
             }
-            all_papers.append(fetcher._finalize_paper(paper))
+            all_papers.append(finalize_paper(paper, config))
         time.sleep(2)
 
     return all_papers
 
-def fetch_google_scholar_papers(fetcher) -> List[Dict]:
+def fetch_google_scholar_papers(config: Dict, ss_api_key: str = "", arxiv_client=None) -> List[Dict]:
     """从 Google Scholar 抓取论文（使用 scholarly 库）"""
-    gs_config = fetcher.config.get("sources", {}).get("google_scholar", {})
+    gs_config = config.get("sources", {}).get("google_scholar", {})
     if not gs_config.get("enabled", False):
         logger.info("Google Scholar 数据源已禁用")
         return []
 
     # 支持 dict 格式的 queries（和 Semantic Scholar 一致）
-    queries = fetcher._flatten_queries(gs_config.get("queries", []))
+    queries = flatten_queries(gs_config.get("queries", []))
 
     max_per_query = gs_config.get("max_results_per_query", 10)
     year_from = gs_config.get("year_from",
         (datetime.now(timezone.utc) - timedelta(days=365)).year)
 
-    browser_papers = _fetch_google_scholar_with_browser(fetcher, queries, gs_config)
+    browser_papers = _fetch_google_scholar_with_browser(config, queries, gs_config)
     if browser_papers is not None:
         logger.info(f"Google Scholar browser backend returned {len(browser_papers)} papers")
         return browser_papers
@@ -175,6 +182,7 @@ def fetch_google_scholar_papers(fetcher) -> List[Dict]:
                     authors_str = ", ".join(str(a) for a in authors_raw)
 
                 venue = bib.get("venue", "") or bib.get("journal", "") or ""
+                venue = re.sub(r"[…\.]{2,}", "", venue).strip(" ,;-")
                 pub_year = str(bib.get("pub_year", "")) if bib.get("pub_year") else ""
                 abstract = bib.get("abstract", "") or ""
                 abstract_status = "ok"
@@ -209,11 +217,11 @@ def fetch_google_scholar_papers(fetcher) -> List[Dict]:
                     "tags": [],
                     "keywords": [],
                     "citation_count": result.get("num_citations"),
-                    "impact_factor": fetcher.get_impact_factor({"conference": venue}),
+                    "impact_factor": get_impact_factor({"conference": venue}, IMPACT_FACTOR_TABLE),
                     "source": "google_scholar",
                 }
 
-                paper = fetcher._finalize_paper(paper)
+                paper = finalize_paper(paper, config)
                 all_papers.append(paper)
                 count += 1
 

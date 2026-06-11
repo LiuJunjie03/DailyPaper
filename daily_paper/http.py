@@ -1,12 +1,14 @@
 """HTTP 请求工具：统一重试、超时、User-Agent"""
 
+import os
 import time
 from typing import Dict, Optional
 
 import requests
 
-# 统一 User-Agent（Crossref 和 OpenAlex 要求mailto，其他来源不限）
-USER_AGENT = "DailyPaperBot/1.0 (mailto:research@dailyPaper.org)"
+# 统一 User-Agent（Crossref/OpenAlex polite pool 可通过 CROSSREF_MAILTO 环境变量设置邮箱）
+_MAILTO = os.environ.get("CROSSREF_MAILTO", "")
+USER_AGENT = f"DailyPaperBot/1.0 (mailto:{_MAILTO})" if _MAILTO else "DailyPaperBot/1.0"
 
 
 def request_json(url: str, params: Optional[Dict] = None, timeout: int = 20) -> Optional[Dict]:

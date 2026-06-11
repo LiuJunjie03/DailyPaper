@@ -412,16 +412,16 @@ button.summary-item {
     box-shadow: 0 8px 18px rgba(31, 42, 51, 0.08);
 }
 
-.summary-action.is-active {
+.summary-action.active {
     border-color: rgba(42, 167, 163, 0.72);
     box-shadow: 0 0 0 3px rgba(42, 167, 163, 0.12);
 }
 
-.summary-action.is-active::after {
-    content: "再次点击卡片恢复默认";
+.summary-action.active::after {
+    content: "再次点击恢复默认";
     position: absolute;
     right: 0.55rem;
-    bottom: 0.45rem;
+    top: 0.4rem;
     padding: 0.14rem 0.46rem;
     border-radius: 999px;
     background: #ffe3ef;
@@ -1358,4 +1358,33 @@ footer::before {
     .header-formula { display: none; }
     .search-box::after { display: none; }
     footer::before { font-size: 0.8rem; }
+}
+
+/* ===== 趋势折线图面板 ===== */
+
+.trend-panel {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1rem;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.trend-panel summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+    padding: 0.2rem 0;
+    user-select: none;
+}
+
+.trend-panel summary:hover {
+    color: #2aa7a3;
+}
+
+.trend-chart-wrap {
+    margin-top: 0.8rem;
+    max-width: 100%;
+    position: relative;
 }

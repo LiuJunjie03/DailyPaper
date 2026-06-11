@@ -107,7 +107,7 @@ git push
 ## 📚 相关文档
 
 - 详细部署指南：[DEPLOYMENT.md](DEPLOYMENT.md)
-- 使用说明：[docs/USAGE.md](docs/USAGE.md)
+- 使用说明：[USAGE.md](USAGE.md)
 - 项目介绍：[README.md](README.md)
 
 ---

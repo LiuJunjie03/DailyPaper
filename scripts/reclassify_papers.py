@@ -10,7 +10,7 @@ import re
 # 将项目根目录加入 path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from fetch_papers import PaperFetcher, is_relevant_paper
+from fetch_papers import PaperFetcher
 
 
 def reclassify():

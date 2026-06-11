@@ -1,6 +1,5 @@
 """enrich.py 关键用例测试 — 补全逻辑、摘要判断、OpenAlex 重建"""
 
-import pytest
 
 from daily_paper.enrich import (
     _is_reliable_abstract,

@@ -1,8 +1,14 @@
-"""Chrome DevTools Protocol 浏览器自动化工具"""
+"""Chromium DevTools Protocol 浏览器自动化工具。
+
+适用于 Microsoft Edge / Google Chrome 等 Chromium 内核浏览器。
+安全说明：CDP 默认在 localhost:9222 无认证运行。
+仅在受信任的本地环境中使用。请勿在共享机器上暴露 9222 端口。
+可通过环境变量 CHROME_DEVTOOLS_URL 覆盖默认地址。
+"""
 import json
 import logging
 import os
-from typing import Optional
+from contextlib import suppress
 
 import requests
 
@@ -10,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 def cdp_base_url(config: dict, source_config: dict) -> str:
-    """获取 Chrome DevTools Protocol 基础 URL"""
+    """获取 Chromium DevTools Protocol 基础 URL"""
     return (
         source_config.get("browser_url")
         or config.get("browser", {}).get("chrome_devtools_url")
@@ -19,8 +25,8 @@ def cdp_base_url(config: dict, source_config: dict) -> str:
     ).rstrip("/")
 
 
-def evaluate_in_chrome(url: str, script: str, source_name: str, config: dict, source_config: dict) -> Optional[dict]:
-    """通过 Chrome DevTools Protocol 执行 DOM 提取脚本"""
+def evaluate_in_chrome(url: str, script: str, source_name: str, config: dict, source_config: dict) -> dict | None:
+    """通过 Chromium DevTools Protocol 执行 DOM 提取脚本"""
     timeout = int(source_config.get("browser_timeout", config.get("browser", {}).get("timeout", 30)))
     ws = None
     tab_id = None
@@ -34,14 +40,14 @@ def evaluate_in_chrome(url: str, script: str, source_name: str, config: dict, so
     try:
         new_tab = requests.put(f"{base_url}/json/new?about:blank", timeout=10)
         if new_tab.status_code not in (200, 201):
-            logger.info(f"{source_name} Chrome DevTools unavailable at {base_url}: {new_tab.status_code}")
+            logger.info(f"{source_name} Chromium DevTools unavailable at {base_url}: {new_tab.status_code}")
             return None
 
         tab = new_tab.json()
         tab_id = tab.get("id")
         ws_url = tab.get("webSocketDebuggerUrl")
         if not ws_url:
-            logger.info(f"{source_name} Chrome target has no websocket URL.")
+            logger.info(f"{source_name} browser target has no websocket URL.")
             return None
 
         ws = websocket.create_connection(ws_url, timeout=timeout, suppress_origin=True)
@@ -96,12 +102,8 @@ def evaluate_in_chrome(url: str, script: str, source_name: str, config: dict, so
         return None
     finally:
         if ws:
-            try:
+            with suppress(Exception):
                 ws.close()
-            except Exception:
-                pass
         if tab_id:
-            try:
+            with suppress(Exception):
                 requests.get(f"{base_url}/json/close/{tab_id}", timeout=5)
-            except Exception:
-                pass

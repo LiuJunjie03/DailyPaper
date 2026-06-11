@@ -25,7 +25,7 @@ def test_fetch():
     
     if papers:
         print(f"✅ 成功抓取 {len(papers)} 篇论文")
-        print(f"\n第一篇论文示例：")
+        print("\n第一篇论文示例：")
         print(f"标题: {papers[0]['title']}")
         print(f"作者: {', '.join(papers[0]['authors'][:3])}")
         print(f"日期: {papers[0]['published']}")
@@ -49,7 +49,7 @@ def test_generate():
         generator.generate_css()
         generator.generate_js()
         generator.generate_index_html()
-        print(f"✅ 网页生成成功")
+        print("✅ 网页生成成功")
         print(f"📁 输出目录: {generator.output_dir}")
         return True
     else:

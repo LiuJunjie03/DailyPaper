@@ -1,10 +1,7 @@
 """store.py 关键用例测试 — 月度写入、索引生成、日期拆分"""
 
 import json
-import os
-import tempfile
 
-import pytest
 
 from daily_paper.storage import load_monthly_data, split_papers_by_month, save_monthly_data, build_month_index
 
@@ -34,11 +31,12 @@ class TestSplitPapersByMonth:
         assert len(result["2026-01"]) == 2
         assert len(result["2026-02"]) == 1
 
-    def test_year_only_goes_to_january(self):
-        """只有年份的日期归到1月"""
+    def test_year_only_goes_to_unknown_month(self):
+        """只有年份的日期归到 YYYY-unk 桶，标记 _date_precision"""
         papers = [_make_paper(published="2026")]
         result = split_papers_by_month(papers)
-        assert "2026-01" in result
+        assert "2026-unk" in result
+        assert result["2026-unk"][0]["_date_precision"] == "year"
 
     def test_unknown_date_goes_to_unknown_bucket(self):
         """日期为空或无法解析时归到 unknown 桶"""

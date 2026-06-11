@@ -11,6 +11,8 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
+from daily_paper.normalizer import IMPACT_FACTOR_TABLE, finalize_paper, get_impact_factor
+from daily_paper.queries import flatten_queries
 from daily_paper.sources.browser import evaluate_in_chrome
 from daily_paper.sources.cnki_detail import enrich_cnki_paper
 
@@ -43,7 +45,7 @@ def _absolute_cnki_url(cnki_config: Dict, href: str) -> str:
     return urljoin(base_url.rstrip("/") + "/", href.lstrip("/"))
 
 
-def _fetch_cnki_with_browser(fetcher, queries: List[str], cnki_config: Dict) -> Optional[List[Dict]]:
+def _fetch_cnki_with_browser(config: Dict, queries: List[str], cnki_config: Dict) -> Optional[List[Dict]]:
     max_per_query = int(cnki_config.get("max_results_per_query", 20))
     all_papers = []
     seen_titles = set()
@@ -111,7 +113,7 @@ async () => {{
 """
         logger.info(f"CNKI browser search: {query}")
         search_page_url = _cnki_url(cnki_config, "search_page_url", "/kns8s/search")
-        data = evaluate_in_chrome(search_page_url, script, "CNKI", fetcher.config, cnki_config)
+        data = evaluate_in_chrome(search_page_url, script, "CNKI", config, cnki_config)
         if data is None:
             return None
         if data.get("error") == "captcha":
@@ -149,19 +151,19 @@ async () => {{
                 "tags": [],
                 "keywords": [],
                 "citation_count": int(citation_match.group(0)) if citation_match else 0,
-                "impact_factor": fetcher.get_impact_factor({"conference": venue}),
+                "impact_factor": get_impact_factor({"conference": venue}, IMPACT_FACTOR_TABLE),
                 "source": "cnki",
             }
             if cnki_config.get("enrich_details", True):
-                paper = enrich_cnki_paper(fetcher, paper, cnki_config)
-            all_papers.append(fetcher._finalize_paper(paper))
+                paper = enrich_cnki_paper(config, paper, cnki_config)
+            all_papers.append(finalize_paper(paper, config))
         time.sleep(2)
 
     return all_papers
 
-def fetch_cnki_papers(fetcher) -> List[Dict]:
+def fetch_cnki_papers(config: Dict, ss_api_key: str = "", arxiv_client=None) -> List[Dict]:
     """从 CNKI 知网抓取中文学术论文"""
-    cnki_config = fetcher.config.get("sources", {}).get("cnki", {})
+    cnki_config = config.get("sources", {}).get("cnki", {})
     if not cnki_config.get("enabled", False):
         logger.info("CNKI 数据源已禁用")
         return []
@@ -173,10 +175,10 @@ def fetch_cnki_papers(fetcher) -> List[Dict]:
         )
         return []
 
-    queries = fetcher._flatten_queries(cnki_config.get("queries", []))
+    queries = flatten_queries(cnki_config.get("queries", []))
     max_per_query = cnki_config.get("max_results_per_query", 20)
 
-    browser_papers = _fetch_cnki_with_browser(fetcher, queries, cnki_config)
+    browser_papers = _fetch_cnki_with_browser(config, queries, cnki_config)
     if browser_papers is not None:
         logger.info(f"CNKI browser backend returned {len(browser_papers)} papers")
         return browser_papers
@@ -317,13 +319,13 @@ def fetch_cnki_papers(fetcher) -> List[Dict]:
                         "tags": [],
                         "keywords": [],
                         "citation_count": citations,
-                        "impact_factor": fetcher.get_impact_factor({"conference": venue}),
+                        "impact_factor": get_impact_factor({"conference": venue}, IMPACT_FACTOR_TABLE),
                         "source": "cnki",
                     }
 
                     if cnki_config.get("enrich_details", True):
-                        paper = enrich_cnki_paper(fetcher, paper, cnki_config, session=session)
-                    paper = fetcher._finalize_paper(paper)
+                        paper = enrich_cnki_paper(config, paper, cnki_config, session=session)
+                    paper = finalize_paper(paper, config)
                     all_papers.append(paper)
 
                 except Exception as e:

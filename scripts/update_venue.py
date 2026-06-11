@@ -37,7 +37,7 @@ def extract_venue_from_comment(comment: str, venues: list = None) -> str:
         venue_name = venue.split("(")[0].strip() if "(" in venue else venue.strip()
         if not venue_name:
             continue
-        if venue_name.lower() in comment.lower():
+        if re.search(r'\b' + re.escape(venue_name) + r'\b', comment, re.IGNORECASE):
             # 尝试提取年份
             match = re.search(r'\b(19|20)\d{2}\b', comment)
             if match:
@@ -101,14 +101,14 @@ def update_papers_with_venue():
         print(f"  ✅ {len(papers)} 篇论文，更新 {updated_count} 篇")
 
     print(f"\n{'=' * 40}")
-    print(f"✅ 全部更新完成！")
-    print(f"📊 统计：")
+    print("✅ 全部更新完成！")
+    print("📊 统计：")
     print(f"  - 总论文数：{total_papers}")
     print(f"  - 有会议信息：{total_updated} 篇")
     print(f"  - 预印本：{total_papers - total_updated} 篇")
 
     if venue_count:
-        print(f"\n📍 会议分布：")
+        print("\n📍 会议分布：")
         for venue, count in sorted(venue_count.items(), key=lambda x: x[1], reverse=True)[:10]:
             print(f"  - {venue}: {count} 篇")
 

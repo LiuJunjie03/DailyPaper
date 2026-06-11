@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/style.css?v={{ css_hash }}">
     <script>window.CATEGORIES = {{ categories_json | safe }};</script>
     <script>window.DATA_VERSION = "{{ data_hash }}";</script>
+    <script>window.TODAY = "{{ stats.today }}";</script>
+    <script>window.SUBDIR_TRENDS = {{ subdir_trends_json | safe }};</script>
 </head>
 <body>
     <header>
@@ -25,10 +27,10 @@
 
     <nav class="container">
         <div class="dashboard-summary" aria-label="数据概览">
-            <div class="summary-item">
+            <div class="summary-item summary-action" data-summary-action="today" title="查看今日新增论文" style="cursor:pointer">
                 <span class="summary-value">{{ stats.today_count }}</span>
                 <span class="summary-label">今日新增</span>
-                <span class="summary-detail">近7日 {{ stats.recent_week_count }} 篇</span>
+                <span class="summary-detail">本周 {{ stats.this_week_count }} 篇</span>
                 <input class="daily-date-picker" id="dailyDatePicker" type="date" value="{{ stats.today }}" aria-label="按日期查看新增论文">
             </div>
             <button class="summary-item summary-action" type="button" data-summary-action="month" title="查看本月新增论文">
@@ -53,16 +55,22 @@
             <button class="summary-item summary-action" type="button" data-summary-action="smart-cfd" title="筛选智能 CFD 论文">
                 <span class="summary-value">{{ stats.smart_cfd_count }}</span>
                 <span class="summary-label">智能 CFD</span>
-                <span class="summary-detail">{{ stats.smart_top_text }}</span>
+                <span class="summary-detail">{{ stats.smart_top_html | safe }}</span>
                 <span class="summary-spark"><span style="width: {{ stats.smart_cfd_rate }}%"></span></span>
             </button>
-            <button class="summary-item summary-action" type="button" data-summary-action="early-access" title="查看早期在线论文">
+            <button class="summary-item summary-action" type="button" data-summary-action="early-access" title="查看预出版论文">
                 <span class="summary-value">{{ stats.early_access_count }}</span>
-                <span class="summary-label">早期在线</span>
-                <span class="summary-detail">Ahead of Print · 点击筛选</span>
+                <span class="summary-label">预出版</span>
+                <span class="summary-detail">已接收 · 待排期</span>
                 <span class="summary-spark"><span style="width: {{ stats.early_access_rate }}%"></span></span>
             </button>
         </div>
+        <details class="container trend-panel">
+            <summary>📊 智能 CFD 子方向趋势</summary>
+            <div class="trend-chart-wrap">
+                <canvas id="trendChart"></canvas>
+            </div>
+        </details>
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="🔍 搜索标题、作者、摘要..." aria-label="搜索论文">
         </div>
@@ -139,6 +147,8 @@
         </div>
     </footer>
 
-    <script src="js/main.js?v={{ js_hash }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="js/trend-chart.js?v={{ js_hash }}"></script>
+    <script type="module" src="js/main.js?v={{ js_hash }}"></script>
 </body>
 </html>

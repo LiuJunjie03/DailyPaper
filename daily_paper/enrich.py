@@ -5,9 +5,11 @@
 按 Crossref -> OpenAlex -> Semantic Scholar -> publisher 顺序补全论文元数据。
 """
 
+import concurrent.futures
 import json
 import logging
 import re
+import threading
 import time
 from difflib import SequenceMatcher
 from typing import Dict, List, Optional
@@ -33,7 +35,7 @@ def _cascade_request_json(url: str, params: Optional[Dict] = None, timeout: int 
     for attempt in range(3):
         try:
             resp = requests.get(url, params=params, timeout=timeout,
-                                headers={"User-Agent": "DailyPaperBot/1.0 (mailto:research@dailyPaper.org)"})
+                                headers={"User-Agent": "DailyPaperBot/1.0"})
             if resp.status_code == 200:
                 data = resp.json()
                 _CASCADE_JSON_CACHE[cache_key] = data
@@ -99,16 +101,20 @@ def _cascade_openalex_abstract(inverted_index: Optional[Dict]) -> str:
 
 
 def _is_reliable_abstract(text: str) -> bool:
-    """判断摘要是否可靠"""
+    """判断摘要是否可靠 — 统一版本，合并所有 legacy 变体的最佳实践"""
+    # 先清理 HTML 标签和空白
+    text = re.sub(r"<[^>]+>", " ", text or "")
+    text = re.sub(r"\s+", " ", text).strip()
     if not text or len(text) < 220:
         return False
     if not text[0].isupper():
         return False
-    if "  " in text:
-        return False
     if text[-1] not in ".!?":
         return False
-    bad_prefixes = ("cookies", "enable javascript", "we use cookies", "this site")
+    bad_prefixes = (
+        "cookies", "enable javascript", "we use cookies",
+        "this site", "this page", "access denied",
+    )
     if any(text.lower().startswith(p) for p in bad_prefixes):
         return False
     return True
@@ -246,7 +252,7 @@ def _enrich_from_openalex(paper: Dict) -> None:
         params={
             "search": paper.get("title", ""),
             "per_page": 3,
-            "mailto": "research@dailyPaper.org",
+            "mailto": "",  # 使用 CROSSREF_MAILTO 环境变量
         },
     )
     if not data:
@@ -374,9 +380,37 @@ def _enrich_from_publisher(paper: Dict) -> None:
 #  主入口：级联补全
 # ═══════════════════════════════════════════════════════════
 
-def cascade_enrich_papers(papers: List[Dict], config: Dict, delay: float = 0.15) -> None:
-    """对论文列表进行级联元数据补全（Crossref -> OpenAlex -> Semantic Scholar -> publisher）。
-    原地修改论文字典，不返回新列表。"""
+# 全局限流信号量（限制同时进行的 API 请求总数）
+_API_SEMAPHORE = threading.Semaphore(8)
+
+
+def _safe_enrich_from(func, paper: Dict) -> None:
+    """在信号量保护下执行单个补全函数，异常时记录日志不传播"""
+    with _API_SEMAPHORE:
+        try:
+            func(paper)
+        except Exception:
+            logger.warning(
+                "级联补全子任务异常: func=%s paper=%s",
+                getattr(func, "__name__", func),
+                paper.get("title", "")[:80],
+                exc_info=True,
+            )
+
+
+def cascade_enrich_papers(papers: List[Dict], config: Dict, delay: float = 0.15, max_workers: int = 4) -> None:
+    """对论文列表进行并发级联元数据补全。
+
+    每篇论文的 4 个数据源补全（Crossref/OpenAlex/Semantic Scholar/publisher）
+    在线程池内并发执行，因为各源之间无数据依赖。
+    原地修改论文字典，不返回新列表。
+
+    Args:
+        papers: 论文列表
+        config: 全局配置字典（暂未使用，保留兼容）
+        delay: 每篇论文处理后的延迟（秒），默认 0.15
+        max_workers: 每篇论文最大并发数，默认 4
+    """
     enriched_count = 0
     total = len(papers)
 
@@ -402,24 +436,46 @@ def cascade_enrich_papers(papers: List[Dict], config: Dict, delay: float = 0.15)
             "citation_count": paper.get("citation_count"),
         }, ensure_ascii=False, sort_keys=True)
 
-        # 级联第1步：Crossref（正式出版元数据；有 DOI 时优先直查）
+        # 收集本论文需要执行的补全任务
+        tasks = []
         if _needs_crossref_enrichment(paper):
-            _enrich_from_crossref(paper)
-            time.sleep(delay)
-
-        # 级联第2步：OpenAlex（开放摘要/引用/venue 补充）
+            tasks.append((_enrich_from_crossref, paper))
         if _needs_openalex_enrichment(paper):
-            _enrich_from_openalex(paper)
-            time.sleep(delay)
-
-        # 级联第3步：Semantic Scholar（最后再用，降低 429 概率）
+            tasks.append((_enrich_from_openalex, paper))
         if _needs_semantic_scholar_enrichment(paper):
-            _enrich_from_semantic_scholar(paper)
-            time.sleep(delay)
-
-        # 级联第4步：publisher meta（抓取网页 meta 标签）
+            tasks.append((_enrich_from_semantic_scholar, paper))
         if _needs_publisher_enrichment(paper):
-            _enrich_from_publisher(paper)
+            tasks.append((_enrich_from_publisher, paper))
+
+        # 并发执行本论文的所有补全任务
+        if tasks:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=min(len(tasks), max_workers)) as executor:
+                futures = [
+                    executor.submit(_safe_enrich_from, func, paper)
+                    for func, paper in tasks
+                ]
+                for f in futures:
+                    try:
+                        f.result()
+                    except Exception:
+                        logger.warning(
+                            "级联补全线程池异常，降级为串行: paper=%s",
+                            paper.get("title", "")[:80],
+                            exc_info=True,
+                        )
+                        # 串行降级逐个重试
+                        for func, paper in tasks:
+                            try:
+                                func(paper)
+                            except Exception:
+                                logger.warning(
+                                    "串行降级仍失败: func=%s paper=%s",
+                                    getattr(func, "__name__", func),
+                                    paper.get("title", "")[:80],
+                                    exc_info=True,
+                                )
+
+        time.sleep(delay)
 
         after = json.dumps({
             "doi": paper.get("doi"),

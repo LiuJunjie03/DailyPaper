@@ -11,10 +11,11 @@ from urllib.parse import quote
 
 import requests
 
+from daily_paper.enrich import request_json as _enrich_request_json, title_matches
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
-USER_AGENT = "DailyPaperBot/1.0 (mailto:research@example.com)"
+USER_AGENT = "DailyPaperBot/1.0"
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 YEAR_RE = re.compile(r"^\d{4}$")
 
@@ -32,31 +33,8 @@ def is_placeholder_publication_date(value: str, month: str = "") -> bool:
     return value.endswith("-01-01") and (not month or value[:7] == month)
 
 
-def clean_title(value: str) -> str:
-    value = (value or "").lower()
-    value = re.sub(r"[^a-z0-9]+", " ", value)
-    return re.sub(r"\s+", " ", value).strip()
-
-
-def title_matches(expected: str, candidate: str) -> bool:
-    left = clean_title(expected)
-    right = clean_title(candidate)
-    return bool(left and right and (left == right or left in right or right in left))
-
-
-def request_json(url: str, params: Optional[Dict] = None) -> Optional[Dict]:
-    try:
-        response = requests.get(
-            url,
-            params=params,
-            timeout=15,
-            headers={"User-Agent": USER_AGENT},
-        )
-        if response.status_code == 200:
-            return response.json()
-    except requests.RequestException:
-        return None
-    return None
+# 复用 daily_paper.enrich 的 request_json
+request_json = _enrich_request_json
 
 
 def date_from_crossref_parts(value: Dict) -> str:

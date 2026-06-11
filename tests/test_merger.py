@@ -1,6 +1,5 @@
 """merger.py 关键用例测试 — DOI/ArXiv/标题合并、来源优先级"""
 
-import pytest
 
 from daily_paper.merge import identity_keys, source_rank, merge_two_papers, merge_paper_list
 

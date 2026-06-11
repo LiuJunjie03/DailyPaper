@@ -11,15 +11,18 @@
   python scripts/enrich_metadata.py --month 2026-01       # 单月
   python scripts/enrich_metadata.py --dry-run             # 预览
   python scripts/enrich_metadata.py --limit 20            # 限制篇数
+
+Legacy 独立 CLI 工具 — 仅作为命令行补全脚本使用。
+主流程（fetch_papers.py）通过 daily_paper.enrich 执行补全。
 """
 
 import argparse
 import json
+import os
 import re
 import sys
 import time
 from datetime import datetime, timezone
-from html import unescape
 from pathlib import Path
 from typing import Dict, Iterable, Optional, Tuple
 from urllib.parse import quote
@@ -27,13 +30,15 @@ from urllib.parse import quote
 import requests
 from bs4 import BeautifulSoup
 
-from daily_paper.enrich import request_json, normalize_title, title_matches, openalex_abstract
+from daily_paper.enrich import request_json, title_matches, openalex_abstract, is_reliable_abstract
+from daily_paper.text import clean_text
 
 # ── 路径常量 ──────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
-USER_AGENT = "DailyPaperBot/1.0 (mailto:research@dailyPaper.org)"
-TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+USER_AGENT = "DailyPaperBot/1.0"
+_TODAY_DATE = datetime.now(timezone.utc).date()
+TODAY = _TODAY_DATE.strftime("%Y-%m-%d")
 
 
 # ═══════════════════════════════════════════════════════════
@@ -44,13 +49,6 @@ def safe_print(text: str):
     """安全打印（处理编码问题）"""
     sys.stdout.buffer.write(str(text).encode("utf-8", errors="replace") + b"\n")
     sys.stdout.flush()
-
-
-def clean_text(text: str) -> str:
-    """清理 HTML 实体和多余空白"""
-    text = unescape(text or "")
-    text = re.sub(r"<[^>]+>", " ", text)
-    return re.sub(r"\s+", " ", text).strip()
 
 
 def complete_date(value: str) -> str:
@@ -157,7 +155,7 @@ def fetch_openalex_date(paper: Dict) -> Optional[Tuple[str, Dict]]:
     data = request_json(
         "https://api.openalex.org/works",
         params={"search": paper.get("title", ""), "per-page": 3,
-                "mailto": "research@dailyPaper.org"},
+                "mailto": os.environ.get("CROSSREF_MAILTO", "")},
     )
     for item in (data or {}).get("results", []):
         if not title_matches(paper.get("title", ""), item.get("title", "")):
@@ -207,21 +205,6 @@ DATE_FETCHERS = [
 # ═══════════════════════════════════════════════════════════
 #  摘要 Fetcher 函数（优先级从高到低）
 # ═══════════════════════════════════════════════════════════
-
-def is_reliable_abstract(text: str) -> bool:
-    """判断摘要是否可靠（长度、格式、内容质量）"""
-    text = clean_text(text)
-    if len(text) < 220:
-        return False
-    if text[:1].islower():
-        return False
-    if re.search(r"\s{2,}", text):
-        return False
-    if not text.endswith((".", "!", "?")):
-        return False
-    bad_prefixes = ("cookies", "enable javascript", "this page", "access denied")
-    return not text.lower().startswith(bad_prefixes)
-
 
 def fetch_arxiv_abstract(paper: Dict) -> Optional[Tuple[str, Dict]]:
     """从 arXiv API 获取摘要（权威来源）"""
@@ -277,7 +260,7 @@ def fetch_openalex_abstract(paper: Dict) -> Optional[Tuple[str, Dict]]:
     data = request_json(
         "https://api.openalex.org/works",
         params={"search": paper.get("title", ""), "per-page": 3,
-                "mailto": "research@dailyPaper.org"},
+                "mailto": os.environ.get("CROSSREF_MAILTO", "")},
     )
     for item in (data or {}).get("results", []):
         abstract = clean_text(openalex_abstract(item.get("abstract_inverted_index")))
@@ -410,7 +393,7 @@ class MetadataEnricher:
                 continue
             new_date, metadata = result
             # 校验：不允许未来日期
-            if new_date > TODAY:
+            if datetime.strptime(new_date, "%Y-%m-%d").date() > _TODAY_DATE:
                 continue
             old_date = paper.get("published", "")
             paper["published"] = new_date

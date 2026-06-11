@@ -21,7 +21,7 @@ def fetch_json(url, retries=3):
     for attempt in range(retries):
         try:
             req = urllib.request.Request(url, headers={
-                'User-Agent': 'DailyPaperBot/1.0 (mailto:research@dailyPaper.org)',
+                'User-Agent': 'DailyPaperBot/1.0',
                 'Accept': 'application/json'
             })
             with urllib.request.urlopen(req, timeout=20) as resp:

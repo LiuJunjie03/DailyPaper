@@ -1,7 +1,7 @@
 """论文数据 schema 定义与校验
 
 兼容现有 dict 格式，不改变任何数据结构。
-字段定义参考 docs/DATA_SCHEMA.md。
+字段定义参考 DATA_SCHEMA.md。
 """
 
 from typing import List, Optional, TypedDict
@@ -18,7 +18,7 @@ class PaperRecord(TypedDict, total=False):
     title: str
     authors: str               # 逗号分隔字符串
     published: str             # YYYY-MM-DD 或 YYYY-MM 或 unknown
-    source: str                # arxiv / crossref / openalex / semantic_scholar / google_scholar / cnki / wanfang / cqvip
+    source: str                # arxiv / crossref / openalex / semantic_scholar / google_scholar / cnki / wanfang / cqvip / sciencedirect / webofscience
 
     # URL
     paper_url: str

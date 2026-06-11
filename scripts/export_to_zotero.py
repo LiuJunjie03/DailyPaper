@@ -264,7 +264,7 @@ def main():
             if doi:
                 existing = zot.items(q=doi, limit=1)
                 if existing and doi in str(existing):
-                    logger.info(f"  已存在，跳过")
+                    logger.info("  已存在，跳过")
                     continue
 
             # 创建 Zotero item
@@ -306,7 +306,7 @@ def main():
                             zot.upload_attachment(created_key, filename, content)
                         except Exception:
                             pass
-                        logger.info(f"  ✓ 已附加 PDF")
+                        logger.info("  ✓ 已附加 PDF")
 
             success += 1
             time.sleep(1)  # 避免请求过快

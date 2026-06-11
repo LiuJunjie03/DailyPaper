@@ -4,6 +4,9 @@
 The script scans monthly data files and tries trusted sources in this order:
 CNKI detail pages for CNKI records; otherwise arXiv, Semantic Scholar,
 OpenAlex, Crossref, then publisher metadata.
+
+Legacy 独立 CLI 工具 — 仅作为命令行补全脚本使用。
+主流程（fetch_papers.py）通过 daily_paper.enrich 执行补全。
 """
 
 import argparse
@@ -11,11 +14,9 @@ import json
 import re
 import sys
 import time
-from types import SimpleNamespace
 from datetime import datetime, timezone
-from difflib import SequenceMatcher
-from html import unescape
 from pathlib import Path
+
 from typing import Dict, Iterable, Optional, Tuple
 
 import requests
@@ -23,46 +24,14 @@ import yaml
 from bs4 import BeautifulSoup
 
 from daily_paper.sources.cnki_detail import enrich_cnki_paper
-from daily_paper.enrich import request_json, normalize_title, openalex_abstract
+from daily_paper.enrich import request_json, openalex_abstract, title_matches, is_reliable_abstract
+from daily_paper.text import clean_text as clean_abstract
 
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 CONFIG_PATH = ROOT / "config.yaml"
 USER_AGENT = "DailyPaper abstract enricher (mailto:example@example.com)"
-
-
-def title_matches(expected: str, candidate: str, threshold: float = 0.88) -> bool:
-    left = normalize_title(expected)
-    right = normalize_title(candidate)
-    if not left or not right:
-        return False
-    if left == right:
-        return True
-    if left in right or right in left:
-        return True
-    return SequenceMatcher(None, left, right).ratio() >= threshold
-
-
-def clean_abstract(text: str) -> str:
-    text = unescape(text or "")
-    text = re.sub(r"<[^>]+>", " ", text)
-    text = re.sub(r"\s+", " ", text).strip()
-    return text
-
-
-def is_reliable_abstract(text: str) -> bool:
-    text = clean_abstract(text)
-    if len(text) < 220:
-        return False
-    if text[:1].islower():
-        return False
-    if re.search(r"\s{2,}", text):
-        return False
-    if not text.endswith((".", "!", "?")):
-        return False
-    bad_prefixes = ("cookies", "enable javascript", "this page", "access denied")
-    return not text.lower().startswith(bad_prefixes)
 
 
 def complete_date(value: str) -> str:
@@ -225,13 +194,13 @@ def needs_enrichment(paper: Dict, include_cnki: bool = True) -> bool:
 def enrich_paper(
     paper: Dict,
     delay: float,
-    cnki_fetcher=None,
+    top_config: Optional[Dict] = None,
     cnki_config: Optional[Dict] = None,
     cnki_session: Optional[requests.Session] = None,
 ) -> Optional[Dict]:
-    if paper.get("source") == "cnki" and cnki_fetcher and cnki_config:
+    if paper.get("source") == "cnki" and top_config and cnki_config:
         before = (paper.get("abstract") or "").strip()
-        updated = enrich_cnki_paper(cnki_fetcher, paper, cnki_config, session=cnki_session)
+        updated = enrich_cnki_paper(top_config, paper, cnki_config, session=cnki_session)
         after = (updated.get("abstract") or "").strip()
         if after and after != before:
             return updated
@@ -271,8 +240,8 @@ def main() -> int:
     data_dir = Path(args.data_dir)
     config = load_config(Path(args.config))
     cnki_config = (config.get("sources", {}) or {}).get("cnki", {})
-    cnki_fetcher = SimpleNamespace(config=config) if cnki_config and not args.no_cnki else None
-    cnki_session = requests.Session() if cnki_fetcher else None
+    cnki_enabled = cnki_config and not args.no_cnki
+    cnki_session = requests.Session() if cnki_enabled else None
     attempted = enriched = 0
 
     for path in iter_month_files(data_dir):
@@ -287,7 +256,7 @@ def main() -> int:
             updated = enrich_paper(
                 paper,
                 args.delay,
-                cnki_fetcher=cnki_fetcher,
+                top_config=config,
                 cnki_config=cnki_config,
                 cnki_session=cnki_session,
             )

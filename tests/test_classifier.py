@@ -1,6 +1,5 @@
 """classifier.py 关键用例测试 — 相关性判断、分类、关键词"""
 
-import pytest
 
 from daily_paper.classify import (
     term_in_text,
@@ -8,7 +7,6 @@ from daily_paper.classify import (
     classify_paper,
     extract_paper_keywords,
     normalize_keywords,
-    SUBDOMAIN_RULES,
 )
 
 

@@ -29,7 +29,7 @@ sources:
         - "differentiable CFD solver neural"
     max_results_per_query: 20
     days_back: 30
-    mailto: "research@dailyPaper.org"
+    mailto: ""  # Crossref polite pool 邮箱 — 建议设置 CROSSREF_MAILTO 环境变量
 
   # OpenAlex 数据源（开放学术图谱）
   openalex:
@@ -51,7 +51,7 @@ sources:
         - "differentiable solver CFD neural"
     max_results_per_query: 20
     days_back: 30
-    mailto: "research@dailyPaper.org"
+    mailto: ""  # OpenAlex polite pool 邮箱 — 建议设置 CROSSREF_MAILTO 环境变量
 
   # Google Scholar 数据源（使用 scholarly 库）
   google_scholar:
@@ -82,10 +82,12 @@ sources:
   # CNKI 知网数据源（中文论文）
   cnki:
     enabled: true
-    # CNKI 代理 URL：优先读取环境变量 CNKI_HOME_URL / CNKI_KNS_BASE_URL
-    # 以下为本地 VPN 默认值，环境变量设置后会自动覆盖
-    home_url: "http://www--cnki--net--https.cnki.mdjsf.utuvpn.utuedu.com:9000/"
-    kns_base_url: "http://kns--cnki--net--https.cnki.mdjsf.utuvpn.utuedu.com:9000/"
+    # CNKI 代理 URL — 必须通过环境变量 CNKI_HOME_URL / CNKI_KNS_BASE_URL 配置
+    # 本地开发请在终端设置：
+    #   export CNKI_HOME_URL="your-proxy-url"
+    #   export CNKI_KNS_BASE_URL="your-proxy-url"
+    home_url: ""
+    kns_base_url: ""
     enrich_details: true
     detail_delay: 1.0
     queries:
@@ -140,7 +142,9 @@ sources:
 
   semantic_scholar:
     enabled: true
-    api_key: ""  # 免费 API key，申请: https://www.semanticscholar.org/product/api#api-key-form
+    api_key: ""  # 留空则使用环境变量 SEMANTIC_SCHOLAR_API_KEY
+                # 免费 API key 申请: https://www.semanticscholar.org/product/api#api-key-form
+                # 有 key 时速率限制 1000 req/5min，无 key 时 100 req/5min
     queries:
       physics_informed_learning:
         - "physics-informed neural networks fluid dynamics Navier-Stokes"
@@ -170,6 +174,59 @@ sources:
         - "data assimilation inverse problem fluid dynamics machine learning"
     max_results_per_query: 20
     days_back: 30
+
+  # ScienceDirect (Elsevier) 数据源 — 学校图书馆网络浏览器抓取
+  sciencedirect:
+    enabled: true
+    local_only: true
+    use_browser: true
+    max_results_per_query: 20
+    days_back: 30
+    queries:
+      physics_informed_learning:
+        - "physics-informed neural networks fluid dynamics"
+        - "PINN computational fluid dynamics"
+      neural_operator_surrogate:
+        - "neural operator computational fluid dynamics"
+        - "Fourier neural operator fluid simulation"
+      turbulence_modeling:
+        - "machine learning turbulence closure RANS LES"
+        - "data-driven turbulence modeling"
+      aerodynamic_optimization:
+        - "aerodynamic optimization machine learning"
+      multiphase_flow:
+        - "machine learning multiphase flow"
+      numerical_methods:
+        - "differentiable CFD solver neural"
+
+  # Web of Science / SCI 数据源 — 本地图书馆网络浏览器抓取，或 Clarivate API key
+  webofscience:
+    enabled: true
+    local_only: true
+    use_browser: true
+    # 若学校/个人有 Clarivate API 权限，可设置环境变量 WOS_API_KEY / WEB_OF_SCIENCE_API_KEY
+    # api_key: ""
+    # api_url: "https://api.clarivate.com/apis/wos-starter/v1/documents"
+    # query_param: "q"
+    max_results_per_query: 20
+    days_back: 30
+    delay: 1.5
+    queries:
+      physics_informed_learning:
+        - "physics-informed neural networks fluid dynamics"
+        - "PINN computational fluid dynamics"
+      neural_operator_surrogate:
+        - "neural operator computational fluid dynamics"
+        - "Fourier neural operator fluid simulation"
+      turbulence_modeling:
+        - "machine learning turbulence closure RANS LES"
+        - "data-driven turbulence modeling"
+      aerodynamic_optimization:
+        - "aerodynamic optimization machine learning"
+      multiphase_flow:
+        - "machine learning multiphase flow"
+      numerical_methods:
+        - "differentiable CFD solver neural"
 
 # 领域分类关键词
 categories:
@@ -540,6 +597,13 @@ output:
   data_dir: data
   docs_dir: docs
   papers_per_page: 50
+
+# PDF 全文补全（需本地 Chrome + 学校网络/VPN — 默认关闭）
+pdf_enrich:
+  enabled: false                # 本地手动运行时设为 true
+  max_papers: 20                # 单次最多补多少篇
+  delay_seconds: 1.5            # 每篇间隔（秒）
+  skip_if_any_pdf: true         # true=已有任一 PDF 跳过；false=只跳过正式 pdf_url
   
 # 调度配置（GitHub Actions）
 schedule:

@@ -7,6 +7,7 @@ from typing import Dict, List, Optional
 
 from daily_paper.dates import validate_date
 from daily_paper.http import request_json
+from daily_paper.normalizer import IMPACT_FACTOR_TABLE, finalize_paper, get_impact_factor
 from daily_paper.queries import flatten_queries
 
 logger = logging.getLogger(__name__)
@@ -23,23 +24,23 @@ def _openalex_abstract(inverted_index: Optional[Dict]) -> str:
     return " ".join(word for _, word in sorted(words))
 
 
-def fetch_openalex_papers(fetcher) -> List[Dict]:
+def fetch_openalex_papers(config: Dict, ss_api_key: str = "", arxiv_client=None) -> List[Dict]:
     """从 OpenAlex 搜索论文"""
-    config = fetcher.config.get("sources", {}).get("openalex", {})
-    if not config.get("enabled", False):
+    source_config = config.get("sources", {}).get("openalex", {})
+    if not source_config.get("enabled", False):
         logger.info("OpenAlex 数据源已禁用")
         return []
 
     # 解析查询列表
-    queries = flatten_queries(config)
+    queries = flatten_queries(source_config)
 
-    max_per_query = config.get("max_results_per_query", 20)
-    days_back = config.get("days_back", 180)
-    mailto = config.get("mailto", "research@dailyPaper.org")
-    from_date = validate_date(config.get("start_date", "")) or (
+    max_per_query = source_config.get("max_results_per_query", 20)
+    days_back = source_config.get("days_back", 180)
+    mailto = source_config.get("mailto", "")
+    from_date = validate_date(source_config.get("start_date", "")) or (
         datetime.now(timezone.utc) - timedelta(days=days_back)
     ).strftime("%Y-%m-%d")
-    until_date = validate_date(config.get("end_date", ""))
+    until_date = validate_date(source_config.get("end_date", ""))
 
     all_papers = []
     seen_ids = set()
@@ -143,11 +144,11 @@ def fetch_openalex_papers(fetcher) -> List[Dict]:
                 "tags": [],
                 "keywords": [],
                 "citation_count": citation_count,
-                "impact_factor": fetcher.get_impact_factor({"conference": venue}),
+                "impact_factor": get_impact_factor({"conference": venue}, IMPACT_FACTOR_TABLE),
                 "source": "openalex",
             }
 
-            paper = fetcher._finalize_paper(paper)
+            paper = finalize_paper(paper, config)
             all_papers.append(paper)
             query_count += 1
 

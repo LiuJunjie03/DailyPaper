@@ -1,11 +1,10 @@
 """Phase 1+2 测试：common 模块 + schema 校验"""
 
-import pytest
 
 from daily_paper.text import normalize_title, normalize_doi, normalize_arxiv_id, term_in_text, clean_text
 from daily_paper.dates import validate_date, parse_date, in_date_window
 from daily_paper.queries import flatten_queries
-from daily_paper.schema import validate_paper, REQUIRED_FIELDS
+from daily_paper.schema import validate_paper
 
 
 # ============================================================

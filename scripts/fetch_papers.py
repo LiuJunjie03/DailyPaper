@@ -15,27 +15,24 @@ import yaml
 import arxiv
 
 # 从 daily_paper 包导入核心模块
-from daily_paper.text import normalize_title, normalize_doi as _normalize_doi, normalize_arxiv_id as _normalize_arxiv_id
+from daily_paper.text import normalize_title  # noqa: F401 — 向后兼容再导出
 from daily_paper.classify import (
-    term_in_text,
     is_relevant_paper,
-    KEYWORD_CANONICAL,
-    SUBDOMAIN_RULES,
-    PARENT_TAGS,
-    FLUID_RELATED_TERMS,
-    FLUID_RELATED_TAGS,
-    FLUID_RELATED_CATEGORIES,
-    extract_paper_keywords as _extract_paper_keywords,
     write_classification_report,
+    term_in_text,                    # noqa: F401 — 向后兼容再导出
+    KEYWORD_CANONICAL,               # noqa: F401 — 向后兼容再导出
+    SUBDOMAIN_RULES,                 # noqa: F401 — 向后兼容再导出
+    PARENT_TAGS,                     # noqa: F401 — 向后兼容再导出
+    FLUID_RELATED_TERMS,             # noqa: F401 — 向后兼容再导出
+    FLUID_RELATED_TAGS,              # noqa: F401 — 向后兼容再导出
+    FLUID_RELATED_CATEGORIES,        # noqa: F401 — 向后兼容再导出
 )
 from daily_paper.enrich import cascade_enrich_papers
 from daily_paper.merge import merge_paper_list as _merge_paper_list
 from daily_paper.normalizer import (
     finalize_paper as _finalize_paper,
-    get_impact_factor as _get_impact_factor,
     normalize_dates,
     ensure_early_access,
-    IMPACT_FACTOR_TABLE,
 )
 from daily_paper.storage import load_monthly_data, split_papers_by_month, save_monthly_data, build_month_index
 
@@ -66,8 +63,6 @@ logger = logging.getLogger(__name__)
 class PaperFetcher:
     """论文抓取编排器 — 委托给各专门模块"""
 
-    IMPACT_FACTOR_TABLE = IMPACT_FACTOR_TABLE  # backward compat
-
     def __init__(self, config_path: str = "config.yaml"):
         """初始化：读取你的自定义yaml配置"""
         self.config = self._load_config(config_path)
@@ -83,8 +78,12 @@ class PaperFetcher:
         """Apply a date window to sources that support month/range fetching."""
         if not start_date and not end_date:
             return
-        for source_name in ("arxiv", "crossref", "openalex", "semantic_scholar", "wanfang", "cqvip"):
-            source = self.config.get("sources", {}).setdefault(source_name, {})
+        for source_name in (
+            "arxiv", "crossref", "openalex", "semantic_scholar",
+            "wanfang", "cqvip", "sciencedirect", "webofscience",
+        ):
+            sources = self.config.setdefault("sources", {})
+            source = sources.setdefault(source_name, {})
             if start_date:
                 source["start_date"] = start_date
             if end_date:
@@ -97,7 +96,11 @@ class PaperFetcher:
             logger.warning("config.yaml 缺少 sources 配置，将不会抓取任何数据源")
             return
 
-        for source_name in ["arxiv", "semantic_scholar", "google_scholar", "cnki", "wanfang", "cqvip"]:
+        for source_name in [
+            "arxiv", "semantic_scholar", "google_scholar", "cnki",
+            "wanfang", "cqvip", "crossref", "openalex",
+            "sciencedirect", "webofscience",
+        ]:
             src = sources.get(source_name)
             if src and not isinstance(src, dict):
                 logger.warning(f"config.yaml sources.{source_name} 格式错误（期望字典）")
@@ -120,69 +123,58 @@ class PaperFetcher:
             raise ValueError(f"配置文件解析失败：{e}")
 
     # ═══════════════════════════════════════════════════════════
-    #  委托方法：供 fetcher 子模块通过 fetcher.xxx 调用
-    # ═══════════════════════════════════════════════════════════
-
-    def _finalize_paper(self, paper):
-        return _finalize_paper(paper, self.config)
-
-    def get_impact_factor(self, paper):
-        return _get_impact_factor(paper, self.IMPACT_FACTOR_TABLE)
-
-    def _flatten_queries(self, raw_queries):
-        from daily_paper.queries import flatten_queries
-        return flatten_queries(raw_queries)
-
-    def extract_official_keywords(self, result):
-        from classifier import extract_official_keywords
-        return extract_official_keywords(result)
-
-    def extract_paper_keywords(self, paper):
-        return _extract_paper_keywords(paper, self.config)
-
-    # ═══════════════════════════════════════════════════════════
     #  数据源抓取委托
     # ═══════════════════════════════════════════════════════════
 
     def fetch_arxiv_papers(self) -> List[Dict]:
         """从 ArXiv 抓取论文"""
         from daily_paper.sources.arxiv_fetcher import fetch_arxiv_papers as _fetch
-        return _fetch(self)
+        return _fetch(self.config, ss_api_key=self.ss_api_key, arxiv_client=self.arxiv_client)
 
     def fetch_crossref_papers(self) -> List[Dict]:
         """Crossref 数据源抓取（正式发表论文）"""
         from daily_paper.sources.crossref_fetcher import fetch_crossref_papers as _fetch
-        return _fetch(self)
+        return _fetch(self.config)
 
     def fetch_openalex_papers(self) -> List[Dict]:
         """OpenAlex 数据源抓取（开放学术图谱）"""
         from daily_paper.sources.openalex_fetcher import fetch_openalex_papers as _fetch
-        return _fetch(self)
+        return _fetch(self.config)
 
     def fetch_semantic_scholar_papers(self) -> List[Dict]:
         """用 Semantic Scholar 语义搜索替代关键词匹配"""
         from daily_paper.sources.semantic_scholar import fetch_semantic_scholar_papers as _fetch
-        return _fetch(self)
+        return _fetch(self.config, ss_api_key=self.ss_api_key)
 
     def fetch_google_scholar_papers(self) -> List[Dict]:
         """Google Scholar 数据源抓取"""
         from daily_paper.sources.google_scholar import fetch_google_scholar_papers as _fetch
-        return _fetch(self)
+        return _fetch(self.config)
 
     def fetch_cnki_papers(self) -> List[Dict]:
         """CNKI 数据源抓取"""
         from daily_paper.sources.cnki import fetch_cnki_papers as _fetch
-        return _fetch(self)
+        return _fetch(self.config)
 
     def fetch_wanfang_papers(self) -> List[Dict]:
         """Wanfang data source."""
         from daily_paper.sources.wanfang import fetch_wanfang_papers as _fetch
-        return _fetch(self)
+        return _fetch(self.config)
 
     def fetch_cqvip_papers(self) -> List[Dict]:
         """CQVIP data source."""
         from daily_paper.sources.cqvip import fetch_cqvip_papers as _fetch
-        return _fetch(self)
+        return _fetch(self.config)
+
+    def fetch_sciencedirect_papers(self) -> List[Dict]:
+        """ScienceDirect (Elsevier) 数据源 — 需学校网络 + 浏览器"""
+        from daily_paper.sources.sciencedirect import fetch_sciencedirect_papers as _fetch
+        return _fetch(self.config)
+
+    def fetch_webofscience_papers(self) -> List[Dict]:
+        """Web of Science / SCI 数据源 — 需学校网络浏览器或 Clarivate API key"""
+        from daily_paper.sources.webofscience import fetch_webofscience_papers as _fetch
+        return _fetch(self.config)
 
     # ═══════════════════════════════════════════════════════════
     #  主编排
@@ -198,6 +190,8 @@ class PaperFetcher:
             ("OpenAlex", self.fetch_openalex_papers),
             ("Semantic Scholar", self.fetch_semantic_scholar_papers),
             ("Google Scholar", self.fetch_google_scholar_papers),
+            ("ScienceDirect", self.fetch_sciencedirect_papers),
+            ("Web of Science", self.fetch_webofscience_papers),
             ("Wanfang", self.fetch_wanfang_papers),
             ("CQVIP", self.fetch_cqvip_papers),
             ("CNKI", self.fetch_cnki_papers),
@@ -266,14 +260,38 @@ class PaperFetcher:
         # 重新 merge（级联补全可能新增 DOI/arXiv ID）
         papers = _merge_paper_list(papers, finalize_fn=_finalize)
 
-        # 与历史数据合并
-        existing_data = load_monthly_data(data_dir)
+        # 记录新论文所涉及月份（含上月，处理跨月延迟收录）
+        affected_months = set()
+        for p in papers:
+            pub = p.get("published", "")
+            parts = pub.split("-")
+            if len(parts) >= 2:
+                m = f"{parts[0]}-{parts[1]}"
+                affected_months.add(m)
+            elif len(parts) == 1 and parts[0].isdigit():
+                affected_months.add(f"{parts[0]}-unk")
+            elif not pub:
+                affected_months.add("unknown")
+        # 扩展：每月的上月也加入（跨月收录场景）
+        expanded = set(affected_months)
+        for m in affected_months:
+            if re.fullmatch(r"\d{4}-\d{2}", m):
+                year, month_num = int(m[:4]), int(m[5:])
+                if month_num == 1:
+                    expanded.add(f"{year-1}-12")
+                else:
+                    expanded.add(f"{year}-{month_num-1:02d}")
+        affected_months = expanded
+
+        # 与历史数据合并（仅加载受影响月份，处理去重）
+        existing_data = load_monthly_data(data_dir, months=affected_months)
         existing_papers = [p for ps in existing_data.values() for p in ps]
         papers = _merge_paper_list([
             p for p in existing_papers + papers
             if is_relevant_paper(p)
         ], finalize_fn=_finalize)
         logger.info(f"Merged with existing monthly data: {len(papers)} papers")
+        logger.info(f"增量写入: 需重写 {len(affected_months)} 个月份文件")
 
         if not papers:
             logger.warning("未抓取到任何相关论文，且没有可整理的历史数据！")
@@ -285,9 +303,16 @@ class PaperFetcher:
         ensure_early_access(papers)
         normalize_dates(papers)
 
-        # 按月拆分 → 写入 JSON → 生成索引（委托 store.py）
+        # PDF 全文补全（机会性增强，需本地浏览器 + 学校网络）
+        if self.config.get("pdf_enrich", {}).get("enabled", False):
+            from daily_paper.pdf_enrich import enrich_pdfs
+            enrich_pdfs(papers, self.config)
+        else:
+            logger.debug("PDF 补全未启用 (pdf_enrich.enabled=false)")
+
+        # 按月拆分 → 增量写入 JSON → 生成索引（委托 store.py）
         month_papers = split_papers_by_month(papers)
-        save_monthly_data(month_papers, data_dir, docs_dir="")
+        save_monthly_data(month_papers, data_dir, docs_dir="", only_months=affected_months)
         build_month_index(data_dir)
 
         self._print_health_report()

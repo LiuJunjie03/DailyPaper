@@ -6,9 +6,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 from generate_html import HTMLGenerator, is_complete_publication_date, build_dashboard_stats
-from fetchers.cnki import _absolute_cnki_url, _cnki_url
-from fetchers.google_scholar import _looks_like_scholar_snippet
-from fetchers.cnki_detail import apply_cnki_detail, parse_cnki_detail_html
+from daily_paper.sources.google_scholar import _looks_like_scholar_snippet
+from daily_paper.sources.cnki_detail import apply_cnki_detail, parse_cnki_detail_html
 from enrich_abstracts import is_reliable_abstract, needs_enrichment, openalex_abstract
 
 
@@ -35,6 +34,14 @@ def write_sample_month(data_dir: Path):
     (data_dir / "2026-06.json").write_text(json.dumps(papers, ensure_ascii=False), encoding="utf-8")
 
 
+def _read_all_js(output_dir: Path) -> str:
+    """拼接 docs/js/ 下所有 JS 文件内容，用于跨模块断言"""
+    parts = []
+    for f in sorted((output_dir / "js").glob("*.js")):
+        parts.append(f.read_text(encoding="utf-8"))
+    return "".join(parts)
+
+
 def test_frontend_generation_uses_compact_dashboard(tmp_path):
     data_dir = tmp_path / "data"
     output_dir = tmp_path / "docs"
@@ -45,7 +52,7 @@ def test_frontend_generation_uses_compact_dashboard(tmp_path):
 
     html = (output_dir / "index.html").read_text(encoding="utf-8")
     css = (output_dir / "css" / "style.css").read_text(encoding="utf-8")
-    js = (output_dir / "js" / "main.js").read_text(encoding="utf-8")
+    js = _read_all_js(output_dir)
 
     assert "dashboard-summary" in html
     assert "dailyDatePicker" in html
@@ -61,7 +68,7 @@ def test_frontend_generation_uses_compact_dashboard(tmp_path):
     assert "较上月" in html
     assert "总量" in html
     assert "智能 CFD" in html
-    assert "早期在线" in html
+    assert "预出版" in html
     assert "筛选条件" in html
     assert "推荐优先" in html
     assert "数据不足时按日期补偿" in html
@@ -70,7 +77,7 @@ def test_frontend_generation_uses_compact_dashboard(tmp_path):
     assert "dashboard-summary" in css
     assert "daily-date-picker" in css
     assert "summary-action" in css
-    assert "再次点击卡片恢复默认" in css
+    assert "再次点击恢复默认" in css
     assert "summary-spark" in css
     assert "summary-ring" in css
     assert "conic-gradient" in css
@@ -85,8 +92,8 @@ def test_frontend_generation_uses_compact_dashboard(tmp_path):
     assert "early-access" in js
     assert "syncDailyPickerToMonth" in js
     assert "`${month}-01`" in js
-    assert "新增 ${filteredPapers.length} 篇论文" in js
-    assert "filteredPapers.slice(0, loadedCount)" in js
+    assert "新增 ${state.filteredPapers.length} 篇论文" in js
+    assert "filteredPapers.slice(0, state.loadedCount)" in js
     assert "摘要待补全" in js
 
 
@@ -143,7 +150,7 @@ def test_incomplete_publication_dates_do_not_drive_homepage_stats_or_sorting(tmp
     generator.run()
 
     html = (output_dir / "index.html").read_text(encoding="utf-8")
-    js = (output_dir / "js" / "main.js").read_text(encoding="utf-8")
+    js = _read_all_js(output_dir)
     summary_values = re.findall(r'<span class="summary-value">(.*?)</span>', html)
 
     assert summary_values[:2] == ["1", "1"]
@@ -155,7 +162,10 @@ def test_incomplete_publication_dates_do_not_drive_homepage_stats_or_sorting(tmp
 
 
 def test_frontend_template_never_displays_scholar_snippet_as_abstract():
-    js = (Path(__file__).parent.parent / "scripts" / "templates" / "main.js").read_text(encoding="utf-8")
+    # 该逻辑在 paper-card.js 中
+    templates = Path(__file__).parent.parent / "scripts" / "templates"
+    js_files = sorted(templates.glob("*.js"))
+    js = "".join(f.read_text(encoding="utf-8") for f in js_files)
 
     assert "paper.scholar_snippet" not in js
     assert 'paper["scholar_snippet"]' not in js
@@ -287,3 +297,43 @@ def test_build_dashboard_stats_empty():
     assert stats["pdf_rate"] == 0
     assert stats["published_rate"] == 0
     assert stats["smart_top_text"] == "子方向待积累"
+
+
+def test_all_js_modules_are_deployed(tmp_path):
+    """generate_html 将所有 JS module 复制到 docs/js/。"""
+    data_dir = tmp_path / "data"
+    output_dir = tmp_path / "docs"
+    write_sample_month(data_dir)
+
+    generator = HTMLGenerator(data_dir=str(data_dir), output_dir=str(output_dir))
+    generator.run()
+
+    js_dir = output_dir / "js"
+    expected_modules = [
+        "main.js", "state.js", "utils.js", "paper-card.js",
+        "data-loader.js", "filters.js", "dashboard.js",
+    ]
+    for name in expected_modules:
+        assert (js_dir / name).exists(), f"Missing JS module: {name}"
+
+
+def test_entry_module_uses_es_imports():
+    """main.js 是入口模块，使用 import 语法。"""
+    templates = Path(__file__).parent.parent / "scripts" / "templates"
+    main_js = (templates / "main.js").read_text(encoding="utf-8")
+    assert "import " in main_js
+    assert "from './state.js'" in main_js
+
+
+def test_index_html_uses_module_script(tmp_path):
+    """生成的 index.html 使用 type=module 加载 JS。"""
+    data_dir = tmp_path / "data"
+    output_dir = tmp_path / "docs"
+    write_sample_month(data_dir)
+
+    generator = HTMLGenerator(data_dir=str(data_dir), output_dir=str(output_dir))
+    generator.run()
+
+    html = (output_dir / "index.html").read_text(encoding="utf-8")
+    assert '<script type="module"' in html
+    assert "js/main.js" in html

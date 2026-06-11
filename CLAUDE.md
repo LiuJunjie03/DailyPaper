@@ -78,7 +78,7 @@ python scripts/generate_html.py
 ## 关键约定
 
 - 论文数据按月存储，文件名格式 `YYYY-MM.json`
-- 每条论文记录约 30 个字段，详见 `docs/DATA_SCHEMA.md`（待创建）
+- 每条论文记录约 30 个字段，详见 `DATA_SCHEMA.md`（待创建）
 - `docs/data/` 是 `data/` 的部署副本，由 `generate_html.py` 同步
 - `docs/` 是构建产物，不应手工编辑
 - CNKI 代理 URL 通过环境变量 `CNKI_HOME_URL` / `CNKI_KNS_BASE_URL` 配置

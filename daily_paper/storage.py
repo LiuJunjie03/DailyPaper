@@ -12,16 +12,17 @@ import json
 import logging
 import os
 import re
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
 
-def load_monthly_data(data_dir: str) -> Dict[str, List[Dict]]:
-    """加载目录下所有 YYYY-MM.json 文件，返回 {月份: [论文列表]}
+def load_monthly_data(data_dir: str, months: Optional[set] = None) -> Dict[str, List[Dict]]:
+    """加载目录下 YYYY-MM.json 文件，返回 {月份: [论文列表]}
 
     Args:
         data_dir: 数据目录路径（如 data/）
+        months: 可选，只加载指定的月份集合（None 表示加载全部）
 
     Returns:
         按月份分组的论文字典
@@ -31,6 +32,8 @@ def load_monthly_data(data_dir: str) -> Dict[str, List[Dict]]:
         if not re.fullmatch(r"\d{4}-\d{2}\.json", filename):
             continue
         month = filename.replace(".json", "")
+        if months is not None and month not in months:
+            continue
         path = os.path.join(data_dir, filename)
         try:
             with open(path, "r", encoding="utf-8") as f:
@@ -56,7 +59,8 @@ def split_papers_by_month(papers: List[Dict]) -> Dict[str, List[Dict]]:
         if len(parts) >= 2:
             month = f"{parts[0]}-{parts[1]}"
         elif len(parts) == 1 and parts[0].isdigit():
-            month = f"{parts[0]}-01"  # 只有年份时归到1月
+            month = f"{parts[0]}-unk"  # 只有年份时标记为未知月份
+            paper["_date_precision"] = "year"
         else:
             month = "unknown"
         if month not in month_papers:
@@ -65,16 +69,20 @@ def split_papers_by_month(papers: List[Dict]) -> Dict[str, List[Dict]]:
     return month_papers
 
 
-def save_monthly_data(month_papers: Dict[str, List[Dict]], data_dir: str, docs_dir: str) -> None:
+def save_monthly_data(month_papers: Dict[str, List[Dict]], data_dir: str, docs_dir: str, only_months: set = None) -> None:
     """写入月度 JSON 文件到 data_dir 和 docs_dir
 
     Args:
         month_papers: {月份: [论文列表]} 字典
         data_dir: 数据目录路径（如 data/）
         docs_dir: 文档目录路径（如 docs/），可为空字符串跳过
+        only_months: 可选，只写入指定月份的集合（None 表示写入全部）
     """
     os.makedirs(data_dir, exist_ok=True)
+    months_to_write = only_months or set(month_papers.keys())
     for month, papers in month_papers.items():
+        if month not in months_to_write:
+            continue
         month_path = os.path.join(data_dir, f"{month}.json")
         with open(month_path, "w", encoding="utf-8") as f:
             json.dump(papers, f, ensure_ascii=False, indent=2)
@@ -85,6 +93,8 @@ def save_monthly_data(month_papers: Dict[str, List[Dict]], data_dir: str, docs_d
         docs_data_dir = os.path.join(docs_dir, "data")
         os.makedirs(docs_data_dir, exist_ok=True)
         for month, papers in month_papers.items():
+            if month not in months_to_write:
+                continue
             month_path = os.path.join(docs_data_dir, f"{month}.json")
             with open(month_path, "w", encoding="utf-8") as f:
                 json.dump(papers, f, ensure_ascii=False, indent=2)
