@@ -59,6 +59,49 @@ def test_crossref_filters_results_to_configured_month(monkeypatch):
     assert papers[0]["published"] == "2026-01-30"
 
 
+def test_crossref_paginates_and_stops_after_no_new_records(monkeypatch):
+    calls = []
+
+    def item(doi, title):
+        return {
+            "DOI": doi,
+            "title": [title],
+            "published-online": {"date-parts": [[2026, 1, 15]]},
+            "container-title": ["Journal"],
+            "author": [],
+            "type": "journal-article",
+        }
+
+    def fake_request_json(_url, params=None, timeout=20):
+        calls.append(params["offset"])
+        pages = {
+            0: [item("10.1000/a", "Fluid paper A"), item("10.1000/b", "Fluid paper B")],
+            2: [item("10.1000/b", "Fluid paper B"), item("10.1000/c", "Fluid paper C")],
+            4: [item("10.1000/c", "Fluid paper C"), item("10.1000/b", "Fluid paper B")],
+        }
+        return {"message": {"items": pages.get(params["offset"], [])}}
+
+    monkeypatch.setattr(crossref_fetcher, "request_json", fake_request_json)
+    config = {
+        "sources": {
+            "crossref": {
+                "enabled": True,
+                "queries": ["fluid"],
+                "max_results_per_query": 2,
+                "max_pages_per_query": 5,
+                "stop_after_empty_pages": 1,
+                "start_date": "2026-01-01",
+                "end_date": "2026-01-31",
+            }
+        }
+    }
+
+    papers = crossref_fetcher.fetch_crossref_papers(config)
+
+    assert [paper["doi"] for paper in papers] == ["10.1000/a", "10.1000/b", "10.1000/c"]
+    assert calls == [0, 2, 4]
+
+
 def test_semantic_scholar_disabled_reads_config_without_name_error():
     config = {"sources": {"semantic_scholar": {"enabled": False}}}
 

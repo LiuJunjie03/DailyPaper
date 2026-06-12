@@ -5,7 +5,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from generate_html import HTMLGenerator, is_complete_publication_date, build_dashboard_stats
+from generate_html import (
+    HTMLGenerator,
+    build_dashboard_stats,
+    build_smart_cfd_trends,
+    is_complete_publication_date,
+)
 from daily_paper.sources.google_scholar import _looks_like_scholar_snippet
 from daily_paper.sources.cnki_detail import apply_cnki_detail, parse_cnki_detail_html
 from enrich_abstracts import is_reliable_abstract, needs_enrichment, openalex_abstract
@@ -63,6 +68,12 @@ def test_frontend_generation_uses_compact_dashboard(tmp_path):
     assert "summary-ring" in html
     assert "data-summary-action=\"pdf\"" in html
     assert "data-summary-action=\"smart-cfd\"" in html
+    assert "smartCfdTrendsData" in html
+    assert "data-trend-mode=\"year\"" in html
+    assert "data-trend-mode=\"quarter\"" in html
+    assert "data-chart-type=\"line\"" in html
+    assert "data-chart-type=\"bar\"" in html
+    assert "trendYearSelect" in html
     assert "今日新增" in html
     assert "本月新增" in html
     assert "较上月" in html
@@ -71,7 +82,8 @@ def test_frontend_generation_uses_compact_dashboard(tmp_path):
     assert "预出版" in html
     assert "筛选条件" in html
     assert "推荐优先" in html
-    assert "数据不足时按日期补偿" in html
+    assert "影响力优先" in html
+    assert "影响力分综合影响因子" in html
     assert "选中当前页" in html
     assert "复制标识符" in html
     assert "dashboard-summary" in css
@@ -88,9 +100,19 @@ def test_frontend_generation_uses_compact_dashboard(tmp_path):
     assert "currentDate" in js
     assert "currentSpecial" in js
     assert "summaryActionIsActive" in js
+    assert "state.currentDate !== ''" in js
     assert "summaryActions" in js
+    assert "stopDatePickerPropagation" in js
+    assert "addEventListener('pointerdown', stopDatePickerPropagation)" in js
+    assert "addEventListener('click', stopDatePickerPropagation)" in js
+    assert "event.stopPropagation()" in js
+    assert "event.target.closest('#dailyDatePicker')" in js
+    assert ": localToday()" in js
     assert "early-access" in js
     assert "syncDailyPickerToMonth" in js
+    assert "SMART_CFD_TRENDS" in js
+    assert "currentChartType" in js
+    assert "currentMode" in js
     assert "`${month}-01`" in js
     assert "新增 ${state.filteredPapers.length} 篇论文" in js
     assert "filteredPapers.slice(0, state.loadedCount)" in js
@@ -288,6 +310,39 @@ def test_build_dashboard_stats_pure_computation():
     assert stats["current_month_count"] == 2
 
 
+def test_build_smart_cfd_trends_groups_subdirs_by_year_and_quarter():
+    surrogate = "流体力学 / 智能CFD / 代理模型与算子学习"
+    turbulence = "流体力学 / 智能CFD / 湍流建模与闭合"
+    papers_by_month = {
+        "2025-12": [
+            {"id": "old", "conference": "Journal", "tags": [surrogate]},
+        ],
+        "2026-01": [
+            {"id": "a", "conference": "Journal", "tags": [surrogate]},
+            {"id": "b", "tags": []},
+        ],
+        "2026-03": [
+            {"id": "c", "conference": "Conference", "tags": [turbulence]},
+        ],
+        "not-a-month": [{"id": "ignored"}],
+    }
+
+    trends = build_smart_cfd_trends(papers_by_month)
+
+    assert trends["years"] == ["2025", "2026"]
+    assert surrogate in trends["subdirs"]
+    assert trends["short_names"][surrogate] == "代理模型与算子学习"
+    year_2026 = trends["yearly"]["2026"]
+    assert year_2026["labels"][0] == "2026-01"
+    assert year_2026["trends"][surrogate][0] == 1
+    assert year_2026["trends"][surrogate][1] == 0
+    assert year_2026["trends"][surrogate][2] == 0
+    assert year_2026["trends"][turbulence][2] == 1
+    assert trends["quarters"]["labels"] == ["2025 Q4", "2026 Q1"]
+    assert trends["quarters"]["trends"][surrogate] == [1, 1]
+    assert trends["quarters"]["trends"][turbulence] == [0, 1]
+
+
 def test_build_dashboard_stats_empty():
     """空论文列表不崩溃，返回安全的默认值。"""
     stats = build_dashboard_stats([], {})
@@ -311,7 +366,7 @@ def test_all_js_modules_are_deployed(tmp_path):
     js_dir = output_dir / "js"
     expected_modules = [
         "main.js", "state.js", "utils.js", "paper-card.js",
-        "data-loader.js", "filters.js", "dashboard.js",
+        "data-loader.js", "filters.js", "dashboard.js", "trend-chart.js",
     ]
     for name in expected_modules:
         assert (js_dir / name).exists(), f"Missing JS module: {name}"

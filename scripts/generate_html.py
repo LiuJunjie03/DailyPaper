@@ -66,6 +66,65 @@ def build_subdir_trends(papers_by_month: dict) -> dict:
     return {"months": recent_months, "subdirs": subdirs, "short_names": short_names, "trends": trends}
 
 
+def build_smart_cfd_trends(papers_by_month: dict) -> dict:
+    """Build yearly and quarterly trends for each Smart CFD subcategory."""
+    subdirs = [c for c in CATEGORIES if c.startswith("流体力学 / 智能CFD /")]
+    short_names = {subdir: subdir.split("/")[-1].strip() for subdir in subdirs}
+    month_keys = sorted(
+        month for month in papers_by_month
+        if re.fullmatch(r"\d{4}-\d{2}", str(month))
+    )
+    years = sorted({month[:4] for month in month_keys})
+    default_year = datetime.now().strftime("%Y")
+    if default_year not in years and years:
+        default_year = years[-1]
+
+    yearly = {}
+    for year in years:
+        labels = [f"{year}-{month:02d}" for month in range(1, 13)]
+        display_labels = [f"{month}月" for month in range(1, 13)]
+        year_data = {
+            "labels": labels,
+            "display_labels": display_labels,
+            "trends": {subdir: [] for subdir in subdirs},
+        }
+        for label in labels:
+            papers = papers_by_month.get(label, [])
+            for subdir in subdirs:
+                year_data["trends"][subdir].append(
+                    sum(1 for paper in papers if subdir in paper.get("tags", []))
+                )
+        yearly[year] = year_data
+
+    quarter_buckets = {}
+    for month in month_keys:
+        year = int(month[:4])
+        month_number = int(month[5:7])
+        quarter = (month_number - 1) // 3 + 1
+        quarter_buckets.setdefault(f"{year} Q{quarter}", []).extend(papers_by_month.get(month, []))
+
+    quarter_labels = sorted(
+        quarter_buckets,
+        key=lambda label: (int(label[:4]), int(label[-1])),
+    )
+    quarters = {"labels": quarter_labels, "trends": {subdir: [] for subdir in subdirs}}
+    for label in quarter_labels:
+        papers = quarter_buckets.get(label, [])
+        for subdir in subdirs:
+            quarters["trends"][subdir].append(
+                sum(1 for paper in papers if subdir in paper.get("tags", []))
+            )
+
+    return {
+        "years": years,
+        "default_year": default_year,
+        "subdirs": subdirs,
+        "short_names": short_names,
+        "yearly": yearly,
+        "quarters": quarters,
+    }
+
+
 def build_dashboard_stats(papers: list, papers_by_month: dict) -> dict:
     """纯计算，无 I/O，可单测。返回模板所需的全部统计数据。"""
     today = datetime.now().strftime("%Y-%m-%d")
@@ -240,7 +299,7 @@ class HTMLGenerator:
     def generate_index_html(self):
         """生成主页 HTML — 通过 Jinja2 模板渲染"""
         stats = build_dashboard_stats(self.papers, self.papers_by_month)
-        subdir_trends = build_subdir_trends(self.papers_by_month)
+        smart_cfd_trends = build_smart_cfd_trends(self.papers_by_month)
 
         # 分类统计
         category_counts = {'all': len(self.papers)}
@@ -277,7 +336,7 @@ class HTMLGenerator:
             js_hash=js_hash,
             data_hash=data_hash,
             categories_json=json.dumps(CATEGORIES),
-            subdir_trends_json=json.dumps(subdir_trends, ensure_ascii=False),
+            smart_cfd_trends_json=json.dumps(smart_cfd_trends, ensure_ascii=False),
             now=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             year=datetime.now().year,
             stats=stats,

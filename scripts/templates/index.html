@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css?v={{ css_hash }}">
     <script>window.CATEGORIES = {{ categories_json | safe }};</script>
     <script>window.DATA_VERSION = "{{ data_hash }}";</script>
-    <script>window.SUBDIR_TRENDS = {{ subdir_trends_json | safe }};</script>
+    <script id="smartCfdTrendsData" type="application/json">{{ smart_cfd_trends_json | safe }}</script>
 </head>
 <body>
     <header>
@@ -30,7 +30,11 @@
                 <span class="summary-value">{{ stats.today_count }}</span>
                 <span class="summary-label">今日新增</span>
                 <span class="summary-detail">本周 {{ stats.this_week_count }} 篇</span>
-                <input class="daily-date-picker" id="dailyDatePicker" type="date" value="{{ stats.today }}" aria-label="按日期查看新增论文">
+                <div style="display:flex;align-items:center;gap:2px;margin-top:2px" onclick="event.stopPropagation()">
+                    <button class="date-nav-btn" id="datePrevBtn" type="button" title="前一天 ←">◀</button>
+                    <input class="daily-date-picker" id="dailyDatePicker" type="date" value="{{ stats.today }}" aria-label="按日期查看新增论文" style="min-width:0;flex:1">
+                    <button class="date-nav-btn" id="dateNextBtn" type="button" title="后一天 →">▶</button>
+                </div>
             </div>
             <button class="summary-item summary-action" type="button" data-summary-action="month" title="查看本月新增论文">
                 <span class="summary-value">{{ stats.current_month_count }}</span>
@@ -66,6 +70,20 @@
         </div>
         <details class="container trend-panel">
             <summary>📊 智能 CFD 子方向趋势</summary>
+            <div class="trend-toolbar" aria-label="趋势图控制">
+                <div class="trend-mode" role="group" aria-label="趋势粒度">
+                    <button class="trend-mode-btn active" type="button" data-trend-mode="year">按年</button>
+                    <button class="trend-mode-btn" type="button" data-trend-mode="quarter">按季</button>
+                </div>
+                <div class="trend-mode trend-kind" role="group" aria-label="图表类型">
+                    <button class="trend-mode-btn active" type="button" data-chart-type="line">折线</button>
+                    <button class="trend-mode-btn" type="button" data-chart-type="bar">柱状</button>
+                </div>
+                <label class="trend-year-select-wrap" for="trendYearSelect">
+                    <span>年份</span>
+                    <select id="trendYearSelect"></select>
+                </label>
+            </div>
             <div class="trend-chart-wrap">
                 <canvas id="trendChart"></canvas>
             </div>
@@ -80,6 +98,7 @@
                     <button class="filter-btn sort-btn active" data-sort="date-desc">最新优先</button>
                     <button class="filter-btn sort-btn" data-sort="date-asc">最早优先</button>
                     <button class="filter-btn sort-btn" data-sort="importance-desc">推荐优先</button>
+                    <button class="filter-btn sort-btn" data-sort="influence-desc" title="按影响因子、引用数、正式发表状态和来源可信度排序">影响力优先</button>
                 </div>
             </div>
             <div class="filter-group">
@@ -90,7 +109,7 @@
                     <button class="filter-btn status-btn" data-status="preprint">预印本 ({{ stats.preprint_count }})</button>
                 </div>
             </div>
-            <p class="sort-note">推荐分综合发表状态、来源、PDF、摘要、关键词、引用和日期；数据不足时按日期补偿。</p>
+            <p class="sort-note">推荐分综合发表状态、来源、PDF、摘要、关键词、引用和日期；影响力分综合影响因子、引用数、正式发表和来源可信度。</p>
         </div>
         <details class="filter-panel">
             <summary>筛选条件</summary>

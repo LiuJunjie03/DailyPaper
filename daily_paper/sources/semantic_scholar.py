@@ -1,4 +1,5 @@
-"""Semantic Scholar 数据源"""
+"""Semantic Scholar source."""
+
 import logging
 import re
 import time
@@ -10,14 +11,14 @@ import requests
 from daily_paper.dates import validate_date
 from daily_paper.normalizer import IMPACT_FACTOR_TABLE, finalize_paper, get_impact_factor
 from daily_paper.queries import flatten_queries
-from daily_paper.text import normalize_doi
 from daily_paper.sources._citation_batch import batch_get_citation_counts  # noqa: F401
+from daily_paper.text import normalize_doi
 
 logger = logging.getLogger(__name__)
 
 
 def get_citation_count(title, authors=None, year=None):
-    """通过 Semantic Scholar API 获取引用次数（单篇查询，保留兼容）"""
+    """Fetch citation count for one title through Semantic Scholar."""
     url = "https://api.semanticscholar.org/graph/v1/paper/search"
     params = {
         "query": title,
@@ -29,21 +30,18 @@ def get_citation_count(title, authors=None, year=None):
         if resp.status_code == 200:
             data = resp.json()
             if data.get("data"):
-                paper = data["data"][0]
-                return paper.get("citationCount", 0)
+                return data["data"][0].get("citationCount", 0)
     except Exception as e:
-        logger.warning(f"Semantic Scholar API 查询失败: {e}")
+        logger.warning("Semantic Scholar API query failed: %s", e)
     return None
 
 
-# ═══════════════════════════════════════════════════════════
-#  流水线子函数
-# ═══════════════════════════════════════════════════════════
-
-def _build_ss_request_params(ss_config: Dict) -> Tuple[datetime, Optional[datetime], str, List[str], int]:
-    """从配置构建 Semantic Scholar 搜索参数"""
+def _build_ss_request_params(ss_config: Dict) -> Tuple[datetime, Optional[datetime], str, List[str], int, int, int]:
+    """Build request controls for Semantic Scholar search."""
     queries = flatten_queries(ss_config)
-    max_per_query = ss_config.get("max_results_per_query", 100)
+    max_per_query = int(ss_config.get("max_results_per_query", 100))
+    max_pages = max(1, int(ss_config.get("max_pages_per_query", 1)))
+    stop_after_empty_pages = max(1, int(ss_config.get("stop_after_empty_pages", 1)))
     days_back = ss_config.get("days_back", 180)
 
     configured_start = validate_date(ss_config.get("start_date", ""))
@@ -58,11 +56,11 @@ def _build_ss_request_params(ss_config: Dict) -> Tuple[datetime, Optional[dateti
     )
     year_from = start_date.year
     year_filter = f"{year_from}-{end_date.year}" if end_date else f"{year_from}-"
-    return start_date, end_date, year_filter, queries, max_per_query
+    return start_date, end_date, year_filter, queries, max_per_query, max_pages, stop_after_empty_pages
 
 
 def _ss_request_with_retry(url: str, params: Dict, api_key: str = "") -> Optional[requests.Response]:
-    """带重试和 429 处理的 SS API 请求"""
+    """Semantic Scholar request with basic retry and 429 backoff."""
     headers = {}
     if api_key:
         headers["x-api-key"] = api_key
@@ -71,23 +69,22 @@ def _ss_request_with_retry(url: str, params: Dict, api_key: str = "") -> Optiona
             resp = requests.get(url, params=params, headers=headers, timeout=30)
             if resp.status_code == 429:
                 wait_seconds = 30 + attempt * 10
-                logger.warning(f"Semantic Scholar API 限速，等待{wait_seconds}秒...")
+                logger.warning("Semantic Scholar API rate limited; waiting %ss", wait_seconds)
                 time.sleep(wait_seconds)
                 continue
             return resp
         except requests.RequestException as e:
             wait_seconds = 5 * (attempt + 1)
-            logger.warning(f"Semantic Scholar 网络请求失败，{wait_seconds}秒后重试: {e}")
+            logger.warning("Semantic Scholar request failed; retrying in %ss: %s", wait_seconds, e)
             time.sleep(wait_seconds)
     return None
 
 
 def _ss_item_to_paper(item: Dict, config: Dict, start_date: datetime, end_date: Optional[datetime]) -> Optional[Dict]:
-    """将 Semantic Scholar 搜索结果条目转换为论文字典（含日期过滤）"""
+    """Convert one Semantic Scholar result into a normalized paper dict."""
     ext_ids = item.get("externalIds") or {}
     paper_id = ext_ids.get("DOI") or ext_ids.get("ArXiv") or item.get("paperId", "")
 
-    # 日期过滤
     pub_date = item.get("publicationDate")
     if pub_date:
         try:
@@ -102,7 +99,6 @@ def _ss_item_to_paper(item: Dict, config: Dict, start_date: datetime, end_date: 
         year = item.get("year")
         published = str(year) if year else "unknown"
 
-    abstract = item.get("abstract") or ""
     title = item.get("title") or ""
     if not title:
         return None
@@ -114,8 +110,7 @@ def _ss_item_to_paper(item: Dict, config: Dict, start_date: datetime, end_date: 
     oa_pdf = item.get("openAccessPdf") or {}
     pdf_url = oa_pdf["url"] if oa_pdf and oa_pdf.get("url") else ""
 
-    authors_list = item.get("authors", [])
-    authors_str = ", ".join(a.get("name", "") for a in authors_list if a.get("name"))
+    authors = ", ".join(a.get("name", "") for a in item.get("authors", []) if a.get("name"))
     journal = item.get("journal") or {}
     venue = (
         item.get("venue")
@@ -123,9 +118,7 @@ def _ss_item_to_paper(item: Dict, config: Dict, start_date: datetime, end_date: 
         or journal.get("name")
         or ""
     )
-    # 清洗截断省略号
-    venue = re.sub(r"[…\.]{2,}", "", venue).strip(" ,;-")
-    # "arXiv preprint arXiv:xxxx" 不是期刊名，清空
+    venue = re.sub(r"[….]{2,}", "", venue).strip(" ,;-")
     if venue and re.search(r"arXiv\s*(preprint)?", venue, re.IGNORECASE):
         venue = ""
     paper_url = (
@@ -138,8 +131,8 @@ def _ss_item_to_paper(item: Dict, config: Dict, start_date: datetime, end_date: 
     paper = {
         "id": paper_id,
         "title": title,
-        "authors": authors_str,
-        "abstract": abstract,
+        "authors": authors,
+        "abstract": item.get("abstract") or "",
         "published": published,
         "paper_url": paper_url,
         "arxiv_id": arxiv_id or "",
@@ -164,67 +157,86 @@ def _ss_item_to_paper(item: Dict, config: Dict, start_date: datetime, end_date: 
     return finalize_paper(paper, config)
 
 
-# ═══════════════════════════════════════════════════════════
-#  主入口
-# ═══════════════════════════════════════════════════════════
-
 def fetch_semantic_scholar_papers(config: Dict, ss_api_key: str = "", arxiv_client=None) -> List[Dict]:
-    """用 Semantic Scholar 语义搜索替代关键词匹配（编排流水线）"""
+    """Search Semantic Scholar by query, paging until no new deduplicated records appear."""
     ss_config = config.get("sources", {}).get("semantic_scholar", {})
     if not ss_config.get("enabled", False):
-        logger.info("Semantic Scholar 数据源已禁用")
+        logger.info("Semantic Scholar source disabled")
         return []
 
-    start_date, end_date, year_filter, queries, max_per_query = _build_ss_request_params(ss_config)
+    start_date, end_date, year_filter, queries, max_per_query, max_pages, stop_after_empty_pages = (
+        _build_ss_request_params(ss_config)
+    )
 
     all_papers = []
     seen_ids = set()
 
-    FIELDS = (
+    fields = (
         "paperId,url,title,abstract,authors,year,citationCount,"
         "venue,publicationVenue,publicationDate,publicationTypes,"
         "externalIds,openAccessPdf,fieldsOfStudy,journal"
     )
 
     for query in queries:
-        logger.info(f"Semantic Scholar 搜索: {query}")
-        params = {
-            "query": query,
-            "fields": FIELDS,
-            "limit": max_per_query,
-            "year": year_filter,
-        }
+        logger.info("Semantic Scholar search: %s", query)
+        query_count = 0
+        empty_pages = 0
 
-        try:
-            resp = _ss_request_with_retry(
-                "https://api.semanticscholar.org/graph/v1/paper/search",
-                params,
-                api_key=ss_api_key,
-            )
-            if resp is None or resp.status_code != 200:
-                logger.warning(
-                    f"Semantic Scholar API 请求失败{'，状态码 ' + str(resp.status_code) if resp else ''}"
+        for page in range(max_pages):
+            params = {
+                "query": query,
+                "fields": fields,
+                "limit": max_per_query,
+                "offset": page * max_per_query,
+                "year": year_filter,
+            }
+            try:
+                resp = _ss_request_with_retry(
+                    "https://api.semanticscholar.org/graph/v1/paper/search",
+                    params,
+                    api_key=ss_api_key,
                 )
-                continue
+                if resp is None or resp.status_code != 200:
+                    status = f", status {resp.status_code}" if resp else ""
+                    logger.warning("Semantic Scholar API request failed%s", status)
+                    break
 
-            results = resp.json().get("data", [])
-            for item in results:
-                ext_ids = item.get("externalIds") or {}
-                paper_id = ext_ids.get("DOI") or ext_ids.get("ArXiv") or item.get("paperId", "")
-                if paper_id in seen_ids:
-                    continue
-                seen_ids.add(paper_id)
+                results = resp.json().get("data", [])
+                if not results:
+                    break
 
-                paper = _ss_item_to_paper(item, config, start_date, end_date)
-                if paper:
-                    all_papers.append(paper)
+                page_new = 0
+                for item in results:
+                    ext_ids = item.get("externalIds") or {}
+                    paper_id = ext_ids.get("DOI") or ext_ids.get("ArXiv") or item.get("paperId", "")
+                    if paper_id in seen_ids:
+                        continue
 
-            logger.info(f"  → 获取 {len(results)} 篇，累计 {len(all_papers)} 篇")
-            time.sleep(3)
+                    paper = _ss_item_to_paper(item, config, start_date, end_date)
+                    if paper:
+                        seen_ids.add(paper_id)
+                        all_papers.append(paper)
+                        query_count += 1
+                        page_new += 1
 
-        except Exception as e:
-            logger.warning(f"Semantic Scholar 查询失败 ({query}): {e}")
-            continue
+                logger.info(
+                    "  -> Semantic Scholar page %s/%s: new %s, total %s",
+                    page + 1,
+                    max_pages,
+                    page_new,
+                    len(all_papers),
+                )
+                empty_pages = empty_pages + 1 if page_new == 0 else 0
+                if empty_pages >= stop_after_empty_pages or len(results) < max_per_query:
+                    break
+                time.sleep(3)
 
-    logger.info(f"Semantic Scholar 共获取 {len(all_papers)} 篇去重论文")
+            except Exception as e:
+                logger.warning("Semantic Scholar query failed (%s): %s", query, e)
+                break
+
+        logger.info("  -> Semantic Scholar query added %s, total %s", query_count, len(all_papers))
+        time.sleep(3)
+
+    logger.info("Semantic Scholar returned %s deduplicated papers", len(all_papers))
     return all_papers

@@ -550,6 +550,22 @@ button.summary-item {
     cursor: pointer;
 }
 
+.date-nav-btn {
+    border: none;
+    background: var(--bg-canvas);
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    line-height: 1;
+    margin-top: 0.55rem;
+}
+.date-nav-btn:hover {
+    color: var(--ocean);
+    background: rgba(0,0,0,0.05);
+}
+
 .daily-date-picker:focus {
     outline: none;
     border-color: var(--rose);
@@ -1381,6 +1397,65 @@ footer::before {
 
 .trend-panel summary:hover {
     color: #2aa7a3;
+}
+
+.trend-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+}
+
+.trend-mode {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem;
+    background: #eef6fb;
+    border: 1px solid #d6e8f3;
+    border-radius: 8px;
+}
+
+.trend-mode-btn {
+    border: 0;
+    border-radius: 6px;
+    padding: 0.38rem 0.72rem;
+    background: transparent;
+    color: #31546a;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.trend-mode-btn.active {
+    background: #ffffff;
+    color: #0f6f95;
+    box-shadow: 0 1px 4px rgba(24, 78, 107, 0.14);
+}
+
+.trend-year-select-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #5c6b73;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.trend-year-select-wrap.is-hidden {
+    display: none;
+}
+
+.trend-year-select-wrap select {
+    min-width: 5.5rem;
+    padding: 0.4rem 0.55rem;
+    border: 1px solid #cddfea;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #21313a;
+    font-weight: 700;
 }
 
 .trend-chart-wrap {

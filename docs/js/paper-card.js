@@ -80,6 +80,21 @@ export function recommendationScore(paper) {
     return recommendationDetails(paper).score;
 }
 
+export function influenceScore(paper) {
+    // 影响因子分（对数压缩，IF=100 得约 45 分）
+    const if_val = Number(paper.impact_factor || 0);
+    const ifScore = if_val > 0 ? Math.min(45, Math.log10(if_val + 1) * 22) : 0;
+    // 引用影响分（对数压缩，引用=10000 得约 35 分）
+    const citation = Number(paper.citation_count || 0);
+    const citationScore = citation > 0 ? Math.min(35, Math.log10(citation + 1) * 14) : 0;
+    // 正式发表加分
+    const publishedScore = isPreprint(paper) ? 2 : 10;
+    // 来源可信加分
+    const source = paper.source || '';
+    const sourceScore = (source === 'semantic_scholar' || source === 'openalex' || source === 'crossref') ? 5 : (source === 'google_scholar' ? 2 : 0);
+    return ifScore + citationScore + publishedScore + sourceScore;
+}
+
 export function sortTimestamp(paper) {
     const parsed = parseDate(paper.published);
     const value = parsed.getTime();

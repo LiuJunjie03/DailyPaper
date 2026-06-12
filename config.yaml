@@ -28,6 +28,8 @@ sources:
       numerical_methods:
         - "differentiable CFD solver neural"
     max_results_per_query: 20
+    max_pages_per_query: 5
+    stop_after_empty_pages: 1
     days_back: 30
     mailto: ""  # Crossref polite pool 邮箱 — 建议设置 CROSSREF_MAILTO 环境变量
 
@@ -50,6 +52,8 @@ sources:
       numerical_methods:
         - "differentiable solver CFD neural"
     max_results_per_query: 20
+    max_pages_per_query: 5
+    stop_after_empty_pages: 1
     days_back: 30
     mailto: ""  # OpenAlex polite pool 邮箱 — 建议设置 CROSSREF_MAILTO 环境变量
 
@@ -76,6 +80,8 @@ sources:
         - "machine learning multiphase flow prediction"
         - "neural network interface capturing"
     max_results_per_query: 10
+    max_pages_per_query: 3
+    stop_after_empty_pages: 1
     # year_from: 留空则自动使用当前年份（无需每年手动更新）
     # year_from: 2026
 
@@ -173,6 +179,8 @@ sources:
         - "uncertainty quantification CFD surrogate model fluid dynamics"
         - "data assimilation inverse problem fluid dynamics machine learning"
     max_results_per_query: 20
+    max_pages_per_query: 5
+    stop_after_empty_pages: 1
     days_back: 30
 
   # ScienceDirect (Elsevier) 数据源 — 学校图书馆网络浏览器抓取

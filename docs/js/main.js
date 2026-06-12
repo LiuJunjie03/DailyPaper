@@ -8,7 +8,7 @@ import { debugLog, sanitizeFilename, safeURL, localToday } from './utils.js';
 import { hasPDF, getPaperPDFUrl } from './paper-card.js';
 import { loadMonthsIndex, loadMonthData } from './data-loader.js';
 import { filterAndSortPapers, saveStateToURL } from './filters.js';
-import { syncDailyPickerToMonth, setSegmentedActive, summaryActionIsActive } from './dashboard.js';
+import { syncDailyPickerToMonth, setSegmentedActive, summaryActionIsActive, navigateToDate } from './dashboard.js';
 
 // ===== DOM 元素查询 =====
 
@@ -152,63 +152,76 @@ document.addEventListener('click', async function(e) {
 
 // 日期选择器
 if (dom.dailyDatePicker) {
-    dom.dailyDatePicker.addEventListener('change', async function() {
-        state.currentDate = this.value || '';
+    const stopDatePickerPropagation = (event) => event.stopPropagation();
+    dom.dailyDatePicker.addEventListener('pointerdown', stopDatePickerPropagation);
+    dom.dailyDatePicker.addEventListener('click', stopDatePickerPropagation);
+    dom.dailyDatePicker.addEventListener('change', async function(event) {
+        event.stopPropagation();
         state.currentSpecial = '';
-        if (!state.currentDate) {
-            state.currentMonth = 'all';
-            document.querySelectorAll('.month-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.month === 'all');
-            });
-            await loadMonthData('all');
-            return;
+        const { monthChanged } = await navigateToDate(this.value || '');
+        if (monthChanged) {
+            if (dom.resultsCount) dom.resultsCount.textContent = '加载中...';
+            if (dom.papersContainer) {
+                dom.papersContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">加载中...</div>';
+            }
+            await loadMonthData(state.currentMonth);
+        } else {
+            filterAndSortPapers();
         }
+    });
+}
 
-        state.currentMonth = state.currentDate.slice(0, 7);
-        document.querySelectorAll('.month-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.month === state.currentMonth);
-        });
+// 日期切换按钮 — ◀ ▶ 加减一天
+const _dateOffset = (days) => {
+    const d = new Date(state.currentDate || localToday());
+    d.setUTCDate(d.getUTCDate() + days);
+    return d.toISOString().slice(0, 10);
+};
+async function _shiftDate(days) {
+    if (!state.currentDate) state.currentDate = localToday();
+    const newDate = _dateOffset(days);
+    state.currentSpecial = '';
+    const { monthChanged } = await navigateToDate(newDate);
+    if (monthChanged) {
         if (dom.resultsCount) dom.resultsCount.textContent = '加载中...';
         if (dom.papersContainer) {
             dom.papersContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">加载中...</div>';
         }
         await loadMonthData(state.currentMonth);
-    });
+    } else {
+        filterAndSortPapers();
+    }
+}
+if (document.getElementById('datePrevBtn')) {
+    document.getElementById('datePrevBtn').addEventListener('click', () => _shiftDate(-1));
+    document.getElementById('dateNextBtn').addEventListener('click', () => _shiftDate(1));
 }
 
 // Summary action 卡片
 dom.summaryActions.forEach(card => {
-    card.addEventListener('click', async function() {
+    card.addEventListener('click', async function(event) {
+        if (event.target.closest('#dailyDatePicker')) return;
         const action = this.dataset.summaryAction;
         const wasActive = summaryActionIsActive(action);
         state.currentSpecial = '';
 
         if (action === 'today') {
             const today = localToday();
-            if (wasActive) {
-                // 再次点击：恢复默认
-                state.currentDate = '';
-                state.currentMonth = 'all';
-                if (dom.dailyDatePicker) dom.dailyDatePicker.value = '';
-                setSegmentedActive(document.querySelectorAll('.month-btn'), 'month', 'all');
-                await loadMonthData('all');
-            } else {
-                // 首次点击：跳转到今日
-                state.currentDate = today;
-                state.currentMonth = today.slice(0, 7);
-                if (dom.dailyDatePicker) dom.dailyDatePicker.value = today;
-                setSegmentedActive(document.querySelectorAll('.month-btn'), 'month', state.currentMonth);
+            const { monthChanged } = await navigateToDate(wasActive ? '' : today);
+            if (monthChanged) {
                 if (dom.resultsCount) dom.resultsCount.textContent = '加载中...';
                 if (dom.papersContainer) {
                     dom.papersContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">加载中...</div>';
                 }
                 await loadMonthData(state.currentMonth);
+            } else {
+                filterAndSortPapers();
             }
             return;
         }
 
         state.currentDate = '';
-        if (dom.dailyDatePicker) dom.dailyDatePicker.value = '';
+        if (dom.dailyDatePicker) dom.dailyDatePicker.value = localToday();
 
         if (action === 'month') {
             state.currentMonth = wasActive ? 'all' : localToday().slice(0, 7);
@@ -348,4 +361,6 @@ if (copyDoiBtn) {
 
 // ===== 初始化 =====
 debugLog('Initializing...');
+// 日期选择器初始值 — 确保无论何时刷新页面都显示今天
+if (dom.dailyDatePicker) dom.dailyDatePicker.value = localToday();
 loadMonthsIndex();

@@ -4,8 +4,8 @@
 
 import { state, dom } from './state.js';
 import { debugLog, escapeHTML, escapeAttribute } from './utils.js';
-import { isPreprint, hasPDF, recommendationScore, sortTimestamp, createPaperHTML } from './paper-card.js';
-import { updateSummaryActionStates, updateTodayCount } from './dashboard.js';
+import { isPreprint, hasPDF, recommendationScore, influenceScore, sortTimestamp, createPaperHTML } from './paper-card.js';
+import { updateSummaryActionStates, updateTodayCount, syncTodayCardLabel } from './dashboard.js';
 
 // ===== 分类辅助函数 =====
 
@@ -194,6 +194,12 @@ export function filterAndSortPapers() {
             const scoreDiff = recommendationScore(b) - recommendationScore(a);
             if (scoreDiff !== 0) return scoreDiff;
             return dateB - dateA;
+        } else if (state.currentSort === 'influence-desc') {
+            const scoreDiff = influenceScore(b) - influenceScore(a);
+            if (scoreDiff !== 0) return scoreDiff;
+            const citationDiff = Number(b.citation_count || 0) - Number(a.citation_count || 0);
+            if (citationDiff !== 0) return citationDiff;
+            return dateB - dateA;
         }
         return 0;
     });
@@ -203,6 +209,7 @@ export function filterAndSortPapers() {
     updatePDFButtonCounts();
     updateCategoryButtonCounts();
     updateTodayCount(state.allPapersData);
+    syncTodayCardLabel();
     updateSummaryActionStates();
     if (dom.resultsCount) {
         dom.resultsCount.textContent = state.currentDate
