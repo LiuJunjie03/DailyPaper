@@ -12,10 +12,18 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from fetch_papers import PaperFetcher
+from daily_paper.classify import (
+    classify_paper,
+    paper_text,
+    score_subdomains,
+    SUBDOMAIN_RULES,
+    FLUID_RELATED_TERMS,
+)
 
 
 def main():
     fetcher = PaperFetcher()
+    config = fetcher.config
     data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 
     total_migrated = 0
@@ -35,9 +43,11 @@ def main():
             old_domain = p.get("primary_domain", "")
 
             # 重新分类
-            p["tags"] = fetcher.classify_paper(p)
+            p["tags"] = classify_paper(p, config)
             p["primary_domain"] = p["tags"][-1] if p.get("tags") else ""
-            p["classification_score"] = fetcher._score_subdomains(p)
+            p["classification_score"] = score_subdomains(
+                paper_text(p), SUBDOMAIN_RULES, FLUID_RELATED_TERMS, p.get("categories", [])
+            )
 
             if p["tags"] != old_tags or p["primary_domain"] != old_domain:
                 count += 1

@@ -84,12 +84,27 @@ def get_impact_factor(paper: Dict, table: Dict) -> Optional[float]:
 
 def publication_type(paper: Dict) -> str:
     """判断论文发表类型（journal / conference / preprint / unknown）"""
-    publication_types = [str(t).lower() for t in paper.get("publication_types", []) or []]
+    # 规范化：去掉 -/_/空格，统一为小写，以兼容 "journal-article"、"proceedings-article" 等变体
+    raw_types = [str(t).lower() for t in paper.get("publication_types", []) or []]
+    normalized = {t.replace("-", "").replace("_", "").replace(" ", "") for t in raw_types}
     venue = paper.get("venue") or paper.get("conference") or ""
-    if "journalarticle" in publication_types or paper.get("doi"):
+
+    # 显式类型标记优先
+    if normalized & {"journalarticle", "article"}:
         return "journal"
-    if "conference" in publication_types:
+    if normalized & {"conferencepaper", "conference", "proceedingsarticle", "proceedings"}:
         return "conference"
+
+    # 无显式类型时，按 venue 关键词推断
+    venue_lower = venue.lower()
+    conf_keywords = ["conference", "proceedings", "symposium", "workshop", "summit"]
+    if any(kw in venue_lower for kw in conf_keywords):
+        return "conference"
+
+    # DOI 但无其他线索时默认 journal（大多数 DOI 论文是期刊）
+    if paper.get("doi"):
+        return "journal"
+
     if paper.get("arxiv_id"):
         return "preprint" if not venue else "conference"
     return "unknown"

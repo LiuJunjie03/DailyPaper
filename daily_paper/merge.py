@@ -64,6 +64,8 @@ def merge_two_papers(paper_a: Dict, paper_b: Dict, finalize_fn: Optional[Callabl
     # 高优先级作为 primary
     primary, secondary = (paper_b, paper_a) if source_rank(paper_b) >= source_rank(paper_a) else (paper_a, paper_b)
     merged = dict(secondary)
+    # 注意：0 和 False 被视为有效值并保留（如 citation_count=0）。
+    # 空字符串无法用于主动清空 secondary 字段，但当前数据流不需要此能力。
     merged.update({k: v for k, v in primary.items() if v not in (None, "", [], {})})
 
     for field in ["arxiv_url", "pdf_url", "preprint_pdf_url", "paper_url", "doi", "venue", "conference"]:
@@ -84,6 +86,10 @@ def merge_two_papers(paper_a: Dict, paper_b: Dict, finalize_fn: Optional[Callabl
         + (paper_b.get("sources") or [paper_b.get("source", "unknown")])
     ))
     merged["source"] = primary.get("source") or merged.get("source") or "unknown"
+
+    # 非 google_scholar 主来源不应保留 unreliable_google_scholar_snippet
+    if merged.get("source") != "google_scholar" and merged.get("abstract_status") == "unreliable_google_scholar_snippet":
+        merged["abstract_status"] = ""
 
     if finalize_fn is not None:
         merged = finalize_fn(merged)

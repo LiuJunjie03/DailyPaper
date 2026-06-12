@@ -424,15 +424,20 @@ def contains_any(text: str, terms: list) -> bool:
     return any(term_in_text(text, term) for term in terms)
 
 
-def score_subdomains(paper_text: str, subdomain_rules: dict, fluid_terms, fluid_categories) -> dict:
-    # NOTE: 此函数签名与 PaperFetcher._score_subdomains 不同，
-    # 后者直接接收 paper dict。保留原方法体供参考。
-    # 此处忠实复制 _score_subdomains 的完整逻辑：
-    # 调用方应传入 _paper_text(paper) 的结果、SUBDOMAIN_RULES、FLUID_RELATED_TERMS、FLUID_RELATED_CATEGORIES
+def score_subdomains(paper_text: str, subdomain_rules: dict, fluid_terms, paper_categories) -> dict:
+    """计算论文在各子域的匹配分数。
+
+    Args:
+        paper_text: 论文标题+摘要拼接的归一化文本（由 paper_text() 生成）
+        subdomain_rules: SUBDOMAIN_RULES 字典
+        fluid_terms: FLUID_RELATED_TERMS 列表
+        paper_categories: 论文的 ArXiv 分类列表（paper.get("categories", [])），
+                          用于检测流体相关分类
+    """
     scores = {}
     has_fluid_context = contains_any(paper_text, fluid_terms) or any(
-        str(cat).lower() in fluid_categories
-        for cat in []  # 调用方需自行判断 categories
+        str(cat).lower() in FLUID_RELATED_CATEGORIES
+        for cat in paper_categories or []
     )
     if not has_fluid_context:
         return scores

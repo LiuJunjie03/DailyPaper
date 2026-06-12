@@ -75,7 +75,6 @@ export function dataURL(path) {
  * 返回本地日期字符串 "YYYY-MM-DD"（避免 toISOString 的 UTC 偏移问题）
  */
 export function localToday() {
-    if (window.TODAY) return window.TODAY;
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }

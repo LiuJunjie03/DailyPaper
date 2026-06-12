@@ -35,6 +35,16 @@ export function summaryActionIsActive(action) {
 }
 
 /**
+ * 动态更新今日新增计数 — 基于论文数据的本地日期
+ */
+export function updateTodayCount(allPapersData) {
+    const today = localToday();
+    const count = allPapersData.filter(p => p.published === today).length;
+    const card = document.querySelector('.summary-action[data-summary-action="today"] .summary-value');
+    if (card) card.textContent = count;
+}
+
+/**
  * 更新所有 summary action 卡片的激活状态样式
  */
 export function updateSummaryActionStates() {

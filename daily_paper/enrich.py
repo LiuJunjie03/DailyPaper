@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 logger = logging.getLogger(__name__)
 
 _CASCADE_JSON_CACHE = {}
+_CACHE_LOCK = threading.Lock()
 
 
 # ═══════════════════════════════════════════════════════════
@@ -30,15 +31,17 @@ _CASCADE_JSON_CACHE = {}
 def _cascade_request_json(url: str, params: Optional[Dict] = None, timeout: int = 20) -> Optional[Dict]:
     """级联补全专用 JSON 请求，429 自动重试"""
     cache_key = (url, tuple(sorted((params or {}).items())))
-    if cache_key in _CASCADE_JSON_CACHE:
-        return _CASCADE_JSON_CACHE[cache_key]
+    with _CACHE_LOCK:
+        if cache_key in _CASCADE_JSON_CACHE:
+            return _CASCADE_JSON_CACHE[cache_key]
     for attempt in range(3):
         try:
             resp = requests.get(url, params=params, timeout=timeout,
                                 headers={"User-Agent": "DailyPaperBot/1.0"})
             if resp.status_code == 200:
                 data = resp.json()
-                _CASCADE_JSON_CACHE[cache_key] = data
+                with _CACHE_LOCK:
+                    _CASCADE_JSON_CACHE[cache_key] = data
                 return data
             if resp.status_code == 429:
                 time.sleep(5 * (attempt + 1))
@@ -187,8 +190,9 @@ def _needs_publisher_enrichment(paper: Dict) -> bool:
 #  各数据源补全实现
 # ═══════════════════════════════════════════════════════════
 
-def _enrich_from_crossref(paper: Dict) -> None:
-    """从 Crossref 补全单篇论文的元数据"""
+def _enrich_from_crossref(paper: Dict) -> Dict:
+    """从 Crossref 补全单篇论文的元数据，返回 patch dict 而不原地修改"""
+    patch = {}
     doi = (paper.get("doi") or "").strip()
     results = []
 
@@ -214,14 +218,14 @@ def _enrich_from_crossref(paper: Dict) -> None:
     for item in results[:1]:
         # 补全 DOI
         if not paper.get("doi") and item.get("DOI"):
-            paper["doi"] = item["DOI"].strip().lower()
+            patch["doi"] = item["DOI"].strip().lower()
         # 补全日期
         if paper.get("date_status") != "reliable":
             date = _cascade_crossref_date(item)
             if date:
-                paper["published"] = date
-                paper["date_source"] = "crossref"
-                paper["date_status"] = "reliable"
+                patch["published"] = date
+                patch["date_source"] = "crossref"
+                patch["date_status"] = "reliable"
         # 补全摘要
         if not paper.get("abstract", "").strip():
             abstract = item.get("abstract", "")
@@ -229,24 +233,26 @@ def _enrich_from_crossref(paper: Dict) -> None:
                 abstract = re.sub(r"<[^>]+>", " ", abstract)
                 abstract = re.sub(r"\s+", " ", abstract).strip()
                 if _is_reliable_abstract(abstract):
-                    paper["abstract"] = abstract
-                    paper["abstract_status"] = "enriched"
-                    paper["abstract_source"] = "crossref"
+                    patch["abstract"] = abstract
+                    patch["abstract_status"] = "enriched"
+                    patch["abstract_source"] = "crossref"
         # 补全 venue
         if not paper.get("venue"):
             container = item.get("container-title") or []
             if container:
-                paper["venue"] = container[0].strip()
-                paper["conference"] = paper["conference"] or paper["venue"]
+                patch["venue"] = container[0].strip()
+                patch["conference"] = paper.get("conference") or patch["venue"]
         # 补全引用数
         if paper.get("citation_count") is None:
             count = item.get("is-referenced-by-count")
             if count is not None:
-                paper["citation_count"] = count
+                patch["citation_count"] = count
+    return patch
 
 
-def _enrich_from_openalex(paper: Dict) -> None:
-    """从 OpenAlex 补全单篇论文的元数据"""
+def _enrich_from_openalex(paper: Dict) -> Dict:
+    """从 OpenAlex 补全单篇论文的元数据，返回 patch dict 而不原地修改"""
+    patch = {}
     data = _cascade_request_json(
         "https://api.openalex.org/works",
         params={
@@ -256,7 +262,7 @@ def _enrich_from_openalex(paper: Dict) -> None:
         },
     )
     if not data:
-        return
+        return patch
 
     for item in (data.get("results") or []):
         if not _cascade_title_matches(paper.get("title", ""), item.get("title", "")):
@@ -265,39 +271,40 @@ def _enrich_from_openalex(paper: Dict) -> None:
         if not paper.get("doi"):
             raw_doi = (item.get("doi") or "").replace("https://doi.org/", "")
             if raw_doi:
-                paper["doi"] = raw_doi
+                patch["doi"] = raw_doi
         # 补全日期
         if paper.get("date_status") != "reliable":
             pub_date = item.get("publication_date") or ""
             if re.fullmatch(r"\d{4}-\d{2}-\d{2}", pub_date):
-                paper["published"] = pub_date
-                paper["date_source"] = "openalex"
-                paper["date_status"] = "approximate"
+                patch["published"] = pub_date
+                patch["date_source"] = "openalex"
+                patch["date_status"] = "approximate"
         # 补全摘要（从 inverted index 重建）
         if not paper.get("abstract", "").strip():
             abstract = _cascade_openalex_abstract(item.get("abstract_inverted_index"))
             if _is_reliable_abstract(abstract):
-                paper["abstract"] = abstract
-                paper["abstract_status"] = "enriched"
-                paper["abstract_source"] = "openalex"
+                patch["abstract"] = abstract
+                patch["abstract_status"] = "enriched"
+                patch["abstract_source"] = "openalex"
         # 补全 venue
         if not paper.get("venue"):
             loc = item.get("primary_location") or {}
             src = loc.get("source") or {}
             venue = src.get("display_name") or ""
             if venue:
-                paper["venue"] = venue
-                paper["conference"] = paper["conference"] or venue
+                patch["venue"] = venue
+                patch["conference"] = paper.get("conference") or venue
         # 补全引用数
         if paper.get("citation_count") is None:
             count = item.get("cited_by_count")
             if count is not None:
-                paper["citation_count"] = count
+                patch["citation_count"] = count
         break  # 只取第一个匹配
+    return patch
 
 
-def _enrich_from_semantic_scholar(paper: Dict) -> None:
-    """从 Semantic Scholar 补全单篇论文的元数据"""
+def _enrich_from_semantic_scholar(paper: Dict) -> Dict:
+    """从 Semantic Scholar 补全单篇论文的元数据，返回 patch dict 而不原地修改"""
     data = _cascade_request_json(
         "https://api.semanticscholar.org/graph/v1/paper/search",
         params={
@@ -307,73 +314,77 @@ def _enrich_from_semantic_scholar(paper: Dict) -> None:
         },
     )
     if not data:
-        return
+        return {}
 
+    patch = {}
     for item in (data.get("data") or []):
         if not _cascade_title_matches(paper.get("title", ""), item.get("title", "")):
             continue
         # 补全 DOI / arXiv ID
         ext = item.get("externalIds") or {}
         if not paper.get("doi") and ext.get("DOI"):
-            paper["doi"] = ext["DOI"]
+            patch["doi"] = ext["DOI"]
         if not paper.get("arxiv_id") and ext.get("ArXiv"):
-            paper["arxiv_id"] = ext["ArXiv"]
-            paper["arxiv_url"] = f"https://arxiv.org/abs/{ext['ArXiv']}"
-            paper["preprint_pdf_url"] = f"https://arxiv.org/pdf/{ext['ArXiv']}"
+            patch["arxiv_id"] = ext["ArXiv"]
+            patch["arxiv_url"] = f"https://arxiv.org/abs/{ext['ArXiv']}"
+            patch["preprint_pdf_url"] = f"https://arxiv.org/pdf/{ext['ArXiv']}"
         # 补全日期
         if paper.get("date_status") != "reliable":
             pub_date = item.get("publicationDate") or ""
             if re.fullmatch(r"\d{4}-\d{2}-\d{2}", pub_date):
-                paper["published"] = pub_date
-                paper["date_source"] = "semantic_scholar"
-                paper["date_status"] = "approximate"
+                patch["published"] = pub_date
+                patch["date_source"] = "semantic_scholar"
+                patch["date_status"] = "approximate"
         # 补全摘要
         if not paper.get("abstract", "").strip():
             abstract = (item.get("abstract") or "").strip()
             if _is_reliable_abstract(abstract):
-                paper["abstract"] = abstract
-                paper["abstract_status"] = "enriched"
-                paper["abstract_source"] = "semantic_scholar"
+                patch["abstract"] = abstract
+                patch["abstract_status"] = "enriched"
+                patch["abstract_source"] = "semantic_scholar"
         # 补全 venue
         if not paper.get("venue"):
             venue = item.get("venue") or ""
             if venue:
-                paper["venue"] = venue
-                paper["conference"] = paper["conference"] or venue
+                patch["venue"] = venue
+                patch["conference"] = paper.get("conference") or venue
         # 补全引用数
         if paper.get("citation_count") is None:
             count = item.get("citationCount")
             if count is not None:
-                paper["citation_count"] = count
+                patch["citation_count"] = count
         # 补全 Semantic Scholar ID
         if not paper.get("semantic_scholar_id") and item.get("paperId"):
-            paper["semantic_scholar_id"] = item["paperId"]
+            patch["semantic_scholar_id"] = item["paperId"]
         break
+    return patch
 
 
-def _enrich_from_publisher(paper: Dict) -> None:
-    """从出版商网页 meta 标签补全摘要"""
+def _enrich_from_publisher(paper: Dict) -> Dict:
+    """从出版商网页 meta 标签补全摘要，返回 patch dict 而不原地修改"""
     if paper.get("abstract", "").strip():
-        return  # 已有摘要，跳过
+        return {}  # 已有摘要，跳过
     url = paper.get("paper_url") or paper.get("arxiv_url") or ""
     if not url:
-        return
+        return {}
     try:
         resp = requests.get(url, timeout=15, headers={"User-Agent": "DailyPaperBot/1.0"})
         if resp.status_code != 200:
-            return
+            return {}
         soup = BeautifulSoup(resp.text, "lxml")
         for tag_name in ("citation_abstract", "dc.description", "description", "og:description"):
             tag = soup.find("meta", attrs={"name": tag_name}) or soup.find("meta", attrs={"property": tag_name})
             if tag and tag.get("content"):
                 abstract = re.sub(r"\s+", " ", tag["content"]).strip()
                 if _is_reliable_abstract(abstract):
-                    paper["abstract"] = abstract
-                    paper["abstract_status"] = "enriched"
-                    paper["abstract_source"] = "publisher_meta"
-                    break
+                    return {
+                        "abstract": abstract,
+                        "abstract_status": "enriched",
+                        "abstract_source": "publisher_meta",
+                    }
     except Exception:
         pass
+    return {}
 
 
 # ═══════════════════════════════════════════════════════════
@@ -384,11 +395,11 @@ def _enrich_from_publisher(paper: Dict) -> None:
 _API_SEMAPHORE = threading.Semaphore(8)
 
 
-def _safe_enrich_from(func, paper: Dict) -> None:
-    """在信号量保护下执行单个补全函数，异常时记录日志不传播"""
+def _safe_enrich_from(func, paper: Dict) -> Dict:
+    """在信号量保护下执行单个补全函数，异常时记录日志不传播，返回 patch dict"""
     with _API_SEMAPHORE:
         try:
-            func(paper)
+            return func(paper)
         except Exception:
             logger.warning(
                 "级联补全子任务异常: func=%s paper=%s",
@@ -396,6 +407,38 @@ def _safe_enrich_from(func, paper: Dict) -> None:
                 paper.get("title", "")[:80],
                 exc_info=True,
             )
+            return {}
+
+
+# date_status 优先级：reliable > approximate
+_DATE_STATUS_PRIORITY = {"reliable": 2, "approximate": 1}
+_DATE_FIELDS = {"published", "date_source", "date_status"}
+_EMPTY = (None, "", [], {})
+
+
+def _merge_patch(paper: Dict, patch: Dict) -> None:
+    """将单个 patch 合并到 paper，保证已有字段不被低优先级数据覆盖。
+
+    规则：
+    - paper 中已空的字段：直接从 patch 填充
+    - paper 中已有值的非日期字段：不覆盖
+    - 日期组字段（published/date_source/date_status）：允许高优先级覆盖低优先级
+      （如 Crossref 的 reliable 可覆盖 OpenAlex 的 approximate，反之不行）
+    """
+    patch_prio = _DATE_STATUS_PRIORITY.get(patch.get("date_status", ""), 0)
+    paper_prio = _DATE_STATUS_PRIORITY.get(paper.get("date_status", ""), 0)
+    date_upgrade = patch_prio > paper_prio
+
+    for k, v in patch.items():
+        if v in _EMPTY:
+            continue
+        existing = paper.get(k)
+        if existing not in _EMPTY:
+            # 已有值：只允许日期组优先级升级覆盖
+            if date_upgrade and k in _DATE_FIELDS:
+                paper[k] = v
+            continue
+        paper[k] = v
 
 
 def cascade_enrich_papers(papers: List[Dict], config: Dict, delay: float = 0.15, max_workers: int = 4) -> None:
@@ -447,16 +490,19 @@ def cascade_enrich_papers(papers: List[Dict], config: Dict, delay: float = 0.15,
         if _needs_publisher_enrichment(paper):
             tasks.append((_enrich_from_publisher, paper))
 
-        # 并发执行本论文的所有补全任务
+        # 并发执行本论文的所有补全任务。
+        # 每个任务返回 patch dict（不原地修改 paper），主线程收集后顺序合并，
+        # 消除并发写同一 paper dict 的竞态风险。
         if tasks:
+            patches = []
             with concurrent.futures.ThreadPoolExecutor(max_workers=min(len(tasks), max_workers)) as executor:
                 futures = [
-                    executor.submit(_safe_enrich_from, func, paper)
-                    for func, paper in tasks
+                    executor.submit(_safe_enrich_from, func, p)
+                    for func, p in tasks
                 ]
                 for f in futures:
                     try:
-                        f.result()
+                        patches.append(f.result())
                     except Exception:
                         logger.warning(
                             "级联补全线程池异常，降级为串行: paper=%s",
@@ -464,9 +510,9 @@ def cascade_enrich_papers(papers: List[Dict], config: Dict, delay: float = 0.15,
                             exc_info=True,
                         )
                         # 串行降级逐个重试
-                        for func, paper in tasks:
+                        for func, p in tasks:
                             try:
-                                func(paper)
+                                patches.append(func(p))
                             except Exception:
                                 logger.warning(
                                     "串行降级仍失败: func=%s paper=%s",
@@ -474,6 +520,10 @@ def cascade_enrich_papers(papers: List[Dict], config: Dict, delay: float = 0.15,
                                     paper.get("title", "")[:80],
                                     exc_info=True,
                                 )
+
+            # 主线程按优先级合并所有 patch 到 paper（可靠数据不被低优先级覆盖）
+            for patch in patches:
+                _merge_patch(paper, patch)
 
         time.sleep(delay)
 

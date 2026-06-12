@@ -5,7 +5,7 @@
 import { state, dom } from './state.js';
 import { debugLog, escapeHTML, escapeAttribute } from './utils.js';
 import { isPreprint, hasPDF, recommendationScore, sortTimestamp, createPaperHTML } from './paper-card.js';
-import { updateSummaryActionStates } from './dashboard.js';
+import { updateSummaryActionStates, updateTodayCount } from './dashboard.js';
 
 // ===== 分类辅助函数 =====
 
@@ -202,6 +202,7 @@ export function filterAndSortPapers() {
     updateStatusButtonCounts();
     updatePDFButtonCounts();
     updateCategoryButtonCounts();
+    updateTodayCount(state.allPapersData);
     updateSummaryActionStates();
     if (dom.resultsCount) {
         dom.resultsCount.textContent = state.currentDate

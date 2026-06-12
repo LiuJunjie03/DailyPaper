@@ -8,12 +8,20 @@ import { filterAndSortPapers } from './filters.js';
 import { syncDailyPickerToMonth } from './dashboard.js';
 
 /**
+ * 带状态检查的 fetch + JSON 解析
+ */
+async function fetchJSON(url) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status} loading ${url}`);
+    return response.json();
+}
+
+/**
  * 加载月份索引，解析 URL hash 恢复筛选状态，触发初始数据加载
  */
 export async function loadMonthsIndex() {
     try {
-        const response = await fetch(dataURL('data/index.json'));
-        const monthsIndex = await response.json();
+        const monthsIndex = await fetchJSON(dataURL('data/index.json'));
         debugLog('Months index loaded:', monthsIndex);
 
         if (monthsIndex.length > 0) {
@@ -73,14 +81,12 @@ export async function loadMonthData(month) {
     if (month === 'all') {
         // 加载所有月份
         try {
-            const response = await fetch(dataURL('data/index.json'));
-            const monthsIndex = await response.json();
+            const monthsIndex = await fetchJSON(dataURL('data/index.json'));
 
             state.allPapersData = [];
             for (const monthInfo of monthsIndex) {
                 if (!state.monthsCache[monthInfo.month]) {
-                    const monthResponse = await fetch(dataURL(`data/${monthInfo.month}.json`));
-                    state.monthsCache[monthInfo.month] = await monthResponse.json();
+                    state.monthsCache[monthInfo.month] = await fetchJSON(dataURL(`data/${monthInfo.month}.json`));
                 }
                 state.allPapersData.push(...state.monthsCache[monthInfo.month]);
             }
@@ -92,8 +98,7 @@ export async function loadMonthData(month) {
         // 加载单个月份
         if (!state.monthsCache[month]) {
             try {
-                const response = await fetch(dataURL(`data/${month}.json`));
-                state.monthsCache[month] = await response.json();
+                state.monthsCache[month] = await fetchJSON(dataURL(`data/${month}.json`));
                 debugLog(`Loaded month ${month}, ${state.monthsCache[month].length} papers`);
             } catch (e) {
                 console.error(`Failed to load month ${month}:`, e);

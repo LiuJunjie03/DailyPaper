@@ -11,11 +11,12 @@ import re
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from fetch_papers import PaperFetcher
-
+from daily_paper.classify import classify_paper
 
 def reclassify():
     fetcher = PaperFetcher()
-    data_dir = fetcher.config.get("output", {}).get("data_dir", "data")
+    config = fetcher.config
+    data_dir = config.get("output", {}).get("data_dir", "data")
 
     total_papers = 0
     reclassified = 0
@@ -34,7 +35,7 @@ def reclassify():
             old_tags = paper.get("tags", [])
 
             # 重新分类
-            new_tags = fetcher.classify_paper(paper)
+            new_tags = classify_paper(paper, config)
 
             if new_tags != old_tags:
                 paper["tags"] = new_tags
