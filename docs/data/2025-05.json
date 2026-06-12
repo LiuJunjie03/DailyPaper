@@ -58,14 +58,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "fluid mechanics",
-      "vortex",
       "physics-informed neural network",
-      "fluid dynamics",
-      "pinn",
-      "neural network",
+      "physics-informed",
+      "fluid mechanics",
       "deep learning",
-      "physics-informed"
+      "neural network",
+      "vortex",
+      "fluid dynamics",
+      "pinn"
     ],
     "abstract_enriched_at": "2026-06-08T15:39:34.267981+00:00",
     "abstract_source": "openalex",
@@ -139,10 +139,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "pinn",
+      "physics-informed",
       "vortex",
       "fluid dynamics",
-      "physics-informed"
+      "pinn"
     ],
     "scholar_snippet": "Physics-informed neural networks (PINNs) have been widely used to capture the behavior   the simulation of fluid dynamics across various scenarios. However, when applied to stiff",
     "abstract_status": "enriched",
@@ -207,11 +207,11 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics",
       "machine learning",
-      "deep learning"
+      "cfd",
+      "deep learning",
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "scholar_snippet": "approach known as Design Variable Coded Multilayer Perceptron (DV-MLP), aimed at  predicting velocity on unseen geometries using CFD simulation data. The DV-MLP",
     "abstract_status": "enriched",
@@ -265,14 +265,14 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "cfd",
       "wind turbine",
-      "fluid dynamics",
+      "cfd",
+      "deep learning",
       "airfoil",
-      "computational fluid dynamics",
       "neural network",
       "airfoil optimization",
-      "deep learning"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "abstract_enriched_at": "2026-06-08T15:46:12.167302+00:00",
     "abstract_source": "openalex",
@@ -283,5 +283,72 @@
     "date_source": "google_scholar",
     "date_status": "approximate",
     "is_early_access": false
+  },
+  {
+    "id": "oa-W7161655141",
+    "title": "Curriculum Learning of Physics-Informed Neural Networks based on Spatial Correlation",
+    "authors": "Xujia Chen, Xinyue Hu, Letian Chen, Daming Shi, Wenhui Fan",
+    "abstract": "Physics-Informed Neural Networks (PINNs) combine deep learning with physical constraints for solving partial differential equations (PDEs), and are widely applied in fluid mechanics, heat transfer, and solid mechanics. However, PINN training still suffers from high-dimensional non-convex loss landscapes, imbalanced multiobjective constraints, and ineffective information propagation. Existing curriculum learning and causality-guided strategies improve training stability, but mainly focus on temporal or parametric progression, lacking explicit treatment of spatial information propagation and inter-region consistency. Moreover, they are not directly applicable to boundary value problems (BVPs) with strong spatial coupling. To address this issue, we propose a spatially correlated curriculum learning framework for PINNs. To the best of our knowledge, this is the first work to address PINN training difficulties from the perspective of spatial coupling among subregions. First, spatial causal weights guide information from near-boundary regions inward, reducing optimization failures and spurious convergence. Second, a low-frequency information bridge enforces pseudo-label-based consistency across spatially separated regions, suppressing global low-frequency drift. Third, a region-adaptive reweighting strategy adjusts subregion losses to reduce local residuals and recover high-frequency details. Experiments on PDE benchmarks show that, under comparable computational cost, the proposed method alleviates training failures and improves solution accuracy. The code is available at https://github.com/pigofmomo/CurriculumLearningPINN.",
+    "published": "2025-05-14",
+    "paper_url": "https://doi.org/10.1007/978-3-030-54621-2_907-1",
+    "arxiv_id": "2605.15254",
+    "arxiv_url": "https://arxiv.org/abs/2605.15254",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.15254",
+    "categories": [],
+    "venue": "ArXiv.org",
+    "conference": "ArXiv.org",
+    "publication_types": [
+      "article"
+    ],
+    "publication_type": "unknown",
+    "doi": "10.1007/978-3-030-54621-2_907-1",
+    "external_ids": {
+      "OpenAlex": "W7161655141"
+    },
+    "semantic_scholar_id": "30e6ba8195b28c524aba082060569792df902477",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "deep learning",
+      "fluid mechanics",
+      "heat transfer"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "openalex",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 9,
+        "strong_hits": [
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "pde",
+          "fluid",
+          "deep learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "heat transfer",
+      "fluid mechanics",
+      "deep learning",
+      "pinn"
+    ]
   }
 ]
