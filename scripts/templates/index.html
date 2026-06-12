@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/style.css?v={{ css_hash }}">
     <script>window.CATEGORIES = {{ categories_json | safe }};</script>
     <script>window.DATA_VERSION = "{{ data_hash }}";</script>
-    <script>window.TODAY = "{{ stats.today }}";</script>
     <script>window.SUBDIR_TRENDS = {{ subdir_trends_json | safe }};</script>
 </head>
 <body>
@@ -100,9 +99,9 @@
                 <label class="filter-label">月份</label>
                 <div class="filters month-filters">
                     <button class="filter-btn month-btn active" data-month="all">全部 ({{ stats.total_count }})</button>
-                    {% for month, count in month_buttons %}
+                    {%- for month, count in month_buttons %}
                     <button class="filter-btn month-btn" data-month="{{ month }}">{{ month }} ({{ count }})</button>
-                    {% endfor %}
+                    {%- endfor %}
                 </div>
             </div>
             <div class="filter-group">

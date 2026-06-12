@@ -23,6 +23,7 @@ def main():
     data_dir = args.data_dir
     total_papers = 0
     total_warnings = 0
+    total_errors = 0
     files_scanned = 0
 
     for filename in sorted(os.listdir(data_dir)):
@@ -30,15 +31,21 @@ def main():
             continue
         if filename.endswith(".bak"):
             continue
+        # 跳过非论文数据文件
+        if filename in ("classification_report.json",):
+            continue
         filepath = os.path.join(data_dir, filename)
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 papers = json.load(f)
         except (json.JSONDecodeError, OSError) as e:
             print(f"ERROR {filename}: read failed - {e}")
+            total_errors += 1
             continue
 
         if not isinstance(papers, list):
+            print(f"ERROR {filename}: expected a JSON list, got {type(papers).__name__}")
+            total_errors += 1
             continue
 
         files_scanned += 1
@@ -65,8 +72,8 @@ def main():
     else:
         print(f"WARN {total_warnings} warnings total (use --verbose for details)")
 
-    # warnings 不阻断 CI，只有 JSON 解析失败等真正错误才返回非零
-    return 0
+    # warnings（字段缺失等）不阻断 CI；结构性错误（JSON 损坏、非 list）才返回 1
+    return 1 if total_errors > 0 else 0
 
 
 if __name__ == "__main__":
