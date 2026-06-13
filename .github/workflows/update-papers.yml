@@ -29,6 +29,7 @@ concurrency:
 jobs:
   update-papers:
     runs-on: ubuntu-latest
+    timeout-minutes: 1200
     permissions:
       contents: write
       pages: write
