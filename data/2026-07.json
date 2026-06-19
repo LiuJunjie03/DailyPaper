@@ -68,7 +68,7 @@
     "id": "10.1016/j.partic.2026.04.012",
     "title": "Pathway analogy for computational fluid dynamics simulations of fluid flow through structured packed beds",
     "authors": "Maxim Nikitin, Dmitry Pashchenko",
-    "abstract": "",
+    "abstract": "Predicting pressure drop in structured packed beds is critical for the design of industrial chemical reactors and heat exchangers. While particle-resolved Computational Fluid Dynamics (CFD) offers high fidelity, its prohibitive computational cost for large-scale systems necessitates efficient modeling strategies. This study introduces a novel pathway analogy for fluid flow through structured packed beds in a simple cubic arrangement. The approach deconstructs the complex interstitial flow field into a finite set of discrete, hydraulically independent pathways—classified as full, half, or quarter based on their proximity to the container walls. High-fidelity CFD simulations confirm that cross-flow between these pathways is negligible ( < 1%) both in laminar and turbulent regimes, justifying their treatment as independent flow units. Universal correlations for the friction factor and a normalized pressure drop are derived for each pathway type as a function of Reynolds number, demonstrating negligible dependence on particle diameter. These foundational correlations are synthesized into a mechanistic engineering model that reconstructs the total pressure drop for a bed of any dimension by summing the weighted contributions of all individual pathways. The model is rigorously validated against experimental data from the literature, showing strong agreement across a wide range of Reynolds numbers and bed configurations. This pathway analogy provides a robust, physics-based framework for drastic computational domain reduction, offering a valuable tool for the efficient design and scaling of structured packed bed systems.",
     "published": "2026-07-01",
     "paper_url": "https://doi.org/10.1016/j.partic.2026.04.012",
     "arxiv_id": "",
@@ -104,12 +104,15 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "computational fluid dynamics",
       "fluid dynamics",
-      "computational fluid dynamics"
+      "cfd"
     ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   },
   {
     "id": "10.47176/jafm.19.7.4172",
@@ -160,14 +163,14 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "design optimization",
+      "turbulence",
       "computational fluid dynamics",
-      "cfd",
+      "wind turbine",
       "fluid dynamics",
       "neural network",
-      "wind turbine",
       "aerodynamics",
-      "design optimization",
-      "turbulence"
+      "cfd"
     ],
     "sources": [
       "crossref",
@@ -281,8 +284,8 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "rans",
       "physics-informed",
+      "rans",
       "turbulence"
     ],
     "sources": [
@@ -354,8 +357,8 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "data-driven",
       "airfoil",
+      "data-driven",
       "turbulence"
     ],
     "sources": [
@@ -420,9 +423,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "heat transfer",
-      "cnn",
       "boiling",
+      "cnn",
+      "heat transfer",
       "deep learning"
     ],
     "sources": [
@@ -564,7 +567,7 @@
     "publication_type": "journal",
     "doi": "10.1016/j.ijmultiphaseflow.2026.105751",
     "external_ids": {},
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "047359d4f251f6566d5b6f267ed45247934ff2c3",
     "code_link": "",
     "tags": [
       "流体力学",
@@ -674,7 +677,7 @@
     "id": "10.1016/j.ijmultiphaseflow.2026.105749",
     "title": "DNS study of near interface turbulence in co-current stratified gas–liquid flow using a VOF approach for different liquid film heights",
     "authors": "Victor W.F. de Azevedo, Emilio E. Paladino",
-    "abstract": "",
+    "abstract": "Gas–liquid stratified flows are present in many applications both in industry and nature. The understanding of the near-interface flow structure is of fundamental importance to understand and quantify important interface phenomena as momentum, heat and mass transfer. Turbulence phenomena have been studied for the last century but its complete understanding is still a challenge, mainly in specific cases as turbulence-interface interactions. In this work we propose a computational study of the turbulence characteristics in the region near a gas–liquid interface in stratified flow, flowing at relatively large Reynolds number. The study considered two film heights and the effects of the channel walls on the near-interface turbulence structure was considered. The turbulence structure of near-wall and near interface regions was systematically compared. Results show that the film height has influence in the turbulence characteristics in the near-interface region and that the ”rough-wall analogy” for the near interface turbulence structure is not universally valid.",
     "published": "2026-07-01",
     "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105749",
     "arxiv_id": "",
@@ -739,7 +742,9 @@
     ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   },
   {
     "id": "10.1016/j.fusengdes.2026.115792",
@@ -771,7 +776,7 @@
       "CFD",
       "finite element"
     ],
-    "citation_count": 0,
+    "citation_count": 1,
     "impact_factor": null,
     "source": "crossref",
     "is_preprint": false,
@@ -781,8 +786,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "cfd",
-      "finite element"
+      "finite element",
+      "cfd"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -845,8 +850,8 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "fluid dynamics",
       "computational fluid dynamics",
+      "fluid dynamics",
       "aerodynamics"
     ],
     "sources": [
@@ -1010,13 +1015,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "cfd",
-      "fluid dynamics",
-      "pinn",
-      "heat transfer",
       "physics-informed",
-      "shape optimization"
+      "computational fluid dynamics",
+      "fluid dynamics",
+      "shape optimization",
+      "heat transfer",
+      "cfd",
+      "pinn"
     ],
     "sources": [
       "crossref",
@@ -1027,7 +1032,7 @@
     "id": "10.1016/j.apenergy.2026.127890",
     "title": "Computational fluid dynamics and digital twins for wind turbines: A review",
     "authors": "Ross Cockcroft, Ben Thornber",
-    "abstract": "",
+    "abstract": "Wind energy is one of the fastest-growing sources of renewable power and a key contributor to decarbonised energy systems. Ensuring the efficiency, reliability, and lifetime performance of wind farms is therefore critical to meeting future energy demand and climate targets. A central challenge lies in accurately modelling the complex aerodynamic behaviour of wind turbines, particularly under wake interactions and atmospheric turbulence in large wind farms. Digital Twin (DT) technologies have emerged as a promising approach for improving wind turbine monitoring, control, and maintenance. In parallel, high-fidelity Computational Fluid Dynamics (CFD) provides detailed insight into flow physics that govern energy capture and fatigue loading. However, the direct integration of CFD into real-time DT frameworks remains limited by computational cost and modelling complexity. This review examines the current state of research on incorporating CFD within DTs for wind turbine applications. We show that, despite significant advances in aerodynamic simulation fidelity, practical deployment within dynamic, data-driven digital frameworks is still constrained. Particular emphasis is placed on reduced-order and hybrid modelling strategies that balance physical accuracy with computational efficiency, and are therefore most compatible with real-time operation and large-scale wind-farm applications.",
     "published": "2026-07-01",
     "paper_url": "https://doi.org/10.1016/j.apenergy.2026.127890",
     "arxiv_id": "",
@@ -1046,12 +1051,18 @@
     "semantic_scholar_id": "",
     "code_link": "",
     "tags": [
+      "机器学习",
       "流体力学",
-      "流体力学 / 其他"
+      "流体力学 / 风能与海洋工程流体"
     ],
     "keywords": [
       "CFD",
-      "fluid dynamics"
+      "climate",
+      "data-driven",
+      "fatigue loading",
+      "fluid dynamics",
+      "turbulence",
+      "wind turbine"
     ],
     "citation_count": 1,
     "impact_factor": null,
@@ -1060,15 +1071,75 @@
     "is_early_access": true,
     "date_source": "crossref",
     "date_status": "reliable",
-    "classification_score": {},
-    "primary_domain": "流体力学 / 其他",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 6,
+        "strong_hits": [
+          "reduced-order"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "cfd",
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 5,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 环境与地球物理流体": {
+        "score": 7,
+        "strong_hits": [
+          "climate"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "simulation",
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 风能与海洋工程流体": {
+        "score": 13,
+        "strong_hits": [
+          "wind turbine",
+          "fatigue loading",
+          "wind energy"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "simulation",
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
+      "data-driven",
+      "turbulence",
+      "computational fluid dynamics",
       "fluid dynamics",
-      "computational fluid dynamics"
+      "wind turbine",
+      "fatigue loading",
+      "climate",
+      "cfd"
     ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   },
   {
     "id": "10.1016/j.buildenv.2026.114678",
@@ -1110,8 +1181,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1157,8 +1228,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1204,8 +1275,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1251,8 +1322,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1298,8 +1369,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1394,13 +1465,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 数值方法增强",
     "custom_keywords": [
-      "data-driven",
-      "flow simulation",
-      "stabilization",
-      "machine learning",
-      "turbulent flow",
       "isotropic turbulence",
-      "turbulence"
+      "data-driven",
+      "turbulence",
+      "stabilization",
+      "flow simulation",
+      "machine learning",
+      "turbulent flow"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -1699,7 +1770,7 @@
     "publication_type": "journal",
     "doi": "10.1016/j.ijmultiphaseflow.2026.105769",
     "external_ids": {},
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "cda1ebb0e46a1e85bad8ee86ce6968bd03c8c875",
     "code_link": "",
     "tags": [
       "流体力学",
@@ -1847,8 +1918,8 @@
     "custom_keywords": [
       "droplet",
       "pod",
-      "two-phase flow",
-      "spray"
+      "spray",
+      "two-phase flow"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -1919,9 +1990,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "acceleration",
+      "microfluidic",
       "bubble",
-      "microfluidic"
+      "acceleration"
     ],
     "sources": [
       "crossref"
@@ -2094,7 +2165,7 @@
     "id": "10.1016/j.ijmultiphaseflow.2026.105774",
     "title": "A novel individual wave visualization and tracking technique in annular flows based on an adaptation of the total internal reflection method using a laser line",
     "authors": "Matteo Grasso, Victor Petrov, Annalisa Manera",
-    "abstract": "",
+    "abstract": "Annular flow is a common multiphase flow in industry, thanks to its excellent heat transfer characteristics given by its thin, wavy film. Due to its complexity, high resolution wave experimental data are fundamental for validation of increasingly complex CFD annular flow simulations, often requiring elaborate experimental setups. Therefore, we present a novel and simple technique allowing for wave visualization and tracking in annular flows: Line-Total Internal Reflection Method (L-TIRM). L-TIRM also enables wave velocity distributions measurements, allowing deep insights into the flow dynamics. L-TIRM is an adaptation of the total internal reflection method (TIRM) using a laser line instead of a laser point. Our innovative implementation transforms a local measurement technique into a flow imaging technique able to visualize the topology of thin films along a straight line, similarly to methods such as PLIF (planar laser induced fluorescence), but without need for a fluorescent dye. The technique only needs a camera and a laser and is fully non-intrusive. We experimentally characterize L-TIRM range of applicability in upward adiabatic annular flows and verify L-TIRM measuring capabilities using optical ray tracing simulations which explain L-TIRM measurement physics. Results are then validated against the literature and the already established conductivity film sensor technology in a setup allowing simultaneous wave velocity measurement. Moreover, additional experiments compare L-TIRM to classic TIRM, highlighting that the former is more informative when it comes to wave analysis. However, while L-TIRM still retains some film thickness information, the measurement of this property is less robust than classic TIRM.",
     "published": "2026-07-01",
     "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105774",
     "arxiv_id": "",
@@ -2114,9 +2185,14 @@
     "code_link": "",
     "tags": [
       "流体力学",
-      "流体力学 / 多相流理论"
+      "流体力学 / 多相流理论",
+      "流体力学 / 燃烧与传热"
     ],
-    "keywords": [],
+    "keywords": [
+      "CFD",
+      "heat transfer",
+      "multiphase flow"
+    ],
     "citation_count": 0,
     "impact_factor": null,
     "source": "crossref",
@@ -2126,21 +2202,39 @@
     "date_status": "reliable",
     "classification_score": {
       "流体力学 / 多相流理论": {
-        "score": 4,
+        "score": 5,
         "strong_hits": [
           "multiphase flow"
         ],
         "context_hits": [
-          "flow"
+          "flow",
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 燃烧与传热": {
+        "score": 5,
+        "strong_hits": [
+          "heat transfer"
+        ],
+        "context_hits": [
+          "flow",
+          "cfd"
         ],
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 多相流理论",
-    "custom_keywords": [],
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "custom_keywords": [
+      "heat transfer",
+      "cfd",
+      "multiphase flow"
+    ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   },
   {
     "id": "10.1016/j.ijmultiphaseflow.2026.105780",
@@ -2356,8 +2450,8 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "bubble",
-      "boiling"
+      "boiling",
+      "bubble"
     ],
     "sources": [
       "crossref"
