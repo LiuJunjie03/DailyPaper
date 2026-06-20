@@ -55,9 +55,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
+      "pinn",
       "fluid mechanics",
       "physics-informed neural network",
-      "pinn",
       "neural network",
       "physics-informed"
     ],
@@ -151,12 +151,12 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "cfd",
       "neural operator",
       "fluid dynamics",
+      "fourier neural operator",
       "computational fluid dynamics",
       "level set",
-      "fourier neural operator",
+      "cfd",
       "physics-informed"
     ],
     "scholar_snippet": "is a deficiency in implementing appropriate correction mechanisms for the predicted flow  field results. To achieve the same precision as CFD, we propose the BAFNO + CFD framework.",
@@ -264,14 +264,14 @@
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
     "custom_keywords": [
       "reinforcement learning",
+      "drl",
+      "vortices",
+      "coarse grid",
       "bubble",
       "cfd",
       "active flow control",
       "deep reinforcement learning",
-      "coarse grid",
-      "drl",
-      "flow control",
-      "vortices"
+      "flow control"
     ],
     "abstract_status": "verified",
     "date_source": "google_scholar",
@@ -347,12 +347,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "surrogate model",
       "fluid dynamics",
-      "neural network",
+      "surrogate model",
       "computational fluid dynamics",
-      "machine learning",
-      "physics-informed"
+      "neural network",
+      "physics-informed",
+      "machine learning"
     ],
     "abstract_enriched_at": "2026-06-08T15:45:00.743376+00:00",
     "abstract_source": "openalex",
@@ -363,5 +363,75 @@
     "date_source": "google_scholar",
     "date_status": "approximate",
     "is_early_access": false
+  },
+  {
+    "id": "oa-W7164974175",
+    "title": "Korzhinskii-Net: Physics-Informed Neural Network for Sub-Surface Mineral Prospectivity Modelling",
+    "authors": "Boris Kriuk",
+    "abstract": "Mineral prospectivity modelling (MPM) underpins exploration economics, yet most operational pipelines reduce to data-driven classifiers trained on shallow surface proxies. Such models are blind to the subsurface physics that actually localises ore: heat advection, fluid flow, and lithology-dependent precipitation. We present Korzhinskii-Net, a 2-D radial physics-informed neural network (PINN) that couples Darcy flow, advective-diffusive heat transport, and a softplus-saturated reaction rate into a single differentiable forward model, weakly supervised by surface and remote-sensing proxies. The network is named after Dmitri S. Korzhinskii (1899-1985), whose theory of infiltration metasomatism provides the physical scaffold. We evaluate Korzhinskii-Net on five ore provinces spanning four commodity classes -- Norilsk (Ni-Cu-PGE), Pechenga (Ni-Cu sulphide), Udokan (sandstone-hosted Cu), Sukhoi Log (orogenic Au), and Mirny (kimberlitic diamond) -- under a fair, leakage-controlled 5-fold cross-validation protocol with hard ring-shaped negatives. Korzhinskii-Net attains a mean PR-AUC of 0.885 versus 0.281 for the strongest classical baseline (gradient boosting), and a mean fractional rank of 0.019 versus 0.413. The improvement is consistent across all five provinces and four commodity systems, suggesting that physics-informed differentiable simulators, even when constrained only by global open-data proxies, can recover localisation patterns that pure feature-based learners systematically miss. We release the full pipeline and evaluation harness as open source.",
+    "published": "2025-02-28",
+    "paper_url": "https://doi.org/10.1016/b978-0-44-332894-7.00017-4",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2606.13695",
+    "categories": [],
+    "venue": "ArXiv.org",
+    "conference": "ArXiv.org",
+    "publication_types": [
+      "article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/b978-0-44-332894-7.00017-4",
+    "external_ids": {
+      "OpenAlex": "W7164974175"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "data-driven",
+      "neural network",
+      "precipitation"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "openalex",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 13,
+        "strong_hits": [
+          "physics-informed neural network",
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network",
+          "data-driven"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "precipitation",
+      "pinn",
+      "physics-informed neural network",
+      "data-driven",
+      "neural network",
+      "physics-informed"
+    ]
   }
 ]

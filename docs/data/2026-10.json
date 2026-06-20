@@ -52,9 +52,9 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "computational fluid dynamics",
       "fluid dynamics",
       "vortex",
+      "computational fluid dynamics",
       "dns",
       "cfd"
     ],
@@ -105,8 +105,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "machine learning",
       "airfoil",
+      "machine learning",
       "shape optimization"
     ],
     "is_early_access": true,
@@ -118,7 +118,7 @@
     "id": "10.1016/j.apenergy.2026.128236",
     "title": "Physics-informed neural networks for wind turbine wake prediction: Constraint hierarchy under varying data density",
     "authors": "Ming Peng, Lijuan Wang, Yong Jiang",
-    "abstract": "",
+    "abstract": "Physics-informed neural networks (PINNs) combine data-driven learning with governing-equation constraints, but their value in wind-turbine wake prediction depends on data density and residual fidelity. We examine this dependence through 36 controlled experiments on large-eddy simulation (LES) data (DTU EllipSys3D, NREL 5 MW, TI = 4% and 12.8%) under a 2D hub-height steady-RANS formulation. The optimized PINN reaches MSE = 0.001 (m s -1 ) 2 and R 2 = 0.999 . The experiments support a physics-constraint accuracy hierarchy : continuity provides consistent benefit and yields approximately 55–70% lower MSE than the tested full RANS residual set at moderate-to-high coverage, whereas the k – ε transport equations provide little measurable benefit, consistent with closure bias in turbine wakes. The hierarchy becomes statistically clear at N ≥ 3,000 observations, while seed variability prevents a definitive ranking at N = 1000 . Against LES-calibrated FLORIS Gaussian and Jensen baselines, the PINN achieves approximately 212 × to 469 × lower full-field MSE. The results indicate that residual fidelity, rather than the number of imposed equations, governs constraint value in this setting.",
     "published": "2026-10-01",
     "paper_url": "https://doi.org/10.1016/j.apenergy.2026.128236",
     "arxiv_id": "",
@@ -139,10 +139,14 @@
     "tags": [
       "机器学习",
       "流体力学",
-      "流体力学 / 风能与海洋工程流体"
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
     ],
     "keywords": [
       "PINN",
+      "data-driven",
+      "les",
+      "rans",
       "wind turbine"
     ],
     "citation_count": 0,
@@ -153,19 +157,41 @@
     "date_source": "crossref",
     "date_status": "reliable",
     "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 7,
+        "strong_hits": [
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
       "流体力学 / 风能与海洋工程流体": {
-        "score": 3,
+        "score": 4,
         "strong_hits": [
           "wind turbine"
         ],
-        "context_hits": [],
+        "context_hits": [
+          "simulation"
+        ],
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 风能与海洋工程流体",
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
-      "wind turbine"
+      "rans",
+      "pinn",
+      "les",
+      "wind turbine",
+      "data-driven",
+      "physics-informed"
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex",
+    "sources": [
+      "crossref"
     ]
   }
 ]
