@@ -1,0 +1,354 @@
+[
+  {
+    "id": "gs-3f0e753f042f",
+    "title": "Enhancement of physics-informed neural networks in applications to fluid dynamics",
+    "authors": "I Mochalin, J Wang, J Cai",
+    "abstract": "In this work, a novel deep learning algorithm is proposed within the framework of the physics-informed neural network (PINN) architecture. Physical constraints are incorporated through the Navier–Stokes and continuity equations, which are commonly used in fluid mechanics applications. The proposed approach addresses the challenge posed by the multicomponent nature of the PINN's loss function. This challenge arises from the need to determine an optimal weight configuration for the various components of the loss function. The issue is resolved by dynamically updating the weight configuration to balance the influence of different data types during training. The procedure, known as GradNorm, originally developed for deep multitask networks in computer vision, is adapted and integrated into the PINN framework. GradNorm adjusts the weight configuration to equalize the gradients of the loss function components. The new algorithm achieves a 50% improvement in accuracy compared to the conventional PINN in reconstructing the back-facing step flow. For the Taylor–Couette flow (Taylor vortex mode) test case, where the conventional PINN fails to capture the flow structure, the proposed approach demonstrates high accuracy even with sparse training datasets. Additionally, it does not require known flow parameter values in close proximity to walls to achieve accurate near-wall resolution. The application of the new algorithm shows great potential for processing sparse experimental datasets to reconstruct detailed flow fields and for providing a continuous representation of discrete solutions.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "proposed within the framework of the physics-informed neural network (PINN) architecture.   , which are commonly used in fluid mechanics applications. The proposed approach",
+    "published": "2025-05-01",
+    "paper_url": "https://pubs.aip.org/aip/pof/article/37/5/057130/3347333",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://pubs.aip.org/aip/pof/article/37/5/057130/3347333",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Physics of Fluids",
+    "conference": "Physics of Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1063/5.0269943",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "deep learning",
+      "fluid dynamics",
+      "fluid mechanics",
+      "neural network",
+      "vortex"
+    ],
+    "citation_count": 10,
+    "impact_factor": 3.5,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 13,
+        "strong_hits": [
+          "physics-informed neural network",
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network",
+          "deep learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed neural network",
+      "physics-informed",
+      "fluid mechanics",
+      "deep learning",
+      "neural network",
+      "vortex",
+      "fluid dynamics",
+      "pinn"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:39:34.267981+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4410520112",
+    "sources": [
+      "google_scholar"
+    ],
+    "date_source": "google_scholar",
+    "date_status": "approximate",
+    "is_early_access": false
+  },
+  {
+    "id": "gs-6916294bdfe1",
+    "title": "Physics informed neural networks for fluid flow analysis with repetitive parameter initialization",
+    "authors": "J Lee, S Shin, T Kim, B Park, H Choi, A Lee, M Choi",
+    "abstract": "Physics-informed neural networks (PINNs) have been widely used to capture the behavior of physical systems governed by partial differential equations (PDEs), enabling the simulation of fluid dynamics across various scenarios. However, when applied to stiff fluid problems, the existing PINNs often struggle with flow stagnations and converge to local minima, resulting in physically implausible solutions. To overcome these limitations, this study proposes a training strategy called \"re-initialization\". This strategy periodically modulates the training parameters of the PINN model, enabling it to escape local minima and effectively explore alternative solutions. The proposed method is validated on two-dimensional steady-state lid-driven cavity flow problems at high Reynolds numbers of 700 and 1,000. This strategy effectively simulated vortex and shear layers and achieved the lowest mean square error in both cases. Furthermore, principal component analysis confirmed its capability to dynamically modulate model parameters during the training process. These results show the effectiveness of the proposed training strategy in addressing stiff fluid problems. Moreover, this strategy establishes a foundation for overcoming local minima through the direct modulation of training parameters. This contribution not only enhances the accuracy of PINNs but also expands their applicability to more complex and stiff fluid flow analyses.",
+    "published": "2025-05-14",
+    "paper_url": "https://www.nature.com/articles/s41598-025-99354-5",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.nature.com/articles/s41598-025-99354-5",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Scientific Reports",
+    "conference": "Scientific Reports",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1038/s41598-025-99354-5",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "fluid dynamics",
+      "vortex"
+    ],
+    "citation_count": 47,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 8,
+        "strong_hits": [
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 5,
+        "strong_hits": [
+          "vortex"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "vortex",
+      "fluid dynamics",
+      "pinn"
+    ],
+    "scholar_snippet": "Physics-informed neural networks (PINNs) have been widely used to capture the behavior   the simulation of fluid dynamics across various scenarios. However, when applied to stiff",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:39:39.850216+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4410376067",
+    "date_source": "google_scholar",
+    "date_status": "approximate",
+    "is_early_access": false
+  },
+  {
+    "id": "gs-361ac78167bb",
+    "title": "Surrogate modeling for flow simulations using design variable-coded deep learning networks",
+    "authors": "R Matai",
+    "abstract": "Abstract In recent years, machine learning techniques have emerged as pivotal tools across scientific and engineering disciplines. One notable application is in computational fluid dynamics (CFD), where there is a growing demand for cost-effective alternatives to traditional, resource-intensive simulations. This study explores a surrogate modeling approach known as Design Variable Coded Multilayer Perceptron (DV-MLP), aimed at predicting velocity on unseen geometries using CFD simulation data. The DV-MLP model integrates spatial and design variables directly, offering a mesh-independent, scalable solution for rapid flow prediction across various geometric configurations. This method seeks to replace CFD simulations for geometries resembling those used in training, thereby accelerating the design process. The dataset comprises CFD results from four distinct bump heights. The objective is to train the MLP using data from three bump heights and assess its predictive performance on a middle bump height. The results indicate that the MLP accurately predicts flow features for the middle bump height. This demonstrates its ability to provide precise predictions of near-wall flow behavior for similar geometries, making it a valuable tool for industries requiring swift and reliable CFD predictions for design refinement and optimization. The DV-MLP model is designed primarily for interpolation between geometries and flow conditions represented in the training data, providing accurate predictions for cases that fall within the range of the sampled design space.",
+    "published": "2025-05-31",
+    "paper_url": "https://link.springer.com/article/10.1186/s44147-025-00634-8",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://link.springer.com/article/10.1186/s44147-025-00634-8",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Journal of Engineering and Applied Science",
+    "conference": "Journal of Engineering and Applied Science",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1186/s44147-025-00634-8",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "deep learning",
+      "fluid dynamics",
+      "machine learning"
+    ],
+    "citation_count": 10,
+    "impact_factor": 63.8,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 10,
+        "strong_hits": [
+          "surrogate modeling",
+          "flow prediction"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "cfd",
+          "deep learning",
+          "machine learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "machine learning",
+      "cfd",
+      "deep learning",
+      "computational fluid dynamics",
+      "fluid dynamics"
+    ],
+    "scholar_snippet": "approach known as Design Variable Coded Multilayer Perceptron (DV-MLP), aimed at  predicting velocity on unseen geometries using CFD simulation data. The DV-MLP",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:44:43.874359+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4410924730",
+    "date_source": "google_scholar",
+    "date_status": "approximate",
+    "is_early_access": false
+  },
+  {
+    "id": "gs-6f2acd2dfd3c",
+    "title": "A synthetic approach for high-fidelity aerodynamic performance optimization of large-scale wind turbine blades based on hybrid deep learning networks",
+    "authors": "J Gong, H Zhou, C Yuan, X Huang, G Hu, C Li, L Li",
+    "abstract": "The increasing size of wind turbine blades poses several challenges, including higher manufacturing costs, transportation difficulties, and exacerbated aeroelastic phenomena. Optimizing both the aerodynamic and structural performance of large-scale wind turbine blades is essential for addressing these issues. Traditional computational fluid dynamics (CFD)-based optimization methods are hindered by low computational efficiency, necessitating the development of more efficient, high-fidelity approaches. In this study, a neural network (NN)-based approach is proposed to tackle these challenges. First, a class function/shape function transformation method is introduced, inspired by a conventional airfoil parameterization method. This approach is applicable to the distribution of blade chord length and twist angle, reducing the number of variables for a 10 MW blade from 82 to 22, while enhancing the smoothness of the sampled blades. Second, a comprehensive blade optimization method, integrating the parameterization method, is developed. This framework comprises two primary components: airfoil optimization and blade optimization. Each component follows a four-step: geometric sampling, CFD-based aerodynamic dataset generation, NN training for aerodynamic prediction, and aerodynamic performance optimization. Finally, the effectiveness of the proposed optimization method is validated by using a 10 MW blade as a benchmark. Results show that the aerodynamic performance calculation time for both the airfoil and the blade are reduced by 88.6% and 91%, respectively, with a prediction error of less than 1.5%. Furthermore, under the design conditions, the lift-to-drag ratio and the lift coefficient of the optimized airfoil are improved by 5.1% and 6.35%, respectively. In addition, the power and thrust of the optimized blade increase by 1.3% and 12.7%, respectively.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "based high-fidelity aerodynamic optimization method for large- -based) high fidelity  aerodynamic optimization framework,  and computation time during the optimization of large-scale",
+    "published": "2025-05-12",
+    "paper_url": "https://pubs.aip.org/aip/pof/article/37/5/057106/3346784",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://pubs.aip.org/aip/pof/article/37/5/057106/3346784",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Physics of Fluids",
+    "conference": "Physics of Fluids",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1063/5.0264659",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "airfoil",
+      "airfoil optimization",
+      "deep learning",
+      "fluid dynamics",
+      "neural network",
+      "wind turbine"
+    ],
+    "citation_count": 2,
+    "impact_factor": 3.5,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "wind turbine",
+      "cfd",
+      "deep learning",
+      "airfoil",
+      "neural network",
+      "airfoil optimization",
+      "computational fluid dynamics",
+      "fluid dynamics"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:46:12.167302+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4410306987",
+    "sources": [
+      "google_scholar"
+    ],
+    "date_source": "google_scholar",
+    "date_status": "approximate",
+    "is_early_access": false
+  },
+  {
+    "id": "oa-W7161655141",
+    "title": "Curriculum Learning of Physics-Informed Neural Networks based on Spatial Correlation",
+    "authors": "Xujia Chen, Xinyue Hu, Letian Chen, Daming Shi, Wenhui Fan",
+    "abstract": "Physics-Informed Neural Networks (PINNs) combine deep learning with physical constraints for solving partial differential equations (PDEs), and are widely applied in fluid mechanics, heat transfer, and solid mechanics. However, PINN training still suffers from high-dimensional non-convex loss landscapes, imbalanced multiobjective constraints, and ineffective information propagation. Existing curriculum learning and causality-guided strategies improve training stability, but mainly focus on temporal or parametric progression, lacking explicit treatment of spatial information propagation and inter-region consistency. Moreover, they are not directly applicable to boundary value problems (BVPs) with strong spatial coupling. To address this issue, we propose a spatially correlated curriculum learning framework for PINNs. To the best of our knowledge, this is the first work to address PINN training difficulties from the perspective of spatial coupling among subregions. First, spatial causal weights guide information from near-boundary regions inward, reducing optimization failures and spurious convergence. Second, a low-frequency information bridge enforces pseudo-label-based consistency across spatially separated regions, suppressing global low-frequency drift. Third, a region-adaptive reweighting strategy adjusts subregion losses to reduce local residuals and recover high-frequency details. Experiments on PDE benchmarks show that, under comparable computational cost, the proposed method alleviates training failures and improves solution accuracy. The code is available at https://github.com/pigofmomo/CurriculumLearningPINN.",
+    "published": "2025-05-14",
+    "paper_url": "https://doi.org/10.1007/978-3-030-54621-2_907-1",
+    "arxiv_id": "2605.15254",
+    "arxiv_url": "https://arxiv.org/abs/2605.15254",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.15254",
+    "categories": [],
+    "venue": "ArXiv.org",
+    "conference": "ArXiv.org",
+    "publication_types": [
+      "article"
+    ],
+    "publication_type": "unknown",
+    "doi": "10.1007/978-3-030-54621-2_907-1",
+    "external_ids": {
+      "OpenAlex": "W7161655141"
+    },
+    "semantic_scholar_id": "30e6ba8195b28c524aba082060569792df902477",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "deep learning",
+      "fluid mechanics",
+      "heat transfer"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "openalex",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 9,
+        "strong_hits": [
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "pde",
+          "fluid",
+          "deep learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "heat transfer",
+      "fluid mechanics",
+      "deep learning",
+      "pinn"
+    ]
+  }
+]
