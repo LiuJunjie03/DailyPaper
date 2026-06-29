@@ -41,10 +41,10 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "data-driven",
       "turbulence",
       "wind turbine",
-      "machine learning"
+      "machine learning",
+      "data-driven"
     ],
     "is_early_access": true,
     "sources": [
@@ -122,14 +122,14 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "aerodynamics",
-      "fluid dynamics",
-      "computational fluid dynamics",
+      "les",
       "cfd",
+      "fluid dynamics",
       "navier-stokes",
       "rans",
+      "computational fluid dynamics",
       "climate",
-      "les"
+      "aerodynamics"
     ],
     "is_early_access": true,
     "sources": [
@@ -177,8 +177,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "les",
-      "rans"
+      "rans",
+      "les"
     ],
     "is_early_access": true,
     "sources": [
@@ -227,10 +227,10 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "data-driven",
-      "computational fluid dynamics",
       "cfd",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "data-driven"
     ],
     "abstract_status": "enriched",
     "abstract_source": "semantic_scholar",
@@ -278,8 +278,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -325,8 +325,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -374,8 +374,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "rans",
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -421,8 +421,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "les",
-      "rans"
+      "rans",
+      "les"
     ],
     "sources": [
       "crossref"
@@ -470,9 +470,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "heat transfer",
       "boiling",
-      "machine learning"
+      "machine learning",
+      "heat transfer"
     ],
     "sources": [
       "crossref"
@@ -518,8 +518,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "les",
-      "rans"
+      "rans",
+      "les"
     ],
     "sources": [
       "crossref"
@@ -529,7 +529,7 @@
     "id": "10.1061/joeedu.eeeng-8469",
     "title": "Application of a Computational Fluid Dynamics Model to Upgrade the Raw Sewage Pump Station at the West Point Treatment Plant, Seattle, Washington",
     "authors": "Liaqat Khan",
-    "abstract": "",
+    "abstract": "The raw sewage pump station at the West Point Treatment Plant, Seattle, Washington, consists of four 4.82 m3/s pumps, with a firm capacity of 13.14 m3/s, and a design peak flow of 19.28 m3/s. As part of the pump station upgrade to achieve a firm capacity of 19.28 m3/s, a combined physical and computational fluid dynamic (CFD) model study was conducted. The CFD models complemented a limited-area physical model by providing boundary conditions, screening alternative designs of formed suction inlets (FSIs), and evaluating suitable flow training devices that were further evaluated in the physical model. This paper presents a practical application of CFD models in aiding the pump station upgrade design, with an emphasis on comparing pump intake hydraulics evaluation criteria, suggested by the Hydraulic Institute (HI), with those obtained from the physical model. Additionally, this paper compares these criteria computed using the realizable κ–ε turbulence scheme with three different Reynolds stress models (RSMs), linear pressure-strain, quadratic pressure-strain, and elliptic blending. Although point velocity deviations from the mean matched reasonably well between the two modeling approaches, swirl angles differ widely. However, in all cases, the physical and CFD models led to the same conclusion regarding the compliance or noncompliance of the approach flow with respect to the HI criteria. The swirl angles computed using different RSMs also varied considerably, and the RSMs did not provide a better match with data from the physical model.",
     "published": "2026-09-01",
     "paper_url": "https://doi.org/10.1061/joeedu.eeeng-8469",
     "arxiv_id": "",
@@ -549,11 +549,15 @@
     "code_link": "",
     "tags": [
       "流体力学",
-      "流体力学 / 其他"
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合",
+      "流体力学 / 湍流与流动机理"
     ],
     "keywords": [
       "CFD",
-      "fluid dynamics"
+      "fluid dynamics",
+      "reynolds stress",
+      "turbulence"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -562,11 +566,42 @@
     "is_early_access": true,
     "date_source": "crossref",
     "date_status": "reliable",
-    "classification_score": {},
-    "primary_domain": "流体力学 / 其他",
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 7,
+        "strong_hits": [
+          "reynolds stress",
+          "turbulence scheme"
+        ],
+        "context_hits": [
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 5,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "turbulence",
+      "reynolds stress",
+      "cfd",
+      "fluid dynamics",
+      "computational fluid dynamics"
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex",
+    "sources": [
+      "crossref"
     ]
   }
 ]
