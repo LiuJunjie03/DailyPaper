@@ -1,0 +1,268 @@
+[
+  {
+    "id": "10.1016/j.cpc.2026.110259",
+    "title": "Randomized tensor-train truncation on GPUs for quantum-inspired computational fluid dynamics",
+    "authors": "Kiet Tuan Pham, Gordon Euhyun Moon, Jinsung Kim",
+    "abstract": "Tensor-network computational fluid dynamics solvers, often termed quantum-inspired CFD (QIS–CFD), evolve the incompressible Navier–Stokes equations in Tensor-Train (TT/MPS) form by repeatedly constructing nonlinear operators via tensor contractions and then recompressing intermediate tensors to control the bond dimension. In standard TT workflows, recompression is performed with deterministic truncated singular value decompositions (SVDs); for bond dimension χ and fixed local mode size, the per-bond O ( χ 3 ) cost and limited GPU throughput of SVD routines make truncation a primary bottleneck in GPU-resident time stepping at moderate-to-large χ . We introduce a GPU-accelerated randomized TT truncation scheme (RTTD) based on randomized subspace iteration. RTTD replaces each deterministic truncated SVD with an oversampled randomized range finder and thin QR factorizations on low-dimensional projected matrices, shifting the truncation workload toward GEMM- and QR-dominated kernels while preserving the canonical constraints required by TT/MPS sweeps. We validate RTTD against direct numerical simulation (DNS) and an SVD-based baseline on two 2D benchmarks: a decaying turbulent jet ( Re = 10 5 for short-run sweeps and Re = 2 × 10 5 for long-horizon validation) and the Taylor–Green vortex ( Re = 10 3 ). For χ ≥ 32, RTTD matches the SVD baseline and DNS in kinetic-energy evolution and divergence diagnostics. Computationally, RTTD accelerates the nonlinear Matrix-Product-Operator (MPO) construction phase by up to 7.8 × and reduces the end-to-end wall-clock time per step by up to 2.2 × relative to the deterministic baseline.",
+    "published": "2026-10-01",
+    "paper_url": "https://doi.org/10.1016/j.cpc.2026.110259",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Computer Physics Communications",
+    "conference": "Computer Physics Communications",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.cpc.2026.110259",
+    "external_ids": {},
+    "semantic_scholar_id": "d09e7b3a9ac0f7d96629883c1d275dfeac566c46",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 湍流与流动机理"
+    ],
+    "keywords": [
+      "CFD",
+      "dns",
+      "fluid dynamics",
+      "vortex"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "vortex"
+        ],
+        "context_hits": [
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "custom_keywords": [
+      "fluid dynamics",
+      "vortex",
+      "cfd",
+      "dns",
+      "computational fluid dynamics"
+    ],
+    "sources": [
+      "crossref"
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
+  },
+  {
+    "id": "10.1016/j.ast.2026.112355",
+    "title": "Leveraging machine learning for airfoil shape optimization and estimation of aerodynamic coefficients in ground effect",
+    "authors": "Jithin P. Narayanan, Ajith Kumar Arumugham-Achari, Abraham Thomas, Bindhu K. Rajan",
+    "abstract": "",
+    "published": "2026-10-01",
+    "paper_url": "https://doi.org/10.1016/j.ast.2026.112355",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Aerospace Science and Technology",
+    "conference": "Aerospace Science and Technology",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.ast.2026.112355",
+    "external_ids": {},
+    "semantic_scholar_id": "09b4fc1da39fd6afa18834b9a6b39e59d08d28fa",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "airfoil",
+      "machine learning",
+      "shape optimization"
+    ],
+    "citation_count": 0,
+    "impact_factor": 63.8,
+    "source": "crossref",
+    "is_preprint": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "shape optimization",
+      "machine learning",
+      "airfoil"
+    ],
+    "is_early_access": true,
+    "sources": [
+      "crossref"
+    ]
+  },
+  {
+    "id": "10.1016/j.apenergy.2026.128236",
+    "title": "Physics-informed neural networks for wind turbine wake prediction: Constraint hierarchy under varying data density",
+    "authors": "Ming Peng, Lijuan Wang, Yong Jiang",
+    "abstract": "Physics-informed neural networks (PINNs) combine data-driven learning with governing-equation constraints, but their value in wind-turbine wake prediction depends on data density and residual fidelity. We examine this dependence through 36 controlled experiments on large-eddy simulation (LES) data (DTU EllipSys3D, NREL 5 MW, TI = 4% and 12.8%) under a 2D hub-height steady-RANS formulation. The optimized PINN reaches MSE = 0.001 (m s -1 ) 2 and R 2 = 0.999 . The experiments support a physics-constraint accuracy hierarchy : continuity provides consistent benefit and yields approximately 55–70% lower MSE than the tested full RANS residual set at moderate-to-high coverage, whereas the k – ε transport equations provide little measurable benefit, consistent with closure bias in turbine wakes. The hierarchy becomes statistically clear at N ≥ 3,000 observations, while seed variability prevents a definitive ranking at N = 1000 . Against LES-calibrated FLORIS Gaussian and Jensen baselines, the PINN achieves approximately 212 × to 469 × lower full-field MSE. The results indicate that residual fidelity, rather than the number of imposed equations, governs constraint value in this setting.",
+    "published": "2026-10-01",
+    "paper_url": "https://doi.org/10.1016/j.apenergy.2026.128236",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Applied Energy",
+    "conference": "Applied Energy",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.apenergy.2026.128236",
+    "external_ids": {},
+    "semantic_scholar_id": "1a70bd1e08a2c0986422772f45923f658dc029e7",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "data-driven",
+      "les",
+      "rans",
+      "wind turbine"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 7,
+        "strong_hits": [
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 风能与海洋工程流体": {
+        "score": 4,
+        "strong_hits": [
+          "wind turbine"
+        ],
+        "context_hits": [
+          "simulation"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "data-driven",
+      "pinn",
+      "rans",
+      "wind turbine",
+      "les",
+      "physics-informed"
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex",
+    "sources": [
+      "crossref"
+    ]
+  },
+  {
+    "id": "10.1016/j.est.2026.123309",
+    "title": "Physics-guided artificial intelligence for latent heat transfer in phase-change material walls: comparison between universal differential equations and the Fourier neural operator",
+    "authors": "Mohammed-Hichem Benzaama, Abderrahim Boudenne, Karim Benzarti",
+    "abstract": "",
+    "published": "2026-10-01",
+    "paper_url": "https://doi.org/10.1016/j.est.2026.123309",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Journal of Energy Storage",
+    "conference": "Journal of Energy Storage",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.est.2026.123309",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "Neural Operator",
+      "PINN",
+      "heat transfer"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 3,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      },
+      "流体力学 / 燃烧与传热": {
+        "score": 3,
+        "strong_hits": [
+          "heat transfer"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fourier neural operator",
+      "neural operator",
+      "heat transfer",
+      "physics-guided"
+    ],
+    "sources": [
+      "crossref"
+    ]
+  }
+]

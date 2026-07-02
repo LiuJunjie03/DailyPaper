@@ -1,0 +1,83 @@
+[
+  {
+    "id": "gs-394263c1a439",
+    "title": "An efficient intrusive deep reinforcement learning framework for OpenFOAM",
+    "authors": "S Salehi",
+    "abstract": "Abstract Recent advancements in artificial intelligence and deep learning offer tremendous opportunities to tackle high-dimensional and challenging problems. Particularly, deep reinforcement learning (DRL) has been shown to be able to address optimal decision-making problems and control complex dynamical systems. DRL has received increased attention in the realm of computational fluid dynamics (CFD) due to its demonstrated ability to optimize complex flow control strategies. However, DRL algorithms often suffer from low sampling efficiency and require numerous interactions between the agent and the environment, necessitating frequent data exchanges. One significant bottleneck in coupled DRL–CFD algorithms is the extensive data communication between DRL and CFD codes. Non-intrusive algorithms where the DRL agent treats the CFD environment as a black box may come with the deficiency of increased computational cost due to overhead associated with the information exchange between the two DRL and CFD modules. In this article, a TensorFlow-based intrusive DRL–CFD framework is introduced where the agent model is integrated within the open-source CFD solver OpenFOAM. The integration eliminates the need for any external information exchange during DRL episodes. The framework is parallelized using the message passing interface to manage parallel environments for computationally intensive CFD cases through distributed computing. The performance and effectiveness of the framework are verified by controlling the vortex shedding behind two and three-dimensional cylinders, achieved as a result of minimizing drag and lift forces through an active flow control mechanism. The simulation results indicate that the trained controller can stabilize the flow and effectively mitigate the vortex shedding.",
+    "published": "2024-06-06",
+    "paper_url": "https://link.springer.com/article/10.1007/s11012-024-01830-1",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://link.springer.com/article/10.1007/s11012-024-01830-1",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Meccanica",
+    "conference": "Meccanica",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1007/s11012-024-01830-1",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 流动控制与强化学习"
+    ],
+    "keywords": [
+      "CFD",
+      "DRL",
+      "RL",
+      "active flow control",
+      "deep learning",
+      "flow control",
+      "fluid dynamics",
+      "vortex"
+    ],
+    "citation_count": 5,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 19,
+        "strong_hits": [
+          "flow control",
+          "active flow control",
+          "reinforcement learning",
+          "deep reinforcement learning",
+          "drl"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "flow",
+          "deep learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
+    "custom_keywords": [
+      "drl",
+      "vortex",
+      "reinforcement learning",
+      "cfd",
+      "fluid dynamics",
+      "active flow control",
+      "deep reinforcement learning",
+      "computational fluid dynamics",
+      "deep learning",
+      "flow control"
+    ],
+    "scholar_snippet": "Later, the methodology was applied to control flow over a 2D NACA airfoil under weak  turbulent conditions, and significant drag reduction and lift stabilization were achieved [13]. The",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-06-08T15:44:10.972997+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4399383616",
+    "date_source": "google_scholar",
+    "date_status": "approximate",
+    "is_early_access": false
+  }
+]

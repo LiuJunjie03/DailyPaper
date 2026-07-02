@@ -1,0 +1,59 @@
+[
+  {
+    "id": "gs-5a26bb9364b4",
+    "title": "Machine learning uncertainty framework applied to gas-liquid horizontal pipe flow",
+    "authors": "AM Quintino, M Stanko",
+    "abstract": "• Machine learning stochastic framework applied to gas-liquid pipe flow. • Created a synthetic dataset with noise to reproduce real-world uncertainties. • Dimensional and dimensionless input features effect on the model's performance. Accurate multiphase pipe flow modeling (e.g. prediction of pressure drop and volume fraction) is important for several disciplines and industries. It is possible to develop pipe multiphase flow models using laboratory data or simulator output and machine learning techniques but their application is limited due to their black-box nature and subpar generalization performance. The effectiveness of these models can be improved by “teaching the models to know what they know” and outputting the prediction uncertainty together with a mean value. By giving a stochastic prediction, the model can inform the user about the uncertainty of its prediction, facilitating informed decision-making. In this work, we evaluate 3 machine learning frameworks and 3 parametrization strategies for the development of a stochastic data-driven gas-liquid pipe flow (pressure and holdup) model. This to ultimately determine which machine learning framework and parametrization strategy produces stochastic models that best fit the data set, capture its associated uncertainty and where the predicted uncertainty grows considerably in extrapolation scenarios, rendering the model useless. For this purpose, a steady-state two-phase horizontal flow synthetic dataset was created using a commercial multiphase flow simulator to train and validate three deep learning frameworks: deep ensembles, hyper-deep ensembles, and Monte Carlo dropout. The effect of the performance using different groups of input features to predict the pressure gradient and holdup is also evaluated, and the performance metrics are assessed based on in-domain (validation) and out-of-domain (extrapolation) cases, the latter consisting of a scale-up scenario (bigger diameter). Results indicate that all three frameworks accurately predicted the mean values. However, deep ensembles outperformed the other in predicting the uncertainty range. Additionally, the results show the feature importance of different dimensional and dimensionless inputs for the model training and prediction.",
+    "abstract_status": "enriched",
+    "scholar_snippet": "of its prediction, facilitating informed decision-making. In this work, we evaluate 3 machine  learning  gas-liquid pipe flow (pressure and holdup) model. This to ultimately determine which",
+    "published": "2024-10-15",
+    "paper_url": "https://www.sciencedirect.com/science/article/pii/S030193222500062X",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://www.sciencedirect.com/science/article/pii/S030193222500062X",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of Multiphase Flow",
+    "conference": "International Journal of Multiphase Flow",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "10.1016/j.ijmultiphaseflow.2025.105184",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "data-driven",
+      "deep learning",
+      "flow modeling",
+      "machine learning",
+      "multiphase flow"
+    ],
+    "citation_count": 3,
+    "impact_factor": null,
+    "source": "google_scholar",
+    "is_preprint": false,
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "data-driven",
+      "flow modeling",
+      "multiphase flow",
+      "machine learning",
+      "deep learning"
+    ],
+    "abstract_enriched_at": "2026-06-08T15:47:19.144767+00:00",
+    "abstract_source": "openalex",
+    "openalex_id": "https://openalex.org/W4407740331",
+    "sources": [
+      "google_scholar"
+    ],
+    "date_source": "google_scholar",
+    "date_status": "approximate",
+    "is_early_access": false
+  }
+]
