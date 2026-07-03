@@ -1,5 +1,81 @@
 [
   {
+    "id": "10.1016/j.cacaie.2026.100125",
+    "title": "NeVF: Representing CFD simulations as neural flow volume fields for efficient compression, reconstruction, and analysis",
+    "authors": "Omar A. Mures, Miguel Cid Montoya",
+    "abstract": "Computational Fluid Dynamics (CFD) simulations of civil engineering aerodynamics, which are commonly characterized by complex three-dimensional flow fields, generate massive spatiotemporal datasets, creating significant storage and computational bottlenecks that heavily constrain iterative engineering workflows. To overcome these challenges, this paper presents a novel two-stage compression framework that models three-dimensional flow field data using Neural Flow Volume Fields (NeVF). The first stage employs a distance field-biased flow importance sampling (3D BiFIS) strategy to reduce data dimensionality intelligently; this approach selectively extracts key near-wall flow information guided by surface proximity to construct a “relaxed” image volume. Subsequently, a deep network, leveraging positional encodings and disentangled spatio-temporal attention mechanisms, highly compresses this volumetric representation. The effectiveness of the resulting flow field representation is evaluated using a comprehensive 3D Large-Eddy Simulation (LES) dataset of a bluff single-box bridge deck, characterized by complex, uncorrelated spanwise flow features. Results demonstrate high data compression rates of to while preserving high-fidelity near-body aerodynamic flow features, enabling accurate estimation of wind-induced forces. Ultimately, our methodology streamlines efficient storage, reconstruction, and rapid analysis of exascale CFD datasets, unlocking potential new applications for deep learning emulation and data-intensive tasks such as uncertainty quantification and flow-driven aero-structural optimization. The neural compression code is available on GitHub .",
+    "published": "2026-09-01",
+    "paper_url": "https://doi.org/10.1016/j.cacaie.2026.100125",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Computer-Aided Civil and Infrastructure Engineering",
+    "conference": "Computer-Aided Civil and Infrastructure Engineering",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.cacaie.2026.100125",
+    "external_ids": {},
+    "semantic_scholar_id": "1d4078ba26c3a5ceb22577133c4b599e4674bc15",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 流场重建与数据驱动"
+    ],
+    "keywords": [
+      "CFD",
+      "aerodynamics",
+      "deep learning",
+      "fluid dynamics",
+      "les",
+      "uncertainty quantification"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 流场重建与数据驱动": {
+        "score": 9,
+        "strong_hits": [
+          "uncertainty quantification"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "flow",
+          "deep learning",
+          "flow field",
+          "spatiotemporal"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
+    "custom_keywords": [
+      "deep learning",
+      "aerodynamics",
+      "fluid dynamics",
+      "les",
+      "uncertainty quantification",
+      "cfd",
+      "computational fluid dynamics"
+    ],
+    "sources": [
+      "crossref"
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
+  },
+  {
     "id": "10.1016/j.flowmeasinst.2026.103466",
     "title": "Numerical investigation of ultrasonic descaling in straight and curved pipes using computational fluid dynamics",
     "authors": "Amir Reza Karbasioon, Aminollah Mohammadi, Alireza Fadaei Tehrani",
@@ -39,8 +115,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -88,10 +164,10 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "turbulence",
-      "wind turbine",
+      "data-driven",
       "machine learning",
-      "data-driven"
+      "wind turbine",
+      "turbulence"
     ],
     "is_early_access": true,
     "sources": [
@@ -169,14 +245,14 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "fluid dynamics",
-      "climate",
-      "rans",
-      "cfd",
       "navier-stokes",
-      "computational fluid dynamics",
+      "aerodynamics",
+      "fluid dynamics",
       "les",
-      "aerodynamics"
+      "rans",
+      "climate",
+      "cfd",
+      "computational fluid dynamics"
     ],
     "is_early_access": true,
     "sources": [
@@ -274,10 +350,10 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics",
       "data-driven",
-      "cfd"
+      "cfd",
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "semantic_scholar",
@@ -325,8 +401,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -372,8 +448,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -421,8 +497,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "rans",
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -517,9 +593,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "boiling",
       "heat transfer",
-      "machine learning",
-      "boiling"
+      "machine learning"
     ],
     "sources": [
       "crossref"
@@ -639,8 +715,8 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "fluid dynamics",
       "reynolds stress",
+      "fluid dynamics",
       "turbulence",
       "cfd",
       "computational fluid dynamics"
@@ -649,6 +725,51 @@
     "abstract_source": "openalex",
     "sources": [
       "crossref"
+    ]
+  },
+  {
+    "id": "10.1016/j.triboint.2026.111981",
+    "title": "Multiscale thermo-elasto-plastic flow modeling and machine learning-driven optimization of fluid lubrication performance",
+    "authors": "Yan Lu, Lei Wen",
+    "abstract": "",
+    "published": "2026-09-01",
+    "paper_url": "https://doi.org/10.1016/j.triboint.2026.111981",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Tribology International",
+    "conference": "Tribology International",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.triboint.2026.111981",
+    "external_ids": {},
+    "semantic_scholar_id": "afea7148fb72c01dfe728c9bc91e61579fd8c097",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "flow modeling",
+      "machine learning"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "machine learning",
+      "flow modeling"
     ]
   }
 ]
