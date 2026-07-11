@@ -48,8 +48,8 @@
     },
     "primary_domain": "流体力学 / 计算流体力学方法",
     "custom_keywords": [
-      "finite volume method",
-      "finite volume"
+      "finite volume",
+      "finite volume method"
     ],
     "sources": [
       "crossref"
@@ -98,8 +98,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "computational fluid dynamics",
-      "fluid dynamics",
-      "deep learning"
+      "deep learning",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -213,10 +213,10 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
+      "heat transfer",
       "rans",
-      "les",
       "turbulence",
-      "heat transfer"
+      "les"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -288,13 +288,13 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "computational fluid dynamics",
-      "physics-informed",
+      "cfd",
+      "data-driven",
+      "pinn",
+      "machine learning",
       "fluid dynamics",
       "acceleration",
-      "pinn",
-      "data-driven",
-      "machine learning",
-      "cfd"
+      "physics-informed"
     ],
     "sources": [
       "openalex"
@@ -304,7 +304,7 @@
     "id": "10.1016/j.compgeo.2026.108416",
     "title": "Thermo-hydro-mechanical modeling of single-phase fluid flow in heterogeneous porous media with micro-fractures using physics-informed neural network",
     "authors": "A.R. Khoei, A.A. Khademi",
-    "abstract": "",
+    "abstract": "Accurate simulation of coupled thermo–hydro–mechanical (THM) processes in porous media is essential for subsurface engineering applications involving non-isothermal flow, deformation, and material heterogeneity. Conventional numerical methods often rely on mesh refinement or enrichment techniques to capture strong coupling, material heterogeneity, and multi-physics effects, which increases computational cost and implementation complexity. In this study, a staged transfer-learning physics-informed neural network (STL–PINN) framework is proposed to solve the linear small-strain thermo-poroelastic formulation for non-isothermal single-phase flow problems in deformable porous media. The STL–PINN embeds the governing THM equations, constitutive relations, and initial and boundary conditions directly into the training process using automatic differentiation. Stability and efficiency are achieved through staged physics enforcement, sequential multi-physics coupling, adaptive loss weighting, and hierarchical transfer learning. The framework is validated using a non-isothermal consolidation benchmark and reservoir-scale simulations with injection and production wells in both homogeneous and heterogeneous settings. Results show that the STL–PINN accurately captures transient pressure, temperature, deformation, and flux responses across different coupling regimes. The model reproduces physically consistent trends in homogeneous reservoirs and effectively resolves anisotropic behavior induced by micro-crack networks in heterogeneous reservoirs, where crack orientation strongly influences pressure propagation and production flux. Overall, the STL–PINN provides a robust, mesh-free approach for simulating coupled THM processes in heterogeneous porous media.",
     "published": "2026-11-01",
     "paper_url": "https://doi.org/10.1016/j.compgeo.2026.108416",
     "arxiv_id": "",
@@ -330,7 +330,8 @@
     ],
     "keywords": [
       "PINN",
-      "neural network"
+      "neural network",
+      "transfer learning"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -340,10 +341,21 @@
     "date_source": "crossref",
     "date_status": "reliable",
     "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 4,
+        "strong_hits": [
+          "transfer learning"
+        ],
+        "context_hits": [
+          "neural network"
+        ],
+        "negative_hits": []
+      },
       "流体力学 / 智能CFD / 物理信息神经网络": {
-        "score": 9,
+        "score": 12,
         "strong_hits": [
           "physics-informed neural network",
+          "pinn",
           "physics-informed"
         ],
         "context_hits": [
@@ -356,12 +368,16 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
+      "transfer learning",
+      "physics-informed neural network",
       "neural network",
-      "physics-informed",
-      "physics-informed neural network"
+      "pinn",
+      "physics-informed"
     ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   }
 ]
