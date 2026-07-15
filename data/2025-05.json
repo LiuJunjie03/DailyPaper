@@ -58,14 +58,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed neural network",
-      "physics-informed",
-      "fluid mechanics",
       "deep learning",
+      "pinn",
+      "physics-informed",
+      "physics-informed neural network",
       "neural network",
-      "vortex",
+      "fluid mechanics",
       "fluid dynamics",
-      "pinn"
+      "vortex"
     ],
     "abstract_enriched_at": "2026-06-08T15:39:34.267981+00:00",
     "abstract_source": "openalex",
@@ -139,10 +139,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
+      "pinn",
       "vortex",
       "fluid dynamics",
-      "pinn"
+      "physics-informed"
     ],
     "scholar_snippet": "Physics-informed neural networks (PINNs) have been widely used to capture the behavior   the simulation of fluid dynamics across various scenarios. However, when applied to stiff",
     "abstract_status": "enriched",
@@ -207,11 +207,11 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "machine learning",
-      "cfd",
       "deep learning",
       "computational fluid dynamics",
-      "fluid dynamics"
+      "cfd",
+      "fluid dynamics",
+      "machine learning"
     ],
     "scholar_snippet": "approach known as Design Variable Coded Multilayer Perceptron (DV-MLP), aimed at  predicting velocity on unseen geometries using CFD simulation data. The DV-MLP",
     "abstract_status": "enriched",
@@ -265,13 +265,13 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "wind turbine",
-      "cfd",
       "deep learning",
-      "airfoil",
-      "neural network",
-      "airfoil optimization",
       "computational fluid dynamics",
+      "wind turbine",
+      "airfoil",
+      "airfoil optimization",
+      "neural network",
+      "cfd",
       "fluid dynamics"
     ],
     "abstract_enriched_at": "2026-06-08T15:46:12.167302+00:00",
@@ -344,11 +344,94 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
-      "heat transfer",
-      "fluid mechanics",
       "deep learning",
-      "pinn"
+      "pinn",
+      "physics-informed",
+      "fluid mechanics",
+      "heat transfer"
+    ]
+  },
+  {
+    "id": "10.33915/etd.12843",
+    "title": "Physics-Informed Neural Network Based Aerodynamic Modeling Framework",
+    "authors": "Nathaniel Michek",
+    "abstract": "Significant advances have been made in developing aerodynamic models over the years. While these advances span many modeling techniques and data collection methods, certain aerodynamic regimes still pose significant challenges. These regimes commonly occur when an aerodynamic body is under extreme flight conditions. Many of these conditions occur simultaneously in the rare and poorly understood case of a tumbling aerodynamic body. The flight of a tumbling aerodynamic body goes through the entire range of aerodynamic angles, alpha and beta, causing significant non-linearities and time-dependent effects associated with flow separation. During tumbling, the aerodynamic body simultaneously rotates about all three axes at high rotational rates, introducing additional non-linearities. This work, motivated by a need to understand the underlying dynamics of tumbling aerodynamic bodies, develops a Physics-Informed Neural Network Aerodynamic Modeling Framework (PINN-AMF) purposely developed to improve aerodynamic models in challenging regimes. PINNs are built on the concept of introducing physical knowledge into the training process of neural networks while benefiting from their universal approximation capabilities. At the center of the PINNAMF are the modifications made to the original PINN architecture to ensure the technique is suitable for aerodynamic modeling. These modifications allowed PINNs to be used on unbounded flight data for the application of aerodynamic modeling for the first time and were demonstrated on increasingly complex simulated case studies. The remaining components of the PINN-AMF consist of the data processing, flight propagation, and uncertainty quantification techniques. The primary purpose of any aerodynamic model is its use to propagate the motion of an aerodynamic body in flight. Therefore, the aerodynamic models can easily be integrated into a flight propagator to provide trajectory predictions. Small errors in the aerodynamic model can lead to significant errors in the propagated trajectories. Therefore, ensemble-based uncertainty quantification weighting schemes were developed to provide calibrated uncertainty estimates. For all techniques, accurate modeling is dependent on good data. Historically, data for aerodynamic modeling has come from multiple sources, including flight testing, wind tunnel testing, and computational fluid dynamics. While the primary data source for the PINN-AMF is assumed to be flight test data, techniques have been developed to allow multiple data sources to be used in the modeling process. This work covers the entire development of the PINN-AMF while demonstrating its applicability on both simulated case studies and real flight test data of a tumbling aerodynamic body.",
+    "published": "2025-05-29",
+    "paper_url": "https://doi.org/10.33915/etd.12843",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=13576&context=etd",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "",
+    "conference": "",
+    "publication_types": [
+      "dissertation"
+    ],
+    "publication_type": "journal",
+    "doi": "10.33915/etd.12843",
+    "external_ids": {
+      "OpenAlex": "W4410861939"
+    },
+    "semantic_scholar_id": "ce6bf8bb499d5dd41ea65d59fa3f3c7e69e599f5",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "fluid dynamics",
+      "neural network",
+      "uncertainty quantification"
+    ],
+    "citation_count": 2,
+    "impact_factor": null,
+    "source": "openalex",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 12,
+        "strong_hits": [
+          "physics-informed neural network",
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流场重建与数据驱动": {
+        "score": 6,
+        "strong_hits": [
+          "uncertainty quantification"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "computational fluid dynamics",
+      "pinn",
+      "physics-informed",
+      "physics-informed neural network",
+      "neural network",
+      "uncertainty quantification",
+      "fluid dynamics"
     ]
   }
 ]

@@ -58,14 +58,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed neural network",
-      "physics-informed",
-      "heat transfer",
       "deep learning",
-      "neural network",
       "computational fluid dynamics",
+      "pinn",
+      "physics-informed",
+      "physics-informed neural network",
+      "neural network",
       "fluid dynamics",
-      "pinn"
+      "heat transfer"
     ],
     "abstract_enriched_at": "2026-06-08T15:40:29.939676+00:00",
     "abstract_source": "semantic_scholar",
@@ -144,11 +144,11 @@
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
       "reynolds stress",
-      "turbulence",
-      "dns",
-      "rans",
       "data-driven",
-      "data-driven turbulence"
+      "rans",
+      "data-driven turbulence",
+      "turbulence",
+      "dns"
     ],
     "abstract_enriched_at": "2026-06-08T15:43:11.049112+00:00",
     "abstract_source": "openalex",
@@ -249,14 +249,14 @@
     },
     "primary_domain": "流体力学 / 气动优化设计",
     "custom_keywords": [
-      "reinforcement learning",
-      "airfoil",
-      "aerodynamic optimization",
-      "aerodynamic design optimization",
-      "deep reinforcement learning",
       "wind turbine",
+      "airfoil",
+      "aerodynamic design optimization",
+      "surrogate model",
+      "aerodynamic optimization",
+      "reinforcement learning",
       "design optimization",
-      "surrogate model"
+      "deep reinforcement learning"
     ],
     "abstract_enriched_at": "2026-06-08T15:44:31.466512+00:00",
     "abstract_source": "openalex",
@@ -321,10 +321,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "cfd",
-      "rans",
       "computational fluid dynamics",
       "surrogate model",
+      "rans",
+      "cfd",
       "fluid dynamics"
     ],
     "abstract_enriched_at": "2026-06-08T15:44:48.503118+00:00",
@@ -375,8 +375,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "machine learning",
-      "multiphase flow"
+      "multiphase flow",
+      "machine learning"
     ],
     "abstract_enriched_at": "2026-06-08T15:46:16.955599+00:00",
     "abstract_source": "openalex",
@@ -430,12 +430,12 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "multiphase flow",
-      "vof",
-      "machine learning",
       "deep learning",
+      "vof",
+      "multiphase flow",
       "neural network",
-      "vortex"
+      "vortex",
+      "machine learning"
     ],
     "abstract_enriched_at": "2026-06-08T15:46:53.633633+00:00",
     "abstract_source": "openalex",
@@ -448,26 +448,116 @@
     "is_early_access": false
   },
   {
-    "id": "10.1016/j.jcp.2025.113793",
-    "title": "Space-dependent aggregation of stochastic data-driven turbulence models",
-    "authors": "Soufiane Cherroud, Xavier Merle, Paola Cinnella, Xavier Gloerfelt",
-    "abstract": "A stochastic Machine-Learning approach is developed for data-driven Reynolds-Averaged Navier-Stokes (RANS) predictions of turbulent flows, with quantified model uncertainty. This is done by combining a Bayesian symbolic identification methodology for learning stochastic RANS model corrections for selected classes of flows (expert models), and a Mixture-of-Experts methodology that aggregates their predictions. The expert models are learned using the recently proposed SBL-SpaRTA algorithm, which generates sparse analytical expressions of the corrective terms with model parameters described by probability distributions. They outperform the baseline RANS model for flows similar to those used for training, but their generalization to different flows is not warranted. With the aim of quantifying the predictive uncertainty associated with the data-driven models while improving predictive accuracy and generalization capabilities, a space-dependent model aggregation technique (XMA) is then adopted. A gating function, which assigns each model a performance score (weight) based on a vector of local flow features, is trained alongside the expert models. The weights can be interpreted as the probability that a candidate model will outperform its competitors given the flow behavior at a given location. Predictions of unseen flows are formulated as a locally weighted average of the stochastic solutions of the expert models. A prediction uncertainty estimate is obtained by propagating the models' posterior parameter distributions and by evaluating the inter-model prediction variance. The expectancy of the XMA prediction is significantly more accurate than the baseline deterministic solution and the individual solutions of the experts for well-documented benchmark flows not included in the training set, while providing consistent estimates of the predictive variance.",
-    "published": "2025-04-01",
-    "paper_url": "https://doi.org/10.1016/j.jcp.2025.113793",
-    "arxiv_id": "2306.16996",
-    "arxiv_url": "https://arxiv.org/abs/2306.16996",
-    "pdf_url": "",
-    "preprint_pdf_url": "https://arxiv.org/pdf/2306.16996",
-    "categories": [],
-    "venue": "Journal of Computational Physics",
-    "conference": "Journal of Computational Physics",
+    "id": "10.14428/esann/2025.es2025-131",
+    "title": "Solving Turbulent Rayleigh-Bénard Convection using Fourier Neural Operators",
+    "authors": "Michiel Straat, Thorben Markmann, Barbara Hammer",
+    "abstract": "We train Fourier Neural Operator (FNO) surrogate models for Rayleigh-Bnard Convection (RBC), a model for convection processes that occur in nature and industrial settings.We compare the prediction accuracy and model properties of FNO surrogates to two popular surrogates used in fluid dynamics: Dynamic Mode Decomposition (DMD) and the Linearly-Recurrent Autoencoder Network (LRAN).We regard Direct Numerical Simulations (DNS) of the RBC equations as the ground truth on which the models are trained and evaluated in different settings.The FNO performs favorably when compared to the DMD and LRAN and its predictions are fast and highly accurate for this task.Additionally, we show its zero-shot super-resolution ability for the convection dynamics.The FNO model has a high potential to be used in downstream tasks such as flow control in RBC.",
+    "published": "2025-04-15",
+    "paper_url": "https://doi.org/10.14428/esann/2025.es2025-131",
+    "arxiv_id": "2501.16209",
+    "arxiv_url": "http://arxiv.org/abs/2501.16209v1",
+    "pdf_url": "https://doi.org/10.14428/esann/2025.es2025-131",
+    "categories": [
+      "cs.LG",
+      "physics.flu-dyn"
+    ],
+    "venue": "ESANN 2025 proceesdings",
+    "conference": "ESANN 2025 proceesdings",
     "publication_types": [
       "article"
     ],
     "publication_type": "journal",
-    "doi": "10.1016/j.jcp.2025.113793",
+    "is_preprint": false,
+    "doi": "10.14428/esann/2025.es2025-131",
     "external_ids": {
-      "OpenAlex": "W4406944068"
+      "OpenAlex": "W4409480452"
+    },
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "source": "openalex",
+    "official_keywords": [],
+    "custom_keywords": [
+      "flow control",
+      "fno",
+      "fourier neural operator",
+      "fluid dynamics",
+      "neural operator",
+      "dns",
+      "super-resolution",
+      "autoencoder"
+    ],
+    "keywords": [
+      "AE",
+      "FNO",
+      "Neural Operator",
+      "dns",
+      "flow control",
+      "fluid dynamics",
+      "super-resolution"
+    ],
+    "preprint_pdf_url": "https://arxiv.org/pdf/2501.16209",
+    "impact_factor": null,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 9,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "fno",
+          "autoencoder"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 6,
+        "strong_hits": [
+          "flow control"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "turbulent"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "citation_count": 3,
+    "is_early_access": false,
+    "sources": [
+      "arxiv",
+      "openalex"
+    ]
+  },
+  {
+    "id": "10.1615/tfec2025.ml.055517",
+    "title": "EXTENDING DEEP LEARNING U-NET ARCHITECTURE FOR PREDICTING UNSTEADY FLUID FLOWS IN TEXTURED MICROCHANNELS",
+    "authors": "Ganesh Sahadeo Meshram, Partha Chakrabarti, Suman Chakraborty",
+    "abstract": "In this study, we have explored an application of deep learning architecture of the U-Net model, originally designed for biomedical image segmentation, in a regression analysis aimed at predicting fluid flows through textured microchannels. The data for this analysis is generated using the lattice Boltzmann method through extensive simulations, capturing the intricate behaviors of fluid dynamics in a microscale environment. The raw simulation data was meticulously preprocessed to prepare it for training the U-Net model, ensuring that the input features and labels were appropriately formatted and normalized to optimize the learning process of the model. The U-Net model, with its inherent capability of capturing spatial hierarchies and producing better predictions, proved effective in this novel application. We have evaluated the performance of the model using metrics including MSE, RMSE, MAE, and $R^2$ scores. These metrics were crucial in assessing the accuracy and reliability of the model predictions. The results demonstrate that the U-Net model can predict fluid flows with high accuracy and less error, indicating its potential for broader applications in fluid dynamics and other fields requiring precise regression modeling. A parametric analysis of the U-Net with attention mechanism showed that the velocity field prediction is contingent upon the solid-fluid interaction parameter and surface wettability. The U-Net equipped with an attention mechanism predicts the velocity magnitude and components for textured microchannels with an average error of 5.18%, which upon optimization may subsequently lower to 2.1%. The U-Net model including an attention mechanism (U-Net AM) regularly surpasses the conventional U-Net model in all measures, evidencing enhanced accuracy and generalization.",
+    "published": "2025-04-10",
+    "paper_url": "https://doi.org/10.1615/tfec2025.ml.055517",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2604.02976",
+    "categories": [],
+    "venue": "Proceeding of 10th Thermal and Fluids Engineering Conference (TFEC)",
+    "conference": "Proceeding of 10th Thermal and Fluids Engineering Conference (TFEC)",
+    "publication_types": [
+      "article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1615/tfec2025.ml.055517",
+    "external_ids": {
+      "OpenAlex": "W4409348781"
     },
     "semantic_scholar_id": "",
     "code_link": "",
@@ -475,56 +565,37 @@
       "机器学习",
       "流体力学",
       "流体力学 / 智能CFD",
-      "流体力学 / 智能CFD / 湍流建模与闭合",
-      "流体力学 / 湍流与流动机理"
+      "流体力学 / 智能CFD / 代理模型与算子学习"
     ],
     "keywords": [
-      "data-driven",
-      "data-driven turbulence",
-      "navier-stokes",
-      "rans",
-      "turbulence"
+      "LBM",
+      "deep learning",
+      "fluid dynamics"
     ],
-    "citation_count": 12,
-    "impact_factor": 5.6,
+    "citation_count": 0,
+    "impact_factor": null,
     "source": "openalex",
     "is_preprint": false,
+    "is_early_access": false,
     "date_source": "crossref",
     "date_status": "reliable",
     "classification_score": {
-      "流体力学 / 智能CFD / 湍流建模与闭合": {
-        "score": 6,
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 4,
         "strong_hits": [
-          "data-driven turbulence"
+          "field prediction"
         ],
         "context_hits": [
-          "rans",
-          "data-driven",
-          "navier-stokes"
-        ],
-        "negative_hits": []
-      },
-      "流体力学 / 湍流与流动机理": {
-        "score": 5,
-        "strong_hits": [
-          "turbulence"
-        ],
-        "context_hits": [
-          "flow",
-          "navier-stokes"
+          "deep learning"
         ],
         "negative_hits": []
       }
     },
-    "primary_domain": "流体力学 / 湍流与流动机理",
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "turbulence",
-      "rans",
-      "navier-stokes",
-      "data-driven",
-      "data-driven turbulence"
-    ],
-    "abstract_source": "enrichment",
-    "is_early_access": false
+      "deep learning",
+      "lattice boltzmann",
+      "fluid dynamics"
+    ]
   }
 ]
