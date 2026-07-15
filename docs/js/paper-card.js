@@ -16,6 +16,7 @@ export function hasPDF(paper) {
 export function sourceLabel(source, paper = {}) {
     if (source === 'semantic_scholar') return 'Semantic Scholar';
     if (source === 'arxiv') return 'arXiv';
+    if (source === 'cnki') return '知网';
     if (source === 'google_scholar') {
         return String(paper.paper_url || '').includes('nature.com') ? 'Nature' : 'Google Scholar';
     }

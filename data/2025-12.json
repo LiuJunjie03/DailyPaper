@@ -1919,5 +1919,597 @@
       "fluid dynamics",
       "machine learning"
     ]
+  },
+  {
+    "id": "cnki-6a7ec9ad0aee",
+    "title": "基于机器学习库的列车空气动力学物理模拟加速（英文）",
+    "authors": "陈博阳; 刘珍; 郭子健; HEANEY Claire E1,4,; PAIN Christopher C1,4,",
+    "abstract": "本文提出了一种基于人工智能的新型计算流体力学方法Neural Physics，并将其应用于高保真列车空气动力学模拟。Neural Physics基于卷积神经网络(CNN)，其网络权重由经典数值离散格式显式确定，无需数据训练。通过充分利用AI计算架构的优势，该方法可在GPU及AI加速器上高效运行，在保持计算精度的同时实现显著加速。物理建模中，该方法通过将隐式大涡模拟(ILES)与非线性PetrovGalerkin方法结合，高效求解未解析尺度湍流。针对高阶有限元离散，提出卷积有限元方法(ConvFEM)，利用卷积操作简化其在AI框架中的实现复杂度。为验证该方法在复杂工程问题中的适用性，本文以Class 66货运机车及部分装载货运列车为研究对象，开展开阔场地(有/无侧风)条件下的数值模拟。这也是ConvFEM首次应用于复杂几何条件下的高速流动问题。数值模拟结果与实验数据及传统方法对比表明，Neural Physics在列车表面压力分布、流场速度等关键气动特性上，与实验数据的一致性达到工程应用要求的精度范围，且计算效率显著提升。",
+    "published": "2025-12-28",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A2I1M78m8CZ_YyHr17Gexu9rMRW2Q06DoUroICK0jNWse6XBdY9-07H7VwsofiW_kiZi9j6Zg-TROIljgv91kwqQwoM0PkErACvwYZdxUt-SfuWsoPHjmUS_FqRYl2hGqxZOsweOUXJD1v4A3NFpHC1Ac7urF625jBXqQZVh1UDaw==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "期刊"
+    ],
+    "venue": "Journal of Central South University",
+    "conference": "Journal of Central South University",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "Pe2nFq1PBOM11SpCErZ-LwM1UHjV0uMR_icN4IXwgifgPRnodfquEP_Uu8RPX9F0fzrc_MUXuyPfDU8cdD4AxCuvxLHoq_16S_0IlLn6ZVV3KAUBlVIsgcb0E8u_YkCK"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "AI处理器",
+      "cnn",
+      "偏微分方程的数值解",
+      "列车空气动力学",
+      "卷积神经网络",
+      "图形处理器",
+      "数值模拟",
+      "神经网络",
+      "计算流体力学"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:32:09.389596+00:00",
+    "official_keywords": [
+      "AI处理器",
+      "偏微分方程的数值解",
+      "列车空气动力学",
+      "卷积神经网络",
+      "图形处理器",
+      "计算流体力学"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "Applied Modelling and Computation Group, Department of Earth Science and Engineering,Imperial College London",
+        "School of Engineering, University of Birmingham",
+        "Department of Civil and Environmental Engineering, The Hong Kong Polytechnic University",
+        "Centre for AI-Physics Modelling, Imperial-X, Imperial College London",
+        "Data Assimilation Laboratory, Data Science Institute, Imperial College London"
+      ],
+      "fund": "Projects(EPSRC EP/Y005732/1, EP/Y018680/1, EP/T003189/1, EP/V040235/1, EP/Y024257/1 and EP/T000414/1)； supported by UK Research and Innovation (UKRI),UK； Project(APP44894/UKRI 1281) supported by UKRI councils (NERC, AHRC, ESRC, MRC and DEFRA),UK；",
+      "classification": "U270.11;TP181",
+      "isOnlineFirst": false,
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "cnn",
+      "计算流体力学",
+      "数值模拟",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-065057c3819b",
+    "title": "基于计算流体力学与机器学习的风量分配数据库构建技术",
+    "authors": "左小鲸; 何鲲鹏; 严豪; 张迁",
+    "abstract": "本研究提出耦合计算流体力学与数据驱动的方法。首先对送风管路进行建模并进行数值模拟。基于正交分析开展多工况风量与送风阀门调控模拟。利用多层感知机和对抗神经网络耦合的数据扩容技术学习数值模拟结果，生成数据库。通过数据样本直方图和核密度曲线对比判别生成数据的可靠度。随机抽取生成数据，作为数值模拟工况，所得模拟结果可复现所扩充数据，证明该方法能够用于传感器不足且缺乏数据存储的工厂，进行分区送风的改造。",
+    "published": "2025-12-15",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A2lj1Hi9OSnQxJbLBFAxOY8G6JCOHz53nCsE1NdDmplfktqgE4wJgNnPxd1Nam-sXIwMqfxVwkGRTglWAodQzic4lqNTUoZFSTsLPAfIdt9Q9NmvymzXYuJ32drU-QAeP2hL509-egh90R-Ra0-YTCFxhFmheJW7SY1_p40r94l0A==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "期刊"
+    ],
+    "venue": "信息系统工程",
+    "conference": "信息系统工程",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "Pe2nFq1PBOM11SpCErZ-LwM1UHjV0uMR_icN4IXwgiddWcqsUChNDr9_bGcunxukCsG7YYs638IpdWFLdC8nYiuvxLHoq_16S_0IlLn6ZVV3KAUBlVIsgcb0E8u_YkCK"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "对抗神经网络",
+      "数值模拟",
+      "数据扩充",
+      "神经网络",
+      "计算流体力学",
+      "阀门开度"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:32:10.664325+00:00",
+    "official_keywords": [
+      "对抗神经网络",
+      "数值模拟",
+      "数据扩充",
+      "阀门开度"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "湖北中烟工业有限责任公司广水卷烟厂"
+      ],
+      "fund": "湖北中烟工业有限责任公司科技项目“智能变风量分区调控系统的研发与应用”（项目编号：2024JSGY4GS2C058）；",
+      "classification": "TP311.13;TP181;O35",
+      "isOnlineFirst": false,
+      "toc": "一、前言 二、模型方法 （一）研究对象 （二）流体力学模型介绍 （三）正交分析表 （四）神经网络模型 1. 生成器构建 2. 基于多层感知机（MLP）修正生成器 3. 判别器构建 4. 对抗训练 三、结果分析 （一）模拟压降结果 （二）小样本数据扩充 （三）扩充后数据验证 四、结语",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "计算流体力学",
+      "数值模拟",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-d6197fcdc880",
+    "title": "翼型盒式机翼布局的气动优化及其机器学习集成方法（英文）",
+    "authors": "哈桑·梅赫迪; 邓中敏; 雷东内·斯特凡; 萨努西·B.穆罕默德",
+    "abstract": "本文提出了一种基于机器学习的机翼气动性能优化方法，适用于常规布局（Common research model,CRM）机翼和非传统布局，即Bionica盒式机翼。该方法通过采用先进的参数化技术如类别/形状变换（Class and shape transformation, CST）函数与Bezier曲线在降低设计复杂性的同时保持了几何建模的灵活性。利用计算流体力学（Computational fluid dynamics, CFD）仿真生成的综合数据集训练了extreme gradient boosting(XGBoost)模型，以预测气动性能。在此基础上，采用非支配排序遗传算法进行优化。结果表明，CRM机翼的阻力降低了12.3%，而Bionica盒式机翼的升阻比提高了18%。研究结果验证了基于机器学习的优化方法在气动设计中的有效性，并显著提升了在不同构型下的效率。",
+    "published": "2025-12-15",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A108TuT4XSDiji0kKT0tPTAA9Xgw6-9X44i1UFOiaaQfp17qaGuR-AFlmCrzlv1rWiMxd-FcVtstALRSvIHrW6nDwxyZmLVErI04OGm65WP7G1mc_1Rj5fg3Atj0ya_87jeWloYTXyxXjIA-lFB71fPYVf9IF53vazBiaXA8wACEA==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "期刊"
+    ],
+    "venue": "Transactions of Nanjing University of Aeronautics and Astronautics",
+    "conference": "Transactions of Nanjing University of Aeronautics and Astronautics",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "Pe2nFq1PBOM11SpCErZ-LwM1UHjV0uMR_icN4IXwgic3dXx8q1oUKXlkl1D7YVIIUvFGkY1vf_cgZ35bVAqrlCuvxLHoq_16S_0IlLn6ZVV3KAUBlVIsgcb0E8u_YkCK"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "fluid dynamics",
+      "机器学习",
+      "气动优化",
+      "盒式机翼",
+      "计算流体力学"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:32:11.949104+00:00",
+    "official_keywords": [
+      "机器学习",
+      "气动优化",
+      "盒式机翼",
+      "计算流体力学"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "北京航空航天大学杭州创新研究院",
+        "香港科技大学机械与航空航天工程系",
+        "哈尔滨工业大学(深圳)机电工程与自动化学院"
+      ],
+      "classification": "V211.41",
+      "isOnlineFirst": false,
+      "toc": "0 Introduction 1 Methodology 2 Applications 2.1 Parameterization of the planforms 2.2 Dataset generation 2.3 Meshing and computation 2.4 Constitution of ML models 2.5 Optimization problem definitions 3 Results and Discussion 3.1 Results validations 3.2 Optimization outcomes 4 Conclusions",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd",
+      "计算流体力学"
+    ]
+  },
+  {
+    "id": "cnki-c1d048a80a2f",
+    "title": "物理信息神经网络的随机二分采样监督数据压缩方法",
+    "authors": "阮雍硕; 汪雪林; 江静",
+    "abstract": "物理信息神经网络(Physics-Informed Neural Networks,PINNs)是一类结合深度学习与物理先验知识的方法,被广泛应用于非线性偏微分方程的求解,尤其在流体力学等复杂物理问题中展现出良好的潜力。然而,传统的物理信息神经网络的性能仍依赖于大量监督数据,其在工程场景中的可行性受到限制。针对该问题,提出了一种随机二分采样监督数据压缩方法,以减少对监督数据的需求。核心思路是:通过在PINNs框架下引入随机采样与二分查找相结合的策略,逐步减少监督数据的数量,并确定在保证模型性能的前提下所需的最小监督样本规模。首先,在流场时空域内构建PIN N s,并输出各采样点的物理属性值。其次,利用二分查找的方法确定监督数据的数量,并通过随机方式选取多组样本进行训练。最终,以多组结果的均值作为方程参数的参考解,从而有效减小监督数据的规模。实验结果表明,该方法在显著压缩监督数据的同时,仍能保持较高精度。",
+    "published": "2025-12-03",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A1boKYnK8SRzmkR5ZQXR0yWWz2zPVoGrJTbVfEPN0afugOhds0PZw11SR6sJx7miMKpEsk7YCb_D0shkk6HykXqBootcHh_YYuIHrW5wczORD2du1h-Fr0CW996P9QvQWJdPP6ByHYIcD73uoERMtYfIkhUtQ9JuW0SPskI4JH-cg==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "中国会议"
+    ],
+    "venue": "中国计算机用户协会网络应用分会2025年第二十九届网络新技术与应用年会论文集",
+    "conference": "中国计算机用户协会网络应用分会2025年第二十九届网络新技术与应用年会论文集",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "Cepas2vDv1UfxKriHl_KOREioDQGUYyP45GzgsBWMKX8LDGH3olE2pujvp2Jx5X9RgPRU4rpbC9XmrYD2X4W9QidbmyQzrmlBldsqt7x9gSXZP-VrJGkTIyRTi6G98Y9"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "PINN",
+      "偏微分方程",
+      "流体力学",
+      "深度学习",
+      "物理信息神经网络",
+      "监督数据压缩",
+      "神经网络",
+      "随机采样"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:32:53.636854+00:00",
+    "official_keywords": [
+      "偏微分方程",
+      "流体力学",
+      "物理信息神经网络",
+      "监督数据压缩",
+      "随机采样"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "北京联合大学智慧城市学院",
+        "青岛城市学院机电工程学院"
+      ],
+      "fund": "国家自然科学基金(61871055)~~；",
+      "classification": "TP183",
+      "isOnlineFirst": false,
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "physics-informed",
+      "物理信息神经网络",
+      "深度学习",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-5fb76fdd1362",
+    "title": "深度学习方法在流场重建中的应用综述",
+    "authors": "邵绪强; 栗明宇1,; 韩浩; 王磊; 王德生; 王泠沄",
+    "abstract": "高分辨率流场数据具有非线性，数据量大的特点，无论用实验还是模拟方法都存在获取难度高的问题。流场重建技术能够充分利用流场的可观测信息挖掘不可观测信息，用稀疏观测的或低分辨的流场数据恢复出高分辨流场数据。深度学习方法得益于其强大的特征提取和非线性拟合能力，在流体力学问题中已经有了广泛的应用，其中，基于深度学习的流场重建方法拥有极高的研究潜力。本文对基于深度学习的流场重建方法进行了调研，分类阐述了不同视角下的流场重建问题的建模方式。详细归纳了模态重组类、局部-整体预测类和单元求解器类流场重建方法的研究进展和成果，并讨论了各种方法的优缺点。最后总结分析了基于深度学习的流场重建技术面临的挑战，并对未来的研究方向进行了展望。",
+    "published": "2025-12-25",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A0Gp9kRX7lKS45SRUSLNpDjNfWfNx0biQfAo8YCqtPB3Dz6-rTngG0-jBZ-jM3vaE-hMxUzElo4M6Xg4SZ-YSCFkrOUprTnNqTRVmZ3E6MdH9lFvQhOSqI9QUAyOWF6UQmoYPAR557lZ9flJDkJKB06OFr1vRv8OSTPvyt3qFVqoA==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "期刊"
+    ],
+    "venue": "智能系统学报",
+    "conference": "智能系统学报",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "Pe2nFq1PBOM11SpCErZ-LwM1UHjV0uMR_icN4IXwgifhUEkMFDOxLihAkuMqqA2Pe1FXR7aKcv_DHwV_LlOPZyuvxLHoq_16S_0IlLn6ZVV3KAUBlVIsgcb0E8u_YkCK"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "数值模拟",
+      "数据增强",
+      "模态分解",
+      "流场重建",
+      "深度学习",
+      "神经网络",
+      "计算流体力学",
+      "超分辨率"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:34:48.131332+00:00",
+    "official_keywords": [
+      "数值模拟",
+      "数据增强",
+      "模态分解",
+      "流场重建",
+      "深度学习",
+      "神经网络",
+      "计算流体力学",
+      "超分辨率"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "华北电力大学控制与计算机工程学院",
+        "国民核生化灾害防护国家重点实验室"
+      ],
+      "fund": "国家重点研发计划项目（2021YFF0604000）；",
+      "classification": "TP391.41;TP18",
+      "isOnlineFirst": false,
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "深度学习"
+    ]
+  },
+  {
+    "id": "cnki-ffcaefa1e3de",
+    "title": "基于CSRT参数化与深度学习的低雷诺数翼型优化方法",
+    "authors": "张耀辉; 王耀坤",
+    "abstract": "针对低雷诺数翼型气动性能优化需求，提出了一种基于类别形状修正函数变换（CSRT）参数化和深度学习的多点优化方法。首先，系统分析了阶次对类别形状函数变换（CST）与CSRT参数化方法拟合精度的影响，并通过对比验证了CSRT在局部特征捕捉上的优势。在此基础上，确定合适阶次后对多个翼型进行CSRT参数化表示，通过拉丁超立方抽样生成约7万个翼型，并在多个迎角下计算其气动特性，构建包含约166万有效样本的气动数据库。随后，搭建基于深度学习的代理模型，实现升力、阻力及力矩系数的快速高精度预测。最后，结合基于岛屿的差分进化算法（IbDE）开展多点优化设计。结果显示，优化后翼型的转捩位置较初始翼型延后26%弦长，有效降低了摩擦阻力，翼型在三个设计点的巡航因子分别提升了11.85%、8.47%和13.12%。综上所述，该方法能够显著提升低雷诺数翼型的气动性能，为翼型优化设计提供了高精度与高效性的优化策略。",
+    "published": "2025-12-09",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A1AlZposH2Yu6_ivO6F6GjgEI6yK7w-8MdSZ8CjpnrBnfAJiAJ0c8AZXuwF56DgUknWxUK4XQFX0rfnBPLxg-LURc9pLZbTafN_RQUSxZh2wtOPbgpC6Be16umcHes9Q3CznAZaUiWl-WMlkaLEfcDfjyHJcrYSv7EoJ7XSJoV7Rw==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "期刊"
+    ],
+    "venue": "北京航空航天大学学报",
+    "conference": "北京航空航天大学学报",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "kd9kqNkOM8Xyu_MccKCQ5AM1UHjV0uMR_icN4IXwgicy8CEzp2RuVVuiDpMAkIzayjgdWyQfhLP3TQgh2hrmBP15U4RVk_tCm67MCfzPBes!"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "代理模型",
+      "低雷诺数翼型",
+      "多点优化",
+      "差分进化算法",
+      "深度学习",
+      "类别形状修正函数变换"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:35:41.681296+00:00",
+    "official_keywords": [
+      "代理模型",
+      "低雷诺数翼型",
+      "多点优化",
+      "差分进化算法",
+      "深度学习",
+      "类别形状修正函数变换"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "北京航空航天大学航空科学与工程学院"
+      ],
+      "fund": "航空科学基金（2022Z012051001）；",
+      "classification": "TP18;V211",
+      "pubInfo": "（录用定稿）网络首发时间：2025-12-09 15:07:05",
+      "isOnlineFirst": true,
+      "toc": "1 翼型优化方法 1.1 CST与CSRT参数化方法 1.2 翼型气动代理模型 1.3 翼型优化问题描述与优化框架 2 CST与CSRT参数化方法对比 2.1 CST与CSRT方法拟合精度参数分析 2.2 CST与CSRT参数化方法拟合精度比较 3 基于深度学习的代理模型构建 3.1 气动数据库构建 3.2 数据准备与预处理 3.3 模型设计与实现 3.4 模型训练与效果评估 4 翼型优化结果分析与验证 4.1 优化结果分析 4.2 优化结果验证 5 结 论",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "代理模型",
+      "深度学习"
+    ]
   }
 ]

@@ -433,5 +433,2750 @@
       "uncertainty quantification",
       "fluid dynamics"
     ]
+  },
+  {
+    "id": "cnki-dad1bab8b41c",
+    "title": "基于深度学习的旋转机械流场预测研究",
+    "authors": "张盟",
+    "abstract": "泵、风力机和涡轮机等旋转机械中的流动现象相对复杂,而使用CFD技术是求解此类大型工程问题常用的方法。然而,在实际工程中,使用CFD方法求解此类问题往往需要大量的计算资源和时间,严重影响旋转机械流场计算和设计效率,为解决这一问题,本研究提出一种基于深度学习(Deep Learning)的旋转机械流场快速准确求解方法,能够在几秒内快速计算流场,且总体误差值较小,大大提高了旋转机械流场计算效率,主要研究工作如下: (1)使用CFD方法完成对旋转机械翼型流场在不同风速、攻角工况下的数值模拟,将仿真值与实验值对照,构建高保真度的翼型流场数据集。在引入三种深度学习模型的同时创新性地引入CNN-LSTM混合神经网络模型,并使用四种神经网络模型以初始坐标信息和流动条件作为输入特征直接预测翼型流场,结果表明四种深度学习模型均能准确预测出NACA4412翼型流场,且引入的CNN-LSTM模型总体预测精度最高。使用CNN-LSTM模型进一步预测NACA0018、NACA2412两种翼型流场,结果发现CNN-LSTM模型依旧能够准确完成翼型流场快速计算的任务。 (2)构建旋转机械流场特征和涡粘系数的非线性映射关...",
+    "published": "2025-05-25",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A2MQJjl43A9guENbYXqM4u9VoSS0Bfrx5rpAz0FSZ0bgrvfeB4k8vrDJTjcJ_X2bDlM5WbaGC8SKDrb2862pA58sN271z9qrOnArpUIsrIocKC4xdythaJBHTHfB47S-z9F305i1jzo-8X6CU_-Tv6SfXXy_V_-LtH5thDTIGS7adu4cqpG47Y3&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "安徽理工大学",
+    "conference": "安徽理工大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmna8qBa0aupscXYXRVfcJ6PxMQcTim95WbQcQvyZY8W5vPhQCRo5kYiP4eWkONp9c2"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "RANS模型",
+      "cnn",
+      "deep learning",
+      "lstm",
+      "数值模拟",
+      "旋转机械",
+      "流场预测",
+      "深度学习",
+      "神经网络",
+      "计算流体力学"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:32:22.415140+00:00",
+    "official_keywords": [
+      "RANS模型",
+      "旋转机械",
+      "流场预测",
+      "深度学习",
+      "计算流体力学"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "安徽理工大学"
+      ],
+      "classification": "TH17;TP18",
+      "isOnlineFirst": false,
+      "toc": "摘要 Abstract 1 绪论 1.1 研究背景及意义 1.2 国内外研究现状 1.2.1 替代或修正湍流模型 1.2.2 深度学习直接预测流场 1.2.3 旋转机械流场预测 1.3 本文主要研究内容 2 深度学习模型和数值模拟方法 2.1 深度学习和机器学习模型简介 2.1.1 人工神经网络模型 2.1.2 卷积神经网络模型 2.1.3 LSTM 和 BiLSTM 模型 2.1.4 混合神经网络模型 2.1.5 随机森林模型 2.2 相关函数及评估方法 2.3 数值模拟方法 2.3.1 控制方程 2.3.2 湍流模型 3 旋转机械翼型流场预测 3.1 翼型流场计算模型 3.2 翼型流场计算及验证 3.2.1 翼型网格划分及初始条件设置 3.2.2 翼型流场验证 3.2.3 翼型流场提取和预处理 3.3 翼型流场预测模型搭建及结果对比 3.3.1 不同神经网络模型搭建 3.3.2 神经网络模型训练及预测 3.3.3 不同神经网络模型压力预测结果对比 3.3.4 不同神经网络模型速度预测结果对比 3.3.5 不同神经网络模型预测评估值分析 3.4 翼型流场预测模型泛化性验证 3.4.1 NACA0018 翼型流场预测对比 3.4.2 NACA2412 翼型流场预测对比 3.5 本章小结 4 替代RANS模型方法的旋转机械流场预测 4.1 预测方法简介 4.2 旋转机械流场计算及特征选取 4.2.1 旋转机械流场计算 4.2.2 流场特征选取及提取 4.3 混合神经网络模型结构 4.4 不同模型预测结果和讨论 4.4.1 CNN-LSTM 模型训练和验证 4.4.2 CNN-LSTM 模型训练和预测结果 4.4.3 随机森林训练和预测结果 4.4.4 模型预测结果分析 4.4.5 不同模型条件下的涡粘系数预测对比 4.5 替代RANS模型预测方法泛化性验证 4.6 耦合求解结果对比 4.7 本章小结 5 复杂旋转机械流场预测 5.1 复杂旋转机械流场数据集计算 5.1.1 Rotor37 简介 5.1.2 网格划分及边界条件设置 5.2 DCNN-BiLSTM 模型 5.2.1 DCNN-BiLSTM 模型搭建 5.2.2 DCNN-BiLSTM 模型训练及预测 5.3 复杂旋转机械预测结果对比分析 5.3.1 压力场预测结果对比 5.3.2 马赫数场预测结果对比 5.3.3 温度场预测结果对比 5.4 本章小结 6 总结与展望 6.1 总结 6.2 展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "cnn",
+      "deep learning",
+      "cfd",
+      "lstm",
+      "数值模拟",
+      "深度学习",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-dfef96edf17f",
+    "title": "基于机器学习的航空发动机压气机叶片气动力预测",
+    "authors": "赵凯诺",
+    "abstract": "压气机作为航空发动机的重要组成部分,不仅直接影响发动机的效率,还对其稳定性和整体性能具有深远影响。由于压气机内部流场极为复杂,研究其气动特性显得尤为重要。为了在各种复杂工况下高效且精准地获取叶片表面及其周围流场的气动力载荷,本研究采用了机器学习和深度学习技术,构建了多种广泛适用的气动力预测模型。这些模型准确预测了单一工况及复杂工况下叶片表面及周围流场的气动特性。 (1)本研究首先建立了具有真实几何参数的压气机叶片模型,经过网络划分后进行流场仿真。通过网格无关性检验来确保计算结果的可靠性。研究还考虑了不同设计参数对叶片流场的影响,通过计算流体力学(CFD)方法获取了详细的叶片表面及周围流场的气动载荷分布数据。这些高保真数据为后续的模型训练和分析奠定了坚实的基础。 (2)在单工况下,本研究采用距离场参数化方法对叶片几何形状进行处理,并结合ResNet与U-Net等深度卷积神经网络,成功构建了叶片几何与气动参数之间复杂映射关系的预测模型。研究结果表明,这些模型在预测叶片表面和周围流场的空气动力学特性方面表现出卓越的性能。与传统方法和非卷积网络相比,基于深度学习的模型展现出更高的预测精度和适应能...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A0SCYdFyJNOSYOiOH-0fHf3RmMO7SJgYdem7V4qgHu5Uhvp_ZZVlMve14scxZ43Msk-mbRko4WtYxjvsUmKnrFvN4wvquK1L-IDJN8ay-1Ei1shKGYIMiuyNfJp022BbYdImcuEhiGcO2-NhiDo54ouvjIQGAEMHbg0Ifnfe8YA6MXq1Z-L7TiM&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "天津工业大学",
+    "conference": "天津工业大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnbUNK0vPkb7RYSja6JOtYbbqTg40WRJ4AXnIPAl1vH-jI1ZqBdCn8bJxRuFKgHA9D"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "压气机叶片",
+      "机器学习",
+      "气动力预测",
+      "流场分布",
+      "深度学习",
+      "神经网络",
+      "计算流体力学"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:32:23.716916+00:00",
+    "official_keywords": [
+      "压气机叶片",
+      "机器学习",
+      "气动力预测",
+      "流场分布",
+      "计算流体力学"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "天津工业大学"
+      ],
+      "fund": "国家自然科学基金(12102299、11972253)； 天津市自然科学基金重点项目(23JCZDJC00230)；",
+      "classification": "TP181;V232.4",
+      "isOnlineFirst": false,
+      "toc": "摘要 abstract 第一章 绪论 1.1 研究背景及意义 1.2 基于传统方法的流场分析的研究现状 1.3 基于机器学习的流场分析的研究现状 1.3.1 基于机器学习的空气动力学的研究现状 1.3.2 基于机器学习的压气机性能的研究现状 1.4 文献总结及存在的问题 1.5 课题来源 1.6 研究内容及章节安排 第二章 压气机叶片流场的数值模拟方法 2.1 引言 2.2 数值模拟基础理论 2.2.1 流体动力学基础 2.2.2 离散化方法 2.3 压气机叶片流场的数值模拟 2.3.1 压气机叶片建模 2.3.2 网格无关性验证 2.3.3 边界条件设置和求解策略 2.3.4 数值模拟结果分析 2.4 不同参数对流场特性影响的研究 2.4.1 安装角对流场特性的影响 2.4.2 扭转角对流场特性的影响 2.4.3 入口质量流率对流场特性的影响 2.4.4 出口相对静压对流场特性的影响 2.4.5 转速对流场特性的影响 2.5 本章小结 第三章 单工况叶片气动力预测 3.1 引言 3.2 深度学习模型 3.2.1 叶片表面气动力预测模型 3.2.2 叶片周围气动力预测模型 3.2.3 评估指标 3.3 数据集准备 3.3.1 叶型参数化 3.3.2 数据集构建 3.3.3 数据预处理 3.4 实验分析 3.4.1 实验环境 3.4.2 模型对比及分析 3.4.3 压气机叶片表面及其周围气动力预测 3.5 本章小结 第四章 多工况叶片气动力预测 4.1 引言 4.2 机器学习模型 4.2.1 RF模型 4.2.2 MLP 和 DNN 模型 4.2.3 1D-CNN 模型 4.2.4 LSTM 模型 4.3 数据集准备 4.3.1 数据采集 4.3.2 数据集构建及预处理 4.4 实验分析 4.4.1 模型表现 4.4.2 模型对比及分析 4.4.3 压气机叶片面气动力预测 4.4.4 特征重要性分析 4.5 本章小结 第五章 总结与展望 5.1 总结 5.2 展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "cfd",
+      "计算流体力学",
+      "深度学习",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-933023ae5059",
+    "title": "CCTA时相选择对深度学习与计算流体力学算法CT血流储备分数诊断效能的影响",
+    "authors": "刘东",
+    "abstract": "目的 本研究旨在探讨基于冠状动脉CT血管成像(coronary computed tomography angiography,CCTA)的血流储备分数(CT-derived fractional flow reserve,CT-FFR)计算中,不同算法对CT-FFR测量准确性的影响,并评估心动周期(收缩期与舒张期)对CT-FFR结果的影响,进一步分析CT-FFR在无创评估冠状动脉疾病(coronary artery disease,CAD)中的诊断价值及其对患者个体生理差异的适用性。 方法 本研究为回顾性、多中心研究,共纳入220例疑诊CAD患者,这些患者均顺序接受了冠状动脉CT血管成像(CCTA)、侵入性冠状动脉造影(invasive coronary angiography,ICA)及侵入性血流储备分数(fractional flow reserve,FFR)测量。利用自动分割算法从CCTA图像中重建冠状动脉三维模型,分别采用计算流体力学(computational fluid dynamics,CFD)和深度学习(deep learning,DL)两种算法计算CT-FFR,比较收...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A0SCYdFyJNOSYOiOH-0fHf3RmMO7SJgYdem7V4qgHu5Ul89zovA0QTiuuYoeyHC5n3bq60K8mfwu5NGqic3OvrmXI5mIPNKXfNyBOJxp1rEmFXHRGp2JN1MK7nN-Ntw4n2hC8ockwKfJqfCwp5S0ePWwCuGgosjiEJ57_u8ojelQn_8UROm8woU&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "浙江中医药大学",
+    "conference": "浙江中医药大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnT905xoRB080Q6ByZ_cpE8bqTg40WRJ4AXnIPAl1vH-jI1ZqBdCn8bJxRuFKgHA9D"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "CT血流储备分数",
+      "deep learning",
+      "fluid dynamics",
+      "冠状动脉疾病",
+      "心动周期",
+      "深度学习",
+      "计算流体力学"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:32:25.068577+00:00",
+    "official_keywords": [
+      "CT血流储备分数",
+      "冠状动脉疾病",
+      "心动周期",
+      "深度学习",
+      "计算流体力学"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "浙江中医药大学"
+      ],
+      "classification": "R816.2;R541.1",
+      "isOnlineFirst": false,
+      "toc": "中文摘要 ABSTRACT 中英文缩略词表 前言 一、材料与方法 (一) 研究对象 (二) 样本量分析 (三) CCTA检查 1. 患者准备 2. 检查方案 (四) CT-FFR计算流程 1. CFD算法流程 2. DL算法流程 (五) ICA检查 (六) ICA-FFR检查 (七) 冠状动脉管腔狭窄分析 (八) 图像分析 (九) 统计学分析 二、结果 (一) 患者一般资料 (二) 病变血管具体特征 (三) 主观图像质量分析 (四) CT-FFR与导管FFR的相关性 (五) CT-FFR与导管FFR的Bland-Altman一致性分析 (六) 不同算法CT-FFR的诊断能力对比 (七) 不同心动周期CT-FFR的诊断能力 (八) CT-FFR预测功能性缺血的多元分析 三、分析与讨论 (一) CT-FFR的准确性及不同算法(CFD vs.DL)的影响 (二) 心动周期对CT-FFR测量的影响 (三) CT-FFR在冠心病临床诊断中的应用价值 (四) 不足与展望 结论 创新点 参考文献 附图(表) 文献综述 冠状动脉CT血流储备分数诊断效能影响因素的研究进展 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "fluid dynamics",
+      "deep learning",
+      "computational fluid dynamics",
+      "cfd",
+      "计算流体力学",
+      "深度学习"
+    ]
+  },
+  {
+    "id": "cnki-eacace7227a0",
+    "title": "物理信息神经网络算法在不规则域Jeffrey磁流体模型上的应用",
+    "authors": "邢惠隋",
+    "abstract": "本文主要利用物理信息神经网络(Physics-informed neural networks,简记为PINNs)算法和分数阶物理信息神经网络(Fractional physics-informed neural networks,简记为fPINNs)算法求解了一系列定义在不规则区域上的整数阶和分数阶Jeffrey磁流体流动和传热模型。具体地: 第一章介绍了 Jeffrey磁流体流动和传热模型与物理信息神经网络算法的研究背景和国内外研究现状,并简单概述本文的研究内容和创新点。 第二章简要介绍了本文用到的几类微积分算子的定义以及物理信息神经网络算法、分数阶物理信息神经网络算法的原理和基本流程。 第三章建立了直通道内横截面为不规则区域的Jeffrey磁流体流动和传热模型,并借助物理信息神经网络算法讨论了其正问题。首先利用Jeffrey流体的本构关系方程和傅里叶热传导定律,建立了直通道内不规则区域上的整数阶Jeffrey磁流体流动和传热耦合模型。随后,开发了一种新的物理信息神经网络算法来解决该模型的正问题,并用图表的形式讨论了物理信息神经网络算法的网络结构、惩罚项的权重、学习率等参数对算法数值...",
+    "published": "2025-05-29",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A2mVwOtvSYDzwZzEI9bt0S9mAolFXWiciGkeIPk3iozsR7vmqayeJjUs6LNv6UNI01ccKEJPvZtGDYoL5H6D6M3iRQcGzd7MCOOWtKjV5ay71VY1vl7YRPWoxsOgvU872IffSLxiP1Qzz2ySpo987RE_Tj6XqNDI7zBYIBAkYBGPKG7YDePjAQa&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "山东大学",
+    "conference": "山东大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmn5XgpSKmbARpl4Sp_d7Svg7qTg40WRJ4AXnIPAl1vH-jI1ZqBdCn8bJxRuFKgHA9D"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "Jeffrey磁流体",
+      "PINN",
+      "不规则区域",
+      "偏微分方程",
+      "分数阶偏微分方程",
+      "正问题",
+      "物理信息神经网络",
+      "物理信息神经网络算法",
+      "神经网络"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:33:11.811429+00:00",
+    "official_keywords": [
+      "Jeffrey磁流体",
+      "不规则区域",
+      "偏微分方程",
+      "分数阶偏微分方程",
+      "正问题",
+      "物理信息神经网络算法"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "山东大学"
+      ],
+      "classification": "TP183;O361.3",
+      "isOnlineFirst": false,
+      "toc": "摘要 ABSTRACT 第一章 绪论 1.1 研究背景及国内外研究现状 1.2 研究内容与创新点 第二章 预备知识 2.1 微积分算子的定义 2.2 物理信息神经网络算法 2.3 分数阶物理信息神经网络算法 第三章 基于物理信息神经网络算法求解不规则区域上整数阶Jeffrey磁流体流动和传热模型 3.1 数学模型 3.2 数值方法 3.3 数值结果 3.3.1 数值算例1 3.3.2 数值算例2 3.4 本章小结 第四章 基于分数阶物理信息神经网络算法求解不规则区域上分数阶Jeffrey磁流体流动和传热模型 4.1 数学模型 4.2 数值方法 4.3 数值结果 4.3.1 数值算例1 4.4 本章小结 第五章 总结与展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "physics-informed",
+      "物理信息神经网络",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-408169b3f352",
+    "title": "基于物理信息神经网络模型的刚性圆柱振子流致振动捕能效率预报方法研究",
+    "authors": "刘延昆",
+    "abstract": "海流能作为一种稳定、可预测的能源形式,具备较高的能源密度和较低的环境影响,一直是海洋能源利用的研究重点。我国近海岸的低流速海流能分布十分广泛,为利用丰富的海流能资源,基于流致振动的低流速海流能发电技术不断发展。在利用流致振动现象开发海流能时,需要对流致振动发电装置捕能效率进行预报评估,但传统的实验方法成本较高,数值模拟方法对计算资源要求较高,且两者均无法快速得到大规模不同工况下的流致振动响应结果。为此,本文首先阐述基础理论,对预报任务进行分析,并构建物理约束方程。然后针对流致振动响应过程进行数值模拟,并根据数值模拟结果分别建立不同工况下的流致振动响应数据集。在流致振动响应数据集的基础上构建流致振动响应预报反向传播神经网络(Backpropagation Neural Network,BPNN)模型。将物理约束添加到BPNN模型中,使单一数据驱动的BPNN模型变为数据驱动和物理驱动深度融合的物理信息神经网络(Physics-informed Neural Network,PINN)模型。结果表明,物理约束的添加降低了假设空间的复杂度,限制了可接受解的空间,在数据集减半时,能有效提高传统神经...",
+    "published": "2025-05-26",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A2mVwOtvSYDzwZzEI9bt0S9mAolFXWiciGkeIPk3iozsSkEouwtt9cnF9hDOE55-V2bh1teiGqloTxy-Zg39aMs4DYjfsrxuhHFIYSYIlbALXcmClzNPu7Bhtk50sZuiokkt9FGTXvSXfh58ylOGdw7TVwptD0oDCS9olt0qZR2_jM1itUYTApL&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "江苏科技大学",
+    "conference": "江苏科技大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnn9B7M6C7e3-SubWjm69LixMQcTim95WbQcQvyZY8W5vPhQCRo5kYiP4eWkONp9c2"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "neural network",
+      "捕能效率",
+      "数值模拟",
+      "数据集",
+      "流致振动",
+      "物理信息神经网络",
+      "神经网络",
+      "预报"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:33:13.206239+00:00",
+    "official_keywords": [
+      "捕能效率",
+      "数据集",
+      "流致振动",
+      "物理信息神经网络",
+      "预报"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "江苏科技大学"
+      ],
+      "classification": "TM612;P743.1",
+      "isOnlineFirst": false,
+      "toc": "摘要 Abstract 第1章 绪论 1.1 研究背景与意义 1.2 流致振动研究现状 1.2.1 实验研究 1.2.2 理论研究 1.2.3 数值模拟研究 1.3 深度学习研究现状 1.3.1 深度学习发展过程 1.3.2 物理信息神经网络研究 1.4 本文主要工作内容 1.5 本文研究创新点 第2章 基础理论与物理约束方程构建 2.1 流致振动基础理论 2.1.1 流致振动发电原理 2.1.2 流致振动相关参数 2.2 神经网络基础理论 2.2.1 神经网络原理 2.2.2 神经网络建立流程 2.2.3 物理信息神经网络原理 2.3 物理约束方程构建 2.3.1 振子物理模型及受力分析 2.3.2 振子捕能效率计算 2.3.3 预报任务分析与物理约束方程推导 2.4 本章小结 第3章 基于数值模拟方法的流致振动响应数据集建立 3.1 引言 3.2 数值求解方法 3.2.1 流体控制方程 3.2.2 雷诺时均方程 3.2.3 湍流模型 3.2.4 有限体积法 3.2.5 重叠网格技术 3.2.6 流固耦合数值模型求解流程 3.3 单圆柱振子流致振动数值模型与数据集建立 3.3.1 物理模型和计算域设置 3.3.2 网格划分 3.3.3 单圆柱振子数值模型计算方案设计与数据集建立 3.4 串列双圆柱振子流致振动数值模型与数据集建立 3.4.1 物理模型和计算域设置 3.4.2 网格划分 3.4.3 串列双圆柱振子数值模型计算方案设计与数据集建立 3.5 数值模型可靠性验证 3.5.1 网格无关性验证 3.5.2 时间步长无关性验证 3.5.3 流致振动响应验证 3.6 本章小结 第4章 基于物理信息神经网络模型的流致振动响应预报方法 4.1 引言 4.2 物理约束可靠性验证 4.3 物理信息神经网络模型构建 4.3.1 单圆柱振子流致振动响应预报BPNN模型构建 4.3.2 单圆柱振子流致振动响应预报PINN模型构建 4.3.3 串列双圆柱振子流致振动响应预报BPNN模型构建 4.3.4 串列双圆柱振子流致振动响应预报PINN模型构建 4.4 物理信息神经网络模型预报性能分析 4.4.1 单圆柱振子 BPNN 模型与 PINN 模型预报性能对比分析 4.4.2 串列双圆柱振子 BPNN 模型与 PINN 模型预报性能对比分析 4.5 本章小结 第5章 基于物理信息神经网络模型的捕能效率优化 5.1 引言 5.2 捕能效率优化算法与优化结果 5.2.1 捕能效率优化算法 5.2.2 捕能效率优化结果 5.3 捕能效率优化程序 5.3.1 程序开发流程 5.3.2 程序界面介绍 5.3.3 优化实例演示 5.4 本章小结 第6章 总结与展望 6.1 全文总结 6.2 研究展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 10,
+        "strong_hits": [
+          "physics-informed neural network",
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "pinn",
+      "physics-informed",
+      "neural network",
+      "physics-informed neural network",
+      "数值模拟",
+      "物理信息神经网络",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-18d404a5b015",
+    "title": "基于物理信息神经网络的脉冲预测与调制不稳定性分析",
+    "authors": "周成成",
+    "abstract": "超短脉冲的演化过程一般由非线性薛定谔方程描述，而耦合非线性薛定谔方程可以描述两个或多个不同载频的波包同时在系统中出现时的相互作用。传统的求解方法随着变量的增加计算过于复杂，物理信息神经网络算法成为一种求解非线性偏微分方程的重要方法。本文基于描述超短脉冲传输的耦合非线性薛定谔方程，研究系统的调制不稳定性，分析得到调制不稳定性增益条件，并给出调制不稳定增益的表达式。基于物理信息神经网络算法对耦合非线性薛定谔方程的解进行预测，成功地将求解非线性偏微分方程问题转化为优化损失函数，实现了较好的精度和较低的误差。本文结果对于超短脉冲传输的数值模拟与实际应用具有重要的理论意义和潜在的应用价值。",
+    "published": "2025-05-25",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A0xqRqkyicMO26_oD7znIxu35XX_liRQ6YZEfi5hDFQ_NATiPHmzUCwsGAlePUb6V4bAwUrnNfDZ7j7HJlkH-hXYrAvwBJdWIJNS7hnnwd8kCx3Tuo-Ww0XLakyL0La_RukoYtfU2YCXnLLPQ472kMbSLxEsPGjGf8jgd3g2B7r8A==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "期刊"
+    ],
+    "venue": "赤峰学院学报(自然科学版)",
+    "conference": "赤峰学院学报(自然科学版)",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "Pe2nFq1PBOM11SpCErZ-LwM1UHjV0uMR_icN4IXwgidc6OaDok5EnWDY3XsHE0c6eYa4nP_0FuvGfNB3Qb6OHg6c3WW7qTe3koRylZhzBMR3KAUBlVIsgcb0E8u_YkCK"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "数值模拟",
+      "物理信息神经网络",
+      "神经网络",
+      "调制不稳定性分析",
+      "超短脉冲",
+      "非线性薛定谔"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:33:14.582034+00:00",
+    "official_keywords": [
+      "物理信息神经网络",
+      "调制不稳定性分析",
+      "超短脉冲",
+      "非线性薛定谔"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "中国电子信息产业发展研究院"
+      ],
+      "classification": "TP183;O175.29",
+      "isOnlineFirst": false,
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "数值模拟",
+      "物理信息神经网络",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-130f7f31e908",
+    "title": "基于物理信息神经网络的液滴动力学自适应界面捕捉方法研究",
+    "authors": "高欣雨",
+    "abstract": "计算流体力学(Computational Fluid Dynamics,CFD)作为工程与科学研究中的核心工具,长期依赖传统的网格离散方法,在处理复杂几何问题时面临着网格生成困难、计算成本高昂、几何适应性不足以及两相流界面捕捉精度低等挑战。近年来,物理信息神经网络(Physics-Informed Neural Networks,PINN)凭借着独特的物理约束机制和网格无关的特性,在流体力学领域取得了显著的进展,在层流湍流模拟、非定常流动的预测和两相流界面追踪都展现出了PINN的良好潜力。并已经成功应用到航天发动机叶片流场预测、管道优化设计等工程实践中。通过将控制方程嵌入神经网络损失函数,PINN构建了无网格的数据-物理融合求解框架,为复杂流动问题提供了新的解决方案。然而,现有的研究大多是聚焦于单一的流动场景,对两相流、周期性涡脱落以及多物理场耦合等复杂问题,仍然面临着收敛性差、计算率低下等挑战。 本研究是以经典的流体动力学问题为切入点,系统的研究了PINN在单向流(管道输送、热交换器设计)、圆柱绕流(海上风电、热交换器管束)以及液滴下落(喷漆、喷墨打印)中的应用方法,通过构建无量纲化的...",
+    "published": "2025-05-17",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A0xqRqkyicMO26_oD7znIxu0yujsppEHE5kvEQ3tHgq7stWtoaEfoXorh4tTDeWRLA5KAGgiWHmnso1CM_F1a3DSN1djGIpznxqybKkjWCz8dXktGER-2_Xm2_RgI4JvLec1wmjUMNh-obJhTgmGMIIcBek8HDXMBvSohoppOLHi0wsj84nqIhm&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "大理大学",
+    "conference": "大理大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnUi1gXovsrSr8hqKfjFSQxhMQcTim95WbQcQvyZY8W5vPhQCRo5kYiP4eWkONp9c2"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "fluid dynamics",
+      "无量纲化",
+      "流体力学",
+      "液滴下落",
+      "物理信息",
+      "物理信息神经网络",
+      "神经网络",
+      "计算流体力学"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:33:16.173832+00:00",
+    "official_keywords": [
+      "无量纲化",
+      "流体力学",
+      "液滴下落",
+      "物理信息",
+      "神经网络"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "大理大学"
+      ],
+      "classification": "TP183;O35",
+      "isOnlineFirst": false,
+      "toc": "摘要 abstract 第1章 绪论 1.1 课题研究背景及意义 1.2 国内外研究现状 1.2.1 典型流动问题传统方法的研究现状 1.2.2 PINN在典型流动问题上的研究现状 1.3 研究目标与内容 1.3.1 研究目标 1.3.2 研究内容 1.4 创新点 第2章 理论与方法基础 2.1 PINN的理论基础 2.1.1 PINN的基本概念 2.2 PINN的基本原理 2.2.1 神经网络结构 2.2.2 激活函数 2.2.3 物理信息的嵌入 2.3 PINN的实现细节 2.3.1 数据生成与预处理 2.3.2 网络训练 2.4 PINN的改进与扩展 2.4.1 改进损失函数 2.4.2 自适应采样 2.4.3 其他改进与扩展 2.5 本章小结 第3章 基于物理信息神经网络单向流的研究 3.1 数学模型和物理方程 3.1.1 单向流的物理建模 3.1.2 维纳-斯托克斯方程的简化形式 3.1.3 单向流的边界条件 3.2 PINN求解单向流 3.2.1 网络架构设计 3.2.2 损失函数构建 3.2.3 采样策略与训练设置 3.3 实验与结果分析 3.3.1 直管道流动的验证 3.3.2 T型管的验证 3.3.3 结果分析 3.4 本章小结 第4章 基于物理信息神经网络圆柱绕流的研究 4.1 圆柱绕流的研究方法 4.1.1 圆柱绕流问题的问题描述 4.1.2 物理信息约束神经元网络 4.1.3 PINN的损失函数 4.1.4 PINN的采样点分布 4.2 PINN的结果分析 4.3 本章小结 第5章 基于物理信息神经网络液滴下落两相流的研究 5.1 理论基础 5.1.1 无量纲化分析 5.1.2 控制方程的无量纲化 5.2 PINN模型的构建 5.2.1 结构设计 5.2.2 损失函数的构造 5.2.3 训练策略 5.3 结果分析 5.4 本章小结 第6章 总结与展望 6.1 总结 6.2 展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 8,
+        "strong_hits": [
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "computational fluid dynamics",
+      "cfd",
+      "fluid dynamics",
+      "pinn",
+      "physics-informed",
+      "计算流体力学",
+      "物理信息神经网络",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-5ce3787c0fe8",
+    "title": "改进物理信息神经网络在流体流动预测中的研究",
+    "authors": "苟志勇",
+    "abstract": "在流体力学数值模拟研究领域中,流场重建与参数识别是至关重要的任务。物理信息神经网络（Physics-informed neural networks,PINNs）通过将Navier-Stokes方程嵌入损失函数,为无网格化建模提供了新范式。然而,现有PINNs在复杂流场模拟中仍面临梯度消失、边界适应性不足及计算资源分配低效等问题。针对（2+1）维流动问题,本文提出三种改进算法:基于动态自适应采样的并行重采样PINNs（Parallel Resampling PINNs,PRS-PINNs）、融合柯尔莫哥洛夫-阿诺德（Kolmogorov-Arnold）表示定理的KA-PINNs及其融合架构PRS-KA-PINNs,主要研究工作包括: （1）针对传统PINNs方法在流体流动预测中面临着采样效率与多尺度表征能力的双重挑战,提出PRS-PINNs算法。设计梯度—残差联合评估准则,动态识别高梯度区域并加密采样点,提升模型对关键流场特征的辨识能力,同时构建多子网架构实现多尺度流场特征解耦,进行多物理量并行计算。通过实验验证,结果表明改进后的PINNs算法在流场正问题和参数识别反问题上可明显改善模型...",
+    "published": "2025-05-16",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A2ou-ejW9JlzxMHSz6WTnRYzXIxuqLUyMunLvHoumGf9sLif1UBA_PaclB7lQzXDMUclBGCml0Hrt9NfmRSmNIYJH2f3PImN1sMspmcvLMZu6FqZ61-I5uZ3626Lt4VMiCgMA-HHm7_aHot7ygAb7eP8pv-OywYhX-0dNsR18Gac--RFASkfCRn&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "广西民族大学",
+    "conference": "广西民族大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnZZUnrJqMm26HWByfbbR0YrqTg40WRJ4AXnIPAl1vH-jI1ZqBdCn8bJxRuFKgHA9D"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "Navier-Stokes方程",
+      "PINN",
+      "navier-stokes",
+      "并行重采样",
+      "数值模拟",
+      "柯尔莫哥洛夫-阿诺德表示定理",
+      "物理信息神经网络",
+      "神经网络",
+      "计算流体力学"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:33:17.471903+00:00",
+    "official_keywords": [
+      "Navier-Stokes方程",
+      "并行重采样",
+      "柯尔莫哥洛夫-阿诺德表示定理",
+      "物理信息神经网络",
+      "计算流体力学"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "广西民族大学"
+      ],
+      "classification": "TP183;O35",
+      "isOnlineFirst": false,
+      "toc": "摘要 abstract 1 绪论 1.1 研究背景和意义 1.2 国内外研究现状 1.3 本文主要工作和创新点 1.4 本文的组织结构 2 相关理论基础 2.1 人工神经网络 2.2 物理信息神经网络 2.3 流体流动问题的基本方程 2.4 本章小结 3 基于并行重采样的物理信息神经网络算法 3.1 引言 3.2 问题分析 3.3 PRS-PINNs 算法设计实现 3.4 实验验证与分析 3.4.1 实验配置与评估指标 3.4.2 二维层流基准验证 3.4.3 封闭空腔流动预测 3.4.4 三维非定常流动重构 3.4.5 逆向参数识别 3.5 本章小结 4 基于柯尔莫哥洛夫－阿诺德物理信息神经网络算法 4.1 引言 4.2 问题分析 4.3 KA-PINNs 方法构建 4.3.1 KA表示定理 4.3.2 可微KAN网络设计 4.3.3 KA-PINNs 网络架构 4.4 实验验证与分析 4.4.1 实验配置与评估指标 4.4.2 二维层流基准测试 4.4.3 非定常尾流结构预测 4.4.4 三维非定常流动重构 4.5 实验对比分析 4.6 本章小结 5 基于 PRS-KA-PINNs 的自然对流多物理场耦合求解应用 5.1 引言 5.2 自然对流问题的数学模型 5.3 PRS-KA-PINNs 模型构建 5.4 实验结果分析 5.5 本章小结 6 总结与展望 6.1 总结 6.2 展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 4,
+        "strong_hits": [
+          "physics-informed"
+        ],
+        "context_hits": [
+          "navier-stokes"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed",
+      "navier-stokes",
+      "数值模拟",
+      "物理信息神经网络",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-e6e0445c399d",
+    "title": "基于梯度-时间步进框架的自适应物理小波信息神经网络设计与同伦算法拓展",
+    "authors": "赖俊聪",
+    "abstract": "物理信息神经网络(PINNs)作为一种新颖的技术,与数据驱动方法截然不同,已成为数值求解偏微分方程(PDEs)的一种有前景的框架.针对收敛性与稳定性方面的挑战,研究人员开发了多种物理信息神经网络的变体.针对部分抛物型方程,本研究中提出了一种自适应小波物理信息神经网络算法(AW-PINN),该算法将自适应小波激活函数、Adam、有限内存(L-BFGS)优化策略相结合,以解决抛物型方程的正反问题.考虑到计算资源问题,在前者基础上设计了梯度-时间步进框架的自适应小波物理信息神经网络(GT-AW-PINN). 本研究提出一种基于AW-PINN的抛物方程求解框架.首先,采用Adam优化器对小波激活函数的参数进行自适应识别,确保了参数收敛的稳定性.其次,通过L-BFGS优化器对网络进行精细调优,有效加速了训练过程的收敛速度,并显著降低了损失函数的振荡幅度.为验证方法的普适性,算法在四类经典抛物型偏微分方程系统上进行了正反问题数值实验,一维Burgers方程、Allen-Cahn相场方程、不可压Navier-Stokes方程及二维Burgers方程,并以传统PINN效果为基准,将AW-PINN效果与其...",
+    "published": "2025-05-15",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A2ou-ejW9JlzxMHSz6WTnRYzXIxuqLUyMunLvHoumGf9ht4R7uUx2dKbKXrohlBUm-LunLN8AMP4enNQjNaIX6R-V4JFCww6TMsxY1BUe4-owyscPSTlSt7Dy1opUoDNoXY6zsqZnc3AO2Oj_dh-QCri4sCP02kUYwHiR9iWJRC5_XSDMbhw3Op&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "广西民族大学",
+    "conference": "广西民族大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnsKj_WrYD0kisq9PX6d56LbqTg40WRJ4AXnIPAl1vH-jI1ZqBdCn8bJxRuFKgHA9D"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "PINN",
+      "navier-stokes",
+      "偏微分方程",
+      "同伦",
+      "小波激活函数",
+      "物理信息神经网络",
+      "神经网络",
+      "自适应学习"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:33:18.768558+00:00",
+    "official_keywords": [
+      "偏微分方程",
+      "同伦",
+      "小波激活函数",
+      "物理信息神经网络",
+      "自适应学习"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "广西民族大学"
+      ],
+      "classification": "TP183",
+      "isOnlineFirst": false,
+      "toc": "摘要 ABSTRACT 1 绪论 1.1 研究背景与意义 1.2 国内外研究现状 1.3 特色与创新性 1.4 论文结构与章节安排 2 预备知识 2.1 神经网络与方程的相关基础 2.2 优化器算法基础 2.3 LBFGS优化器 2.4 自适应激活函数 2.5 ADAM优化算法 2.6 小波函数 3 混合ADMA-LBFGS自适应小波激活函数的物理信息神经网 3.1 思想来源与算法设计 3.1.1 小波函数数学机理 3.1.2 梯度传播的优化 3.1.3 AW-PINN算法设计 3.2 数值实验 3.2.1 Bruges方程的正反问题数值实验 3.2.2 AC方程的正反问题数值实验 3.2.3 NS方程正反问题数值实验 3.2.4 二维Burgers方程正反问题数值实验 4 时间步进-梯度框架的自适应小波物理信息神经网络 4.1 思想来源与算法设计 4.2 GT-AW-PINN的NS正问题数值实验 4.3 GT-AW-PINN下NS反问题数值实验 4.4 GT-AW-PINN的二维Burgers正问题数值实验 5 时间步进的AW-PINN与同伦算法的融合拓展 5.1 思想来源与算法设计 5.2 数值实验 6 结论与展望 6.1 结论 6.2 创新点 6.3 展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 4,
+        "strong_hits": [
+          "pinn"
+        ],
+        "context_hits": [
+          "navier-stokes"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "pinn",
+      "navier-stokes",
+      "物理信息神经网络",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-c98177308a4f",
+    "title": "高速列车数值模拟中的湍流模型封闭系数不确定度量化",
+    "authors": "孔志强",
+    "abstract": "湍流模拟在高速列车气动研究中发挥着关键作用,然而湍流模型封闭系数的构造本身存在不确定性,且这种不确定性对湍流模拟结果有显著影响,但目前针对湍流模型封闭系数不确定度及其优化的研究尚不充分,特别是在高速列车场景下的应用研究较为匮乏。本文旨在通过系统的数值模拟与不确定度分析,针对高速列车不同场景的流动特征差异,深入探讨湍流模型封闭系数在明线、大风场景的不确定性特性及其优化方法,以提升高速列车气动性能预测的准确性和可靠性。主要研究内容及成果如下: 量化了明线场景湍流模型封闭系数不确定性引起的气动力变化,厘清其主要贡献系数。针对应用较为广泛的标准k-ε模型,采用拉丁超立方采样对封闭系数(Cμ,σk,σε,Cε1,Cε2)进行抽样,并结合非嵌入式多项式混沌方法量化封闭系数对气动力和压力场的影响及封闭系数灵敏度。研究发现,封闭系数的不确定性对阻力系数（Cd）具有显著影响,不确定度可达53%,压力系数（Cp）不确定度在转向架等变截面部位达到200%以上...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A1My6r2OKG1wEcefcHw8-7mAu_rZHTLKDb-gbUW1_P_XsLH6ZZ5JJNtInld_OmEdPJBzv7KRbCgr74QC2Lp09rO6FNl2zkE3-85RUWdIXyLuHQA9g_p3guZr6vb_2oaaImMICkDvNKnl77pqMzi5YU3Q2-rQbsP9P08vCN_DiTwf92w9f5GDK_Q&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "中南大学",
+    "conference": "中南大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnj8ljdSvSavMsqFWUf_baWLqTg40WRJ4AXnIPAl1vH-jI1ZqBdCn8bJxRuFKgHA9D"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "不确定度量化",
+      "优化方法",
+      "封闭参数",
+      "数值模拟",
+      "湍流模型",
+      "高速列车"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:33:31.121973+00:00",
+    "official_keywords": [
+      "不确定度量化",
+      "优化方法",
+      "封闭参数",
+      "湍流模型",
+      "高速列车"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "中南大学"
+      ],
+      "classification": "U270.11",
+      "isOnlineFirst": false,
+      "toc": "摘要 abstract 第1章 绪论 1.1 研究背景及意义 1.2 国内外研究现状 1.2.1 高速列车湍流数值模拟研究 1.2.2 湍流模型不确定度量化研究 1.2.3 小样本预测与参数优化研究 1.3 本文主要研究内容 第2章 高速列车湍流模拟数值计算与参数优化方法 2.1 数值计算基本理论 2.1.1 流体力学基本理论 2.1.2 湍流模拟方法 2.1.3 不确定度量化方法 2.2 参数优化方法基本理论 2.2.1 贝叶斯优化原理 2.2.2 河马优化算法 2.2.3 遗传算法NSGA-Ⅲ 2.3 数值计算模型 2.3.1 几何模型 2.3.2 计算区域及边界条件 2.3.3 网格划分策略 2.3.4 数值求解设置 2.4 数值验证 2.4.1 参考物理量 2.4.2 明线场景验证 2.4.3 大风场景验证 2.5 本章小结 第3章 明线场景下高速列车湍流模型封闭系数不确定度分析 3.1 明线场景湍流模拟性能评估 3.1.1 湍流模拟气动力对比评估 3.1.2 湍流模拟压力对比评估 3.2 明线场景下湍流模型封闭系数不确定度量化 3.2.1 气动力不确定度分析 3.2.2 压力场不确定度分析 3.3 明线场景下湍流模型封闭系数灵敏度分析与线性回归 3.3.1 气动力多维度灵敏度分析 3.3.2 压力场多维度灵敏度分析 3.3.3 线性回归 3.4 本章小结 第4章 大风场景下高速列车湍流模型封闭系数不确定度分析 4.1 大风场景湍流模拟性能评估 4.1.1 湍流模拟气动力对比评估 4.1.2 湍流模拟压力对比评估 4.2 大风场景下湍流模型多维度封闭系数不确定度量化 4.2.1 气动力不确定度分析 4.2.2 压力场不确定度分析 4.3 大风场景下湍流模型灵敏度分析 4.3.1 气动力多维度灵敏度分析 4.3.2 压力场多维度灵敏度分析 4.3.3 气动特性线性回归 4.4 本章小结 第5章 湍流模型封闭系数优化及验证 5.1 基于贝叶斯技术的湍流模型封闭系数优化方法 5.1.1 明线场景贝叶斯优化算法框架 5.1.2 明线场景多组合优化算法效果评估 5.1.3 大风场景NSGA-Ⅲ多目标优化框架 5.1.4 大风场景多组合优化算法效果评估 5.2 明线校准模型预测结果对比分析及验证 5.2.1 明线校准模型预测结果对比分析 5.2.2 变来流条件气动力优化效果验证 5.2.3 变车型气动力优化效果验证 5.3 横风校准模型预测结果对比分析及验证 5.3.1 横风校准模型预测结果对比分析 5.3.2 变横风速度气动力优化效果验证 5.3.3 变车型气动力优化效果验证 5.4 本章小结 第6章 结论与展望 6.1 主要研究工作及结论 6.2 后续工作与展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "数值模拟"
+    ]
+  },
+  {
+    "id": "cnki-21cf471dfbeb",
+    "title": "基于数据驱动的湍流超分辨率重建技术及多尺度能量级联特性研究",
+    "authors": "张玉飞",
+    "abstract": "湍流是一种不规则的、随机且高度非线性的复杂流体运动,普遍存在于大气运动、海洋流动、气候变化和航空航天等自然界和工程应用领域。通过深入研究湍流结构、能量传递及内部相互作用机制,不仅有助于揭示流体力学基本规律和复杂系统中的非线性动力学机制,而且对于提高气候变化预测精度、推动工程优化、提高能量利用效率以及完善海洋环境监测等具有重要意义。获取高精度湍流数据是深入研究湍流的基础。然而,传统观测手段主要依赖高精度传感器实测以及利用高性能计算机集群进行建模仿真,受限于资金、时间和技术等多种因素的制约,这些方法往往难以实现大范围、高精度数据的连续采集,因此,如何低成本获取高精度湍流数据成为亟待解决的科学问题。 本文以湍流仿真数据和真海实测数据为研究对象,针对湍流数据低分辨率的问题,提出一种数据驱动的湍流超分辨率重建模型,实现低成本采集高精度湍流数据。为进一步深入研究多尺度湍流内部能量级串与耗散复杂过程,基于经验模态分解(Empirical Mode Decomposition,EMD)和多重分形谱方法展开研究,提出新颖的湍流能量级联分析框架,以帮助人们提升对复杂湍流内部多尺度变异过程的认知水平。本文主要...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A1My6r2OKG1wEcefcHw8-7mAu_rZHTLKDb-gbUW1_P_XlC46jkJHH1Oh4yb5PVQKX454u6UyZCOFmyudf72wOricU-WFjjA7pmAyQ_INoVTyZWUlO9V3nRKb_HlocWP64yF8ynNlQ9MHx-14migbXi67ZEB6tBK-U963g0zAAXENRuaJUxpSgcZ&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "青岛理工大学",
+    "conference": "青岛理工大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnEqBwNmJnPtZbpDcsnwJWyhMQcTim95WbQcQvyZY8W5vPhQCRo5kYiP4eWkONp9c2"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "多重分形",
+      "湍流",
+      "能量级联",
+      "超分辨率重建"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:33:32.577837+00:00",
+    "official_keywords": [
+      "多重分形",
+      "湍流",
+      "能量级联",
+      "超分辨率重建"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "青岛理工大学"
+      ],
+      "classification": "O357.5;TP18",
+      "isOnlineFirst": false,
+      "toc": "摘要 Abstract 第1章 绪论 1.1 研究背景及意义 1.2 国内外研究现状 1.2.1 湍流超分辨率重建国内外研究现状 1.2.2 湍流能量耗散特性国内外研究现状 1.3 本文研究内容 1.4 本文结构安排 第2章 相关技术理论 2.1 湍流观测技术 2.1.1 湍流实测技术 2.1.2 湍流仿真技术 2.2 湍流超分辨率重建技术 2.2.1 基于插值的超分辨率重建技术 2.2.2 基于深度学习的超分辨率重建技术 2.3 深度学习技术 2.3.1 卷积神经网络 2.3.2 Transformer 神经网络 2.3.3 注意力机制 2.4 本章小结 第3章 多源异构高精度数据集 3.1 约翰斯霍普金斯大学开源湍流数据集 3.1.1 强迫各向同性湍流数据集 3.1.2 各向异性湍流管道流数据集 3.2 中国南海实测湍流数据集 3.2.1 定点观测湍流数据集 3.2.2 垂向观测湍流数据集 3.3 本章小结 第4章 基于改进 Swin Transformer 湍流超分辨率模型 4.1 基于改进 Swin Transformer 的湍流超分辨率 MHASTR 模型 4.1.1 多尺度 Swin Transformer 模块 4.1.2 融合数据和物理信息的损失函数 4.1.3 模型整体结构 4.1.4 MHASTR 模型工作流程 4.2 湍流数据集的构建 4.2.1 构建强迫各向同性湍流数据集 4.2.2 构建各向异性湍流管道流数据集 4.3 实验参数设置 4.4 定量评价指标 4.5 实验结果分析 4.5.1 消融实验结果分析 4.5.2 不同平衡参数对改进方法性能的影响分析 4.5.3 各向同性湍流的超分辨率重建结果分析 4.5.4 复杂各向异性湍流管道流重建结果分析 4.5.5 模型外推能力分析 4.5.6 模型复杂度分析 4.6 本章小结 第5章 基于经验模态分解和多重分形谱的能量级联特性研究 5.1 基于经验模态分解和多重分形谱的湍流能量级联分析方法 5.1.1 经验模态分解方法 5.1.2 多重分形谱分析方法 5.1.3 湍流能量级联分析框架 5.2 各向同性湍流仿真数据集结果分析 5.2.1 多重分形结构检验 5.2.2 整体多重分形谱分析 5.2.3 不同时间尺度的多重分形谱分析 5.3 中国南海湍流实测数据集结果分析 5.3.1 多重分形结构检验 5.3.2 整体多重分形谱分析 5.3.3 不同时间尺度的多重分形谱分析 5.4 本章小结 第6章 总结与展望 6.1 总结 6.2 展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": []
+  },
+  {
+    "id": "cnki-68db11a4cb1b",
+    "title": "基于Swin Transformer的湍流超分辨率算法研究",
+    "authors": "曾瀚贤",
+    "abstract": "湍流作为一种广泛存在于自然界的流动现象,其应用范围极为广泛,涵盖了航空航天、船舶工程等众多领域。但湍流的非线性、高维度、多尺度性、随机性和不确定性,使其数据的获取、处理与分析面临巨大挑战。在湍流流场的分析和处理中,数据分辨率是决定精度的核心要素之一。如何获取高分辨率的湍流数据,已经成为当前湍流研究领域中备受瞩目的焦点问题。然而,无论是采用实验手段还是计算方法,获取高分辨率的湍流数据充满挑战且需要大量资源。实验方法要求配备高精度且昂贵的技术、设备,而计算方法则需要反复求解复杂的偏微分方程,对算力提出了极高的要求。所以,基于低分辨的湍流流场进行超分辨率重建,获得高精度的湍流数据,具有重要的理论研究和工程应用价值。传统基于插值的算法虽然能够实现基础流场的重建,但是在多尺度特征重建方面存在明显局限,难以准确捕捉湍流流场中关键的小尺度结构;特别是因过度依赖局部插值策略导致重建结果出现特征平滑化现象,严重影响流场数据的物理真实性。近年来,随着深度学习技术在特征提取和非线性映射方面的突破性进展,基于深度学习的湍流流场超分辨率重建方法已展现出显著优势。针对湍流数据中多尺度特征重建困难的问题,本文基于Sw...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A3_mn_hRcYHSCBSOvAq2XHhBupSrXkfbRtbO8DgtCZ1jdLZe6mmlRlFqRGbKTcJhOZSdaes2h9EzNozyyKELnzkuJQlGqvoyoHQdHyfEKuiq8x1qPtING6F9VR2uEGrqbZNIL_oT_srIUuNB9btxcHb8hbp2_xiI0hlMzR0AcWQ1JORt9XFAGkt&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "广西师范大学",
+    "conference": "广西师范大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnEkn6nQUygft4PWyvcRahlhMQcTim95WbQcQvyZY8W5vPhQCRo5kYiP4eWkONp9c2"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "transformer",
+      "深度学习",
+      "湍流",
+      "神经网络",
+      "超分辨率重建"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:33:34.018151+00:00",
+    "official_keywords": [
+      "深度学习",
+      "湍流",
+      "神经网络",
+      "超分辨率重建"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "广西师范大学"
+      ],
+      "classification": "O357.5;TP18",
+      "isOnlineFirst": false,
+      "toc": "摘要 Abstract 第1章 绪论 1.1 研究背景及意义 1.2 国内外研究现状 1.3 论文的主要研究内容 1.4 论文组织结构 第2章 相关理论知识综述 2.1 湍流概述及其模拟方法 2.1.1 湍流概述 2.1.2 湍流模拟方法 2.2 超分辨率重建技术 2.2.1 超分辨率概述 2.2.2 基于插值的超分辨率方法 2.2.3 基于重建的超分辨率方法 2.2.4 基于深度学习的超分辨率方法 2.3 深度学习技术基础 2.3.1 深度学习基础概念 2.3.2 Transformer 2.3.3 Swin Transformer 2.4 本章小结 第3章 基于 Swin Transformer 的各向同性湍流超分辨率算法研究 3.1 引言 3.2 模型搭建 3.3 实验准备 3.3.1 参数设置 3.3.2 数据集 3.4 实验结果及分析 3.5 本章小结 第4章 基于 Swin Transformer 的各向异性湍流超分辨率算法研究 4.1 引言 4.2 模型搭建 4.3 实验准备 4.3.1 参数设置 4.3.2 数据集 4.4 实验结果及分析 4.5 本章小结 第5章 总结与展望 5.1 文章总结 5.2 未来展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "transformer",
+      "深度学习"
+    ]
+  },
+  {
+    "id": "cnki-f53627595aed",
+    "title": "定常风下钝体二维组合断面绕流和三分力系数的智能预测方法",
+    "authors": "李珂; 王路路; 陈增顺; 赵文卓; 秦煜; 李少鹏",
+    "abstract": "在结构断面设计与优化中，高效精准地获取气动性能具有重要意义。传统的气动选型方法，如风洞试验和计算流体动力学数值模拟，存在耗时且成本高昂的问题，特别是在处理结构断面设计参数多样性和优化方向不确定性的迭代计算任务时，其效率低下的问题尤为突出。本研究提出了一种基于深度学习代理模型的智能预测方法，专注于定常风下钝体二维组合断面的绕流流场及三分力系数的快速精准预测。具体而言，该方法采用类似图片的一致化形状表达来描述钝体组合断面的气动外形，具有不受断面形式限制的通用性；通过融合卷积注意力机制模块与残差模块构建神经网络架构，并利用均方误差来捕捉神经网络预测误差，实现了从气动外形到绕流流场及三分力系数的强非线性映射。研究结果表明，该方法在定常风条件下，对钝体二维组合断面的时均绕流流场、表面压力分布以及三分力系数的预测误差分别控制在3.7%、0.35%和6.25%以内，满足精度要求，且计算效率提升了4个数量级。该方法为定常风下钝体断面气动性能的快速预测提供了一种高效、实用的技术手段。",
+    "published": "2025-05-23",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A3AkYXCEuuFSlVVlOAhsogGHylelOoW70wdgCCGrN3bayzRaQi28gnOW65VOeb2UoDtqnaQ1cB13aRzcTEU8XYvNWd3WkUpWF44nuVuuWJwUyjVRO7F_1dMmQ6gA9j5CUCSbev61N-ks9m9SEAGct13jK6VBYkDv7JJW5d7DJgdeQ==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "期刊"
+    ],
+    "venue": "空气动力学学报",
+    "conference": "空气动力学学报",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "kd9kqNkOM8Xyu_MccKCQ5AM1UHjV0uMR_icN4IXwgiddBvwIlIociDIFOw40jh1kUImEDQVJC1viSRbRrDNVk_15U4RVk_tCm67MCfzPBes!"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "代理模型",
+      "数值模拟",
+      "气动外形",
+      "气动性能预测",
+      "深度学习",
+      "神经网络",
+      "表面压力分布",
+      "静力三分力系数"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:34:14.226559+00:00",
+    "official_keywords": [
+      "气动外形",
+      "气动性能预测",
+      "深度学习",
+      "表面压力分布",
+      "静力三分力系数"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "重庆大学土木工程学院"
+      ],
+      "fund": "重庆市杰出青年基金（2022NSCQ-JQX2377）；",
+      "classification": "TU312.1",
+      "pubInfo": "（录用定稿）网络首发时间：2025-05-23 14:42:14",
+      "isOnlineFirst": true,
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "数值模拟",
+      "代理模型",
+      "深度学习",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-e1d768babc52",
+    "title": "高维多物理场快速反演的机器学习算法开发与应用研究",
+    "authors": "陈思睿",
+    "abstract": "流动现象在自然界和工程领域中普遍存在,准确预测流场特征对优化发动机性能和提高工作效率至关重要。目前遇到的流场问题往往都具有复杂的非线性特征,传统计算流体动力学(Computational Fluid Dynamics,CFD)方法存在求解速度慢和参数调优等复杂问题。伴随着人工智能的快速发展,基于数据驱动的流场预测方法逐渐占据重要地位,深度学习可以在无需构建网格的前提下实现快速预测,但是它还有一些潜在问题,比如预测变构型不够准确。针对上述难点,本文改进了模型并测试其在复杂流场下的泛化能力。本文主要研究内容及成果如下: (1)研究提出了一种基于深度学习的流场云图预测方法并同步设计了针对变构型应用场景的优化研究方案,其中对整体设计流程进行了详细的阐述,包括理论方法到工程落地,为之后的研究奠定基础。在对模拟数据的预处理阶段,本章对图像进行了尺寸裁剪,数据增强,归一化以统一数据格式,确保数据集符合深度学习模型的输入要求。整体而言,研究通过构建图像到图像预测架构减少了计算时间,提高了流场预测效率。 (2)研究使用生成对抗网络(Generating Adversarial Networks,GAN)训...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A07GfStpCr4-mWRoI7MbgUnyhELphsWrd99b58xsLNv8GNlVVQYjbtVjnmET7oi_BiXaD67UjPdR_Rl9jbQybT_VHo1QVKtroksZBwODBEeSQRCy4ZkUSeECsWfnlhFUMg0PoxRRDXolgHWgDi6uzkzklon4v14ZdhOsqMyc7yu7HXc4XyXkVDz&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "华北电力大学(北京)",
+    "conference": "华北电力大学(北京)",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnrZC7Zhaeagns_KCrJjEoArqTg40WRJ4AXnIPAl1vH-jI1ZqBdCn8bJxRuFKgHA9D"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "TransUNet",
+      "fluid dynamics",
+      "gan",
+      "机器学习",
+      "流场快速预测",
+      "深度学习",
+      "生成对抗网络"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:34:15.620151+00:00",
+    "official_keywords": [
+      "TransUNet",
+      "机器学习",
+      "流场快速预测",
+      "生成对抗网络"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "华北电力大学(北京)"
+      ],
+      "classification": "TP181",
+      "isOnlineFirst": false,
+      "toc": "摘要 Abstract 第1章 绪论 1.1 课题研究背景及意义 1.2 国内外研究现状 1.2.1 传统计算流体力学的研究方法 1.2.2 降阶模型预测流场的研究方法 1.2.3 机器学习预测流场的研究方法 1.2.4 深度学习预测流场的研究方法 1.3 本文研究内容及路线 第2章 物理场预测设计流程与相关方法介绍 2.1 数据来源与预处理 2.2 预测模型设计流程 2.3 研究原理与方法 2.3.1 生成器与判别器的对抗机制 2.3.2 条件生成对抗网络 2.3.3 Transformer结构与注意力机制 2.4 模型训练方法改进 2.5 本章小结 第3章 基于改进CGAN的多组分流场预测方法研究 3.1 引言 3.2 CBAM-CNN耦合特征提取器 3.3 轻量化预测模型设计 3.3.1 深度可分离卷积核优化 3.3.2 多约束损失函数构建 3.4 实验设计与结果分析 3.4.1 网络模型架构 3.4.2 训练性能评价指标 3.4.3 流场预测对比与泛化 3.5 本章小结 第4章 基于TransUNet的变构型流场预测方法研究 4.1 引言 4.2 多维度网络优化策略 4.2.1 改进残差模块构建 4.2.2 边缘感知与区域加权机制 4.3 多指标性能分析与评估 4.4 实验设计与结果分析 4.4.1 变构型网络设计 4.4.2 训练配置与参数初始化 4.4.3 TransUNet基础模型效果分析 4.4.4 改进残差块模型效果分析 4.4.5 改进边界损失的模型效果分析 4.4.6 不同模型的定量结果对比 4.5 本章小结 第5章 结论与展望 5.1 结论 5.2 展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd",
+      "gan",
+      "深度学习"
+    ]
+  },
+  {
+    "id": "cnki-dee46c752576",
+    "title": "压水堆弯曲燃料组件热工水力分析及重构",
+    "authors": "李成得",
+    "abstract": "燃料组件是压水堆(Pressurized Water Reactor,PWR)堆芯结构的重要组成部分,其中,燃料组件内部的流动与换热特性能够影响到反应堆的热工水力性能与安全性能。在长期的运行过程中,燃料棒可能在辐照蠕变、冷却剂作用及机械约束等因素的共同作用下发生弯曲现象,使得燃料组件的结构产生变化进而影响到堆芯冷却剂的流动分布特征与换热性能。因此,研究燃料棒弯曲工况下的流动换热特性对于优化燃料组件设计、提高核电站运行安全性具有重要意义。 为了探究弯曲燃料棒的位置对于堆芯热工水力特性的影响,本文基于计算流体力学(Computational Fluid Dynamics,CFD)方法,建立了压水堆5×5弯曲燃料组件的三维热工水力模型,通过对比弯曲工况与正常工况下的压降、流速和温度等热工水力参数的变化规律,研究了燃料棒在不同位置下发生弯曲变形时对于流体的流动特性和传热性能的影响。研究结果表明,燃料棒的弯曲变形会导致冷却剂在子通道间出现流动再分配效应,使得流动参数的分布特征发生改变进而影响到局部传热特性。与此同时,弯曲燃料棒在轴向流的激励下最大的变形位移达到0.13287mm,且弯曲现象的产生会...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A2X6Gb7Ty5iChT61I7TWECsJYfkqifxrXsE_HnU95k2as6TcGkTvNAYMOxN7CL04hOQiW0LBvaeaQ0rlh5SfWlydnS78dnoxCRIDZhJEBUadb42lDECnOPJ2e_6t_KT6nQpsFQFyN50FxM1OOAONexd1-qzWXA_OIFLjDGXLczin4e12Q02IPue&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "华北电力大学(北京)",
+    "conference": "华北电力大学(北京)",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnY2xueIkTZPQ3GDvPzcQX_rqTg40WRJ4AXnIPAl1vH-jI1ZqBdCn8bJxRuFKgHA9D"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "fluid dynamics",
+      "弯曲燃料棒",
+      "本征正交分解方法",
+      "流场重构",
+      "燃料组件",
+      "计算流体力学"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:34:17.025653+00:00",
+    "official_keywords": [
+      "弯曲燃料棒",
+      "本征正交分解方法",
+      "流场重构",
+      "燃料组件",
+      "计算流体力学"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "华北电力大学(北京)"
+      ],
+      "classification": "TL352",
+      "isOnlineFirst": false,
+      "toc": "摘要 Abstract 第1章 绪论 1.1 课题背景及研究的意义 1.2 研究内容及发展概况 1.2.1 燃料组件弯曲工况研究现状 1.2.2 燃料组件热工水力特性研究现状 1.2.3 数据驱动的流场重构研究现状 1.3 本课题的主要研究内容 第2章 流体研究方法介绍 2.1 CFD方法概述 2.2 CFX软件介绍 2.3 控制方程及湍流模型 2.3.1 控制方程 2.3.2 湍流模型 2.4 流场重构方法 2.5 本章小结 第3章 燃料组件数值模拟验证与模型优选 3.1 燃料组件儿何建模与参数化表征 3.2 多物理场网格收敛性量化分析 3.3 湍流模型验证与实验对标研究 3.4 本章小结 第4章 弯曲燃料组件热工水力分析 4.1 弯曲燃料组件几何建模与工况设定 4.2 数值模拟边界条件与参数设置 4.3 弯曲燃料组件流动特性分析 4.3.1 全局流动与传热特性分析 4.3.2 搅混格架上游流场特性 4.3.3 搅混格架下游流场特性 4.3.4 弯曲燃料组件的局部流场特性 4.4 弯曲燃料棒结构特性分析 4.4.1 燃料棒表面温度分布 4.4.2 燃料棒结构应力分布特征 4.5 本章小结 第5章 基于特征提取的堆芯流场数据重构技术研究 5.1 流场重构方法 5.1.1 本征正交分解方法 5.1.2 径向基神经网络代理模型 5.2 堆芯流场重构模型的开发与验证 5.2.1 POD-RBFNN降阶模型方法体系 5.2.2 样本空间构建与模型验证 5.2.3 堆芯流场模态能量特征解析 5.2.4 堆芯流场重构精度验证与误差特性研究 5.3 本章小结 第6章 总结与展望 6.1 本文工作总结 6.2 未来工作展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd",
+      "计算流体力学"
+    ]
+  },
+  {
+    "id": "cnki-7a2b43f15959",
+    "title": "融合物理方程的高分辨率光场层析PIV技术研究",
+    "authors": "吴旗",
+    "abstract": "在航空发动机和燃气轮机等多级流道中,复杂几何结构导致典型的三维定常流动。研究其流动特性是改善流场质量、降低损失的关键。其中,速度场作为核心参数,反映了工质状态,因此,发展先进流场测速技术对实现复杂流道中三维非定常流动的精确测量具有重要意义。相比传统多相机技术,光场层析PIV凭借单相机实现3D-3C速度场重建,在视窗受限场景下具优势。但受限于粒子拉伸和互相关算法的空间滤波特性,光场层析PIV存在空间分辨率低,矢量稀疏等问题,难以解析多尺度复杂流动结构。为此,本文提出融合物理信息的高分辨率光场层析PIV技术,将流体物理方程嵌入重建过程,以实现流场超分辨率重建,并通过数值仿真与实验验证其性能。 首先,构建基于物理信息神经网络(PINN)的超分辨率模型,针对粒子拉伸和滤波效应,提出分层递进式特征增强策略,将三维速度场切分为二维切片逐步重建并组合。在训练中,将纳维-斯托克斯方程嵌入损失函数,使重建结果既匹配观测数据,又近似满足物理约束。通过CFD仿真确定最优网络结构为7层64节点,损失函数残差权重为100。使用后向台阶流模拟数据验证表明,模型能在数据缺失和稀疏条件下稳定重建流场,具有强鲁棒性,且在...",
+    "published": "2025-05-25",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A0MuIwYuamXvB03il-A0S82NHDc6mDVPPWCIl017Y2iR9HwAKD9pM5iWjCLL9ku95Da_Zc22I3tI6HYqPoNC374NENQKbVbkXFoYwFguu7rm0uvCVyWrAZ56EvH4FHXuGuakKwlYjAm6mLa3JzC0NI85AwutyqOmX8iG8B3i3LW3g==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "东南大学",
+    "conference": "东南大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnMcdWJMlHrH65EBswNX_Wuazmk86Ae9E2cPcJxemcPVeX8H-zThafoXFu3hRPWoVX"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "三维重建",
+      "光场成像",
+      "物理信息神经网络",
+      "神经网络",
+      "粒子图像测速技术"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:34:50.914091+00:00",
+    "official_keywords": [
+      "三维重建",
+      "光场成像",
+      "物理信息神经网络",
+      "粒子图像测速技术"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "东南大学"
+      ],
+      "fund": "国家自然科学基金“融合物理信息的高分辨率光场三维层析PIV技术研究”(52306211)； 中国博士后科学基金(2023M730558)；",
+      "classification": "V231;TK471",
+      "isOnlineFirst": false,
+      "toc": "摘要 Abstract 第一章 绪论 1.1 研究背景和意义 1.2 光场成像粒子图像测速技术 1.2.1 光场成像技术研究进展 1.2.2 光场层析PIV技术研究进展 1.2.3 光场成像流场测量分辨率受限原因分析 1.3 超分辨率流场重建方法研究现状 1.3.1 插值法 1.3.2 数据驱动法 1.3.3 物理先验法 1.3.4 模型融合法 1.4 本文研究内容及组织结构 第二章 融合物理信息的高分辨率三维流场重建方法 2.1 物理方程神经网络 2.2 融合物理信息的三维流场重建模型 2.3 模型结构参数及数据集优化 2.4 本章小结 第三章 物理信息神经网络三维流场重建性能数值评价 3.1 后向台阶流三维流场数值重构 3.1.1 模型设置及稀疏流场数据获取 3.1.2 流场重建分辨率提升水平评价 3.2 高斯涡环位移场三维重构 3.2.1 模型设置及稀疏流场数据获取 3.2.2 流场重建准确性评价 3.3 本章小结 第四章 物理信息神经网络高分辨率流场重建方法实验研究 4.1 水平方管内层流三维流场实验测量 4.1.1 实验系统及测量方法 4.1.2 结果分析 4.2 水平方管内圆柱绕流三维流场实验测量 4.2.1 实验系统及测量方法 4.2.2 结果分析 4.3 本章小结 第五章 结论与展望 5.1 全文总结 5.2 研究展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 4,
+        "strong_hits": [
+          "pinn"
+        ],
+        "context_hits": [
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "pinn",
+      "cfd",
+      "物理信息神经网络",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-c33c040a1d4b",
+    "title": "基于深度强化学习的箱梁涡激振动智能流动控制",
+    "authors": "邓晓龙; 胡钢; 陈文礼",
+    "abstract": "为抑制桥梁涡激振动从而提升桥梁抗风性能，提出了一种基于深度强化学习的智能主动流动控制方法。研究利用合成射流对桥梁节段气动弹性模型尾流场的旋涡脱落进行扰动，从而实现对涡激振动的有效抑制。风洞试验结果验证了桥梁涡激振动在均匀稳定风场中的气动性能，并建立了合成射流激励器控制电压与射流流量的映射关系。通过对控制电压的系统性分析发现，控制电压与射流平均吹气速度近似线性正相关，且更高的控制电压能够显著提升抑制效果。随后，结合软演员-评论家（soft actor-critic, SAC）算法对合成射流的控制策略进行了优化，快速训练得出最优控制电压，并将振幅减少了83%。研究结果表明，合成射流结合深度强化学习算法能够高效抑制桥梁涡激振动，为桥梁风工程的抗风设计提供智能化解决方案。",
+    "published": "2025-05-28",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A1rkNlrDrh4jzOkQOhC32BPZvkiN22t6v8_le32IRfoQGLgIG-v8Z1pf9wZrkZDsXAdQvYgCSCk0IYl49X87vvw0IghhUaGNFhqLS7AjV_ibw7eiEuKeNp6JLEXlcYbW8SrmYyzohrmAR5vF4PL_CJZW2WYBzwfS26jHOI7GQD7Uw==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "期刊"
+    ],
+    "venue": "空气动力学学报",
+    "conference": "空气动力学学报",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "Pe2nFq1PBOM11SpCErZ-LwM1UHjV0uMR_icN4IXwgiddBvwIlIociDIFOw40jh1kf_aberNw6mGrmd3qnqoDqg6c3WW7qTe3koRylZhzBMR3KAUBlVIsgcb0E8u_YkCK"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "主动流动控制",
+      "合成射流",
+      "强化学习",
+      "桥梁风致振动",
+      "涡激振动",
+      "深度强化学习"
+    ],
+    "citation_count": 2,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:35:17.891806+00:00",
+    "official_keywords": [
+      "主动流动控制",
+      "合成射流",
+      "桥梁风致振动",
+      "涡激振动",
+      "深度强化学习"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "哈尔滨工业大学(深圳)智能土木与海洋工程学院",
+        "哈尔滨工业大学土木工程学院"
+      ],
+      "fund": "深圳市科技计划-稳定支持计划（GXWD20231129111527001）；",
+      "classification": "U441.3",
+      "isOnlineFirst": false,
+      "toc": "0引言 1风洞试验方法 1.1多风扇风洞、桥梁模型及测量设备 1.2合成射流控制方法 1.3深度强化学习训练框架及方法 2结果和讨论 2.1桥梁涡激振动气动弹性试验准确性验证 2.2合成射流吹气流速与电压/频率的关系 2.3合成射流控制效果参数化分析 2.4深度强化学习训练稳态控制中电压参数 3结论",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "强化学习"
+    ]
+  },
+  {
+    "id": "cnki-622c752c5092",
+    "title": "基于Liutex涡向量和强化学习的流动控制研究",
+    "authors": "蒋赏",
+    "abstract": "湍流广泛存在于自然界和工程应用中,其复杂的涡结构对流动特性具有重要影响。传统流动控制方法通常依赖于经验公式和简化模型,难以有效控制复杂湍流。近年来,Liutex涡向量作为一种新兴的涡识别方法,能够精确刻画涡结构的强度和方向,为湍流研究提供了新的理论工具。同时,机器学习技术的快速发展为处理高维非线性系统提供了强大的工具,为流动控制带来了新的机遇。 本研究将Liutex涡向量与强化学习相结合,探索数据驱动的流动控制新方法。主要研究内容包括: 1.基于开源有限元求解器,对雷诺数Re(28)100条件下的二维圆柱绕流进行数值模拟,并利用Liutex涡识别方法分析卡门涡街特性。 2.推导Liutex-shear相互作用方程,并应用于亿级网格量的雷诺数Re(28)3900三维圆柱绕流中。研究发现Liutex方法能够有效识别不同尺度的涡结构,利用高耗散区可以识别涡边界。同时,发现剪切拉伸项显著影响源项的演化,为Liutex在流动控制中的应用提供了理论依据。 3.基于Liutex涡向量和深度强化学习PPO策略,构建新的奖励函数并应用于二维圆柱绕流的流动控制。模拟结果表明,控制后有效延后了涡脱落,显著降低...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A3Z7bOWDZIBLypY5jdCTQ9Crux9A6dMayBLN1g2OJ5YTZ1po5mv2AmwA1TRzjc_pPemewvfJymihFiy8vJ6wSp8PP20hhFB84Lt1n3Mt5rRdDztEpUoFMDW6oMHBGBIS6JREHZvQyjYd4SSWE6aGrhJduS8IKUc1AvN1rmnt57Jgw==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "苏州大学",
+    "conference": "苏州大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmns5HFTxdx4tEOV_6R7xh4nqzmk86Ae9E2cPcJxemcPVeX8H-zThafoXFu3hRPWoVX"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "Liutex涡向量",
+      "圆柱绕流",
+      "强化学习",
+      "数值模拟",
+      "流动控制",
+      "涡识别",
+      "深度强化学习"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:35:19.277142+00:00",
+    "official_keywords": [
+      "Liutex涡向量",
+      "圆柱绕流",
+      "流动控制",
+      "涡识别",
+      "深度强化学习"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "苏州大学"
+      ],
+      "classification": "O357.5;TP18",
+      "isOnlineFirst": false,
+      "toc": "摘要 abstract 第一章 绪论 1.1 选题背景和意义 1.2 国内外研究概况 1.3 主要工作和结构安排 第二章 数值模拟方法 2.1 有限元方法 2.2 Navier–Stokes 方程 2.3 变分形式 2.4 增量压力修正方案 2.5 本章小结 第三章 深度强化学习理论 3.1 强化学习 3.2 近端策略优化的数学模型 3.2.1 策略梯度 3.2.2 近端策略优化 3.3 本章小结 第四章 Liutex 涡向量理论 4.1 Liutex 涡识别方法 4.2 Liutex 的显式表达式 4.3 本章小结 第五章 流动控制研究 5.1 流动配置 5.2 三维圆柱绕流分析 5.3 强化学习配置 5.4 流动控制 5.4 本章小结 第六章 全文总结与展望 6.1 全文总结 6.2 主要创新点 6.3 展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "数值模拟",
+      "强化学习"
+    ]
+  },
+  {
+    "id": "cnki-e0371fccc99f",
+    "title": "低雷诺数下圆柱绕流主动控制方法研究",
+    "authors": "罗宇萍",
+    "abstract": "在全球能源结构转型与“双碳”目标驱动下,风力发电作为清洁能源的核心形式,已成为可持续发展的关键支柱。风电机组塔筒与叶片常呈现圆柱类几何特征,绕圆柱的卡门涡街流动会引发涡激振动(VIV)、气动噪声及流动失速等问题,严重威胁机组结构稳定性与发电效率。虽然关于圆柱绕流控制方法已有大量研究,但现有控制研究难以适应尾流动态变化特征,工程应用性较差且能耗较高。本文针对雷诺数Re=60状态的圆柱绕流,基于数值模拟深入研究了开环强迫振动控制机理,并基于流动降阶模型(ROM)开展了不同主动闭环方法的探究。主要研究内容如下: (1)开展了基于圆柱横向振动的开环流动控制方法研究,阐明了其控制机理和适用范围。以圆柱横向强迫振动为主动控制机构,研究振动幅值/频率等对流场动态特性的影响规律。基于锁频共振原理,精心设计强迫振动的运动规律,在幅值-频率二维相空间内开展了 40个数值仿真算例。结果表明,有效控制区域呈现V状,与“锁频”区域高度吻合,表明强迫振动控制方法借助“锁频”效应影响涡脱频率,并与适当的振动幅值参数协同作用。然而,开环强迫振动控制无法完全抑制卡门涡街流动,只能在一定程度上提高圆柱尾流流动的稳定性。 (...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A25bYfrIycYdb4cAElEprmC5t3mtN99d0aL3cG11xuJPNgf2nx4P2cary5BcNptQhCWd-2ZK4GpJKCJsIITBAAWjUoQqXNBn0Y6EZdp4A0AZZlnZgEQ41FbPc6ozcgBuMfBy-ZKjxiJXqsT5ejeafnpmh4FLhSGa6gYHTK1c0GlrNE2bAaQfUqx&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "华北电力大学(北京)",
+    "conference": "华北电力大学(北京)",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnsKLpSc1nZ5cHuqu7AKdeK7qTg40WRJ4AXnIPAl1vH-jI1ZqBdCn8bJxRuFKgHA9D"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "ROM",
+      "主动控制",
+      "圆柱绕流",
+      "数值模拟",
+      "最优控制",
+      "比例控制",
+      "闭环控制",
+      "降阶模型"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:35:20.679350+00:00",
+    "official_keywords": [
+      "主动控制",
+      "圆柱绕流",
+      "最优控制",
+      "比例控制",
+      "闭环控制",
+      "降阶模型"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "华北电力大学(北京)"
+      ],
+      "classification": "TM614",
+      "isOnlineFirst": false,
+      "toc": "摘要 Abstract 第1章 绪论 1.1 课题背景与意义 1.2 国内外研究现状 1.2.1 圆柱绕流被动控制方法研究现状 1.2.2 圆柱绕流主动开环控制方法研究现状 1.2.3 圆柱绕流主动闭环控制方法研究现状 1.2.4 存在的问题 1.3 论文内容与结构 第2章 流体理论基础及数值计算方法 2.1 引言 2.2 CFD流场数值模拟方法 2.2.1 流动控制方程 2.2.2 CFD简述 2.2.3 CFD数值解法 2.2.4 动网格更新方法 2.2.5 圆柱绕流受力及参数定义 2.3 基于ARX系统辨识的气动力降阶建模方法 2.4 静止圆柱绕流算例验证 2.4.1 圆柱绕流数值模型及网格划分 2.4.2 数值模拟结果与分析 2.5 本章小结 第3章 低雷诺数下圆柱绕流主动开环控制方法研究 3.1 引言 3.2 开环控制系统 3.2.1 研究模型与方案 3.2.2 数值模拟结果和分析 3.3 本章小结 第4章 基于ROM的主动闭环控制研究 4.1 引言 4.2 研究模型与方案 4.2.1 基于气动力系数的比例控制模型 4.2.2 基于尾流监测点速度的比例控制模型 4.3 基于气动力系数的比例反馈控制 4.3.1 气动力辨识 4.3.2 基于ROM的闭环系统稳定性分析 4.3.3 CFD仿真结果 4.3.4 以旋转速度作为执行信号输入的负反馈控制 4.4 基于尾流监测点速度的比例反馈控制 4.4.1 气动力辨识 4.4.2 基于ROM的闭环系统稳定性分析 4.4.3 CFD仿真结果 4.5 基于尾流监测点速度的最优控制 4.6 本章小结 第5章 结论与展望 5.1 结论 5.2 创新点 5.3 展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "rom",
+      "数值模拟"
+    ]
+  },
+  {
+    "id": "cnki-beb915b995be",
+    "title": "基于深度强化学习和遗传编程算法的射流混合实验研究",
+    "authors": "林嘉怡",
+    "abstract": "湍流射流作为一种典型的自由剪切层湍流,在工业界和学术界均具有重要意义。对于射流闭环控制而言,不同的算法有着各自的优势,其中深度神经网络在提取系统非线性特征方面有着优秀的能力。但目前深度强化学习的应用大部分都是在数值模拟环境中实现的,在实验环境中应用深度强化学习算法存在混合编程难度高、传感器响应实时性差、传感器信号采集频率低等问题。因此本研究以增强射流混合效果为目标,旨在搭建基于深度强化学习算法的闭环控制系统,针对一支脉冲径向微射流和两支对称脉冲径向微射流对主射流进行扰动,采用深度强化学习和线性遗传编程两种方法对微射流的控制策略进行优化。在实验中,主射流的出口雷诺数设定为8000,微射流与主射流的质量流量比为1.2%。反馈信号s为距离射流出口3倍出口直径,同时距射流中心线10 mm,沿射流中心线呈对称分布的两个热线传感器信号和位于射流出口下游5D中心线处(D为主射流出口直径)的一个热线传感器信号组成。奖励值和成本函数都根据射流的速度衰减率K来定义。 深度强化学习与遗传编程算法在单支脉冲微射流闭环控制中展现出相同的控制效果,但收敛效率差异显著。实验表明,深度强化学习算法仅训练了138次便找到...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A3eS6t2XPAboxMMit2bUjnowfFgeNn_eghKofsOtepguMNDc-Fkq1jTrH8gsB3Dh48qewG70dcElG-79X3e11mC8LofQk3U8RU3FPFwLvOJxVPsmhqAXRko50J4VbAKQq8tfSg8kccQUodRESK18tZKGxoA5h4nNKB5VJX0ytCrRD-Cave8DfWo&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "哈尔滨工业大学",
+    "conference": "哈尔滨工业大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnz-wS-qqAJ7P3v24At9fbRRMQcTim95WbQcQvyZY8W5vPhQCRo5kYiP4eWkONp9c2"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "实时闭环控制",
+      "射流混合",
+      "强化学习",
+      "数值模拟",
+      "深度强化学习",
+      "神经网络",
+      "线性遗传编程"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:35:22.105962+00:00",
+    "official_keywords": [
+      "实时闭环控制",
+      "射流混合",
+      "深度强化学习",
+      "线性遗传编程"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "哈尔滨工业大学"
+      ],
+      "classification": "O358;TP18",
+      "isOnlineFirst": false,
+      "toc": "摘要 ABSTRACT 第1章 绪论 1.1 课题背景及研究的目的和意义 1.2 射流被动控制的研究现状与分析 1.3 射流主动控制的研究现状与分析 1.4 机器学习闭环控制的研究现状与分析 1.5 本文的研究目标与研究内容 第2章 射流实验平台搭建和控制系统设计 2.1 引言 2.2 射流实验平台及测量设备 2.2.1 射流实验平台 2.2.2 热线风速仪的基本工作原理与测量方法 2.3 流动显示测量系统 2.4 数据采集与交互系统 2.5 自然射流实验研究与反馈信号动态响应测试 2.5.1 自然射流实验研究 2.5.2 反馈信号动态响应测试 2.6 人工智能闭环控制系统设计 2.6.1 基于深度强化学习算法的闭环控制系统 2.6.2 基于遗传编程算法的闭环控制系统 2.7 本章小结 第3章 基于深度强化学习和遗传编程算法的单支微射流闭环控制实验研究 3.1 引言 3.2 基于深度强化学习算法的单支微射流闭环控制实验研究 3.2.1 单支微射流深度强化学习网络模型调整 3.2.2 单支微射流最优控制律分析 3.3 基于遗传编程算法的单支微射流闭环控制实验研究 3.4 本章小结 第4章 基于深度强化学习和遗传编程算法的两支微射流闭环控制实验研究 4.1 引言 4.2 基于深度强化学习算法的两支微射流闭环控制实验研究 4.2.1 两支微射流深度强化学习网络模型调整 4.2.2 两支微射流最优控制律分析 4.3 基于遗传编程算法的两支微射流闭环控制实验研究 4.4 不同控制模式下微射流动作信号与流场分析 4.4.1 不同控制模式下微射流动作信号分析 4.4.2 不同控制模式流场分析 4.5 深度强化学习和遗传编程算法控制性能对比分析与优化应用 4.5.1 深度强化学习和遗传编程算法控制性能比较 4.5.2 深度强化学习和遗传编程算法优缺点分析 4.6 本章小结 结论 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "数值模拟",
+      "神经网络",
+      "强化学习"
+    ]
+  },
+  {
+    "id": "cnki-8b7cd812086b",
+    "title": "基于深度学习多保真代理模型的高速列车气动外形优化",
+    "authors": "于骞",
+    "abstract": "随着高速列车运行速度的不断提升,其气动性能制约列车运行效率和稳定性。更高速（400+km/h）列车对气动性能提出更高要求,因此高速列车气动外形的高效优化设计以提升高速列车气动性能具有重要意义。传统基于经验设计的方法难以有效处理高维条件下设计参数间的复杂耦合,且在应对高维设计空间和复杂气动性能评估时面临计算成本高、设计周期长等技术瓶颈。针对这一问题,本研究提出了一种基于深度学习多保真代理模型的高速列车精细化气动优化方法,旨在以更高效的方式解决更高速度等级下高速列车气动性能优化的关键技术难题。 针对高速列车多参数气动外形优化中的高维问题,本研究系统探究了关键设计参数对明线运行下高速列车气动性能的影响规律。为提升优化效率,首先提出了NIPC-GSA（Non-intrusive Polynomial Chaos-Global Sensitivity Analysis,NIPC-GSA）融合方法,通过对外形设计参数进行不确定度量化分析,量化了各设计参数对气动性能影响的关键程度。基于回归分析,明确了9个关键设计参数对流线形状气动性能的影响机制。研究表明:设计参数变化导致整车阻力...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A0ah8VOOVkwkVcSywvHm_YH5xwY5gYBrChY8TOfPFS-jGuFrnPUas9SyffdxVymat6wNJP9FkcSwrg38Cv4f8BUCvh-PFKt7QSaCWrq0M_m9EzKgVStKJH1Ksf1jf1OoNLVN1FwXoqeQkq2vaaPuWW3ik1R6qXJMKgqd-RXzc4t0ZaoMVTY6KY6&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "中南大学",
+    "conference": "中南大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnQiiem-mb33Os6ZwsEZwVS7qTg40WRJ4AXnIPAl1vH-jI1ZqBdCn8bJxRuFKgHA9D"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "代理模型",
+      "多保真代理模型",
+      "气动外形优化",
+      "深度学习",
+      "高速列车"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:35:48.593039+00:00",
+    "official_keywords": [
+      "多保真代理模型",
+      "气动外形优化",
+      "深度学习",
+      "高速列车"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "中南大学"
+      ],
+      "classification": "TP18;U270.2",
+      "isOnlineFirst": false,
+      "toc": "摘要 abstract 第1章 绪论 1.1 研究背景及意义 1.2 国内外研究现状 1.2.1 高速列车气动外形优化 1.2.2 基于深度学习代理模型的气动外形优化 1.3 研究内容及技术路线 第2章 高速列车明线运行空气动力学数值方法 2.1 几何模型及计算域 2.2 列车空气动力学基本理论 2.2.1 列车气动力基本理论 2.2.2 计算流体力学基础理论 2.3 数值方法 2.3.1 湍流模型 2.3.2 风洞实验验证 2.4 本章小结 第3章 高速列车头型与断面关键参数对气动性能影响研究 3.1 不确定度量化理论 3.2 高速列车头型与断面分区参数化方法 3.3 高速列车几何参数不确定度对气动性能影响研究 3.3.1 NIPC-GSA 方法 3.3.2 样本点设计 3.3.3 高速列车关键参数致气动力不确定度量化分析 3.3.4 流场不确定度量化分析 3.4 响应边界特征样本点气动不确定性影响分析 3.5 本章小结 第4章 基于深度学习的多保真代理模型研究 4.1 深度学习基本理论 4.2 基于深度学习的多保真代理模型建模方法 4.2.1 多保真生成对抗网络 4.2.2 熵正则化 4.3 模型精度验证 4.3.1 线性相关数据集基准测试 4.3.2 非线性相关数据集基准测试 4.3.3 20 维函数数据集基准测试 4.4 MFGAN模型高速列车明线运行气动性能及流场预测应用 4.4.1 多保真度数据差异分析 4.4.2 k-means 加点算法 4.4.3 气动力预测 4.4.4 流场预测 4.5 本章小结 第5章 高速列车明线运行气动外形优化研究 5.1 多目标优化问题 5.2 改进鹈鹕算法 5.2.1 POA算法原理及流程 5.2.2 IPOA改进策略 5.2.3 IPOA性能验证 5.3 高速列车明线运行气动外形优化 5.3.1 高速列车气动外形多目标优化问题 5.3.2 高速列车明线运行气动性能优化结果分析 5.4 本章小结 第6章 结论与展望 6.1 主要研究工作及结论 6.2 后续工作及展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "代理模型",
+      "深度学习"
+    ]
+  },
+  {
+    "id": "cnki-d4019efd2776",
+    "title": "基于物理信息神经网络的格子玻尔兹曼声场-流场多物理模拟方法研究",
+    "authors": "刁承琳",
+    "abstract": "近年来,声流耦合现象在医学、工业制造、微流控器件等多个领域中具有重要应用,其精确模拟对于优化能量传递、降低成本及提高工程设计水平具有显著意义。然而,传统计算流体力学方法在处理复杂流场、非线性和多物理场耦合问题时存在计算效率低、内存占用大和边界条件处理困难等局限性。基于此背景,本文选用格子玻尔兹曼方法(Lattice Boltzmann Method,LBM)作为数值求解工具,其在处理复杂边界、并行计算和多物理场耦合方面展现出独特优势,但同样面临高计算成本与存储需求问题。为了解决这些问题,本文提出了一种基于物理信息神经网络(Physics-Informed Neural Networks,PINN)的LBM(PINN-LBM)模型,通过融合LBM的耦合优势与PINN的数据驱动及物理约束能力,实现对声场与流场耦合问题的高效模拟。 本文首先系统介绍了LBM与PINN各自的基本原理和发展现状,详细介绍了LBM中多松弛时间碰撞模型、初始化及边界处理技术,并对声学驱动流场的控制方程进行了推导。随后,结合PINN在求解偏微分方程中的物理约束机制,设计构建了一种双通道神经网络结构,用于逼近LBM生成的分...",
+    "published": "2025-05-25",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A1FrsLMqw8nr26Htr7gHhKDmUkA6Y2iy39zaYSqqUtpvlHfLtvSLs3XbOUQi4Kh8E2iNNp4baQuZOtENcklOvVQ_MKrqay62oLExKea0K5PshhLOufpdCH1d0nPuxqYGFBOVD66ivFV6mUF2DGI_0ESjZsG6hAhzGjt4ljxjQq9MLuLaQ72_uQZ&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "广东工业大学",
+    "conference": "广东工业大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmn0e7GAkBPo4ysZIh-Y3VNnhMQcTim95WbQcQvyZY8W5vPhQCRo5kYiP4eWkONp9c2"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "LBM",
+      "PINN",
+      "声流",
+      "多物理场耦合",
+      "格子玻尔兹曼方法",
+      "物理信息神经网络",
+      "神经网络",
+      "计算流体力学"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:36:05.310988+00:00",
+    "official_keywords": [
+      "声流",
+      "多物理场耦合",
+      "格子玻尔兹曼方法",
+      "物理信息神经网络"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "广东工业大学"
+      ],
+      "classification": "TP183;TB5",
+      "isOnlineFirst": false,
+      "toc": "摘要 ABSTRACT 第一章 绪论 1.1 研究意义 1.2 国内外研究现状 1.2.1 LBM在声学方面的研究现状 1.2.2 PINN的研究及发展现状 1.3 研究内容与行文架构 1.4 本章小结 第二章 格子玻尔兹曼方法及声学模型构建 2.1 格子玻尔兹曼方法概述 2.1.1 格子玻尔兹曼方法的基本概念 2.1.2 LBM碰撞模型 2.1.3 初始化和边界条件 2.1.4 格子玻尔兹曼方法的计算流程 2.2 LBM声场-流场模型建立 2.3 物理量与格子单位的转换 2.4 本章小结 第三章 PINN 驱动的 LBM 模型建立及验证 3.1 物理信息神经网络 3.1.1 神经网络概念 3.1.2 物理信息神经网络模型 3.2 PINN-LBM 模型建立 3.2.1 离散的 Boltzmann 方程 3.2.2 PINN-LBM 模型结构 3.3 数值验证实验 3.3.1 冲击波的 PINN-LBM 预测验证 3.3.2 圆柱绕流的 PINN-LBM 预测验证 3.4 本章小结 第四章 声场-流场交互影响的LBM模拟 4.1 声场-流场案例仿真模型框架 4.2 声波及流体相关参数对数值仿真的影响 4.2.1 流体粘度对模拟的影响 4.2.2 声源振幅对模拟的影响 4.3 LBM声场-流场的数值仿真 4.3.1 点声源辐射的LBM仿真 4.3.2 矩形声源方腔传播的LBM仿真 4.3.3 驻波声流的LBM仿真 4.4 本章小结 第五章 PINN-LBM 声流场案例的预测及分析 5.1 声流场预测的 PINN-LBM 模型架构 5.2 声流场数据集结构及划分 5.2.1 数据来源及宏观物理量计算 5.2.2 数据归一化 5.2.3 数据集的构造 5.3 声流场预测的数值实验 5.3.1 训练过程及损失 5.3.2 预测实验结果分析 5.3.3 预测实验效果 5.4 本章小结 第六章 总结与展望 6.1 总结 6.2 未来及展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 3,
+        "strong_hits": [
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      },
+      "流体力学 / 多相流理论": {
+        "score": 3,
+        "strong_hits": [
+          "lattice boltzmann"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "pinn",
+      "physics-informed",
+      "lattice boltzmann",
+      "计算流体力学",
+      "物理信息神经网络",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-5222ec29417f",
+    "title": "机器学习加速格子玻尔兹曼方法的自然对流复杂界面动力学研究",
+    "authors": "王志强",
+    "abstract": "格子玻尔兹曼方法（LBM）作为一种介观模型,在计算流体力学（CFD）领域展现出独特优势,尤其在处理复杂边界问题时具有显著的灵活性。然而,在单松弛、多松弛以及处理复杂边界情形下的收敛速度仍亟待提高,这在一定程度上限制了其在大规模复杂问题求解中的应用效率。近年来,机器学习技术的迅猛发展为解决此类问题提供了新思路。为提升LBM方法的收敛速度,本文借助卷积神经网络在数据处理和模式识别方面的卓越性能,深入探究格子玻尔兹曼方法运行过程中关键演化算法之间的映射关系,以实现高效加速,提升求解效率。本文聚焦于构建机器学习模型,并将其应用于加速单松弛格子玻尔兹曼（SRT-LBM）、多松弛格子玻尔兹曼（MRT-LBM）以及复杂边界多松弛格子玻尔兹曼（CC-MRT-LBM）的自然对流过程中,为计算流体力学的高效模拟提供新的理论支持和技术手段。 由于卷积神经网络的图像数据输入格式与格子玻尔兹曼方法中的分布函数数据格式具有相似性,因此本文创新性的将分布函数作为“图像数据”在卷积神经网络中进行训练,以实现二者有机结合。本文首先将单松弛格子玻尔兹曼方法在不同工况下t时刻的速度分布函数作为输入值,t（10）(35)t时刻...",
+    "published": "2025-05-16",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A08yzhrtVajtE_dbr_I5SXqqnU4f-eJYl76Oq9x-BvfP7oXIhFPbrOYsLTOlzy3iW-SmGk-DI35N9LR4XrCQWetqWSClZxYw-rxK59fIioynhYwR663371xTj_qaZVHtEl81tMTSCkfX2unsZbMNOrsF7Ot2TIcrSgbABUH4mhc4R_zHergV2WH&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "博士"
+    ],
+    "venue": "南昌大学",
+    "conference": "南昌大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "eQD7iSfLfq3gVvjewcWhV4dDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnCrPDEco6O1BRMLR-b3wFjtwneWrfo0YJU2eWl-PcvsuAMi10m8MSiKPdqj9ewg7V"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "BP神经网络",
+      "CFD",
+      "卷积神经网络",
+      "格子玻尔兹曼方法",
+      "神经网络",
+      "算法加速",
+      "自然对流",
+      "计算流体力学"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:36:06.618940+00:00",
+    "official_keywords": [
+      "BP神经网络",
+      "卷积神经网络",
+      "格子玻尔兹曼方法",
+      "算法加速",
+      "自然对流"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "南昌大学"
+      ],
+      "classification": "TP181;TB126",
+      "isOnlineFirst": false,
+      "toc": "摘要 abstract 英文缩写对照表 第一章 引言 1.1 研究背景介绍 1.2 LBM方法在复杂界面中的研究 1.3 机器学习在多相流中的研究 1.4 机器学习在LBM中的研究 1.5 问题分析、改进思路及研究内容 1.5.1 问题分析 1.5.2 改进思路 1.5.3 研究内容 第二章 耦合模型建立过程中格子玻尔兹曼方法及机器学习方法简介 2.1 格子玻尔兹曼方法简介 2.1.1 基本理论 2.1.2 基本模型 2.1.3 边界条件 2.2 机器学习方法简介 2.2.1 BP神经网络简介 2.2.2 卷积神经网络简介 2.3 格子玻尔兹曼方法与机器学习耦合思路 第三章 单松弛格子玻尔兹曼方法加速耦合模型的自然对流模拟 3.1 物理模型与数值算法 3.1.1 物理模型 3.1.2 控制方程 3.1.3 LBM的速度场和温度场演化过程 3.2 网格无关性验证 3.3 单松弛格子玻尔兹曼方法加速耦合模型建立 3.3.1 数据集制备 3.3.2 不同卷积神经网络与 SRT-LBM 的耦合过程 3.3.3 耦合模型选型及验证模型的正确性及泛化性能 3.4 计算结果与讨论 3.4.1 耦合模型在无导热层的方腔自然对流数值模拟 3.4.2 耦合模型在方腔内含导热层的共轭自然对流数值模拟 3.5 本章小结 第四章 多松弛格子玻尔兹曼方法加速耦合模型的自然对流模拟 4.1 物理模型与数值算法 4.1.1 物理模型 4.1.2 控制方程 4.1.3 LBM的速度场和温度场演化过程 4.2 网格无关性和模型验证 4.3 生成 half-Res-Unet 与 MRT-LBM 耦合模型 4.3.1 half-Res-Unet 卷积神经网络结构 4.3.2 MRT-LBM 和 half-Res-Unet 耦合模型 4.3.3 耦合模型的验证 4.4 计算结果与讨论 4.4.1 耦合模型在导热三角形位置Lc不同时的方腔自然对流模拟 4.4.2 耦合模型在导热三角形尺寸Lb不同时的方腔自然对流模拟 4.4.3 不同Ra数下耦合模型在内含导热三角形的方腔自然对流模拟 4.5 本章小结 第五章 复杂曲边界的多松弛格子玻尔兹曼加速耦合模型的自然对流模拟 5.1 任意曲率复杂边界处理方式的选择 5.2 CC-MRT-LBM 与卷积神经网络的耦合过程及工作流程 5.2.1 CC-MRT-LBM 与卷积神经网络的耦合过程 5.2.2 CC-MRT-LBM 加速耦合模型工作流程 5.3 物理模型及耦合模型验证 5.3.1 物理模型 5.3.2 耦合模型验证 5.4 计算结果与讨论 5.4.1 不同Ra数下耦合模型在内含圆形热源的自然对流模拟 5.4.2 耦合模型在不同夹角椭圆热源的方腔自然对流模拟 5.4.3 耦合模型在不同长宽比椭圆热源的方腔自然对流模拟 5.5 基于BP神经网络的平均努塞尔数预测模型 5.6 本章小结 第六章 结论与展望 6.1 主要结论 6.2 本文主要创新点 6.3 进一步工作的方向 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "cfd",
+      "计算流体力学",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-97fb2db06d21",
+    "title": "基于增强型傅里叶神经算子的格子兹曼多相流预测方法研究",
+    "authors": "侯晨熙",
+    "abstract": "多相界面动力学作为典型的非线性、非平衡态及多尺度耦合物理现象,其复杂物理机制受高维参数空间调控,对传统理论分析和实验观测方法构成显著挑战。由于格子玻尔兹曼方法（Lattice Boltzmann Method,LBM）具有介观性、算法简单等特点,因此被认为是一种很有前途的多相流体数值模拟方法,但是计算效率始终是制约LBM在大规模计算应用中的最大问题之一。深度学习技术的兴起为加速复杂的非线性相互作用和系统动力学建模带来了新的机遇,神经算子在加速求解偏微分方程和流体动力系统建模方面已被证明非常有前途。因此在本研究中引入增强型傅里叶神经算子（the U-Net enhanced Fourier Neural Operator,U-FNO）对LBM模拟进行加速预测。 本文首先采用具有保守Allen-Cahn方程的非正交多松弛格子Boltzmann模型对液—液系统中的射流模型进行模拟,成功再现液-液系统中轴对称破碎与蜿蜒破碎两种典型流态,其界面演化特征与实验观测数据高度吻合,验证了模型在多相界面捕捉方面的物理可靠性。然后引入U-FNO架构,建立从初始状态到相对稳定状态的时序映射关系,数值实验表明,...",
+    "published": "2025-05-25",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A3sCaoyxglDx8RL9XYHCX3sXOUGQWwr9M3fmOxlG2YLV2-xojA_awxIWbbykFnSVW-L-fAP4-FXmcGrBwAGIyIQ1mHHufmKUIbe9ytNtSDl5bHEOtij1zIycYWpdQj_UVuRUfx-KMnCSu8JAfZwoFWg1_WHvVUwbmFfXYAFWmgdcowZaAwAdqWn&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "广东工业大学",
+    "conference": "广东工业大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnL5GjoRq-F6V5SAlE_oQw9BMQcTim95WbQcQvyZY8W5vPhQCRo5kYiP4eWkONp9c2"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "FNO",
+      "LBM",
+      "Neural Operator",
+      "增强型傅里叶神经算子",
+      "多相流",
+      "数值模拟",
+      "格子玻尔兹曼方法",
+      "深度学习",
+      "物理校正",
+      "神经算子"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:36:31.998185+00:00",
+    "official_keywords": [
+      "增强型傅里叶神经算子",
+      "多相流",
+      "格子玻尔兹曼方法",
+      "物理校正",
+      "神经算子"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "广东工业大学"
+      ],
+      "classification": "O359",
+      "isOnlineFirst": false,
+      "toc": "摘要 ABSTRACT 第一章 绪论 1.1 课题研究背景及研究意义 1.2 国内外相关研究现状 1.2.1 格子玻尔兹曼多相流模拟方法 1.2.2 多相流机器学习预测方法 1.3 研究内容与行文结构 1.3.1 课题研究目标 1.3.2 主要研究内容 1.4 本章小结 第二章 格子玻尔兹曼多相流方法 2.1 格子玻尔兹曼方法的基本概念 2.2 多松弛碰撞算子模型 2.3 多相流模型 2.3.1 颜色梯度模型 2.3.2 非正交多松弛的保守AC相场模型及验证 2.4 本章小结 第三章 多相流模型建模及分析 3.1 液体射流模拟 3.1.1 数值模拟初始化 3.1.2 轴对称破碎 3.1.3 蜿蜒破碎 3.1.4 液-液系统中射流破碎模式转化 3.2 T型通道液滴生成模型的构建与验证 3.3 本章小结 第四章 用于多相流预测的U-FNO模型 4.1 U-Net模型预测的不足 4.1.1 训练数据的选择 4.1.2 U-Net预测的不足 4.2 U-FNO模型 4.2.1 神经算子 4.2.2 U-FNO模型 4.2.3 傅里叶空间中的积分核算子 4.2.4 U-FNO架构 4.2.5 损失函数设计 4.3 数据集配置 4.4 训练配置及过程 4.5 结果分析 4.6 与U-Net模型的预测效果对比 4.7 本章小结 第五章 U-FNO预测模型的扩展研究 5.1 多相流泛化能力研究 5.1.1 数据集配置 5.1.2 结果分析 5.2 连续性扩展研究 5.2.1 模型构建与验证 5.2.2 连续预测分析 5.2.3 U-FNO-LBM 混合预测模型 5.3 本章小结 总结与展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 6,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator",
+          "fno"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      },
+      "流体力学 / 多相流理论": {
+        "score": 3,
+        "strong_hits": [
+          "lattice boltzmann"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "fno",
+      "fourier neural operator",
+      "neural operator",
+      "lattice boltzmann",
+      "数值模拟",
+      "深度学习"
+    ]
+  },
+  {
+    "id": "cnki-37a98cbdec82",
+    "title": "基于深度学习的智能油气藏模拟与开发研究",
+    "authors": "刘剑桥",
+    "abstract": "随着人工智能、云计算、大数据等前沿技术的快速发展,我国油气田开发正逐步转型并迈向智能化时代。其中,油藏作为油田生产开发的核心基础,其智能化水平直接决定了油田整体智能化开发的效果。当前,人工智能技术在油气田开发模拟中的运用已经取得了显著进展,其主要体现在提高油藏数值模拟的效率和精度、为油田开发提供科学决策依据等方面。然而人工智能在油气藏开发中的应用仍面临诸多挑战,如神经网络模型训练成本高昂、预测泛化性能不足以及对复杂地质条件的适应性较差等。针对这些问题,本文以智能油藏模拟与开发应用为研究背景,重点研究与探索能够运用于实际油气藏开发的人工智能算法及创新技术,进一步增加人工智能技术在油藏模拟与开发中的适用性,为智能化油气田开发提供理论支持和技术保障。 人工智能技术在智能油气藏模拟与开发运用方面,当前主要存在以下几个关键问题:其一是现有的人工智能模型在处理油藏复杂地质特征时难以准确捕捉其复杂流动规律的影响,包括裂缝性储层、油藏非均质性等,这导致模型的预测精度有待提高;第二个问题是,当前基于深度学习建立的人工智能替代模型在训练过程中需要大量的高保真标签数据,导致计算资源消耗和训练成本高昂。特别是在...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A0jAlCigCRmAaotBkTvvnXIlZ6QXg1wTnCp-EI2NwSx2JakbieEIZHwOYMRPo7K6lzSQb4IwaSxj79DrrJyYWzQ72Bkc4y2RSEastQFzobzax7oNn9b5XpTSOc66iF7MSnyWXbLdYecdw8jmTACz-Zbss8J8Y1PW5WuzfECf9zjNw==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "博士"
+    ],
+    "venue": "中国地质大学",
+    "conference": "中国地质大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "eQD7iSfLfq3gVvjewcWhV4dDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmn6KgTrlY9XmBVk7-oCVjwhq9UuL5-Omzu6ewfxRXEazGX8H-zThafoXFu3hRPWoVX"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "人工智能",
+      "数值模拟",
+      "智能开发决策",
+      "替代模型",
+      "油藏模拟",
+      "泛化性提升",
+      "深度学习",
+      "神经网络"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:36:33.307834+00:00",
+    "official_keywords": [
+      "人工智能",
+      "智能开发决策",
+      "替代模型",
+      "油藏模拟",
+      "泛化性提升"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "中国地质大学"
+      ],
+      "classification": "TE34;TP18",
+      "isOnlineFirst": false,
+      "toc": "摘要 abstract 第一章 绪论 1.1 研究目的及意义 1.2 国内外研究现状 1.2.1 数据驱动神经网络替代模型研究进展 1.2.2 “数据”+“物理”驱动神经网络替代模型研究进展 1.2.3 神经网络替代模型在油气藏工程中的应用研究进展 1.3 研究目标、研究内容以及关键问题 1.3.1 研究目标 1.3.2 研究内容 1.3.3 拟解决的关键问题 1.4 技术路线 1.5 创新点 第二章 傅里叶神经算子的油藏快速模拟技术研究 2.1 傅里叶神经算子的深度学习模拟二维地下流动方法 2.1.1 傅里叶神经算子神经网络 2.1.2 基于傅里叶神经算子的二维裂缝油气藏快速模拟算例研究 2.2 傅里叶神经算子的深度学习模拟三维地下流动新方法 2.2.1 傅里叶神经算子网络二维扩展到三维新方法 2.3 基于傅里叶神经算子的三维油气藏快速模拟算例研究 2.3.1 三维裂缝性油气藏快速模拟算例研究 2.3.2 三维百万级网格油气藏时变井控模拟预测算例研究 2.4 本章小结 第三章 人工智能油气藏替代模型高效训练技术研究 3.1 基于物理信息约束的傅立叶神经算子高保真油藏数据获取方法 3.2 基于迁移学习的多保真数据融合替代模型训练方法 3.3 基于多保真数据的三维油气藏迁移学习算例测试 3.4 本章小结 第四章 油藏模拟替代模型时空域泛化性增强研究 4.1 嵌入粗网格模拟器的时空泛化性增强神经网络新方法 4.1.1 嵌入粗网格油藏模拟器的替代模型建模框架 4.1.2 多分辨率融合神经网络模块 4.2 变边界条件下替代模型泛化性能与应用研究 4.2.1 两种多分辨率融合网络的性能对比 4.2.2 粗网格模拟器粗化规模适应性研究 4.2.3 变井控条件下时间域外推预测性能评估 4.3 本章小结 第五章 智能油气藏工程决策与应用研究 5.1 适应多特征融合的改进傅里叶神经算子神经网络 5.1.1 改进傅里叶神经算子网络（U-FNO） 5.1.2 Transformer 神经网络 5.2 基于替代模型的CO2咸水层封存多目标优化 5.2.1 CO2咸水层封存优化问题 5.2.2 多目标优化目标函数构建 5.2.3 多目标 NSGA-II 优化算法 5.2.4 U-FNO+Transformer 替代模型构建与应用研究 5.3 本章小结 第六章 结论与认识 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "数值模拟",
+      "深度学习",
+      "神经网络"
+    ]
+  },
+  {
+    "id": "cnki-f89ff7e2335b",
+    "title": "多相流LBM并行算法的内核融合优化及应用研究",
+    "authors": "杨宇璇",
+    "abstract": "随着高性能计算技术的快速发展,其在流体模拟、能源开发、化工生产以及环境工程等领域的应用需求日益增长。多相流模拟作为流体力学研究的重要分支,在石油开采、核反应堆冷却、化工反应器设计等实际工程中具有广泛的应用背景。格子玻尔兹曼方法(Lattice Boltzmann Method,LBM)凭借其天然的并行性、复杂边界处理的便捷性以及物理模型的强大扩展性,成为数值模拟领域的研究热点,尤其在多相流模拟中展现了独特的优势。尽管LBM在多相流模拟中具有巨大潜力,现有研究仍面临诸多挑战,如多相流LBM并行优化沿用单相流策略导致效率低下、CPU算法迁移至GPU时内存访问模式不合理等问题,制约了大规模数值仿真实验的效率。本文研究围绕多相流LBM并行算法的优化及其在液滴合并弹跳行为模拟中的应用,开展了以下两个方面的工作: (1)针对多相流LBM并行算法对因处理相界面演化而增加的操作和数据访问未合理规划,造成多余的片外内存访问影响算法的并行效率的问题,基于内核融合策略,提出了一种多相流LBM并行算法的融合优化方法。首先,通过深入分析多相流LBM的计算处理过程,明确了各计算步骤之间的数据依赖关系和执行顺序要求。...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A0jAlCigCRmAaotBkTvvnXIovdXTZ5Bp-Eeyf0_Qnf_4AIcP4lpY22-swOC8xs3WIAfwm9XwWnbboIXuK6Z3To-4-4VWdxcwAzffGloAvrs_trjBhWjs70ybeXMdKWDorzYttBYt6SM_tss_AkznD8xcZPkKrkyxaanmhcKoRYbNXA7Pvbelseu&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "广西师范大学",
+    "conference": "广西师范大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnD01Qi0v8RfybwKnaAcZtcRMQcTim95WbQcQvyZY8W5vPhQCRo5kYiP4eWkONp9c2"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 多相流理论"
+    ],
+    "keywords": [
+      "CUDA",
+      "LBM",
+      "内核融合",
+      "多相流",
+      "并行计算",
+      "数值模拟",
+      "智能优化"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:36:34.625868+00:00",
+    "official_keywords": [
+      "CUDA",
+      "LBM",
+      "内核融合",
+      "多相流",
+      "并行计算",
+      "智能优化"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "广西师范大学"
+      ],
+      "classification": "O359",
+      "isOnlineFirst": false,
+      "toc": "摘要 Abstract 第1章 绪论 1.1 研究背景与意义 1.2 国内外研究现状 1.2.1 基于 GPU 的 LBM 并行算法 1.2.2 内核融合 1.2.3 内核性能预测模型 1.2.4 液滴合并弹跳实验及数值模拟 1.3 论文研究内容 1.4 论文结构安排 第2章 相关研究理论技术基础 2.1 晶格 Boltzmann 方法 2.1.1 基本演化方程 2.1.2 平衡态分布函数 2.2 晶格 Boltzmann 多相流模型 2.2.1 化学势晶格 Boltzmann 多相流模型 2.2.2 伪势晶格 Boltzmann 多相流模型 2.3 CUDA技术基础 2.3.1 GPU硬件架构 2.3.2 GPU编程模型 2.4 本章小结 第3章 多相流LBM并行算法的内核融合优化方法 3.1 问题描述 3.2 内核融合优化方法 3.2.1 优化思路 3.2.2 融合规则 3.2.3 数据依赖及执行顺序描述 3.2.4 多相流LBM访存性能分析模型 3.2.5 搜索算法 3.2.6 线程组织优化 3.3 实验结果 3.3.1 化学势多相流LBM并行算法优化结果分析 3.3.2 不同多相流LBM模型的优化 3.4 本章小结 第4章 优化后的多相流LBM并行算法的应用 4.1 问题描述 4.2 三维模型建模及验证 4.3 不同偏移量液滴合并弹跳行为数值模拟 4.4 液滴合并弹跳行为的动能与动量变化分析 4.5 不同半径比液滴合并弹跳行为数值模拟 4.6 本章小结 第5章 总结与展望 5.1 本文总结 5.2 研究展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {
+      "流体力学 / 多相流理论": {
+        "score": 3,
+        "strong_hits": [
+          "lattice boltzmann"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 多相流理论",
+    "custom_keywords": [
+      "lattice boltzmann",
+      "数值模拟"
+    ]
+  },
+  {
+    "id": "cnki-ac7340a39d0f",
+    "title": "基于WGAN方法的地下水LNAPLs污染源反演识别",
+    "authors": "李一丹",
+    "abstract": "地下水在保障人类生产生活用水、促进经济社会发展及维护生态平衡方面都发挥着不可替代的作用。然而,由于地下水的过度开采和污染物的不合理排放,地下水污染问题日益严峻。在地下水有机污染物中,轻非水相流体(Light Non-Aqueous Phase Liquids,LNAPLs)污染因其毒性强、难以降解的特性,通常会在地下水系统中长期滞留并扩散,对水质造成严重影响,为了制定科学有效的地下水LNAPLs污染修复方案,准确获取污染源信息至关重要。因此,开展地下水LNAPLs污染源反演识别研究具有重要的理论价值和现实意义。 本研究综合运用数理方程正反演理论、模拟优化方法、多层感知机及生成对抗网络等理论和技术,针对地下水LNAPLs污染源反演识别领域中尚未解决的科学问题展开研究。首先通过假想例子验证所提方法的有效性,随后将其应用于吉林市某石油化工污染场地,进行污染源时空特征(包括空间位置、释放历史)以及模拟模型参数的反演识别。 首先,基于实际场地的水文地质条件,构建了水文地质概念模型,并在此基础上建立了地下水LNAPLs污染多相流数值模拟模型。通过对模拟模型的模型参数进行灵敏度分析,筛选出高灵敏参数,...",
+    "published": "2025-05-01",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A1e9ncOroJCzN4xHz4uYHsmUzBuqIdqCWlxCttdrIHJ1l-vPPq0vPeN14xDONxFWTpLh-Mn2XD9JILRcnX0M-WuDaxbxfsCdTA73EGI8ge605FDfvcIOV7IuCAmmYYgIPF0BAPA-OgC6ihcRBvNhS8yJm--os746DpqVCNzIm2V7VIc1YtnxR9S&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "硕士"
+    ],
+    "venue": "吉林大学",
+    "conference": "吉林大学",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "RGa7mrESpptToOMuMXTtLIdDpABOkPy0aETAVZfzihwm4iM4UTsUTJq-th3gskmnMXiPDEC2WS42LFVaM54tnRMQcTim95WbQcQvyZY8W5vPhQCRo5kYiP4eWkONp9c2"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "OMLP替代模型",
+      "地下水污染源反演识别",
+      "数值模拟",
+      "模拟优化方法",
+      "瓦萨斯坦生成对抗网络",
+      "飞狐优化算法"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:36:40.121955+00:00",
+    "official_keywords": [
+      "OMLP替代模型",
+      "地下水污染源反演识别",
+      "模拟优化方法",
+      "瓦萨斯坦生成对抗网络",
+      "飞狐优化算法"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "吉林大学"
+      ],
+      "fund": "国家自然科学基金面上项目:地下水污染溯源智能反演辨识研究(编号:42272283)； 国家自然科学基金面上项目:基于随机统计及人工智能的地下水污染溯源辨识研究(编号:41972252)；",
+      "classification": "X523",
+      "isOnlineFirst": false,
+      "toc": "摘要 Abstract 第1章 绪论 1.1 选题依据及研究意义 1.2 国内外研究现状及进展 1.2.1 地下水污染源反演识别方法研究现状及进展 1.2.2 替代模型建模方法研究现状及进展 1.2.3 优化算法研究现状及进展 1.2.4 生成对抗网络方法研究现状及进展 1.3 有待解决的科学问题 1.4 研究内容与技术路线 1.4.1 研究内容 1.4.2 技术路线 1.5 创新点 第2章 地下水污染中的正演问题与反演问题 2.1 正演问题与反演问题概述 2.2 地下水污染中的正演问题与反演问题 2.3 地下水污染源反演识别的方法 2.3.1 地下水污染源反演识别的模拟优化方法 2.3.2 地下水污染源反演识别的生成对抗网络方法 2.4 本章小结 第3章 地下水 LNAPLs 污染多相流数值模拟模型 3.1 地下水中 LNAPLs 的主要来源、种类及迁移转化 3.1.1 地下水中 LNAPLs 的主要来源及种类 3.1.2 地下水中 LNAPLs 的迁移转化过程 3.2 地下水 LNAPLs 污染多相流数值模拟模型 3.2.1 偏微分方程 3.2.2 定解条件 3.2.3 生物降解 3.3 实例研究区的地下水 LNAPLs 污染多相流数值模拟模型 3.3.1 实例研究区概况 3.3.2 实例研究区水文地质概念模型 3.3.3 实例研究区多相流数值模拟模型 3.3.4 实例研究区多相流数值模拟模型的时空离散及求解 3.4 本章小结 第4章 地下水 LNAPLs 污染多相流数值模拟模型的替代模型 4.1 多相流数值模拟模型参数的灵敏度分析 4.1.1 局部灵敏度分析方法 4.1.2 局部灵敏度分析结果 4.2 训练样本与检验样本的获取 4.2.1 拉丁超立方抽样方法 4.2.2 样本数据的获取及预处理 4.3 三种替代模型的建立、训练与检验 4.3.1 BP神经网络替代模型 4.3.2 多层感知机替代模型 4.3.3 OMLP替代模型 4.3.4 替代模型的精度检验 4.4 本章小结 第5章 地下水 LNAPLs 污染源反演识别的两种方法 5.1 地下水 LNAPLs 污染源反演识别问题的模拟优化方法 5.1.1 最优化问题概述 5.1.2 地下水 LNAPLs 污染源反演识别优化模型的建立 5.1.3 优化模型的求解算法—飞狐优化算法 5.2 地下水污染源反演识别的瓦萨斯坦生成对抗网络方法 5.2.1 生成对抗网络 5.2.2 生成对抗网络存在的问题 5.2.3 瓦萨斯坦生成对抗网络 5.2.4 地下水污染源反演识别瓦萨斯坦生成对抗网络 5.3 训练样本正反馈策略 5.4 本章小结 第6章 两种不同方法在地下水 LNAPLs 污染源反演识别中的应用 6.1 基于假想例子的地下水 LNAPLs 污染源反演识别 6.1.1 假想例子概述 6.1.2 飞狐优化算法识别结果 6.1.3 瓦萨斯坦生成对抗网络识别结果 6.1.4 两种方法反演识别结果的对比分析 6.2 实际案例的地下水 LNAPLs 污染源反演识别 6.3 本章小结 第7章 结论及展望 7.1 结论 7.2 展望 参考文献",
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "数值模拟"
+    ]
   }
 ]

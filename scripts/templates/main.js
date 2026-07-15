@@ -15,6 +15,7 @@ import { syncDailyPickerToMonth, setSegmentedActive, summaryActionIsActive, navi
 dom.monthBtns = document.querySelectorAll('.month-btn');
 dom.statusBtns = document.querySelectorAll('.status-btn');
 dom.pdfBtns = document.querySelectorAll('.pdf-btn');
+dom.languageBtns = document.querySelectorAll('.language-btn');
 dom.categoryBtns = document.querySelectorAll('.category-btn');
 dom.categoryFilters = document.querySelector('.category-filters');
 dom.sortBtns = document.querySelectorAll('.sort-btn');
@@ -264,6 +265,17 @@ dom.pdfBtns.forEach(btn => {
         dom.pdfBtns.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
         state.currentPdf = this.dataset.pdf;
+        state.currentSpecial = '';
+        filterAndSortPapers();
+    });
+});
+
+// 语言按钮
+dom.languageBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+        dom.languageBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        state.currentLanguage = this.dataset.language;
         state.currentSpecial = '';
         filterAndSortPapers();
     });

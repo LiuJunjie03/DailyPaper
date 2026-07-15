@@ -9,6 +9,12 @@ import { updateSummaryActionStates, updateTodayCount, syncTodayCardLabel } from 
 
 // ===== 分类辅助函数 =====
 
+// 中文文献来源（知网、万方、维普）
+const CN_SOURCES = ['cnki', 'wanfang', 'cqvip'];
+export function isChinesePaper(paper) {
+    return CN_SOURCES.includes(paper.source);
+}
+
 function splitCategory(category) {
     return category.split('/').map(part => part.trim()).filter(Boolean);
 }
@@ -114,6 +120,32 @@ export function updateStatusButtonCounts() {
     });
 }
 
+export function updateLanguageButtonCounts() {
+    // 在发表状态、全文状态、研究领域作用域内统计语言分布
+    const scopedPapers = state.allPapersData.filter(paper => {
+        const status = isPreprint(paper) ? 'preprint' : 'published';
+        const tags = paper.tags || [];
+        const matchStatus = state.currentStatus === 'all' || status === state.currentStatus;
+        const matchPdf = state.currentPdf === 'all' || (state.currentPdf === 'available' ? hasPDF(paper) : !hasPDF(paper));
+        const matchCategory = state.currentCategory === 'all' || tags.includes(state.currentCategory);
+        return matchStatus && matchPdf && matchCategory;
+    });
+
+    const zhCount = scopedPapers.filter(isChinesePaper).length;
+    const enCount = scopedPapers.length - zhCount;
+
+    dom.languageBtns.forEach(btn => {
+        const lang = btn.dataset.language;
+        if (lang === 'all') {
+            btn.textContent = `全部 (${scopedPapers.length})`;
+        } else if (lang === 'zh') {
+            btn.textContent = `中文 (${zhCount})`;
+        } else if (lang === 'en') {
+            btn.textContent = `英文 (${enCount})`;
+        }
+    });
+}
+
 export function updateCategoryButtonCounts() {
     renderCategoryNav();
 }
@@ -149,6 +181,7 @@ export function saveStateToURL() {
     if (state.currentMonth !== 'all') params.set('month', state.currentMonth);
     if (state.currentStatus !== 'all') params.set('status', state.currentStatus);
     if (state.currentPdf !== 'all') params.set('pdf', state.currentPdf);
+    if (state.currentLanguage !== 'all') params.set('language', state.currentLanguage);
     if (state.currentCategory !== 'all') params.set('category', state.currentCategory);
     if (state.currentSort !== 'date-desc') params.set('sort', state.currentSort);
     if (state.currentDate) params.set('date', state.currentDate);
@@ -171,12 +204,13 @@ export function filterAndSortPapers() {
 
         const matchStatus = state.currentStatus === 'all' || status === state.currentStatus;
         const matchPdf = state.currentPdf === 'all' || (state.currentPdf === 'available' ? hasPDF(paper) : !hasPDF(paper));
+        const matchLanguage = state.currentLanguage === 'all' || (state.currentLanguage === 'zh' ? isChinesePaper(paper) : !isChinesePaper(paper));
         const matchCategory = state.currentCategory === 'all' || tags.includes(state.currentCategory);
         const matchSearch = state.searchTerm === '' || text.includes(state.searchTerm);
         const matchDate = !state.currentDate || paper.published === state.currentDate;
         const matchSpecial = state.currentSpecial !== 'early-access' || paper.is_early_access === true;
 
-        return matchStatus && matchPdf && matchCategory && matchSearch && matchDate && matchSpecial;
+        return matchStatus && matchPdf && matchLanguage && matchCategory && matchSearch && matchDate && matchSpecial;
     });
 
     debugLog(`Filtered to ${state.filteredPapers.length} papers`);
@@ -187,8 +221,13 @@ export function filterAndSortPapers() {
         const dateB = sortTimestamp(b);
 
         if (state.currentSort === 'date-desc') {
+            // 预出版（暂未出版）论文的日期是预计出版日，排到日期排序的末尾
+            if (a.is_early_access && !b.is_early_access) return 1;
+            if (!a.is_early_access && b.is_early_access) return -1;
             return dateB - dateA;
         } else if (state.currentSort === 'date-asc') {
+            if (a.is_early_access && !b.is_early_access) return 1;
+            if (!a.is_early_access && b.is_early_access) return -1;
             return dateA - dateB;
         } else if (state.currentSort === 'importance-desc') {
             const scoreDiff = recommendationScore(b) - recommendationScore(a);
@@ -206,6 +245,7 @@ export function filterAndSortPapers() {
 
     // 更新按钮数量和显示
     updateStatusButtonCounts();
+    updateLanguageButtonCounts();
     updatePDFButtonCounts();
     updateCategoryButtonCounts();
     updateTodayCount(state.allPapersData);

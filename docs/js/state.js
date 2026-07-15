@@ -8,6 +8,7 @@ export const state = {
     currentMonth: 'all',
     currentStatus: 'all',
     currentPdf: 'all',
+    currentLanguage: 'all',
     currentCategory: 'all',
     currentSort: 'date-desc',
     currentDate: '',

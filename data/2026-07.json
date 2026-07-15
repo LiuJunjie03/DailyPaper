@@ -20919,5 +20919,104 @@
       "finite volume",
       "cfd"
     ]
+  },
+  {
+    "id": "cnki-444497a9301a",
+    "title": "工况感知驱动的层次化点云流场预测网络",
+    "authors": "于士哲1,; 李鑫1,; 陈刚1,",
+    "abstract": "本文提出一种工况感知驱动的层次化点云流场预测网络，旨在解决传统数值模拟（CFD）耗时显著、通用点云网络缺乏物理特性适配以及“变构型-变工况”双重泛化能力不足等瓶颈，实现高保真表面流场的快速精准预测。该网络以PointNet++为骨干，引入多尺度分组集合抽象（MSG-SA）模块捕捉丰富的拓扑特征，构建包含位置编码与通道注意力机制的几何增强倒置残差（Geo-InvResMLP）模块以提升对局部流动梯度的捕捉灵敏度；同时，结合特征线性调制技术设计工况信息调制机制，将飞行工况作为全局调制因子注入几何特征流，实现“几何-工况”强非线性关系的底层解耦。在高速多构型变工况数据集上的实验表明，该模型在表面压力与热流预测任务中的平均归一化均方根误差（NRMSE）分别低至0.012 4和0.023 9，决定系数（R2）均达0.998以上，在零样本外推测试中同样展现出良好的泛化韧性。研究表明，该模型单样本平均推理耗时仅115ms，较传统CFD效率提升4个数量级，实现了高保真气动数据的毫秒级在线实时响应，可为飞行器多学科设计优化与数字孪生提供高效的代理模型支撑。",
+    "published": "2026-07-09",
+    "paper_url": "https://kns.cnki.net/kcms2/article/abstract?v=hiwAvoCB7A1aswg80dhwDrBUnb0d8GZUDbg-KRB_flx0ebkeeVv_WXIDd6C-DktByRd0GVOcY0VT86vjoUyE5Pxg3NHj5dYmyabG3OAjxiGkTv2sW_Eq7hj1Fj_T-vx-qcG5R8uFTXmdxQw7dPD4N--Aj0ZDKW36qpXbQv4HA-hDYZaZDAHekw==&uniplatform=NZKPT&language=CHS",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [
+      "期刊"
+    ],
+    "venue": "空气动力学学报",
+    "conference": "空气动力学学报",
+    "publication_types": [],
+    "publication_type": "unknown",
+    "doi": "",
+    "external_ids": {
+      "CNKIExportId": "kd9kqNkOM8Xyu_MccKCQ5AM1UHjV0uMR_icN4IXwgiddBvwIlIociDIFOw40jh1kVv0wmMo-2bD0BxqupDdAA_15U4RVk_tCm67MCfzPBes!"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "代理模型",
+      "多构型-变工况",
+      "工况感知调制",
+      "数值模拟",
+      "流场预测",
+      "点云深度学习",
+      "高速"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "cnki",
+    "abstract_source": "cnki_detail",
+    "abstract_status": "enriched",
+    "abstract_enriched_at": "2026-07-14T09:22:49.437594+00:00",
+    "official_keywords": [
+      "多构型-变工况",
+      "工况感知调制",
+      "流场预测",
+      "点云深度学习",
+      "高速"
+    ],
+    "cnki_detail": {
+      "affiliations": [
+        "西安交通大学航天航空学院,复杂服役环境重大装备结构强度与寿命全国重点实验室",
+        "西安交通大学陕西省飞行器服役环境与控制重点实验室"
+      ],
+      "fund": "国家自然科学基金(92471301,92371201,521926233)；",
+      "classification": "V211;V411",
+      "pubInfo": "（录用定稿）网络首发时间：2026-07-09 10:38:32",
+      "isOnlineFirst": true,
+      "citationInfo": {
+        "references": {
+          "label": "参考文献",
+          "count": 0
+        },
+        "citations": {
+          "label": "引证文献",
+          "count": 0
+        },
+        "coreferences": {
+          "label": "共引文献",
+          "count": 0
+        },
+        "cocitations": {
+          "label": "同被引文献",
+          "count": 0
+        },
+        "secondreferences": {
+          "label": "二级参考文献",
+          "count": 0
+        },
+        "secondcitations": {
+          "label": "二级引证文献",
+          "count": 0
+        }
+      }
+    },
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "cnki",
+    "date_status": "approximate",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "cfd",
+      "数值模拟",
+      "代理模型"
+    ]
   }
 ]

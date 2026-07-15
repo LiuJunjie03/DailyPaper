@@ -41,6 +41,12 @@ export async function loadMonthsIndex() {
                     btn.classList.toggle('active', btn.dataset.pdf === state.currentPdf);
                 });
             }
+            if (params.has('language')) {
+                state.currentLanguage = params.get('language');
+                dom.languageBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.language === state.currentLanguage);
+                });
+            }
             if (params.has('category')) {
                 state.currentCategory = params.get('category');
             }
