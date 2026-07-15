@@ -52,11 +52,11 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "dns",
-      "cfd",
-      "fluid dynamics",
       "computational fluid dynamics",
-      "vortex"
+      "fluid dynamics",
+      "vortex",
+      "cfd",
+      "dns"
     ],
     "sources": [
       "crossref"
@@ -105,9 +105,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "airfoil",
       "shape optimization",
-      "machine learning",
-      "airfoil"
+      "machine learning"
     ],
     "is_early_access": true,
     "sources": [
@@ -181,12 +181,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "les",
-      "wind turbine",
-      "physics-informed",
       "pinn",
-      "rans",
-      "data-driven"
+      "wind turbine",
+      "les",
+      "data-driven",
+      "physics-informed",
+      "rans"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -256,10 +256,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "heat transfer",
-      "fourier neural operator",
+      "neural operator",
       "physics-guided",
-      "neural operator"
+      "fourier neural operator",
+      "heat transfer"
     ],
     "sources": [
       "crossref"
@@ -364,8 +364,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "flame",
-      "machine learning",
-      "combustion"
+      "combustion",
+      "machine learning"
     ]
   },
   {
@@ -408,12 +408,171 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "cfd",
+      "computational fluid dynamics",
       "fluid dynamics",
-      "computational fluid dynamics"
+      "cfd"
     ],
     "sources": [
       "crossref"
+    ]
+  },
+  {
+    "id": "10.1016/j.cpc.2026.110302",
+    "title": "Model-driven conditional Fourier neural operator for spectrum-consistent synthetic turbulence generation",
+    "authors": "Hongyuan Lin, Shizhao Wang",
+    "abstract": "This short note proposes a model-driven conditional Fourier neural operator (MD-CFNO) for synthetic turbulence generation. Spectrum-consistent synthetic turbulence is essential for inflow boundary construction in computational fluid dynamics and for broadband aeroacoustic noise prediction. Data-driven turbulence synthesis with neural networks has emerged as a promising direction. However, generating flow fields that match prescribed energy spectra across wide physical regimes remains challenging. Existing data-driven methods typically rely on expensive reliable datasets with limited generalization and are prone to regression-to-the-mean when trained in the spatial domain. To address these issues, the MD-CFNO is proposed with three components: a model-driven data construction strategy is adopted to improve interpretability and broaden the generalizable parameter regime; conditional stochastic generation is integrated into the Fourier neural operator architecture to alleviate regression-to-the-mean effects; and a composite loss is introduced to accelerate convergence and enhance spectral fidelity. Results show that the proposed MD-CFNO generates spectrum-consistent synthetic turbulence and achieves robust performance under both interpolation and out-of-distribution extrapolation conditions. This study provides a model-driven perspective on synthetic turbulence, showing the advantages of Fourier neural operators for conditional generation.",
+    "published": "2026-10-01",
+    "paper_url": "https://doi.org/10.1016/j.cpc.2026.110302",
+    "arxiv_id": "2601.14745",
+    "arxiv_url": "https://arxiv.org/abs/2601.14745",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.14745",
+    "categories": [],
+    "venue": "Computer Physics Communications",
+    "conference": "Computer Physics Communications",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.cpc.2026.110302",
+    "external_ids": {},
+    "semantic_scholar_id": "23d54207cfdb4d851b573215e2e7d455dfe8fb77",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "FNO",
+      "Neural Operator",
+      "data-driven",
+      "data-driven turbulence",
+      "fluid dynamics",
+      "turbulence"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 8,
+        "strong_hits": [
+          "neural operator",
+          "fourier neural operator"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 4,
+        "strong_hits": [
+          "data-driven turbulence"
+        ],
+        "context_hits": [
+          "data-driven"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 5,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "computational fluid dynamics",
+      "fluid dynamics",
+      "data-driven",
+      "data-driven turbulence",
+      "neural operator",
+      "turbulence",
+      "fourier neural operator"
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex",
+    "sources": [
+      "crossref"
+    ]
+  },
+  {
+    "id": "10.1016/j.engappai.2026.115640",
+    "title": "A comparison study of computational fluid dynamics and physics-Informed neural network modelling approaches for protein elution in non-binding liquid chromatography",
+    "authors": "Pratik Punj, Lalita Kanwar Shekhawat",
+    "abstract": "",
+    "published": "2026-10-01",
+    "paper_url": "https://doi.org/10.1016/j.engappai.2026.115640",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Engineering Applications of Artificial Intelligence",
+    "conference": "Engineering Applications of Artificial Intelligence",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.engappai.2026.115640",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "fluid dynamics",
+      "neural network"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 8,
+        "strong_hits": [
+          "physics-informed neural network",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "fluid",
+          "neural network"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "physics-informed neural network",
+      "computational fluid dynamics",
+      "fluid dynamics",
+      "neural network",
+      "physics-informed"
     ]
   }
 ]
