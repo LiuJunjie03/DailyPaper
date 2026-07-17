@@ -105,6 +105,11 @@ SUBDOMAIN_RULES = {
             "field prediction", "flow prediction",
             "reduced-complexity", "variational autoencoder", "cvae",
             "transfer learning", "foundation model",
+            # 中文术语
+            "代理模型", "代理预测", "降阶模型", "降维模型",
+            "本征正交分解", "算子学习", "神经算子",
+            "傅里叶神经算子", "koopman算子",
+            "数据驱动代理", "流场预测",
         ],
         "context": [
             "navier-stokes", "computational fluid dynamics", "cfd",
@@ -126,6 +131,11 @@ SUBDOMAIN_RULES = {
             "subgrid-scale", "sgs model", "wall model", "data-driven turbulence",
             "closure model", "subgrid stress", "turbulence scheme",
             "closure for rans", "subgrid parametrization",
+            # 中文术语
+            "湍流闭合", "湍流闭合模型", "湍流模型",
+            "雷诺应力", "涡黏性", "涡粘性",
+            "亚网格", "亚格子", "壁面模型",
+            "数据驱动湍流", "湍流模拟", "湍流建模",
         ],
         "context": [
             "rans", "les", "dns", "turbulent flow", "boundary layer",
@@ -141,6 +151,10 @@ SUBDOMAIN_RULES = {
             "learned flux", "flux limiter", "weno", "differentiable solver",
             "neural solver", "solver-in-the-loop", "stabilization",
             "numerical viscosity", "closure coefficient",
+            # 中文术语
+            "数值通量", "通量限制器", "可微求解器",
+            "神经求解器", "数值粘性",
+            "数值格式", "离散格式", "数值离散",
         ],
         "context": [
             "conservation law", "pde", "navier-stokes", "cfd", "shock", "mesh",
@@ -155,6 +169,10 @@ SUBDOMAIN_RULES = {
             "accelerated simulation", "fast cfd", "speedup", "efficient solver",
             "coarse grid", "coarse-grid", "super-resolution", "high-resolution reconstruction",
             "downscaling", "multigrid", "real-time simulation", "flow matching",
+            # 中文术语
+            "加速求解", "快速计算", "超分辨", "超分辨率",
+            "粗网格", "多重网格", "实时仿真", "实时模拟",
+            "降尺度", "流场超分辨",
         ],
         "context": [
             "cfd", "flow simulation", "navier-stokes", "fluid simulation", "solver",
@@ -170,6 +188,10 @@ SUBDOMAIN_RULES = {
             "hard constraint projection", "variational pinn", "cpinn",
             "physics-embedded", "physics-encoded",
             "physics-informed machine learning", "residual-guided",
+            # 中文术语
+            "物理信息神经网络", "物理约束神经网络",
+            "物理引导神经网络", "物理嵌入",
+            "pinn方程", "pinn求解",
         ],
         "context": [
             "navier-stokes", "cfd", "pde", "fluid", "flow",
@@ -187,6 +209,13 @@ SUBDOMAIN_RULES = {
             "neural kalman", "ensemble kalman", "sensor placement",
             "field reconstruction", "probabilistic prediction",
             "sparse data", "diffusion model for flow",
+            # 中文术语
+            "流场重建", "流场重构", "流场反演",
+            "不确定性量化", "数据同化",
+            "稀疏传感", "稀疏测量", "反问题",
+            "状态估计", "流场估计",
+            "卡尔曼", "概率预测",
+            "扩散模型",
         ],
         "context": [
             "navier-stokes", "cfd", "fluid", "flow", "pde",
@@ -202,6 +231,11 @@ SUBDOMAIN_RULES = {
             "deep reinforcement learning", "drl",
             "closed-loop control", "optimal control", "active control",
             "drag reduction control",
+            # 中文术语
+            "流动控制", "主动流动控制", "主动控制",
+            "强化学习", "深度强化学习",
+            "闭环控制", "最优控制",
+            "减阻控制", "减阻",
         ],
         "context": [
             "navier-stokes", "cfd", "fluid", "flow", "turbulent",
@@ -219,8 +253,14 @@ SUBDOMAIN_RULES = {
             "airfoil optimization", "wing optimization", "shape optimization",
             "inverse design", "drag reduction", "lift enhancement",
             "topology optimization", "adjoint optimization", "design optimization",
+            # 中文术语
+            "气动优化", "气动外形优化", "气动设计优化",
+            "翼型优化", "机翼优化", "形状优化",
+            "反设计", "拓扑优化", "伴随优化",
+            "气动减阻", "增升",
         ],
-        "context": ["airfoil", "wing", "aerodynamics", "drag", "lift", "uav", "aircraft"],
+        "context": ["airfoil", "wing", "aerodynamics", "drag", "lift", "uav", "aircraft",
+                    "翼型", "机翼", "气动", "减阻", "飞行器"],
         "negative": [
             "building design", "chip design",
             "machine learning", "neural network", "deep learning",
@@ -234,8 +274,15 @@ SUBDOMAIN_RULES = {
             "boundary-layer flow", "flow instability",
             "linear amplification", "resolvent analysis",
             "jet flow", "shear flow", "wake flow", "mixing layer",
+            # 中文术语
+            "湍流机理", "湍流结构", "各向同性湍流",
+            "涡旋", "旋涡", "涡结构",
+            "边界层流动", "流动不稳定性",
+            "射流", "剪切流", "尾流", "混合层",
+            "流动机理",
         ],
-        "context": ["flow", "fluid", "navier-stokes", "physics.flu-dyn"],
+        "context": ["flow", "fluid", "navier-stokes", "physics.flu-dyn",
+                    "流动", "流体", "边界层"],
         "negative": [
             "language model", "transformer", "photonic", "crystal", "materials design",
             "machine learning", "neural network", "deep learning",
@@ -248,8 +295,14 @@ SUBDOMAIN_RULES = {
             "phase separation", "phase field", "interface capturing", "interface tracking",
             "vof", "level set", "lattice boltzmann", "sph", "dem",
             "cavitation", "boiling", "droplet", "bubble", "spray",
+            # 中文术语
+            "多相流", "两相流",
+            "相分离", "相场", "界面捕获", "界面追踪", "界面跟踪",
+            "level set方法", "水平集",
+            "格子玻尔兹曼", "空化", "空蚀",
+            "沸腾", "液滴", "气泡", "雾化",
         ],
-        "context": ["fluid", "flow", "navier-stokes", "cfd"],
+        "context": ["fluid", "flow", "navier-stokes", "cfd", "流体", "流动"],
         "negative": [
             "semantic segmentation",
             "machine learning", "neural network", "deep learning",
@@ -262,8 +315,14 @@ SUBDOMAIN_RULES = {
             "aircraft aerodynamics", "compressible flow", "hypersonic flow",
             "shock wave", "boundary layer", "aeroelasticity",
             "fluid-structure interaction", "fsi",
+            # 中文术语
+            "空气动力学", "翼型", "机翼气动",
+            "无人机气动", "飞行器气动",
+            "可压缩流", "高超声速", "高超音速",
+            "激波", "气动弹性",
+            "流固耦合",
         ],
-        "context": ["flow", "fluid", "cfd", "navier-stokes"],
+        "context": ["flow", "fluid", "cfd", "navier-stokes", "流动", "流体"],
         "negative": [
             "wireless", "network traffic",
             "machine learning", "neural network", "deep learning",
@@ -277,8 +336,13 @@ SUBDOMAIN_RULES = {
             "sea ice", "geophysical flow", "environmental fluid",
             "coastal hydrodynamics", "storm", "convective-scale",
             "seasonal forecast", "atmospheric dynamics",
+            # 中文术语
+            "天气预报", "气候", "降水",
+            "大气流动", "海洋流动", "海洋环流",
+            "海冰", "地球物理流体", "环境流体",
+            "海岸水动力", "风暴", "大气动力学",
         ],
-        "context": ["fluid", "flow", "simulation", "navier-stokes", "cfd"],
+        "context": ["fluid", "flow", "simulation", "navier-stokes", "cfd", "流体", "流动"],
         "negative": [
             "semiconductor", "electronics", "market",
             "machine learning", "neural network", "deep learning",
@@ -291,8 +355,13 @@ SUBDOMAIN_RULES = {
             "biomedical flow", "cilia", "cilium", "ciliary",
             "microfluidic", "biolocomotion", "respiratory flow",
             "hemodynamics", "ventricular flow",
+            # 中文术语
+            "血流", "心血管", "动脉瘤", "主动脉",
+            "生物医学流体", "纤毛",
+            "微流体", "微流控",
+            "呼吸流", "血流动力学", "心室流",
         ],
-        "context": ["fluid", "flow", "simulation", "navier-stokes", "cfd"],
+        "context": ["fluid", "flow", "simulation", "navier-stokes", "cfd", "流体", "流动"],
         "negative": [
             "image segmentation", "clinical trial",
             "machine learning", "neural network", "deep learning",
@@ -304,8 +373,12 @@ SUBDOMAIN_RULES = {
             "combustion", "reacting flow", "detonation",
             "fire simulation", "heat transfer", "thermal convection",
             "radiation transfer", "flame", "thermal flow",
+            # 中文术语
+            "燃烧", "反应流", "爆轰",
+            "火灾模拟", "传热", "对流传热",
+            "辐射传热", "火焰", "热流",
         ],
-        "context": ["fluid", "flow", "simulation", "navier-stokes", "cfd"],
+        "context": ["fluid", "flow", "simulation", "navier-stokes", "cfd", "流体", "流动"],
         "negative": [
             "battery thermal", "electronics cooling",
             "machine learning", "neural network", "deep learning",
@@ -318,8 +391,13 @@ SUBDOMAIN_RULES = {
             "wake modeling", "wind farm", "floating wind",
             "fatigue loading", "wave-structure", "marine hydrodynamics",
             "ocean energy", "wind energy",
+            # 中文术语
+            "风力机", "风力发电机", "海上风电", "漂浮式风电",
+            "尾流建模", "风电场", "漂浮式风机",
+            "波浪结构", "海洋水动力",
+            "海洋能", "风能",
         ],
-        "context": ["fluid", "flow", "simulation", "cfd", "turbulent"],
+        "context": ["fluid", "flow", "simulation", "cfd", "turbulent", "流体", "流动"],
         "negative": [
             "power electronics", "grid connection",
             "machine learning", "neural network", "deep learning",
@@ -333,8 +411,15 @@ SUBDOMAIN_RULES = {
             "high-order scheme", "open-source solver",
             "error estimation", "richardson extrapolation",
             "grid convergence", "discretization error",
+            # 中文术语
+            "有限体积法", "有限元法", "有限体积", "有限元",
+            "网格生成", "自适应网格", "网格加密",
+            "高阶格式", "开源求解器",
+            "误差估计", "网格收敛",
+            "离散误差", "数值方法",
         ],
-        "context": ["cfd", "navier-stokes", "numerical", "computational fluid dynamics"],
+        "context": ["cfd", "navier-stokes", "numerical", "computational fluid dynamics",
+                    "数值", "网格", "离散"],
         "negative": ["machine learning", "neural network", "deep learning", "surrogate"],
     },
 }
@@ -530,6 +615,10 @@ def classify_paper(paper: Dict, config: Dict) -> List[str]:
         "machine learning", "deep learning", "neural network", "neural operator",
         "reinforcement learning", "data-driven", "pinn", "physics-informed",
         "surrogate", "reduced-order", "rom", "gnn",
+        # 中文 ML 术语
+        "机器学习", "深度学习", "神经网络", "深度强化学习",
+        "物理信息神经网络", "代理模型", "算子学习", "神经算子",
+        "数据驱动", "强化学习",
     ])
 
     if has_ml:
