@@ -437,7 +437,7 @@ def fetch_webofscience_papers(config: dict, ss_api_key: str = "", arxiv_client=N
         logger.info("Web of Science/SCI 是本地机构网络源，GitHub Actions 默认跳过")
         return []
 
-    queries = flatten_queries(wos_config.get("queries", []))
+    queries = flatten_queries(wos_config)
     if not queries:
         logger.info("Web of Science 未配置查询词")
         return []
