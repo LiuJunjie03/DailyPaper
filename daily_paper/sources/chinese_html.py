@@ -118,6 +118,9 @@ def parse_detail_page(url: str) -> Dict:
     ]
     keywords = meta_content(soup, "citation_keywords", "keywords")
     abstract = meta_content(soup, "citation_abstract", "dc.description", "description")
+    pdf_url = meta_content(soup, "citation_pdf_url")
+    if url.startswith("https://") and pdf_url.startswith("http://"):
+        pdf_url = "https://" + pdf_url.removeprefix("http://")
     return {
         "title": meta_content(soup, "citation_title", "dc.title") or clean_text(soup.title.get_text(" ") if soup.title else ""),
         "authors": "; ".join(authors),
@@ -126,7 +129,7 @@ def parse_detail_page(url: str) -> Dict:
         "venue": meta_content(soup, "citation_journal_title", "citation_conference_title"),
         "doi": meta_content(soup, "citation_doi", "dc.identifier"),
         "keywords": [kw.strip() for kw in re.split(r"[;,；，]", keywords) if kw.strip()],
-        "pdf_url": meta_content(soup, "citation_pdf_url"),
+        "pdf_url": pdf_url,
     }
 
 
@@ -235,6 +238,9 @@ def fetch_chinese_html_source(top_config: Dict, source_key: str, source_label: s
     config = top_config.get("sources", {}).get(source_key, {})
     if not config.get("enabled", False):
         logger.info("%s 数据源已禁用", source_label)
+        return []
+    if os.environ.get("GITHUB_ACTIONS") == "true" and os.environ.get("ENABLE_CHINESE_PORTALS", "").lower() != "true":
+        logger.info("%s skipped on GitHub Actions; run it locally with institution access.", source_label)
         return []
 
     queries = flatten_queries(config)

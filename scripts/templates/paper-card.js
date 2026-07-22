@@ -17,6 +17,10 @@ export function sourceLabel(source, paper = {}) {
     if (source === 'semantic_scholar') return 'Semantic Scholar';
     if (source === 'arxiv') return 'arXiv';
     if (source === 'cnki') return '知网';
+    if (source === 'wanfang') return '万方';
+    if (source === 'cqvip') return '维普';
+    if (source === 'official_journal') return '期刊官网';
+    if (String(source || '').startsWith('manual_')) return '人工导入';
     if (source === 'google_scholar') {
         return String(paper.paper_url || '').includes('nature.com') ? 'Nature' : 'Google Scholar';
     }
@@ -169,6 +173,10 @@ export function createPaperHTML(paper) {
     const arxivLink = paper.arxiv_url ? `<a href="${escapeAttribute(safeURL(paper.arxiv_url))}" target="_blank" rel="noopener noreferrer" class="code-link">arXiv</a>` : '';
     const pdfLink = paper.pdf_url ? `<a href="${escapeAttribute(safeURL(paper.pdf_url))}" target="_blank" rel="noopener noreferrer" class="code-link">PDF</a>` : '';
     const preprintPdfLink = paper.preprint_pdf_url ? `<a href="${escapeAttribute(safeURL(paper.preprint_pdf_url))}" target="_blank" rel="noopener noreferrer" class="code-link">Preprint PDF</a>` : '';
+    const accessURL = paper.access_url && paper.access_url !== paper.pdf_url ? safeURL(paper.access_url, '') : '';
+    const accessLink = accessURL ? `<a href="${escapeAttribute(accessURL)}" target="_blank" rel="noopener noreferrer" class="code-link">全文入口</a>` : '';
+    const zoteroURL = safeURL(paper.zotero_lookup_url || paper.paper_url || '', '');
+    const zoteroLink = zoteroURL ? `<a href="${escapeAttribute(zoteroURL)}" target="_blank" rel="noopener noreferrer" class="code-link" title="用 Zotero Connector 在来源页识别并保存">Zotero入口</a>` : '';
     let codeLink = '';
     if (paper.code_link) {
         codeLink = `<a href="${escapeAttribute(safeURL(paper.code_link))}" target="_blank" rel="noopener noreferrer" class="code-link">Code/Project</a>`;
@@ -210,6 +218,8 @@ export function createPaperHTML(paper) {
                 ${arxivLink}
                 ${pdfLink}
                 ${preprintPdfLink}
+                ${accessLink}
+                ${zoteroLink}
                 ${codeLink}
             </div>
             <div class="paper-authors">

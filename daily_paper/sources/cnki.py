@@ -15,13 +15,12 @@ from daily_paper.normalizer import IMPACT_FACTOR_TABLE, finalize_paper, get_impa
 from daily_paper.queries import flatten_queries
 from daily_paper.sources.browser import evaluate_in_chrome
 from daily_paper.sources.cnki_detail import enrich_cnki_paper
+from daily_paper.text import normalize_title
 
 logger = logging.getLogger(__name__)
 
 
 DEFAULT_KNS_BASE_URL = "https://kns.cnki.net"
-
-from daily_paper.text import normalize_title
 
 
 def _cnki_url(cnki_config: Dict, key: str, default_path: str) -> str:
@@ -33,7 +32,11 @@ def _cnki_url(cnki_config: Dict, key: str, default_path: str) -> str:
     configured = cnki_config.get(key)
     if configured:
         return configured
-    base_url = os.environ.get("CNKI_KNS_BASE_URL", "").strip() or cnki_config.get("kns_base_url") or DEFAULT_KNS_BASE_URL
+    base_url = (
+        os.environ.get("CNKI_KNS_BASE_URL", "").strip()
+        or cnki_config.get("kns_base_url")
+        or DEFAULT_KNS_BASE_URL
+    )
     return urljoin(base_url.rstrip("/") + "/", default_path.lstrip("/"))
 
 
@@ -45,80 +48,145 @@ def _absolute_cnki_url(cnki_config: Dict, href: str) -> str:
     return urljoin(base_url.rstrip("/") + "/", href.lstrip("/"))
 
 
+def _cnki_query_specs(cnki_config: Dict) -> List[Dict[str, str]]:
+    """Normalize simple legacy queries and structured advanced-search queries."""
+    raw_queries = cnki_config.get("advanced_queries") or flatten_queries(cnki_config.get("queries", []))
+    specs = []
+    for item in raw_queries:
+        if isinstance(item, str):
+            query = item.strip()
+            journal = ""
+        elif isinstance(item, dict):
+            query = str(item.get("topic") or item.get("query") or "").strip()
+            journal = str(item.get("journal") or item.get("venue") or "").strip()
+        else:
+            continue
+        if query:
+            specs.append({"query": query, "journal": journal})
+    return specs
+
+
+def _cnki_advanced_browser_script(query: str, journal: str, max_per_query: int, max_pages: int) -> str:
+    """Return a DOM-only extractor for the current KNS8 advanced-search UI.
+
+    CNKI renders the result table client side.  The script therefore fills the
+    visible advanced-search inputs, reads each displayed result page, and clicks
+    only the visible next-page control.  It deliberately returns an explicit
+    partial flag instead of guessing that page one is the entire result set.
+    """
+    return f"""
+async () => {{
+  const query = {json.dumps(query, ensure_ascii=False)};
+  const journal = {json.dumps(journal, ensure_ascii=False)};
+  const maxResults = {int(max_per_query)};
+  const maxPages = {int(max_pages)};
+  const clean = value => (value || '').replace(/\\s+/g, ' ').trim();
+  const waitFor = async (predicate, attempts = 60) => {{
+    for (let attempt = 0; attempt < attempts; attempt += 1) {{
+      if (predicate()) return true;
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }}
+    return false;
+  }};
+  const captchaVisible = () => {{
+    const captcha = document.querySelector('#tcaptcha_transform_dy');
+    return Boolean(captcha && captcha.getBoundingClientRect().top >= 0);
+  }};
+  if (captchaVisible()) return {{ error: 'captcha' }};
+
+  const hasResultRows = () => Boolean(document.querySelector('.result-table-list tbody tr'));
+  if (!hasResultRows()) {{
+    const ready = await waitFor(() => document.querySelector('.gradeSearch') || captchaVisible());
+    if (!ready) return {{ error: 'search_form_timeout' }};
+    if (captchaVisible()) return {{ error: 'captcha' }};
+    const inputs = Array.from(document.querySelectorAll('.gradeSearch input[type="text"]'));
+    const searchButton = document.querySelector('.gradeSearch button');
+    if (inputs.length < 1 || !searchButton) return {{ error: 'advanced_form_missing' }};
+    inputs[0].value = query;
+    inputs[0].dispatchEvent(new Event('input', {{ bubbles: true }}));
+    // The current KNS8 advanced form places the exact-source field third.
+    if (journal && inputs.length >= 3) {{
+      inputs[2].value = journal;
+      inputs[2].dispatchEvent(new Event('input', {{ bubbles: true }}));
+    }}
+    searchButton.click();
+    const gotResults = await waitFor(() => hasResultRows() || captchaVisible());
+    if (!gotResults) return {{ error: 'results_timeout' }};
+    if (captchaVisible()) return {{ error: 'captcha' }};
+  }};
+
+  const papers = [];
+  const seen = new Set();
+  let total = '0';
+  let page = '';
+  let pagesRead = 0;
+  let partial = false;
+  while (pagesRead < maxPages && papers.length < maxResults) {{
+    const rows = Array.from(document.querySelectorAll('.result-table-list tbody tr'));
+    const checkboxes = Array.from(document.querySelectorAll('.result-table-list tbody input.cbItem'));
+    total = clean(document.querySelector('.pagerTitleCell')?.innerText || total).match(/([\\d,]+)/)?.[1] || total;
+    page = clean(document.querySelector('.countPageMark')?.innerText || page);
+    rows.forEach((row, index) => {{
+      const titleLink = row.querySelector('td.name a.fz14') || row.querySelector('td.name a');
+      const title = clean(titleLink?.innerText);
+      if (!title || seen.has(title) || papers.length >= maxResults) return;
+      seen.add(title);
+      const authors = Array.from(row.querySelectorAll('td.author a.KnowledgeNetLink'))
+        .map(node => clean(node.innerText)).filter(Boolean);
+      papers.push({{
+        n: papers.length + 1,
+        title,
+        href: titleLink?.href || '',
+        exportId: checkboxes[index]?.value || '',
+        authors: authors.length ? authors.join('; ') : clean(row.querySelector('td.author')?.innerText),
+        journal: clean(row.querySelector('td.source a')?.innerText || row.querySelector('td.source')?.innerText),
+        date: clean(row.querySelector('td.date')?.innerText),
+        database: clean(row.querySelector('td.data')?.innerText),
+        citations: clean(row.querySelector('td.quote')?.innerText),
+        downloads: clean(row.querySelector('td.download')?.innerText),
+      }});
+    }});
+    pagesRead += 1;
+    if (papers.length >= maxResults) {{ partial = true; break; }}
+    const beforePage = page;
+    const next = document.querySelector('.pages-next:not(.disabled), a.pages-next') ||
+      Array.from(document.querySelectorAll('.pager a, .pages a')).find(
+        node => ['>>', '下一页'].includes(clean(node.innerText))
+      );
+    if (!next) break;
+    next.click();
+    const advanced = await waitFor(
+      () => clean(document.querySelector('.countPageMark')?.innerText) !== beforePage || captchaVisible()
+    );
+    if (!advanced || captchaVisible()) {{ partial = true; break; }}
+  }}
+  if (pagesRead >= maxPages) partial = true;
+  return {{ query, journal, total, page, pagesRead, partial, results: papers }};
+}}
+"""
+
+
 def _fetch_cnki_with_browser(config: Dict, queries: List[str], cnki_config: Dict) -> Optional[List[Dict]]:
     max_per_query = int(cnki_config.get("max_results_per_query", 20))
+    max_pages = int(cnki_config.get("max_pages_per_query", 5))
     all_papers = []
     seen_titles = set()
 
-    for query in queries:
-        script = f"""
-async () => {{
-  const query = {json.dumps(query, ensure_ascii=False)};
-  await new Promise((resolve, reject) => {{
-    let n = 0;
-    const tick = () => {{
-      if (document.title.includes('安全验证') || document.body.innerText.includes('向右滑动完成验证')) resolve();
-      if (document.querySelector('input.search-input')) resolve();
-      else if (++n > 30) reject(new Error('search input timeout'));
-      else setTimeout(tick, 500);
-    }};
-    tick();
-  }});
-  if (document.title.includes('安全验证') || document.body.innerText.includes('向右滑动完成验证')) {{
-    return {{ error: 'captcha', message: 'CNKI requires slider verification.' }};
-  }}
-  const captcha = document.querySelector('#tcaptcha_transform_dy');
-  if (captcha && captcha.getBoundingClientRect().top >= 0) return {{ error: 'captcha' }};
-  const input = document.querySelector('input.search-input');
-  input.value = query;
-  input.dispatchEvent(new Event('input', {{ bubbles: true }}));
-  document.querySelector('input.search-btn')?.click();
-  await new Promise((resolve, reject) => {{
-    let n = 0;
-    const tick = () => {{
-      if (document.querySelector('.result-table-list tbody tr') || document.querySelector('.pagerTitleCell')) resolve();
-      else if (++n > 40) reject(new Error('results timeout'));
-      else setTimeout(tick, 500);
-    }};
-    tick();
-  }});
-  const captcha2 = document.querySelector('#tcaptcha_transform_dy');
-  if (captcha2 && captcha2.getBoundingClientRect().top >= 0) return {{ error: 'captcha' }};
-  const rows = document.querySelectorAll('.result-table-list tbody tr');
-  const checkboxes = document.querySelectorAll('.result-table-list tbody input.cbItem');
-  const results = Array.from(rows).slice(0, {max_per_query}).map((row, i) => {{
-    const titleLink = row.querySelector('td.name a.fz14') || row.querySelector('td.name a');
-    const authors = Array.from(row.querySelectorAll('td.author a.KnowledgeNetLink') || []).map(a => a.innerText?.trim()).filter(Boolean);
-    const authorText = authors.length ? authors.join('; ') : (row.querySelector('td.author')?.innerText?.trim() || '');
-    return {{
-      n: i + 1,
-      title: titleLink?.innerText?.trim() || '',
-      href: titleLink?.href || '',
-      exportId: checkboxes[i]?.value || '',
-      authors: authorText,
-      journal: row.querySelector('td.source a')?.innerText?.trim() || row.querySelector('td.source')?.innerText?.trim() || '',
-      date: row.querySelector('td.date')?.innerText?.trim() || '',
-      database: row.querySelector('td.data')?.innerText?.trim() || '',
-      citations: row.querySelector('td.quote')?.innerText?.trim() || '0',
-      downloads: row.querySelector('td.download')?.innerText?.trim() || ''
-    }};
-  }});
-  return {{
-    query,
-    total: document.querySelector('.pagerTitleCell')?.innerText?.match(/([\\d,]+)/)?.[1] || '0',
-    page: document.querySelector('.countPageMark')?.innerText || '1/1',
-    results
-  }};
-}}
-"""
-        logger.info(f"CNKI browser search: {query}")
-        search_page_url = _cnki_url(cnki_config, "search_page_url", "/kns8s/search")
+    for spec in _cnki_query_specs(cnki_config):
+        query, journal = spec["query"], spec["journal"]
+        script = _cnki_advanced_browser_script(query, journal, max_per_query, max_pages)
+        logger.info("CNKI advanced browser search: %s | source: %s", query, journal or "all")
+        search_page_url = _cnki_url(cnki_config, "search_page_url", "/kns8s/AdvSearch")
         data = evaluate_in_chrome(search_page_url, script, "CNKI", config, cnki_config)
         if data is None:
             return None
         if data.get("error") == "captcha":
             logger.warning("CNKI CAPTCHA required in Chrome; skipping browser backend.")
             return None
+        if data.get("partial"):
+            logger.warning(
+                "CNKI query is partial after %s page(s): %s", data.get("pagesRead", 0), query
+            )
 
         for item in data.get("results", [])[:max_per_query]:
             title = item.get("title", "")
@@ -189,7 +257,11 @@ def fetch_cnki_papers(config: Dict, ss_api_key: str = "", arxiv_client=None) -> 
     # 创建持久会话
     session = requests.Session()
     session.headers.update({
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/120.0.0.0 Safari/537.36"
+        ),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
     })

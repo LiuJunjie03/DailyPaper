@@ -69,7 +69,9 @@ def split_papers_by_month(papers: List[Dict]) -> Dict[str, List[Dict]]:
     return month_papers
 
 
-def save_monthly_data(month_papers: Dict[str, List[Dict]], data_dir: str, docs_dir: str, only_months: set = None) -> None:
+def save_monthly_data(
+    month_papers: Dict[str, List[Dict]], data_dir: str, docs_dir: str, only_months: set = None
+) -> None:
     """写入月度 JSON 文件到 data_dir 和 docs_dir
 
     Args:
@@ -80,9 +82,8 @@ def save_monthly_data(month_papers: Dict[str, List[Dict]], data_dir: str, docs_d
     """
     os.makedirs(data_dir, exist_ok=True)
     months_to_write = only_months or set(month_papers.keys())
-    for month, papers in month_papers.items():
-        if month not in months_to_write:
-            continue
+    for month in sorted(months_to_write):
+        papers = month_papers.get(month, [])
         month_path = os.path.join(data_dir, f"{month}.json")
         with open(month_path, "w", encoding="utf-8") as f:
             json.dump(papers, f, ensure_ascii=False, indent=2)
@@ -92,9 +93,8 @@ def save_monthly_data(month_papers: Dict[str, List[Dict]], data_dir: str, docs_d
     if docs_dir:
         docs_data_dir = os.path.join(docs_dir, "data")
         os.makedirs(docs_data_dir, exist_ok=True)
-        for month, papers in month_papers.items():
-            if month not in months_to_write:
-                continue
+        for month in sorted(months_to_write):
+            papers = month_papers.get(month, [])
             month_path = os.path.join(docs_data_dir, f"{month}.json")
             with open(month_path, "w", encoding="utf-8") as f:
                 json.dump(papers, f, ensure_ascii=False, indent=2)

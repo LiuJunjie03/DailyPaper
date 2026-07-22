@@ -24,6 +24,28 @@
 
 ## 🚀 快速开始
 
+### 中文期刊与半自动数据库采集
+
+中文流水线每天检查期刊官网，但只在论文首次被系统发现时计入“新增”。来源标注的发表日期和
+系统首次发现日期分别保存，避免把半月刊/月刊误解成每日出版。
+
+```powershell
+# 只跑公开期刊官网 + imports/chinese 中的人工导出文件
+python scripts\collect_chinese_papers.py
+
+# 同时尝试已登录浏览器中的知网、万方和维普
+python scripts\collect_chinese_papers.py --portals
+
+# 安装每天北京时间 04:00 的 Windows 任务（错过后自动补跑）
+powershell -ExecutionPolicy Bypass -File scripts\install_chinese_task.ps1
+```
+
+知网、万方、维普受限时，可把 RIS、EndNote、RefWorks、CSV、XLSX 或保存的 HTML 放入
+`imports/chinese/`。程序继续负责解析、去重、智能 CFD 相关性筛选、排序、月度 JSON、中文 Markdown
+日报及 GitHub Pages 生成。仓库只保存元数据和全文入口，不保存机构权限 PDF。
+
+期刊选择依据和 15 种中文、15 种英文重点期刊见 [SMART_CFD_JOURNALS.md](SMART_CFD_JOURNALS.md)。
+
 ### 本地运行
 
 ```bash
@@ -95,9 +117,11 @@ cd E:\Dailypaper
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1
 
-# 7. 可选：如果你有 Clarivate / Web of Science API key，设置后会优先走 API
-# 没有 key 可以跳过这一行，程序会尝试使用本地 Edge/Chrome 浏览器路径
-# $env:WOS_API_KEY="你的 Clarivate API key"
+# 7. 可选：如果你有 Clarivate / Web of Science API key，设置后会优先走 API。
+# 仅首次执行：保存到当前 Windows 用户环境；新开一个终端后生效。
+# 不要把真实 key 写入 config.yaml、.env.example 或 Git。
+# [Environment]::SetEnvironmentVariable("WOS_API_KEY", "你的 Clarivate API key", "User")
+# 没有 key 可以跳过，程序会尝试使用本地 Edge/Chrome 浏览器路径。
 
 # 8A. 抓取最近 config.yaml 中 days_back 配置范围内的论文
 python scripts\fetch_papers.py

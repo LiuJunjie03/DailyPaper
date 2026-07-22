@@ -93,3 +93,67 @@ def test_webofscience_api_maps_records(monkeypatch):
     assert papers[0]["external_ids"]["WebOfScience"] == "WOS:123"
     assert papers[0]["citation_count"] == 7
     assert papers[0]["doi"] == "10.1234/wos-example"
+
+
+def test_webofscience_starter_api_uses_incremental_window(monkeypatch):
+    monkeypatch.setenv("WOS_API_KEY", "test-key")
+    captured = {}
+
+    class FakeResponse:
+        status_code = 200
+
+        @staticmethod
+        def json():
+            return {"hits": []}
+
+    def fake_get(url, *, params, headers, timeout):
+        captured.update(url=url, params=params, headers=headers, timeout=timeout)
+        return FakeResponse()
+
+    with patch.object(webofscience.requests, "get", side_effect=fake_get):
+        papers = webofscience._fetch_webofscience_api(
+            {},
+            ['TS=("neural operator" AND "computational fluid dynamics")'],
+            {
+                "api_url": "https://api.example.test/apis/wos-starter/v1/documents",
+                "database": "WOS",
+                "sort_field": "LD+D",
+                "modified_time_span_param": "modifiedTimeSpan",
+                "start_date": "2026-06-01",
+                "end_date": "2026-06-30",
+                "max_results_per_query": 1,
+                "delay": 0,
+            },
+        )
+
+    assert papers == []
+    assert captured["params"] == {
+        "q": 'TS=("neural operator" AND "computational fluid dynamics")',
+        "limit": 1,
+        "db": "WOS",
+        "sortField": "LD+D",
+        "modifiedTimeSpan": "2026-06-01+2026-06-30",
+    }
+    assert captured["headers"]["X-ApiKey"] == "test-key"
+
+
+def test_webofscience_starter_record_maps_actual_shape():
+    paper = webofscience._paper_from_item(
+        {
+            "uid": "WOS:001818681200001",
+            "title": "Adversarial vulnerability of machine-learning surrogates for computational fluid dynamics",
+            "names": {"authors": [{"displayName": "Chen, Jian-Nan"}, {"displayName": "Cao, Xiao-Yan"}]},
+            "source": {"sourceTitle": "PHYSICAL REVIEW RESEARCH", "publishYear": 2026, "publishMonth": "JUL 1"},
+            "identifiers": {"doi": "10.1103/n5kp-jjcp"},
+            "keywords": {"authorKeywords": ["computational fluid dynamics", "machine learning"]},
+            "citations": [{"db": "WOS", "count": 4}],
+            "links": {"record": "https://example.test/record"},
+        },
+        {},
+    )
+
+    assert paper["authors"] == "Chen, Jian-Nan; Cao, Xiao-Yan"
+    assert paper["published"] == "2026-07-01"
+    assert paper["doi"] == "10.1103/n5kp-jjcp"
+    assert paper["official_keywords"] == ["computational fluid dynamics", "machine learning"]
+    assert paper["citation_count"] == 4

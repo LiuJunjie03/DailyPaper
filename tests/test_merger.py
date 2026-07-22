@@ -1,7 +1,13 @@
 """merger.py 关键用例测试 — DOI/ArXiv/标题合并、来源优先级"""
 
 
-from daily_paper.merge import identity_keys, source_rank, merge_two_papers, merge_paper_list
+from daily_paper.merge import (
+    identity_keys,
+    merge_paper_list,
+    merge_two_papers,
+    source_rank,
+    wos_preprint_replacement_reason,
+)
 
 
 def _paper(title="Test", doi="", arxiv_id="", source="arxiv", **extra):
@@ -66,6 +72,41 @@ class TestMergeTwoPapers:
         # SS 来源排名更高，其字段应被优先保留
         assert merged["source"] == "semantic_scholar"
 
+    def test_wos_formal_replaces_arxiv_preprint_and_preserves_preprint_links(self):
+        preprint = _paper(
+            title="Neural operators for turbulent flow prediction",
+            arxiv_id="2501.12345",
+            source="arxiv",
+            published="2025-01-10",
+            authors="Ada Lovelace; Grace Hopper",
+            arxiv_url="https://arxiv.org/abs/2501.12345",
+            preprint_pdf_url="https://arxiv.org/pdf/2501.12345",
+            publication_type="preprint",
+            is_preprint=True,
+        )
+        formal = _paper(
+            title="Neural operators for turbulent-flow prediction",
+            doi="10.1234/formal",
+            source="webofscience",
+            published="2026-02-15",
+            authors="Lovelace, Ada; Hopper, Grace",
+            venue="Computers & Fluids",
+            paper_url="https://www.webofscience.com/wos/woscc/full-record/WOS:1",
+            publication_types=["journal-article"],
+        )
+
+        merged = merge_two_papers(preprint, formal)
+
+        assert merged["source"] == "webofscience"
+        assert merged["doi"] == "10.1234/formal"
+        assert merged["published"] == "2026-02-15"
+        assert merged["publication_type"] == "journal"
+        assert merged["is_preprint"] is False
+        assert merged["arxiv_id"] == "2501.12345"
+        assert merged["preprint_pdf_url"] == "https://arxiv.org/pdf/2501.12345"
+        assert merged["version_status"] == "wos_formal_replaces_arxiv_preprint"
+        assert merged["replacement_match"] == "high_similarity_title_and_author"
+
 
 class TestMergePaperList:
     """merge_paper_list 去重合并"""
@@ -105,3 +146,62 @@ class TestMergePaperList:
         ]
         result = merge_paper_list(papers)
         assert len(result) == 2
+
+    def test_same_title_with_disjoint_known_authors_is_not_merged(self):
+        papers = [
+            _paper(title="Data-driven CFD", source="arxiv", authors="Alice Example"),
+            _paper(title="Data-driven CFD", source="webofscience", authors="Bob Different", doi="10.1234/other"),
+        ]
+        assert len(merge_paper_list(papers)) == 2
+
+    def test_wos_title_only_match_requires_author_overlap(self):
+        preprint = _paper(
+            title="Physics-informed neural networks for fluid dynamics",
+            source="arxiv",
+            arxiv_id="2501.12345",
+            authors="Alice Example",
+            publication_type="preprint",
+        )
+        formal = _paper(
+            title="Physics informed neural networks for fluid dynamics",
+            source="webofscience",
+            doi="10.1234/formal",
+            authors="Bob Different",
+            venue="Physics of Fluids",
+        )
+        assert wos_preprint_replacement_reason(preprint, formal) == ""
+        assert len(merge_paper_list([preprint, formal])) == 2
+
+    def test_wos_title_only_match_accepts_reversed_first_author_name(self):
+        preprint = _paper(
+            title="Neural operators for turbulent flow prediction",
+            source="arxiv",
+            arxiv_id="2501.12345",
+            authors="Jian-Nan Chen; Xiao-Yan Cao",
+            publication_type="preprint",
+        )
+        formal = _paper(
+            title="Neural operators for turbulent-flow prediction",
+            source="webofscience",
+            doi="10.1234/formal",
+            authors="Chen, Jian-Nan; Cao, Xiao-Yan",
+            venue="Computers & Fluids",
+        )
+        assert wos_preprint_replacement_reason(preprint, formal) == "high_similarity_title_and_author"
+
+    def test_wos_title_only_match_rejects_same_surname_with_different_initial(self):
+        preprint = _paper(
+            title="Neural operators for turbulent flow prediction",
+            source="arxiv",
+            arxiv_id="2501.12345",
+            authors="Wei Wang",
+            publication_type="preprint",
+        )
+        formal = _paper(
+            title="Neural operators for turbulent-flow prediction",
+            source="webofscience",
+            doi="10.1234/formal",
+            authors="Wang, Li",
+            venue="Computers & Fluids",
+        )
+        assert wos_preprint_replacement_reason(preprint, formal) == ""

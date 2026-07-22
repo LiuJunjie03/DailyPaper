@@ -26,6 +26,11 @@ env/
 ENV/
 .venv
 
+# Local credentials (never commit API keys)
+.env
+.env.*
+!.env.example
+
 # IDE
 .vscode/
 .idea/
@@ -56,5 +61,7 @@ nul
 .codegraph/
 .reasonix/
 outputs/
+imports/chinese/*
+!imports/chinese/README.md
 # Data backups (use Git history instead)
 data_backup_*/

@@ -1,5 +1,35 @@
 # 数据源配置
 sources:
+  # 中文期刊官网公开目录。只抓公开元数据和访问链接，不保存 PDF。
+  # priority: 3=智能CFD高产核心，2=重要交叉来源，1=扩展来源。
+  # mode=manual_import 表示网站不适合稳定无人值守抓取，改走人工导出。
+  official_chinese_journals:
+    enabled: true
+    days_back: 365
+    max_results_per_journal: 50
+    detail_delay: 0.15
+    journal_delay: 0.2
+    journals:
+      - {name: 空气动力学学报, priority: 3, mode: official_page, current_url: "https://kqdlxxb.xml-journal.net/cn/article/current"}
+      - {name: 力学学报, priority: 3, mode: official_page, current_url: "https://pubs.cstam.org.cn/lxxb/current"}
+      - {name: 计算力学学报, priority: 3, mode: official_page, current_url: "https://pubs.cstam.org.cn/cjcm/current"}
+      - {name: 工程力学, priority: 2, mode: official_page, current_url: "https://js.cstam.org.cn/em/current"}
+      - {name: 实验流体力学, priority: 2, mode: official_page, current_url: "https://pubs.cstam.org.cn/syltlx/current"}
+      - {name: 力学进展, priority: 2, mode: official_page, current_url: "https://pubs.cstam.org.cn/lxjz/current"}
+      - {name: 物理学报, priority: 2, mode: official_page, current_url: "https://wulixb.iphy.ac.cn/cn/article/current"}
+      - {name: 航空学报, priority: 3, mode: official_page, current_url: "https://hkxb.buaa.edu.cn/CN/current"}
+      - {name: 中国舰船研究, priority: 2, mode: official_page, current_url: "https://ship-research.com/cn/article/current"}
+      - name: 流体机械
+        priority: 2
+        mode: official_page
+        current_url: "https://ltjx.cbpt.cnki.net/WKE/WebPublication/index.aspx?mid=ltjx"
+        article_link_pattern: "wkTextContent\\.aspx|article/detail"
+      - {name: 化工学报, priority: 2, mode: manual_import, current_url: "https://hgxb.cip.com.cn/CN/current"}
+      - {name: 机械工程学报, priority: 2, mode: manual_import, current_url: "https://qikan.cmes.org/jxgcxb/CN/current"}
+      - {name: 计算物理, priority: 3, mode: manual_import, current_url: "https://computmath.cjoe.ac.cn/jsswlxb/cn/article/current"}
+      - {name: 系统仿真学报, priority: 2, mode: manual_import, current_url: "https://www.china-simulation.com/CN/current"}
+      - {name: 推进技术, priority: 2, mode: manual_import, current_url: "https://tjjs.ijournals.cn/cn/article/current"}
+
   arxiv:
     enabled: true
     role: supplement  # Semantic Scholar 为主，arXiv 只补充近期预印本
@@ -107,7 +137,10 @@ sources:
       - "气动优化 深度学习"
       - "格子玻尔兹曼 机器学习"
       - "多相流 数值模拟 深度学习"
-    max_results_per_query: 20
+    # CNKI 新版结果页默认 20 条；本地浏览器后端会继续翻页，
+    # 这里必须大于 20 才不会在首屏提前截断。
+    max_results_per_query: 100
+    max_pages_per_query: 5
 
   # 语义搜索数据源（用自然语言描述替代关键词列表）
   # Wanfang Data Chinese literature source.
@@ -212,29 +245,35 @@ sources:
     enabled: true
     local_only: true
     use_browser: true
-    # 若学校/个人有 Clarivate API 权限，可设置环境变量 WOS_API_KEY / WEB_OF_SCIENCE_API_KEY
-    # api_key: ""
-    # api_url: "https://api.clarivate.com/apis/wos-starter/v1/documents"
-    # query_param: "q"
+    # 密钥仅放在本机用户环境变量 WOS_API_KEY（不要写入此文件或提交到 Git）。
+    # API 优先；若 API 不可用，才回退至已登录的本机浏览器。
+    api_url: "https://api.clarivate.com/apis/wos-starter/v1/documents"
+    query_param: "q"
+    limit_param: "limit"
+    timeout: 30
+    database: "WOS"
+    sort_field: "LD+D"
+    # Starter API 的增量窗口是数据库修改日期，而非论文正式出版日期。
+    modified_time_span_param: "modifiedTimeSpan"
     max_results_per_query: 20
     days_back: 30
     delay: 1.5
     queries:
       physics_informed_learning:
-        - "physics-informed neural networks fluid dynamics"
-        - "PINN computational fluid dynamics"
+        - 'TS=("physics-informed neural networks" AND "fluid dynamics")'
+        - 'TS=(PINN AND "computational fluid dynamics")'
       neural_operator_surrogate:
-        - "neural operator computational fluid dynamics"
-        - "Fourier neural operator fluid simulation"
+        - 'TS=("neural operator" AND "computational fluid dynamics")'
+        - 'TS=("Fourier neural operator" AND ("fluid simulation" OR "fluid dynamics"))'
       turbulence_modeling:
-        - "machine learning turbulence closure RANS LES"
-        - "data-driven turbulence modeling"
+        - 'TS=("machine learning" AND "turbulence closure" AND (RANS OR LES))'
+        - 'TS=("data-driven" AND "turbulence modeling")'
       aerodynamic_optimization:
-        - "aerodynamic optimization machine learning"
+        - 'TS=("aerodynamic optimization" AND "machine learning")'
       multiphase_flow:
-        - "machine learning multiphase flow"
+        - 'TS=("machine learning" AND "multiphase flow")'
       numerical_methods:
-        - "differentiable CFD solver neural"
+        - 'TS=("differentiable CFD" OR ("differentiable solver" AND neural))'
 
 # 领域分类关键词
 categories:
@@ -605,6 +644,13 @@ output:
   data_dir: data
   docs_dir: docs
   papers_per_page: 50
+
+# 中文采集每天检查；期刊不必每天出版，first_seen 只表示系统首次发现。
+chinese_pipeline:
+  timezone: Asia/Shanghai
+  local_run_at: "04:00"
+  import_paths:
+    - imports/chinese
 
 # PDF 全文补全（需本地 Chrome + 学校网络/VPN — 默认关闭）
 pdf_enrich:
