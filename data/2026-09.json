@@ -136,12 +136,12 @@
     "keywords": [
       "CFD",
       "GNN",
-      "data-driven turbulence",
       "deep learning",
-      "finite element",
       "fluid dynamics",
       "machine learning",
       "navier-stokes",
+      "neural network",
+      "turbulence",
       "turbulent flow"
     ],
     "citation_count": 0,
@@ -189,16 +189,16 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
-      "finite element",
-      "graph neural network",
-      "navier-stokes",
+      "neural network",
+      "gnn",
+      "cfd",
+      "deep learning",
+      "turbulence",
+      "turbulent flow",
       "fluid dynamics",
       "machine learning",
-      "deep learning",
-      "cfd",
-      "computational fluid dynamics",
-      "data-driven turbulence",
-      "turbulent flow"
+      "navier-stokes",
+      "computational fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "semantic_scholar",
@@ -335,9 +335,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
+      "computational fluid dynamics",
       "multigrid",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -405,12 +405,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
     "custom_keywords": [
-      "fluid dynamics",
-      "aerodynamics",
       "cfd",
       "deep learning",
-      "computational fluid dynamics",
+      "fluid dynamics",
       "les",
+      "computational fluid dynamics",
+      "aerodynamics",
       "uncertainty quantification"
     ],
     "sources": [
@@ -459,8 +459,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -509,8 +509,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "wind turbine",
-      "machine learning",
       "turbulence",
+      "machine learning",
       "data-driven"
     ],
     "is_early_access": true,
@@ -589,13 +589,13 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "navier-stokes",
-      "fluid dynamics",
-      "rans",
-      "cfd",
-      "computational fluid dynamics",
       "climate",
+      "cfd",
+      "fluid dynamics",
       "les",
+      "navier-stokes",
+      "computational fluid dynamics",
+      "rans",
       "aerodynamics"
     ],
     "is_early_access": true,
@@ -694,10 +694,10 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
+      "computational fluid dynamics",
       "cfd",
-      "data-driven",
-      "computational fluid dynamics"
+      "fluid dynamics",
+      "data-driven"
     ],
     "abstract_status": "enriched",
     "abstract_source": "semantic_scholar",
@@ -745,8 +745,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -792,8 +792,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -840,9 +840,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
       "rans",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1059,11 +1059,11 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "fluid dynamics",
-      "reynolds stress",
       "cfd",
-      "computational fluid dynamics",
-      "turbulence"
+      "turbulence",
+      "reynolds stress",
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -1178,14 +1178,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
     "custom_keywords": [
-      "fluid dynamics",
       "deep learning",
-      "bubble",
+      "boiling",
+      "fluid dynamics",
+      "boundary layer",
       "computational fluid dynamics",
       "super-resolution",
-      "boiling",
       "heat transfer",
-      "boundary layer"
+      "bubble"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -1213,7 +1213,7 @@
     "publication_type": "journal",
     "doi": "10.1016/j.jwpe.2026.110537",
     "external_ids": {},
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "534181eed24627d9b6f5f670672cbc7174b8feb2",
     "code_link": "",
     "tags": [
       "流体力学",
@@ -1233,9 +1233,154 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
+      "computational fluid dynamics",
       "cfd",
-      "computational fluid dynamics"
+      "fluid dynamics"
+    ],
+    "sources": [
+      "crossref"
+    ]
+  },
+  {
+    "id": "10.1016/j.compfluid.2026.107227",
+    "title": "Boundary treatment algorithms for meshfree RANS turbulence modeling",
+    "authors": "Mohan Padmanabha, Jörg Kuhnert, Nicolas R. Gauger, Pratik Suchde",
+    "abstract": "In this paper, we propose improved wall-treatment strategies for meshfree methods applied to turbulent flows. The goal is to enhance wall-function handling in simulations of high-Reynolds-number turbulent flows and to understand the performance of turbulence models within these frameworks. While wall-function techniques are well established for mesh-based methods, their implementation in meshfree methods faces unique challenges. The main difficulties arise from scattered point distributions and dynamic point movement in Lagrangian frameworks. To address these issues, we evaluate a baseline closest-neighbor approach alongside two novel techniques: the nearest-band neighbor (NBN) method and the shifted boundary (SB) method. The NBN method enforces wall functions on a band of interior points, helping to maintain uniform point selection. On the other hand, the SB method virtually moves boundary points to a fixed wall-normal distance, eliminating the spatial noise associated with point movement. We evaluate these methods using turbulence closures: Spalart--Allmaras, $k-\\varepsilon$, and $k-ω$ turbulence models. These methods are validated on 1D Couette flow, a turbulent flat plate, and a 3D NACA 0012 airfoil at high Reynolds numbers. Results demonstrate that both novel methods outperform the standard closest-neighbor approach on flat geometries. For flat plates, the SB method provides stability and perfectly smooth $y^+$ distributions. However, when applied to a curved NACA 0012 profile, the NBN method proves to be robust and flexible. In contrast, the SB method exhibits setbacks in numerical diffusion and premature flow separation on curved geometries. This is due to uncorrected normal-vector shifting and adverse pressure gradients. This work establishes the NBN method as a reliable, robust foundation for simulating turbulent flows over practical geometries using meshfree methods.",
+    "published": "2026-09-01",
+    "paper_url": "https://doi.org/10.1016/j.compfluid.2026.107227",
+    "arxiv_id": "2601.10661",
+    "arxiv_url": "https://arxiv.org/abs/2601.10661",
+    "pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2601.10661",
+    "categories": [],
+    "venue": "Computers &amp; Fluids",
+    "conference": "Computers &amp; Fluids",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.compfluid.2026.107227",
+    "external_ids": {},
+    "semantic_scholar_id": "b96740ea3ced4ff6ef2f1186011ba7eeec98509c",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "keywords": [
+      "airfoil",
+      "rans",
+      "turbulence",
+      "turbulence modeling"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 4,
+        "strong_hits": [
+          "turbulence modeling"
+        ],
+        "context_hits": [
+          "rans"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 空气动力学理论": {
+        "score": 4,
+        "strong_hits": [
+          "airfoil"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "custom_keywords": [
+      "rans",
+      "airfoil",
+      "turbulence modeling",
+      "turbulence"
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex",
+    "sources": [
+      "crossref"
+    ]
+  },
+  {
+    "id": "10.1016/j.ijheatfluidflow.2026.110563",
+    "title": "Temporal coarse-graining of training data for data-driven closure modeling of turbulence",
+    "authors": "Satoshi Matsumoto, Masanobu Inubushi, Susumu Goto",
+    "abstract": "",
+    "published": "2026-09-01",
+    "paper_url": "https://doi.org/10.1016/j.ijheatfluidflow.2026.110563",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of Heat and Fluid Flow",
+    "conference": "International Journal of Heat and Fluid Flow",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.ijheatfluidflow.2026.110563",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 湍流与流动机理"
+    ],
+    "keywords": [
+      "data-driven",
+      "turbulence"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 湍流与流动机理": {
+        "score": 5,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "custom_keywords": [
+      "turbulence",
+      "data-driven"
     ],
     "sources": [
       "crossref"
