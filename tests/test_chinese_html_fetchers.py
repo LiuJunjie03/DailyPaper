@@ -49,6 +49,9 @@ def test_detail_parser_upgrades_pdf_to_https(monkeypatch):
 
 
 def test_wanfang_fetcher_uses_detail_metadata(monkeypatch):
+    # CI 环境下 GITHUB_ACTIONS=true 会让中文源直接跳过，需显式开启
+    monkeypatch.setenv("ENABLE_CHINESE_PORTALS", "true")
+
     def fake_request_html(url, params=None, timeout=25):
         if "detail" in url:
             return DETAIL_HTML
