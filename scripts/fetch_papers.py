@@ -28,7 +28,7 @@ from daily_paper.classify import (
     FLUID_RELATED_CATEGORIES,        # noqa: F401 — 向后兼容再导出
 )
 from daily_paper.enrich import cascade_enrich_papers
-from daily_paper.merge import merge_paper_list as _merge_paper_list
+from daily_paper.merge import merge_paper_list as _merge_paper_list, wos_preprint_replacement_reason
 from daily_paper.normalizer import (
     finalize_paper as _finalize_paper,
     normalize_dates,
@@ -282,6 +282,28 @@ class PaperFetcher:
                 else:
                     expanded.add(f"{year}-{month_num-1:02d}")
         affected_months = expanded
+
+        # WOS 正式版可能在多年后才补充收录；其 arXiv 预印本往往位于完全不同的
+        # 月份文件。先在全库定位高置信版本匹配，才能在同一事务中删除旧预印本桶。
+        wos_candidates = [paper for paper in papers if paper.get("source") == "webofscience"]
+        if wos_candidates:
+            historical_data = load_monthly_data(data_dir)
+            replacement_months = {
+                month
+                for month, historical_papers in historical_data.items()
+                if any(
+                    wos_preprint_replacement_reason(historical, candidate)
+                    for historical in historical_papers
+                    for candidate in wos_candidates
+                )
+            }
+            if replacement_months:
+                affected_months.update(replacement_months)
+                logger.info(
+                    "WOS 正式版匹配到 %d 个含 arXiv 预印本的历史月份: %s",
+                    len(replacement_months),
+                    ", ".join(sorted(replacement_months)),
+                )
 
         # 与历史数据合并（仅加载受影响月份，处理去重）
         existing_data = load_monthly_data(data_dir, months=affected_months)

@@ -130,7 +130,8 @@ def _names_to_authors(value) -> str:
         name = re.sub(r"\s+", " ", str(name or "")).strip()
         if name:
             authors.append(name)
-    return ", ".join(authors)
+    # 分号使 ``Surname, Given`` 的单位可被后续版本匹配准确解析。
+    return "; ".join(authors)
 
 
 def _doi_from_item(item: dict) -> str:
@@ -164,9 +165,10 @@ def _paper_from_item(item: dict, config: dict) -> dict | None:
 
     doi = _doi_from_item(item)
     uid = _first_text(item.get("uid"), item.get("UT"), item.get("id"))
+    names = item.get("names") if isinstance(item.get("names"), dict) else {}
     authors = _names_to_authors(
         item.get("authors")
-        or item.get("names")
+        or names.get("authors")
         or item.get("static_data", {}).get("summary", {}).get("names", {}).get("name")
     )
     venue = _first_text(
@@ -176,25 +178,45 @@ def _paper_from_item(item: dict, config: dict) -> dict | None:
         source_info.get("sourceTitle"),
         source_info.get("title"),
     )
+    source_publish_date = _first_text(
+        source_info.get("publishedDate"),
+        source_info.get("publicationDate"),
+        source_info.get("publishDate"),
+        source_info.get("year"),
+        source_info.get("publishYear"),
+    )
+    if source_info.get("publishMonth") and source_info.get("publishYear"):
+        source_publish_date = f"{source_info['publishMonth']} {source_info['publishYear']}"
     published = _parse_publication_date(
         item.get("publishedDate")
         or item.get("publicationDate")
         or item.get("date")
         or item.get("year")
-        or source_info.get("publishedDate")
-        or source_info.get("year")
+        or source_publish_date
     ) or "unknown"
     citation_count = item.get("timesCited") or item.get("timesCitedCount")
     citations = item.get("citations") or {}
     if citation_count is None and isinstance(citations, dict):
         citation_count = citations.get("timesCited") or citations.get("count")
+    if citation_count is None and isinstance(citations, list):
+        citation_count = next(
+            (
+                citation.get("count")
+                for citation in citations
+                if isinstance(citation, dict) and str(citation.get("db", "")).upper() == "WOS"
+            ),
+            None,
+        )
     try:
         citation_count = int(citation_count) if citation_count is not None else None
     except (TypeError, ValueError):
         citation_count = None
 
+    raw_keywords = item.get("keywords") or item.get("authorKeywords")
+    if isinstance(raw_keywords, dict):
+        raw_keywords = raw_keywords.get("authorKeywords") or raw_keywords.get("keywordsPlus") or []
     keywords = []
-    for keyword in _as_list(item.get("keywords") or item.get("authorKeywords")):
+    for keyword in _as_list(raw_keywords):
         if isinstance(keyword, dict):
             keyword = keyword.get("value") or keyword.get("keyword")
         keyword = str(keyword or "").strip()
@@ -265,10 +287,20 @@ def _fetch_webofscience_api(config: dict, queries: list[str], wos_config: dict) 
             query_param: query,
             wos_config.get("limit_param", "limit"): max_per_query,
         }
+        database = wos_config.get("database")
+        if database:
+            params[wos_config.get("database_param", "db")] = database
+        sort_field = wos_config.get("sort_field")
+        if sort_field:
+            params[wos_config.get("sort_field_param", "sortField")] = sort_field
         if wos_config.get("from_date_param"):
             params[wos_config["from_date_param"]] = from_date
         if until_date and wos_config.get("until_date_param"):
             params[wos_config["until_date_param"]] = until_date
+        modified_time_span_param = wos_config.get("modified_time_span_param")
+        if modified_time_span_param:
+            modified_until = until_date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+            params[modified_time_span_param] = f"{from_date}+{modified_until}"
 
         data = None
         for attempt in range(3):
@@ -293,7 +325,11 @@ def _fetch_webofscience_api(config: dict, queries: list[str], wos_config: dict) 
         query_count = 0
         for item in _records_from_api(data):
             paper = _paper_from_item(item, config)
-            if not paper or not in_date_window(paper.get("published", ""), from_date, until_date):
+            if not paper:
+                continue
+            # Starter API 的 modifiedTimeSpan 按数据库更新日期取增量；不能再用出版日期
+            # 过滤，否则会错过刚入库但正式出版日期较早的记录。
+            if not modified_time_span_param and not in_date_window(paper.get("published", ""), from_date, until_date):
                 continue
             key = paper.get("doi") or paper.get("external_ids", {}).get("WebOfScience") or normalize_title(paper.get("title", ""))
             if not key or key in seen:

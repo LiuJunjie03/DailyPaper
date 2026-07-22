@@ -1,11 +1,10 @@
 """Phase 1+2 测试：common 模块 + schema 校验"""
 
 
-from daily_paper.text import normalize_title, normalize_doi, normalize_arxiv_id, term_in_text, clean_text
-from daily_paper.dates import validate_date, parse_date, in_date_window
+from daily_paper.dates import in_date_window, parse_date, validate_date
 from daily_paper.queries import flatten_queries
 from daily_paper.schema import validate_paper
-
+from daily_paper.text import clean_text, normalize_arxiv_id, normalize_doi, normalize_title, term_in_text
 
 # ============================================================
 # common/text.py
@@ -135,6 +134,10 @@ class TestFlattenQueries:
     def test_dict(self):
         config = {"queries": {"g1": ["q1", "q2"], "g2": "q3"}}
         assert flatten_queries(config) == ["q1", "q2", "q3"]
+
+    def test_raw_grouped_dict(self):
+        raw = {"g1": ["q1", "q2"], "g2": "q3"}
+        assert flatten_queries(raw) == ["q1", "q2", "q3"]
 
     def test_strips_whitespace(self):
         assert flatten_queries(["  q1  ", " q2 "]) == ["q1", "q2"]

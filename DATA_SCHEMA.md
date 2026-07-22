@@ -62,6 +62,11 @@
 
 `abstract_enriched_at`, `openalex_id`, `source_snippet`, `cnki_detail`, `abstract_source`, `sources`, `scholar_snippet`
 
+中文采集增量字段：`first_seen`（本系统首次发现日期）、`first_seen_at`、`last_seen_at`、
+`relevance_score`（0–100 可解释相关性分）、`access_url`（机构全文或期刊详情入口）、
+`zotero_lookup_url`（供 Zotero Connector 识别的 DOI/来源页）、`fulltext_status`。这些字段只保存链接，
+不会把机构权限 PDF 写入仓库。
+
 ## 数据源标识符
 
 | source 值 | fetcher 模块 | 说明 |

@@ -1,11 +1,14 @@
+import json
 import sys
 from pathlib import Path
 
-
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from fetch_papers import _month_window
+import fetch_papers
+from fetch_papers import PaperFetcher, _month_window
+
 from daily_paper.sources import crossref_fetcher, semantic_scholar
+from daily_paper.storage import save_monthly_data
 
 
 def test_month_window_uses_last_day():
@@ -106,3 +109,47 @@ def test_semantic_scholar_disabled_reads_config_without_name_error():
     config = {"sources": {"semantic_scholar": {"enabled": False}}}
 
     assert semantic_scholar.fetch_semantic_scholar_papers(config) == []
+
+
+def test_wos_formal_version_replaces_historical_arxiv_preprint(monkeypatch, tmp_path):
+    preprint = {
+        "id": "2501.12345",
+        "arxiv_id": "2501.12345",
+        "title": "Neural operators for turbulent flow prediction",
+        "authors": "Ada Lovelace, Grace Hopper",
+        "published": "2025-01-10",
+        "source": "arxiv",
+        "publication_type": "preprint",
+        "is_preprint": True,
+        "arxiv_url": "https://arxiv.org/abs/2501.12345",
+    }
+    save_monthly_data({"2025-01": [preprint]}, str(tmp_path), docs_dir="")
+    formal = {
+        "id": "10.1234/formal",
+        "doi": "10.1234/formal",
+        "title": "Neural operators for turbulent-flow prediction",
+        "authors": "Ada Lovelace, Grace Hopper",
+        "published": "2026-02-15",
+        "source": "webofscience",
+        "venue": "Computers & Fluids",
+        "paper_url": "https://www.webofscience.com/wos/woscc/full-record/WOS:1",
+        "publication_types": ["journal-article"],
+    }
+
+    fetcher = PaperFetcher.__new__(PaperFetcher)
+    fetcher.config = {"output": {"data_dir": str(tmp_path)}, "pdf_enrich": {"enabled": False}, "categories": {}}
+    fetcher._source_health = []
+    fetcher._dispatch_sources = lambda: [formal]
+    fetcher._print_health_report = lambda: None
+    monkeypatch.setattr(fetch_papers, "is_relevant_paper", lambda _paper: True)
+    monkeypatch.setattr(fetch_papers, "cascade_enrich_papers", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(fetch_papers, "write_classification_report", lambda *_args, **_kwargs: None)
+
+    fetcher.save_papers()
+
+    assert (tmp_path / "2025-01.json").read_text(encoding="utf-8") == "[]"
+    records = json.loads((tmp_path / "2026-02.json").read_text(encoding="utf-8"))
+    assert len(records) == 1
+    assert records[0]["source"] == "webofscience"
+    assert records[0]["arxiv_id"] == "2501.12345"
+    assert records[0]["version_status"] == "wos_formal_replaces_arxiv_preprint"

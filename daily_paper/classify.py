@@ -592,6 +592,46 @@ def is_relevant_paper(paper: Dict) -> bool:
     return any(term_in_text(text, term) for term in FLUID_RELATED_TERMS)
 
 
+INTELLIGENT_METHOD_TERMS = [
+    "machine learning", "deep learning", "neural network", "neural operator",
+    "operator learning", "physics-informed", "pinn", "data-driven",
+    "reinforcement learning", "transfer learning", "surrogate model",
+    "reduced-order model", "reduced order model", "autoencoder", "deep autoencoder",
+    "differentiable solver", "learned numerical", "data assimilation",
+    "机器学习", "深度学习", "神经网络", "神经算子", "算子学习",
+    "物理信息神经网络", "物理约束深度学习", "物理增强",
+    "数据驱动", "强化学习", "迁移学习", "代理模型", "智能预测模型",
+    "降阶模型", "降维模型", "自动编码器", "可微求解器", "数据同化",
+    "多保真数据", "流场智能预测", "智能流动控制",
+]
+
+
+# ``FLUID_RELATED_TERMS`` is deliberately broad because it is also used for
+# general site navigation and non-ML fluid classification.  It contains terms
+# such as "数值模拟" and "降水" that are useful in that setting, but are not
+# enough to prove that a machine-learning paper is about CFD.  The Chinese
+# portal intake must use this narrower gate, otherwise a query like
+# "计算力学学报 + 神经网络" admits structural- or geotechnical-mechanics
+# papers before their abstracts have been enriched.
+INTELLIGENT_CFD_CONTEXT_TERMS = [
+    "cfd", "computational fluid dynamics", "fluid dynamics", "fluid mechanics",
+    "navier-stokes", "flow field", "flow simulation", "turbulence", "rans", "les", "dns",
+    "aerodynamics", "aerodynamic", "airfoil", "compressible flow", "multiphase flow",
+    "计算流体力学", "流体力学", "流体动力学", "流场", "流动", "湍流", "雷诺平均",
+    "大涡模拟", "直接数值模拟", "空气动力学", "气动", "翼型", "可压缩流", "激波",
+    "多相流", "两相流", "纳维斯托克斯", "格子玻尔兹曼", "绕流", "尾流", "边界层",
+]
+
+
+def is_intelligent_cfd_paper(paper: Dict) -> bool:
+    """Strict admission gate: a real fluid/CFD problem AND an intelligent method."""
+    text = paper_text(paper)
+    return (
+        contains_any(text, INTELLIGENT_METHOD_TERMS)
+        and contains_any(text, INTELLIGENT_CFD_CONTEXT_TERMS)
+    )
+
+
 # ═══════════════════════════════════════════════════════════
 #  论文分类
 # ═══════════════════════════════════════════════════════════
@@ -611,20 +651,14 @@ def classify_paper(paper: Dict, config: Dict) -> List[str]:
         str(cat).lower() in FLUID_RELATED_CATEGORIES
         for cat in paper.get("categories", []) or []
     )
-    has_ml = contains_any(text, [
-        "machine learning", "deep learning", "neural network", "neural operator",
-        "reinforcement learning", "data-driven", "pinn", "physics-informed",
-        "surrogate", "reduced-order", "rom", "gnn",
-        # 中文 ML 术语
-        "机器学习", "深度学习", "神经网络", "深度强化学习",
-        "物理信息神经网络", "代理模型", "算子学习", "神经算子",
-        "数据驱动", "强化学习",
-    ])
+    has_ml = contains_any(text, INTELLIGENT_METHOD_TERMS)
 
     if has_ml:
         add_tag("机器学习")
     if has_fluid:
         add_tag("流体力学")
+    if has_fluid and has_ml:
+        add_tag("流体力学 / 智能CFD")
     if not has_fluid:
         paper["classification_score"] = {}
         return ordered_tags

@@ -2,8 +2,7 @@
 
 import json
 
-
-from daily_paper.storage import load_monthly_data, split_papers_by_month, save_monthly_data, build_month_index
+from daily_paper.storage import build_month_index, load_monthly_data, save_monthly_data, split_papers_by_month
 
 
 def _make_paper(title="Test Paper", published="2026-03-15", source="test"):
@@ -78,6 +77,21 @@ class TestSaveAndLoadMonthlyData:
         )
         loaded = load_monthly_data(str(tmp_path))
         assert list(loaded.keys()) == ["2026-01"]
+
+    def test_writes_empty_affected_month_when_paper_moves_to_formal_month(self, tmp_path):
+        """正式版替换预印本后，旧月份文件必须被清空而不能留下重复记录。"""
+        old_path = tmp_path / "2025-01.json"
+        old_path.write_text(json.dumps([_make_paper(published="2025-01-10")]), encoding="utf-8")
+
+        save_monthly_data(
+            {"2026-02": [_make_paper(published="2026-02-15", source="webofscience")]},
+            str(tmp_path),
+            docs_dir="",
+            only_months={"2025-01", "2026-02"},
+        )
+
+        assert json.loads(old_path.read_text(encoding="utf-8")) == []
+        assert len(json.loads((tmp_path / "2026-02.json").read_text(encoding="utf-8"))) == 1
 
 
 class TestBuildMonthIndex:

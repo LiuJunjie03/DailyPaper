@@ -1,7 +1,6 @@
 from daily_paper.sources import chinese_html
 from daily_paper.sources.wanfang import fetch_wanfang_papers
 
-
 SEARCH_HTML = """
 <html><body>
   <div class="result-item">
@@ -25,6 +24,7 @@ DETAIL_HTML = """
   <meta name="citation_abstract" content="本文提出一种面向流场预测的代理模型方法，用于提升计算流体力学仿真效率。">
   <meta name="citation_keywords" content="计算流体力学;代理模型;机器学习">
   <meta name="citation_doi" content="10.1234/example">
+  <meta name="citation_pdf_url" content="http://example.org/paper.pdf">
 </head></html>
 """
 
@@ -40,6 +40,12 @@ def test_chinese_search_parser_extracts_result():
         "published": "2026-03-12",
         "source_snippet": "介绍流场预测代理模型的检索片段。",
     }]
+
+
+def test_detail_parser_upgrades_pdf_to_https(monkeypatch):
+    monkeypatch.setattr(chinese_html, "request_html", lambda *_args, **_kwargs: DETAIL_HTML)
+    detail = chinese_html.parse_detail_page("https://example.org/paper")
+    assert detail["pdf_url"] == "https://example.org/paper.pdf"
 
 
 def test_wanfang_fetcher_uses_detail_metadata(monkeypatch):
@@ -75,3 +81,10 @@ def test_wanfang_fetcher_uses_detail_metadata(monkeypatch):
     assert paper["doi"] == "10.1234/example"
     assert "计算流体力学" in paper["keywords"]
     assert "代理模型" in paper["keywords"]
+
+
+def test_wanfang_skips_on_github_actions(monkeypatch):
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    monkeypatch.delenv("ENABLE_CHINESE_PORTALS", raising=False)
+    config = {"sources": {"wanfang": {"enabled": True, "queries": ["计算流体力学"]}}}
+    assert fetch_wanfang_papers(config) == []

@@ -46,6 +46,9 @@ class PaperRecord(TypedDict, total=False):
     is_preprint: bool
     publication_type: str      # preprint / journal / conference / unknown
     is_early_access: bool
+    version_status: str        # wos_formal_replaces_arxiv_preprint 等版本生命周期状态
+    replacement_match: str     # doi / normalized_title_and_author / high_similarity_title_and_author
+    preprint_published: str    # 被替换 arXiv 预印本的首次发布日期
     abstract_status: str
     abstract_source: str
     date_source: str
