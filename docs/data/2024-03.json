@@ -62,13 +62,72 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "climate",
       "data-driven",
-      "machine learning",
+      "climate",
       "autoencoder",
+      "machine learning",
+      "deep learning",
       "flame",
-      "combustion",
-      "deep learning"
+      "combustion"
+    ]
+  },
+  {
+    "id": "10.31274/td-20240329-383",
+    "title": "High-fidelity aerodynamic and aerostructural optimization of UAV propellers",
+    "authors": "Usama T Toman",
+    "abstract": "Unmanned aerial vehicles (UAVs) have gained popularity in both commercial and military applications, and their propellers play a critical role in the vehicle's performance. A more efficient propeller design can improve the UAV's overall efficiency and reduce operational costs. While computer simulations are often used to optimize propeller design, most techniques rely on low-fidelity models that may not provide accurate simulation results for detailed designs. This study presents a high-fidelity aerodynamic and aerostructural optimization framework that incorporates finite-volume computational fluid dynamics and finite-element structural dynamics solvers. Using the discrete adjoint approach and the OpenMDAO/MPhys open-source framework, we were able to handle fluid-structure interaction and its derivative computation, allowing for gradient-based optimization with a large number of design variables. The framework aims to minimize the power required for the propeller shaft while ensuring constraints related to thrust, mass, von-mises stress, and propeller geometry (e.g., thickness, volume, and curvature) are met. The optimization’s design variables include the shape variables (e.g. blade cross-sectional profile) and planform variables such as span and chord. The shape-only aerodynamic, shape and planform aerodynamic, and shape and planform aerostructural optimizations all yielded power reductions of more than 10%. All the constraints were satisfied. This research offers an effective solution for designing high-performance UAV propellers that could lead to cost savings and improved efficiency.",
+    "published": "2024-03-29",
+    "paper_url": "https://doi.org/10.31274/td-20240329-383",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://dr.lib.iastate.edu/bitstreams/efc584c2-5e92-443b-95fa-eabf9dfe6439/download",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "",
+    "conference": "",
+    "publication_types": [
+      "dissertation"
+    ],
+    "publication_type": "journal",
+    "doi": "10.31274/td-20240329-383",
+    "external_ids": {
+      "OpenAlex": "W4393303940"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 空气动力学理论"
+    ],
+    "keywords": [
+      "CFD",
+      "FSI",
+      "fluid dynamics"
+    ],
+    "citation_count": 1,
+    "impact_factor": null,
+    "source": "openalex",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 空气动力学理论": {
+        "score": 4,
+        "strong_hits": [
+          "fluid-structure interaction"
+        ],
+        "context_hits": [
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 空气动力学理论",
+    "custom_keywords": [
+      "fluid-structure interaction",
+      "computational fluid dynamics",
+      "fluid dynamics"
     ]
   }
 ]

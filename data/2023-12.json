@@ -1,0 +1,149 @@
+[
+  {
+    "id": "10.17118/11143/21035",
+    "title": "Combining reduced-order modeling and PINNs to model fluid-structureinteractions",
+    "authors": "Omar Tazi Labzour, Hamid Reza Karbasian, Sébastien Houde, Frédérick P. Gosselin",
+    "abstract": "Abstract: Hydraulic turbines are subjected to Fluid-Structure Interactions (FSI) during operation, potentially leading to severe damage and shortening their life expectancy. This type of phenomenon that requires combining fluid and structure dynamics can be simulated using high-fidelity approaches, such as Computational Fluid Dynamics (CFD) coupled with a Finite Element (FE) analysis. The coupled CFD-FE tool for FSI problems usually is computationally expensive as it requires coupling governing equations of the flow field and structure. Moreover, this high-fidelity tool needs to generate dynamic mesh at each iteration. Therefore, it is essential to develop a cheaper model with acceptable accuracy to avoid the computational cost of such high-fidelity tools for FSI problems. Reduced-Order Models (ROMs) are approaches that have attracted much attention for engineering problems. In this study, a ROM is developed using Physics-Informed Neural Networks (PINNs) to model the flow around a bluff body. PINNs are new architectures in deep learning that approximate physical fields by training a neural network constrained by governing equations over data points distributed in the domain. We leverage Proper Orthogonal Decomposition (POD) on data from a precomputed CFD solution to decompose the temporal and spatial terms containing significant coherent structures in the flow fields. Furthermore, the spatial modes from the fluid flow are combined with the kinematic modes of the structural mechanics obtained for a moving solid in the domain. Therefore, the governing equation for the FSI problem can be represented as a set of Ordinary Differential Equations (ODE). PINNs are used to solve these ODEs for physical quantities, such as velocity, pressure, and solid displacement. The neural network is trained by minimizing the residuals of the governing equations, which are the incompressible Navier-Stokes equations. This work considers laminar flow around a 2D cylinder, a canonical example in fluid mechanics. The results show that the proposed approach can predict physical quantities with significantly lower computational costs in time with acceptable accuracy. This ROM approach could offer the possibility to leverage existing CFD data to create at reduced computational and implementation cost a way to predict the FSI response of a structure, say to vortex-induced vibrations with better accuracy than a one-way coupling simulation.",
+    "published": "2023-12-11",
+    "paper_url": "https://doi.org/10.17118/11143/21035",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://savoirs.usherbrooke.ca/bitstream/11143/21035/1/111_CSME-CFDCanada_2023.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Progress in Canadian Mechanical Engineering. Volume 6",
+    "conference": "Progress in Canadian Mechanical Engineering. Volume 6",
+    "publication_types": [
+      "conference-paper"
+    ],
+    "publication_type": "conference",
+    "doi": "10.17118/11143/21035",
+    "external_ids": {
+      "OpenAlex": "W4389584862"
+    },
+    "semantic_scholar_id": "162f1e5987b619960465184c5f146a642ce9532d",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "POD",
+      "ROM",
+      "deep learning",
+      "finite element",
+      "fluid mechanics",
+      "neural network",
+      "vortex"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "openalex",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 15,
+        "strong_hits": [
+          "reduced-order",
+          "rom",
+          "pod"
+        ],
+        "context_hits": [
+          "navier-stokes",
+          "computational fluid dynamics",
+          "cfd",
+          "neural network",
+          "deep learning",
+          "flow field"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 10,
+        "strong_hits": [
+          "physics-informed"
+        ],
+        "context_hits": [
+          "navier-stokes",
+          "cfd",
+          "fluid",
+          "flow",
+          "neural network",
+          "deep learning",
+          "flow field"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
+    "custom_keywords": [
+      "pod",
+      "physics-informed",
+      "vortex",
+      "computational fluid dynamics",
+      "deep learning",
+      "neural network",
+      "cfd",
+      "fluid mechanics",
+      "finite element",
+      "rom"
+    ]
+  },
+  {
+    "id": "10.17118/11143/20911",
+    "title": "Development of an artificial neural network model to predict thewindcatcher (Badgir) performance",
+    "authors": "Payam Nejat, Seyed Soheil Mousavi Ajarostaghi, Mohammad Gohari, Fatemeh Jomehzadeh, Sébastien Poncet, Leyla Amiri",
+    "abstract": "Abstract: The building sector is one of the main players in the global energy market. Passive strategies such asnatural ventilation are promising techniques toward sustainable targets in this sector. Windcatchers as a natural ventilation system can provide fresh air and improve thermal comfort. However, the performance evaluation of windcatchers is still a main challenge for architectures due to the complexity of numerical methods. Thus, this study aims to develop an artificial neural network model trained by computational fluid dynamics results which can estimate the performance of the windcatcher. The accuracy of the developed model showed that it is a reliable tool to predict the performance of windcatchers with respect to design and environmental parameters.",
+    "published": "2023-12-11",
+    "paper_url": "https://doi.org/10.17118/11143/20911",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://savoirs.usherbrooke.ca/bitstream/11143/20911/1/331_CSME-CFDCanada_2023.pdf",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Progress in Canadian Mechanical Engineering. Volume 6",
+    "conference": "Progress in Canadian Mechanical Engineering. Volume 6",
+    "publication_types": [
+      "conference-paper"
+    ],
+    "publication_type": "conference",
+    "doi": "10.17118/11143/20911",
+    "external_ids": {
+      "OpenAlex": "W4389584820"
+    },
+    "semantic_scholar_id": "2371d41b83130f16e407f8d6040ceb32399b80f2",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 其他"
+    ],
+    "keywords": [
+      "CFD",
+      "fluid dynamics",
+      "neural network"
+    ],
+    "citation_count": 2,
+    "impact_factor": null,
+    "source": "openalex",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {},
+    "primary_domain": "流体力学 / 其他",
+    "custom_keywords": [
+      "computational fluid dynamics",
+      "fluid dynamics",
+      "neural network"
+    ]
+  }
+]
