@@ -33,11 +33,10 @@
       "CFD",
       "PINN",
       "aortic",
-      "blood flow",
       "fluid dynamics",
       "hemodynamics",
       "neural network",
-      "turbulence modeling"
+      "turbulence"
     ],
     "citation_count": 1,
     "impact_factor": null,
@@ -105,16 +104,76 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
-      "pinn",
-      "turbulence modeling",
       "hemodynamics",
-      "computational fluid dynamics",
-      "neural network",
-      "blood flow",
-      "cfd",
+      "aortic",
       "fluid dynamics",
-      "aortic"
+      "cfd",
+      "computational fluid dynamics",
+      "turbulence",
+      "pinn",
+      "neural network",
+      "physics-informed neural network",
+      "physics-informed"
+    ]
+  },
+  {
+    "id": "10.20868/upm.thesis.73327",
+    "title": "Robust simulation of turbulent aerodynamic flows using high-order methods",
+    "authors": "Saumitra Joshi",
+    "abstract": "This dissertation assesses the robustness and efficiency of the high-order fluxreconstruction method for turbulent flows in the context of an industrial doctorate. It makes a case for the importance of the steady-state Reynolds-averaged Navier-Stokes (RANS) problem in the context of high-order simulations. We investigate hp-multigrid with explicit local-time-stepping as a technique to accelerate the convergence of this steady-state problem, including the influence of near-wall p-adaptation. In the industrial context it is important to estimate the maximum cell-local timestep without resorting to trial-and-error on a case-to-case basis. We show that this requirement is equivalent to accurately estimating the cell-local characteristic length-scale, irrespective of the cell-shape, polynomial-order and flow-physics. Based on a von-Neumann analysis framework we uncover the optimum length-scale definition in 3D. The proposed definition generalizes across highly stretched and skewed cells, polynomial-orders from 1 through 10 and demonstrate its improved effectiveness at time-step estimation in comparison with existing methods. Finally, the dissertation analyzes the use of wall-modeling in the context of the flux-reconstruction method. Wall-models ease the computational load by allowing a coarser near-wall resolution without adverse effects on accuracy. Several details of the implementation are studied, and its limitations are presented. RESUMEN Esta tesis evalúa la robustez y la eficacia del método de reconstrucción de flujos (Flux Reconstruction) de alto orden para flujos turbulentos en el contexto de un doctorado industrial. Se defiende la importancia del problema de Navier-Stokes promediado por Reynolds (RANS) en estado estacionario en el contexto de las simulaciones de alto orden. Se investigan los métodos multimalla hp con pasos locales explícitos como técnica para acelerar la convergencia de este problema de estado estacionario, incluyendo la influencia de la adaptación p cerca de la pared. En el contexto industrial es importante estimar el paso de tiempo local máximo de la celda sin recurrir a la prueba y error en cada caso. Demostramos que este requisito es equivalente a la estimación precisa de la escala de longitud característica de la celda, independientemente de la forma de la celda, el orden polinómico y la física del flujo. Basándonos en un marco de análisis de von-Neumann, descubrimos la definición óptima de la escala de longitud en 3D. La definición propuesta se generaliza a través de celdas altamente estiradas y sesgadas, y de órdenes polinómicos de 1 a 10, y demuestra su eficacia mejorada en la estimación de pasos de tiempo en comparación con los métodos existentes. Por último, la tesis analiza el uso de los modelos de pared en el contexto del método de reconstrucción de flujos. Los modelos de pared alivian la carga computacional al permitir una resolución más gruesa cerca de la pared sin efectos adversos en la precisión. Se estudian varios detalles de la aplicación y se presentan sus limitaciones.",
+    "published": "2023-06-08",
+    "paper_url": "https://doi.org/10.20868/upm.thesis.73327",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "http://dx.doi.org/10.20868/upm.thesis.73327",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "",
+    "conference": "",
+    "publication_types": [
+      "dissertation"
+    ],
+    "publication_type": "journal",
+    "doi": "10.20868/upm.thesis.73327",
+    "external_ids": {
+      "OpenAlex": "W4379911350"
+    },
+    "semantic_scholar_id": "03c4b43e8782418263643e3ae548991123c3f929",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 加速求解与超分辨"
+    ],
+    "keywords": [
+      "multigrid",
+      "navier-stokes",
+      "rans"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "openalex",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 加速求解与超分辨": {
+        "score": 4,
+        "strong_hits": [
+          "multigrid"
+        ],
+        "context_hits": [
+          "navier-stokes"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
+    "custom_keywords": [
+      "navier-stokes",
+      "rans",
+      "multigrid"
     ]
   }
 ]
