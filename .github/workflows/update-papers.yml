@@ -1,9 +1,9 @@
 name: Update Papers Daily
 
 on:
-  # 每天定时运行（UTC 20:16 = 北京时间 04:16，考虑 GitHub 延迟后实际在清晨 6-8 点跑完）
+  # 每天定时运行（UTC 10:00 = 北京 18:00，考虑 GitHub ~7 小时延迟后在北京凌晨 0-2 点跑完）
   schedule:
-    - cron: '16 20 * * *'
+    - cron: '0 10 * * *'
 
   # 支持手动触发
   workflow_dispatch:
