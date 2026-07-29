@@ -1,4 +1,5 @@
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -378,6 +379,95 @@ def test_entry_module_uses_es_imports():
     main_js = (templates / "main.js").read_text(encoding="utf-8")
     assert "import " in main_js
     assert "from './state.js'" in main_js
+
+
+def test_data_loader_ignores_stale_concurrent_loads():
+    """快速切换全部月份和单月时，旧请求不能污染月份缓存或当前列表。"""
+    loader = Path(__file__).parent.parent / "scripts" / "templates" / "data-loader.js"
+    runner = r"""
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
+
+const loaderPath = process.argv[1];
+let source = fs.readFileSync(loaderPath, 'utf8')
+    .replace(/^import\s+.*;\s*$/gm, '')
+    .replace(/\bexport\s+(?=(?:async\s+)?function)/g, '');
+source += '\nglobalThis.__loadMonthData = loadMonthData;';
+
+const delay = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+const makePapers = (date, count) => Array.from(
+    { length: count },
+    (_, index) => ({ id: `${date}-${index}`, published: date })
+);
+const julyPapers = [
+    ...makePapers('2026-07-01', 123),
+    ...makePapers('2026-07-27', 18),
+    ...makePapers('2026-07-28', 14),
+];
+const payloads = {
+    'data/index.json': [
+        { month: '2026-07' },
+        { month: '2026-06' },
+    ],
+    'data/2026-07.json': julyPapers,
+    'data/2026-06.json': makePapers('2026-06-30', 3),
+};
+const fetchDelays = {
+    'data/index.json': 0,
+    'data/2026-07.json': 25,
+    'data/2026-06.json': 5,
+};
+const state = { allPapersData: [], monthsCache: {} };
+let filterCalls = 0;
+const context = {
+    console,
+    setTimeout,
+    state,
+    dom: {},
+    dataURL: path => path,
+    debugLog: () => {},
+    filterAndSortPapers: () => { filterCalls += 1; },
+    syncDailyPickerToMonth: () => {},
+    fetch: async url => {
+        await delay(fetchDelays[url] || 0);
+        return {
+            ok: true,
+            json: async () => structuredClone(payloads[url]),
+        };
+    },
+};
+vm.createContext(context);
+new vm.Script(source, { filename: loaderPath }).runInContext(context);
+
+(async () => {
+    const firstAll = context.__loadMonthData('all');
+    await delay(2);
+    const firstJuly = context.__loadMonthData('2026-07');
+    const secondAll = context.__loadMonthData('all');
+    await delay(2);
+    const finalJuly = context.__loadMonthData('2026-07');
+    await Promise.all([firstAll, firstJuly, secondAll, finalJuly]);
+
+    const count = date => state.allPapersData.filter(paper => paper.published === date).length;
+    assert.equal(count('2026-07-01'), 123);
+    assert.equal(count('2026-07-27'), 18);
+    assert.equal(count('2026-07-28'), 14);
+    assert.equal(state.allPapersData.length, julyPapers.length);
+    assert.equal(state.monthsCache['2026-07'].length, julyPapers.length);
+    assert.equal(filterCalls, 1);
+})().catch(error => {
+    console.error(error);
+    process.exitCode = 1;
+});
+"""
+    result = subprocess.run(
+        ["node", "-e", runner, str(loader)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
 
 
 def test_index_html_uses_module_script(tmp_path):

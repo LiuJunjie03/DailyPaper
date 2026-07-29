@@ -7,6 +7,8 @@ import { dataURL, debugLog } from './utils.js';
 import { filterAndSortPapers } from './filters.js';
 import { syncDailyPickerToMonth } from './dashboard.js';
 
+let activeLoadGeneration = 0;
+
 /**
  * 带状态检查的 fetch + JSON 解析
  */
@@ -84,18 +86,23 @@ export async function loadMonthsIndex() {
  * 加载指定月份的数据（或全部月份）
  */
 export async function loadMonthData(month) {
+    const loadGeneration = ++activeLoadGeneration;
+
     if (month === 'all') {
         // 加载所有月份
         try {
             const monthsIndex = await fetchJSON(dataURL('data/index.json'));
+            if (loadGeneration !== activeLoadGeneration) return;
 
-            state.allPapersData = [];
+            const loadedPapers = [];
             for (const monthInfo of monthsIndex) {
                 if (!state.monthsCache[monthInfo.month]) {
                     state.monthsCache[monthInfo.month] = await fetchJSON(dataURL(`data/${monthInfo.month}.json`));
                 }
-                state.allPapersData.push(...state.monthsCache[monthInfo.month]);
+                if (loadGeneration !== activeLoadGeneration) return;
+                loadedPapers.push(...state.monthsCache[monthInfo.month]);
             }
+            state.allPapersData = loadedPapers;
             debugLog(`Loaded all months, total ${state.allPapersData.length} papers`);
         } catch (e) {
             console.error('Failed to load all months data:', e);
@@ -111,9 +118,12 @@ export async function loadMonthData(month) {
                 return;
             }
         }
-        state.allPapersData = state.monthsCache[month];
+        if (loadGeneration !== activeLoadGeneration) return;
+        state.allPapersData = [...state.monthsCache[month]];
         debugLog(`Using cached data for ${month}, ${state.allPapersData.length} papers`);
     }
+
+    if (loadGeneration !== activeLoadGeneration) return;
 
     // 数据加载完成后，触发筛选
     filterAndSortPapers();
