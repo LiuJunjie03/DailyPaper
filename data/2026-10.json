@@ -52,11 +52,11 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "dns",
-      "vortex",
       "computational fluid dynamics",
+      "dns",
       "cfd",
-      "fluid dynamics"
+      "fluid dynamics",
+      "vortex"
     ],
     "sources": [
       "crossref"
@@ -182,12 +182,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "wind turbine",
-      "pinn",
-      "les",
       "rans",
-      "physics-informed",
-      "data-driven"
+      "wind turbine",
+      "les",
+      "pinn",
+      "data-driven",
+      "physics-informed"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -257,10 +257,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "fourier neural operator",
-      "neural operator",
+      "physics-guided",
       "heat transfer",
-      "physics-guided"
+      "fourier neural operator",
+      "neural operator"
     ],
     "sources": [
       "crossref"
@@ -365,16 +365,16 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "flame",
       "combustion",
-      "machine learning",
-      "flame"
+      "machine learning"
     ]
   },
   {
     "id": "10.1016/j.geomorph.2026.110442",
     "title": "Air flow dynamics through a breached foredune and relationships to trough blowout formation: A Computational Fluid Dynamics (CFD) study",
     "authors": "Duc Nguyen, Patrick Hesp, Mike Hilton, Sarah Wakes",
-    "abstract": "",
+    "abstract": "Natural blowouts are common in all dune terrains, including deserts and coasts, and the excavation of artificial notches in coastal dunes has become common. However, little research has been conducted on flow dynamics in natural breaches or artificial notches, particularly flow through dune breaches (akin to trough blowouts minus their depositional lobes). This study examines the relationship between flow speed and structure and breach morphology (comprising breach width, depth, and foredune slope) to better understand blowout dynamics during incident wind conditions parallel with the breach long axis. The results provide significant new evidence of foredune and breach morphology controls on blowout and depositional lobe formation. Significant flow acceleration occurs in the breach, and a high-speed jet core region is established, the near-surface velocity increasing with increasing foredune height. Jets are best developed in the highest foredunes and deepest breaches. Significant acceleration of the jet core occurs in the breach with an increase in foredune stoss slope angle from 20° to 40°. The downwind jet flow exiting from the breach displays a core of high velocity flow but is narrow and penetrates the least distance for the lowest dune compared to the highest dune. Single jets occur within the middle of the breach, and multiple jets occur at the end of the breach when the foredune stoss slope increases up to 40° and in the narrowest breach (10 m). The distance between the breach entrance and jet core termination location (<7 m/s) increases from 20 to 45 m when foredune height increases from 4 to 7 m, and from 53 to 62 m when stoss slope increases from 25° to 40°. This study also provides implications for coastal managers that higher and steeper foredunes, narrower and shorter breaches or notches, are recommended to facilitate sand transport and deposition further downwind, thus increasing the notch efficacy.",
     "published": "2026-10-01",
     "paper_url": "https://doi.org/10.1016/j.geomorph.2026.110442",
     "arxiv_id": "",
@@ -394,11 +394,13 @@
     "code_link": "",
     "tags": [
       "流体力学",
-      "流体力学 / 其他"
+      "流体力学 / 湍流与流动机理"
     ],
     "keywords": [
       "CFD",
-      "fluid dynamics"
+      "acceleration",
+      "fluid dynamics",
+      "jet flow"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -407,16 +409,32 @@
     "is_early_access": true,
     "date_source": "crossref",
     "date_status": "reliable",
-    "classification_score": {},
-    "primary_domain": "流体力学 / 其他",
+    "classification_score": {
+      "流体力学 / 湍流与流动机理": {
+        "score": 5,
+        "strong_hits": [
+          "jet flow"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
+      "computational fluid dynamics",
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "acceleration",
+      "jet flow",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   },
   {
     "id": "10.1016/j.cpc.2026.110302",
@@ -499,13 +517,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "neural operator",
-      "data-driven turbulence",
-      "turbulence",
-      "data-driven",
       "computational fluid dynamics",
+      "turbulence",
+      "neural operator",
+      "fluid dynamics",
+      "data-driven",
       "fourier neural operator",
-      "fluid dynamics"
+      "data-driven turbulence"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -573,11 +591,11 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
       "computational fluid dynamics",
+      "physics-informed neural network",
       "neural network",
       "fluid dynamics",
-      "physics-informed neural network"
+      "physics-informed"
     ],
     "sources": [
       "crossref",
@@ -625,8 +643,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
