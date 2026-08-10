@@ -52,11 +52,11 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
+      "vortex",
       "fluid dynamics",
       "dns",
-      "computational fluid dynamics",
-      "vortex",
-      "cfd"
+      "cfd",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -106,9 +106,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "machine learning",
       "shape optimization",
-      "airfoil",
-      "machine learning"
+      "airfoil"
     ],
     "is_early_access": true,
     "sources": [
@@ -182,12 +182,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "les",
       "pinn",
-      "physics-informed",
+      "les",
       "rans",
-      "data-driven",
-      "wind turbine"
+      "physics-informed",
+      "wind turbine",
+      "data-driven"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -258,8 +258,8 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "neural operator",
-      "physics-guided",
       "heat transfer",
+      "physics-guided",
       "fourier neural operator"
     ],
     "sources": [
@@ -315,8 +315,8 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "rans",
-      "les"
+      "les",
+      "rans"
     ],
     "sources": [
       "crossref"
@@ -365,9 +365,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "flame",
+      "machine learning",
       "combustion",
-      "machine learning"
+      "flame"
     ]
   },
   {
@@ -426,9 +426,9 @@
     "custom_keywords": [
       "fluid dynamics",
       "jet flow",
-      "computational fluid dynamics",
+      "acceleration",
       "cfd",
-      "acceleration"
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -517,13 +517,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "turbulence",
       "fluid dynamics",
+      "turbulence",
       "neural operator",
-      "data-driven turbulence",
-      "data-driven",
       "computational fluid dynamics",
-      "fourier neural operator"
+      "fourier neural operator",
+      "data-driven turbulence",
+      "data-driven"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -534,7 +534,7 @@
   {
     "id": "10.1016/j.engappai.2026.115640",
     "title": "A comparison study of computational fluid dynamics and physics-Informed neural network modelling approaches for protein elution in non-binding liquid chromatography",
-    "authors": "Pratik Punj, Lalita Kanwar Shekhawat",
+    "authors": "Pratik Punj, L. K. Shekhawat",
     "abstract": "",
     "published": "2026-10-01",
     "paper_url": "https://www.semanticscholar.org/paper/d2f8fa6c9bb83b9ac4b2258d0dc12b87f0973f31",
@@ -542,7 +542,9 @@
     "arxiv_url": "",
     "pdf_url": "",
     "preprint_pdf_url": "",
-    "categories": [],
+    "categories": [
+      "Computer Science"
+    ],
     "venue": "Engineering applications of artificial intelligence",
     "conference": "Engineering applications of artificial intelligence",
     "publication_types": [
@@ -551,6 +553,7 @@
     "publication_type": "journal",
     "doi": "10.1016/j.engappai.2026.115640",
     "external_ids": {
+      "DBLP": "journals/eaai/PunjS26",
       "DOI": "10.1016/j.engappai.2026.115640",
       "CorpusId": 290206601
     },
@@ -592,10 +595,10 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "fluid dynamics",
-      "physics-informed",
-      "computational fluid dynamics",
+      "physics-informed neural network",
       "neural network",
-      "physics-informed neural network"
+      "physics-informed",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -701,13 +704,13 @@
     "id": "10.1016/j.combustflame.2026.115223",
     "title": "Autonomous adaptive solver selection for chemistry integration via reinforcement learning",
     "authors": "Eloghosa Ikponmwoba, Opeoluwa Owoyele",
-    "abstract": "",
+    "abstract": "The computational cost of stiff chemical kinetics remains a dominant bottleneck in reacting-flow simulation, yet hybrid integration strategies are typically driven by hand-tuned heuristics or supervised predictors that make myopic decisions from instantaneous local state. We introduce a constrained reinforcement learning (RL) framework that autonomously selects between an implicit BDF integrator (CVODE) and a quasi-steady-state (QSS) solver during chemistry integration. Solver selection is cast as a Markov decision process. The agent learns trajectory-aware policies that account for how present solver choices influence downstream error accumulation, while minimizing computational cost under a user-prescribed accuracy tolerance enforced through a Lagrangian reward with online multiplier adaptation. Across sampled 0D homogeneous reactor conditions, the RL-adaptive policy achieves a mean speedup of approximately $3\\times$, with speedups ranging from $1.11\\times$ to $10.58\\times$, while maintaining accurate ignition delays and species profiles for a 106-species \\textit{n}-dodecane mechanism and adding approximately $1\\%$ inference overhead. Without retraining, the 0D-trained policy transfers to 1D counterflow diffusion flames over strain rates $10$--$2000~\\mathrm{s}^{-1}$, delivering consistent $\\approx 2.2\\times$ speedup relative to CVODE while preserving near-reference temperature accuracy and selecting CVODE at only $12$--$15\\%$ of space-time points. Overall, the results demonstrate the potential of the proposed reinforcement learning framework to learn problem-specific integration strategies while respecting accuracy constraints, thereby opening a pathway toward adaptive, self-optimizing workflows for multiphysics systems with spatially heterogeneous stiffness.",
     "published": "2026-10-01",
     "paper_url": "https://doi.org/10.1016/j.combustflame.2026.115223",
-    "arxiv_id": "",
-    "arxiv_url": "",
+    "arxiv_id": "2604.00264",
+    "arxiv_url": "https://arxiv.org/abs/2604.00264",
     "pdf_url": "",
-    "preprint_pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2604.00264",
     "categories": [],
     "venue": "Combustion and Flame",
     "conference": "Combustion and Flame",
@@ -717,7 +720,7 @@
     "publication_type": "journal",
     "doi": "10.1016/j.combustflame.2026.115223",
     "external_ids": {},
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "fae0a8da388c8ce6590027bb65c31bac1880d1e4",
     "code_link": "",
     "tags": [
       "机器学习",
@@ -726,7 +729,9 @@
       "流体力学 / 燃烧与传热"
     ],
     "keywords": [
-      "RL"
+      "RL",
+      "flow simulation",
+      "speedup"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -736,22 +741,110 @@
     "date_source": "crossref",
     "date_status": "reliable",
     "classification_score": {
+      "流体力学 / 智能CFD / 加速求解与超分辨": {
+        "score": 5,
+        "strong_hits": [
+          "speedup"
+        ],
+        "context_hits": [
+          "flow simulation",
+          "solver"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流动控制与强化学习": {
+        "score": 4,
+        "strong_hits": [
+          "reinforcement learning"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      },
       "流体力学 / 燃烧与传热": {
-        "score": 6,
+        "score": 8,
         "strong_hits": [
           "combustion",
           "flame"
         ],
-        "context_hits": [],
+        "context_hits": [
+          "flow",
+          "simulation"
+        ],
         "negative_hits": []
       }
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
+      "speedup",
+      "flow simulation",
       "reinforcement learning"
     ],
     "sources": [
       "crossref"
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "semantic_scholar"
+  },
+  {
+    "id": "10.47176/jafm.19.10.4360",
+    "title": "Influence of Structural Parameters on Airflow Uniformity and Optimisation of a Tower-type Air-assisted Sprayer Based on Computational Fluid Dynamics",
+    "authors": "P. Y. Zhan, Z. Y. Sun, Q. C. Meng, H. Y. Tong, Z. X. Wang, J. A. Qiao, X. W. Bai",
+    "abstract": "In air-assisted orchard spraying, airflow characteristics strongly determine spray performance. This study designed a tower-shaped fan for grape canopies and investigated its aerodynamic behaviour. A three-dimensional computational fluid dynamics (CFD) model of the internal flow field was established to quantify the effects of shroud taper, upper and lower guide-vane angles, inlet diameter, and inlet position on outlet air-velocity uniformity. Single-factor simulations confirmed that all selected structural parameters significantly affect the outlet air velocity’s coefficient of variation (CV). Based on these results, central composite design was applied for multi-parameter optimisation. A second-order regression model was developed to describe the relationship between guide-vane angles, shroud taper, inlet position, inlet diameter, and air-velocity CV response. Analysis of variance showed that the influence of the factors decreased in the following order: guide-vane angle &gt; inlet position &gt; inlet diameter &gt; shroud taper. Numerical optimisation identified the optimal configuration as a guide-vane angle of 118.37°, shroud taper of 23.84°, inlet position of 29.35 mm, and inlet diameter of 493.92 mm. Under these conditions, the predicted air-velocity CV decreased to 12.07%. A field validation experiment was conducted using representative measurement points selected from the simulated velocity distribution. The maximum relative error between measured and simulated values was below 6%, indicating strong agreement. These results confirm the reliability of the CFD model and demonstrate its effectiveness for structural optimisation of orchard air-assisted spraying equipment.",
+    "published": "2026-10-01",
+    "paper_url": "https://doi.org/10.47176/jafm.19.10.4360",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Journal of Applied Fluid Mechanics",
+    "conference": "Journal of Applied Fluid Mechanics",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.47176/jafm.19.10.4360",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 多相流理论"
+    ],
+    "keywords": [
+      "CFD",
+      "fluid dynamics",
+      "spray"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 多相流理论": {
+        "score": 6,
+        "strong_hits": [
+          "spray"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 多相流理论",
+    "custom_keywords": [
+      "cfd",
+      "spray",
+      "fluid dynamics",
+      "computational fluid dynamics"
     ]
   }
 ]
