@@ -1,5 +1,79 @@
 [
   {
+    "id": "10.1088/2058-6272/ae9717",
+    "title": "Surrogate modeling of drift-reduced Braginskii turbulence with resistivity-conditioned Koopman neural operators",
+    "authors": "A. Shaa, K. Lim, Long Shan Chan, C. Guet",
+    "abstract": "\n Machine-learning-driven surrogate operators are developed for three-dimensional, nonlinear, flux-driven simulations of boundary plasma turbulence based on the two-fluid drift-reduced Braginskii model. Resistivity-conditioned Koopman neural operators (KNOs) are trained on Global Braginskii Solver (GBS) simulations, spanning low- to high-resistivity regimes. Separate fieldwise models are constructed for plasma density, electron temperature, electric potential, and vorticity. Evaluation at a held-out resistivity shows that the surrogates reproduce key short-horizon statistical features, including strong one-step agreement, spectral trends, and reduced pressure-gradient diagnostics. Field-dependent limitations remain, with vorticity showing the largest discrepancies and autoregressive rollout progressively departing from the reference simulation. The results demonstrate that resistivity-conditioned fieldwise neural operators provide useful fast emulators for selected boundary-plasma turbulence diagnostics, while stable long-horizon dynamical closure remains unresolved.",
+    "published": "2026-07-17",
+    "paper_url": "https://www.semanticscholar.org/paper/99400b0d7c39de97767c21c84a674ced085d468c",
+    "arxiv_id": "2607.15857",
+    "arxiv_url": "https://arxiv.org/abs/2607.15857",
+    "pdf_url": "https://iopscience.iop.org/article/10.1088/2058-6272/ae9717/pdf",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2607.15857",
+    "categories": [
+      "Physics"
+    ],
+    "venue": "Plasma Science and Technology",
+    "conference": "Plasma Science and Technology",
+    "publication_types": [
+      "JournalArticle"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1088/2058-6272/ae9717",
+    "external_ids": {
+      "ArXiv": "2607.15857",
+      "DOI": "10.1088/2058-6272/ae9717",
+      "CorpusId": 290331352
+    },
+    "semantic_scholar_id": "99400b0d7c39de97767c21c84a674ced085d468c",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 湍流与流动机理"
+    ],
+    "keywords": [
+      "koopman",
+      "turbulence"
+    ],
+    "citation_count": 0,
+    "impact_factor": 63.8,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "semantic_scholar",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 3,
+        "strong_hits": [
+          "surrogate modeling",
+          "koopman"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      },
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "turbulence"
+        ],
+        "context_hits": [
+          "fluid"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "custom_keywords": [
+      "koopman",
+      "turbulence"
+    ],
+    "sources": [
+      "openalex",
+      "semantic_scholar"
+    ]
+  },
+  {
     "id": "10.21203/rs.3.rs-10172708/v2",
     "title": "Accelerating Two-Dimensional Computational Fluid Dynamics via Hybrid Spectral-Geometric Neural Architectures",
     "authors": "Carlos Andrés Angulo Rosales",
@@ -68,14 +142,14 @@
     "custom_keywords": [
       "physics-informed",
       "computational fluid dynamics",
-      "physics-informed neural network",
-      "neural network",
-      "acceleration",
-      "pinn",
-      "machine learning",
-      "fluid dynamics",
       "data-driven",
-      "navier-stokes"
+      "acceleration",
+      "machine learning",
+      "pinn",
+      "navier-stokes",
+      "neural network",
+      "physics-informed neural network",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -127,9 +201,9 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "computational fluid dynamics",
+      "machine learning",
       "cfd",
       "neural network",
-      "machine learning",
       "fluid dynamics"
     ],
     "abstract_status": "enriched",
@@ -218,11 +292,11 @@
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
       "rans",
-      "vortex",
-      "les",
-      "turbulence modeling",
+      "aerodynamic optimization",
       "turbulence",
-      "aerodynamic optimization"
+      "turbulence modeling",
+      "les",
+      "vortex"
     ],
     "sources": [
       "crossref"
@@ -337,8 +411,8 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "wind turbine",
-      "wind farm"
+      "wind farm",
+      "wind turbine"
     ],
     "sources": [
       "openalex"
@@ -391,11 +465,11 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "computational fluid dynamics",
-      "neural network",
-      "machine learning",
-      "fluid dynamics",
       "data-driven",
-      "cnn"
+      "cnn",
+      "machine learning",
+      "neural network",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -511,9 +585,9 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "fluid dynamics",
       "fluid-structure interaction",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -626,8 +700,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -685,14 +759,14 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "computational fluid dynamics",
       "aerodynamics",
       "wind turbine",
-      "computational fluid dynamics",
       "cfd",
-      "design optimization",
       "neural network",
-      "fluid dynamics",
-      "turbulence"
+      "design optimization",
+      "turbulence",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -808,8 +882,8 @@
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
       "turbulence",
-      "rans",
-      "physics-informed"
+      "physics-informed",
+      "rans"
     ],
     "sources": [
       "crossref"
@@ -950,10 +1024,10 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "deep learning",
       "cnn",
-      "boiling",
-      "heat transfer"
+      "deep learning",
+      "heat transfer",
+      "boiling"
     ],
     "sources": [
       "crossref"
@@ -1263,9 +1337,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "turbulence",
+      "dns",
       "vof",
-      "dns"
+      "turbulence"
     ],
     "sources": [
       "crossref"
@@ -1313,8 +1387,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "finite element",
-      "cfd"
+      "cfd",
+      "finite element"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -1377,9 +1451,9 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
+      "computational fluid dynamics",
       "aerodynamics",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -1453,8 +1527,8 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "heat transfer",
-      "physics-informed"
+      "physics-informed",
+      "heat transfer"
     ],
     "sources": [
       "crossref"
@@ -1544,11 +1618,11 @@
     "custom_keywords": [
       "physics-informed",
       "computational fluid dynamics",
-      "cfd",
       "heat transfer",
       "pinn",
-      "fluid dynamics",
-      "shape optimization"
+      "cfd",
+      "shape optimization",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -1654,14 +1728,14 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "wind turbine",
-      "computational fluid dynamics",
-      "cfd",
-      "fatigue loading",
       "climate",
-      "fluid dynamics",
+      "computational fluid dynamics",
       "data-driven",
-      "turbulence"
+      "fatigue loading",
+      "cfd",
+      "wind turbine",
+      "turbulence",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1709,8 +1783,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1756,8 +1830,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1803,8 +1877,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1850,8 +1924,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1897,8 +1971,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -1993,11 +2067,11 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 数值方法增强",
     "custom_keywords": [
-      "flow simulation",
-      "isotropic turbulence",
-      "stabilization",
-      "machine learning",
       "data-driven",
+      "machine learning",
+      "isotropic turbulence",
+      "flow simulation",
+      "stabilization",
       "turbulence",
       "turbulent flow"
     ],
@@ -2452,8 +2526,8 @@
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
       "spray",
-      "two-phase flow",
       "pod",
+      "two-phase flow",
       "droplet"
     ],
     "abstract_status": "enriched",
@@ -2525,9 +2599,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "microfluidic",
       "bubble",
-      "acceleration"
+      "acceleration",
+      "microfluidic"
     ],
     "sources": [
       "crossref"
@@ -2762,8 +2836,8 @@
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
       "cfd",
-      "multiphase flow",
-      "heat transfer"
+      "heat transfer",
+      "multiphase flow"
     ],
     "sources": [
       "crossref"
@@ -2985,8 +3059,8 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "boiling",
-      "bubble"
+      "bubble",
+      "boiling"
     ],
     "sources": [
       "crossref"
@@ -3328,8 +3402,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -3394,11 +3468,11 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "fourier neural operator",
       "fno",
       "computational fluid dynamics",
-      "cfd",
       "neural operator",
-      "fourier neural operator",
+      "cfd",
       "fluid dynamics"
     ],
     "sources": [
@@ -3437,8 +3511,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "dns"
+      "dns",
+      "turbulence"
     ],
     "keywords": [
       "dns",
@@ -3575,9 +3649,9 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
-      "two-phase flow",
       "physics-informed",
-      "neural network"
+      "neural network",
+      "two-phase flow"
     ],
     "keywords": [
       "PINN",
@@ -3873,8 +3947,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "vortices"
+      "vortices",
+      "vortex"
     ],
     "keywords": [
       "vortex",
@@ -4050,8 +4124,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -4098,8 +4172,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -4169,13 +4243,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
-      "heat transfer",
-      "neural network",
       "deep learning",
+      "physics-informed",
+      "data-driven",
+      "heat transfer",
       "machine learning",
       "boiling",
-      "data-driven"
+      "neural network"
     ],
     "sources": [
       "crossref"
@@ -4256,12 +4330,12 @@
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
       "computational fluid dynamics",
-      "cfd",
-      "multiphase flow",
       "two-phase flow",
       "combustion",
-      "fluid dynamics",
-      "dem"
+      "dem",
+      "cfd",
+      "multiphase flow",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -4302,9 +4376,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "neural operator",
       "fno",
-      "fourier neural operator",
-      "neural operator"
+      "fourier neural operator"
     ],
     "keywords": [
       "FNO",
@@ -4470,8 +4544,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -4524,12 +4598,12 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
-      "aerodynamics",
       "operator learning",
-      "neural network",
-      "machine learning",
       "blood flow",
-      "data-driven"
+      "data-driven",
+      "machine learning",
+      "neural network",
+      "aerodynamics"
     ],
     "keywords": [
       "aerodynamics",
@@ -4722,10 +4796,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "aortic",
-      "fsi",
+      "fluid-structure interaction",
       "blood flow",
-      "fluid-structure interaction"
+      "aortic",
+      "fsi"
     ],
     "keywords": [
       "FSI",
@@ -4912,8 +4986,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "dns"
+      "dns",
+      "vortex"
     ],
     "keywords": [
       "dns",
@@ -5259,15 +5333,15 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "uncertainty quantification",
-      "physics-informed",
-      "gan",
-      "autoencoder",
       "vortices",
-      "fluid dynamics",
+      "physics-informed",
       "vortex",
+      "autoencoder",
+      "inverse problem",
+      "uncertainty quantification",
       "navier-stokes",
-      "inverse problem"
+      "gan",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -5305,8 +5379,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "finite element",
       "turbulence",
+      "finite element",
       "drag reduction"
     ],
     "keywords": [
@@ -5380,8 +5454,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "boundary layer"
+      "boundary layer",
+      "vortex"
     ],
     "keywords": [
       "boundary layer",
@@ -5461,8 +5535,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -5547,11 +5621,11 @@
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
       "sph",
+      "boundary layer",
       "rans",
       "cfd",
-      "les",
       "turbulence",
-      "boundary layer"
+      "les"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -5615,10 +5689,10 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "aortic",
-      "fluid dynamics",
       "blood flow",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "aortic",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -5664,8 +5738,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -5739,10 +5813,10 @@
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
       "computational fluid dynamics",
-      "cfd",
       "heat transfer",
-      "fluid dynamics",
-      "turbulence"
+      "cfd",
+      "turbulence",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -5794,8 +5868,8 @@
     "custom_keywords": [
       "cfd",
       "heat transfer",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -5974,11 +6048,11 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "finite volume",
-      "cfd",
-      "pinn",
-      "machine learning",
       "data-driven",
+      "finite volume",
+      "machine learning",
+      "pinn",
+      "cfd",
       "finite volume method"
     ],
     "abstract_status": "enriched",
@@ -6239,8 +6313,8 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
       "fluid mechanics",
+      "physics-informed",
       "物理信息神经网络",
       "神经网络"
     ],
@@ -6405,9 +6479,9 @@
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
       "droplet",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -6476,13 +6550,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "compressible flow",
       "physics-informed",
-      "cfd",
-      "physics-informed neural network",
       "acceleration",
+      "pinn",
+      "cfd",
+      "compressible flow",
       "neural network",
-      "pinn"
+      "physics-informed neural network"
     ],
     "sources": [
       "openalex"
@@ -6531,8 +6605,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -6657,8 +6731,8 @@
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
       "turbulence",
-      "rans",
-      "les"
+      "les",
+      "rans"
     ],
     "sources": [
       "semantic_scholar"
@@ -6724,10 +6798,10 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "multiphase flow",
-      "two-phase flow",
       "lattice boltzmann",
-      "dem"
+      "multiphase flow",
+      "dem",
+      "two-phase flow"
     ],
     "sources": [
       "semantic_scholar"
@@ -6790,9 +6864,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "bubble",
       "multiphase flow",
-      "two-phase flow",
-      "bubble"
+      "two-phase flow"
     ],
     "sources": [
       "semantic_scholar"
@@ -6841,8 +6915,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "finite difference"
+      "finite difference",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -6926,12 +7000,12 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "finite volume method",
       "finite volume",
+      "finite difference",
       "fluid-structure interaction",
       "lattice boltzmann",
-      "fluid dynamics",
-      "finite difference",
-      "finite volume method"
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -6993,9 +7067,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "fluid dynamics",
       "bubble",
-      "data-driven"
+      "data-driven",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -7039,11 +7113,11 @@
     "official_keywords": [],
     "custom_keywords": [
       "rans",
-      "data assimilation",
-      "flow simulation",
-      "closure model",
-      "turbulence",
       "navier-stokes",
+      "flow simulation",
+      "data assimilation",
+      "turbulence",
+      "closure model",
       "ensemble kalman"
     ],
     "keywords": [
@@ -7136,10 +7210,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "dns",
       "turbulence",
       "isotropic turbulence",
-      "turbulent flow",
-      "dns"
+      "turbulent flow"
     ],
     "keywords": [
       "dns",
@@ -7205,8 +7279,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "boundary layer"
+      "boundary layer",
+      "turbulence"
     ],
     "keywords": [
       "boundary layer",
@@ -7376,11 +7450,11 @@
     "official_keywords": [],
     "custom_keywords": [
       "pod",
-      "turbulent flow",
-      "turbulence",
       "navier-stokes",
+      "dns",
       "rom",
-      "dns"
+      "turbulence",
+      "turbulent flow"
     ],
     "keywords": [
       "POD",
@@ -7656,8 +7730,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "navier-stokes",
-      "finite difference"
+      "finite difference",
+      "navier-stokes"
     ],
     "keywords": [
       "finite difference",
@@ -7998,10 +8072,10 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
+      "combustion",
       "computational fluid dynamics",
       "cfd",
       "flame",
-      "combustion",
       "fluid dynamics"
     ],
     "sources": [
@@ -8068,10 +8142,10 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
+      "data-driven",
       "fluid mechanics",
       "machine learning",
-      "fluid dynamics",
-      "data-driven"
+      "fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "publisher_meta",
@@ -8133,9 +8207,9 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
+      "finite difference",
       "heat transfer",
-      "fluid dynamics",
-      "finite difference"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -8207,13 +8281,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
     "custom_keywords": [
-      "uncertainty quantification",
-      "computational fluid dynamics",
-      "machine learning",
       "climate",
-      "fluid dynamics",
+      "computational fluid dynamics",
       "data-driven",
-      "transformer"
+      "uncertainty quantification",
+      "machine learning",
+      "transformer",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex",
@@ -8293,9 +8367,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
     "custom_keywords": [
-      "turbulence",
       "boundary layer",
-      "reinforcement learning"
+      "reinforcement learning",
+      "turbulence"
     ],
     "sources": [
       "openalex"
@@ -8431,10 +8505,10 @@
     "custom_keywords": [
       "computational fluid dynamics",
       "finite volume",
-      "cfd",
       "heat transfer",
-      "fluid dynamics",
-      "finite volume method"
+      "cfd",
+      "finite volume method",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -8562,12 +8636,12 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "flow computation",
       "mixing layer",
+      "rans",
       "combustion",
-      "turbulence",
-      "navier-stokes"
+      "navier-stokes",
+      "flow computation",
+      "turbulence"
     ],
     "keywords": [
       "combustion",
@@ -9020,10 +9094,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
+      "dns",
       "turbulence",
       "isotropic turbulence",
-      "dns"
+      "vortex"
     ],
     "keywords": [
       "dns",
@@ -9210,12 +9284,12 @@
     "official_keywords": [],
     "custom_keywords": [
       "physics-informed",
-      "physics-informed neural network",
+      "data-driven",
+      "inverse problem",
+      "pinn",
       "floating offshore",
       "neural network",
-      "pinn",
-      "data-driven",
-      "inverse problem"
+      "physics-informed neural network"
     ],
     "keywords": [
       "PINN",
@@ -9451,9 +9525,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "flow modeling",
       "lattice boltzmann",
-      "les",
-      "flow modeling"
+      "les"
     ],
     "keywords": [
       "LBM",
@@ -9519,14 +9593,14 @@
     "official_keywords": [],
     "custom_keywords": [
       "downscaling",
-      "flow simulation",
       "computational fluid dynamics",
-      "cfd",
-      "les",
-      "fluid dynamics",
-      "lattice boltzmann",
       "data-driven",
-      "turbulence"
+      "cfd",
+      "flow simulation",
+      "turbulence",
+      "lattice boltzmann",
+      "les",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -9651,14 +9725,14 @@
     "official_keywords": [],
     "custom_keywords": [
       "physics-informed",
-      "cfd",
-      "physics-informed neural network",
-      "neural network",
-      "reynolds stress",
-      "data-driven turbulence",
-      "pinn",
-      "inverse problem",
       "data-driven",
+      "inverse problem",
+      "pinn",
+      "navier-stokes",
+      "cfd",
+      "dns",
+      "neural network",
+      "data-driven turbulence",
       "turbulence"
     ],
     "keywords": [
@@ -9666,9 +9740,10 @@
       "PINN",
       "data-driven",
       "data-driven turbulence",
+      "dns",
       "inverse problem",
+      "navier-stokes",
       "neural network",
-      "reynolds stress",
       "turbulence"
     ],
     "preprint_pdf_url": "https://arxiv.org/pdf/2607.04491",
@@ -9766,9 +9841,9 @@
     "official_keywords": [],
     "custom_keywords": [
       "physics-informed",
-      "deeponet",
+      "neural operator",
       "lattice boltzmann",
-      "neural operator"
+      "deeponet"
     ],
     "keywords": [
       "LBM",
@@ -9840,10 +9915,10 @@
     "official_keywords": [],
     "custom_keywords": [
       "fluid mechanics",
-      "turbulence modeling",
+      "subgrid-scale model",
       "turbulence",
-      "vortex",
-      "subgrid-scale model"
+      "turbulence modeling",
+      "vortex"
     ],
     "keywords": [
       "fluid mechanics",
@@ -10069,9 +10144,9 @@
     "official_keywords": [],
     "custom_keywords": [
       "physics-informed",
+      "data-driven",
       "super-resolution",
       "pinn",
-      "data-driven",
       "turbulence",
       "turbulent flow"
     ],
@@ -10194,8 +10269,8 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "vortex",
-      "acceleration"
+      "acceleration",
+      "vortex"
     ],
     "sources": [
       "crossref"
@@ -10271,11 +10346,11 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "les",
-      "reynolds stress",
       "combustion",
       "rans",
-      "dns"
+      "dns",
+      "les",
+      "reynolds stress"
     ],
     "sources": [
       "crossref"
@@ -10330,9 +10405,9 @@
     "custom_keywords": [
       "rans",
       "machine learning",
-      "turbulence",
       "navier-stokes",
-      "dns"
+      "dns",
+      "turbulence"
     ],
     "sources": [
       "crossref",
@@ -10386,9 +10461,9 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "computational fluid dynamics",
+      "machine learning",
       "cfd",
       "cavitation",
-      "machine learning",
       "fluid dynamics"
     ],
     "sources": [
@@ -10587,9 +10662,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
+      "vortices",
       "turbulence",
-      "vortices"
+      "vortex"
     ],
     "keywords": [
       "turbulence",
@@ -10656,10 +10731,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "turbulent flow",
-      "airfoil",
+      "dns",
       "wall model",
-      "dns"
+      "turbulent flow",
+      "airfoil"
     ],
     "keywords": [
       "airfoil",
@@ -10744,8 +10819,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "grid convergence",
-      "lattice boltzmann"
+      "lattice boltzmann",
+      "grid convergence"
     ],
     "keywords": [
       "LBM",
@@ -10938,9 +11013,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "compressible flow",
+      "pod",
       "navier-stokes",
-      "pod"
+      "compressible flow"
     ],
     "keywords": [
       "POD",
@@ -11319,15 +11394,15 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "rans",
       "physics-informed",
-      "physics-informed neural network",
-      "neural network",
-      "pinn",
+      "rans",
       "data-driven",
-      "turbulence",
+      "pinn",
       "navier-stokes",
-      "dns"
+      "dns",
+      "neural network",
+      "turbulence",
+      "physics-informed neural network"
     ],
     "sources": [
       "arxiv",
@@ -11480,8 +11555,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "airfoil"
+      "airfoil",
+      "vortex"
     ],
     "keywords": [
       "airfoil",
@@ -11619,9 +11694,9 @@
     "official_keywords": [],
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
       "droplet",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -11690,12 +11765,12 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
-      "compressible flow",
-      "physics-informed",
-      "cfd",
       "deep learning",
+      "physics-informed",
       "data-driven",
-      "cnn"
+      "cnn",
+      "cfd",
+      "compressible flow"
     ],
     "keywords": [
       "CFD",
@@ -11777,8 +11852,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "turbulence"
+      "turbulence",
+      "vortex"
     ],
     "keywords": [
       "turbulence",
@@ -11882,11 +11957,11 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "aortic",
       "physics-informed",
-      "pinn",
       "blood flow",
       "data-driven",
+      "aortic",
+      "pinn",
       "navier-stokes"
     ],
     "sources": [
@@ -11936,8 +12011,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -12027,10 +12102,10 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "vortex",
+      "boundary layer",
       "physics-informed",
-      "navier-stokes",
-      "boundary layer"
+      "vortex",
+      "navier-stokes"
     ],
     "sources": [
       "crossref"
@@ -12110,15 +12185,15 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "aortic",
-      "cardiovascular",
+      "blood flow",
       "computational fluid dynamics",
-      "cfd",
+      "aortic",
       "aneurysm",
-      "fluid-structure interaction",
+      "cardiovascular",
       "fsi",
-      "fluid dynamics",
-      "blood flow"
+      "cfd",
+      "fluid-structure interaction",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -12186,9 +12261,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "bubble",
       "finite volume",
-      "finite volume method",
-      "bubble"
+      "finite volume method"
     ]
   },
   {
@@ -12379,11 +12454,11 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "physics-informed neural network",
-      "neural network",
       "pinn",
-      "fluid dynamics",
-      "phase field"
+      "phase field",
+      "neural network",
+      "physics-informed neural network",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -12467,12 +12542,12 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "computational fluid dynamics",
-      "cfd",
-      "neural network",
-      "fluid dynamics",
       "flow field prediction",
+      "cfd",
       "speedup",
-      "lattice boltzmann"
+      "neural network",
+      "lattice boltzmann",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -12540,9 +12615,9 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "computational fluid dynamics",
-      "cfd",
-      "pod",
       "machine learning",
+      "pod",
+      "cfd",
       "fluid dynamics"
     ],
     "sources": [
@@ -12645,11 +12720,11 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "data-driven",
       "heat transfer",
-      "neural network",
       "machine learning",
-      "finite difference",
-      "data-driven"
+      "neural network",
+      "finite difference"
     ],
     "sources": [
       "semantic_scholar"
@@ -12704,9 +12779,9 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "computational fluid dynamics",
-      "shock wave",
-      "neural network",
       "machine learning",
+      "neural network",
+      "shock wave",
       "fluid dynamics"
     ],
     "sources": [
@@ -13200,9 +13275,9 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
+      "fluid mechanics",
       "physics-informed",
-      "airfoil",
-      "fluid mechanics"
+      "airfoil"
     ],
     "keywords": [
       "PINN",
@@ -13282,11 +13357,11 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
-      "reynolds stress",
+      "cnn",
       "machine learning",
+      "neural network",
       "turbulence",
-      "cnn"
+      "reynolds stress"
     ],
     "keywords": [
       "cnn",
@@ -13402,12 +13477,12 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "cfd",
+      "data-driven",
+      "flow field prediction",
       "neural operator",
       "machine learning",
-      "flow field prediction",
-      "data-driven",
-      "transformer"
+      "transformer",
+      "cfd"
     ],
     "sources": [
       "openalex"
@@ -13476,10 +13551,10 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "aortic",
       "hemodynamics",
       "blood flow",
-      "neural network"
+      "neural network",
+      "aortic"
     ],
     "sources": [
       "openalex"
@@ -13531,10 +13606,10 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "data-driven",
       "deep learning",
-      "transformer",
       "precipitation",
-      "data-driven"
+      "transformer"
     ],
     "sources": [
       "openalex"
@@ -13610,9 +13685,9 @@
     "custom_keywords": [
       "rans",
       "uncertainty quantification",
+      "navier-stokes",
       "cfd",
-      "turbulence",
-      "navier-stokes"
+      "turbulence"
     ],
     "sources": [
       "openalex"
@@ -13661,8 +13736,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -13757,12 +13832,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
     "custom_keywords": [
-      "super-resolution",
       "deep learning",
-      "fluid dynamics",
+      "deeponet",
       "data-driven",
+      "super-resolution",
       "cpinn",
-      "deeponet"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex",
@@ -13882,8 +13957,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -13983,8 +14058,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -14037,8 +14112,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "mixing layer",
       "cfd",
+      "mixing layer",
       "machine learning",
       "neural network"
     ],
@@ -14134,14 +14209,14 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "transfer learning",
       "physics-informed",
-      "bubble",
       "computational fluid dynamics",
-      "cfd",
-      "multiphase flow",
+      "transfer learning",
       "two-phase flow",
       "pinn",
+      "cfd",
+      "bubble",
+      "multiphase flow",
       "fluid dynamics"
     ],
     "sources": [
@@ -14319,10 +14394,10 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "aerodynamics",
       "computational fluid dynamics",
-      "cfd",
       "airfoil",
+      "cfd",
+      "aerodynamics",
       "fluid dynamics"
     ],
     "sources": [
@@ -14396,9 +14471,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "droplet",
       "turbulence",
-      "fluid dynamics",
-      "droplet"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -14478,10 +14553,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
     "custom_keywords": [
-      "flow control",
-      "combustion",
       "adaptive mesh",
-      "adaptive mesh refinement"
+      "flow control",
+      "adaptive mesh refinement",
+      "combustion"
     ],
     "sources": [
       "openalex"
@@ -14597,9 +14672,9 @@
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
+      "computational fluid dynamics",
       "microfluidic",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -14666,10 +14741,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "operator learning",
+      "neural operator",
       "machine learning",
       "navier-stokes",
-      "neural operator"
+      "operator learning"
     ],
     "sources": [
       "semantic_scholar"
@@ -14766,13 +14841,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "uncertainty quantification",
+      "surrogate model",
       "computational fluid dynamics",
-      "cfd",
+      "uncertainty quantification",
       "heat transfer",
+      "cfd",
       "neural network",
-      "fluid dynamics",
-      "surrogate model"
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -14850,9 +14925,9 @@
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
       "computational fluid dynamics",
-      "cfd",
       "two-phase flow",
       "heat transfer",
+      "cfd",
       "fluid dynamics"
     ],
     "sources": [
@@ -14922,12 +14997,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "finite element",
       "computational fluid dynamics",
-      "cfd",
-      "fluid dynamics",
       "data-driven",
-      "rom"
+      "cfd",
+      "finite element",
+      "rom",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -15062,10 +15137,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
-      "emulator",
-      "neural network",
       "climate",
+      "emulator",
       "machine learning",
+      "neural network",
       "turbulence"
     ],
     "sources": [
@@ -15136,9 +15211,9 @@
     "primary_domain": "流体力学 / 计算流体力学方法",
     "custom_keywords": [
       "finite volume",
+      "navier-stokes",
       "cfd",
       "differentiable cfd",
-      "navier-stokes",
       "finite volume method"
     ],
     "sources": [
@@ -15206,8 +15281,8 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "pinn",
       "physics-informed",
+      "pinn",
       "combustion"
     ],
     "sources": [
@@ -15273,8 +15348,8 @@
     "custom_keywords": [
       "cfd",
       "heat transfer",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -15454,11 +15529,11 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "vof",
       "computational fluid dynamics",
       "cfd",
-      "vof",
-      "droplet",
-      "fluid dynamics"
+      "fluid dynamics",
+      "droplet"
     ],
     "sources": [
       "openalex"
@@ -15583,12 +15658,12 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "aortic",
       "computational fluid dynamics",
+      "aortic",
+      "machine learning",
       "cfd",
       "hemodynamics",
       "fluid-structure interaction",
-      "machine learning",
       "fluid dynamics"
     ],
     "sources": [
@@ -15837,8 +15912,8 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "heat transfer",
-      "physics-informed"
+      "physics-informed",
+      "heat transfer"
     ],
     "sources": [
       "openalex"
@@ -15951,9 +16026,9 @@
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
+      "computational fluid dynamics",
       "aerodynamics",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -16049,14 +16124,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
-      "rans",
-      "computational fluid dynamics",
-      "cfd",
       "reynolds stress",
-      "fluid dynamics",
-      "turbulence",
+      "eddy viscosity",
+      "computational fluid dynamics",
+      "rans",
       "navier-stokes",
-      "eddy viscosity"
+      "cfd",
+      "turbulence",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex",
@@ -16175,9 +16250,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
+      "physics-informed",
       "pinn",
-      "navier-stokes",
-      "physics-informed"
+      "navier-stokes"
     ],
     "sources": [
       "semantic_scholar"
@@ -16293,8 +16368,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "machine learning",
-      "fluid mechanics"
+      "fluid mechanics",
+      "machine learning"
     ],
     "sources": [
       "semantic_scholar"
@@ -16332,10 +16407,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "heat transfer",
       "boundary layer",
-      "turbulent flow"
+      "turbulence",
+      "turbulent flow",
+      "heat transfer"
     ],
     "keywords": [
       "boundary layer",
@@ -16424,12 +16499,12 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "physics-constrained",
-      "flame",
-      "machine learning",
       "combustion",
+      "machine learning",
+      "physics-constrained",
+      "cfd",
       "dns",
+      "flame",
       "turbulent flow"
     ],
     "keywords": [
@@ -16551,9 +16626,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "reynolds stress",
       "turbulence",
-      "flow control"
+      "flow control",
+      "reynolds stress"
     ],
     "keywords": [
       "flow control",
@@ -16630,10 +16705,10 @@
     "source": "semantic_scholar",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
+      "wake flow",
       "physics-informed",
-      "fluid dynamics",
-      "wake flow"
+      "vortex",
+      "fluid dynamics"
     ],
     "keywords": [
       "PINN",
@@ -16759,8 +16834,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "spray",
-      "bubble"
+      "bubble",
+      "spray"
     ],
     "keywords": [
       "bubble",
@@ -16826,12 +16901,12 @@
     "source": "semantic_scholar",
     "official_keywords": [],
     "custom_keywords": [
-      "neural network",
       "deep learning",
-      "reynolds stress",
+      "cnn",
       "machine learning",
+      "neural network",
       "turbulence",
-      "cnn"
+      "reynolds stress"
     ],
     "keywords": [
       "cnn",
@@ -17162,8 +17237,8 @@
       "computational fluid dynamics",
       "cfd",
       "cavitation",
-      "fluid dynamics",
-      "turbulence"
+      "turbulence",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -17259,8 +17334,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -17344,10 +17419,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "reynolds stress",
-      "turbulence",
       "vortices",
-      "les"
+      "turbulence",
+      "les",
+      "reynolds stress"
     ],
     "keywords": [
       "les",
@@ -17426,8 +17501,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "flow control",
-      "active flow control"
+      "active flow control",
+      "flow control"
     ],
     "keywords": [
       "active flow control",
@@ -17599,10 +17674,10 @@
     "official_keywords": [],
     "custom_keywords": [
       "fno",
+      "rans",
       "computational fluid dynamics",
       "cfd",
-      "fluid dynamics",
-      "rans"
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -17730,10 +17805,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "navier-stokes",
+      "dns",
       "vortices",
-      "dns"
+      "turbulence",
+      "navier-stokes"
     ],
     "keywords": [
       "dns",
@@ -17803,8 +17878,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
       "wall model",
+      "turbulence",
       "turbulence modeling",
       "coarse-grid"
     ],
@@ -18235,8 +18310,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "heat transfer",
-      "finite difference"
+      "finite difference",
+      "heat transfer"
     ],
     "keywords": [
       "finite difference",
@@ -18311,12 +18386,12 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "deep learning",
       "computational fluid dynamics",
+      "cnn",
       "cfd",
       "neural network",
-      "deep learning",
-      "fluid dynamics",
-      "cnn"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -18363,8 +18438,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -18411,8 +18486,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -18518,9 +18593,9 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
       "physics-guided",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -18641,10 +18716,10 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "cfd",
-      "heat transfer",
       "wall model",
+      "computational fluid dynamics",
+      "heat transfer",
+      "cfd",
       "fluid dynamics"
     ],
     "sources": [
@@ -18733,10 +18808,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
-      "reynolds stress",
-      "turbulence",
       "bubble",
-      "turbulent flow"
+      "turbulence",
+      "turbulent flow",
+      "reynolds stress"
     ],
     "sources": [
       "crossref",
@@ -18807,10 +18882,10 @@
     },
     "primary_domain": "流体力学 / 环境与地球物理流体",
     "custom_keywords": [
-      "weno",
       "turbulence",
+      "climate",
       "geostrophic",
-      "climate"
+      "weno"
     ],
     "sources": [
       "semantic_scholar"
@@ -18973,10 +19048,10 @@
     "source": "semantic_scholar",
     "official_keywords": [],
     "custom_keywords": [
-      "drag reduction",
-      "turbulence",
       "reinforcement learning",
-      "turbulent flow"
+      "turbulent flow",
+      "turbulence",
+      "drag reduction"
     ],
     "keywords": [
       "RL",
@@ -19330,9 +19405,9 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
+      "flow modeling",
       "turbulence",
-      "navier-stokes",
-      "flow modeling"
+      "navier-stokes"
     ],
     "keywords": [
       "flow modeling",
@@ -19477,9 +19552,9 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "gnn",
-      "fluid dynamics",
       "graph neural network",
-      "neural network"
+      "neural network",
+      "fluid dynamics"
     ],
     "sources": [
       "arxiv",
@@ -19630,11 +19705,11 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "deep reinforcement learning",
-      "reinforcement learning",
       "flow control",
+      "reinforcement learning",
       "active flow control",
-      "drl"
+      "drl",
+      "deep reinforcement learning"
     ],
     "keywords": [
       "DRL",
@@ -19750,8 +19825,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "reduced-order model",
-      "pod"
+      "pod",
+      "reduced-order model"
     ],
     "keywords": [
       "POD",
@@ -20100,10 +20175,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "pinn",
-      "physics-informed neural network",
       "physics-informed",
-      "neural network"
+      "physics-informed neural network",
+      "neural network",
+      "pinn"
     ],
     "sources": [
       "crossref"
@@ -20164,8 +20239,8 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -20254,14 +20329,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
+      "surrogate model",
       "physics-informed",
       "computational fluid dynamics",
-      "cfd",
-      "physics-constrained",
-      "fluid dynamics",
       "data-driven",
       "navier-stokes",
-      "surrogate model"
+      "physics-constrained",
+      "cfd",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex",
@@ -20397,11 +20472,11 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "computational fluid dynamics",
       "vortices",
-      "fluid dynamics",
+      "boundary layer",
+      "computational fluid dynamics",
       "turbulence",
-      "boundary layer"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -20446,8 +20521,9 @@
       "aneurysm",
       "blood flow",
       "cardiovascular",
-      "fluid dynamics",
-      "neural network"
+      "data-driven",
+      "high-resolution reconstruction",
+      "navier-stokes"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -20509,15 +20585,15 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "cardiovascular",
+      "blood flow",
       "computational fluid dynamics",
-      "cfd",
-      "physics-informed neural network",
+      "data-driven",
       "aneurysm",
-      "neural network",
+      "cardiovascular",
+      "high-resolution reconstruction",
       "pinn",
-      "fluid dynamics",
-      "blood flow"
+      "navier-stokes",
+      "cfd"
     ],
     "sources": [
       "openalex",
@@ -20588,10 +20664,10 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "physics-informed neural network",
       "aneurysm",
+      "navier-stokes",
       "neural network",
-      "navier-stokes"
+      "physics-informed neural network"
     ],
     "sources": [
       "openalex",
@@ -20675,13 +20751,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "blood flow",
       "heat transfer",
-      "hemodynamics",
-      "neural network",
       "pinn",
       "machine learning",
-      "fluid dynamics",
-      "blood flow"
+      "hemodynamics",
+      "neural network",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -20762,13 +20838,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
-      "physics-constrained",
-      "physics-informed neural network",
-      "heat transfer",
-      "neural network",
       "deep learning",
-      "pinn"
+      "physics-informed",
+      "heat transfer",
+      "pinn",
+      "physics-constrained",
+      "neural network",
+      "physics-informed neural network"
     ],
     "sources": [
       "crossref",
@@ -20822,9 +20898,9 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
       "computational fluid dynamics",
-      "neural network"
+      "neural network",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -20892,12 +20968,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "surrogate model",
       "computational fluid dynamics",
-      "cfd",
-      "machine learning",
-      "fluid dynamics",
       "data-driven",
-      "surrogate model"
+      "machine learning",
+      "cfd",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -21013,11 +21089,11 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
+      "ocean energy",
       "computational fluid dynamics",
       "finite volume",
       "cfd",
-      "fluid dynamics",
-      "ocean energy"
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -21240,15 +21316,15 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
-      "aerodynamics",
-      "computational fluid dynamics",
-      "operator learning",
-      "neural network",
       "deep learning",
-      "shape optimization",
+      "operator learning",
+      "computational fluid dynamics",
       "airfoil",
-      "fluid dynamics",
-      "graph neural network"
+      "graph neural network",
+      "neural network",
+      "aerodynamics",
+      "shape optimization",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -21443,8 +21519,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "bubble",
       "shear flow",
+      "bubble",
       "droplet"
     ],
     "keywords": [
@@ -21521,8 +21597,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "drag reduction",
-      "turbulence"
+      "turbulence",
+      "drag reduction"
     ],
     "keywords": [
       "drag reduction",
@@ -21649,12 +21725,12 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
       "flow matching",
-      "flame",
+      "computational fluid dynamics",
       "machine learning",
-      "fluid dynamics",
-      "transformer"
+      "transformer",
+      "flame",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -21931,8 +22007,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "computational fluid dynamics",
-      "cfd",
       "heat transfer",
+      "cfd",
       "neural network",
       "fluid dynamics"
     ],
@@ -22015,12 +22091,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "surrogate model",
       "computational fluid dynamics",
-      "cfd",
-      "neural operator",
       "combustion",
-      "fluid dynamics",
-      "surrogate model"
+      "neural operator",
+      "cfd",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -22137,9 +22213,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
+      "precipitation",
       "physics-informed",
       "machine learning",
-      "precipitation",
       "data-driven"
     ],
     "sources": [
@@ -22322,9 +22398,9 @@
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
       "heat transfer",
+      "computational fluid dynamics",
       "navier-stokes",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -22489,9 +22565,9 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "finite element",
+      "blood flow",
       "finite element method",
-      "blood flow"
+      "finite element"
     ],
     "sources": [
       "openalex"
@@ -22558,10 +22634,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "transformer",
+      "neural operator",
       "navier-stokes",
       "deeponet",
-      "neural operator"
+      "transformer"
     ],
     "sources": [
       "semantic_scholar"
@@ -22693,10 +22769,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
+      "airfoil optimization",
       "physics-informed",
       "machine learning",
-      "airfoil",
-      "airfoil optimization"
+      "airfoil"
     ],
     "sources": [
       "semantic_scholar"
@@ -22786,12 +22862,12 @@
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
       "two-phase flow",
-      "les",
-      "droplet",
-      "lattice boltzmann",
-      "vortex",
       "subgrid-scale model",
-      "turbulent flow"
+      "turbulent flow",
+      "lattice boltzmann",
+      "les",
+      "vortex",
+      "droplet"
     ],
     "sources": [
       "semantic_scholar"
@@ -22890,15 +22966,15 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
-      "rans",
-      "computational fluid dynamics",
-      "cfd",
-      "heat transfer",
       "reynolds stress",
-      "fluid dynamics",
-      "turbulence",
+      "computational fluid dynamics",
+      "rans",
+      "heat transfer",
+      "dem",
       "navier-stokes",
-      "dem"
+      "cfd",
+      "turbulence",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -22965,9 +23041,9 @@
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
       "reinforcement learning",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -23051,10 +23127,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "flame",
       "heat transfer",
-      "navier-stokes",
-      "combustion"
+      "flame",
+      "combustion",
+      "navier-stokes"
     ],
     "keywords": [
       "combustion",
@@ -23186,10 +23262,10 @@
     "official_keywords": [],
     "custom_keywords": [
       "physics-informed",
-      "physics-informed neural network",
-      "neural network",
       "pinn",
-      "navier-stokes"
+      "navier-stokes",
+      "neural network",
+      "physics-informed neural network"
     ],
     "keywords": [
       "PINN",
@@ -23258,10 +23334,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "detonation",
       "flame",
-      "combustion",
       "les",
-      "detonation"
+      "combustion"
     ],
     "keywords": [
       "combustion",
@@ -23347,10 +23423,10 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "computational fluid dynamics",
+      "data-driven",
       "finite volume",
       "machine learning",
-      "fluid dynamics",
-      "data-driven"
+      "fluid dynamics"
     ],
     "sources": [
       "arxiv",
@@ -23606,9 +23682,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
       "turbulence",
-      "microfluidic"
+      "microfluidic",
+      "vortex"
     ],
     "keywords": [
       "microfluidic",
@@ -23686,8 +23762,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "microfluidic",
-      "shear flow"
+      "shear flow",
+      "microfluidic"
     ],
     "keywords": [
       "microfluidic",
@@ -23872,10 +23948,10 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "compressible flow",
       "computational fluid dynamics",
-      "cfd",
       "airfoil",
+      "cfd",
+      "compressible flow",
       "fluid dynamics"
     ],
     "sources": [
@@ -23940,83 +24016,12 @@
     "custom_keywords": [
       "cfd",
       "heat transfer",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
       "openalex"
-    ]
-  },
-  {
-    "id": "10.1088/1873-7005/ae8bd4",
-    "title": "Dynamics of two Interacting Drops in a Microfluidic Confinement under imposed Temperature Gradient",
-    "authors": "Sayak Ray, Sudipta Ray, Suman Chakraborty",
-    "abstract": "Abstract A tiny drop of one liquid, suspended within another, is known to be set into motion aligned with an imposed thermal gradient, as influenced by thermocapillary action stemming from the gradients in interfacial tension due to the local variations in temperature. In real-world situations, however, such drops do not remain in isolation, as they interact with their neighbouring entities, including other drops in proximity as well as a nearby solid boundary, setting up a complex interplay between the confinement-mediated interactions and the three-dimensional nature of the drop dynamics. In this study, we present numerical solutions for the migration dynamics of a tightly confined drop couple, incorporating deformable interfaces, and Marangoni effects in the presence of dynamically evolving thermocapillary stresses induced by an imposed uniform temperature gradient. Unlike prior investigations, our work delineates a parameter that highlights the influence of the droplet surface tension forces towards orchestrating non-trivial features of drop migration, as dictated by an intricate coupling of the thermal and flow fields amidst the interferences of the domain boundaries and imposed external poiseulle flow. The study reveals that the influence of the droplet surface tension forces is more prominent in flows under low confinement and where conductivity ratio between the droplet and carrier phases is low. The droplets in these scenarios deform to orient the Marangoni forces along motion with time thus reducing the influence of the droplet interactions. These findings hold significance in designing thermocapillary-driven micro-confined systems for controlling drop trajectories under an imposed thermal field, bearing far-reaching implications in a plethora of overarching applications ranging from drop microfluidics to space technology.",
-    "published": "2026-07-16",
-    "paper_url": "https://doi.org/10.1088/1873-7005/ae8bd4",
-    "arxiv_id": "",
-    "arxiv_url": "",
-    "pdf_url": "",
-    "preprint_pdf_url": "",
-    "categories": [],
-    "venue": "Fluid Dynamics Research",
-    "conference": "Fluid Dynamics Research",
-    "publication_types": [
-      "journal-article"
-    ],
-    "publication_type": "journal",
-    "doi": "10.1088/1873-7005/ae8bd4",
-    "external_ids": {},
-    "semantic_scholar_id": "",
-    "code_link": "",
-    "tags": [
-      "流体力学",
-      "流体力学 / 多相流理论",
-      "流体力学 / 生物与医学流体"
-    ],
-    "keywords": [
-      "droplet",
-      "microfluidic"
-    ],
-    "citation_count": 0,
-    "impact_factor": null,
-    "source": "crossref",
-    "is_preprint": false,
-    "is_early_access": false,
-    "date_source": "crossref",
-    "date_status": "reliable",
-    "classification_score": {
-      "流体力学 / 多相流理论": {
-        "score": 5,
-        "strong_hits": [
-          "droplet"
-        ],
-        "context_hits": [
-          "fluid",
-          "flow"
-        ],
-        "negative_hits": []
-      },
-      "流体力学 / 生物与医学流体": {
-        "score": 5,
-        "strong_hits": [
-          "microfluidic"
-        ],
-        "context_hits": [
-          "fluid",
-          "flow"
-        ],
-        "negative_hits": []
-      }
-    },
-    "primary_domain": "流体力学 / 生物与医学流体",
-    "custom_keywords": [
-      "microfluidic",
-      "droplet"
-    ],
-    "sources": [
-      "crossref"
     ]
   },
   {
@@ -24164,13 +24169,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
     "custom_keywords": [
-      "uncertainty quantification",
       "physics-informed",
+      "data-driven",
+      "uncertainty quantification",
       "cfd",
       "design optimization",
       "multiphase flow",
-      "fluid dynamics",
-      "data-driven"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -24408,12 +24413,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "uncertainty quantification",
-      "cfd",
-      "fluid dynamics",
+      "surrogate model",
       "rans",
+      "uncertainty quantification",
       "navier-stokes",
-      "surrogate model"
+      "cfd",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -24494,11 +24499,11 @@
     "custom_keywords": [
       "rans",
       "computational fluid dynamics",
-      "cfd",
       "multiphase flow",
+      "cfd",
+      "turbulence",
       "les",
-      "fluid dynamics",
-      "turbulence"
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -24580,8 +24585,8 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
     "custom_keywords": [
-      "flow control",
-      "active flow control"
+      "active flow control",
+      "flow control"
     ],
     "sources": [
       "semantic_scholar"
@@ -24648,9 +24653,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "machine learning",
-      "lattice boltzmann",
       "level set",
+      "lattice boltzmann",
+      "machine learning",
       "data-driven"
     ],
     "sources": [
@@ -24803,14 +24808,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "uncertainty quantification",
-      "physics-informed",
-      "operator learning",
       "deep learning",
-      "machine learning",
+      "operator learning",
+      "physics-informed",
       "climate",
-      "fluid dynamics",
-      "data-driven"
+      "data-driven",
+      "uncertainty quantification",
+      "machine learning",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -24871,9 +24876,9 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "fluid dynamics",
       "blood flow",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -25067,11 +25072,11 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "computational fluid dynamics",
-      "cfd",
-      "pod",
-      "fluid dynamics",
       "data-driven",
-      "wake flow"
+      "wake flow",
+      "pod",
+      "cfd",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -25201,9 +25206,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
+      "finite difference",
       "pinn",
       "heat transfer",
-      "finite difference",
       "neural network"
     ],
     "sources": [
@@ -25382,12 +25387,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
       "deep learning",
-      "pinn",
+      "physics-informed",
+      "data-driven",
       "machine learning",
-      "fluid dynamics",
-      "data-driven"
+      "pinn",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -25451,10 +25456,10 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "multiphase flow",
       "lattice boltzmann",
-      "droplet",
-      "multiphase flows"
+      "multiphase flow",
+      "multiphase flows",
+      "droplet"
     ],
     "sources": [
       "semantic_scholar"
@@ -25522,13 +25527,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
-      "neural network",
       "deep learning",
-      "seasonal forecast",
+      "physics-informed",
       "climate",
-      "fluid dynamics",
-      "cnn"
+      "cnn",
+      "seasonal forecast",
+      "neural network",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -25618,12 +25623,12 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "latent space",
-      "computational fluid dynamics",
-      "generative model",
       "flow matching",
-      "fluid dynamics",
+      "computational fluid dynamics",
       "speedup",
-      "turbulence"
+      "turbulence",
+      "generative model",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -25744,9 +25749,9 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "computational fluid dynamics",
+      "combustion",
       "cfd",
       "neural network",
-      "combustion",
       "fluid dynamics"
     ],
     "sources": [
@@ -25816,12 +25821,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "operator learning",
-      "neural operator",
       "deep learning",
+      "operator learning",
       "climate",
-      "fluid dynamics",
-      "data-driven"
+      "data-driven",
+      "neural operator",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -25967,9 +25972,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "fluid mechanics",
       "turbulence",
-      "data-driven",
-      "fluid mechanics"
+      "data-driven"
     ],
     "keywords": [
       "data-driven",
@@ -26082,8 +26087,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "vortices"
+      "vortices",
+      "vortex"
     ],
     "keywords": [
       "vortex",
@@ -26256,11 +26261,11 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "vortices",
+      "boundary layer",
       "isotropic turbulence",
       "turbulence",
-      "vortices",
-      "vortex",
-      "boundary layer"
+      "vortex"
     ],
     "keywords": [
       "boundary layer",
@@ -26395,11 +26400,11 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "computational fluid dynamics",
-      "lattice boltzmann",
-      "fluid dynamics",
       "boundary layer",
-      "navier-stokes"
+      "computational fluid dynamics",
+      "navier-stokes",
+      "lattice boltzmann",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -26618,10 +26623,10 @@
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
       "computational fluid dynamics",
-      "cfd",
       "heat transfer",
-      "fluid dynamics",
-      "transformer"
+      "transformer",
+      "cfd",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -26744,9 +26749,9 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
+      "computational fluid dynamics",
       "wind turbine",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -26846,8 +26851,8 @@
       "machine learning",
       "neural network",
       "offshore wind",
+      "surrogate model",
       "transfer learning",
-      "turbulence",
       "wind farm"
     ],
     "citation_count": 0,
@@ -26876,16 +26881,16 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "surrogate model",
       "transfer learning",
-      "offshore wind",
-      "neural network",
-      "machine learning",
-      "gnn",
-      "wind farm",
       "data-driven",
-      "turbulence",
+      "wind farm",
+      "machine learning",
       "dem",
-      "graph neural network"
+      "graph neural network",
+      "neural network",
+      "offshore wind",
+      "gnn"
     ],
     "sources": [
       "openalex"
@@ -26953,12 +26958,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "supervised learning",
       "computational fluid dynamics",
-      "cfd",
-      "design optimization",
       "heat transfer",
       "machine learning",
-      "supervised learning",
+      "cfd",
+      "design optimization",
       "fluid dynamics"
     ],
     "sources": [
@@ -27128,8 +27133,8 @@
     "custom_keywords": [
       "cfd",
       "vof",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -27181,10 +27186,10 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "two-phase flows",
       "deep learning",
-      "two-phase flow",
       "machine learning",
-      "two-phase flows"
+      "two-phase flow"
     ],
     "sources": [
       "semantic_scholar"
@@ -27253,11 +27258,11 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "physics-informed",
       "deep learning",
+      "physics-informed",
       "machine learning",
-      "lattice boltzmann",
       "dem",
+      "lattice boltzmann",
       "inverse design"
     ],
     "sources": [
@@ -27341,9 +27346,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "fluid dynamics",
       "les",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -27506,8 +27511,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
       "vortices",
+      "vortex",
       "fluid dynamics"
     ],
     "keywords": [
@@ -27891,11 +27896,11 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
+      "mesh generation",
       "heat transfer",
-      "physics-informed neural network",
-      "neural network",
       "pinn",
-      "mesh generation"
+      "neural network",
+      "physics-informed neural network"
     ],
     "sources": [
       "crossref"
@@ -27968,9 +27973,9 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
+      "boundary layer",
       "turbulence",
-      "rans",
-      "boundary layer"
+      "rans"
     ],
     "abstract_status": "enriched",
     "abstract_source": "publisher_meta",
@@ -28036,9 +28041,9 @@
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
       "computational fluid dynamics",
+      "aneurysm",
       "cfd",
       "hemodynamics",
-      "aneurysm",
       "fluid dynamics"
     ],
     "abstract_status": "enriched",
@@ -28142,9 +28147,9 @@
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
       "acceleration",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -28282,9 +28287,9 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
+      "adaptive mesh",
       "finite volume",
       "compressible flow",
-      "adaptive mesh",
       "adaptive mesh refinement"
     ],
     "sources": [
@@ -28418,9 +28423,9 @@
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
       "turbulence",
+      "turbulence modeling",
       "les",
-      "les subgrid",
-      "turbulence modeling"
+      "les subgrid"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -28512,14 +28517,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "aerodynamics",
       "computational fluid dynamics",
       "machine learning",
+      "navier-stokes",
       "airfoil",
-      "fluid dynamics",
+      "aerodynamics",
       "gnn",
       "turbulence",
-      "navier-stokes"
+      "fluid dynamics"
     ],
     "sources": [
       "arxiv",
@@ -28691,11 +28696,11 @@
     "custom_keywords": [
       "rans",
       "computational fluid dynamics",
-      "flame",
-      "fluid dynamics",
-      "turbulence",
       "navier-stokes",
-      "dns"
+      "dns",
+      "flame",
+      "turbulence",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -28837,8 +28842,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "speedup",
-      "finite difference"
+      "finite difference",
+      "speedup"
     ],
     "keywords": [
       "finite difference",
@@ -28997,8 +29002,8 @@
     "official_keywords": [],
     "custom_keywords": [
       "turbulence",
-      "generative model",
-      "turbulent flow"
+      "turbulent flow",
+      "generative model"
     ],
     "keywords": [
       "generative model",
@@ -29066,9 +29071,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
+      "vortices",
       "turbulence",
-      "vortices"
+      "vortex"
     ],
     "keywords": [
       "turbulence",
@@ -29227,8 +29232,8 @@
     "source": "semantic_scholar",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
       "turbulence",
+      "vortex",
       "navier-stokes",
       "rom"
     ],
@@ -29385,8 +29390,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "dns"
+      "dns",
+      "turbulence"
     ],
     "keywords": [
       "dns",
@@ -29545,13 +29550,13 @@
     "source": "semantic_scholar",
     "official_keywords": [],
     "custom_keywords": [
-      "solver-in-the-loop",
-      "les",
-      "neural network",
       "deep learning",
-      "reynolds stress",
+      "solver-in-the-loop",
       "combustion",
-      "turbulence"
+      "neural network",
+      "turbulence",
+      "les",
+      "reynolds stress"
     ],
     "keywords": [
       "combustion",
@@ -29638,11 +29643,11 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
+      "boundary layer",
       "neural operator",
+      "cfd",
       "neural network",
-      "turbulence",
-      "boundary layer"
+      "turbulence"
     ],
     "keywords": [
       "CFD",
@@ -29727,8 +29732,8 @@
     "official_keywords": [],
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -30072,10 +30077,10 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "vortex",
+      "boundary layer",
       "heat transfer",
-      "fatigue loading",
-      "boundary layer"
+      "vortex",
+      "fatigue loading"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -30198,13 +30203,13 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "grid convergence",
       "vortices",
-      "fluid dynamics",
-      "turbulence",
+      "grid convergence",
+      "computational fluid dynamics",
       "navier-stokes",
-      "turbulent flow"
+      "turbulence",
+      "turbulent flow",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -30248,11 +30253,10 @@
       "RL",
       "data-driven",
       "data-driven turbulence",
-      "fluid dynamics",
       "neural network",
       "rans",
       "solver-in-the-loop",
-      "turbulence modeling"
+      "turbulence"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -30315,16 +30319,16 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
     "custom_keywords": [
-      "rans",
-      "reinforcement learning",
-      "computational fluid dynamics",
       "solver-in-the-loop",
-      "turbulence modeling",
+      "computational fluid dynamics",
+      "rans",
+      "data-driven",
+      "reinforcement learning",
+      "graph neural network",
       "neural network",
       "data-driven turbulence",
-      "fluid dynamics",
       "gnn",
-      "data-driven"
+      "turbulence"
     ],
     "sources": [
       "crossref"
@@ -30470,9 +30474,9 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "cfd",
-      "rom",
       "cardiovascular",
-      "data-driven"
+      "data-driven",
+      "rom"
     ],
     "sources": [
       "crossref",
@@ -30544,8 +30548,8 @@
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
       "finite volume",
-      "heat transfer",
-      "finite volume method"
+      "finite volume method",
+      "heat transfer"
     ],
     "sources": [
       "openalex"
@@ -30603,8 +30607,8 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "wind turbine",
-      "wind farm"
+      "wind farm",
+      "wind turbine"
     ],
     "sources": [
       "openalex"
@@ -30672,8 +30676,8 @@
     "custom_keywords": [
       "finite volume",
       "heat transfer",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -30768,13 +30772,13 @@
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
       "physics-informed",
-      "cardiovascular",
-      "computational fluid dynamics",
-      "cfd",
-      "super-resolution",
-      "fluid dynamics",
       "blood flow",
-      "navier-stokes"
+      "computational fluid dynamics",
+      "cardiovascular",
+      "super-resolution",
+      "navier-stokes",
+      "cfd",
+      "fluid dynamics"
     ]
   },
   {
@@ -30810,8 +30814,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "aerodynamics",
-      "les"
+      "les",
+      "aerodynamics"
     ],
     "keywords": [
       "aerodynamics",
@@ -31024,12 +31028,12 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
-      "fluid mechanics",
       "deep learning",
-      "microfluidic",
-      "transformer",
       "representation learning",
-      "physics-guided"
+      "fluid mechanics",
+      "transformer",
+      "physics-guided",
+      "microfluidic"
     ],
     "keywords": [
       "PINN",
@@ -31089,12 +31093,12 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
-      "cfd",
-      "neural network",
-      "aeroelasticity",
       "airfoil",
-      "rom",
-      "physics-guided"
+      "physics-guided",
+      "cfd",
+      "aeroelasticity",
+      "neural network",
+      "rom"
     ],
     "keywords": [
       "CFD",
@@ -31192,13 +31196,13 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "surrogate model",
       "physics-informed",
-      "bubble",
-      "droplet",
       "machine learning",
-      "multiphase flows",
       "transformer",
-      "surrogate model"
+      "bubble",
+      "multiphase flows",
+      "droplet"
     ],
     "keywords": [
       "PINN",
@@ -31287,10 +31291,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "dns",
       "turbulence",
-      "rans",
       "heat transfer",
-      "dns"
+      "rans"
     ],
     "keywords": [
       "dns",
@@ -31594,8 +31598,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "vortices"
+      "vortices",
+      "vortex"
     ],
     "keywords": [
       "vortex",
@@ -31708,8 +31712,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "machine learning",
       "cardiovascular",
+      "machine learning",
       "neural network"
     ],
     "keywords": [
@@ -31916,10 +31920,10 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
-      "data-driven",
-      "compressible flow",
       "dns",
-      "neural network"
+      "compressible flow",
+      "neural network",
+      "data-driven"
     ],
     "keywords": [
       "compressible flow",
@@ -32020,9 +32024,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "boundary layer",
       "turbulence",
-      "airfoil",
-      "boundary layer"
+      "airfoil"
     ],
     "keywords": [
       "airfoil",
@@ -32096,9 +32100,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "vortices",
       "vortex",
-      "navier-stokes",
-      "vortices"
+      "navier-stokes"
     ],
     "keywords": [
       "navier-stokes",
@@ -32224,9 +32228,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "finite element",
+      "microfluidic",
       "finite element method",
-      "microfluidic"
+      "finite element"
     ],
     "keywords": [
       "finite element",
@@ -32347,8 +32351,8 @@
     "custom_keywords": [
       "cfd",
       "turbulence",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -32420,11 +32424,11 @@
     "official_keywords": [],
     "custom_keywords": [
       "computational fluid dynamics",
-      "cfd",
-      "neural network",
       "machine learning",
-      "fluid dynamics",
-      "graph neural network"
+      "cfd",
+      "graph neural network",
+      "neural network",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -32495,13 +32499,13 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "finite element",
-      "aortic",
       "physics-informed",
+      "blood flow",
+      "inverse problem",
+      "aortic",
       "aneurysm",
       "pinn",
-      "blood flow",
-      "inverse problem"
+      "finite element"
     ],
     "keywords": [
       "PINN",
@@ -32608,9 +32612,9 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "rans",
-      "physics-constrained",
-      "machine learning",
       "data-driven",
+      "machine learning",
+      "physics-constrained",
       "turbulence"
     ],
     "sources": [
@@ -32696,8 +32700,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "aerodynamics",
-      "airfoil"
+      "airfoil",
+      "aerodynamics"
     ],
     "keywords": [
       "aerodynamics",
@@ -33005,11 +33009,11 @@
     "source": "openalex",
     "official_keywords": [],
     "custom_keywords": [
-      "finite element",
-      "cardiovascular",
-      "fluid dynamics",
       "blood flow",
-      "speedup"
+      "cardiovascular",
+      "speedup",
+      "finite element",
+      "fluid dynamics"
     ],
     "keywords": [
       "blood flow",
@@ -33089,9 +33093,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
       "cavitation",
-      "multiphase flows"
+      "multiphase flows",
+      "vortex"
     ],
     "keywords": [
       "cavitation",
@@ -33433,8 +33437,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "pinn",
-      "physics-informed"
+      "physics-informed",
+      "pinn"
     ],
     "keywords": [
       "PINN"
@@ -33520,8 +33524,8 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "deep learning",
-      "pinn",
       "physics-informed",
+      "pinn",
       "heat transfer"
     ],
     "sources": [
@@ -33661,9 +33665,9 @@
     "custom_keywords": [
       "physics-informed",
       "heat transfer",
-      "physics-informed neural network",
+      "pinn",
       "neural network",
-      "pinn"
+      "physics-informed neural network"
     ],
     "sources": [
       "crossref"
@@ -33704,8 +33708,9 @@
     "keywords": [
       "CFD",
       "PINN",
+      "data-driven",
       "deep learning",
-      "neural network",
+      "machine learning",
       "rans",
       "reynolds stress",
       "solver-in-the-loop",
@@ -33818,16 +33823,16 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
     "custom_keywords": [
-      "rans",
-      "physics-informed",
-      "uncertainty quantification",
-      "computational fluid dynamics",
-      "solver-in-the-loop",
-      "cfd",
-      "super-resolution",
-      "neural network",
       "deep learning",
-      "reynolds stress"
+      "reynolds stress",
+      "solver-in-the-loop",
+      "physics-informed",
+      "computational fluid dynamics",
+      "rans",
+      "data-driven",
+      "uncertainty quantification",
+      "machine learning",
+      "super-resolution"
     ],
     "sources": [
       "crossref",
@@ -33923,13 +33928,13 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "aerodynamics",
-      "wind turbine",
-      "deep reinforcement learning",
-      "reinforcement learning",
       "computational fluid dynamics",
+      "reinforcement learning",
       "airfoil",
-      "fluid dynamics"
+      "wind turbine",
+      "fluid dynamics",
+      "aerodynamics",
+      "deep reinforcement learning"
     ],
     "sources": [
       "crossref",
@@ -33990,10 +33995,10 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "aortic",
-      "fluid dynamics",
+      "fluid mechanics",
       "computational fluid dynamics",
-      "fluid mechanics"
+      "aortic",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -34084,10 +34089,10 @@
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
       "computational fluid dynamics",
+      "wake flow",
       "cfd",
       "design optimization",
-      "fluid dynamics",
-      "wake flow"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -34136,8 +34141,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "publisher_meta",
@@ -34262,12 +34267,12 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "rans",
-      "turbulence",
       "vortices",
-      "vortex",
       "eddy viscosity",
-      "dns"
+      "rans",
+      "dns",
+      "turbulence",
+      "vortex"
     ],
     "abstract_status": "enriched",
     "abstract_source": "publisher_meta",
@@ -34359,13 +34364,13 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
+      "surrogate model",
       "rans",
-      "wind turbine",
       "computational fluid dynamics",
-      "fluid dynamics",
       "wind farm",
+      "wind turbine",
       "turbulence",
-      "surrogate model"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -34412,8 +34417,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -34535,8 +34540,8 @@
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -34596,8 +34601,8 @@
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
       "heat transfer",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -34687,8 +34692,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -34751,10 +34756,10 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "hemodynamics",
-      "fluid dynamics",
       "aneurysm",
-      "computational fluid dynamics"
+      "hemodynamics",
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -34817,9 +34822,9 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "vortex",
+      "vortices",
       "turbulence",
-      "vortices"
+      "vortex"
     ],
     "sources": [
       "crossref"
@@ -34866,8 +34871,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -35083,8 +35088,8 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "heat transfer",
-      "shear flow"
+      "shear flow",
+      "heat transfer"
     ],
     "sources": [
       "crossref"
@@ -35171,12 +35176,12 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
+      "vortices",
       "computational fluid dynamics",
       "cfd",
-      "vortices",
-      "fluid dynamics",
       "coastal hydrodynamics",
-      "offshore wind"
+      "offshore wind",
+      "fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -35236,8 +35241,8 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "turbulence",
-      "dns"
+      "dns",
+      "turbulence"
     ],
     "sources": [
       "crossref"
@@ -35297,9 +35302,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "flow simulation",
       "two-phase flow",
-      "droplet",
-      "flow simulation"
+      "droplet"
     ],
     "sources": [
       "crossref"
@@ -35363,9 +35368,9 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "fluid dynamics",
+      "neural network",
       "data-driven",
-      "neural network"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -35444,9 +35449,9 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "microfluidic",
       "vortices",
-      "lattice boltzmann"
+      "lattice boltzmann",
+      "microfluidic"
     ],
     "sources": [
       "crossref"
@@ -35650,11 +35655,11 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "neural operator",
       "fourier neural operator",
       "data-driven",
-      "turbulence",
-      "physics-guided"
+      "neural operator",
+      "physics-guided",
+      "turbulence"
     ],
     "sources": [
       "crossref"
@@ -35810,8 +35815,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "machine learning",
       "lstm",
+      "machine learning",
       "les"
     ],
     "sources": [
@@ -35975,11 +35980,11 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "cfd",
-      "heat transfer",
-      "neural network",
-      "machine learning",
       "data-driven",
+      "heat transfer",
+      "machine learning",
+      "cfd",
+      "neural network",
       "turbulence"
     ],
     "abstract_status": "enriched",
@@ -36032,10 +36037,10 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "multiphase flow",
       "machine learning",
-      "data-driven",
-      "neural network"
+      "multiphase flow",
+      "neural network",
+      "data-driven"
     ]
   },
   {
@@ -36098,10 +36103,10 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
+      "pinn",
       "cfd",
-      "physics-informed neural network",
       "neural network",
-      "pinn"
+      "physics-informed neural network"
     ],
     "sources": [
       "crossref",
@@ -36171,13 +36176,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "wind turbine",
+      "surrogate model",
       "computational fluid dynamics",
+      "aerodynamic optimization",
       "cfd",
       "neural network",
-      "fluid dynamics",
-      "surrogate model",
-      "aerodynamic optimization"
+      "wind turbine",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -36285,8 +36290,8 @@
     "custom_keywords": [
       "cfd",
       "combustion",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "publisher_meta",
@@ -36349,8 +36354,8 @@
     "custom_keywords": [
       "cfd",
       "turbulence",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -36410,8 +36415,8 @@
     "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
     "custom_keywords": [
       "multigrid",
-      "fluid dynamics",
-      "acceleration"
+      "acceleration",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -36458,8 +36463,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -36506,8 +36511,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -36569,9 +36574,9 @@
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
       "cfd",
-      "rans",
       "bubble",
-      "cavitation"
+      "cavitation",
+      "rans"
     ],
     "abstract_status": "enriched",
     "abstract_source": "publisher_meta",
@@ -36648,13 +36653,13 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "finite element",
+      "blood flow",
       "computational fluid dynamics",
       "cfd",
       "hemodynamics",
+      "finite element",
       "finite element method",
-      "fluid dynamics",
-      "blood flow"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -36728,12 +36733,12 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
+      "combustion",
       "computational fluid dynamics",
       "cfd",
       "flame",
-      "combustion",
-      "fluid dynamics",
-      "turbulence"
+      "turbulence",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -36780,8 +36785,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ]
   },
   {
@@ -36911,9 +36916,9 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "fluid dynamics",
+      "neural network",
       "data-driven",
-      "neural network"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex",
@@ -36986,10 +36991,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "fluid dynamics",
       "inverse design",
+      "computational fluid dynamics",
       "data-driven",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -37057,9 +37062,9 @@
     "custom_keywords": [
       "physics-informed",
       "computational fluid dynamics",
+      "data-driven",
       "neural network",
-      "fluid dynamics",
-      "data-driven"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -37226,10 +37231,10 @@
     "custom_keywords": [
       "physics-informed",
       "latent space",
-      "geostrophic",
-      "autoencoder",
       "climate",
+      "autoencoder",
       "data-driven",
+      "geostrophic",
       "turbulence"
     ],
     "sources": [
@@ -37284,9 +37289,9 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "machine learning",
       "vof",
-      "heat transfer"
+      "heat transfer",
+      "machine learning"
     ],
     "sources": [
       "openalex",
@@ -37424,9 +37429,9 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "vortex",
+      "fluid-structure interaction",
       "turbulence",
-      "fluid-structure interaction"
+      "vortex"
     ],
     "sources": [
       "openalex"
@@ -37524,15 +37529,15 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "operator learning",
       "flow field reconstruction",
-      "sparse sensor",
-      "neural operator",
-      "fluid dynamics",
-      "vortex",
+      "operator learning",
       "deeponet",
-      "rom"
+      "computational fluid dynamics",
+      "neural operator",
+      "rom",
+      "sparse sensor",
+      "vortex",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -37644,9 +37649,9 @@
     "primary_domain": "流体力学 / 计算流体力学方法",
     "custom_keywords": [
       "finite volume",
+      "navier-stokes",
       "cfd",
       "differentiable cfd",
-      "navier-stokes",
       "finite volume method"
     ],
     "sources": [
@@ -37712,8 +37717,8 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "cfd",
-      "rom",
-      "data-driven"
+      "data-driven",
+      "rom"
     ],
     "sources": [
       "openalex"
@@ -37776,9 +37781,9 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "navier-stokes",
+      "shock wave",
       "airfoil",
-      "shock wave"
+      "navier-stokes"
     ],
     "abstract_status": "enriched",
     "abstract_source": "semantic_scholar",
@@ -37850,9 +37855,9 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "vortex",
+      "lstm",
       "lattice boltzmann",
-      "lstm"
+      "vortex"
     ],
     "sources": [
       "openalex"
@@ -37928,10 +37933,10 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "wind turbine",
       "computational fluid dynamics",
-      "cfd",
       "airfoil",
+      "cfd",
+      "wind turbine",
       "fluid dynamics"
     ],
     "sources": [
@@ -37981,8 +37986,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -38071,11 +38076,11 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "spray",
       "computational fluid dynamics",
       "cfd",
-      "droplet",
-      "fluid dynamics"
+      "fluid dynamics",
+      "spray",
+      "droplet"
     ],
     "abstract_status": "enriched",
     "abstract_source": "semantic_scholar",
@@ -38141,8 +38146,8 @@
     "custom_keywords": [
       "cfd",
       "heat transfer",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -38207,11 +38212,11 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "cfd",
-      "heat transfer",
-      "flame",
       "combustion",
+      "computational fluid dynamics",
+      "heat transfer",
+      "cfd",
+      "flame",
       "fluid dynamics"
     ],
     "sources": [
@@ -38272,8 +38277,8 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "wind turbine",
-      "les"
+      "les",
+      "wind turbine"
     ],
     "sources": [
       "openalex"
@@ -38357,10 +38362,10 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
+      "combustion",
       "finite volume",
       "cfd",
       "flame",
-      "combustion",
       "turbulence",
       "finite volume method"
     ],
@@ -38445,10 +38450,10 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "rans",
+      "dns",
       "boundary layer",
-      "data-driven",
-      "dns"
+      "rans",
+      "data-driven"
     ],
     "sources": [
       "openalex"
@@ -38532,8 +38537,8 @@
     "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
     "custom_keywords": [
       "rans",
-      "data assimilation",
-      "data-driven"
+      "data-driven",
+      "data assimilation"
     ],
     "sources": [
       "openalex"
@@ -38686,11 +38691,11 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "spray",
       "vof",
-      "droplet",
       "combustion",
-      "vortex"
+      "spray",
+      "vortex",
+      "droplet"
     ],
     "sources": [
       "openalex"
@@ -38806,9 +38811,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "computational fluid dynamics",
       "multiphase flows",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -38965,8 +38970,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -39098,11 +39103,11 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "physics-informed neural network",
-      "neural network",
-      "pinn",
       "blood flow",
-      "navier-stokes"
+      "pinn",
+      "navier-stokes",
+      "neural network",
+      "physics-informed neural network"
     ],
     "sources": [
       "semantic_scholar"
@@ -39223,10 +39228,10 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "vortex",
+      "dns",
       "turbulence",
       "discretization error",
-      "dns"
+      "vortex"
     ],
     "sources": [
       "semantic_scholar"
@@ -39286,14 +39291,14 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "rans",
       "computational fluid dynamics",
+      "rans",
+      "navier-stokes",
+      "airfoil",
       "cfd",
       "neural network",
-      "airfoil",
-      "fluid dynamics",
       "turbulence",
-      "navier-stokes"
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -39361,8 +39366,8 @@
     "custom_keywords": [
       "cfd",
       "vof",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -39466,9 +39471,9 @@
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
       "uncertainty quantification",
-      "cfd",
       "heat transfer",
       "physics-constrained",
+      "cfd",
       "turbulence"
     ],
     "sources": [
@@ -39537,10 +39542,10 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "computational fluid dynamics",
-      "cfd",
-      "fluid dynamics",
       "reduced-order model",
-      "rom"
+      "cfd",
+      "rom",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -39610,14 +39615,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "jet flow",
-      "fluid mechanics",
-      "les",
       "deep learning",
-      "machine learning",
+      "rans",
       "autoencoder",
       "reduced-order model",
-      "rans"
+      "fluid mechanics",
+      "machine learning",
+      "jet flow",
+      "les"
     ],
     "sources": [
       "semantic_scholar"
@@ -39710,11 +39715,11 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "reynolds stress",
+      "eddy viscosity",
       "data-driven",
-      "turbulence",
       "navier-stokes",
-      "eddy viscosity"
+      "turbulence",
+      "reynolds stress"
     ],
     "sources": [
       "semantic_scholar"
@@ -39813,16 +39818,16 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
     "custom_keywords": [
-      "deep reinforcement learning",
-      "reinforcement learning",
-      "computational fluid dynamics",
-      "vortex",
       "flow control",
-      "active flow control",
+      "computational fluid dynamics",
       "lift enhancement",
-      "fluid dynamics",
+      "reinforcement learning",
+      "drag reduction",
+      "active flow control",
+      "deep reinforcement learning",
       "drl",
-      "drag reduction"
+      "vortex",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -39886,9 +39891,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "lattice boltzmann",
       "multiphase flow",
-      "two-phase flow",
-      "lattice boltzmann"
+      "two-phase flow"
     ],
     "sources": [
       "semantic_scholar"
@@ -39960,8 +39965,8 @@
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
       "finite volume",
-      "heat transfer",
-      "finite volume method"
+      "finite volume method",
+      "heat transfer"
     ],
     "sources": [
       "semantic_scholar"
@@ -40032,9 +40037,9 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
+      "shear flow",
       "finite volume",
-      "finite volume method",
-      "shear flow"
+      "finite volume method"
     ],
     "sources": [
       "semantic_scholar"
@@ -40088,8 +40093,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "climate",
-      "aerodynamics",
       "machine learning",
+      "aerodynamics",
       "fluid dynamics"
     ],
     "sources": [
@@ -40245,12 +40250,12 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "latent space",
-      "reinforcement learning",
       "flow control",
-      "active flow control",
+      "latent space",
+      "data-driven",
+      "reinforcement learning",
       "pod",
-      "data-driven"
+      "active flow control"
     ],
     "keywords": [
       "POD",
@@ -40504,8 +40509,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "navier-stokes",
-      "lattice boltzmann"
+      "lattice boltzmann",
+      "navier-stokes"
     ],
     "keywords": [
       "LBM",
@@ -40628,8 +40633,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "keywords": [
       "CFD",
@@ -40681,8 +40686,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "deeponet"
+      "deeponet",
+      "vortex"
     ],
     "keywords": [
       "deeponet",
@@ -40979,10 +40984,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "transformer",
-      "physics-informed",
       "fourier neural operator",
-      "neural operator"
+      "neural operator",
+      "physics-informed",
+      "transformer"
     ],
     "keywords": [
       "FNO",
@@ -41325,10 +41330,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "navier-stokes",
-      "phase field",
       "shear flow",
-      "two-phase flows"
+      "two-phase flows",
+      "phase field",
+      "navier-stokes"
     ],
     "keywords": [
       "navier-stokes",
@@ -41408,8 +41413,8 @@
     "official_keywords": [],
     "custom_keywords": [
       "lattice boltzmann",
-      "droplet",
-      "multiphase flows"
+      "multiphase flows",
+      "droplet"
     ],
     "keywords": [
       "LBM",
@@ -41478,8 +41483,8 @@
     "source": "semantic_scholar",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "lattice boltzmann"
+      "lattice boltzmann",
+      "vortex"
     ],
     "keywords": [
       "LBM",
@@ -41645,10 +41650,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
-      "isotropic turbulence",
+      "dns",
       "bubble",
-      "dns"
+      "turbulence",
+      "isotropic turbulence"
     ],
     "keywords": [
       "bubble",
@@ -41724,8 +41729,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "flame",
-      "shear flow"
+      "shear flow",
+      "flame"
     ],
     "keywords": [
       "flame",
@@ -41863,10 +41868,10 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "rans",
-      "navier-stokes",
+      "data-driven",
       "les",
-      "data-driven"
+      "rans",
+      "navier-stokes"
     ],
     "keywords": [
       "data-driven",
@@ -41920,8 +41925,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "turbulence",
       "vortices",
+      "turbulence",
       "turbulent flow"
     ],
     "keywords": [
@@ -42074,10 +42079,10 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
+      "combustion",
       "computational fluid dynamics",
       "cfd",
       "flame",
-      "combustion",
       "fluid dynamics"
     ],
     "sources": [
@@ -42160,14 +42165,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "transfer learning",
       "physics-informed",
-      "physics-informed neural network",
+      "transfer learning",
       "pod",
-      "neural network",
       "pinn",
-      "fluid dynamics",
-      "navier-stokes"
+      "navier-stokes",
+      "neural network",
+      "physics-informed neural network",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -42225,8 +42230,8 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "wind turbine",
-      "wind farm"
+      "wind farm",
+      "wind turbine"
     ],
     "sources": [
       "openalex"
@@ -42297,16 +42302,16 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "finite element",
       "physics-informed",
       "computational fluid dynamics",
+      "mesh generation",
+      "data-driven",
+      "machine learning",
+      "transformer",
       "cfd",
       "lstm",
-      "machine learning",
-      "fluid dynamics",
-      "data-driven",
-      "transformer",
-      "mesh generation"
+      "finite element",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -42456,9 +42461,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
+      "vortices",
       "turbulence",
-      "vortices"
+      "vortex"
     ],
     "keywords": [
       "turbulence",
@@ -42818,9 +42823,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "machine learning",
       "airfoil",
+      "machine learning",
+      "vortex",
       "data-driven"
     ],
     "keywords": [
@@ -42875,9 +42880,9 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "bubble",
       "boundary layer",
-      "reduced-order model",
-      "bubble"
+      "reduced-order model"
     ],
     "keywords": [
       "ROM",
@@ -43009,8 +43014,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "wake flow"
+      "wake flow",
+      "vortex"
     ],
     "keywords": [
       "vortex",
@@ -43157,9 +43162,9 @@
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
       "cfd",
+      "fluid mechanics",
       "multiphase flow",
-      "bubble",
-      "fluid mechanics"
+      "bubble"
     ],
     "sources": [
       "crossref",
@@ -43207,8 +43212,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -43269,8 +43274,8 @@
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
       "flame",
-      "combustion",
       "les",
+      "combustion",
       "physics-guided"
     ],
     "sources": [
@@ -43323,8 +43328,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "deep learning",
-      "fluid dynamics",
-      "neural network"
+      "neural network",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -43376,11 +43381,11 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "precipitation",
       "computational fluid dynamics",
-      "cfd",
       "machine learning",
-      "fluid dynamics",
-      "precipitation"
+      "cfd",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -43501,10 +43506,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "fourier neural operator",
       "fno",
       "operator learning",
       "neural operator",
-      "fourier neural operator",
       "navier-stokes"
     ]
   },
@@ -43566,8 +43571,8 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "vortex",
       "turbulence",
+      "vortex",
       "reduced-order model"
     ],
     "sources": [
@@ -43732,11 +43737,11 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
+      "mesh generation",
       "finite volume",
-      "cfd",
-      "finite volume method",
       "airfoil",
-      "mesh generation"
+      "cfd",
+      "finite volume method"
     ],
     "keywords": [
       "CFD",
@@ -43960,8 +43965,8 @@
     "source": "arxiv",
     "official_keywords": [],
     "custom_keywords": [
-      "vortex",
-      "vortices"
+      "vortices",
+      "vortex"
     ],
     "keywords": [
       "vortex",
@@ -44079,11 +44084,11 @@
     "official_keywords": [],
     "custom_keywords": [
       "physics-informed",
-      "physics-informed neural network",
-      "neural network",
-      "pinn",
+      "data-driven",
       "reduced-order model",
-      "data-driven"
+      "pinn",
+      "neural network",
+      "physics-informed neural network"
     ],
     "keywords": [
       "PINN",
@@ -44297,7 +44302,7 @@
       "data-driven"
     ],
     "abstract_status": "enriched",
-    "abstract_source": "publisher_meta",
+    "abstract_source": "semantic_scholar",
     "sources": [
       "crossref",
       "openalex"
@@ -44343,8 +44348,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -44400,9 +44405,9 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
+      "dns",
       "turbulence",
-      "rans",
-      "dns"
+      "rans"
     ],
     "sources": [
       "crossref"
@@ -44466,9 +44471,9 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "deep learning",
+      "flow modeling",
       "pinn",
-      "finite element",
-      "flow modeling"
+      "finite element"
     ],
     "sources": [
       "crossref"
@@ -44588,9 +44593,9 @@
     },
     "primary_domain": "流体力学 / 环境与地球物理流体",
     "custom_keywords": [
-      "geostrophic",
       "turbulence",
-      "climate"
+      "climate",
+      "geostrophic"
     ],
     "sources": [
       "openalex"
@@ -44757,10 +44762,10 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "wind turbine",
-      "machine learning",
       "combustion",
-      "neural network"
+      "machine learning",
+      "neural network",
+      "wind turbine"
     ],
     "sources": [
       "openalex"
@@ -44843,13 +44848,13 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "wind turbine",
-      "physics-informed neural network",
-      "les",
-      "neural network",
-      "pinn",
       "wind farm",
-      "offshore wind"
+      "pinn",
+      "neural network",
+      "wind turbine",
+      "offshore wind",
+      "physics-informed neural network",
+      "les"
     ],
     "sources": [
       "semantic_scholar"
@@ -44899,10 +44904,10 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "transformer",
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "transformer",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -44980,11 +44985,11 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "vof",
+      "combustion",
       "finite element",
       "spray",
-      "vof",
-      "droplet",
-      "combustion"
+      "droplet"
     ],
     "sources": [
       "semantic_scholar"
@@ -45141,8 +45146,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -45217,8 +45222,8 @@
     "custom_keywords": [
       "turbulence",
       "heat transfer",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "publisher_meta",
@@ -45267,8 +45272,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -45314,8 +45319,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "publisher_meta",
@@ -45430,8 +45435,8 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "computational fluid dynamics",
       "acceleration",
+      "computational fluid dynamics",
       "pinn",
       "fluid dynamics"
     ],
@@ -45506,8 +45511,8 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "multiphase flow",
       "physics-informed",
+      "multiphase flow",
       "data-driven"
     ],
     "sources": [
@@ -45576,10 +45581,10 @@
     },
     "primary_domain": "流体力学 / 环境与地球物理流体",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "cfd",
       "climate",
+      "computational fluid dynamics",
       "machine learning",
+      "cfd",
       "fluid dynamics"
     ],
     "sources": [
@@ -45640,8 +45645,8 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "transformer",
-      "cfd"
+      "cfd",
+      "transformer"
     ],
     "sources": [
       "openalex"
@@ -45708,8 +45713,8 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "spray",
-      "combustion"
+      "combustion",
+      "spray"
     ],
     "sources": [
       "openalex"
@@ -45759,8 +45764,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "aerodynamics",
-      "machine learning"
+      "machine learning",
+      "aerodynamics"
     ],
     "sources": [
       "openalex"
@@ -45828,8 +45833,8 @@
     },
     "primary_domain": "流体力学 / 气动优化设计",
     "custom_keywords": [
-      "combustion",
       "inverse design",
+      "combustion",
       "data-driven"
     ],
     "sources": [
@@ -45891,8 +45896,8 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "two-phase flow",
-      "vof"
+      "vof",
+      "two-phase flow"
     ],
     "abstract_status": "enriched",
     "abstract_source": "publisher_meta",
@@ -46129,9 +46134,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "fluid dynamics",
       "finite difference",
-      "neural network"
+      "neural network",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -46231,10 +46236,10 @@
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
       "physics-informed",
-      "bubble",
-      "neural operator",
-      "lattice boltzmann",
       "data-driven",
+      "neural operator",
+      "bubble",
+      "lattice boltzmann",
       "vortex"
     ],
     "sources": [
@@ -46314,11 +46319,11 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "finite element",
-      "level set",
+      "two-phase flows",
       "multiphase flow",
-      "finite element method",
-      "two-phase flows"
+      "level set",
+      "finite element",
+      "finite element method"
     ],
     "sources": [
       "semantic_scholar"
@@ -46371,8 +46376,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "transformer",
       "machine learning",
+      "transformer",
       "fluid dynamics"
     ],
     "sources": [
@@ -46446,11 +46451,11 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
+      "combustion",
       "computational fluid dynamics",
       "cfd",
-      "combustion",
-      "fluid dynamics",
-      "turbulence"
+      "turbulence",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -46525,10 +46530,10 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
+      "vortices",
       "computational fluid dynamics",
       "cfd",
       "multiphase flow",
-      "vortices",
       "fluid dynamics"
     ],
     "sources": [
@@ -46569,10 +46574,10 @@
       "AE",
       "CFD",
       "PINN",
+      "aerodynamic optimization",
       "airfoil",
       "cnn",
       "deeponet",
-      "design optimization",
       "latent space",
       "machine learning",
       "neural network"
@@ -46620,14 +46625,14 @@
     "custom_keywords": [
       "physics-informed",
       "latent space",
-      "cfd",
-      "design optimization",
-      "neural network",
-      "machine learning",
+      "deeponet",
       "autoencoder",
-      "airfoil",
       "cnn",
-      "deeponet"
+      "machine learning",
+      "aerodynamic optimization",
+      "airfoil",
+      "cfd",
+      "neural network"
     ],
     "sources": [
       "openalex"
@@ -47039,9 +47044,9 @@
     "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
       "speedup",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -47227,8 +47232,8 @@
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
       "turbulence",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -47427,8 +47432,8 @@
     "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -47495,11 +47500,11 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "aerodynamics",
-      "wing aerodynamics",
-      "airfoil",
       "data-driven",
-      "navier-stokes"
+      "airfoil",
+      "navier-stokes",
+      "aerodynamics",
+      "wing aerodynamics"
     ],
     "sources": [
       "openalex"
@@ -47564,8 +47569,8 @@
     },
     "primary_domain": "流体力学 / 环境与地球物理流体",
     "custom_keywords": [
-      "combustion",
-      "precipitation"
+      "precipitation",
+      "combustion"
     ],
     "sources": [
       "openalex"
@@ -47614,8 +47619,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -47687,10 +47692,10 @@
     },
     "primary_domain": "流体力学 / 计算流体力学方法",
     "custom_keywords": [
-      "finite volume",
       "cfd",
       "turbulence",
-      "finite volume method"
+      "finite volume method",
+      "finite volume"
     ],
     "sources": [
       "openalex"
@@ -47752,11 +47757,11 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
+      "acceleration",
       "computational fluid dynamics",
       "cfd",
-      "acceleration",
-      "fluid dynamics",
-      "vortex"
+      "vortex",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -48992,10 +48997,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流动控制与强化学习",
     "custom_keywords": [
-      "flow control",
       "cfd",
-      "active flow control",
-      "heat transfer"
+      "heat transfer",
+      "flow control",
+      "active flow control"
     ],
     "sources": [
       "openalex"
@@ -49062,8 +49067,8 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "turbulence",
       "offshore wind",
+      "turbulence",
       "floating wind"
     ],
     "sources": [
@@ -49111,8 +49116,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -49238,11 +49243,11 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "wind turbine",
+      "surrogate model",
       "vortices",
       "wind farm",
       "topology optimization",
-      "surrogate model"
+      "wind turbine"
     ],
     "sources": [
       "openalex"
@@ -49362,9 +49367,9 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "cfd",
-      "fluid dynamics",
+      "computational fluid dynamics",
       "surrogate model",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -49489,12 +49494,12 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "finite element",
       "computational fluid dynamics",
-      "cfd",
-      "design optimization",
-      "fsi",
       "machine learning",
+      "fsi",
+      "cfd",
+      "finite element",
+      "design optimization",
       "fluid dynamics"
     ],
     "sources": [
@@ -49580,9 +49585,9 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
+      "boundary layer",
       "turbulence",
-      "heat transfer",
-      "boundary layer"
+      "heat transfer"
     ],
     "sources": [
       "openalex"
@@ -49679,14 +49684,14 @@
     },
     "primary_domain": "流体力学 / 气动优化设计",
     "custom_keywords": [
-      "computational fluid dynamics",
+      "boundary layer",
       "flow control",
+      "computational fluid dynamics",
+      "lift enhancement",
+      "drag reduction",
       "cfd",
       "active flow control",
-      "lift enhancement",
-      "fluid dynamics",
-      "drag reduction",
-      "boundary layer"
+      "fluid dynamics"
     ],
     "sources": [
       "openalex",
@@ -49760,11 +49765,11 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "wind turbine",
       "computational fluid dynamics",
       "cfd",
-      "fluid dynamics",
-      "turbulence"
+      "wind turbine",
+      "turbulence",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -49988,8 +49993,8 @@
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
       "machine learning",
-      "fluid dynamics",
-      "data-driven"
+      "data-driven",
+      "fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -50083,12 +50088,12 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "cfd",
-      "neural network",
-      "aeroelasticity",
       "airfoil",
-      "rom",
-      "physics-guided"
+      "physics-guided",
+      "cfd",
+      "aeroelasticity",
+      "neural network",
+      "rom"
     ],
     "sources": [
       "openalex"
