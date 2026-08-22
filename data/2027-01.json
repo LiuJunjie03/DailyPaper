@@ -1,0 +1,164 @@
+[
+  {
+    "id": "10.1016/j.fuel.2026.140381",
+    "title": "Research progress on computational fluid dynamics numerical simulation of homogeneous combustion of ammonia and ammonia-blend fuels",
+    "authors": "Zheng Li, Haohua Liao, Yuhao Li, Xinying Wu, Xingyu Lou, Qingyang Peng, Qiang Liu, Chong Ma, Fan Hu",
+    "abstract": "",
+    "published": "2027-01-01",
+    "paper_url": "https://doi.org/10.1016/j.fuel.2026.140381",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Fuel",
+    "conference": "Fuel",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.fuel.2026.140381",
+    "external_ids": {},
+    "semantic_scholar_id": "688ae8056121fc7244d53289b03559852f1e403b",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 燃烧与传热"
+    ],
+    "keywords": [
+      "CFD",
+      "combustion",
+      "fluid dynamics"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 燃烧与传热": {
+        "score": 5,
+        "strong_hits": [
+          "combustion"
+        ],
+        "context_hits": [
+          "fluid",
+          "simulation"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "custom_keywords": [
+      "combustion",
+      "computational fluid dynamics",
+      "fluid dynamics"
+    ],
+    "sources": [
+      "crossref"
+    ]
+  },
+  {
+    "id": "10.1016/j.neunet.2026.109421",
+    "title": "Anisotropic permeability tensor prediction from porous media microstructure: A physics-informed MaxViT CNN-Transformer framework",
+    "authors": "Mohammad Nooraiepour",
+    "abstract": "Accurate permeability tensor prediction from pore-scale microstructure is essential for subsurface flow modeling, yet direct numerical simulation requires hours per sample, fundamentally constraining large-scale uncertainty quantification. The proposed physics-informed deep learning framework resolves this computational bottleneck through three integrated contributions. First, a MaxViT hybrid CNN-Transformer leverages multi-axis attention to simultaneously resolve grain-scale geometry via block-local operations and representative elementary volume connectivity through grid-global operations, supplying the spatial hierarchy required for anisotropic prediction. Second, a differentiable physics-aware loss function penalizes violations of Onsager reciprocity and thermodynamic positive-definiteness, achieving a mean symmetry error of εsym=3.95×10-7 and 100 % constraint satisfaction without post-hoc correction. Third, a D4-equivariant augmentation strategy introduces a consistent second-order tensor label transformation that eliminates the label-image mismatch typical of naive augmentation. Evaluated on 20,000 synthetic 2D binary sandstone microstructures spanning three orders of magnitude in permeability, the framework achieves a variance-weighted R2=0.9960 ( [Formula: see text] , [Formula: see text] ) on a 4,000-sample test set, a significant reduction in unexplained variance over supervised baselines, with every reported metric improving monotonically across phases. Inference requires 120 ms per sample, a speedup of three orders of magnitude over lattice-Boltzmann references, while integrated Monte Carlo Dropout provides per-sample confidence estimates. Three-dimensional micro-CT extension and real-core validation are identified as the critical next steps toward operational deployment. Ultimately, these results establish transferable principles for scientific machine learning: visual pretraining generalizes across domain boundaries, physical constraints function best as differentiable architectural components, and progressive training guided by failure-mode analysis isolates precise structural performance drivers.",
+    "published": "2027-01-01",
+    "paper_url": "https://doi.org/10.1016/j.neunet.2026.109421",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Neural Networks",
+    "conference": "Neural Networks",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.neunet.2026.109421",
+    "external_ids": {},
+    "semantic_scholar_id": "f79ab76ffac77cd375f44d5110475580a61e8175",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络",
+      "流体力学 / 智能CFD / 流场重建与数据驱动",
+      "流体力学 / 智能CFD / 加速求解与超分辨"
+    ],
+    "keywords": [
+      "PINN",
+      "cnn",
+      "deep learning",
+      "flow modeling",
+      "machine learning",
+      "speedup",
+      "transformer",
+      "uncertainty quantification"
+    ],
+    "citation_count": 0,
+    "impact_factor": 8.0,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 加速求解与超分辨": {
+        "score": 5,
+        "strong_hits": [
+          "speedup"
+        ],
+        "context_hits": [
+          "machine learning",
+          "deep learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 6,
+        "strong_hits": [
+          "physics-informed"
+        ],
+        "context_hits": [
+          "flow",
+          "deep learning",
+          "machine learning"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 流场重建与数据驱动": {
+        "score": 6,
+        "strong_hits": [
+          "uncertainty quantification"
+        ],
+        "context_hits": [
+          "flow",
+          "machine learning",
+          "deep learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
+    "custom_keywords": [
+      "flow modeling",
+      "speedup",
+      "cnn",
+      "machine learning",
+      "physics-informed",
+      "uncertainty quantification",
+      "deep learning",
+      "transformer"
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "semantic_scholar",
+    "sources": [
+      "crossref"
+    ]
+  }
+]
