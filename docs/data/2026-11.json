@@ -167,13 +167,13 @@
     "id": "10.1016/j.compfluid.2026.107268",
     "title": "Hybrid Fourier Neural Operator–Lattice Boltzmann Method",
     "authors": "A. Junk, J.M. Winter, M. Tütken, S. Schmidt, N.A. Adams",
-    "abstract": "We propose an accelerated computational fluid dynamics framework based on a hybrid Fourier Neural Operator–Lattice Boltzmann Method (FNO–LBM) for steady and unsteady weakly compressible flows. The approach is evaluated on two-dimensional, single-phase benchmark problems at low Reynolds numbers using an SRT LBM formulation. For steady porous media flows, FNO-based initialization significantly accelerates convergence across macroscopic fields, achieving up to 87% speed-up for density and 55% for pressure-drop depending on the convergence tolerance, while preserving steady-state accuracy. Simulations of unsteady flows can be accelerated by hybrid coupling strategies that employ FNO rollouts embedded into LBM time advancement in a way of super-time-stepping, where one FNO step substitues several LBM steps at once. Global and time-resolved error metrics across 100 trajectories for generic 2D flows demonstrate that hybridization consistently improves accuracy and stabilizes long-horizon rollouts relative to purely autoregressive surrogates. Best efficiency is achieved for a lightweight 2.6M-parameter FNO, which diverges under pure autoregressive rollout but achieves up to 99% error reduction under hybrid coupling, matching the predictive capability of a much more expensive 11.2M- parameter model. The hybrid framework enhances predictive fidelity, suppresses error accumulation, and enables small and cheap surrogate models to operate effectively within the same error regime as larger surrogates. Overall, the results demonstrate that hybrid FNO–LBM coupling can improve stability and efficiency in controlled low-Re 2D settings, enabling compact surrogate models to operate effectively within the accuracy range of larger models and the underlying LBM solver.",
+    "abstract": "We propose an accelerated computational fluid dynamics framework based on a hybrid Fourier Neural Operator-Lattice Boltzmann Method (FNO-LBM) for steady and unsteady weakly compressible flows. FNO-based initialization significantly accelerates LBM in reaching steady-states of porous media flows across all macroscopic fields, achieving up to 70% speed-up in convergence of density and more than 40% of pressure-drop while preserving the final steady-state accuracy. Simulations of unsteady flows can be accelerated by hybrid coupling strategies that employ FNO rollouts embedded into LBM time advancement in a way of super-time-stepping. Global and time-resolved error metrics across 100 trajectories for generic 2D flows demonstrate that hybridization consistently improves accuracy and stabilizes long-horizon rollouts. Best efficiency is achieved for a lightweight 2.6M-parameter FNO, which diverges under pure autoregressive rollout but achieves 96-99.8% error reduction under hybrid coupling, matching the predictive capability of a much more expensive 11.2M-parameter model. The hybrid framework enhances predictive fidelity, suppresses error accumulation, and enables small and cheap surrogate models to operate effectively within the same error regime as larger surrogates. These results demonstrate that hybrid neural-operator coupling achieves robust and computationally efficient accelerated LBM while maintaining physically consistent flow evolution.",
     "published": "2026-11-01",
     "paper_url": "https://doi.org/10.1016/j.compfluid.2026.107268",
-    "arxiv_id": "",
-    "arxiv_url": "",
+    "arxiv_id": "2604.27158",
+    "arxiv_url": "https://arxiv.org/abs/2604.27158",
     "pdf_url": "https://doi.org/10.1016/j.compfluid.2026.107268",
-    "preprint_pdf_url": "",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2604.27158",
     "categories": [],
     "venue": "Computers &amp; Fluids",
     "conference": "Computers &amp; Fluids",
@@ -185,7 +185,7 @@
     "external_ids": {
       "OpenAlex": "W7159633883"
     },
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "5aec1647ecd9d29ca03a47e59026a6318d9d26f9",
     "code_link": "",
     "tags": [
       "机器学习",
@@ -221,29 +221,32 @@
         "negative_hits": []
       },
       "流体力学 / 多相流理论": {
-        "score": 4,
+        "score": 5,
         "strong_hits": [
           "lattice boltzmann"
         ],
         "context_hits": [
-          "fluid"
+          "fluid",
+          "flow"
         ],
         "negative_hits": []
       }
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "neural operator",
-      "computational fluid dynamics",
-      "fourier neural operator",
+      "fluid dynamics",
       "lattice boltzmann",
+      "neural operator",
       "fno",
-      "fluid dynamics"
+      "fourier neural operator",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref",
       "openalex"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "semantic_scholar"
   },
   {
     "id": "10.1016/j.asoc.2026.116182",
@@ -341,8 +344,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -404,11 +407,11 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "aortic",
-      "computational fluid dynamics",
-      "blood flow",
       "fluid dynamics",
-      "cfd"
+      "blood flow",
+      "cfd",
+      "aortic",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -465,8 +468,8 @@
     },
     "primary_domain": "流体力学 / 计算流体力学方法",
     "custom_keywords": [
-      "finite volume method",
-      "finite volume"
+      "finite volume",
+      "finite volume method"
     ],
     "sources": [
       "crossref"
@@ -515,9 +518,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "fluid dynamics",
       "deep learning",
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -631,10 +634,10 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "les",
+      "rans",
       "turbulence",
-      "heat transfer",
-      "rans"
+      "les",
+      "heat transfer"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -705,14 +708,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "physics-informed",
-      "data-driven",
-      "acceleration",
-      "pinn",
-      "machine learning",
       "fluid dynamics",
-      "cfd"
+      "pinn",
+      "acceleration",
+      "machine learning",
+      "data-driven",
+      "physics-informed",
+      "cfd",
+      "computational fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -786,10 +789,10 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
+      "pinn",
+      "neural network",
       "transfer learning",
       "physics-informed",
-      "neural network",
-      "pinn",
       "physics-informed neural network"
     ],
     "sources": [
@@ -838,8 +841,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -900,9 +903,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "finite element",
       "operator learning",
-      "navier-stokes"
+      "navier-stokes",
+      "finite element"
     ],
     "sources": [
       "crossref"
@@ -948,8 +951,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ]
   },
   {
@@ -1115,10 +1118,13 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "bubble",
-      "computational fluid dynamics",
       "fluid dynamics",
-      "cfd"
+      "cfd",
+      "bubble",
+      "computational fluid dynamics"
+    ],
+    "sources": [
+      "crossref"
     ]
   },
   {
@@ -1176,6 +1182,9 @@
     "custom_keywords": [
       "lattice boltzmann",
       "droplet"
+    ],
+    "sources": [
+      "crossref"
     ]
   },
   {
@@ -1251,6 +1260,9 @@
     "custom_keywords": [
       "turbulence",
       "flame"
+    ],
+    "sources": [
+      "crossref"
     ]
   },
   {
@@ -1319,9 +1331,283 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "turbulence",
       "two-phase flow",
-      "cfd"
+      "cfd",
+      "turbulence"
+    ],
+    "sources": [
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.1016/j.ijmultiphaseflow.2026.105909",
+    "title": "A robust energy-convective upwind and split pressure method for compressible fluid–solid multiphase diffuse interface model",
+    "authors": "Yi Cheng, Yiqing Shen, Li Li",
+    "abstract": "",
+    "published": "2026-11-01",
+    "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105909",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of Multiphase Flow",
+    "conference": "International Journal of Multiphase Flow",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.ijmultiphaseflow.2026.105909",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 多相流理论"
+    ],
+    "keywords": [],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 多相流理论": {
+        "score": 5,
+        "strong_hits": [
+          "multiphase flow"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 多相流理论",
+    "custom_keywords": []
+  },
+  {
+    "id": "10.1016/j.ijmultiphaseflow.2026.105910",
+    "title": "Effect of flow parameters on the formation of core–shell pectin–alginate droplets in a microfluidic platform: Experimental and numerical investigation",
+    "authors": "Yasaman Mozhdehbakhsh Mofrad, Sasan Asiaei, Mona Navaei-Nigjeh, Mohammad Abdollahi",
+    "abstract": "",
+    "published": "2026-11-01",
+    "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105910",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of Multiphase Flow",
+    "conference": "International Journal of Multiphase Flow",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.ijmultiphaseflow.2026.105910",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 多相流理论"
+    ],
+    "keywords": [
+      "microfluidic"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 多相流理论": {
+        "score": 4,
+        "strong_hits": [
+          "multiphase flow"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 生物与医学流体": {
+        "score": 4,
+        "strong_hits": [
+          "microfluidic"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 多相流理论",
+    "custom_keywords": [
+      "microfluidic"
+    ]
+  },
+  {
+    "id": "10.1016/j.ijmultiphaseflow.2026.105923",
+    "title": "Investigation on flow instability and shock wave structures of submerged supersonic gas jet based on dynamic adaptive mesh refinement",
+    "authors": "Ying Chen, Le Shen, Zhaoxin Gong, Jie Li",
+    "abstract": "",
+    "published": "2026-11-01",
+    "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105923",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of Multiphase Flow",
+    "conference": "International Journal of Multiphase Flow",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.ijmultiphaseflow.2026.105923",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 湍流与流动机理"
+    ],
+    "keywords": [
+      "adaptive mesh",
+      "adaptive mesh refinement",
+      "flow instability",
+      "shock wave"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "flow instability"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 多相流理论": {
+        "score": 4,
+        "strong_hits": [
+          "multiphase flow"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 空气动力学理论": {
+        "score": 4,
+        "strong_hits": [
+          "shock wave"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 计算流体力学方法": {
+        "score": 3,
+        "strong_hits": [
+          "adaptive mesh refinement"
+        ],
+        "context_hits": [],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 湍流与流动机理",
+    "custom_keywords": [
+      "adaptive mesh",
+      "shock wave",
+      "adaptive mesh refinement",
+      "flow instability"
+    ]
+  },
+  {
+    "id": "10.1016/j.ijmultiphaseflow.2026.105900",
+    "title": "Effect of bubble volume fraction on drag reduction and air-phase morphology in turbulent boundary layers using LES-VOF",
+    "authors": "Christian Kringel, Anders Schou Simonsen, Jakob Hærvig",
+    "abstract": "",
+    "published": "2026-11-01",
+    "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105900",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of Multiphase Flow",
+    "conference": "International Journal of Multiphase Flow",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.ijmultiphaseflow.2026.105900",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 多相流理论"
+    ],
+    "keywords": [
+      "VOF",
+      "bubble",
+      "drag reduction",
+      "les"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 气动优化设计": {
+        "score": 4,
+        "strong_hits": [
+          "drag reduction"
+        ],
+        "context_hits": [
+          "drag"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 多相流理论": {
+        "score": 10,
+        "strong_hits": [
+          "multiphase flow",
+          "vof",
+          "bubble"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 多相流理论",
+    "custom_keywords": [
+      "les",
+      "drag reduction",
+      "bubble",
+      "vof"
     ]
   }
 ]
