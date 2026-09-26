@@ -1,0 +1,179 @@
+[
+  {
+    "id": "10.53846/goediss-9939",
+    "title": "Quantitative Hemodynamics using Magnetic Resonance Imaging, Computational Fluid Dynamics and Physics-informed Neural Network",
+    "authors": "Dandan Ma",
+    "abstract": "Hemodynamics is related to blood flows in the circulatory system under normal and pathological conditions to understand the mechanisms of various diseases and to treat them accordingly. Different methods, with their own advantage and weaknesses, have been adopted for hemodynamic studies. In this dissertation, two new strategies are developed by combining different methods, such as Magnetic Resonance Imaging (MRI), Computational Fluid Dynamics (CFD), and Physics-informed Neural Network (PINN) based on physical information and applied them for the quantitative study of hemodynamics. The strategies take full advantage of each method, allowing better quantification of hemodynamics and better prediction of the outcome of surgical protocols. Specifically, the first strategy, combining MRI and CFD, for personalized stent intervention in aortic coarctation was proposed. To validate the accuracy of CFD, I first performed numerical simulations using different turbulence modeling methods and compared the numerical results with experimental data from flow MRI. The validated CFD method is further used to study the blood flows within virtually deformed aortic geometries, and to guide stent implantation. Although only the aorta was considered, such a strategy can be extended to other stenosis, and can be used to help clinicians to evaluate surgical plans before intervention. The second strategy was proposed to accomplish blood flow prediction by combing MRI and PINN. Such a strategy overcomes the weaknesses of MRI and CFD for hemodynamics. Prediction of both laminar and turbulent blood flows with PINN in 3D-printed idealized and realistic aortic geometries was performed. Flow data and geometric information from the MRI were considered as inputs for the training. The obtained results show that image-based PINN can overcome the weaknesses of MRI and CFD, which are currently widely used for hemodynamic studies and can predict flow quantitatively using small amounts of noisy data. In summary, in this dissertation I have developed two new strategies by combining different methods for quantitative study of hemodynamics. Bringing together physics, medicine, and computer science, these strategies may shed light on precision medicine and personalized medical therapy.",
+    "published": "2023-06-20",
+    "paper_url": "https://doi.org/10.53846/goediss-9939",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "http://dx.doi.org/10.53846/goediss-9939",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "",
+    "conference": "",
+    "publication_types": [
+      "dissertation"
+    ],
+    "publication_type": "journal",
+    "doi": "10.53846/goediss-9939",
+    "external_ids": {
+      "OpenAlex": "W4381333050"
+    },
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 物理信息神经网络"
+    ],
+    "keywords": [
+      "CFD",
+      "PINN",
+      "aortic",
+      "fluid dynamics",
+      "hemodynamics",
+      "neural network",
+      "turbulence"
+    ],
+    "citation_count": 1,
+    "impact_factor": null,
+    "source": "openalex",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 7,
+        "strong_hits": [
+          "flow prediction"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "cfd",
+          "neural network",
+          "flow data"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 5,
+        "strong_hits": [
+          "turbulence modeling"
+        ],
+        "context_hits": [
+          "neural network",
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 智能CFD / 物理信息神经网络": {
+        "score": 13,
+        "strong_hits": [
+          "physics-informed neural network",
+          "pinn",
+          "physics-informed"
+        ],
+        "context_hits": [
+          "cfd",
+          "fluid",
+          "flow",
+          "neural network"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 生物与医学流体": {
+        "score": 8,
+        "strong_hits": [
+          "blood flow",
+          "aortic",
+          "hemodynamics"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "cfd"
+        ],
+        "negative_hits": [
+          "neural network"
+        ]
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
+    "custom_keywords": [
+      "hemodynamics",
+      "aortic",
+      "fluid dynamics",
+      "cfd",
+      "computational fluid dynamics",
+      "turbulence",
+      "pinn",
+      "neural network",
+      "physics-informed neural network",
+      "physics-informed"
+    ]
+  },
+  {
+    "id": "10.20868/upm.thesis.73327",
+    "title": "Robust simulation of turbulent aerodynamic flows using high-order methods",
+    "authors": "Saumitra Joshi",
+    "abstract": "This dissertation assesses the robustness and efficiency of the high-order fluxreconstruction method for turbulent flows in the context of an industrial doctorate. It makes a case for the importance of the steady-state Reynolds-averaged Navier-Stokes (RANS) problem in the context of high-order simulations. We investigate hp-multigrid with explicit local-time-stepping as a technique to accelerate the convergence of this steady-state problem, including the influence of near-wall p-adaptation. In the industrial context it is important to estimate the maximum cell-local timestep without resorting to trial-and-error on a case-to-case basis. We show that this requirement is equivalent to accurately estimating the cell-local characteristic length-scale, irrespective of the cell-shape, polynomial-order and flow-physics. Based on a von-Neumann analysis framework we uncover the optimum length-scale definition in 3D. The proposed definition generalizes across highly stretched and skewed cells, polynomial-orders from 1 through 10 and demonstrate its improved effectiveness at time-step estimation in comparison with existing methods. Finally, the dissertation analyzes the use of wall-modeling in the context of the flux-reconstruction method. Wall-models ease the computational load by allowing a coarser near-wall resolution without adverse effects on accuracy. Several details of the implementation are studied, and its limitations are presented. RESUMEN Esta tesis evalúa la robustez y la eficacia del método de reconstrucción de flujos (Flux Reconstruction) de alto orden para flujos turbulentos en el contexto de un doctorado industrial. Se defiende la importancia del problema de Navier-Stokes promediado por Reynolds (RANS) en estado estacionario en el contexto de las simulaciones de alto orden. Se investigan los métodos multimalla hp con pasos locales explícitos como técnica para acelerar la convergencia de este problema de estado estacionario, incluyendo la influencia de la adaptación p cerca de la pared. En el contexto industrial es importante estimar el paso de tiempo local máximo de la celda sin recurrir a la prueba y error en cada caso. Demostramos que este requisito es equivalente a la estimación precisa de la escala de longitud característica de la celda, independientemente de la forma de la celda, el orden polinómico y la física del flujo. Basándonos en un marco de análisis de von-Neumann, descubrimos la definición óptima de la escala de longitud en 3D. La definición propuesta se generaliza a través de celdas altamente estiradas y sesgadas, y de órdenes polinómicos de 1 a 10, y demuestra su eficacia mejorada en la estimación de pasos de tiempo en comparación con los métodos existentes. Por último, la tesis analiza el uso de los modelos de pared en el contexto del método de reconstrucción de flujos. Los modelos de pared alivian la carga computacional al permitir una resolución más gruesa cerca de la pared sin efectos adversos en la precisión. Se estudian varios detalles de la aplicación y se presentan sus limitaciones.",
+    "published": "2023-06-08",
+    "paper_url": "https://doi.org/10.20868/upm.thesis.73327",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "http://dx.doi.org/10.20868/upm.thesis.73327",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "",
+    "conference": "",
+    "publication_types": [
+      "dissertation"
+    ],
+    "publication_type": "journal",
+    "doi": "10.20868/upm.thesis.73327",
+    "external_ids": {
+      "OpenAlex": "W4379911350"
+    },
+    "semantic_scholar_id": "03c4b43e8782418263643e3ae548991123c3f929",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 加速求解与超分辨"
+    ],
+    "keywords": [
+      "multigrid",
+      "navier-stokes",
+      "rans"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "openalex",
+    "is_preprint": false,
+    "is_early_access": false,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 加速求解与超分辨": {
+        "score": 4,
+        "strong_hits": [
+          "multigrid"
+        ],
+        "context_hits": [
+          "navier-stokes"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
+    "custom_keywords": [
+      "navier-stokes",
+      "rans",
+      "multigrid"
+    ]
+  }
+]
