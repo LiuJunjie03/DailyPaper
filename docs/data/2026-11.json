@@ -3,7 +3,7 @@
     "id": "10.1016/j.ijmultiphaseflow.2026.105895",
     "title": "A low-dissipation SPH Riemann solver for multiphase flows with arbitrary density ratios",
     "authors": "Muhammad Ayaz Hafeez, Renato Vacondio, Aaron English, Benedict D. Rogers, Georgios Fourtakas",
-    "abstract": "",
+    "abstract": "A low-dissipation Riemann-based WCSPH formulation is proposed for the simulation of multiphase flows with arbitrary density ratios. The method combines a Riemann-solver-based formulation with a parameter-free dissipation coefficient and a continuum surface-tension model to accurately capture interfacial dynamics. In addition, a consistent treatment of fluid–boundary interactions based on a partial Riemann problem is introduced to improve the robustness of high-impact simulations. A key feature of the proposed approach is the use of an identical numerical speed of sound for both phases, which enhances computational efficiency while maintaining numerical stability in high-density-ratio configurations. The method is implemented within the open-source DualSPHysics framework and is applicable to a wide range of flow regimes, from surface-tension-dominated to inertia-dominated flows. The proposed formulation is validated against several benchmark problems, including square droplet relaxation, rising and merging bubbles, and wave impact on a rigid plate. The results demonstrate that the method accurately captures sharp interfaces, pressure discontinuities, and complex interfacial dynamics, while avoiding spurious mixing and unphysical void formation. Good agreement with analytical, numerical, and experimental reference data is obtained across a wide range of density ratios and flow conditions.",
     "published": "2026-11-01",
     "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105895",
     "arxiv_id": "",
@@ -27,6 +27,7 @@
     ],
     "keywords": [
       "SPH",
+      "droplet",
       "multiphase flow"
     ],
     "citation_count": 0,
@@ -38,13 +39,15 @@
     "date_status": "reliable",
     "classification_score": {
       "流体力学 / 多相流理论": {
-        "score": 10,
+        "score": 14,
         "strong_hits": [
           "multiphase flow",
           "multiphase flows",
-          "sph"
+          "sph",
+          "droplet"
         ],
         "context_hits": [
+          "fluid",
           "flow"
         ],
         "negative_hits": []
@@ -52,12 +55,15 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "multiphase flows",
-      "sph"
+      "droplet",
+      "sph",
+      "multiphase flows"
     ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   },
   {
     "id": "10.1016/j.ijmultiphaseflow.2026.105897",
@@ -234,11 +240,11 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "fourier neural operator",
-      "fno",
       "computational fluid dynamics",
+      "fno",
       "fluid dynamics",
       "neural operator",
+      "fourier neural operator",
       "lattice boltzmann"
     ],
     "sources": [
@@ -297,8 +303,8 @@
     },
     "primary_domain": "流体力学 / 风能与海洋工程流体",
     "custom_keywords": [
-      "wind turbine",
-      "physics-guided"
+      "physics-guided",
+      "wind turbine"
     ],
     "sources": [
       "crossref"
@@ -407,11 +413,11 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "blood flow",
       "aortic",
       "computational fluid dynamics",
+      "cfd",
       "fluid dynamics",
-      "cfd"
+      "blood flow"
     ],
     "sources": [
       "crossref"
@@ -518,9 +524,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
+      "deep learning",
       "computational fluid dynamics",
-      "deep learning"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -634,10 +640,10 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "les",
-      "heat transfer",
+      "rans",
       "turbulence",
-      "rans"
+      "les",
+      "heat transfer"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -708,14 +714,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "pinn",
       "physics-informed",
-      "machine learning",
       "acceleration",
-      "computational fluid dynamics",
-      "fluid dynamics",
+      "machine learning",
+      "pinn",
       "cfd",
-      "data-driven"
+      "fluid dynamics",
+      "data-driven",
+      "computational fluid dynamics"
     ],
     "sources": [
       "openalex"
@@ -789,11 +795,11 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "pinn",
+      "physics-informed",
       "transfer learning",
       "neural network",
-      "physics-informed",
-      "physics-informed neural network"
+      "physics-informed neural network",
+      "pinn"
     ],
     "sources": [
       "crossref"
@@ -904,8 +910,8 @@
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
       "finite element",
-      "navier-stokes",
-      "operator learning"
+      "operator learning",
+      "navier-stokes"
     ],
     "sources": [
       "crossref"
@@ -1122,9 +1128,9 @@
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
       "cfd",
+      "bubble",
       "computational fluid dynamics",
-      "fluid dynamics",
-      "bubble"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -1186,8 +1192,8 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "spray",
       "droplet",
+      "spray",
       "lattice boltzmann"
     ],
     "sources": [
@@ -1267,8 +1273,8 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "flame",
-      "turbulence"
+      "turbulence",
+      "flame"
     ],
     "sources": [
       "crossref"
@@ -1277,7 +1283,7 @@
   {
     "id": "10.1061/joeedu.eeeng-8804",
     "title": "Structural Parameter Optimization of a Downward Air Duct Dust Collector Based on Flow Field Uniformity Analysis: CFD-DPM Approach",
-    "authors": "Jia-Yi Li, Shihang Li, Mu-Ze Han, Chang-Geng Gui, Shu-Da Hu, Hao Jin, F. Geng, Teng-Rui Ouyang, Wu-Ping Peng, Ping Li, Qiang Zhang",
+    "authors": "Jia-Yi Li, Shi-Hang Li, Mu-Ze Han, Chang-Geng Gui, Shu-Da Hu, Hao Jin, F. Geng, Teng-Rui Ouyang, Wu-Ping Peng, Ping Li, Qiang Zhang",
     "abstract": "\n \n The issue of dust pollution in mine roadways and tunnel excavation operations has become increasingly severe. This study systematically investigates, for the first time, to the best of our knowledge, the influence mechanisms of partition plates and tube sheet structures on the internal flow field uniformity of a sunk-airway filter plate dust collector. Using a three-dimensional numerical model with the realizable\n \n \n k\n -\n ε\n \n \n turbulence model and discrete phase model (DPM), gas-solid two-phase flow under different structural parameters was simulated. The results demonstrate that eliminating the side partition (\n \n \n L\n =\n 0\n   \n mm\n \n \n ) achieves optimal flow field uniformity, significantly reducing interfilter plate mass flow deviation, airflow velocity range, and dust capture nonuniformity (coefficient of variation reduced by 6%–11%). Furthermore, a stepped tube sheet with a moderate step height (\n \n \n H\n =\n 50\n   \n mm\n \n \n ) reduces total ventilation resistance by approximately 6.3% and enhances flow field uniformity by 3%. This study elucidates the positive role of structural optimization in balancing dust load distribution. The findings provide a theoretical basis and numerical reference for designing high-efficiency dust removal equipment in long, narrow spaces, with significant engineering application value for improving occupational safety and equipment longevity in underground mining and tunnel construction.\n",
     "published": "2026-11-01",
     "paper_url": "https://www.semanticscholar.org/paper/f1c8b04b5d33e896ea56b0743acb8f48628f98da",
@@ -1340,9 +1346,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "turbulence",
       "cfd",
-      "two-phase flow",
-      "turbulence"
+      "two-phase flow"
     ],
     "sources": [
       "semantic_scholar"
@@ -1548,10 +1554,10 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "adaptive mesh",
       "shock wave",
-      "flow instability",
-      "adaptive mesh refinement"
+      "adaptive mesh refinement",
+      "adaptive mesh",
+      "flow instability"
     ],
     "sources": [
       "crossref"
@@ -1622,10 +1628,10 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "les",
-      "drag reduction",
       "vof",
-      "bubble"
+      "drag reduction",
+      "bubble",
+      "les"
     ],
     "sources": [
       "crossref"
@@ -1847,7 +1853,7 @@
       "gnn"
     ],
     "abstract_status": "enriched",
-    "abstract_source": "semantic_scholar",
+    "abstract_source": "openalex",
     "sources": [
       "crossref",
       "openalex"
@@ -1857,7 +1863,7 @@
     "id": "10.1016/j.ijmultiphaseflow.2026.105922",
     "title": "Anisotropic spreading behavior of droplets impacting a concave cylindrical surface",
     "authors": "Xiaoyi Wu, Xingjuan Zhang, Chunxin Yang, Junyuan Liao, Han Yang, Yahui Han",
-    "abstract": "",
+    "abstract": "Combining high-speed visualization experiments, numerical simulations using the Volume-of-Fluid (VOF) method coupled with a dynamic contact angle model, and theoretical analysis, this work systematically investigates the effects of the droplet-to-substrate diameter ratio ( D *), We , and contact angle on the anisotropic spreading scales and characteristic times in the axial and azimuthal directions, while deriving a correlation between the maximum spreading factors in the two directions based on energy conservation. Comparison with experimental data shows that the prediction error of the numerical model for the maximum spreading factor is <1%, and the prediction error of the theoretical correlation is <5%. The results show that, with decreasing D *, the maximum spreading factor and characteristic time in the azimuthal direction increase, while those in the axial direction decrease. For the condition θ sta , θ adv , θ rec = 90°, 100°, 80°, the ratios of the axial to azimuthal maximum spreading factors for D * = 0.055 and 0.44 are 1.03 and 1.47, respectively. Increasing the We increases the maximum spreading factors in both directions and reduces the spreading time. Under hydrophilic conditions, the D * has a more significant effect on regulating the spreading scale and time, at D * = 0.44, the maximum spread factor of the superhydrophilic wall is 1.46 times that of the superhydrophobic wall. The results elucidate anisotropic droplet spreading on concave cylindrical surfaces and provide mechanistic support for liquid film formation and gas–liquid separation in water separators.",
     "published": "2026-11-01",
     "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105922",
     "arxiv_id": "",
@@ -1879,7 +1885,10 @@
       "流体力学",
       "流体力学 / 多相流理论"
     ],
-    "keywords": [],
+    "keywords": [
+      "VOF",
+      "droplet"
+    ],
     "citation_count": 0,
     "impact_factor": null,
     "source": "crossref",
@@ -1889,21 +1898,29 @@
     "date_status": "reliable",
     "classification_score": {
       "流体力学 / 多相流理论": {
-        "score": 4,
+        "score": 11,
         "strong_hits": [
-          "multiphase flow"
+          "multiphase flow",
+          "vof",
+          "droplet"
         ],
         "context_hits": [
+          "fluid",
           "flow"
         ],
         "negative_hits": []
       }
     },
     "primary_domain": "流体力学 / 多相流理论",
-    "custom_keywords": [],
+    "custom_keywords": [
+      "droplet",
+      "vof"
+    ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   },
   {
     "id": "10.1016/j.ijmultiphaseflow.2026.105912",
@@ -2135,9 +2152,9 @@
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
       "cfd",
+      "turbulence",
       "computational fluid dynamics",
-      "fluid dynamics",
-      "turbulence"
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -2199,7 +2216,7 @@
     "id": "10.1016/j.ijmultiphaseflow.2026.105929",
     "title": "Electric field modulated rebound suppression during high velocity droplet impact on a heated surface",
     "authors": "Israr Ahmad, Arun K. Saha",
-    "abstract": "",
+    "abstract": "Droplet rebound suppression can improve spray cooling by extending the time the liquid interacts with the heated wall and reducing energy loss. The electrowetting (EW) technique may control droplet impingement to improve spray cooling by modulating the impact dynamics. This work investigates the integration of the EW technique with impact dynamics on a heated surface and its potential to augment heat dissipation. In this regard, a numerical model is developed using the phase-field method and a molecular-kinetic-theory-based dynamic contact angle model. First, we have verified the accuracy of our numerical model with the experimental results. The present study investigates the impact dynamics under various contact angles ( θ s , 0 ) and Weber numbers ( We ), and a corresponding regime map is generated to analyse the behaviour of droplet impact. Later, droplet impact dynamics is integrated with electrowetting, revealing complete or partial rebound suppression depending on the We and contact angle conditions. It has been observed that EW-assisted droplet impact shows complete rebound suppression at impact velocities of 0.3 to 2.5 m/s, corresponding to We ranging from 3.2 to 221.4 and contact angles of 100° to 140°, in contrast to the case without EW. The EW assisted cooling effectiveness ( ε E W ) for We = 3.2 for θ s , 0 of 160° is 17.6 times that of the case without EW. Moreover, ε E W increases by 141.5% and 104.2% for θ s , 0 of 100° to 160° at a lower We of 12.7. However, it increases by 59.5% and 29.8% respectively with a higher We of 221.4.",
     "published": "2026-11-01",
     "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105929",
     "arxiv_id": "",
@@ -2215,14 +2232,15 @@
     "publication_type": "journal",
     "doi": "10.1016/j.ijmultiphaseflow.2026.105929",
     "external_ids": {},
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "e870b6d6af0eed173094c2f08930014e739a41ee",
     "code_link": "",
     "tags": [
       "流体力学",
       "流体力学 / 多相流理论"
     ],
     "keywords": [
-      "droplet"
+      "droplet",
+      "spray"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -2233,10 +2251,11 @@
     "date_status": "reliable",
     "classification_score": {
       "流体力学 / 多相流理论": {
-        "score": 7,
+        "score": 10,
         "strong_hits": [
           "multiphase flow",
-          "droplet"
+          "droplet",
+          "spray"
         ],
         "context_hits": [
           "flow"
@@ -2246,11 +2265,14 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "droplet"
+      "droplet",
+      "spray"
     ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   },
   {
     "id": "10.1016/j.ijmultiphaseflow.2026.105930",
@@ -2470,8 +2492,8 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "droplet",
-      "boiling"
+      "boiling",
+      "droplet"
     ],
     "sources": [
       "crossref"
@@ -2533,7 +2555,7 @@
     "id": "10.1016/j.ijmultiphaseflow.2026.105935",
     "title": "Inhomogeneous shape distributions and size effects in jammed deformable microgel dispersions under microchannel flow",
     "authors": "Bo-Sheng Lai, Heng-Kwong Tsao, Yu-Jane Sheng",
-    "abstract": "",
+    "abstract": "The flow behavior of jammed monodisperse microgel dispersions in a narrow microchannel is examined using Dissipative Particle Dynamics, with emphasis on the roles of microgel size and deformation. Larger microgels produce a higher maximum velocity in the velocity profile and reach lower values of the local apparent viscosity at the same shear rate. Relating to the Herschel–Bulkley model, this size effect appears mainly as a decrease in the material constant k , whereas the flow index and yield stress ( n and τ y ) remain nearly insensitive to size. Despite differences in absolute velocity, all normalized velocity profiles from both simulations and experiments collapse onto a single universal master curve, showing flow universality across different microgels. This universality is associated with shear-rate-dependent and strongly inhomogeneous deformation across the channel, where particles in high-shear regions experience pronounced stretching. Larger microgels, being more compressible and deformable, display more pronounced stretching and thus experience lower flow resistance, while variations in deformation are reflected mainly in the material constant k .",
     "published": "2026-11-01",
     "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105935",
     "arxiv_id": "",
@@ -2579,6 +2601,57 @@
     "custom_keywords": [],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
+  },
+  {
+    "id": "10.1016/j.ijmultiphaseflow.2026.105908",
+    "title": "The effect of particle size distribution on the shock-induced spread rate of particle curtains",
+    "authors": "Kyle A. Daniel, Justin L. Wagner",
+    "abstract": "",
+    "published": "2026-11-01",
+    "paper_url": "https://doi.org/10.1016/j.ijmultiphaseflow.2026.105908",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "International Journal of Multiphase Flow",
+    "conference": "International Journal of Multiphase Flow",
+    "publication_types": [
+      "journal-article"
+    ],
+    "publication_type": "journal",
+    "doi": "10.1016/j.ijmultiphaseflow.2026.105908",
+    "external_ids": {},
+    "semantic_scholar_id": "",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 多相流理论"
+    ],
+    "keywords": [],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "crossref",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 多相流理论": {
+        "score": 4,
+        "strong_hits": [
+          "multiphase flow"
+        ],
+        "context_hits": [
+          "flow"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 多相流理论",
+    "custom_keywords": []
   }
 ]
