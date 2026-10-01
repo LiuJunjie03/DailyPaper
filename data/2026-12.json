@@ -152,9 +152,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
-      "turbulence",
       "rans closure",
-      "rans"
+      "rans",
+      "turbulence"
     ],
     "sources": [
       "crossref"
@@ -397,9 +397,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "les",
       "cfd",
-      "rans"
+      "rans",
+      "les"
     ],
     "sources": [
       "crossref"
@@ -458,12 +458,12 @@
     "id": "10.1016/j.ijheatfluidflow.2026.110698",
     "title": "Realizability-constrained machine learning for turbulence closures in wake flows",
     "authors": "Talib Ansari, Priyank H. Mehta, Harshal D. Akolekar",
-    "abstract": "",
+    "abstract": "Computational fluid dynamics (CFD)-driven machine learning frameworks based on symbolic regression offer a promising pathway for turbulence model discovery, but are often hindered by numerical instability, residual stagnation, and violations of realizability during training. In particular, realizability, which is rarely enforced explicitly during model development, remains a critical yet overlooked requirement, especially for accurate wake prediction. In this work, a residual- and realizability-filtered CFD-driven framework is proposed to enhance both computational efficiency and numerical robustness within a gene expression programming (GEP) paradigm. The method integrates two residual-based filtering criteria along with a barycentric-map-based realizability constraint directly into the CFD solution loop, enabling early identification and rejection of unstable and non-realizable candidate models. This reduces unnecessary computational effort while guiding the search toward mathematically admissible solutions. The proposed approach achieves a 42.3% reduction in computational cost relative to the baseline CFD-driven GEP framework and reduces non-realizable models at convergence from 58.4% to 1.7%. The framework is trained on a canonical cylinder wake. The resulting models enhance mean wake prediction and remain realizable across training and test cases, with robust mean-flow transferability to diverse geometries and operating conditions, including a rectangular cylinder, an airfoil, and an axisymmetric body. The study further provides insights into realizable model statistics, coefficient trends, and their influence on wake flow predictions. These results demonstrate that incorporating realizability and stability constraints within CFD-driven learning enables efficient and mathematically admissible turbulence model discovery, offering a scalable pathway toward reliable data-driven closure development.",
     "published": "2026-12-01",
     "paper_url": "https://doi.org/10.1016/j.ijheatfluidflow.2026.110698",
     "arxiv_id": "",
     "arxiv_url": "",
-    "pdf_url": "",
+    "pdf_url": "https://doi.org/10.1016/j.ijheatfluidflow.2026.110698",
     "preprint_pdf_url": "",
     "categories": [],
     "venue": "International Journal of Heat and Fluid Flow",
@@ -473,18 +473,25 @@
     ],
     "publication_type": "journal",
     "doi": "10.1016/j.ijheatfluidflow.2026.110698",
-    "external_ids": {},
+    "external_ids": {
+      "OpenAlex": "W7161011790"
+    },
     "semantic_scholar_id": "",
     "code_link": "",
     "tags": [
       "机器学习",
       "流体力学",
       "流体力学 / 智能CFD",
-      "流体力学 / 其他"
+      "流体力学 / 湍流与流动机理"
     ],
     "keywords": [
+      "CFD",
+      "airfoil",
+      "data-driven",
+      "fluid dynamics",
       "machine learning",
-      "turbulence"
+      "turbulence",
+      "wake flow"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -493,14 +500,36 @@
     "is_early_access": true,
     "date_source": "crossref",
     "date_status": "reliable",
-    "classification_score": {},
-    "primary_domain": "流体力学 / 其他",
+    "classification_score": {
+      "流体力学 / 湍流与流动机理": {
+        "score": 4,
+        "strong_hits": [
+          "turbulence",
+          "wake flow"
+        ],
+        "context_hits": [
+          "flow",
+          "fluid"
+        ],
+        "negative_hits": [
+          "machine learning"
+        ]
+      }
+    },
+    "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
+      "wake flow",
+      "airfoil",
       "machine learning",
-      "turbulence"
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "cfd",
+      "turbulence",
+      "data-driven"
     ],
     "sources": [
-      "crossref"
+      "crossref",
+      "openalex"
     ]
   },
   {
