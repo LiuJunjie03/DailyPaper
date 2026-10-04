@@ -39,8 +39,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -152,9 +152,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
+      "turbulence",
       "rans closure",
-      "rans",
-      "turbulence"
+      "rans"
     ],
     "sources": [
       "crossref"
@@ -303,8 +303,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -352,8 +352,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "neural network",
-      "cfd"
+      "cfd",
+      "neural network"
     ]
   },
   {
@@ -397,9 +397,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "les",
       "cfd",
-      "rans",
-      "les"
+      "rans"
     ],
     "sources": [
       "crossref"
@@ -447,8 +447,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "heat transfer",
-      "machine learning"
+      "machine learning",
+      "heat transfer"
     ],
     "sources": [
       "crossref"
@@ -518,14 +518,14 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "wake flow",
-      "turbulence",
-      "cfd",
       "fluid dynamics",
-      "data-driven",
+      "machine learning",
+      "turbulence",
       "computational fluid dynamics",
+      "cfd",
+      "data-driven",
       "airfoil",
-      "machine learning"
+      "wake flow"
     ],
     "sources": [
       "crossref",
@@ -574,8 +574,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "neural network",
-      "cfd"
+      "cfd",
+      "neural network"
     ],
     "sources": [
       "crossref"
@@ -585,7 +585,7 @@
     "id": "10.1016/j.atech.2026.102569",
     "title": "Computational fluid dynamics (CFD) simulations of deep winter greenhouses using passive solar heating and an underground heat storage system",
     "authors": "Yoonhong Yi, Neslihan Akdeniz",
-    "abstract": "",
+    "abstract": "Deep Winter Greenhouses (DWGs) are energy-efficient structures designed to support year-round crop production in cold climates using passive solar heating and underground heat storage systems. However, excessive heat builds up in the summer and even during the winter months. Previous studies have applied photovoltaic (PV)-powered ventilation and computational fluid dynamics (CFD) modeling mainly to conventional greenhouse types. This study evaluated the feasibility and effectiveness of integrating a photovoltaic (PV)-powered ventilation system into DWGs using computational fluid dynamics (CFD) simulations and techno-economic analysis across three North Central US states: Minnesota, Wisconsin, and Illinois. CFD models were developed using a tetrahedral mesh with 12.1 million elements. They were validated using field measurements collected under both summer and winter conditions. The grid convergence index between the selected and finest meshes was below 5%.. Results showed that the PV-powered ventilation system reduced crop-zone summer temperatures by 4.9 to 5.8°C under extreme conditions, providing optimal conditions for a broader range of crops. In winter, daytime temperatures remained above 6.0°C even under extreme cold conditions, while a reduced-order transient analysis indicated that nighttime temperatures fell below freezing under extreme conditions, with ventilation lowering them by only 0.8 to 1.4°C. The System Advisor Model (SAM) indicated that the PV system met the annual energy demand of 845 kWh, with a payback period under six years. By coupling CFD-derived microclimate simulations with SAM-based techno-economic evaluation, this study provides quantitative information for designing self-sustaining ventilation systems for DWGs and other cold-climate greenhouses.",
     "published": "2026-12-01",
     "paper_url": "https://doi.org/10.1016/j.atech.2026.102569",
     "arxiv_id": "",
@@ -605,11 +605,16 @@
     "code_link": "",
     "tags": [
       "流体力学",
-      "流体力学 / 其他"
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习",
+      "流体力学 / 环境与地球物理流体",
+      "流体力学 / 计算流体力学方法"
     ],
     "keywords": [
       "CFD",
-      "fluid dynamics"
+      "climate",
+      "fluid dynamics",
+      "grid convergence"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -618,16 +623,54 @@
     "is_early_access": true,
     "date_source": "crossref",
     "date_status": "reliable",
-    "classification_score": {},
-    "primary_domain": "流体力学 / 其他",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 5,
+        "strong_hits": [
+          "reduced-order"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 环境与地球物理流体": {
+        "score": 5,
+        "strong_hits": [
+          "climate"
+        ],
+        "context_hits": [
+          "fluid",
+          "cfd"
+        ],
+        "negative_hits": []
+      },
+      "流体力学 / 计算流体力学方法": {
+        "score": 5,
+        "strong_hits": [
+          "grid convergence"
+        ],
+        "context_hits": [
+          "cfd",
+          "computational fluid dynamics"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 计算流体力学方法",
     "custom_keywords": [
-      "cfd",
       "fluid dynamics",
-      "computational fluid dynamics"
+      "grid convergence",
+      "computational fluid dynamics",
+      "cfd",
+      "climate"
     ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   },
   {
     "id": "10.1016/j.rineng.2026.113040",
@@ -683,10 +726,10 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "cfd",
-      "fluid dynamics",
       "blood flow",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "cfd",
+      "fluid dynamics"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -698,7 +741,7 @@
     "id": "10.1016/j.rineng.2026.112989",
     "title": "The effect of porous media, phase change materials, and hybrid PCM-liquid cooling incorporating porous copper structures on the thermal management system of lithium-ion batteries using computational fluid dynamics: advancing flow and temperature control",
     "authors": "Salar Zeinali, Elaheh Neshat",
-    "abstract": "",
+    "abstract": "The accelerating adoption of electric vehicles has heightened the necessity for advanced battery thermal management systems (BTMS) to guarantee the safety, operational efficiency, and longevity of lithium-ion batteries (LIBs). In this research, the effects of phase change material (PCM), copper metal foam, liquid cooling, and porous copper layers on increasing heat dissipation, temperature uniformity, and PCM effectiveness in a hybrid BTMS (HBTMS) have been numerically investigated. A 3D computational fluid dynamics (CFD) model was constructed to simulate the thermal behavior of a battery pack. The battery pack contains twelve 18650 NCM lithium-ion cells. Batteries have a discharge rate of 5C. This study investigated critical factors including liquid coolant mass flow rate, environmental temperature, inlet coolant temperature, physical properties of the porous layers, and the characteristics of the copper foam. This study investigates a hybrid battery thermal management system (BTMS) integrating phase change material (PCM) with forced convection cooling. Findings reveal that lowering the inlet coolant temperature to 293.15 K, coupled with selecting a coolant flow rate of 0.001 kg/s within the proposed hybrid configuration, achieves a favorable balance among the investigated conditions. However, it should be noted that different performance indicators—including peak temperature suppression, temperature uniformity, PCM utilization, and hydraulic performance—favor different flow rates. Therefore, the selection of coolant mass flow rate should be based on a multi-objective compromise rather than a single universal optimum. This configuration markedly decreases peak battery temperature and improves thermal uniformity compared to other conditions. Furthermore, this optimized state diminishes the liquid fraction of PCM by 70%, thereby extending its latent heat absorption capacity. Moreover, porous layers featuring elevated porosity (0.9) and 30 pores per inch (PPI) significantly boost convective heat transfer and alleviate temperature gradients within the module. The ideal copper foam design (0.9 porosity, 30 PPI) further elevates thermal regulation by accelerating the PCM phase transition and promoting more uniform heat distribution. Validation of the model against experimental results and existing literature affirms the accuracy and reliability of the simulation approach. This study underscores the promise of integrated HBTMS configurations in enhancing the thermal management, safety, and performance efficiency of LIBs deployed in high-demand applications. Beyond technical performance, a techno-economic and life-cycle analysis demonstrated that the proposed HBTMS can be realised at module-level costs of €50–90 with negligible operating electricity demand (∼€0.001–0.002 per cycle). At pack scale, levelised costs fall below €10/kWh, while extended cycle life (+25%) delivers significant value. Life-cycle assessment highlights copper and aluminium as dominant contributors to embodied GHG, but low-carbon aluminium and recycled copper strongly mitigate impacts, reinforcing the economic and environmental feasibility of the design.",
     "published": "2026-12-01",
     "paper_url": "https://doi.org/10.1016/j.rineng.2026.112989",
     "arxiv_id": "",
@@ -718,11 +761,12 @@
     "code_link": "",
     "tags": [
       "流体力学",
-      "流体力学 / 其他"
+      "流体力学 / 燃烧与传热"
     ],
     "keywords": [
       "CFD",
-      "fluid dynamics"
+      "fluid dynamics",
+      "heat transfer"
     ],
     "citation_count": 0,
     "impact_factor": null,
@@ -731,14 +775,34 @@
     "is_early_access": true,
     "date_source": "crossref",
     "date_status": "reliable",
-    "classification_score": {},
-    "primary_domain": "流体力学 / 其他",
+    "classification_score": {
+      "流体力学 / 燃烧与传热": {
+        "score": 3,
+        "strong_hits": [
+          "heat transfer"
+        ],
+        "context_hits": [
+          "fluid",
+          "flow",
+          "simulation",
+          "cfd"
+        ],
+        "negative_hits": [
+          "battery thermal"
+        ]
+      }
+    },
+    "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "heat transfer",
+      "computational fluid dynamics",
+      "cfd",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "openalex"
   }
 ]

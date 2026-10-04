@@ -55,9 +55,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "droplet",
       "multiphase flows",
-      "sph"
+      "sph",
+      "droplet"
     ],
     "sources": [
       "crossref"
@@ -173,7 +173,7 @@
     "id": "10.1016/j.compfluid.2026.107268",
     "title": "Hybrid Fourier Neural Operator–Lattice Boltzmann Method",
     "authors": "A. Junk, J.M. Winter, M. Tütken, S. Schmidt, N.A. Adams",
-    "abstract": "We propose an accelerated computational fluid dynamics framework based on a hybrid Fourier Neural Operator-Lattice Boltzmann Method (FNO-LBM) for steady and unsteady weakly compressible flows. FNO-based initialization significantly accelerates LBM in reaching steady-states of porous media flows across all macroscopic fields, achieving up to 70% speed-up in convergence of density and more than 40% of pressure-drop while preserving the final steady-state accuracy. Simulations of unsteady flows can be accelerated by hybrid coupling strategies that employ FNO rollouts embedded into LBM time advancement in a way of super-time-stepping. Global and time-resolved error metrics across 100 trajectories for generic 2D flows demonstrate that hybridization consistently improves accuracy and stabilizes long-horizon rollouts. Best efficiency is achieved for a lightweight 2.6M-parameter FNO, which diverges under pure autoregressive rollout but achieves 96-99.8% error reduction under hybrid coupling, matching the predictive capability of a much more expensive 11.2M-parameter model. The hybrid framework enhances predictive fidelity, suppresses error accumulation, and enables small and cheap surrogate models to operate effectively within the same error regime as larger surrogates. These results demonstrate that hybrid neural-operator coupling achieves robust and computationally efficient accelerated LBM while maintaining physically consistent flow evolution.",
+    "abstract": "We propose an accelerated computational fluid dynamics framework based on a hybrid Fourier Neural Operator–Lattice Boltzmann Method (FNO–LBM) for steady and unsteady weakly compressible flows. The approach is evaluated on two-dimensional, single-phase benchmark problems at low Reynolds numbers using an SRT LBM formulation. For steady porous media flows, FNO-based initialization significantly accelerates convergence across macroscopic fields, achieving up to 87% speed-up for density and 55% for pressure-drop depending on the convergence tolerance, while preserving steady-state accuracy. Simulations of unsteady flows can be accelerated by hybrid coupling strategies that employ FNO rollouts embedded into LBM time advancement in a way of super-time-stepping, where one FNO step substitues several LBM steps at once. Global and time-resolved error metrics across 100 trajectories for generic 2D flows demonstrate that hybridization consistently improves accuracy and stabilizes long-horizon rollouts relative to purely autoregressive surrogates. Best efficiency is achieved for a lightweight 2.6M-parameter FNO, which diverges under pure autoregressive rollout but achieves up to 99% error reduction under hybrid coupling, matching the predictive capability of a much more expensive 11.2M- parameter model. The hybrid framework enhances predictive fidelity, suppresses error accumulation, and enables small and cheap surrogate models to operate effectively within the same error regime as larger surrogates. Overall, the results demonstrate that hybrid FNO–LBM coupling can improve stability and efficiency in controlled low-Re 2D settings, enabling compact surrogate models to operate effectively within the accuracy range of larger models and the underlying LBM solver.",
     "published": "2026-11-01",
     "paper_url": "https://doi.org/10.1016/j.compfluid.2026.107268",
     "arxiv_id": "2604.27158",
@@ -227,32 +227,31 @@
         "negative_hits": []
       },
       "流体力学 / 多相流理论": {
-        "score": 5,
+        "score": 4,
         "strong_hits": [
           "lattice boltzmann"
         ],
         "context_hits": [
-          "fluid",
-          "flow"
+          "fluid"
         ],
         "negative_hits": []
       }
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
-      "lattice boltzmann",
-      "fourier neural operator",
+      "fno",
       "fluid dynamics",
-      "computational fluid dynamics",
       "neural operator",
-      "fno"
+      "computational fluid dynamics",
+      "lattice boltzmann",
+      "fourier neural operator"
     ],
     "sources": [
       "crossref",
       "openalex"
     ],
     "abstract_status": "enriched",
-    "abstract_source": "semantic_scholar"
+    "abstract_source": "openalex"
   },
   {
     "id": "10.1016/j.asoc.2026.116182",
@@ -350,8 +349,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -361,7 +360,7 @@
     "id": "10.1016/j.ejrad.2026.113087",
     "title": "Computational fluid dynamics for severity assessment of arterial occlusive diseases",
     "authors": "Weihao Li, Yiheng Tan, Hubert P.J. van der Doef, Tineke Willems, Cristóbal Bertoglio, Reinoud P.H. Bokkers",
-    "abstract": "OBJECTIVES\nThis scoping review aims to examine the methodological considerations and clinical applications of computational fluid dynamics (CFD) in arterial occlusive diseases spanning the carotid, peripheral, renal, and aortic segments.\n\n\nMETHODS\nMEDLINE, CENTRAL, and Embase were searched for studies applying CFD to arterial occlusive diseases (except for coronary and intracranial segments). Studies with more than 5 patients and clinical outcome data were included. Data on CFD techniques, hemodynamic parameters, and clinical correlations were extracted.\n\n\nRESULTS\nFrom 1,925 identified studies, 34 were included. Blood flow measurements were obtained primarily using Doppler ultrasound (n = 17) and phase-contrast MRI (n = 10). Twenty-four studies specified inlet velocity profiles, with parabolic (n = 11), Womersley (n = 10), and plug (n = 3) patterns. Transient (pulsatile) flow (n = 18) was more frequently modeled than steady flow (n = 9). In carotid artery disease (n = 23), high wall shear stress (WSS) and oscillatory shear index (OSI) predicted plaque vulnerability and restenosis, with high WSS linked to ulceration and low WSS to plaque growth. In peripheral artery disease (n = 6), low time-averaged WSS (TAWSS) and high OSI predicted restenosis, particularly in curved segments. CFD-derived pressure gradients achieved up to 95% diagnostic accuracy for iliac stenosis. For renal artery stenosis (n = 3), high peak WSS and velocity indicated critical cases, and in aortic diseases (n = 2), elevated TAWSS and OSI highlighted post-repair risks.\n\n\nCONCLUSIONS\nCFD offers detailed hemodynamic assessment that correlates with diagnostic accuracy, disease progression, treatment strategies and outcomes. Future research should prioritize standardization of CFD protocols, improved inlet data acquisition, reduced computational burden, and robust clinical validation.",
+    "abstract": "OBJECTIVES: This scoping review aims to examine the methodological considerations and clinical applications of computational fluid dynamics (CFD) in arterial occlusive diseases spanning the carotid, peripheral, renal, and aortic segments. METHODS: MEDLINE, CENTRAL, and Embase were searched for studies applying CFD to arterial occlusive diseases (except for coronary and intracranial segments). Studies with more than 5 patients and clinical outcome data were included. Data on CFD techniques, hemodynamic parameters, and clinical correlations were extracted. RESULTS: From 1,925 identified studies, 34 were included. Blood flow measurements were obtained primarily using Doppler ultrasound (n = 17) and phase-contrast MRI (n = 10). Twenty-four studies specified inlet velocity profiles, with parabolic (n = 11), Womersley (n = 10), and plug (n = 3) patterns. Transient (pulsatile) flow (n = 18) was more frequently modeled than steady flow (n = 9). In carotid artery disease (n = 23), high wall shear stress (WSS) and oscillatory shear index (OSI) predicted plaque vulnerability and restenosis, with high WSS linked to ulceration and low WSS to plaque growth. In peripheral artery disease (n = 6), low time-averaged WSS (TAWSS) and high OSI predicted restenosis, particularly in curved segments. CFD-derived pressure gradients achieved up to 95% diagnostic accuracy for iliac stenosis. For renal artery stenosis (n = 3), high peak WSS and velocity indicated critical cases, and in aortic diseases (n = 2), elevated TAWSS and OSI highlighted post-repair risks. CONCLUSIONS: CFD offers detailed hemodynamic assessment that correlates with diagnostic accuracy, disease progression, treatment strategies and outcomes. Future research should prioritize standardization of CFD protocols, improved inlet data acquisition, reduced computational burden, and robust clinical validation.",
     "published": "2026-11-01",
     "paper_url": "https://doi.org/10.1016/j.ejrad.2026.113087",
     "arxiv_id": "",
@@ -413,17 +412,17 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "cfd",
       "fluid dynamics",
-      "aortic",
       "computational fluid dynamics",
-      "blood flow"
+      "blood flow",
+      "cfd",
+      "aortic"
     ],
     "sources": [
       "crossref"
     ],
     "abstract_status": "enriched",
-    "abstract_source": "semantic_scholar"
+    "abstract_source": "openalex"
   },
   {
     "id": "10.1016/j.jcp.2026.115134",
@@ -524,9 +523,9 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
+      "computational fluid dynamics",
       "deep learning",
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -640,10 +639,10 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "heat transfer",
+      "turbulence",
       "les",
       "rans",
-      "turbulence"
+      "heat transfer"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -714,14 +713,14 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "cfd",
+      "physics-informed",
       "fluid dynamics",
-      "data-driven",
-      "computational fluid dynamics",
       "machine learning",
       "pinn",
-      "acceleration",
-      "physics-informed"
+      "computational fluid dynamics",
+      "cfd",
+      "data-driven",
+      "acceleration"
     ],
     "sources": [
       "openalex"
@@ -795,11 +794,11 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 物理信息神经网络",
     "custom_keywords": [
-      "neural network",
-      "physics-informed neural network",
-      "pinn",
+      "transfer learning",
       "physics-informed",
-      "transfer learning"
+      "physics-informed neural network",
+      "neural network",
+      "pinn"
     ],
     "sources": [
       "crossref"
@@ -847,8 +846,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -909,9 +908,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "finite element",
       "operator learning",
-      "navier-stokes",
-      "finite element"
+      "navier-stokes"
     ],
     "sources": [
       "crossref"
@@ -957,8 +956,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "fluid dynamics",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "fluid dynamics"
     ]
   },
   {
@@ -1127,10 +1126,10 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "cfd",
-      "fluid dynamics",
       "bubble",
-      "computational fluid dynamics"
+      "computational fluid dynamics",
+      "cfd",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
@@ -1193,8 +1192,8 @@
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
       "droplet",
-      "spray",
-      "lattice boltzmann"
+      "lattice boltzmann",
+      "spray"
     ],
     "sources": [
       "crossref"
@@ -1273,8 +1272,8 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "flame",
-      "turbulence"
+      "turbulence",
+      "flame"
     ],
     "sources": [
       "crossref"
@@ -1346,9 +1345,9 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "turbulence",
       "cfd",
-      "two-phase flow",
-      "turbulence"
+      "two-phase flow"
     ],
     "sources": [
       "semantic_scholar"
@@ -1554,10 +1553,10 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "adaptive mesh refinement",
-      "adaptive mesh",
+      "flow instability",
       "shock wave",
-      "flow instability"
+      "adaptive mesh refinement",
+      "adaptive mesh"
     ],
     "sources": [
       "crossref"
@@ -1628,10 +1627,10 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "drag reduction",
       "bubble",
+      "les",
       "vof",
-      "les"
+      "drag reduction"
     ],
     "sources": [
       "crossref"
@@ -2151,10 +2150,10 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "cfd",
-      "fluid dynamics",
+      "turbulence",
       "computational fluid dynamics",
-      "turbulence"
+      "cfd",
+      "fluid dynamics"
     ],
     "sources": [
       "semantic_scholar"
@@ -2180,7 +2179,7 @@
     "publication_type": "journal",
     "doi": "10.1016/j.ijmultiphaseflow.2026.105927",
     "external_ids": {},
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "da4798f049a1756a4ee0d6ac8da85ef12dbcfc2f",
     "code_link": "",
     "tags": [
       "流体力学",
@@ -2378,8 +2377,8 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "dns",
-      "droplet"
+      "droplet",
+      "dns"
     ],
     "sources": [
       "crossref"
@@ -2462,7 +2461,7 @@
     "publication_type": "journal",
     "doi": "10.1016/j.ijmultiphaseflow.2026.105911",
     "external_ids": {},
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "aa2bba04cecee642b59e3cb7f6ef89d319b48dbc",
     "code_link": "",
     "tags": [
       "流体力学",
@@ -2784,7 +2783,7 @@
     "publication_type": "journal",
     "doi": "10.1016/j.ijmultiphaseflow.2026.105941",
     "external_ids": {},
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "084329aeeaf584bb8da194eda86e33a684588acd",
     "code_link": "",
     "tags": [
       "流体力学",
@@ -2826,8 +2825,8 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "vortex",
-      "cavitation"
+      "cavitation",
+      "vortex"
     ],
     "sources": [
       "crossref"
@@ -2905,7 +2904,7 @@
     "publication_type": "journal",
     "doi": "10.1016/j.ijmultiphaseflow.2026.105934",
     "external_ids": {},
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "de5fc917ac6ef02c3d1a238d1a7601c4593d1f92",
     "code_link": "",
     "tags": [
       "流体力学",
