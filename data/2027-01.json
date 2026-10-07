@@ -49,9 +49,9 @@
     },
     "primary_domain": "流体力学 / 空气动力学理论",
     "custom_keywords": [
-      "rans",
       "les",
-      "boundary layer"
+      "boundary layer",
+      "rans"
     ],
     "sources": [
       "crossref"
@@ -110,9 +110,9 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "computational fluid dynamics",
+      "fluid dynamics",
       "combustion",
-      "fluid dynamics"
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -204,13 +204,13 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 加速求解与超分辨",
     "custom_keywords": [
-      "machine learning",
+      "speedup",
       "deep learning",
+      "physics-informed",
       "cnn",
       "uncertainty quantification",
-      "physics-informed",
+      "machine learning",
       "transformer",
-      "speedup",
       "flow modeling"
     ],
     "abstract_status": "enriched",
@@ -273,9 +273,9 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
+      "fluid dynamics",
       "computational fluid dynamics",
-      "heat transfer",
-      "fluid dynamics"
+      "heat transfer"
     ],
     "sources": [
       "crossref"
@@ -333,8 +333,8 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 流场重建与数据驱动",
     "custom_keywords": [
-      "uncertainty quantification",
-      "cfd"
+      "cfd",
+      "uncertainty quantification"
     ],
     "sources": [
       "crossref"
@@ -344,11 +344,11 @@
     "id": "10.1016/j.jcp.2026.115429",
     "title": "DiFVM: A vectorized graph-based finite volume solver for differentiable CFD on unstructured meshes",
     "authors": "Pan Du, Yongqi Li, Mingqi Xu, Jian-Xun Wang",
-    "abstract": "",
+    "abstract": "Differentiable programming has emerged as a structural prerequisite for gradient-based inverse problems and end-to-end hybrid physics--machine learning in computational fluid dynamics. However, existing differentiable CFD platforms are confined to structured Cartesian grids, excluding the geometrically complex domains where body-conforming unstructured discretizations are indispensable. We present DiFVM, the first GPU-accelerated, end-to-end differentiable finite-volume CFD solver operating natively on unstructured polyhedral meshes. The key enabling insight is a structural isomorphism between finite-volume discretization and graph neural network message-passing: by reformulating all FVM operators as static scatter/gather primitives on the mesh connectivity graph, DiFVM transforms irregular unstructured connectivity into a first-class GPU data structure. All operations are implemented in JAX/XLA, providing just-in-time compilation, operator fusion, and automatic differentiation through the complete simulation pipeline. Differentiable Windkessel outlet boundary conditions are provided for cardiovascular applications, and DiFVM accepts standard OpenFOAM case directories without modification for seamless adoption in existing workflows. Forward validation across benchmarks spanning canonical flows to patient-specific hemodynamics demonstrates close agreement with OpenFOAM, and end-to-end differentiability is demonstrated through inference of Windkessel parameters from sparse observations. DiFVM bridges the critical gap between differentiable programming and unstructured-mesh CFD, enabling gradient-based inverse problems and physics-integrated machine learning on complex engineering geometries.",
     "published": "2027-01-01",
     "paper_url": "https://doi.org/10.1016/j.jcp.2026.115429",
-    "arxiv_id": "",
-    "arxiv_url": "",
+    "arxiv_id": "2603.15920",
+    "arxiv_url": "https://arxiv.org/abs/2603.15920",
     "pdf_url": "",
     "preprint_pdf_url": "https://arxiv.org/pdf/2603.15920",
     "categories": [],
@@ -362,16 +362,24 @@
     "external_ids": {
       "OpenAlex": "W7139088817"
     },
-    "semantic_scholar_id": "",
+    "semantic_scholar_id": "0e678db3aea3a3f60f19bafab0d96f7d4b1c3d12",
     "code_link": "",
     "tags": [
+      "机器学习",
       "流体力学",
-      "流体力学 / 其他"
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 代理模型与算子学习"
     ],
     "keywords": [
       "CFD",
+      "GNN",
+      "cardiovascular",
       "differentiable cfd",
-      "finite volume"
+      "finite volume",
+      "fluid dynamics",
+      "hemodynamics",
+      "machine learning",
+      "neural network"
     ],
     "citation_count": 0,
     "impact_factor": 5.6,
@@ -380,16 +388,39 @@
     "is_early_access": true,
     "date_source": "crossref",
     "date_status": "reliable",
-    "classification_score": {},
-    "primary_domain": "流体力学 / 其他",
+    "classification_score": {
+      "流体力学 / 智能CFD / 代理模型与算子学习": {
+        "score": 7,
+        "strong_hits": [
+          "graph neural network"
+        ],
+        "context_hits": [
+          "computational fluid dynamics",
+          "cfd",
+          "neural network",
+          "machine learning"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 代理模型与算子学习",
     "custom_keywords": [
+      "graph neural network",
       "differentiable cfd",
+      "computational fluid dynamics",
+      "hemodynamics",
+      "finite volume",
+      "neural network",
+      "cardiovascular",
       "cfd",
-      "finite volume"
+      "machine learning",
+      "fluid dynamics"
     ],
     "sources": [
       "crossref",
       "openalex"
-    ]
+    ],
+    "abstract_status": "enriched",
+    "abstract_source": "semantic_scholar"
   }
 ]
