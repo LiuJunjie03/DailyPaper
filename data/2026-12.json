@@ -152,9 +152,9 @@
     },
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
-      "turbulence",
+      "rans",
       "rans closure",
-      "rans"
+      "turbulence"
     ],
     "sources": [
       "crossref"
@@ -352,8 +352,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "neural network",
-      "cfd"
+      "cfd",
+      "neural network"
     ]
   },
   {
@@ -519,12 +519,12 @@
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
       "machine learning",
-      "airfoil",
+      "fluid dynamics",
+      "turbulence",
       "wake flow",
+      "airfoil",
       "data-driven",
       "cfd",
-      "turbulence",
-      "fluid dynamics",
       "computational fluid dynamics"
     ],
     "sources": [
@@ -574,8 +574,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "neural network",
-      "cfd"
+      "cfd",
+      "neural network"
     ],
     "sources": [
       "crossref"
@@ -660,10 +660,10 @@
     },
     "primary_domain": "流体力学 / 计算流体力学方法",
     "custom_keywords": [
+      "fluid dynamics",
       "climate",
       "cfd",
       "grid convergence",
-      "fluid dynamics",
       "computational fluid dynamics"
     ],
     "sources": [
@@ -726,9 +726,9 @@
     },
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
-      "cfd",
-      "fluid dynamics",
       "blood flow",
+      "fluid dynamics",
+      "cfd",
       "computational fluid dynamics"
     ],
     "abstract_status": "enriched",
@@ -794,9 +794,9 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
+      "fluid dynamics",
       "heat transfer",
       "cfd",
-      "fluid dynamics",
       "computational fluid dynamics"
     ],
     "sources": [
@@ -962,10 +962,10 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "turbulence",
+      "acceleration",
       "fluid dynamics",
       "heat transfer",
-      "acceleration"
+      "turbulence"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex"
@@ -976,21 +976,24 @@
     "authors": "G. Taghinia, A. Esmaeili",
     "abstract": "Autonomous underwater vehicles (AUVs) increasingly rely on optical sensors for navigation, reconnaissance, and environmental monitoring; however, high-speed operation near the air-water interface generates free-surface waves and cavitation that create strongly non-uniform density and refractive-index fields, causing image distortion beyond the scope of conventional ray-tracing models. In this study, a coupled hydro-optic framework is developed by integrating multiphase computational fluid dynamics (CFD) and optical ray tracing to quantify distortion in cavitating free-surface flow over submerged hydrofoils. The flow field is solved using the Volume of Fluid (VOF) method with the Schnerr–Sauer cavitation model and a standard k–ε turbulence closure, and the resulting density field is mapped to refractive index through the Gladstone– Dale relation. Light propagation is then computed by numerically integrating the Eikonal equation using a fourth-order Runge–Kutta scheme. The CFD model is validated against published hydrofoil pressure-coefficient data, and the ray-tracing solver is validated against an analytical Eikonal solution. A parametric study of hydrofoil thickness, camber, angle of attack, immersion depth, and cavitation number shows that cavitation and wave deformation jointly alter ray trajectories and compress the effective imaging field. For example, in the immersion-depth study (h/c= 0.5,0.7,1), the free-surface wave amplitude decreases from 0.09cto 0.06c, while the camera field of view narrows from to . In addition, increasing hydrofoil thickness (NACA 0009 to NACA 0015) reduces the maximum viewing angle from approximately to under the reported operating conditions. These results demonstrate the coupled role of cavitation-bubble growth and wave-shape evolution in hydro-optic distortion and provide a predictive basis for designing more robust AUV imaging systems.",
     "published": "2026-12-01",
-    "paper_url": "https://doi.org/10.47176/jafm.19.12.4550",
+    "paper_url": "https://www.semanticscholar.org/paper/c079ac9ba1900c8bcea6219f863a37d6b2f4c5b8",
     "arxiv_id": "",
     "arxiv_url": "",
-    "pdf_url": "",
+    "pdf_url": "https://www.jafmonline.net/article_3046_975e6107778ce7a40b9878bfb96a16a7.pdf",
     "preprint_pdf_url": "",
     "categories": [],
     "venue": "Journal of Applied Fluid Mechanics",
     "conference": "Journal of Applied Fluid Mechanics",
     "publication_types": [
-      "journal-article"
+      "JournalArticle"
     ],
     "publication_type": "journal",
     "doi": "10.47176/jafm.19.12.4550",
-    "external_ids": {},
-    "semantic_scholar_id": "",
+    "external_ids": {
+      "DOI": "10.47176/jafm.19.12.4550",
+      "CorpusId": 292875270
+    },
+    "semantic_scholar_id": "c079ac9ba1900c8bcea6219f863a37d6b2f4c5b8",
     "code_link": "",
     "tags": [
       "流体力学",
@@ -1006,10 +1009,10 @@
     ],
     "citation_count": 0,
     "impact_factor": null,
-    "source": "crossref",
+    "source": "semantic_scholar",
     "is_preprint": false,
     "is_early_access": true,
-    "date_source": "crossref",
+    "date_source": "semantic_scholar",
     "date_status": "reliable",
     "classification_score": {
       "流体力学 / 湍流与流动机理": {
@@ -1040,16 +1043,79 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
-      "cavitation",
-      "vof",
-      "cfd",
-      "turbulence",
       "bubble",
       "fluid dynamics",
-      "computational fluid dynamics"
+      "turbulence",
+      "vof",
+      "cfd",
+      "computational fluid dynamics",
+      "cavitation"
     ],
     "sources": [
-      "crossref"
+      "crossref",
+      "semantic_scholar"
+    ]
+  },
+  {
+    "id": "10.21279/1454-864x-26-i1-006",
+    "title": "Gas Turbine Propulsion Systems for Naval Vessels: Energy Flow Calculation Methodology and HighPressure Rotor CFD Simulation",
+    "authors": "O. Volintiru",
+    "abstract": "This paper addresses the modernization of naval propulsion systems through the\nadoption of gas turbine technology, with emphasis on thermodynamic calculation methodology\nand rotor flow simulation. The study is centred on the Rolls Royce gas turbine, employed in\nnaval propulsion applications and covers all thermodynamic states from atmospheric air intake\nthrough the two-stage compression process, combustion chamber, high-pressure and lowpressure turbine stages, to the power turbine exhaust. Key parameters, including mass flow rates,\nstage temperatures, pressure ratios, stage power outputs, and overall thermal efficiency (η =\n0.337), are systematically derived using polytropic compression relations and energy balance\nequations. In the second part of the paper, a 3D model of the gas turbine high-pressure rotor is\ndeveloped in SolidWorks and subjected to CFD flow simulation. Three rotational speed regimes\nare analysed, 500 rad/s, 750 rad/s, and 1000 rad/s, with corresponding inlet boundary conditions\nof temperature, pressure, and velocity. The simulation results reveal total pressure drops across\nthe rotor of 1.1%, 1.64%, and 2.3% respectively, consistent with increasing energy extraction at\nhigher rotational speeds. Convergence of total pressure at both rotor inlet and outlet confirms\nnumerical stability across all cases. The results provide a quantitative basis for performance\nassessment and design optimisation of naval gas turbine rotors.",
+    "published": "2026-12-15",
+    "paper_url": "https://www.semanticscholar.org/paper/910881e6d92b9004691ba5c5da2b5f78065897ef",
+    "arxiv_id": "",
+    "arxiv_url": "",
+    "pdf_url": "https://doi.org/10.21279/1454-864x-26-i1-006",
+    "preprint_pdf_url": "",
+    "categories": [],
+    "venue": "Scientif Bulletin of Naval Academy",
+    "conference": "Scientif Bulletin of Naval Academy",
+    "publication_types": [
+      "JournalArticle"
+    ],
+    "publication_type": "journal",
+    "doi": "10.21279/1454-864x-26-i1-006",
+    "external_ids": {
+      "DOI": "10.21279/1454-864x-26-i1-006",
+      "CorpusId": 292883242
+    },
+    "semantic_scholar_id": "910881e6d92b9004691ba5c5da2b5f78065897ef",
+    "code_link": "",
+    "tags": [
+      "流体力学",
+      "流体力学 / 燃烧与传热"
+    ],
+    "keywords": [
+      "CFD",
+      "combustion",
+      "flow simulation"
+    ],
+    "citation_count": 0,
+    "impact_factor": null,
+    "source": "semantic_scholar",
+    "is_preprint": false,
+    "is_early_access": true,
+    "date_source": "semantic_scholar",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 燃烧与传热": {
+        "score": 6,
+        "strong_hits": [
+          "combustion"
+        ],
+        "context_hits": [
+          "flow",
+          "simulation",
+          "cfd"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 燃烧与传热",
+    "custom_keywords": [
+      "flow simulation",
+      "cfd",
+      "combustion"
     ]
   }
 ]
