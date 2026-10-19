@@ -1,0 +1,90 @@
+[
+  {
+    "id": "gs-5d24773ee552",
+    "title": "A proposal for automated turbulence modelling",
+    "authors": "M Castelletti, M Quadrio",
+    "abstract": "Solving the Reynolds-averaged Navier-Stokes equations (RANS) closed with an eddy viscosity computed through a turbulence model is still the leading approach for Computational Fluid Dynamics simulations. Unfortunately, universal models with good predictive capabilities over a wide range of flows are not available. In this work, we propose the use of machine learning to improve existing RANS models. The approach does not require high-fidelity training data. A convolutional neural network is used to identify and segment at runtime the flow field into different zones, each resembling one item of a predefined list of elementary flows. The turbulence model applied in each zone is taken from an equally predefined set of classic models, each specifically tuned to work best for one elementary flow, free from the requirement of universality. The idea is first presented in general terms, and then demonstrated via a preliminary implementation, where only three elementary flows are considered, and three turbulence models are used. Test cases show that, already in this oversimplified form, automated zonal modelling outperforms the baseline RANS models without computational overhead.",
+    "published": "2011-07-25",
+    "paper_url": "https://arxiv.org/abs/2509.14140",
+    "arxiv_id": "2509.14140",
+    "arxiv_url": "https://arxiv.org/abs/2509.14140",
+    "pdf_url": "javascript:void(0)",
+    "categories": [
+      "Physics",
+      "physics.flu-dyn"
+    ],
+    "venue": "Computation of Unsteady Internal Flows",
+    "conference": "Computation of Unsteady Internal Flows",
+    "publication_types": [
+      "Preprint"
+    ],
+    "publication_type": "unknown",
+    "is_preprint": false,
+    "doi": "10.1007/978-1-4615-1439-8_6",
+    "external_ids": {
+      "ArXiv": "2509.14140",
+      "CorpusId": 281333116
+    },
+    "code_link": "",
+    "tags": [
+      "机器学习",
+      "流体力学",
+      "流体力学 / 智能CFD",
+      "流体力学 / 智能CFD / 湍流建模与闭合"
+    ],
+    "source": "google_scholar",
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "neural network",
+      "rans",
+      "turbulence",
+      "machine learning",
+      "navier-stokes",
+      "eddy viscosity"
+    ],
+    "keywords": [
+      "CFD",
+      "eddy viscosity",
+      "fluid dynamics",
+      "machine learning",
+      "navier-stokes",
+      "neural network",
+      "rans",
+      "turbulence"
+    ],
+    "preprint_pdf_url": "https://arxiv.org/pdf/2509.14140",
+    "is_early_access": false,
+    "impact_factor": null,
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "classification_score": {
+      "流体力学 / 智能CFD / 湍流建模与闭合": {
+        "score": 10,
+        "strong_hits": [
+          "turbulence modelling",
+          "eddy viscosity"
+        ],
+        "context_hits": [
+          "rans",
+          "machine learning",
+          "neural network",
+          "navier-stokes"
+        ],
+        "negative_hits": []
+      }
+    },
+    "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
+    "citation_count": 0,
+    "semantic_scholar_id": "6b602953e1091004c366224a008f2cb597885b4c",
+    "sources": [
+      "arxiv",
+      "google_scholar",
+      "semantic_scholar"
+    ],
+    "abstract_status": "unreliable_google_scholar_snippet",
+    "scholar_snippet": "the use of machine learning to improve existing RANS models. The  required to formulate  generalizable LES wall models. Their approach  The classifier is fed data from the LES solver",
+    "abstract_source": "publisher_meta"
+  }
+]

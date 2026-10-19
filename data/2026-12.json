@@ -58,13 +58,13 @@
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
     "custom_keywords": [
-      "navier-stokes",
-      "computational fluid dynamics",
-      "turbulence",
+      "fluid dynamics",
       "les",
-      "cfd",
+      "computational fluid dynamics",
       "rans",
-      "fluid dynamics"
+      "turbulence",
+      "navier-stokes",
+      "cfd"
     ],
     "sources": [
       "crossref",
@@ -111,8 +111,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -225,8 +225,8 @@
     "primary_domain": "流体力学 / 智能CFD / 湍流建模与闭合",
     "custom_keywords": [
       "rans",
-      "rans closure",
-      "turbulence"
+      "turbulence",
+      "rans closure"
     ],
     "sources": [
       "crossref"
@@ -375,8 +375,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ],
     "sources": [
       "crossref"
@@ -519,8 +519,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "machine learning",
-      "heat transfer"
+      "heat transfer",
+      "machine learning"
     ],
     "sources": [
       "crossref"
@@ -532,29 +532,30 @@
     "authors": "Talib Ansari, Priyank H. Mehta, Harshal D. Akolekar",
     "abstract": "Computational fluid dynamics (CFD)-driven machine learning frameworks based on symbolic regression offer a promising pathway for turbulence model discovery, but are often hindered by numerical instability, residual stagnation, and violations of realizability during training. In particular, realizability, which is rarely enforced explicitly during model development, remains a critical yet overlooked requirement, especially for accurate wake prediction. In this work, a residual- and realizability-filtered CFD-driven framework is proposed to enhance both computational efficiency and numerical robustness within a gene expression programming (GEP) paradigm. The method integrates two residual-based filtering criteria along with a barycentric-map-based realizability constraint directly into the CFD solution loop, enabling early identification and rejection of unstable and non-realizable candidate models. This reduces unnecessary computational effort while guiding the search toward mathematically admissible solutions. The proposed approach achieves a 42.3% reduction in computational cost relative to the baseline CFD-driven GEP framework and reduces non-realizable models at convergence from 58.4% to 1.7%. The framework is trained on a canonical cylinder wake. The resulting models enhance mean wake prediction and remain realizable across training and test cases, with robust mean-flow transferability to diverse geometries and operating conditions, including a rectangular cylinder, an airfoil, and an axisymmetric body. The study further provides insights into realizable model statistics, coefficient trends, and their influence on wake flow predictions. These results demonstrate that incorporating realizability and stability constraints within CFD-driven learning enables efficient and mathematically admissible turbulence model discovery, offering a scalable pathway toward reliable data-driven closure development.",
     "published": "2026-12-01",
-    "paper_url": "https://doi.org/10.1016/j.ijheatfluidflow.2026.110698",
-    "arxiv_id": "",
-    "arxiv_url": "",
+    "arxiv_url": "https://arxiv.org/abs/2605.12304",
     "pdf_url": "https://doi.org/10.1016/j.ijheatfluidflow.2026.110698",
-    "preprint_pdf_url": "",
-    "categories": [],
-    "venue": "International Journal of Heat and Fluid Flow",
-    "conference": "International Journal of Heat and Fluid Flow",
-    "publication_types": [
-      "journal-article"
+    "categories": [
+      "Physics",
+      "physics.flu-dyn"
     ],
-    "publication_type": "journal",
-    "doi": "10.1016/j.ijheatfluidflow.2026.110698",
-    "external_ids": {
-      "OpenAlex": "W7161011790"
-    },
-    "semantic_scholar_id": "",
+    "conference": "International Journal of Heat and Fluid Flow",
     "code_link": "",
     "tags": [
       "机器学习",
       "流体力学",
       "流体力学 / 智能CFD",
       "流体力学 / 湍流与流动机理"
+    ],
+    "official_keywords": [],
+    "custom_keywords": [
+      "fluid dynamics",
+      "computational fluid dynamics",
+      "turbulence",
+      "wake flow",
+      "machine learning",
+      "data-driven",
+      "airfoil",
+      "cfd"
     ],
     "keywords": [
       "CFD",
@@ -567,21 +568,17 @@
     ],
     "citation_count": 0,
     "impact_factor": null,
-    "source": "crossref",
-    "is_preprint": false,
-    "is_early_access": true,
-    "date_source": "crossref",
-    "date_status": "reliable",
     "classification_score": {
       "流体力学 / 湍流与流动机理": {
-        "score": 4,
+        "score": 5,
         "strong_hits": [
           "turbulence",
           "wake flow"
         ],
         "context_hits": [
           "flow",
-          "fluid"
+          "fluid",
+          "physics.flu-dyn"
         ],
         "negative_hits": [
           "machine learning"
@@ -589,20 +586,30 @@
       }
     },
     "primary_domain": "流体力学 / 湍流与流动机理",
-    "custom_keywords": [
-      "data-driven",
-      "computational fluid dynamics",
-      "turbulence",
-      "airfoil",
-      "cfd",
-      "machine learning",
-      "wake flow",
-      "fluid dynamics"
+    "venue": "International Journal of Heat and Fluid Flow",
+    "doi": "10.1016/j.ijheatfluidflow.2026.110698",
+    "arxiv_id": "2605.12304",
+    "preprint_pdf_url": "https://arxiv.org/pdf/2605.12304",
+    "paper_url": "https://doi.org/10.1016/j.ijheatfluidflow.2026.110698",
+    "publication_type": "journal",
+    "is_preprint": false,
+    "source": "crossref",
+    "publication_types": [
+      "journal-article"
     ],
+    "external_ids": {
+      "OpenAlex": "W7161011790"
+    },
     "sources": [
+      "arxiv",
       "crossref",
-      "openalex"
-    ]
+      "openalex",
+      "semantic_scholar"
+    ],
+    "date_source": "crossref",
+    "date_status": "reliable",
+    "is_early_access": true,
+    "semantic_scholar_id": "0731714f4b9163e000a55d38224945ebf4324a80"
   },
   {
     "id": "10.1016/j.rineng.2026.112934",
@@ -732,11 +739,11 @@
     },
     "primary_domain": "流体力学 / 计算流体力学方法",
     "custom_keywords": [
+      "fluid dynamics",
       "computational fluid dynamics",
-      "grid convergence",
-      "cfd",
       "climate",
-      "fluid dynamics"
+      "grid convergence",
+      "cfd"
     ],
     "sources": [
       "crossref"
@@ -799,9 +806,9 @@
     "primary_domain": "流体力学 / 生物与医学流体",
     "custom_keywords": [
       "blood flow",
+      "fluid dynamics",
       "computational fluid dynamics",
-      "cfd",
-      "fluid dynamics"
+      "cfd"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex",
@@ -866,10 +873,10 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
+      "fluid dynamics",
       "heat transfer",
       "computational fluid dynamics",
-      "cfd",
-      "fluid dynamics"
+      "cfd"
     ],
     "sources": [
       "crossref"
@@ -917,8 +924,8 @@
     "classification_score": {},
     "primary_domain": "流体力学 / 其他",
     "custom_keywords": [
-      "computational fluid dynamics",
-      "fluid dynamics"
+      "fluid dynamics",
+      "computational fluid dynamics"
     ]
   },
   {
@@ -1034,10 +1041,10 @@
     },
     "primary_domain": "流体力学 / 燃烧与传热",
     "custom_keywords": [
-      "heat transfer",
-      "acceleration",
+      "turbulence",
       "fluid dynamics",
-      "turbulence"
+      "heat transfer",
+      "acceleration"
     ],
     "abstract_status": "enriched",
     "abstract_source": "openalex"
@@ -1115,13 +1122,13 @@
     },
     "primary_domain": "流体力学 / 多相流理论",
     "custom_keywords": [
+      "fluid dynamics",
       "computational fluid dynamics",
       "turbulence",
+      "bubble",
       "cavitation",
       "vof",
-      "cfd",
-      "bubble",
-      "fluid dynamics"
+      "cfd"
     ],
     "sources": [
       "crossref",
